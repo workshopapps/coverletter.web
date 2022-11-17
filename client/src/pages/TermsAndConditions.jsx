@@ -37,7 +37,7 @@ function TermsAndCondition() {
 					usage policy in any moment.
 				</p>
 
-				<h2 className=" mt-5 mb-3 text-sm  font-bold md:text-xl md:mt-6 lg:text-2xl lg:mt-14">
+				<h2 className="text-[#101010] mt-5 mb-3 text-sm  font-bold md:text-xl md:mt-6 lg:text-2xl lg:mt-14">
 					1. Website license and Content
 				</h2>
 
@@ -53,7 +53,7 @@ function TermsAndCondition() {
 					the information you seek to rely upon.
 				</p>
 
-				<h2 className=" mt-5 mb-3 text-sm  font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
+				<h2 className="text-[#101010] mt-5 mb-3 text-sm  font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
 					2 . Definitions and Key Terms
 				</h2>
 
@@ -82,7 +82,7 @@ function TermsAndCondition() {
 					</div>
 				</div>
 
-				<h2 className=" mt-5 mb-3 text-sm  font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
+				<h2 className="text-[#101010] mt-5 mb-3 text-sm  font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
 					3. Privacy
 				</h2>
 
@@ -93,7 +93,7 @@ function TermsAndCondition() {
 					the information submitted.
 				</p>
 
-				<h2 className=" mt-5 mb-3 text-sm  font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
+				<h2 className="text-[#101010] mt-5 mb-3 text-sm  font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
 					4. Intellectual Property
 				</h2>
 
@@ -108,7 +108,11 @@ function TermsAndCondition() {
 					conditions.
 				</p>
 
+<<<<<<< HEAD
 				<h2 className=" mt-5 mb-3 text-sm font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
+=======
+				<h2 className="text-[#101010] mt-5 mb-3 text-sm font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
+>>>>>>> 6fba42b (feat/terms-and-conditions)
 					5. Copyright and Infringement Notice
 				</h2>
 
@@ -117,7 +121,7 @@ function TermsAndCondition() {
 					property of the owner, are acknowledged on the website.
 				</p>
 
-				<h2 className=" mt-5 mb-3 text-sm  font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
+				<h2 className="text-[#101010] mt-5 mb-3 text-sm  font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
 					6. Updates to our Terms and Conditions
 				</h2>
 
@@ -127,10 +131,14 @@ function TermsAndCondition() {
 					from time to time.
 				</p>
 
+<<<<<<< HEAD
 				<h1 className="my-4 font-extrabold text-xl md:mt-10 md:text-3xl">
+=======
+				<h1 className="text-[#101010] my-4 font-extrabold text-xl md:mt-10 md:text-3xl">
+>>>>>>> 6fba42b (feat/terms-and-conditions)
 					Contact Us
 				</h1>
-				<p className="text-[#6D6D6D] text-sm">
+				<p className="text-[#6D6D6D] text-sm ">
 					Do you feel the need to call? Or if you have any questions
 					about our service please endeavour to{" "}
 					<a href="#" className="text-[#0652DD]">
