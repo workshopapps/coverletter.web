@@ -29,6 +29,7 @@ const AppProvider = ({ children }) => {
 				closeModal,
 				openSidebar,
 				closeSidebar,
+				setIsModalOpen
 			}}
 		>
 			{children}

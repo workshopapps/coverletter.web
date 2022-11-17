@@ -1,8 +1,10 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
+import { useGlobalContext } from "../../context/context";
 
 const Backdrop = (props) => {
-  return <div className="fixed w-full z-40 h-screen bg-overlay" onClick={props.onClose} />;
+  const { closeModal } = useGlobalContext();
+  return <div className="fixed w-full z-40 h-screen bg-overlay" onClick={closeModal} />;
 };
 
 const ModalOverlay = (props) => {
@@ -19,7 +21,7 @@ const Modal = (props) => {
   return (
     <Fragment>
       {ReactDOM.createPortal(
-        <Backdrop onClose={props.onClose} />,
+        <Backdrop />,
         portalElement
       )}
       {ReactDOM.createPortal(
