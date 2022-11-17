@@ -22,7 +22,7 @@ const register = async (req, res) => {
       password,
       confirmationCode
   },)
-  const url = `http://localhost:3000/auth/verify/${confirmationCode}`;
+  const url = `${process.env.BASE_URL}/auth/verify/${confirmationCode}`;
   await sendEmail(req.body.email,"Verify email",url)
 
    const savedUser = await user.save()
