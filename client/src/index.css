@@ -27,13 +27,14 @@
 
 @layer components {
 	.btn {
-		@apply px-4 py-3 font-bold text-base rounded-lg box-border w-[140px];
+		@apply px-4 py-3 font-bold text-base rounded-lg box-border;
 	}
 
-	@screen lg {
-		.btn {
-			@apply w-[400px];
-		}
+	.btnLong {
+		@apply w-[400px];
+	}
+	.btnShort {
+		@apply w-[140px];
 	}
 
 	.btnPrimary {
