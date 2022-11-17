@@ -1,6 +1,15 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const routes = express.Router();
+const {
+	createLetterController,
+	allLettersController,
+	getSingleLetterController,
+	updateSingleLetterController,
+} = require("../controllers/template");
 
 //Add your routes here
 
-module.exports = router
+routes.get("/history/letters", allLettersController);
+routes.patch("/history/letter/:id", updateSingleLetterController);
+
+module.exports = routes;
