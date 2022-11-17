@@ -1,9 +1,41 @@
 require("express-async-errors");
 const express = require("express");
 const routes = require("./routes/authRoutes");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUI = require("swagger-ui-express");
 const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
+
+const options = {
+	definition: {
+		openapi: "3.0.0",
+		info: {
+			title: "Cover Letter Generator",
+			version: "1.0.0",
+			description: "API documentation for a Cover letter generator",
+		},
+		servers: [
+			{
+				url: "http://localhost:5001",
+				description: "Local",
+			},
+			// {
+			// 	url: "http://www.aplicar.herokuapp",
+			// 	description: "Development",
+			// },
+			// {
+			// 	url: "http://www.aplicar.com",
+			// 	description: "Production",
+			// },
+		],
+	},
+	apis: ["./server/routes/*.js"],
+};
+
+const openapiSpecification = swaggerJsDoc(options);
+const port = process.env.PORT || 5001;
+
 const app = express();
 require("dotenv").config();
 //Routers
@@ -11,9 +43,12 @@ const authRoutes = require("./routes/authRoutes")
 // database
 const connectDB = require('./db/connect');
 
+app.use("/docs", swaggerUI.serve, swaggerUI.setup(openapiSpecification));
+
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
+
 
 app.use(express.json());
 app.use(helmet());
@@ -29,9 +64,6 @@ app.get("/", (req, res) => {
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
-
-const port = process.env.PORT || 5000;
-
 const start = async () => {
   try {
     //connect DB
