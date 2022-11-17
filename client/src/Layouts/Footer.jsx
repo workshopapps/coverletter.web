@@ -4,7 +4,7 @@ import { ReactComponent as FooterLogo } from "../Assets/footerlogo.svg";
 const Footer = () => {
 	return (
 		<div>
-			<div className="lg:px-24 px-12 mt-6">
+			<div className="md:px-24 px-6 mt-6">
 				<div className="md:hidden flex mb-6">
 					<FooterLogo />
 				</div>
@@ -53,10 +53,13 @@ const Footer = () => {
 					</div>
 				</div>
 			</div>
-			<div className="flex sm:flex-row flex-col justify-between lg:px-24 px-12 py-[18px] text-left text-xs bg-[#F2F2F7] text-textBody leading-4 sm:space-y-0 space-y-2">
-				<p>© 2022 Cover. All rights reserved.</p>
-				<p>Terms and Conditions</p>
-				<p>Privacy Policy</p>
+			<div className="md:px-24 px-6 sm:block flex sm:justify-start justify-between items-end md:py-[18px] py-4 text-left text-xs bg-[#F2F2F7] text-textBody leading-4 sm:space-y-0 space-y-2">
+				<div className="flex sm:flex-row flex-col justify-between  sm:space-y-0 space-y-4">
+					<p>© 2022 Cover. All rights reserved.</p>
+					<p>Terms and Conditions</p>
+					<p className="sm:flex hidden">Privacy Policy</p>
+				</div>
+				<p className="sm:hidden flex">Privacy Policy</p>
 			</div>
 		</div>
 	);
