@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, ErrorPage } from "./pages";
+import { Home, ErrorPage, Faq } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -11,6 +11,7 @@ const App = () => {
 				<Header />
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="/faq" element={<Faq />} />
 
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
