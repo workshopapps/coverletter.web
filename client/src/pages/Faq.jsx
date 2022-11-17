@@ -1,15 +1,8 @@
-import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import React, { useState } from "react";
-import ChevronOpen from "../Assets/chevron-down.svg";
+import Accordion from "../Components/Accordion";
 import { faqQA } from "../Utils/data";
 
 const Faq = () => {
-	const [expanded, setExpanded] = React.useState(false);
-
-	const handleChange = (panel) => (event, isExpanded) => {
-		setExpanded(isExpanded ? panel : false);
-	};
-
 	const classes =
 		"leading-[36px] sm:leading-[48px] sm:text-[40px] text-[24px]";
 
@@ -33,15 +26,29 @@ const Faq = () => {
 					</p>
 				</div>
 			</div>
-			<main className="md:px-24 px-6 pt-[56px] pb-[199px] bg-[#f0f0f8] text-center">
-				<div></div>
-				<p className="mb-[32px] text-sm sm:text-base text-[#101010]">
-					Do you have any other questions, comments, or complaints?
-					<span className="ml-1 text-primaryDark">Contact Us</span>
-				</p>
-				<button className="bg-primaryMain w-[327px] h-[80px] md:w-[527px] text-textWhite text-xl font-bold hover:bg-primaryDark active:bg-primaryDeep sm:w-[327px]">
-					Generate Cover Letter
-				</button>
+			<main className="md:px-24 px-6 pt-[56px] pb-[199px] bg-[#f0f0f8]">
+				<div>
+					{faqQA.map((item) => {
+						return (
+							<Accordion
+								title={item.question}
+								content={item.answer}
+							/>
+						);
+					})}
+				</div>
+				<div className="text-center">
+					<p className="mb-[32px] text-sm sm:text-base text-[#101010]">
+						Do you have any other questions, comments, or
+						complaints?
+						<span className="ml-1 text-primaryDark">
+							Contact Us
+						</span>
+					</p>
+					<button className="bg-primaryMain w-[327px] h-[80px] md:w-[527px] text-textWhite text-xl font-bold hover:bg-primaryDark active:bg-primaryDeep sm:w-[327px]">
+						Generate Cover Letter
+					</button>
+				</div>
 			</main>
 		</>
 	);
