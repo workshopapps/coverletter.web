@@ -1,6 +1,6 @@
-# Cover Letter Generator
+# <div id="top">Aplicar - Cover Letter Generator</div>
 
-<div id="top"></div>
+
 
 ### Table of Content
   - [Installation](#getting_started)
@@ -87,6 +87,12 @@ Before installation, please make sure you have already installed the following t
    cd coverletter.web
    ```
 
+3. Navigate to client directory
+
+   ```bash
+   cd client
+   ```
+
 3. Install dependencies with `npm install`
 
    ```bash
@@ -103,7 +109,7 @@ Before installation, please make sure you have already installed the following t
 
 ## <p id="server">To start up server</p>
 
-1. In your terminal, change to root :
+1. In your terminal, navigate to root directory:
 
     ```bash
     cd ..
