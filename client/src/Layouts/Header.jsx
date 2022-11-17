@@ -21,7 +21,7 @@ const Header = () => {
 					Register
 				</Button>
 				<button>
-					<img src={Hamburger} alt="" className="md:hidden" />
+					<img src={Hamburger} alt="" className="lg:hidden" />
 				</button>
 			</div>
 		</div>

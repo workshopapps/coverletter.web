@@ -11,7 +11,7 @@ const Footer = () => {
 					<FooterLogo className="lg:flex hidden" />
 					<FooterLogoMobile className="lg:hidden flex " />
 				</div>
-				<div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 text-left mb-[59px] gap-10 md:space-x-24 w-full">
+				<div className="grid grid-cols-2 text-left mb-[59px] gap-10 md:space-x-24 w-full md:grid-cols-3">
 					<div className="flex md:flex-row flex-col md:space-x-16 ">
 						<div className="md:flex hidden">
 							<FooterLogo />

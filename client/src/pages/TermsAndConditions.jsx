@@ -9,7 +9,7 @@ function TermsAndCondition() {
 				</h1>
 				<p className="text-center text-[15px] font-extralight text-[#FCFCFC]">
 					Please read the legal information about Aplicar to ensure
-					you under the terms of use of our AI generated cover
+					you understand the terms of use of our AI generated cover
 					letters.
 				</p>
 			</div>
@@ -44,8 +44,8 @@ function TermsAndCondition() {
 				<p className="text-[#6D6D6D] text-sm mb-1">
 					These terms and conditions are a contract between you and
 					Aplicar. Aplicar grants you a revocable. Non-transferrable,
-					limited license to download, install and website strictly in
-					accordance with the terms of the agreement.
+					limited license to download, install and use our website
+					strictly in accordance with the terms of the agreement.
 					<br className="lg:hidden" /> The contents of the pages are
 					for your general information and uses only. It is subject to
 					change without notice. It is your responsibility to enquiry
@@ -58,7 +58,7 @@ function TermsAndCondition() {
 				</h2>
 
 				<div className="text-[#6D6D6D] text-sm mb-1">
-					The following definitions apply for the terms and conditions
+					The following definitions apply to the terms and conditions
 					and other agreements
 					<div className="mt-2 md:mt-3 lg:mt-4">
 						<span className="font-bold">Website: </span>Aplicar
@@ -100,15 +100,15 @@ function TermsAndCondition() {
 				<p className="text-[#6D6D6D] text-sm mb-1">
 					The information and materials on this website is owned and
 					licensed to us. This material includes, but is not limited
-					to the layout, design; look and graphics are protected by
-					Nigeria and international copyright, trademark and any other
-					intellectual property laws. Reproducing or modifying these
-					contents is prohibited and should not be done without
+					to the layout, design; look and graphics which are protected
+					by Nigeria and international copyright, trademark and any
+					other intellectual property laws. Reproducing or modifying
+					these contents is prohibited and should not be done without
 					permission from us which forms parts of these terms and
 					conditions.
 				</p>
 
-				<h2 className=" mt-5 mb-2 font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
+				<h2 className=" mt-5 mb-3 text-sm font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
 					5. Copyright and Infringement Notice
 				</h2>
 
@@ -127,7 +127,7 @@ function TermsAndCondition() {
 					from time to time.
 				</p>
 
-				<h1 className="my-4 font-extrabold text-xl md:mt-10">
+				<h1 className="my-4 font-extrabold text-xl md:mt-10 md:text-3xl">
 					Contact Us
 				</h1>
 				<p className="text-[#6D6D6D] text-sm">
