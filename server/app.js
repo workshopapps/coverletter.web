@@ -1,16 +1,21 @@
 require("dotenv").config({ path: "../config.env" });
 require("express-async-errors");
 const express = require("express");
-const routes = require("./routes/authRoutes");
-const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
+const swaggerDocument = require("./utils/swaggerOptions.json")
 const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
-const options = require("./utils/swaggerOptions.json")
 
 const port = process.env.PORT || 5001;
 const app = express();
+
+app.use(
+	"/cvg-documentation",
+	swaggerUI.serve,
+	swaggerUI.setup(swaggerDocument)
+);
+
 //Routers
 const authRoutes = require("./routes/authRoutes");
 // database
