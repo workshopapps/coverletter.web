@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, ErrorPage, Blog, SingleblogPage } from "./pages";
+import { Home, ErrorPage, Blog, SingleblogPage, ContactUs } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -17,6 +17,8 @@ const App = () => {
 						path="blogArticle/:id"
 						element={<SingleblogPage />}
 					/>
+					<Route path="/contactus" element={<ContactUs />} />
+
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
