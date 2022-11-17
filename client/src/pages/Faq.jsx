@@ -45,7 +45,7 @@ const Faq = () => {
 							Contact Us
 						</span>
 					</p>
-					<button className="bg-primaryMain w-[327px] h-[80px] md:w-[527px] text-textWhite text-xl font-bold hover:bg-primaryDark active:bg-primaryDeep sm:w-[327px]">
+					<button className="bg-primaryMain w-[327px] h-[80px] md:w-[527px] text-textWhite text-xl font-bold hover:bg-primaryDark active:bg-primaryDeep sm:w-[327px] rounded-lg">
 						Generate Cover Letter
 					</button>
 				</div>
