@@ -11,6 +11,12 @@ exports.resetPassword = async (req, res, next) => {
         const user = await User.findOne({ passwordResetToken: hashedToken, passwordResetExpires: { $gt:Date.now() } });
         // 2) If token has not expired and there is user, set the new User
         if (!user) {
-            return next(new AppError('Token is invalid or has Expired'), 400);
+            return next(new BadRequestError('Otp Token is invalid or has Expired'));
         }
+
+        user.password = req.body.password;
+        user.passwordConfirm = req.body.passwordConfirm;
+        user.passwordResetToken = undefined;
+        user.passwordResetExpires = undefined;
+        await user.save();
 };
