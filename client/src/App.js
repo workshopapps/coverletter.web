@@ -1,11 +1,21 @@
 import "./App.css";
-
-function App() {
+import { Home, ErrorPage } from "./pages";
+import { ScrollToTop } from "./Components";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+const App = () => {
 	return (
-		<div className="bg-gray-200 text-2xl py-6 text-center">
-			App goes here
-		</div>
+		<Router>
+			<ScrollToTop>
+				{/* place nav bar here*/}
+				<Routes>
+					<Route path="/" element={<Home />} />
+
+					<Route path="*" element={<ErrorPage />}></Route>
+				</Routes>
+				{/* place footer here */}
+			</ScrollToTop>
+		</Router>
 	);
-}
+};
 
 export default App;
