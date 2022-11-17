@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
 	return (
 		<footer>
-			<div className="lg:px-24 md:px-12 px-6 mt-6">
+			<div className="lg:px-24 md:px-12 px-6 mt-6 m-auto">
 				<div className="md:hidden flex mb-6">
 					<FooterLogo className="lg:flex hidden" />
 					<FooterLogoMobile className="lg:hidden flex " />
