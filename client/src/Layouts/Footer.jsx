@@ -14,11 +14,11 @@ const Footer = () => {
 							<FooterLogo />
 						</div>
 						<div className="w-full">
-							<h2 className="text-textBody font-normal lg:text-base text-sm leading-6">
+							<h2 className="text-textBody font-normal text-base leading-6">
 								Product
 							</h2>
 
-							<div className="flex flex-col flex-start space-y-6 text-textHeader font-bold lg:text-base text-sm leading-6 mt-6">
+							<div className="flex flex-col flex-start space-y-6 text-textHeader font-bold text-base leading-6 mt-6">
 								<h4 className="cursor-pointer">
 									Documentation
 								</h4>
@@ -29,10 +29,10 @@ const Footer = () => {
 						</div>
 					</div>
 					<div className="">
-						<h4 className="text-textBody font-normal lg:text-base text-sm  leading-6">
+						<h4 className="text-textBody font-normal text-base leading-6">
 							Company
 						</h4>
-						<div className="flex flex-col flex-start space-y-6 text-textHeader font-bold lg:text-base text-sm leading-6 mt-6">
+						<div className="flex flex-col flex-start space-y-6 text-textHeader font-bold text-base leading-6 mt-6">
 							<h4 className="cursor-pointer">About Us</h4>
 							<h4 className="cursor-pointer">Blog</h4>
 							<h4 className="cursor-pointer">Forum</h4>
@@ -40,10 +40,10 @@ const Footer = () => {
 						</div>
 					</div>
 					<div className="">
-						<h4 className="text-textBody font-normal lg:text-base text-sm  leading-6">
+						<h4 className="text-textBody font-normal text-base leading-6">
 							Activity
 						</h4>
-						<div className="flex flex-col flex-start space-y-6 text-textHeader font-bold lg:text-base text-sm leading-6 mt-6">
+						<div className="flex flex-col flex-start space-y-6 text-textHeader font-bold text-base leading-6 mt-6">
 							<h4 className="cursor-pointer">Events</h4>
 							<h4 className="cursor-pointer">
 								Customers stories
