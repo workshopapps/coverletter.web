@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { useGlobalContext } from "../../context/context";
 
-const Backdrop = (props) => {
+const Backdrop = () => {
   const { closeModal } = useGlobalContext();
   return <div className="fixed w-full z-40 h-screen bg-overlay" onClick={closeModal} />;
 };

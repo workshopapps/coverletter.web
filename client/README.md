@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+# Cover Letter Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div id="top"></div>
 
-## Available Scripts
+### Table of Content
+  - [Installation](#getting_started)
+  - [Set up server](#server)
+  - [How to contribute](#contribute)
 
-In the project directory, you can run:
+<!-- <div>
+<p  align="center">
+    <a href="https://whischat.vercel.app/">View Demo</a>
+    ·
+    <a href="https://github.com//workshopapps/coverletter.web/issues/new?assignees=&labels=bug&template=bug.yml&title=%5BBUG%5D+%3Cdescription%3E">Report Bug</a>
+    ·
+    <a href="https://github.com//workshopapps/coverletter.web/issues/new?assignees=&labels=feature&template=features.yml&title=%5BFEATURE%5D+%3Cdescription%3E">Request Feature</a>
+  </p>
 
-### `npm start`
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars//workshopapps/coverletter.web?style=flat">
+  <img alt="contributors" src="https://img.shields.io/github/contributors//workshopapps/coverletter.web?style=flat">
+  <img alt="GitHub Repo forks" src="https://img.shields.io/github/forks//workshopapps/coverletter.web?style=flat">
+  <img alt="issues" src="https://img.shields.io/github/issues//workshopapps/coverletter.web?style=flat"> </br>
+<div/> -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Built With
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ <table width="100%">
+     <tbody  width="100%">
+  <tr  width="100%">
+    <td align="center" width="333px">
+      <a href="https://reactjs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="50" height="50" alt="React" /></a>
+      <br>React
+    </td>
 
-### `npm test`
+   <td align="Center" width="333px">
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="50" height="50" alt="Javascript" /></a>
+    <br>JavaScript
+    </td>
+  <td align="Center" width="333px">
+      <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" width="50" height="50" alt="tailwind" /></a>
+    <br>Tailwind
+    </td>
+  <td align="Center" width="333px">
+      <a href="https://nodejs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg" width="50" height="50" alt="nodejs" /></a>
+    <br>Node
+    </td>
+  </tr>
+  <tr>
+   <td align="Center" width="333px">
+  <a href="https://react-redux.js.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/redux-colored.svg" width="50" height="50" alt="redux" /></a>
+    <br>Redux
+  </td>
+  </tr>
+</tbody>
+  </table>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### `npm run build`
+## Demo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Check out the website: [coverletter.web]()
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## <p id="getting_started">Getting Started</p>
 
-### `npm run eject`
+To get a local copy, follow these simple steps.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### <p id="prerequisites">Prerequisites</p>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Before installation, please make sure you have already installed the following tools:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [Git](https://git-scm.com/downloads)
+- [NodeJs](https://nodejs.org/en/download/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## <p id="installation">Installation</p>
 
-## Learn More
+1. Clone the project, you can use the following command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   git clone https://github.com/<your-github-username>/coverletter.web.git
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Navigate to the project directory
 
-### Code Splitting
+   ```bash
+   cd coverletter.web
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Install dependencies with `npm install`
 
-### Analyzing the Bundle Size
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. Start application
 
-### Making a Progressive Web App
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### Advanced Configuration
+## <p id="server">To start up server</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. In your terminal, change to root :
 
-### Deployment
+    ```bash
+    cd ..
+    ````
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+2. Run `npm install`
 
-### `npm run build` fails to minify
+    ```bash
+        npm install
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Start the development server
+
+    ```bash
+        npm run dev
+    ```
+
+## <p id="contribute">Contributing</p>
+
+- Check out the [contribution guidelines](/CONTRIBUTING.md) for more information.
+<!-- ## 👩🏽‍💻 Contributing
+
+[![Contributors](https://contrib.rocks/image?repo=/workshopapps/coverletter.web)](https://github.com//workshopapps/coverletter.web/graphs/contributors) -->
+
+<!-- <p align="right">(<a href="#top">back to top</a>)</p> -->
