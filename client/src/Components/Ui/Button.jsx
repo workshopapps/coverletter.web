@@ -5,7 +5,10 @@ const Button = (props) => {
 			type={props.type || "button"}
 			onClick={props.onClick}
 		>
-			{props.children}
+			<div className="flex items-center justify-center space-x-2">
+				<p>{props.children}</p>
+				{props.icon}
+			</div>
 		</button>
 	);
 };
