@@ -1,3 +1,4 @@
+require("dotenv").config({ path: "../config.env" });
 require("express-async-errors");
 const express = require("express");
 const routes = require("./routes/authRoutes");
@@ -5,11 +6,10 @@ const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const app = express();
-require("dotenv").config();
 //Routers
-const authRoutes = require("./routes/authRoutes")
+const authRoutes = require("./routes/authRoutes");
 // database
-const connectDB = require('./db/connect');
+const connectDB = require("./db/connect");
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -33,16 +33,16 @@ app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 5000;
 
 const start = async () => {
-  try {
-    //connect DB
-     await connectDB(process.env.MONGO_URI).then(()=> console.log('DB connection successful')); 
-    app.listen(port, () =>
-      console.log(`Server is listening on port ${port}...`)
-    );
-  } catch (error) {
-    console.log(error);
-  }
-	
+	try {
+		//connect DB
+		await connectDB(process.env.MONGO_URI);
+
+		app.listen(port, () =>
+			console.log(`Server is listening on port ${port}...`)
+		);
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 start();
