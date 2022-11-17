@@ -1,4 +1,4 @@
-import { useGlobalContext } from "../Context/context";
+import { useGlobalContext } from "../context/context";
 
 const Home = () => {
 	const { isModalOpen } = useGlobalContext();
