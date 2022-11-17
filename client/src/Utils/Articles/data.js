@@ -6,6 +6,13 @@ export const articles = [
 		text: "This is an attempt to understand how to work with a layout that invloves working with a team and trying to make a unique design that flies. Interesting times.",
 		image: img,
 		time: "5 MIN READ",
+		articleImg1: "",
+		articleImg2: "",
+		articleImg2: "",
+		authorImg: "",
+		author: "",
+		date: "",
+		para1: "",
 	},
 	{
 		id: 2,

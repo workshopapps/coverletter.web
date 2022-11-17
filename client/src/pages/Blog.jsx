@@ -5,7 +5,7 @@ const Blog = () => {
 	return (
 		<main className="flex flex-col py-24 bg-[#F2F2F7] mx-auto">
 			<section className="w-4/5 mx-auto">
-				<h1 className="text-5xl mb-4  font-bold">
+				<h1 className="text-3xl sm:text-5xl mb-4  font-bold">
 					Welcome to our blog!
 				</h1>
 				<p className="mb-16 text-start text-lg font-normal ">
