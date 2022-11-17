@@ -6,44 +6,17 @@ const swaggerUI = require("swagger-ui-express");
 const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
+const options = require("./utils/swaggerOptions.json")
 
-const options = {
-	definition: {
-		openapi: "3.0.0",
-		info: {
-			title: "Cover Letter Generator",
-			version: "1.0.0",
-			description: "API documentation for a Cover letter generator",
-		},
-		servers: [
-			{
-				url: "http://localhost:5001",
-				description: "Local",
-			},
-			// {
-			// 	url: "http://www.aplicar.herokuapp",
-			// 	description: "Development",
-			// },
-			// {
-			// 	url: "http://www.aplicar.com",
-			// 	description: "Production",
-			// },
-		],
-	},
-	apis: ["./server/routes/*.js"],
-};
-
-const openapiSpecification = swaggerJsDoc(options);
 const port = process.env.PORT || 5001;
-
 const app = express();
 require("dotenv").config();
 //Routers
 const authRoutes = require("./routes/authRoutes")
 // database
-const connectDB = require('./db/connect');
+//const connectDB = require('./db/connect');
 
-app.use("/docs", swaggerUI.serve, swaggerUI.setup(openapiSpecification));
+app.use("/cvg-documentation", swaggerUI.serve, swaggerUI.setup(options));
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -67,7 +40,7 @@ app.use(errorHandlerMiddleware);
 const start = async () => {
   try {
     //connect DB
-     await connectDB(process.env.MONGO_URI).then(()=> console.log('DB connection successful')); 
+    // await connectDB(process.env.MONGO_URI).then(()=> console.log('DB connection successful')); 
     app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
     );
