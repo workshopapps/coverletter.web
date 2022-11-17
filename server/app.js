@@ -5,7 +5,11 @@ const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const app = express();
+const swaggerUi = require("swagger-ui-express");
 require("dotenv").config();
+
+//swagger
+swaggerDocument = require("./swagger.json")
 //Routers
 const authRoutes = require("./routes/authRoutes")
 // database
@@ -20,6 +24,12 @@ app.use(helmet());
 app.use(cors());
 app.use(xss());
 
+app.use(
+  '/api-docs',
+  swaggerUi.serve, 
+  swaggerUi.setup(swaggerDocument)
+);
+
 // routes
 app.use("/api/v1/auth", authRoutes);
 
@@ -31,6 +41,8 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5000;
+
+
 
 const start = async () => {
   try {
