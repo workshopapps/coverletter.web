@@ -24,6 +24,7 @@
 		font-family: "Manrope", sans-serif;
 	}
 
+<<<<<<< HEAD
 	h1,
 	h2,
 	h3,
@@ -35,6 +36,10 @@
 
 	p {
 		font-weight: 400;
+=======
+	.contents__holder::-webkit-scrollbar {
+		display: none;
+>>>>>>> 98de26a (feat: Add privacy policy web view)
 	}
 }
 

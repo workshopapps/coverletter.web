@@ -27,6 +27,8 @@ import {
 	EmailOTP,
 	CustomerStories,
 	SingleProduct,
+	Home,
+	PrivacyPolicy,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -84,6 +86,8 @@ const App = () => {
 						path="/customerstories/:customerId"
 						element={<SingleProduct />}
 					/>
+					<Route path="/" element={<Home />} />
+					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>

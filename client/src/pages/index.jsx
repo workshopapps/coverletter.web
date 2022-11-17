@@ -1,5 +1,6 @@
 import History from "./History";
 import ErrorPage from "./ErrorPage";
+import PrivacyPolicy from "./PrivacyPolicy";
 import ContactUs from "./ContactUs";
 import CustomerStories from "./CustomerStories";
 import SingleProduct from "./SingleProduct";
@@ -52,4 +53,5 @@ export {
 	ResetPassword,
 	CustomerStories,
 	SingleProduct,
+	PrivacyPolicy,
 };
