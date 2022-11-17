@@ -24,13 +24,13 @@ app.use(xss());
 app.use("/api/v1/auth", authRoutes);
 
 app.get("/", (req, res) => {
-  res.send("templates api");
+	res.send("templates api");
 });
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 const start = async () => {
   try {
@@ -42,6 +42,7 @@ const start = async () => {
   } catch (error) {
     console.log(error);
   }
+	
 };
 
 start();
