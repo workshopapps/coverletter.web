@@ -5,9 +5,9 @@ import { ReactComponent as FooterLogoMobile } from "../Assets/footerlogomobile.s
 const Footer = () => {
 	return (
 		<div>
-			<div className="md:px-24 px-6 mt-6">
+			<div className="lg:px-24 md:px-12 px-6 mt-6">
 				<div className="md:hidden flex mb-6">
-					<FooterLogo />
+					<FooterLogo className="lg:flex hidden" />
 					<FooterLogoMobile className="lg:hidden flex " />
 				</div>
 				<div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 text-left mb-[59px] gap-6 md:space-x-24 w-full">
