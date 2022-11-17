@@ -1,42 +1,16 @@
-const User = require("../models/User");
-const sendEmail = require("../utils/sendEmail");
-
-const forgotPassword = async (req, res, next) => {
- try {
-  const { email } = req.body
-  if (!email) {
-   return res.status(400).json({
-    message: "Please enter an email"
-   })
-  }
-
-  const user = await User.findOne({ email })
-
-  if (!user) {
-   return res.status(400).json({
-    message: "This email does not exist in our database"
-   })
-  }
-
-  const otp = user.createPasswordResetToken();
-
-  const message = `You are getting this otp ${otp} because you request to change your password. If you didn't please ignore`
-
-  await sendEmail({ email: user.email, subject: 'Password Reset', message })
-
-  await user.save();
+const crypto = require('crypto');
+const User = require('../models/User');
+const { BadRequestError } = require('../errors');
 
 
- } catch (error) {
-  res.status(400).json({
-   success: false,
-   error: error.message
-  })
- }
-}
+// @michstery Reset Password Endpoint
+exports.resetPassword = async (req, res, next) => {
+        // 1) Get  User based on token
+        const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
 
-
-
-module.exports = {
- forgotPassword
+        const user = await User.findOne({ passwordResetToken: hashedToken, passwordResetExpires: { $gt:Date.now() } });
+        // 2) If token has not expired and there is user, set the new User
+        if (!user) {
+            return next(new AppError('Token is invalid or has Expired'), 400);
+        }
 };
