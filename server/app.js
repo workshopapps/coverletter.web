@@ -1,7 +1,6 @@
-require("dotenv").config();
 require("express-async-errors");
 const express = require("express");
-const routes = require("./routes/index");
+const routes = require("./routes/authRoutes");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
 const helmet = require("helmet");
@@ -39,7 +38,12 @@ const port = process.env.PORT || 5001;
 
 const app = express();
 
-app.use("/docs", swaggerUI.serve, swaggerUI.setup(openapiSpecification));
+//Routers
+const authRoutes = require("./routes/authRoutes")
+// database
+const connectDB = require('./db/connect');
+
+app.use("/cvg-documentation", swaggerUI.serve, swaggerUI.setup(openapiSpecification));
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -52,7 +56,7 @@ app.use(cors());
 app.use(xss());
 
 // routes
-app.use("/api/v1", routes);
+app.use("/api/v1/auth", authRoutes);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
@@ -61,15 +65,16 @@ app.get("/", (req, res) => {
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 const start = async () => {
-	try {
-		//connect DB
-		// await connectDB(process.env.MONGO_URI);
-		app.listen(port, () =>
-			console.log(`Server is listening on port ${port}...`)
-		);
-	} catch (error) {
-		console.log(error);
-	}
+  try {
+    //connect DB
+     await connectDB(process.env.MONGO_URI).then(()=> console.log('DB connection successful')); 
+    app.listen(port, () =>
+      console.log(`Server is listening on port ${port}...`)
+    );
+  } catch (error) {
+    console.log(error);
+  }
+	
 };
 
 start();
