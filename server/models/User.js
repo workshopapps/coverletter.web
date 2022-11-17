@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const crypto = require('crypto')
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please provide name'],
@@ -58,7 +59,7 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
 }
 
 
-userSchema.methods.createPasswordResetToken = function () {
+UserSchema.methods.createPasswordResetToken = function () {
 
   const otp = Math.floor(1000 + Math.random() * 9000).toString()
   this.resetPasswordOtp = crypto.createHash('sha256').update(otp).digest('hex');
