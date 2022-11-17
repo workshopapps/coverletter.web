@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactComponent as FooterLogo } from "../Assets/footerlogo.svg";
+import { ReactComponent as FooterLogoMobile } from "../Assets/footerlogomobile.svg";
 
 const Footer = () => {
 	return (
@@ -7,6 +8,7 @@ const Footer = () => {
 			<div className="md:px-24 px-6 mt-6">
 				<div className="md:hidden flex mb-6">
 					<FooterLogo />
+					<FooterLogoMobile className="lg:hidden flex " />
 				</div>
 				<div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 text-left mb-[59px] gap-6 md:space-x-24 w-full">
 					<div className="flex md:flex-row flex-col md:space-x-16 ">
