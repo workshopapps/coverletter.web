@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, ErrorPage } from "./Pages";
+import { Home, ErrorPage } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
