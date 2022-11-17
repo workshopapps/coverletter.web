@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, ErrorPage } from "./pages";
+import { Home, ErrorPage } from "./Pages";
 import { ScrollToTop } from "./Components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 const App = () => {
