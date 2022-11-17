@@ -1,5 +1,6 @@
 import Home from "./Home";
+import History from "./History";
 import ErrorPage from "./ErrorPage";
-import Faq from "./Faq";
+import ContactUs from "./ContactUs";
 
-export { Home, ErrorPage, Faq };
+export { Home, History, ErrorPage, ContactUs };
