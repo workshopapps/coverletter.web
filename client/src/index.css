@@ -24,3 +24,47 @@
 		font-family: "Manrope", sans-serif;
 	}
 }
+
+@layer components {
+	.btn {
+		@apply px-4 py-3 font-bold text-base rounded-lg box-border w-[140px];
+	}
+
+	@screen lg {
+		.btn {
+			@apply w-[400px];
+		}
+	}
+
+	.btnPrimary {
+		@apply bg-primaryMain text-textWhite;
+	}
+
+	.btnPrimary:hover {
+		@apply bg-primaryDark;
+	}
+
+	.btnPrimary:focus {
+		@apply bg-primaryDeep;
+	}
+
+	.btnPrimary:disabled {
+		@apply bg-primaryLight;
+	}
+
+	.btnSecondary {
+		@apply bg-textWhite text-primaryMain border border-primaryMain;
+	}
+
+	.btnSecondary:hover {
+		@apply bg-primaryLightest border-primaryDark;
+	}
+
+	.btnSecondary:focus {
+		@apply bg-primaryDeep text-textWhite;
+	}
+
+	.btnSecondary:disabled {
+		@apply bg-textWhite text-primaryLight border-primaryLight;
+	}
+}
