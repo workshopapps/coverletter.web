@@ -23,6 +23,15 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Please provide password'],
     minlength: 6,
   },
+  status: {
+    type: String, 
+    enum: ['Pending', 'Active'],
+    default: 'Pending'
+  },
+  confirmationCode: { 
+    type: String, 
+    unique: true
+   },
 })
 
 UserSchema.pre('save', async function () {
@@ -32,10 +41,10 @@ UserSchema.pre('save', async function () {
 
 UserSchema.methods.createJWT = function () {
   return jwt.sign(
-    { userId: this._id, name: this.name },
-    process.env.JWT_SECRET,
+    { userId: this._id, name: this.name, email: this.email , status: this.status },
+    "secretkey123",
     {
-      expiresIn: process.env.JWT_LIFETIME,
+      expiresIn: "5h",
     }
   )
 }
