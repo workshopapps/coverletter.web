@@ -4,7 +4,7 @@ import { ReactComponent as FooterLogoMobile } from "../Assets/footerlogomobile.s
 
 const Footer = () => {
 	return (
-		<div>
+		<footer>
 			<div className="lg:px-24 md:px-12 px-6 mt-6">
 				<div className="md:hidden flex mb-6">
 					<FooterLogo className="lg:flex hidden" />
@@ -63,7 +63,7 @@ const Footer = () => {
 				</div>
 				<p className="sm:hidden flex">Privacy Policy</p>
 			</div>
-		</div>
+		</footer>
 	);
 };
 
