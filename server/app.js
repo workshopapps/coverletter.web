@@ -1,3 +1,4 @@
+require("dotenv").config({ path: "../config.env" });
 require("express-async-errors");
 const express = require("express");
 const routes = require("./routes/authRoutes");
@@ -10,13 +11,10 @@ const options = require("./utils/swaggerOptions.json")
 
 const port = process.env.PORT || 5001;
 const app = express();
-
 //Routers
-const authRoutes = require("./routes/authRoutes")
+const authRoutes = require("./routes/authRoutes");
 // database
-//const connectDB = require('./db/connect');
-
-app.use("/cvg-documentation", swaggerUI.serve, swaggerUI.setup(options));
+const connectDB = require("./db/connect");
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -38,16 +36,16 @@ app.get("/", (req, res) => {
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 const start = async () => {
-  try {
-    //connect DB
-    // await connectDB(process.env.MONGO_URI).then(()=> console.log('DB connection successful')); 
-    app.listen(port, () =>
-      console.log(`Server is listening on port ${port}...`)
-    );
-  } catch (error) {
-    console.log(error);
-  }
-	
+	try {
+		//connect DB
+		await connectDB(process.env.MONGO_URI);
+
+		app.listen(port, () =>
+			console.log(`Server is listening on port ${port}...`)
+		);
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 start();
