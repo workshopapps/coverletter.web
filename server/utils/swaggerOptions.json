@@ -1,0 +1,92 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"description": "This is the API documentation for Aplicar: Cover Letter Generator",
+		"version": "1.0.0",
+		"title": "Cover Letter Generator API",
+		"contact": {
+			"email": "ogubuikealex@gmail.com"
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		}
+	},
+	"servers": [
+		{
+			"url": "http://localhost:5001",
+			"description": "Local"
+		}
+	],
+	"schemes": ["http"],
+	"host": "localhost:3080",
+	"basePath": "/api",
+	"paths": {
+		"/signup": {
+			"post": {
+				"summary": "Adds a new user to the platform",
+				"description": "Signs up a user",
+				"produces": ["application/json"],
+				"consumes": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "user object",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"user": {
+									"type": "object",
+									"$ref": "#/definitions/User"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Signup",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"400": {
+						"description": "Email Already Exist",
+						"schema": {
+							"$ref": "#/definitions/InvalidResponse"
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"User": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			}
+		},
+		"InvalidResponse": {
+			"type": "object",
+			"properties": {
+				"statusCode": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
