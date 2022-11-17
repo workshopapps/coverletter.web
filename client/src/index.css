@@ -23,6 +23,10 @@
 	code {
 		font-family: "Manrope", sans-serif;
 	}
+
+	.contents__holder::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 @layer components {
