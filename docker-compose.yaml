@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  server:
+    build: ./server     
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/server
+    command: npm run dev:server
+    depends_on:
+      - mongodb
+    env_file:
+      - ./.env
+
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/frontend
+
+  mongodb:
+    image: "mongo"
+    volumes:
+      - data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  data:
