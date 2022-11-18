@@ -8,7 +8,7 @@ import {useNavigate} from 'react-router-dom'
 
 const Preview = () => {
 
-    const {openModal, isModalOpen} = useGlobalContext();
+    const {openModal, isModalOpen, closeModal} = useGlobalContext();
 
     // logic for the modal
     const [firstModal, setFirstModal] = useState(false);
@@ -21,23 +21,24 @@ const Preview = () => {
 
     // redirect on click cv
     const navigate = useNavigate();
-
     const coverRedirect = () => {
         navigate(`/cover letter`)
     }
-    
+
+    // the type of download select option
+    const [dType, setDtype] = useState (null)
     
 
   return (
     <div className='bg-background pt-6 pb-36 overflow-x-hidden'>
-        <div className='flex items-center px-7'>
+        <div className='flex items-center px-7 lg:px-40 lg:mt-6'>
             <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.50014 9.33477C4.40514 9.33477 4.31014 9.29977 4.23514 9.22477L0.975137 5.96477C0.445137 5.43477 0.445137 4.56477 0.975137 4.03477L4.23514 0.774766C4.38014 0.629766 4.62014 0.629766 4.76514 0.774766C4.91014 0.919766 4.91014 1.15977 4.76514 1.30477L1.50514 4.56477C1.26514 4.80477 1.26514 5.19477 1.50514 5.43477L4.76514 8.69477C4.91014 8.83977 4.91014 9.07977 4.76514 9.22477C4.69014 9.29477 4.59514 9.33477 4.50014 9.33477Z" fill="#292D32"/>
             </svg>
             <p className='ml-3 text-sm' onClick={handleClick}>Back</p>
         </div>
         <div className='w-full flex justify-center mt-5 px-7 md:mt-11'>
-            <p className='font-bold text-2xl w-[65%] text-center'>Your Cover Letter is Ready!</p>
+            <p className='font-bold text-2xl w-[65%] text-center md:text-3xl md:w-[40%] lg:text-5xl lg:w-[40%]'>Your Cover Letter is Ready!</p>
         </div>
         <div className='w-screen overflow-x-hidden relative mt-10 md:mt-20'>
             <div className='flex relative w-full justify-center items-center md:translate-x-0 lg:translate-x-0'>
@@ -70,7 +71,17 @@ const Preview = () => {
             isModalOpen && (
                 !firstModal ? ( 
                         <Modal>
-                            <div className='bg-background flex items-center flex-col min-w-[311px] min-h-[376px] rounded-md py-11 px-9'>
+                            <div className='w-[350px] md:w-[450px] bg-background flex items-center flex-col min-w-[311px] min-h-[376px] rounded-md py-11 px-9'>
+                                <div className='w-full flex justify-end mb-4'>
+                                    <div onClick={closeModal} role='button'>
+                                    <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.11357 10.3869C5.9869 10.3869 5.86023 10.3402 5.76023 10.2402C5.5669 10.0469 5.5669 9.7269 5.76023 9.53357L9.53357 5.76023C9.7269 5.5669 10.0469 5.5669 10.2402 5.76023C10.4336 5.95357 10.4336 6.27357 10.2402 6.4669L6.4669 10.2402C6.37357 10.3402 6.24023 10.3869 6.11357 10.3869Z" fill="#101010"/>
+                                    <path d="M9.8869 10.3869C9.76023 10.3869 9.63357 10.3402 9.53357 10.2402L5.76023 6.4669C5.5669 6.27357 5.5669 5.95357 5.76023 5.76023C5.95357 5.5669 6.27357 5.5669 6.4669 5.76023L10.2402 9.53357C10.4336 9.7269 10.4336 10.0469 10.2402 10.2402C10.1402 10.3402 10.0136 10.3869 9.8869 10.3869Z" fill="#101010"/>
+                                    <path d="M9.99967 15.1663H5.99967C2.37967 15.1663 0.833008 13.6197 0.833008 9.99967V5.99967C0.833008 2.37967 2.37967 0.833008 5.99967 0.833008H9.99967C13.6197 0.833008 15.1663 2.37967 15.1663 5.99967V9.99967C15.1663 13.6197 13.6197 15.1663 9.99967 15.1663ZM5.99967 1.83301C2.92634 1.83301 1.83301 2.92634 1.83301 5.99967V9.99967C1.83301 13.073 2.92634 14.1663 5.99967 14.1663H9.99967C13.073 14.1663 14.1663 13.073 14.1663 9.99967V5.99967C14.1663 2.92634 13.073 1.83301 9.99967 1.83301H5.99967Z" fill="#101010"/>
+                                    </svg>
+                                    </div>
+
+                                </div>
                                 <p className='font-bold'>Select Download Option</p>
                                     <div className='w-full'>
                                         <div className='flex justify-between w-full mt-7'>
@@ -83,9 +94,13 @@ const Preview = () => {
                                                 </svg>
                                                 <p className='ml-3'>PDF</p>
                                             </div>
-                                            <input type="radio" className='bg-background text-background rounded-lg w-5 h-5  text-primaryMain border-4 border-primaryMain' id='PDF' name='PDF' value="PDF" />
+
+                                            <div className='rounded-xl flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6' onClick={()=>setDtype('PDF')} role='cursor'>
+                                                <div className={dType === 'PDF' ? 'w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2': 'w-3 h-3 rounded-lg border-primaryMain border-2'}>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <hr className='w-full bg-stokeLight mt-2'/>
+                                        <hr className='w-full bg-stokeLight mt-2 border-none h-[1px]'/>
                                     </div>
                                     <div className='w-full'>
                                         <div className='flex justify-between w-full mt-7'>
@@ -98,9 +113,12 @@ const Preview = () => {
                                                 </svg>
                                                 <p className='ml-3'>DOC</p>
                                             </div>
-                                            <input type="radio" className='bg-background text-background rounded-lg w-5 h-5  text-primaryMain border-4 border-primaryMain' id='DOC' name='DOC' value="DOC" />
+                                            <div className='rounded-xl flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6' onClick={()=>setDtype('DOC')} role='cursor'>
+                                                <div className={dType === 'DOC' ? 'w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2': 'w-3 h-3 rounded-lg border-primaryMain border-2'}>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <hr className='w-full bg-stokeLight mt-2'/>
+                                        <hr className='w-full bg-stokeLight mt-2 border-none h-[1px]'/>
                                     </div>
                                     <div className='w-full'>
                                         <div className='flex justify-between w-full mt-7'>
@@ -113,16 +131,23 @@ const Preview = () => {
                                                 </svg>
                                                 <p className='ml-3'>TEXT</p>
                                             </div>
-                                            <input type="radio" className='bg-background text-background rounded-lg w-5 h-5  text-primaryMain border-4 border-primaryMain' id='TEXT' name='TEXT' value="TEXT" />
+                                            <div className='rounded-xl flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6' onClick={()=>setDtype('TEXT')} role='cursor'>
+                                                <div className={dType === 'TEXT' ? 'w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2': 'w-3 h-3 rounded-lg border-primaryMain border-2'}>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <hr className='w-full bg-stokeLight mt-2'/>
+                                        <hr className='w-full bg-stokeLight mt-2 border-none h-[1px]'/>
+                                        <div className='w-full flex justify-between mt-4 md:justify-center'>
+                                            <input type="checkbox" name='sendToEmail' className='w-5 h-5 outline-none border-none'/>
+                                            <p className='text-sm md:ml-3'>Send downloaded template to email.</p>
+                                        </div>
                                     </div>
                                     <Button type='submit' className='w-full min-h-[48px] bg-primaryMain rounded-lg font-bold text-background mt-7' children='Download' onClick={handleClick}/>
                             </div>                            
                         </Modal>
                     ):(
                         <Modal>
-                            <div className='bg-textWhite top-[-250px] md:top-[-190px] md:left-[100%] lg:left-[150%] left-0 relative flex items-center flex-col min-w-[311px] rounded-sm py-4 px-4'>
+                            <div className='bg-textWhite top-[-250px] md:top-[-190px] md:left-[80%] lg:left-[150%] left-0 relative flex items-center flex-col min-w-[311px] rounded-sm py-4 px-4'>
                                 <div className='flex w-full items-center justify-between'>
                                     <div className='w-[82%] bg-background h-1'>
                                         <div className='bg-successDark w-[65%] h-1'></div>

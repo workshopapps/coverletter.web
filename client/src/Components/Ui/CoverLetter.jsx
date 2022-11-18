@@ -2,7 +2,7 @@ import React from 'react'
 
 const CoverLetter = () => {
   return (
-    <div className='w-[98%] h-auto bg-textWhite border-grey300 border-2 py-8 px-7 rounded-lg'>
+    <div className='w-[98%] bg-textWhite border-grey300 border-2 py-8 px-7 rounded-lg'>
         <div className='flex w-full justify-between items-end'>
             <p className='w-[50%] text-xs md:text-base flex text-grey300'>
                 1,Lanre Avenue, Lagos 
