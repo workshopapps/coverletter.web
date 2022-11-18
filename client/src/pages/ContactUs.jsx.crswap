@@ -13,7 +13,7 @@ const IconButton = (props) => {
   return (
     <div className="cursor-pointer flex space-y-2 items-center">
       <div className="flex items-center flex-col">
-        <div className="h-14 w-14 flex items-center border-1 border-[#DCDCDC] rounded-full">
+        <div className="h-14 w-14 flex items-center border-[] border-[#DCDCDC] rounded-full">
           {icon && (
             <FontAwesomeIcon
               icon={icon}
