@@ -24,7 +24,6 @@
 		font-family: "Manrope", sans-serif;
 	}
 
-<<<<<<< HEAD
 	h1,
 	h2,
 	h3,
@@ -36,12 +35,8 @@
 
 	p {
 		font-weight: 400;
-=======
 	.contents__holder::-webkit-scrollbar {
-<<<<<<< HEAD
 		display: none;
->>>>>>> 98de26a (feat: Add privacy policy web view)
-=======
 		width: 5px;
 	}
 	.contents__holder::-webkit-scrollbar-track {
@@ -53,7 +48,7 @@
 	}
 	#banner_bg{
 		background-image: url("./Assets/bannerLogo.png");
->>>>>>> a5e5933 (feat: Add border and padding to scroll btn)
+
 	}
 }
 

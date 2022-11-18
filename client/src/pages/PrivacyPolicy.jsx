@@ -11,16 +11,16 @@ const PrivacyPolicy = () => {
     return (
         <div id="top" className="w-full h-full relative scroll-smooth pb-[80px] bg-background">
             <div id="banner" className="w-full flex flex-col justify-center items-center gap-[8px] ">
-                <div id="banner_bg" className="uppercase text-textWhite font-bold flex flex-col gap-[8px] justify-center items-center w-full h-[216px] bg-primaryDeep bg-repeat-x" style={{ backgroundImage: 'url("../Assets/bannerLogo.png")' }}>
-                    <p className="text-base">Understand our</p>
-                    <h1 className="text-[56px]"> Privacy Policy</h1>
+                <div id="banner_bg" className="uppercase text-textWhite font-bold flex flex-col gap-[8px] justify-center items-center w-full h-[216px] bg-primaryDeep">
+                    <p className="text-base">Understanding our</p>
+                    <h1 className="text-[32px] sm:text-[56px]"> Privacy Policy</h1>
                 </div>
                 <h2 className="text-base text-textBody font-normal">Last Updated November 15th, 2022.</h2>
             </div>
-            <main className="px-[96px] mt-[68px] flex justify-between relative" >
+            <main className="px-[25px] sm:px-[47px] xl:px-[96px] mt-[68px] flex flex-col-reverse gap-[50px] md:flex-row justify-between relative" >
                 {/* gap-[130px] */}
-                <section id="privacy_policy" className="max-w-[822px] flex flex-col gap-[56px]">
-                    <h1 className="text-2xl font-semibold text-textBody">This  Privacy  Policy will help you better understand how we collect, use , and share your personal information</h1>
+                <section id="privacy_policy" className="md:max-w-[460px] lg:max-w-[822px] flex flex-col gap-[56px]">
+                    <h1 className="text-[16px] sm:text-[20px] lg:text-2xl font-semibold text-textBody">This  Privacy  Policy will help you better understand how we collect, use , and share your personal information</h1>
                     <div className="flex flex-col gap-[60px]">
                         <div className="flex flex-col gap-[20px]">
                             <p id="personal_information" className="flex gap-2 items-center font-bold text-textHeader">
@@ -120,29 +120,29 @@ const PrivacyPolicy = () => {
                 </section>
 
                 {/* table of contents */}
-                <section id="table_of_contents" className="max-w-[297px] h-[297px] flex flex-col gap-[24px] sticky top-0">
-                    <div className="h-[224px] mt-2 pb-[14px] pr-[16px] flex flex-col gap-4 overflow-y-auto contents__holder">
-                        <h1 className="text-[20px] text-textHeader font-semibold">Table of contents</h1>
+                <section id="table_of_contents" className="md:max-w-[297px] h-[297px] flex flex-col gap-[24px] md:sticky top-0">
+                    <div className="h-[224px] mt-2 pb-[14px] pr-[16px] flex flex-col gap-4 overflow-y-auto contents__holder border-b border-[#CAD0DD] md:border-0">
+                        <h1 className="text-[20px] text-textHeader font-semibold text-center md:text-left">Table of contents</h1>
                         <ol className="flex flex-col gap-[26px]">
-                            <a href="#personal_information" className="text-base font-normal text-textBody focus:text-primaryMain hover:text-primaryMain transition ease-linear flex justify-start items-center gap-2">
+                            <a href="#personal_information" className="text-base font-normal text-textBody focus:text-primaryMain hover:text-primaryMain transition ease-linear flex justify-start items-start gap-2">
                                 <span className="text-[20px]">1.</span>
                                 <span>Personal information we collect </span>
                             </a>
-                            <a href="#usage_of_information" className="text-base font-normal text-textBody focus:text-primaryMain hover:text-primaryMain transition ease-linear flex justify-start items-center gap-2">
+                            <a href="#usage_of_information" className="text-base font-normal text-textBody focus:text-primaryMain hover:text-primaryMain transition ease-linear flex justify-start items-start gap-2">
                                 <span className="text-[20px]">2.</span>
                                 <span>Usage of information</span>
                             </a>
-                            <a href="#tracking_technologies" className="text-base font-normal text-textBody focus:text-primaryMain hover:text-primaryMain transition ease-linear flex justify-start items-center gap-2">
+                            <a href="#tracking_technologies" className="text-base font-normal text-textBody focus:text-primaryMain hover:text-primaryMain transition ease-linear flex justify-start items-start gap-2">
                                 <span className="text-[20px]">3.</span>
                                 <span>Tracking technologies</span>
                             </a>
-                            <a href="#your_choices" className="text-base font-normal text-textBody focus:text-primaryMain hover:text-primaryMain transition ease-linear flex justify-start items-center gap-2">
+                            <a href="#your_choices" className="text-base font-normal text-textBody focus:text-primaryMain hover:text-primaryMain transition ease-linear flex justify-start items-start gap-2">
                                 <span className="text-[20px]">4.</span>
                                 <span>Your choices</span>
                             </a>
                         </ol>
                     </div>
-                    <button onClick={scrollUp} className="flex justify-start items-center gap-3 border-t border-[#CAD0DD]  pt-1.5">
+                    <button onClick={scrollUp} className="hidden md:flex justify-start items-center gap-3 border-t border-[#CAD0DD]  pt-1.5">
                         <img src={ArrowUp} alt="arrow_up" /> <span className="text-textHeader font-bold text-base">Back to top</span>
                     </button>
                 </section>
