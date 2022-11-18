@@ -18,7 +18,7 @@ module.exports = async (email, subject, url) => {
 			from: "Aplicar",
 			to: email,
 			subject: subject,
-			text: url
+			html: `Press <a href=${url}></a> this link to verify your email. Thanks`
             
 		});
 		console.log("email sent successfully");
