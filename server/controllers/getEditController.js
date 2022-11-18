@@ -4,23 +4,17 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
 
 /**
- * @desc It gets a convert Letter
+ * @desc It gets all the convert Letters created by a user
  *
  * @param {object} req
  * @param {object} res
  *
- * @returns {object} the result
+ * @returns {object} the object
  */
 
-const getAConvertLetter = async (req, res) => {
+const getAllConvertLettersByAUser = async (req, res) => {
 	try {
-		const { id } = req.params;
-		const isTemplateIdValid = !!id;
-		if (!isTemplateIdValid) {
-			throw new BadRequestError("Invalid template ID");
-		}
-
-		const template = await Template.findById(id).exec();
+		const template = await Template.find({}).exec();
 
 		if (!template) {
 			return res.status(404).json({
@@ -71,6 +65,6 @@ const editACovertLetter = async (req, res) => {
 };
 
 module.exports = {
-	getAConvertLetter,
+	getAllConvertLettersByAUser,
 	editACovertLetter,
 };
