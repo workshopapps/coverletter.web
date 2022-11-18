@@ -121,7 +121,7 @@ const Career = () => {
 		window.addEventListener("resize", handleResize);
 	});
 
-	const [showOpenings, setShowOpenings] = React.useState(false);
+	const [showOpenings, setShowOpenings] = React.useState(true);
 
 	return (
 		<div className="bg-background overflow-x-hidden">
