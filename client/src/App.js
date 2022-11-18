@@ -1,6 +1,5 @@
 import "./App.css";
 import { Home, ErrorPage, ContactUs, PrivacyPolicy, Faq } from "./pages";
-
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

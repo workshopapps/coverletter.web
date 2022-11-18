@@ -25,7 +25,17 @@
 	}
 
 	.contents__holder::-webkit-scrollbar {
-		display: none;
+		width: 5px;
+	}
+	.contents__holder::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.contents__holder::-webkit-scrollbar-thumb {
+		background: #49494b7a;
+		border-radius: 5px;
+	}
+	#banner_bg{
+		background-image: url("./Assets/bannerLogo.png");
 	}
 }
 
