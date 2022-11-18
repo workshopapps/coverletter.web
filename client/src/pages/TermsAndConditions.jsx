@@ -3,7 +3,7 @@ import React from "react";
 function TermsAndCondition() {
 	return (
 		<div className="flex flex-col justify-center items-center bg-[#F2F2F7]">
-			<div className="text-textWhite bg-[#03296F] px-8 w-full py-10 flex flex-col justify-center items-center md:px-16 lg:px-96">
+			<div className="text-textWhite bg-[#03296F] px-8 w-full py-10 flex flex-col justify-center items-center lg:px-60 xl:px-96">
 				<h1 className="text-2xl font-medium mb-4 md:text-4xl">
 					Terms And Conditions
 				</h1>
@@ -108,11 +108,7 @@ function TermsAndCondition() {
 					conditions.
 				</p>
 
-<<<<<<< HEAD
-				<h2 className=" mt-5 mb-3 text-sm font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
-=======
 				<h2 className="text-[#101010] mt-5 mb-3 text-sm font-bold md:text-xl md:mt-6 lg:text-2xl lg:font-bold lg:mt-14">
->>>>>>> 6fba42b (feat/terms-and-conditions)
 					5. Copyright and Infringement Notice
 				</h2>
 
@@ -130,12 +126,7 @@ function TermsAndCondition() {
 					improvements to the features of the services may be done
 					from time to time.
 				</p>
-
-<<<<<<< HEAD
-				<h1 className="my-4 font-extrabold text-xl md:mt-10 md:text-3xl">
-=======
 				<h1 className="text-[#101010] my-4 font-extrabold text-xl md:mt-10 md:text-3xl">
->>>>>>> 6fba42b (feat/terms-and-conditions)
 					Contact Us
 				</h1>
 				<p className="text-[#6D6D6D] text-sm ">
