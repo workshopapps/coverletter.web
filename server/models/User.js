@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
+const { randomString } = require("../utils/randomString");
 
 const UserSchema = mongoose.Schema({
 	name: {
@@ -32,8 +34,8 @@ const UserSchema = mongoose.Schema({
 		type: String,
 		unique: true,
 	},
-	passwordResetToken: String,
-	passwordResetExpires: Date
+	resetPasswordOtp: String,
+	passwordResetExpires: Date,
 });
 
 UserSchema.pre("save", async function () {
@@ -61,13 +63,13 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
 	return isMatch;
 };
 
-UserSchema.methods.createResetToken = function() {
-	const resetToken = crypto.randomBytes(32).toString('hex');
-  
-	this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
-  
-	this.passwordResetExpires = Date.now() + 10*60*1000;
-	return resetToken;
-  }
+UserSchema.methods.createPasswordResetToken = function () {
+	const otp = randomString(4);
+	this.resetPasswordOtp = crypto
+		.createHash("sha256")
+		.update(otp)
+		.digest("hex");
+	return otp;
+};
 
 module.exports = mongoose.model("User", UserSchema);
