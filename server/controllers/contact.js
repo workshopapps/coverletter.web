@@ -1,34 +1,23 @@
 const sendEmail = require("../utils/sendEmail");
-const emailToSendContactTo = "aplicarorg@gmail.com";
+const { BadRequestError } = require("../errors");
+const { StatusCodes } = require("http-status-codes");
+
 
 const contact = async (req, res) => {
 	try {
 		const { email, name, phone, subject, description } = req.body;
 
-		if (![email, name, phone, subject, description].every(Boolean)) {
-			return res.status(400).json({
-				message: "One or more required fields are missing.",
-			});
-		}
-
-		// validate email
-		const emailRegEx =
-			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-		if (!email.match(emailRegEx)) {
-			return res.status(400).json({
-				message: "Email format is invalid",
-			});
-		}
-
 		// sending email;
 		// try {
 		// please specify if description maps to url
-		await sendEmail(emailToSendContactTo, subject, description).then(() => {
-			return res.status(200).json({
-				message:
-					"Contact successfully sent, we'd get back to you within the hour!",
-			});
+		
+		await sendEmail(email, subject, description).then(( result ) => {
+			if (!result){
+				throw new BadRequestError("One or more field doesn't exist");
+			}
+			else{
+				res.status(StatusCodes.CREATED).json(result);
+			}
 		});
 	} catch (error) {
 		return res.status(500).json({
