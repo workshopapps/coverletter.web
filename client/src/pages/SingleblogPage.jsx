@@ -28,12 +28,12 @@ const SingleblogPage = () => {
 
 	return (
 		<main className="bg-[#F2F2F7] pt-12 pb-32 ">
-			<section className="w-4/5 mx-auto mt-12">
-				<div className="flex items-center flex-col">
-					<h1 className="text-5xl font-bold text-center">
+			<section className="w-4/5 mx-auto mt-1 sm:mt-12">
+				<div className="flex items-start sm:items-center flex-col">
+					<h1 className="text-3xl sm:text-5xl font-bold sm:text-center">
 						{item.title}
 					</h1>
-					<div className="flex gap-6 items-center my-8 ">
+					<div className="flex gap-6 items-center mb-6 sm:my-8 ">
 						<img
 							src={item.authorImg}
 							alt="author"
@@ -52,10 +52,10 @@ const SingleblogPage = () => {
 						<img
 							src={item.authorImg}
 							alt="author"
-							className="w-12 rounded-full h-12 object-cover"
+							className="w-16 rounded-full h-16 object-cover"
 						/>
 						<div>
-							<p className="text-lg font-bold">
+							<p className=" text-lg sm:text-xl font-bold">
 								{" "}
 								{item.authorShortName}
 							</p>
@@ -64,14 +64,16 @@ const SingleblogPage = () => {
 							</p>
 						</div>
 					</div>
-					<div className="grid grid-cols-2 mt-8 gap-4  bo">
+					<div className="grid grid-cols-2 mt-10 gap-4  bo">
 						<Link
 							to={`/blogArticle/${prevItemId}`}
-							className="border sm:py-9 sm:px-3 flex items-center gap-6 rounded-lg"
+							className="border py-3 px-1 sm:py-9 sm:px-3 flex items-center gap-2 sm:gap-6 rounded-lg"
 						>
-							<Arrow2 className="text-xs w-3 " />
+							<Arrow2 className=" w-2 " />
 							<div>
-								<p className="font-bold">Previous article</p>
+								<p className=" text-sm font-bold ">
+									Previous article
+								</p>
 								<p className="  hidden sm:block w-4/5  text-primaryMain font-bold">
 									{prevItemTitle}
 								</p>
@@ -82,12 +84,14 @@ const SingleblogPage = () => {
 							className="border sm:py-9 sm:px-3 flex items-center justify-around rounded-lg"
 						>
 							<div>
-								<p className="font-bold">Next article</p>
+								<p className="text-base font-bold">
+									Next article
+								</p>
 								<p className="  hidden sm:block w-4/5 text-primaryMain font-bold">
 									{nextItemTitle}
 								</p>
 							</div>
-							<Arrow1 className="text-xs w-3" />
+							<Arrow1 className=" w-2" />
 						</Link>
 					</div>
 				</div>
