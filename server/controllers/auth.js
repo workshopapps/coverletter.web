@@ -29,11 +29,11 @@ const register = async (req, res) => {
 	res.status(StatusCodes.CREATED).json({ user: token });
 };
 
-const validateOtp = async (req, res, next) => {
-	const { otp } = req.body;
-	console.log(otp);
-};
+// const validateOtp = async (req, res, next) => {
+// 	const { otp } = req.body;
+// 	console.log(otp);
+// };
 module.exports = {
 	register,
-	validateOtp,
+	//validateOtp,
 };
