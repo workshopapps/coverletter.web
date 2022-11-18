@@ -34,9 +34,6 @@
 		background: #49494b7a;
 		border-radius: 5px;
 	}
-	#banner_bg{
-		background-image: url("./Assets/bannerLogo.png");
-	}
 }
 
 @layer components {
