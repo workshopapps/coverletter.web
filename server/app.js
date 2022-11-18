@@ -22,7 +22,11 @@ const authRoutes = require("./routes/authRoutes")
 // database
 //const connectDB = require('./db/connect');
 
-app.use("/cvg-documentation", swaggerUI.serve, swaggerUI.setup(options));
+app.use(
+	"/cvg-documentation",
+	swaggerUI.serve,
+	swaggerUI.setup(swaggerDocument)
+);
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");

@@ -24,7 +24,7 @@
 	"paths": {
 		"/signup": {
 			"post": {
-				"summary": "Adds a new user to the platform",
+				"summary": "Adds a new user to the platformSave the task",
 				"description": "Signs up a user",
 				"produces": ["application/json"],
 				"consumes": ["application/json"],
