@@ -1,11 +1,9 @@
-require("dotenv").config();
 const User = require("../models/User");
 const { BadRequestError } = require("../errors");
 const bcrypt = require("bcrypt");
 const { StatusCodes } = require("http-status-codes");
 
 const resetPassword = async (req, res, next) => {
-	// 1) Get  User based on token
 	const { password, email, confirmPassword } = req.body;
 
 	if (password !== confirmPassword) {
@@ -18,7 +16,6 @@ const resetPassword = async (req, res, next) => {
 		return next(new BadRequestError("User does not exists"));
 	}
 
-	// Use bcrypt.hash() function to hash the password
 	const hashedPassword = bcrypt.hash(password, 10);
 
 	const comparePassword = await bcrypt.compare(
@@ -34,9 +31,6 @@ const resetPassword = async (req, res, next) => {
 	);
 
 	user.password = hashedPassword;
-	//user.passwordConfirm = confirmPassword;
-	user.passwordResetToken = undefined;
-	user.passwordResetExpires = undefined;
 	await user.save();
 
 	res.status(StatusCodes.OK).json({
