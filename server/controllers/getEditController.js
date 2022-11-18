@@ -3,7 +3,6 @@ const Template = require("../models/Template");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
 
-
 /**
  * @desc It gets all the convert Letters created by a user
  *
