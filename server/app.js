@@ -9,6 +9,7 @@ const app = express();
 require("dotenv").config();
 //Routers
 const authRoutes = require("./routes/authRoutes");
+
 // database
 const connectDB = require("./db/connect");
 
@@ -23,6 +24,8 @@ app.use(xss());
 
 // routes
 app.use("/api/v1/auth", authRoutes);
+
+
 
 app.get("/", (req, res) => {
 	res.send("templates api");
