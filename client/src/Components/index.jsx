@@ -1,2 +1,3 @@
 import ScrollToTop from "./StrollToTop";
-export { ScrollToTop };
+import Article from "./Article";
+export { ScrollToTop, Article };

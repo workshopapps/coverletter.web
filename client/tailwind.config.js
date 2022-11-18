@@ -10,6 +10,7 @@ module.exports = {
 			textBody: "#48484A",
 			textPlacecholder: "#A7A7A7",
 			textWhite: "#FCFCFC",
+			backgroundWhite: "#FFFFFF",
 			successLight: "#E5FCF6",
 			successMain: "#0FB56D",
 			successDark: "#26704C",
