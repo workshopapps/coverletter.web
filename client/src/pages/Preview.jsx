@@ -1,5 +1,5 @@
 import Modal from '../Components/Ui/Modal'
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Button from '../Components/Ui/Button'
 import {useGlobalContext} from '../context/context'
 
@@ -13,6 +13,11 @@ const Preview = () => {
     const handleClick = () => {
         setFirstModal(!firstModal)
     }
+    
+    useEffect(() => {
+      setFirstModal(false)
+    }, [openModal])
+    
 
   return (
     <div className='bg-background px-7 pt-6 pb-36'>
@@ -25,11 +30,34 @@ const Preview = () => {
         <div className='w-full flex justify-center mt-5'>
             <p className='font-bold text-2xl w-[65%] text-center'>Your Cover Letter is Ready!</p>
         </div>
-        <div className='mt-10 flex justify-center items-center bg-coverContainer drop-shadow-lg min-w-[295px] min-h-[410px]'>
-            <div className='min-w-[290px] min-h-[400px] bg-grey100'>
-                ksldkl
+        <div className='flex relative w-auto translate-x-[-300px] items-center'>
+            <div className='mt-10 flex justify-center items-center bg-coverContainer drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px]'>
+                <div className='min-w-[290px] min-h-[290px] bg-textWhite'>
+                    ksldkl
+                </div>
+            </div>
+            <div>
+            <svg width="17" height="8" viewBox="0 0 17 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.646446 3.64645C0.451185 3.84171 0.451185 4.15829 0.646446 4.35355L3.82843 7.53553C4.02369 7.7308 4.34027 7.7308 4.53553 7.53553C4.7308 7.34027 4.7308 7.02369 4.53553 6.82843L1.70711 4L4.53553 1.17157C4.7308 0.976311 4.7308 0.659728 4.53553 0.464466C4.34027 0.269204 4.02369 0.269204 3.82843 0.464466L0.646446 3.64645ZM17 3.5L1 3.5V4.5L17 4.5V3.5Z" fill="#434343"/>
+            </svg>
+            </div>
+            <div className='mt-10 flex justify-center items-center bg-coverContainer drop-shadow-lg min-w-[295px] min-h-[410px]'>
+                <div className='min-w-[290px] min-h-[400px] bg-textWhite'>
+                    ksldkl
+                </div>
+            </div>
+            <div>
+            <svg width="17" height="8" viewBox="0 0 17 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.646446 3.64645C0.451185 3.84171 0.451185 4.15829 0.646446 4.35355L3.82843 7.53553C4.02369 7.7308 4.34027 7.7308 4.53553 7.53553C4.7308 7.34027 4.7308 7.02369 4.53553 6.82843L1.70711 4L4.53553 1.17157C4.7308 0.976311 4.7308 0.659728 4.53553 0.464466C4.34027 0.269204 4.02369 0.269204 3.82843 0.464466L0.646446 3.64645ZM17 3.5L1 3.5V4.5L17 4.5V3.5Z" fill="#434343"/>
+            </svg>
+            </div>
+            <div className='mt-10 flex justify-center items-center bg-coverContainer drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px]'>
+                <div className='min-w-[290px] min-h-[290px] bg-textWhite'>
+                    ksldkl
+                </div>
             </div>
         </div>
+
         <div className='w-full mt-5 flex justify-between'>
             <Button className='bg-primaryMain min-w-[140px] w-[48%] min-h-[48px] rounded-lg text-background font-bold' children='Download' onClick={openModal}/>
             <Button className='bg-background border-2 border-primaryMain min-w-[140px] w-[48%] min-h-[48px] rounded-lg text-primaryMain font-bold' children='Save to profile'/>
@@ -91,8 +119,40 @@ const Preview = () => {
                         </Modal>
                     ):(
                         <Modal>
-                            <div className='bg-background top-[-100px] left-0 relative flex items-center flex-col min-w-[311px] min-h-[376px] rounded-md py-11 px-9'>
-                                <p className='font-bold'>Select Download Option</p>  
+                            <div className='bg-textWhite top-[-250px] left-0 relative flex items-center flex-col min-w-[311px] rounded-sm py-4 px-4'>
+                                <div className='flex w-full items-center justify-between'>
+                                    <div className='w-[82%] bg-background h-1'>
+                                        <div className='bg-successDark w-[65%] h-1'></div>
+                                    </div>
+                                    <div className='w-[14%] flex text-2xl justify-between'>
+                                        <div>
+                                            <svg width="18" height="18" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5.98535 11.375C3.02535 11.375 0.610352 8.965 0.610352 6C0.610352 3.035 3.02535 0.625 5.98535 0.625C8.94535 0.625 11.3604 3.035 11.3604 6C11.3604 8.965 8.95035 11.375 5.98535 11.375ZM5.98535 1.375C3.43535 1.375 1.36035 3.45 1.36035 6C1.36035 8.55 3.43535 10.625 5.98535 10.625C8.53535 10.625 10.6104 8.55 10.6104 6C10.6104 3.45 8.53535 1.375 5.98535 1.375Z" fill="#292D32"/>
+                                            <path d="M5.005 7.97539H4.355C3.895 7.97539 3.625 7.71039 3.625 7.26539V4.73539C3.625 4.29039 3.9 4.02539 4.355 4.02539H5C5.46 4.02539 5.73 4.29039 5.73 4.73539V7.26539C5.735 7.71039 5.46 7.97539 5.005 7.97539ZM4.375 7.22539H4.985V4.77539H4.38L4.375 7.22539Z" fill="#292D32"/>
+                                            <path d="M7.64453 7.97539H6.99953C6.53953 7.97539 6.26953 7.71039 6.26953 7.26539V4.73539C6.26953 4.29039 6.54453 4.02539 6.99953 4.02539H7.64453C8.10453 4.02539 8.37453 4.29039 8.37453 4.73539V7.26539C8.37453 7.71039 8.09953 7.97539 7.64453 7.97539ZM7.01453 7.22539H7.62453V4.77539H7.01953L7.01453 7.22539Z" fill="#292D32"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <svg width="18" height="18" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.58469 7.78969C4.48969 7.78969 4.39469 7.75469 4.31969 7.67969C4.17469 7.53469 4.17469 7.29469 4.31969 7.14969L7.14969 4.31969C7.29469 4.17469 7.53469 4.17469 7.67969 4.31969C7.82469 4.46469 7.82469 4.70469 7.67969 4.84969L4.84969 7.67969C4.77969 7.75469 4.67969 7.78969 4.58469 7.78969Z" fill="#292D32"/>
+                                            <path d="M7.41469 7.78969C7.31969 7.78969 7.22469 7.75469 7.14969 7.67969L4.31969 4.84969C4.17469 4.70469 4.17469 4.46469 4.31969 4.31969C4.46469 4.17469 4.70469 4.17469 4.84969 4.31969L7.67969 7.14969C7.82469 7.29469 7.82469 7.53469 7.67969 7.67969C7.60469 7.75469 7.50969 7.78969 7.41469 7.78969Z" fill="#292D32"/>
+                                            <path d="M7.5 11.375H4.5C1.785 11.375 0.625 10.215 0.625 7.5V4.5C0.625 1.785 1.785 0.625 4.5 0.625H7.5C10.215 0.625 11.375 1.785 11.375 4.5V7.5C11.375 10.215 10.215 11.375 7.5 11.375ZM4.5 1.375C2.195 1.375 1.375 2.195 1.375 4.5V7.5C1.375 9.805 2.195 10.625 4.5 10.625H7.5C9.805 10.625 10.625 9.805 10.625 7.5V4.5C10.625 2.195 9.805 1.375 7.5 1.375H4.5Z" fill="#292D32"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='flex items-center w-full pl-3 mt-5'>
+                                    <div className='mr-3'>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.99967 15.1663H5.99967C2.37967 15.1663 0.833008 13.6197 0.833008 9.99967V5.99967C0.833008 2.37967 2.37967 0.833008 5.99967 0.833008H9.33301C9.60634 0.833008 9.83301 1.05967 9.83301 1.33301C9.83301 1.60634 9.60634 1.83301 9.33301 1.83301H5.99967C2.92634 1.83301 1.83301 2.92634 1.83301 5.99967V9.99967C1.83301 13.073 2.92634 14.1663 5.99967 14.1663H9.99967C13.073 14.1663 14.1663 13.073 14.1663 9.99967V6.66634C14.1663 6.39301 14.393 6.16634 14.6663 6.16634C14.9397 6.16634 15.1663 6.39301 15.1663 6.66634V9.99967C15.1663 13.6197 13.6197 15.1663 9.99967 15.1663Z" fill="#101010"/>
+                                        <path d="M14.6663 7.16633H11.9997C9.71967 7.16633 8.83301 6.27967 8.83301 3.99967V1.333C8.83301 1.133 8.95301 0.946334 9.13967 0.873C9.32634 0.793 9.53967 0.839667 9.68634 0.979667L15.0197 6.313C15.1597 6.453 15.2063 6.673 15.1263 6.85967C15.0463 7.04633 14.8663 7.16633 14.6663 7.16633ZM9.83301 2.53967V3.99967C9.83301 5.71967 10.2797 6.16633 11.9997 6.16633H13.4597L9.83301 2.53967Z" fill="#101010"/>
+                                        <path d="M8.66699 9.16699H4.66699C4.39366 9.16699 4.16699 8.94033 4.16699 8.66699C4.16699 8.39366 4.39366 8.16699 4.66699 8.16699H8.66699C8.94033 8.16699 9.16699 8.39366 9.16699 8.66699C9.16699 8.94033 8.94033 9.16699 8.66699 9.16699Z" fill="#101010"/>
+                                        <path d="M7.33366 11.833H4.66699C4.39366 11.833 4.16699 11.6063 4.16699 11.333C4.16699 11.0597 4.39366 10.833 4.66699 10.833H7.33366C7.60699 10.833 7.83366 11.0597 7.83366 11.333C7.83366 11.6063 7.60699 11.833 7.33366 11.833Z" fill="#101010"/>
+                                        </svg>
+                                    </div>
+                                    <p className='text-lg font-bold mr-3'>TEXT</p>
+                                    <p className='text-grey400 text-sm'>Download in progress</p>
+                                </div>
                             </div>
                         </Modal>
                     )
