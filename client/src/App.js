@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, ErrorPage, ContactUs, Faq } from "./pages";
+import { Home, ErrorPage, ContactUs, Faq, Career } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -13,6 +13,7 @@ const App = () => {
 					<Route path="/" element={<Home />} />
 					<Route path="/contactus" element={<ContactUs />} />
 					<Route path="/faq" element={<Faq />} />
+					<Route path="/career" element={<Career />} />
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
