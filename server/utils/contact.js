@@ -10,11 +10,9 @@ const contactUs = (fullname, email, subject, phone, description) => {
         result = "Please input right email";
       } else {
         //check if input is not a number
-        if (!typeof phone === "number" || typeof phone === "string") {
+        if (typeof phone !== "number" || typeof phone === "string") {
           result = "Invaild phone-number input";
-        } else {
-          result = "All input is checked and validated";
-        }
+        } 
       }
     }
     return result

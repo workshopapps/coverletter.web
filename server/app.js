@@ -9,6 +9,7 @@ const app = express();
 require("dotenv").config();
 //Routers
 const authRoutes = require("./routes/authRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 // database
 const connectDB = require("./db/connect");
 
@@ -23,6 +24,7 @@ app.use(xss());
 
 // routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/contact", contactRoutes);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
@@ -36,9 +38,9 @@ const port = process.env.PORT || 5000;
 const start = async () => {
 	try {
 		//connect DB
-		await connectDB(process.env.MONGO_URI).then(() =>
-			console.log("DB connection successful")
-		);
+		// await connectDB(process.env.MONGO_URI).then(() =>
+		// 	console.log("DB connection successful")
+		// );
 		app.listen(port, () =>
 			console.log(`Server is listening on port ${port}...`)
 		);
