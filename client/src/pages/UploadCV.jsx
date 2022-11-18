@@ -5,7 +5,7 @@ function UploadCV() {
     return (
         <div className='bg-[#03296f11] py-8'>
             <div className="w-[95%] md:w-[90%] mx-auto">
-                <div className='bg-white md:w-10/12 mx-auto h-max rounded-xl py-[5em] px-3 md:px-8 flex flex-col md:flex-row'>
+                <div className='bg-white md:w-10/12 mx-auto h-max rounded-xl py-[5em] px-3 md:px-8 md:my-[4em] flex flex-col md:flex-row'>
                     <div className='w-full md:w-5/12'>
                         <h1 className='my-4 md:mt-[2em] text-xl md:text-[2em] font-semibold leading-[130%]'>
                             Upload your CV/Resume to make a Cover Letter
