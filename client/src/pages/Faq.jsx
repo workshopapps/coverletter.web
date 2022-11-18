@@ -86,7 +86,7 @@ const Faq = () => {
 						</Link>
 					</p>
 					<Link to={"/"} className="w-full">
-						<button className="bg-primaryMain w-[285px] py-[12px] sm:w-[527px]  text-textWhite text-xl font-bold hover:bg-primaryDark active:bg-primaryDeep rounded-lg">
+						<button className="bg-primaryMain w-[285px] py-[12px] sm:py-[24px] sm:w-[527px]  text-textWhite text-base md:text-xl font-bold hover:bg-primaryDark active:bg-primaryDeep rounded-lg">
 							Generate Cover Letter
 						</button>
 					</Link>
