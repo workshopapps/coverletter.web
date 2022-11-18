@@ -113,7 +113,7 @@ CareerStepsCard.protoTypes = {
 };
 
 const Career = () => {
-	const [width, setWidth] = React.useState(0);
+	const [width, setWidth] = React.useState(window.innerWidth);
 	React.useEffect(() => {
 		function handleResize() {
 			setWidth(window.innerWidth);
