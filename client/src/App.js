@@ -4,6 +4,7 @@ import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProfilePage from "./pages/ProfilePage";
+import UploadCV from "./pages/UploadCV";
 const App = () => {
 	return (
 		<Router>
@@ -15,6 +16,7 @@ const App = () => {
 					<Route path="/contactus" element={<ContactUs />} />
 					<Route path="/faq" element={<Faq />} />
 					<Route path="/profile" element={ <ProfilePage/> }/>
+					<Route path="generate" element={ <UploadCV/> }/>
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />

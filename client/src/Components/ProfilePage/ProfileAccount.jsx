@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import { ChatIcon, UserProfile, LockIcon } from './Icons';
-import Button from '../Ui/Button';
 
 const ChatIcons = <ChatIcon />;
 const UserProfiles = <UserProfile />
@@ -28,23 +26,15 @@ function ProfileAccount() {
 
     ]
 
-    
+
     return (
         <div className='p-4 bg-white rounded-lg'>
-            <div className='flex justify-between'>
-                <div className='flex gap-4 items-center'>
-                    <h1 className='font-bold text-[1.5em] pb-2'>Profile</h1>
-                    <p className='bg-[#D7EBE2] text-[#26704C] border-2 border-[#068850] px-2 py-1 text-[0.6em] font-bold rounded-lg'>Free Plan</p>
-                </div>
-
-                <Link to='/' className='font-bold text-white bg-[#0652DD] block text-center py-2 rounded-lg px-4'>Generate Cover Letter</Link>
-
-            </div>
+            <h1 className='font-bold text-[1.5em] pb-4'>My Account</h1>
 
             <div>
                 {AccountTabs.map((tab) => {
                     return (
-                        <div className='flex gap-4 my-8 border-[#CAD0DD] border-t pt-8 items-center'>
+                        <div key={tab.index} className='flex gap-4 my-8 border-[#CAD0DD] border-t pt-8 items-center'>
                             <div>
                                 {tab.img}
 
@@ -58,7 +48,7 @@ function ProfileAccount() {
                     )
                 })}
 
-                <div className='flex gap-4 my-8 border-[#CAD0DD] border-t pt-8 items-center'>
+                <div className='flex gap-4 my-4 md:my-8 border-[#CAD0DD] border-t pt-4 md:pt-8 items-center'>
                     <div className='flex gap-4 '>
 
                         <div>
@@ -72,9 +62,6 @@ function ProfileAccount() {
                         </div>
                     </div>
 
-                    <div>
-
-                    </div>
                 </div>
 
 
