@@ -22,3 +22,5 @@ Add any notes here that may be helpful for reviewers.
 -   [ ] New third-party packages, if any, do not introduce potential security threats
 -   [ ] There are no CI changes, or they have been OK’d by the devops team
 -   [ ] Code changes have been quality checked in the ephemeral URL
+-   [ ] Errors are handled using the right error handles
+-   [ ] The right thing is returned
