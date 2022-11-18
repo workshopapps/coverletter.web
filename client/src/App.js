@@ -4,6 +4,7 @@ import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Preview from "./pages/Preview";
+import PgCoverLetter from "./pages/PgCoverLetter";
 const App = () => {
 	return (
 		<Router>
@@ -14,6 +15,7 @@ const App = () => {
 					<Route path="/" element={<Home />} />
 
 					<Route path="/preview" element={<Preview />}></Route>
+					<Route path="/cover letter" element={<PgCoverLetter />}></Route>
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />

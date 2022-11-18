@@ -2,66 +2,65 @@ import Modal from '../Components/Ui/Modal'
 import React,{useState, useEffect} from 'react'
 import Button from '../Components/Ui/Button'
 import {useGlobalContext} from '../context/context'
-
+import lockedCover from '../Assets/cover_letter_full_2.png'
+import CoverLetter from '../Components/Ui/CoverLetter'
+import {useNavigate} from 'react-router-dom'
 
 const Preview = () => {
 
     const {openModal, isModalOpen} = useGlobalContext();
 
+    // logic for the modal
     const [firstModal, setFirstModal] = useState(false);
-
     const handleClick = () => {
         setFirstModal(!firstModal)
     }
-    
     useEffect(() => {
       setFirstModal(false)
     }, [openModal])
+
+    // redirect on click cv
+    const navigate = useNavigate();
+
+    const coverRedirect = () => {
+        navigate(`/cover letter`)
+    }
+    
     
 
   return (
-    <div className='bg-background pt-6 pb-36'>
+    <div className='bg-background pt-6 pb-36 overflow-x-hidden'>
         <div className='flex items-center px-7'>
             <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.50014 9.33477C4.40514 9.33477 4.31014 9.29977 4.23514 9.22477L0.975137 5.96477C0.445137 5.43477 0.445137 4.56477 0.975137 4.03477L4.23514 0.774766C4.38014 0.629766 4.62014 0.629766 4.76514 0.774766C4.91014 0.919766 4.91014 1.15977 4.76514 1.30477L1.50514 4.56477C1.26514 4.80477 1.26514 5.19477 1.50514 5.43477L4.76514 8.69477C4.91014 8.83977 4.91014 9.07977 4.76514 9.22477C4.69014 9.29477 4.59514 9.33477 4.50014 9.33477Z" fill="#292D32"/>
             </svg>
             <p className='ml-3 text-sm' onClick={handleClick}>Back</p>
         </div>
-        <div className='w-full flex justify-center mt-5 px-7'>
+        <div className='w-full flex justify-center mt-5 px-7 md:mt-11'>
             <p className='font-bold text-2xl w-[65%] text-center'>Your Cover Letter is Ready!</p>
         </div>
-        <div className='w-screen overflow-x-hidden relative'>
+        <div className='w-screen overflow-x-hidden relative mt-10 md:mt-20'>
             <div className='flex relative w-full justify-center items-center md:translate-x-0 lg:translate-x-0'>
-                <div className='mt-10 flex justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px]'>
-                    <div className='min-w-[290px] min-h-[290px] bg-textWhite'>
-                        ksldkl
-                    </div>
-                </div>
+                <img src={lockedCover} alt="cover" className='mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] md:min-h-[625px] md:min-w-[525px]' />
                 <div>
-                <svg width="17" height="8" viewBox="0 0 17 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.646446 3.64645C0.451185 3.84171 0.451185 4.15829 0.646446 4.35355L3.82843 7.53553C4.02369 7.7308 4.34027 7.7308 4.53553 7.53553C4.7308 7.34027 4.7308 7.02369 4.53553 6.82843L1.70711 4L4.53553 1.17157C4.7308 0.976311 4.7308 0.659728 4.53553 0.464466C4.34027 0.269204 4.02369 0.269204 3.82843 0.464466L0.646446 3.64645ZM17 3.5L1 3.5V4.5L17 4.5V3.5Z" fill="#434343"/>
+                <svg  className='md:w-[32px] md:h-[30px] ' height="8" viewBox="0 0 17 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.646446 3.64645C0.451185 3.84171 0.451185 4.15829 0.646446 4.35355L3.82843 7.53553C4.02369 7.7308 4.34027 7.7308 4.53553 7.53553C4.7308 7.34027 4.7308 7.02369 4.53553 6.82843L1.70711 4L4.53553 1.17157C4.7308 0.976311 4.7308 0.659728 4.53553 0.464466C4.34027 0.269204 4.02369 0.269204 3.82843 0.464466L0.646446 3.64645ZM17 3.5L1 3.5V4.5L17 4.5V3.5Z" fill="#434343"/>
                 </svg>
                 </div>
-                <div className='mt-10 flex justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] min-h-[410px]'>
-                    <div className='min-w-[290px] min-h-[400px] bg-textWhite'>
-                        ksldkl
-                    </div>
+                <div className='flex justify-center items-center w-[80%] bg-primaryLightest drop-shadow-lg max-w-[530px] min-w-[395px] min-h-[410px] md:min-h-[725px] py-2 rounded-lg md:min-w-[525px]' role='button' onClick={coverRedirect}>
+                   <CoverLetter/>
                 </div>
-                <div>
-                    <svg width="17" height="8" viewBox="0 0 17 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div className=''>
+                    <svg  className='md:w-[32px] md:h-[30px] ' height="8" viewBox="0 0 17 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.646446 3.64645C0.451185 3.84171 0.451185 4.15829 0.646446 4.35355L3.82843 7.53553C4.02369 7.7308 4.34027 7.7308 4.53553 7.53553C4.7308 7.34027 4.7308 7.02369 4.53553 6.82843L1.70711 4L4.53553 1.17157C4.7308 0.976311 4.7308 0.659728 4.53553 0.464466C4.34027 0.269204 4.02369 0.269204 3.82843 0.464466L0.646446 3.64645ZM17 3.5L1 3.5V4.5L17 4.5V3.5Z" fill="#434343"/>
                     </svg>
                 </div>
-                <div className='mt-10 flex justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px]'>
-                    <div className='min-w-[290px] min-h-[290px] bg-textWhite'>
-                        ksldkl
-                    </div>
-                </div>
+                <img src={lockedCover} alt="cover" className='mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] md:min-h-[625px] md:min-w-[525px]' />
             </div>
         </div>
 
         <div className='w-100 flex justify-center'>
-            <div className='w-full mt-5 flex justify-between px-7 max-w-[450px]  md:w-[40%]'>
+            <div className='w-full mt-5 flex justify-between px-7 max-w-[450px]  md:w-[55%]'>
                 <Button className='bg-primaryMain min-w-[140px] w-[48%] min-h-[48px] rounded-lg text-background font-bold' children='Download' onClick={openModal}/>
                 <Button className='bg-background border-2 border-primaryMain min-w-[140px] w-[48%] min-h-[48px] rounded-lg text-primaryMain font-bold' children='Save to profile'/>
             </div>
@@ -123,7 +122,7 @@ const Preview = () => {
                         </Modal>
                     ):(
                         <Modal>
-                            <div className='bg-textWhite top-[-250px] md:top-[-190px] md:left-[480px] left-0 relative flex items-center flex-col min-w-[311px] rounded-sm py-4 px-4'>
+                            <div className='bg-textWhite top-[-250px] md:top-[-190px] md:left-[100%] lg:left-[150%] left-0 relative flex items-center flex-col min-w-[311px] rounded-sm py-4 px-4'>
                                 <div className='flex w-full items-center justify-between'>
                                     <div className='w-[82%] bg-background h-1'>
                                         <div className='bg-successDark w-[65%] h-1'></div>
