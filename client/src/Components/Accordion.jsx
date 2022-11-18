@@ -6,13 +6,14 @@ const Accordion = ({ title, content, isOpen, onClick }) => {
 	const contentElement = useRef(null);
 
 	return (
-		<div onClick={onClick} className="mb-[8px]">
+		<div className="mb-[8px]">
 			<div
 				className={
-					"py-[24px] px-[16px] border border-[#cad0dd] rounded-lg mb-2 flex justify-between"
+					"py-[24px] px-[16px] border border-[#cad0dd] rounded-lg mb-2 flex justify-between md:gap-x-[7px] gap-x-[7px] items-center"
 				}
+				onClick={onClick}
 			>
-				<h4 className="font-normal text-sm md:text-2xl">{title}</h4>
+				<h4 className="font-normal text-sm sm:text-[24px]">{title}</h4>
 				<img
 					src={!isOpen ? ChevronDown : ChevronUp}
 					alt="chevron"
