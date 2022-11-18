@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
-const { randomString } = require("../utils/randomString");
+const { generateOTP } = require("../utils/generateOTP");
 const { BadRequestError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
 
@@ -12,7 +12,7 @@ const register = async (req, res) => {
 	if (oldUser) {
 		throw new BadRequestError("Email already exists");
 	}
-	let confirmationCode = randomString();
+	let confirmationCode = generateOTP(4)
 	console.log(confirmationCode);
 	const user = new User({
 		name,
@@ -20,15 +20,26 @@ const register = async (req, res) => {
 		password,
 		confirmationCode,
 	});
-	const url = `${process.env.BASE_URL}/auth/verify/${confirmationCode}`;
-	await sendEmail(req.body.email, "Verify email", url);
+	
+	await sendEmail(req.body.email, "Verify email", confirmationCode);
 
-	const savedUser = await user.save();
-	const token = savedUser.createJWT();
-
-	res.status(StatusCodes.CREATED).json({ user: token });
+	 await user.save();
+	
+	res.status(StatusCodes.CREATED).json("Signup was successful.");
 };
+const verify = async(req,res) => {
+	
+	const user = await User.findOne({confirmationCode:req.body.otp})
+	
+	if(user){
+	   user.status = "Active"
+	    await user.save()
+		res.status(StatusCodes.OK).json('User has been successfully verified')
+	}else{
+		res.status(StatusCodes.BAD_REQUEST).json("Verification failed")
+	}
+}
 
 module.exports = {
-	register,
+	register,verify
 };
