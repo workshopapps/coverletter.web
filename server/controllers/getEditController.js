@@ -1,34 +1,8 @@
-const { StatusCodes } = require("http-status-codes");
-
-const User = require("../models/User");
 const Template = require("../models/Template");
 
+const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
 
-const getAConvertLetter = async (req, res) => {
-	try {
-		const { id } = req.params;
-		const isTemplateIdValid = !!id;
-		if (!isTemplateIdValid) {
-			throw new BadRequestError("Invalid template ID");
-		}
-
-		const template = await Template.findById(id).exec();
-
-		if (!template) {
-			return res.status(404).json({
-				error: "Template does not exist",
-			});
-		}
-
-		return res.status(200).json({
-			message: "Template requested successfully",
-			data: template,
-		});
-	} catch (err) {
-		return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ err });
-	}
-};
 
 /**
  * @desc It gets all the convert Letters created by a user
@@ -92,7 +66,6 @@ const editACovertLetter = async (req, res) => {
 };
 
 module.exports = {
-	getAConvertLetter,
 	getAllConvertLettersByAUser,
 	editACovertLetter,
 };
