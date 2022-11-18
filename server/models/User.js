@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const crypto = require('crypto')
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please provide name'],
@@ -24,14 +25,17 @@ const UserSchema = new mongoose.Schema({
     minlength: 6,
   },
   status: {
-    type: String, 
+    type: String,
     enum: ['Pending', 'Active'],
     default: 'Pending'
   },
-  confirmationCode: { 
-    type: String, 
+  confirmationCode: {
+    type: String,
     unique: true
-   },
+  },
+  resetPasswordOtp: {
+    type: String,
+  }
 })
 
 UserSchema.pre('save', async function () {
@@ -41,7 +45,7 @@ UserSchema.pre('save', async function () {
 
 UserSchema.methods.createJWT = function () {
   return jwt.sign(
-    { userId: this._id, name: this.name, email: this.email , status: this.status },
+    { userId: this._id, name: this.name, email: this.email, status: this.status },
     "secretkey123",
     {
       expiresIn: "5h",
@@ -53,5 +57,15 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
   const isMatch = await bcrypt.compare(canditatePassword, this.password)
   return isMatch
 }
+
+
+UserSchema.methods.createPasswordResetToken = function () {
+
+  const otp = Math.floor(1000 + Math.random() * 9000).toString()
+  this.resetPasswordOtp = crypto.createHash('sha256').update(otp).digest('hex');
+  return otp;
+};
+
+
 
 module.exports = mongoose.model('User', UserSchema)
