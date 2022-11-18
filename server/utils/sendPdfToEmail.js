@@ -22,7 +22,7 @@ module.exports = async (email, subject, fileName) => {
 			text: `Hi there 👋🏿. Thanks for using Aplicar. Here is your attached cover letter in ${fileFormat} that you requested from us`,
 			attachments: [
 				{
-					path: `${__dirname} + "/${fileName}`,
+					path: `${__dirname}/${fileName}`,
 				},
 			],
 		});
