@@ -103,7 +103,10 @@ const Career = () => {
 			setWidth(window.innerWidth);
 		}
 		window.addEventListener("resize", handleResize);
-	});
+		return (_) => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
 
 	const [showOpenings, setShowOpenings] = React.useState(true);
 
