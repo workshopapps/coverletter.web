@@ -31,6 +31,8 @@ const resetPassword = async (req, res, next) => {
 	);
 
 	user.password = hashedPassword;
+	user.passwordResetToken = undefined;
+	user.passwordResetExpires = undefined;
 	await user.save();
 
 	res.status(StatusCodes.OK).json({
