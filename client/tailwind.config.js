@@ -2,10 +2,20 @@
 module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
-		extend: {
-			gridTemplateColumns: {
-				grid: "repeat(auto-fit, minmax(297px, 1fr))",
-			},
+		extend: {},
+		fontSize: {
+			sm: "0.8rem",
+			base: "1rem",
+			xl: "1.25rem",
+			"2xl": "1.563rem",
+			"3xl": "1.953rem",
+			"4xl": "2.5rem",
+			"5xl": "3.5rem",
+		},
+		lineHeight: {
+			"leading-4": "1.5rem",
+			"leading-8": "3rem",
+			"leading-10": "4.5rem",
 		},
 		colors: {
 			background: "#F2F2F7",
@@ -42,6 +52,26 @@ module.exports = {
 			coverContainer: "#CDDCF8",
 			white: "#FFFFFF",
 			backgroundWhite: "#FFFFFF",
+		},
+
+		screens: {
+			xxs: "320px",
+			// => @media (min-width: 320px) { ... }
+
+			xs: "480px",
+			// => @media (min-width: 480px) { ... }
+
+			sm: "640px",
+			// => @media (min-width: 640px) { ... }
+
+			md: "768px",
+			// => @media (min-width: 768px) { ... }
+
+			lg: "1024px",
+			// => @media (min-width: 1024px) { ... }
+
+			xl: "1280px",
+			// => @media (min-width: 1280px) { ... }
 		},
 	},
 	plugins: [],

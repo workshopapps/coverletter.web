@@ -1,6 +1,7 @@
 import History from "./History";
 import ErrorPage from "./ErrorPage";
 import ContactUs from "./ContactUs";
+import CustomerStories from "./CustomerStories";
 import Faq from "./Faq";
 import SeeAllHistory from "./SeeAllHistory";
 import Career from "./Career";
@@ -48,4 +49,5 @@ export {
 	EmailOTP,
 	ForgotPassword,
 	ResetPassword,
+	CustomerStories,
 };
