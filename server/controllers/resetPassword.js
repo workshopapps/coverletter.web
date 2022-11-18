@@ -3,7 +3,6 @@ const User = require("../models/User");
 const { BadRequestError } = require("../errors");
 const bcrypt = require("bcrypt");
 const { StatusCodes } = require("http-status-codes");
-const sendOTP = require("../utils/sendOTP");
 
 const resetPassword = async (req, res, next) => {
 	// 1) Get  User based on token
