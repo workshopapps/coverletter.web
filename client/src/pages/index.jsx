@@ -25,7 +25,6 @@ import Post from "./forum/Post";
 import EmailOTP from "./EmailOTP";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
-
 export {
 	History,
 	ErrorPage,
