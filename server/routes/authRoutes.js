@@ -4,6 +4,6 @@ const { register, updatePassword } = require("../controllers/authController");
 
 //Add your routes here
 router.post("/signup", register);
-router.post("/updatePassword", updatePassword);
+router.put("/updatePassword", updatePassword);
 
 module.exports = router;
