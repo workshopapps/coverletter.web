@@ -1,8 +1,6 @@
 const nodemailer = require("nodemailer");
 
 module.exports = async (email, subject, url) => {
-	console.log({ email, subject, url });
-
 	try {
 		const transporter = nodemailer.createTransport({
 			host: "smtp.gmail.com",
@@ -15,8 +13,6 @@ module.exports = async (email, subject, url) => {
 			},
 			tls: { rejectUnauthorized: false },
 		});
-
-		console.log("Transporter initialization succeeded");
 
 		await transporter
 			.sendMail({

@@ -5,18 +5,6 @@ const contact = async (req, res) => {
 	try {
 		const { email, name, phone, subject, description } = req.body;
 
-		console.log({
-			isExisting: [email, name, phone, subject, description].every(
-				Boolean
-			),
-			email,
-			name,
-			phone,
-			subject,
-			description,
-			body: req?.body,
-		});
-
 		if (![email, name, phone, subject, description].every(Boolean)) {
 			return res.status(400).json({
 				message: "One or more required fields are missing.",
