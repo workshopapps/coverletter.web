@@ -1,8 +1,9 @@
 import "./App.css";
-import { Home, ErrorPage, ContactUs, PrivacyPolicy, Faq } from "./pages";
+import { Home, ErrorPage, ContactUs, Faq, Career, PrivacyPolicy } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Features from "./pages/Features";
 const App = () => {
 	return (
 		<Router>
@@ -13,7 +14,9 @@ const App = () => {
 					<Route path="/" element={<Home />} />
 					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 					<Route path="/contactus" element={<ContactUs />} />
+					<Route path="/features" element={<Features />} />
 					<Route path="/faq" element={<Faq />} />
+					<Route path="/career" element={<Career />} />
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
