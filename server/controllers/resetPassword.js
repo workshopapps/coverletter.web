@@ -1,40 +1,59 @@
 require("dotenv").config();
-const crypto = require("crypto");
 const User = require("../models/User");
 const { BadRequestError } = require("../errors");
 const bcrypt = require("bcrypt");
 const { StatusCodes } = require("http-status-codes");
 const sendOTP = require("../utils/sendOTP");
 
-// @michstery Reset Password Endpoint
-exports.resetPassword = async (req, res, next) => {
+const resetPassword = async (req, res, next) => {
 	// 1) Get  User based on token
-	const hashedToken = crypto
-		.createHash("sha256")
-		.update(req.params.token)
-		.digest("hex");
+	const { password, email, confirmPassword } = req.body;
 
-	const user = await User.findOne({ passwordResetToken: hashedToken });
-	// 2) If token has not expired and there is user, set the new User
-	if (!user) {
-		return next(new BadRequestError("Otp Token is invalid or has Expired"));
+	if (password !== confirmPassword) {
+		return next(new BadRequestError("password fields should be similar"));
 	}
 
-	user.password = req.body.password;
-	user.passwordConfirm = req.body.passwordConfirm;
+	const user = await User.findOne({ email: email });
+
+	if (!user) {
+		return next(new BadRequestError("User does not exists"));
+	}
+
+	// Use bcrypt.hash() function to hash the password
+	const hashedPassword = bcrypt.hash(password, 10);
+
+	const comparePassword = await bcrypt.compare(
+		hashedPassword,
+		user.password,
+		(err, isMatch) => {
+			if (err) {
+				return next(
+					new BadRequestError(err, `OTP is invalid or expired`)
+				);
+			}
+		}
+	);
+
+	user.password = hashedPassword;
+	//user.passwordConfirm = confirmPassword;
 	user.passwordResetToken = undefined;
 	user.passwordResetExpires = undefined;
 	await user.save();
+
+	res.status(StatusCodes.OK).json({
+		msg: "Password change was successful.",
+	});
 };
 
 const validateOTP = async (req, res, next) => {
 	const { otp, email } = req.body;
 	//console.log(otp);
 	const user = await User.findOne({ email });
-	if (!user) return next(new BadRequestError(`OTP is invalid or expired`));
+	if (!user) return next(new BadRequestError(`User not found`));
+
 	const verifyOTP = await bcrypt.compare(otp, user.otp, (err, isMatch) => {
 		if (err) {
-			return err;
+			return next(new BadRequestError(`OTP is invalid or expired`));
 		}
 		console.log(isMatch);
 		//return isMatch;
@@ -47,4 +66,5 @@ const validateOTP = async (req, res, next) => {
 
 module.exports = {
 	validateOTP,
+	resetPassword,
 };
