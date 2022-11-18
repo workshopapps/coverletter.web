@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React from "react";
 
 function TermsAndCondition() {
@@ -131,10 +132,10 @@ function TermsAndCondition() {
 				</h1>
 				<p className="text-[#6D6D6D] text-sm ">
 					Do you feel the need to call? Or if you have any questions
-					about our service please endeavour to{" "}
-					<a href="#" className="text-[#0652DD]">
+					about our service please endeavour to &nbsp;
+					<Link to="/contactus" className="text-[#0652DD]">
 						Contact Us
-					</a>
+					</Link>
 				</p>
 			</div>
 		</div>
