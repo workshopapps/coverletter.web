@@ -5,4 +5,16 @@ import ContactUs from "./ContactUs";
 import Faq from "./Faq";
 import Career from "./Career";
 
-export { Home, History, ErrorPage, ContactUs, Faq, Career };
+import Blog from "./Blog";
+import SingleblogPage from "./SingleblogPage";
+
+export {
+	Home,
+	History,
+	ErrorPage,
+	ContactUs,
+	Faq,
+	SingleblogPage,
+	Blog,
+	Career,
+};
