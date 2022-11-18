@@ -22,7 +22,7 @@ app.use(cors());
 app.use(xss());
 
 // routes
-app.use("/api/v1/authController", authRoutes);
+app.use("/api/v1/auth", authRoutes);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
