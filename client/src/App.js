@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, ErrorPage, ContactUs } from "./pages";
+import { Home, ErrorPage, ContactUs, CustomerStories } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -12,7 +12,10 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/contactus" element={<ContactUs />} />
-
+					<Route
+						path="/customerstories"
+						element={<CustomerStories />}
+					/>
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />

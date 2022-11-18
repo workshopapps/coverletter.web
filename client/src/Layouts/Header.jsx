@@ -1,30 +1,44 @@
 import Logo from "../Assets/headerLogo.png";
 import navLinkElements from "../Constants/navLinkElements";
-import Button from "../Components/Ui/Button";
 import Hamburger from "../Assets/menu.svg";
+import { Link, NavLink } from "react-router-dom";
+import user from "../Assets/user.png";
 const Header = () => {
 	return (
-		<div className="flex items-center justify-between py-5 px-5 md:px-10 xl:px-15">
-			<img src={Logo} alt="" />
-			<ul className="space-x-6 hidden lg:block">
-				{navLinkElements.map((item) => (
-					<li key={item.name} className="inline-block">
-						{item.name}
-					</li>
-				))}
+		<nav className="flex items-center justify-between xxs:max-md:px-[28px] md:py-17 px-24">
+			<Link to="/">
+				<img src={Logo} alt="" />
+			</Link>
+			<ul className="xxs:max-lg:hidden lg:flex items-center justify-center">
+				{navLinkElements.map((item) => {
+					const { name, url } = item;
+					return (
+						<li
+							key={name}
+							className=" [&:not(:first-child)]:ml-[40px]"
+						>
+							<NavLink
+								className="text-base font-semibold text-[#BABABA] hover:text-grey800 active:text-grey800"
+								to={url}
+							>
+								{name}
+							</NavLink>
+						</li>
+					);
+				})}
 			</ul>
-			<div className="space-x-5 flex">
-				<Button className="btn btnShort btnSecondary hidden md:block">
-					Sign in
-				</Button>
-				<Button className="btn btnShort btnPrimary hidden md:block">
-					Register
-				</Button>
-				<button>
-					<img src={Hamburger} alt="" className="md:hidden" />
+			<div className="cursor space-x-5">
+				<Link
+					to="/login"
+					className="xxs:max-lg:hidden text-primaryMain leading-[24px] text-base flex justify-center items-center font-semibold"
+				>
+					Account <img className="ml-[9.94px]" src={user} alt="" />
+				</Link>
+				<button className="block lg:hidden ">
+					<img src={Hamburger} alt="" />
 				</button>
 			</div>
-		</div>
+		</nav>
 	);
 };
 
