@@ -4,6 +4,7 @@ const { randomString } = require("../utils/randomString");
 const { BadRequestError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
 
+
 const register = async (req, res) => {
 	const { email, name, password } = req.body;
 
@@ -14,12 +15,14 @@ const register = async (req, res) => {
 	}
 	let confirmationCode = randomString();
 	console.log(confirmationCode);
+
 	const user = new User({
 		name,
 		email,
 		password,
 		confirmationCode,
 	});
+
 	const url = `${process.env.BASE_URL}/auth/verify/${confirmationCode}`;
 	await sendEmail(req.body.email, "Verify email", url);
 
