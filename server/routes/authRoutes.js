@@ -21,5 +21,4 @@ router.get('/google/callback',
         res.status(200).json(req.user);
     });
 
-
-module.exports = router
+module.exports = router;
