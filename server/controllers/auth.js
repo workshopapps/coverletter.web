@@ -32,7 +32,18 @@ const register = async (req, res) => {
    
     res.status(StatusCodes.CREATED).json({ user: token });
   };
+  const verify = async(req,res) => {
+      const {confirmationCode} = req.params
+      const user = await User.findOne({confirmationCode})
+      if(user){
+          user.status = "Active"
+          await user.save()
+          res.status(StatusCodes.OK).json('User verified')
+      }else{
+          res.status(StatusCodes.BAD_REQUEST).json("Verification failed")
+      }
+  }
 
   module.exports = {
-    register
+    register,verify
   }
