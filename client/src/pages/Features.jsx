@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import stackLettersImg from "../Assets/stack-letters.svg";
 import feature1 from "../Assets/feature1.svg";
 import feature2 from "../Assets/feature2.svg";
 import feature3 from "../Assets/feature3.svg";
 import feature4 from "../Assets/feature4.svg";
 import feature5 from "../Assets/feature5.svg";
+import featureBackgroundImg from "../Assets/feature-background-img.svg";
+import featureBackgroundImg2 from "../Assets/feature-section-bg-blue.svg";
+import Button from "../Components/Ui/Button";
 
 const BodyText = (props) => {
 	const { children, className } = props;
@@ -19,27 +22,27 @@ const H1 = (props) => {
 	return <h1 className={`${defaultClassName} ${className}`}>{children}</h1>;
 };
 
-const Button = (props) => {
-	const { type, text } = props;
-	const defaultClassName =
-		"btnPrimary py-4 px-8 rounded-md mx-auto font-bold";
-	const primaryClassName = "bg-primaryMain";
-	const secondaryClassName = "bg-secondaryMain";
-	return (
-		<button
-			className={`${defaultClassName} ${
-				type === "primary" ? primaryClassName : secondaryClassName
-			}`}
-		>
-			{text}
-		</button>
-	);
-};
+// const Button = (props) => {
+// 	const { type, text, className } = props;
+// 	const defaultClassName =
+// 		"btnPrimary py-4 px-8 rounded-md mx-auto font-bold";
+// 	const primaryClassName = "bg-primaryMain";
+// 	const secondaryClassName = "bg-secondaryMain";
+// 	return (
+// 		<button
+// 			className={`${defaultClassName} ${
+// 				type === "primary" ? primaryClassName : secondaryClassName
+// 			}`}
+// 		>
+// 			{text}
+// 		</button>
+// 	);
+// };
 
 const featureCards = (props) => {
 	const { title, body, img, textColor, btn } = props;
 	return (
-		<div className="flex flex-col gap-4 md:flex-row md:gap-16 items-center w-full">
+		<div className="flex flex-col gap-4 md:flex-row md:gap-16 items-center w-full max-sm:gap-8">
 			<div className="flex-none">
 				<img
 					src={img}
@@ -71,7 +74,7 @@ const featureCards = (props) => {
 				<p
 					className={`text-base ${
 						textColor ? "" : "text-textWhite"
-					} mt-6 lg:max-w-[60%]`}
+					} mt-6 lg:max-w-[60%] font-normal`}
 					style={{
 						color: textColor ? textColor : "",
 					}}
@@ -87,7 +90,7 @@ const featureCards2 = (props) => {
 	const { title, body, img, textColor, btn } = props;
 
 	return (
-		<div className="flex flex-col-reverse gap-4 md:flex-row md:gap-16 items-center w-full">
+		<div className="flex flex-col-reverse gap-4 md:flex-row md:gap-16 items-center w-full max-sm:gap-8">
 			<div className="flex-auto ">
 				{/* add button if it passed as props */}
 				{btn && <Button type="primary" text={btn} />}
@@ -105,7 +108,7 @@ const featureCards2 = (props) => {
 				<p
 					className={`text-base ${
 						textColor ? "" : "text-textWhite"
-					} mt-6 lg:max-w-[60%]`}
+					} mt-6 lg:max-w-[60%] font-medium`}
 					style={{
 						color: textColor ? textColor : "",
 					}}
@@ -127,10 +130,36 @@ const featureCards2 = (props) => {
 // md:w-56 md:h-56 lg:w-64 xl:w-72
 
 const Features = () => {
+	const [isTablet, setIsTablet] = useState(false);
+	// listen to screen size event and set isTablet state
+	useEffect(() => {
+		const handleResize = () => {
+			if (window.innerWidth < 768) {
+				setIsTablet(true);
+			} else {
+				setIsTablet(false);
+			}
+		};
+		window.addEventListener("resize", handleResize);
+		handleResize();
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	console.log(isTablet);
 	return (
 		<>
-			<section className="bg-background">
-				<div className="section-content px-8 mt-6 flex flex-col gap-7  py-12 justify-center md:py-16 md:px-36 lg:py-24 lg:px-48 xl:px-104 bg-no-repeat bg-none">
+			<section
+				className="bg-background max:md:bg-none"
+				style={{
+					backgroundImage: isTablet
+						? "none"
+						: `url(${featureBackgroundImg})`,
+					backgroundRepeat: "no-repeat",
+					backgroundPosition: "right bottom",
+					backgroundSize: "contain",
+				}}
+			>
+				<div className="section-content px-8 mt-6 flex flex-col gap-7  py-12 justify-center md:py-16 md:px-36 lg:py-24 lg:px-48 xl:px-104 bg-no-repeat bg-none ">
 					<H1 className="text-center">
 						Providing{" "}
 						<span className="text-primaryMain">AI-powered</span>{" "}
@@ -146,10 +175,20 @@ const Features = () => {
 				</div>
 			</section>
 
-			<section className="bg-primaryMain p-12">
+			<section
+				className="bg-primaryMain p-12"
+				style={{
+					backgroundImage: isTablet
+						? "none"
+						: `url(${featureBackgroundImg2})`,
+					backgroundRepeat: "no-repeat",
+					backgroundPosition: "center",
+					backgroundSize: "cover",
+				}}
+			>
 				<div className="featureOne-content  relative container mx-auto max-w-[1400px] ">
 					{/* import feature cards */}
-					<div className="featureOne-cards flex flex-col gap-6 md:flex-row mb-20">
+					<div className="featureOne-cards flex flex-col gap-6 md:flex-row mb-14">
 						{featureCards({
 							title: "Customization",
 							body: "The most powerful cover letter generator – Aplicar helps you write the perfect cover letter for your job applications. You can create your befitting Cover Letter in minutes. Aplicar AI uses excellent suggestions that match your personality and style. Aplicar will generate a job application/cover letter to fit all jobs, with 100% accuracy guaranteed.",
@@ -208,17 +247,24 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row "></div>
 				</div>
 
-				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep p-10 rounded-lg flex flex-col items-center justify-center gap-4">
-					<div className="lg:max-w-[1000px]">
-						<H1 className=" text-textWhite text-center leading-normal lg:max-w[text-left]">
+				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 py-11 rounded-lg flex items-center max-md:flex-col max-md:gap-7 max-sm:gap-6">
+					<div className="">
+						<H1 className=" text-textWhite text-left leading-relaxed max-md:text-center max-md:leading-10">
 							{" "}
 							Increase your chances of getting employed
 						</H1>
-						<BodyText className="text-center text-textWhite">
+						<BodyText className="text-left text-textWhite max-md:text-center">
 							Start for free with no credit card required.
 						</BodyText>
 					</div>
-					<Button type="secondary" text="Start for free" />
+					<div>
+						<Button
+							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
+							type="secondary"
+						>
+							Start for free
+						</Button>
+					</div>
 				</div>
 			</section>
 		</>
