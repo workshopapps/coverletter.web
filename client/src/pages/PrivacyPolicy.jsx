@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
     return (
         <div id="top" className="w-full h-full relative scroll-smooth pb-[80px] bg-background">
             <div id="banner" className="w-full flex flex-col justify-center items-center gap-[8px] ">
-                <div className="uppercase text-textWhite font-bold flex flex-col gap-[8px] justify-center items-center w-full h-[216px] bg-primaryDeep bg-repeat-x" style={{ backgroundImage: "../Assets/headerLogo.png" }}>
+                <div id="banner_bg" className="uppercase text-textWhite font-bold flex flex-col gap-[8px] justify-center items-center w-full h-[216px] bg-primaryDeep bg-repeat-x" style={{ backgroundImage: 'url("../Assets/bannerLogo.png")' }}>
                     <p className="text-base">Understand our</p>
                     <h1 className="text-[56px]"> Privacy Policy</h1>
                 </div>
@@ -142,7 +142,7 @@ const PrivacyPolicy = () => {
                             </a>
                         </ol>
                     </div>
-                    <button onClick={scrollUp} className="flex justify-start items-center gap-3">
+                    <button onClick={scrollUp} className="flex justify-start items-center gap-3 border-t border-[#CAD0DD]  pt-1.5">
                         <img src={ArrowUp} alt="arrow_up" /> <span className="text-textHeader font-bold text-base">Back to top</span>
                     </button>
                 </section>
@@ -152,7 +152,7 @@ const PrivacyPolicy = () => {
                 <Button className="bg-primaryMain text-base font-semibold text-textWhite w-full max-w-[400px] h-[48px] rounded-lg flex justify-center items-center">
                     Contact Us
                 </Button>
-                
+
             </div>
         </div>
     );
