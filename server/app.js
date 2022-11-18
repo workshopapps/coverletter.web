@@ -9,7 +9,7 @@ const app = express();
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
-require("dotenv").config();
+require('dotenv').config();
 //Routers
 const authRoutes = require("./routes/authRoutes");
 // database
@@ -17,7 +17,7 @@ const connectDB = require("./db/connect");
 
 //Passport config
 require('./utils/passport')(passport)
-// Sessions
+//Sessions
 app.use(
   session({
     secret: 'secretkey',
@@ -55,6 +55,7 @@ const port = process.env.PORT || 5000;
 const start = async () => {
 	try {
 		//connect DB
+   
 		await connectDB(process.env.MONGO_URI).then(() =>
 			console.log("DB connection successful")
 		);
