@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { cvUpload } = require("./cv.upload.controller");
-const { sendCoverLetter } = require("./cover.letter.generator");
+const { cvUpload } = require("./cvUploadController");
+const { sendCoverLetter } = require("./coverLetterGenerator");
 
 router.post("/upload", cvUpload);
 router.post("/generate", sendCoverLetter);

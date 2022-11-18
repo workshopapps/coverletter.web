@@ -1,4 +1,4 @@
-const { generator } = require('../utils/gpt3.generator');
+const { generator } = require('../utils/gpt3Generator');
 const { StatusCodes } = require("http-status-codes");
 
 
