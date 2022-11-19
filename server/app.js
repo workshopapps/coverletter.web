@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const bodyParser = require("body-parser");
-const connectDB = require("./db/connect");
+//const connectDB = require("./db/connect");
 require("dotenv").config();
 
 const port = process.env.PORT || 5000;

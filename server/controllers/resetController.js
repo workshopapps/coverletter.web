@@ -16,25 +16,17 @@ const resetPassword = async (req, res) => {
 		throw new BadRequestError("email not found in database");
 	}
 
-	const hashedPassword = bcrypt.hash(password, 10);
+	const comparePassword = await user.compare(hashedPassword, user.password);
+	if (!comparePassword) {
+		throw new BadRequestError("Passwords fields can only be unique");
+	}
 
-	const comparePassword = await bcrypt.compare(
-		hashedPassword,
-		user.password,
-		(err, isMatch) => {
-			if (isMatch) {
-				//err.statusCode = 404;
-				throw new BadRequestError("Use a new password");
-			}
-		}
-	);
-
-	user.password = hashedPassword;
+	user.password = password;
 	user.passwordResetToken = undefined;
 	user.passwordResetExpires = undefined;
 	await user.save();
 
-	res.status(StatusCodes.OK).json({
+	res.status(StatusCodes.CREATED).json({
 		msg: "Password change was successful.",
 	});
 };
@@ -47,15 +39,12 @@ const validateOTP = async (req, res) => {
 		throw new BadRequestError("email not found in database");
 	}
 
-	const verifyOTP = await bcrypt.compare(otp, user.otp, (err, isMatch) => {
-		if (err) {
-			throw new BadRequestError("OTP is invalid or expired");
-		}
-		console.log(isMatch);
-		//return isMatch;
-	});
+	const verifyOTP = await user.compare(otp, user.otp);
+	if (!verifyOTP) {
+		throw new BadRequestError("OTP is invalid or expired");
+	}
 
-	res.status(StatusCodes.OK).json({
+	res.status(StatusCodes.CREATED).json({
 		msg: "otp verification was successful.",
 	});
 };
