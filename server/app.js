@@ -10,6 +10,7 @@ const app = express();
 //Routers
 const authRoutes = require("./routes/authRoutes");
 const histpryRoutes = require("./routes/historyRoutes");
+const templateRoutes = require("./routes/templateRoutes");
 // database
 const connectDB = require("./db/connect");
 
@@ -25,6 +26,7 @@ app.use(xss());
 // routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/auth", histpryRoutes);
+app.use("/api/v1", templateRoutes);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
