@@ -2,14 +2,20 @@
 module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
-		extend: {},
+		extend: {
+			gridTemplateColumns: {
+				grid: "repeat(auto-fit, minmax(297px, 1fr))",
+			},
+		},
 		colors: {
+			white: "#FFFFFF",
 			background: "#F2F2F7",
 			overlay: "rgba(3, 41, 111, 0.48)",
 			textHeader: "#1C1C1E",
 			textBody: "#48484A",
 			textPlacecholder: "#A7A7A7",
 			textWhite: "#FCFCFC",
+			backgroundWhite: "#FFFFFF",
 			successLight: "#E5FCF6",
 			successMain: "#0FB56D",
 			successDark: "#26704C",
