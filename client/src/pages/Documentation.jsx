@@ -1,5 +1,4 @@
 import React from "react";
-import { MdOutlineUploadFile } from "react-icons/md";
 import Button from "../Components/Ui/Button";
 import landingPage from "../Assets/landingPageLogo.png";
 import inputImage from "../Assets/inputImage.png";

@@ -16,7 +16,6 @@ const App = () => {
 
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
-				<Documentation />
 				<Footer />
 				{/* place footer here */}
 			</ScrollToTop>
