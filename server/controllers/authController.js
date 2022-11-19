@@ -13,7 +13,7 @@ const register = async (req, res) => {
 		throw new BadRequestError("Email already exists");
 	}
 	let confirmationCode = generateOTP(4)
-	console.log(confirmationCode);
+	
 	const user = new User({
 		name,
 		email,
@@ -21,7 +21,7 @@ const register = async (req, res) => {
 		confirmationCode,
 	});
 	
-	await sendEmail(req.body.email, "Verify email", confirmationCode);
+	await sendEmail(req.body.email, "Verify email", "<h3>OTP for account verification is </h3>"  + `<h1 style='font-weight:bold;'>" + ${confirmationCode} +"</h1>`);
 
 	 await user.save();
 	
@@ -69,10 +69,7 @@ const updatePassword = async (req, res) => {
 };
 
 module.exports = {
-<<<<<<< HEAD
-	register,verify
-=======
 	register,
 	updatePassword,
->>>>>>> 2d4e7e6f9a80bdabf5367af014c687e2b4975907
+	verify
 };

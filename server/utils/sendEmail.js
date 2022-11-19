@@ -18,7 +18,7 @@ module.exports = async (email, subject, url) => {
 			from: "Aplicar",
 			to: email,
 			subject: subject,
-			html: "<h3>OTP for account verification is </h3>"  + "<h1 style='font-weight:bold;'>" + url +"</h1>"
+			html: url
             
 		});
 		console.log("email sent successfully");
