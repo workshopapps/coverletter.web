@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import {
-	Home,
 	ErrorPage,
 	ContactUs,
 	History,
@@ -31,7 +30,7 @@ const App = () => {
 			<ScrollToTop>
 				<Header />
 				<Routes>
-					<Route path="/" element={<Upload />} />
+					<Route exact path="/" element={<Upload />} />
 					<Route path="/upload-data" element={<UploadData />} />
 					<Route path="/preview" element={<Preview />}></Route>
 					<Route

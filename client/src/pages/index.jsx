@@ -1,4 +1,3 @@
-import Home from "./Home";
 import History from "./History";
 import ErrorPage from "./ErrorPage";
 import ContactUs from "./ContactUs";
@@ -19,7 +18,6 @@ import UploadData from "./uploadData/UploadData";
 import Documentation from "./Documentation";
 
 export {
-	Home,
 	History,
 	ErrorPage,
 	ContactUs,
