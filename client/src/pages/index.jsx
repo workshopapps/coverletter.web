@@ -5,5 +5,21 @@ import ContactUs from "./ContactUs";
 import Faq from "./Faq";
 import SeeAllHistory from "./SeeAllHistory";
 import Career from "./Career";
+import Pricing from "./Pricing";
+import Blog from "./Blog";
+import SingleblogPage from "./SingleblogPage";
+import Features from "./Features";
 
-export { Home, History, ErrorPage, ContactUs, Faq, SeeAllHistory, Career };
+export {
+	Home,
+	History,
+	ErrorPage,
+	ContactUs,
+	Faq,
+	SeeAllHistory,
+	Career,
+	SingleblogPage,
+	Blog,
+	Pricing,
+	Features
+};
