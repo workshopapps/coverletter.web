@@ -7,7 +7,7 @@ function PasswordModal({ setShowPassModal }) {
     // const [confirmOldPassword, setConfirmOldPassword] = useState('')
     const [confirmNewPassword, setConfirmNewPassword] = useState('')
     const [emptyError, setEmptyError] = useState(false)
-    const [unMatch, setUnMatch] = useState(true)
+    const [unMatch, setUnMatch] = useState(false)
 
 
 
@@ -15,17 +15,22 @@ function PasswordModal({ setShowPassModal }) {
     const [isValid, setIsValid] = useState(false);
 
 
+
+
+
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (oldPassword.trim().length === 0 || newPassword.trim().length) {
+        if (oldPassword.trim().length === 0 || newPassword.trim().length === 0) {
             setIsValid(false);
             setEmptyError(true);
             setUnMatch(true);
-
             console.log("EMPTY EMRROR")
 
-            
+
 
         } else if (newPassword !== confirmNewPassword) {
             setIsValid(false);
@@ -36,12 +41,15 @@ function PasswordModal({ setShowPassModal }) {
             return
         } else {
             setIsValid(true)
+            setUnMatch(false);
             setEmptyError(false)
+
+            console.log("GBAYII")
 
             return
         }
 
-        
+
 
     }
 
@@ -73,25 +81,22 @@ function PasswordModal({ setShowPassModal }) {
                                 <h1 className='font-bold text-[1.5em] pb-2 text-center'>Change Password</h1>
                             </div>
 
-                            <form action="" onSubmit={handleSubmit} className='z-50' >
+                            <form action="" onSubmit={handleSubmit}
+                                className='z-50 flex flex-col justify-center gap-4' >
                                 <div className='my-4 '>
                                     <label htmlFor="oldPassword" className='font-bold text-[#6D6D6D]'>Old Password</label>
                                     <div className='relative '>
                                         <PasswordLockIcon className='absolute top-4 left-4 ' />
-                                        <input type="password" className='focus:border-[#6D6D6D] w-full border rounded-lg my-2 px-12 py-2 ' id='oldPassword' placeholder='Enter Old Password' onChange={(e) => {
+                                        <input style={{
+                                            borderColor: emptyError ? 'red' : '' 
+                                        }} type="password" className='focus:border-[#6D6D6D] w-full border rounded-lg my-2 px-12 py-2 ' id='oldPassword' placeholder='Enter Old Password' onChange={(e) => {
                                             setOldPassword(e.target.value)
 
                                         }} />
+                                        { emptyError && <span className='text-errorMain'>New or Old Password cannot be Empty</span> }
                                     </div>
                                 </div>
 
-                                <div className='my-4 '>
-                                    <label htmlFor="confirmOldPassword" className='font-bold text-[#6D6D6D]'>Confirm Old Password</label>
-                                    <div className='relative '>
-                                        <PasswordLockIcon className='absolute top-4 left-4 ' />
-                                        <input type="password" className='focus:border-[#6D6D6D] w-full border rounded-lg my-2 px-12 py-2 ' id='confirmOldPassword' placeholder='Confirm Old Password' />
-                                    </div>
-                                </div>
 
 
 
@@ -99,11 +104,13 @@ function PasswordModal({ setShowPassModal }) {
                                     <label htmlFor="newPassword" className='font-bold text-[#6D6D6D]'>New Password</label>
                                     <div className='relative '>
                                         <PasswordLockIcon className='absolute top-4 left-4 ' />
-                                        <input type="password" className='focus:border-[#6D6D6D] w-full border rounded-lg my-2 px-12 py-2 ' id='newPassword' placeholder='Enter New Password'
-                                            onChange={(e) => {
-                                                setNewPassword(e.target.value)
+                                        <input style={{
+                                            borderColor: emptyError ? 'red' : '' 
+                                        }} type="password" className='focus:border-[#6D6D6D] w-full border rounded-lg my-2 px-12 py-2 ' id='oldPassword' placeholder='Enter New Password' onChange={(e) => {
+                                            setNewPassword(e.target.value)
 
-                                            }} />
+                                        }} />
+                                        { emptyError && <span className='text-errorMain'>New or Old Password cannot be Empty</span> }
                                     </div>
                                 </div>
 
@@ -111,16 +118,23 @@ function PasswordModal({ setShowPassModal }) {
                                     <label htmlFor="confirmNewPassword" className='font-bold text-[#6D6D6D]'>Confirm New Password</label>
                                     <div className='relative '>
                                         <PasswordLockIcon className='absolute top-4 left-4 ' />
-                                        <input type="password" className='focus:border-[#6D6D6D] w-full border rounded-lg my-2 px-12 py-2 ' id='confirmNewPassword' placeholder='Confirm New Password'
-                                            onChange={(e) => {
-                                                setConfirmNewPassword(e.target.value)
+                                        <input style={{
+                                            borderColor: emptyError ? 'red' : '' 
+                                        }} type="password" className='focus:border-[#6D6D6D] w-full border rounded-lg my-2 px-12 py-2 ' id='oldPassword' placeholder='Enter Old Password' onChange={(e) => {
+                                            setConfirmNewPassword(e.target.value)
 
-                                            }} />
+                                        }} />
+                                        { unMatch && <span className='text-errorMain'>New nad Old Password must be the same</span> }
                                     </div>
                                 </div>
 
                                 <div className='flex gap-6 justify-end'>
-                                    <button type='submit' className='bg-primaryMain px-8 py-4 rounded-lg text-white font-bold cursor-pointer'>Save</button>
+                                    <button style={{
+                                        backgroundColor: isValid ? '#0652DD' : '#0544B8' 
+                                    }} disabled={ isValid } type='submit' className='bg-primaryMain px-8 py-4 rounded-lg text-white font-bold cursor-pointer'>
+                                        Save
+                                    </button>
+
                                     <p className='border-2 border-primaryMain px-8 py-4 rounded-lg text-primaryMain font-bold cursor-pointer' onClick={() => {
                                         setShowPassModal(false)
                                     }}>Cancel</p>
