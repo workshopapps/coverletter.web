@@ -57,11 +57,11 @@ const Footer = () => {
 				<div className="flex sm:flex-row flex-col justify-between  sm:space-y-0 space-y-4">
 					<p>© 2022 Cover. All rights reserved.</p>
 					<Link to="/">Terms and Conditions</Link>
-					<Link to="/" className="sm:flex hidden">
+					<Link to="/privacy-policy" className="sm:flex hidden">
 						Privacy Policy
 					</Link>
 				</div>
-				<Link to="/" className="sm:hidden flex">
+				<Link to="/privacy-policy" className="sm:hidden flex">
 					Privacy Policy
 				</Link>
 			</div>
