@@ -1,3 +1,5 @@
 import Footer from "./Footer";
 import Header from "./Header";
-export { Header, Footer };
+import HistoryList from "./HistoryList";
+
+export { Header, Footer, HistoryList };
