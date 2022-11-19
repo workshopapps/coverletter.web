@@ -29,4 +29,5 @@ export {
 	Features,
 	Preview,
 	PgCoverLetter,
+    Career
 };
