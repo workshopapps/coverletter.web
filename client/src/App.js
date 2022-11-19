@@ -29,7 +29,6 @@ const App = () => {
 	return (
 		<Router>
 			<ScrollToTop>
-				{/* place nav bar here*/}
 				<Header />
 				<Routes>
 					<Route path="/" element={<Upload />} />
@@ -41,6 +40,7 @@ const App = () => {
 					></Route>
 					<Route path="/contactus" element={<ContactUs />} />
 					<Route path="/history" element={<History />} />
+					<Route path="/document" element={<Documentation />} />
 					<Route
 						path="/see-all-history"
 						element={<SeeAllHistory />}
@@ -52,7 +52,6 @@ const App = () => {
 					<Route path="/pricing" element={<Pricing />} />
 					<Route path="/career" element={<Career />} />
 					<Route path="blog" element={<Blog />} />
-					<Route path="/document" element={<Documentation />} />
 					<Route
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
@@ -64,7 +63,6 @@ const App = () => {
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
-				{/* place footer here */}
 			</ScrollToTop>
 		</Router>
 	);

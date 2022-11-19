@@ -4,7 +4,7 @@ const fs = require("fs");
 module.exports = async () => {
 	let options = { format: "A4" };
 	let file = {
-		url: "https://cute-pegasus-e10bba.netlify.app",
+		url: "https://remarkable-profiterole-835791.netlify.app/cover%20letter",
 	};
 	const pdfBuffer = await html_to_pdf.generatePdf(file, options);
 	console.log("PDF Buffer:-", pdfBuffer);

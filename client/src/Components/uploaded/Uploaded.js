@@ -3,22 +3,37 @@ import { useNavigate } from "react-router-dom";
 import success from '../sectionTwo/assets/success.svg';
 import first from '../sectionTwo/assets/first.svg';
 import { useGlobalContext } from '../../context/context';
+import axios from 'axios'
 
 
 function Uploaded() {
+    const [success, setSuccess] = useState(false);
+  const { file, setFile } = useGlobalContext()
     const Navigate = useNavigate();
     const clickHandler = () => {
+      
+    axios({
+      url: 'server_url/v1/upload',
+      method: "POST",
+      headers: {'Content-Type' : 'application/pdf'},
+      body: file
+    }).then(res=>{
+      console.log(res)
       Navigate("/upload-data");
-    };
-    const [fileSize, setFileSize] = useState("");
 
-    const { setFile, setFileName } = useGlobalContext
+    }).catch(err=>{
+      console.log(err)
+      alert("You imported the wrong file")
 
+    })
+
+  }
     const changeHandler = (e) => {
       setFile(e.target.files);
-      setFileName(e.target.files[0].name);
-      setFileSize(e.target.files[0].size);
+    
     };
+
+    
   return (
     <div>
         <main className='flex flex-col items-center justify-center'>
@@ -43,7 +58,7 @@ function Uploaded() {
                 type="file"
                 accept="application/pdf"
                 onChange={changeHandler}
-                className="upload_file absolute cursor-pointer  md:left-[55%] bottom-[12%] md:bottom-[25%] w-[60%] md:w-[40%] h-[8%] md-[10%] "
+                className="upload_file absolute cursor-pointer  md:left-[55%] left-[48%] bottom-[14%] md:bottom-[25%] w-[60%] md:w-[40%] h-[8%] md-[10%] "
                 id="upload_button"
                 
               />
@@ -51,6 +66,6 @@ function Uploaded() {
 
     </div>
   )
-}
 
+}
 export default Uploaded
