@@ -5,7 +5,7 @@ const {
 	editACovertLetter,
 	getAllConvertLettersByAUser,
 
-} = require("../controllers/getEditController");
+} = require("../controllers/templateController");
 
 const auth = require("../middleware/authentication");
 
