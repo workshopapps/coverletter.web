@@ -1,3 +1,4 @@
+import React,{useState} from 'react'
 import "./App.css";
 import {
 	Home,
@@ -20,15 +21,25 @@ import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TermsAndCondition from "./pages/TermsAndConditions";
+import Upload from "./pages/upload/Upload";
+import UploadData from "./pages/uploadData/UploadData";
+
+export const UserContext = React.createContext()
 
 const App = () => {
+	const [file,setFile]= useState()
+	const [fileName,setFileName]= useState('')
+	const Provider = UserContext.Provider
 	return (
+		<>
+		<Provider value= {{ file, setFile, fileName, setFileName }}>
 		<Router>
 			<ScrollToTop>
 				{/* place nav bar here*/}
 				<Header />
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Upload />} />
+					<Route path="/upload-data" element={<UploadData/>} />
 					<Route path="/preview" element={<Preview />}></Route>
 					<Route
 						path="/cover letter"
@@ -61,6 +72,8 @@ const App = () => {
 				{/* place footer here */}
 			</ScrollToTop>
 		</Router>
+		</Provider>
+		</>
 	);
 };
 
