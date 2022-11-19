@@ -24,8 +24,6 @@ const authRoutes = require("./routes/authRoutes");
 const resetRoutes = require("./routes/resetRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
-// database
-const connectDB = require("./db/connect");
 
 app.use(
 	"/cvg-documentation",
@@ -36,6 +34,7 @@ app.use(
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
+const textToPdf = require("./utils/textToPdf");
 
 app.use(bodyParser.json());
 app.use(helmet());
