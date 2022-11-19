@@ -28,6 +28,9 @@ export {
 	ProfilePage,
 	UploadCV,
 	Features,
+<<<<<<< HEAD
 	Preview,
 	PgCoverLetter,
+=======
+>>>>>>> ad9be1b801736a6af45a0c05fc8d33faf368c6fe
 };

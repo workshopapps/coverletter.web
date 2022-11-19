@@ -13,12 +13,20 @@ import {
 	Features,
 	ProfilePage,
 	UploadCV,
+<<<<<<< HEAD
 	Preview,
 	PgCoverLetter,
+=======
+>>>>>>> ad9be1b801736a6af45a0c05fc8d33faf368c6fe
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+<<<<<<< HEAD
+=======
+import Preview from "./pages/Preview";
+import PgCoverLetter from "./pages/PgCoverLetter";
+>>>>>>> ad9be1b801736a6af45a0c05fc8d33faf368c6fe
 
 const App = () => {
 	return (
@@ -43,6 +51,7 @@ const App = () => {
 					<Route path="/faq" element={<Faq />} />
 					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="/generate" element={<UploadCV />} />
+<<<<<<< HEAD
 					<Route path="/pricing" element={<Pricing />} />
 					<Route path="/career" element={<Career />} />
 					<Route path="blog" element={<Blog />} />
@@ -51,6 +60,9 @@ const App = () => {
 						element={<SingleblogPage />}
 					/>
 					<Route path="*" element={<ErrorPage />}></Route>
+=======
+					<Route path="*" element={<ErrorPage />} />
+>>>>>>> ad9be1b801736a6af45a0c05fc8d33faf368c6fe
 				</Routes>
 				<Footer />
 				{/* place footer here */}
