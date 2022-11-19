@@ -12,7 +12,7 @@ const SingleProduct = () => {
 	const { id, title, img, name, occupation, introTalk, textContents } = item;
 	return (
 		<main className="bg-background">
-			<section className="px-6 md:py-17 px-24" key={id}>
+			<section className="px-6 md:py-17 md:px-24" key={id}>
 				<div className="xxs:max-md: block md:grid grid-cols-2 gap-x-[25px] pt-[72px]">
 					<div>
 						<Link
