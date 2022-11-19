@@ -108,7 +108,7 @@ const Forum = () => {
                         <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5'>
                             <div className='flex gap-3 items-center relative'>
                                 <div>
-                                    <img className='rounded-full w-16' src={detail.img} alt={detail.name} />
+                                    <img className='rounded-full w-12 md:w-16 object-cover' src={detail.img} alt={detail.name} />
                                 </div>
                                 <div>
                                     <div className='capitalize text-base md:text-2xl font-semibold'>

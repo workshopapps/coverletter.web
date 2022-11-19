@@ -8,7 +8,7 @@ const Post = () => {
         </div>
         <div className='flex gap-3 items-center'>
             <div>
-                <img className='rounded-full w-16' src="../forum-images/reply/r7.png" alt="" />
+                <img className='rounded-full w-12 sm:w-16 object-cover' src="../forum-images/reply/r7.png" alt="" />
             </div>
             <div>
                 <div className='capitalize text-base md:text-2xl font-semibold'>

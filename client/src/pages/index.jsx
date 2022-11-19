@@ -11,7 +11,11 @@ import Career from "./Career";
 import Pricing from "./Pricing";
 import Blog from "./Blog";
 import SingleblogPage from "./SingleblogPage";
+import ProfilePage from "./ProfilePage";
+import UploadCV from "./UploadCV";
 import Features from "./Features";
+import Preview from "./Preview";
+import PgCoverLetter from "./PgCoverLetter";
 
 export {
 	Home,
@@ -24,5 +28,9 @@ export {
 	SingleblogPage,
 	Blog,
 	Pricing,
-	Features
+	ProfilePage,
+	UploadCV,
+	Features,
+	Preview,
+	PgCoverLetter,
 };

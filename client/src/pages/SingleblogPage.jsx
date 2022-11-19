@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { articles } from "../Utils/Articles/data";
-import ErrorPage from "./ErrorPage";
 import { Link } from "react-router-dom";
 import { ReactComponent as Arrow1 } from "../Assets/arrow1.svg";
 import { ReactComponent as Arrow2 } from "../Assets/arrow2.svg";
