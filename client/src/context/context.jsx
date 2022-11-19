@@ -5,6 +5,7 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [file,setFile]= useState('')
 
 	const openSidebar = () => {
 		setIsSidebarOpen(true);

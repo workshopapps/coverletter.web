@@ -4,8 +4,7 @@ const router = express.Router();
 const {
 	editACovertLetter,
 	getAllConvertLettersByAUser,
-
-} = require("../controllers/getEditController");
+} = require("../controllers/templateController");
 
 const auth = require("../middleware/authentication");
 
