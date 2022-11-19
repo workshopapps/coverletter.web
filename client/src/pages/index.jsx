@@ -13,9 +13,10 @@ import UploadCV from "./UploadCV";
 import Features from "./Features";
 import Preview from "./Preview";
 import PgCoverLetter from "./PgCoverLetter";
-import Upload from './upload/Upload';
-import UploadData from './uploadData/UploadData';
-import TermsAndCondition from './TermsAndConditions'
+import TermsAndCondition from "./TermsAndConditions";
+import Upload from "./upload/Upload";
+import UploadData from "./uploadData/UploadData";
+import Documentation from "./Documentation";
 
 export {
 	Home,
@@ -33,7 +34,8 @@ export {
 	Features,
 	Preview,
 	PgCoverLetter,
+	TermsAndCondition,
 	Upload,
 	UploadData,
-	TermsAndCondition
+	Documentation,
 };
