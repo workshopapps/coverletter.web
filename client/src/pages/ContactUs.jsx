@@ -161,14 +161,12 @@ const ContactUs = () => {
 			errorObject = { ...errorObject, message: requiredErrorText };
 		}
 		if (
-			!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
-				formData.email
-			)
+			!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)
 		) {
 			errorObject = { ...errorObject, email: invalidFormatText };
 		}
 		if (
-			!/^(?:(?:(?:\+?234(?:\h1)?|01)\h*)?(?:\(\d{3}\)|\d{3})|\d{4})(?:\W*\d{3})?\W*\d{4}$/.test(
+			!/^(?:(?:(?:\+?234(?:h1)?|01)h*)?(?:\(\d{3}\)|\d{3})|\d{4})(?:\W*\d{3})?\W*\d{4}$/.test(
 				formData.phone
 			)
 		) {
