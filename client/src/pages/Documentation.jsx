@@ -60,11 +60,11 @@ export default function Documentation() {
 					</div>
 				</div>
 				<div>
-					<h1 className="text-5xl pt-20 pb-10 text-center font-bold mb-4 max-[698px]:text-3xl max-[549px]:text-base max-[549px]:m-auto">
+					<h1 className="text-5xl pt-20 pb-10 text-center font-bold mb-4 max-[698px]:text-3xl max-[549px]:text-base max-[549px]:m-auto ">
 						Personalize the Cover Letter(Step 3)
 					</h1>
-					<div className="grid grid-cols-2 bg-primaryLightest mx-40 max-[457px]:mx-10 mt-5 max-[685px]:grid-cols-1">
-						<div className="px-10 py-20 max-[682px]:py-4 max-[685px]:mt-4">
+					<div className="grid grid-cols-2 bg-primaryLightest mx-40 max-[457px]:mx-10 mt-5 max-[685px]:grid-cols-1 max-[457px]:pb-10">
+						<div className="px-10 py-20 max-[682px]:py-4 max-[685px]:mt-8">
 							<img src={inputImage} alt="" className="w-50" />
 						</div>
 						<div className="m-auto">
@@ -76,7 +76,7 @@ export default function Documentation() {
 						</div>
 					</div>
 				</div>
-				<div className="bg-primaryLightest mt-40 mx-40 max-[457px]:mx-0 px-4 pb-4">
+				<div className="bg-primaryLightest mt-40 mx-40 max-[457px]:mx-0 px-4 pb-4 max-[457px]:pb-10">
 					<h1 className="text-5xl pt-12 text-center font-bold mb-4 max-[698px]:text-2xl max-[889px]:text-2xl max-[549px]:text-base max-[549px]:m-auto">
 						Preview the Cover Letter(Step 4)
 					</h1>
@@ -146,9 +146,9 @@ export default function Documentation() {
 					<h1 className="text-4xl pt-12 text-center font-bold mb-4 max-[698px]:text-2xl">
 						AUTHENTICATION PROCESS
 					</h1>
-					<div className="bg-grey200 mx-10 max-[457px]:mx-0 max-[889px]:py-10">
+					<div className="bg-grey200 mx-10 max-[457px]:mx-0 max-[889px]:py-1">
 						<div className="grid grid-cols-2 my-20 pb-20  max-[457px]:pb-0 max-[889px]:grid-cols-1">
-							<div className="mt-20 max-[889px]:px-4">
+							<div className="mt-20 max-[889px]:px-4 max-[889px]:mt-0">
 								<p className="text-primaryMain text-left mx-10  max-[549px]:text-base max-[549px]:m-auto">
 									Step 1: Create a New Account
 								</p>
@@ -286,7 +286,7 @@ export default function Documentation() {
 				</div>
 				<div className="bg-primaryLightest pb-10  max-[889px]:px-10 mx-40 max-[889px]:p-0 max-[680px]:mt-4 max-[457px]:mx-0 max-[889px]:py-10">
 					<div className="grid grid-cols-2 max-[889px]:grid-cols-1 max-[889px]:gap-4">
-						<div className=" pt-40  [889px]:px-10  [889px]:pt-10 max-[596px]:pt-2 max-[680px]:p-2">
+						<div className=" pt-4  [889px]:px-10  [889px]:pt-10 max-[596px]:pt-2 max-[680px]:p-2">
 							<img
 								src={history}
 								alt=""
