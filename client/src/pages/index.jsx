@@ -13,6 +13,7 @@ import UploadCV from "./UploadCV";
 import Features from "./Features";
 import Preview from "./Preview";
 import PgCoverLetter from "./PgCoverLetter";
+import TermsAndCondition from "./TermsAndConditions";
 
 export {
 	Home,
@@ -30,4 +31,5 @@ export {
 	Features,
 	Preview,
 	PgCoverLetter,
+	TermsAndCondition,
 };
