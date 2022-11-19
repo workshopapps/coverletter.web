@@ -33,6 +33,7 @@ const verify = async(req,res) => {
 	
 	if(user){
 	   user.status = "Active"
+	   user.confirmationCode = ""  
 	    await user.save()
 		res.status(StatusCodes.OK).json('User has been successfully verified')
 	}else{
