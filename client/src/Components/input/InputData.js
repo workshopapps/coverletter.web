@@ -5,7 +5,7 @@ import { useGlobalContext } from "../../context/context";
 import axios from "axios";
 
 function InputData() {
-	const { file, setCoverLetter} = useGlobalContext();
+	const { file, setCoverLetter } = useGlobalContext();
 
 	const [companyName, setCompanyName] = useState("");
 	const [companyAddress, setCompanyNameAddress] = useState("");
@@ -17,15 +17,12 @@ function InputData() {
 	const [name, setName] = useState("");
 	const [department, setDepartment] = useState("");
 	const [error, setError] = useState(false);
-	
-	
+
 	// const [show, setShow] = useState(true)
 
 	const Navigate = useNavigate();
 	const clickHandler = () => {
-
 		// Navigate("/");
-      
 	};
 
 	const continueHandler = () => {
@@ -78,41 +75,37 @@ function InputData() {
 			alert("Dude calm down, i have not linked the API");
 		}
 
-        let data = {
-            company_name: companyName,
-            company_address: companyAddress,
-            city: city,
-            country: country,
-            role: role,
-            years_of_exp: years,
-            recipient_name: name,
-            recipient_department: department
-        }
-        
+		let data = {
+			company_name: companyName,
+			company_address: companyAddress,
+			city: city,
+			country: country,
+			role: role,
+			years_of_exp: years,
+			recipient_name: name,
+			recipient_department: department,
+		};
 
-        var bodyForm = new FormData();
+		var bodyForm = new FormData();
 
-        bodyForm.append('data', data);
-        bodyForm.append('myFile', file)
+		bodyForm.append("data", data);
+		bodyForm.append("myFile", file);
 
-        axios({
+		axios({
 			method: "POST",
-            url: "server_url/v1/generate",
-            data: bodyForm,
-			headers: { "Content-Type": "multipart/form-data"},
-			
+			url: "http://localhost:5000/api/v1/generate",
+			data: bodyForm,
+			headers: { "Content-Type": "multipart/form-data" },
 		})
 			.then((res) => {
 				console.log(res);
-                setCoverLetter(res);
-                Navigate("/preview");
-                
+				setCoverLetter(res);
+				Navigate("/preview");
 			})
 			.catch((err) => {
 				console.log(err);
-                alert('Error processing your CV')
+				alert("Error processing your CV");
 			});
-	
 	};
 
 	return (
@@ -144,7 +137,6 @@ function InputData() {
 					encType="multipart/form-data"
 					onSubmit={submit}
 					className="form font-manrope grid w-[100%]  md:grid-cols-2 md:gap-20 gap-12 my-[80px] grid-cols-1 "
-                    
 				>
 					<div className="left">
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
