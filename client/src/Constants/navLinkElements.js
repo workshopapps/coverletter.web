@@ -3,6 +3,7 @@ const navLinkElements = [
 	{ name: "Pricing", url: "/pricing" },
 	{ name: "About us", url: "/faq" },
 	{ name: "Contact us", url: "/contactus" },
+	{ name: "Blog", url: "/blog" },
 ];
 
 export default navLinkElements;

@@ -13,12 +13,13 @@ import {
 	Features,
 	ProfilePage,
 	UploadCV,
+	Preview,
+	PgCoverLetter,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Preview from "./pages/Preview";
-import PgCoverLetter from "./pages/PgCoverLetter";
+import TermsAndCondition from "./pages/TermsAndConditions";
 
 const App = () => {
 	return (
@@ -43,7 +44,18 @@ const App = () => {
 					<Route path="/faq" element={<Faq />} />
 					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="/generate" element={<UploadCV />} />
-					<Route path="*" element={<ErrorPage />} />
+					<Route path="/pricing" element={<Pricing />} />
+					<Route path="/career" element={<Career />} />
+					<Route path="blog" element={<Blog />} />
+					<Route
+						path="/blogArticle/:id"
+						element={<SingleblogPage />}
+					/>
+					<Route
+						path="terms-and-conditions"
+						element={<TermsAndCondition />}
+					></Route>
+					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
 				{/* place footer here */}

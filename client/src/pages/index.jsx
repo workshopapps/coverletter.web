@@ -11,6 +11,8 @@ import SingleblogPage from "./SingleblogPage";
 import ProfilePage from "./ProfilePage";
 import UploadCV from "./UploadCV";
 import Features from "./Features";
+import Preview from "./Preview";
+import PgCoverLetter from "./PgCoverLetter";
 
 export {
 	Home,
@@ -26,4 +28,6 @@ export {
 	ProfilePage,
 	UploadCV,
 	Features,
+	Preview,
+	PgCoverLetter,
 };
