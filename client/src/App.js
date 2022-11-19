@@ -1,5 +1,11 @@
 import "./App.css";
-import { Home, ErrorPage, ContactUs, CustomerStories } from "./pages";
+import {
+	Home,
+	ErrorPage,
+	ContactUs,
+	CustomerStories,
+	SingleProduct,
+} from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -16,6 +22,11 @@ const App = () => {
 						path="/customerstories"
 						element={<CustomerStories />}
 					/>
+					<Route
+						path="/customerstories/:customerId"
+						element={<SingleProduct />}
+					/>
+
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
