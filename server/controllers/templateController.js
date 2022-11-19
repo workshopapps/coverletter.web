@@ -13,19 +13,22 @@ const { BadRequestError } = require("../errors");
  */
 
 const getAllConvertLettersByAUser = async (req, res) => {
-	const { id } = req.user;
-	const template = await Template.find({ user_id: id }).exec();
+	try {
+		const template = await Template.find({}).exec();
 
-	if (!template) {
-		return res.status(404).json({
-			error: "Template does not exist",
+		if (!template) {
+			return res.status(404).json({
+				error: "Template does not exist",
+			});
+		}
+
+		return res.status(200).json({
+			message: "Template requested successfully",
+			data: template,
 		});
+	} catch (err) {
+		return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ err });
 	}
-
-	return res.status(StatusCodes.OK).json({
-		message: "Template requested successfully",
-		data: template,
-	});
 };
 
 /**
@@ -38,23 +41,27 @@ const getAllConvertLettersByAUser = async (req, res) => {
  */
 
 const editACovertLetter = async (req, res) => {
-	const { id } = req.params;
-	const { template } = req.body;
-	const isTemplateIdValid = !!id || template;
+	try {
+		const { id } = req.params;
+		const { template } = req.body;
+		const isTemplateIdValid = !!id || template;
 
-	if (!isTemplateIdValid) {
-		throw new BadRequestError("Invalid template request");
+		if (!isTemplateIdValid) {
+			throw new BadRequestError("Invalid template request");
+		}
+
+		const editedTemplate = await Template.update(
+			{ _id: id },
+			{ $set: { template: template } }
+		).exec();
+
+		return res.status(200).json({
+			message: "Template edited successfully",
+			data: editedTemplate,
+		});
+	} catch (err) {
+		return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ err });
 	}
-
-	const editedTemplate = await Template.update(
-		{ _id: id },
-		{ $set: { template: template } }
-	).exec();
-
-	return res.status(StatusCodes.OK).json({
-		message: "Template edited successfully",
-		data: editedTemplate,
-	});
 };
 
 module.exports = {
