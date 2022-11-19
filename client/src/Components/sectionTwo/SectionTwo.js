@@ -11,7 +11,6 @@ function SectionTwo() {
 
   const changeHandler = (e) => {
     setFile(e.target.files);
-    setFileName(e.target.files[0].name);
     setFileSize(e.target.files[0].size);
   };
   const fileValidation = () => {
