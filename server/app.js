@@ -1,19 +1,36 @@
-require("dotenv").config();
 require("express-async-errors");
 const express = require("express");
-const routes = require("./routes/authRoutes");
+const swaggerUI = require("swagger-ui-express");
+const swaggerDocument = require("./utils/swaggerOptions.json");
 const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const bodyParser = require("body-parser");
+
+const port = process.env.PORT || 5001;
 const fileUpload = require("express-fileupload");
 const app = express();
+
+require("dotenv").config();
+
+app.use(
+	"/cvg-documentation",
+	swaggerUI.serve,
+	swaggerUI.setup(swaggerDocument)
+);
+
 //Routers
 const authRoutes = require("./routes/authRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
 // database
-const connectDB = require("./db/connect");
+//const connectDB = require("./db/connect");
+
+app.use(
+	"/cvg-documentation",
+	swaggerUI.serve,
+	swaggerUI.setup(swaggerDocument)
+);
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -43,9 +60,6 @@ app.get("/", (req, res) => {
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
-
-const port = process.env.PORT || 5000;
-
 const start = async () => {
 	try {
 		//connect DB

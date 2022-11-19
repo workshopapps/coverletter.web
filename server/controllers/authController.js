@@ -46,6 +46,10 @@ const login = async (req, res, next) => {
 		if (user && !(await user.comparePassword(password))) {
 			return next(new BadRequestError("Invalid email or password"));
 		}
+
+		if (user && !(await user.comparePassword(password))) {
+			return next(new BadRequestError("Invalid email or password"));
+		}
 		const token = user.createJWT();
 
 		res.status(201).json({
@@ -56,8 +60,36 @@ const login = async (req, res, next) => {
 		console.log(error);
 	}
 };
+const updatePassword = async (req, res) => {
+	//1) Get User from collection
+	const user = await User.findById(req.user.id).select("+password");
+	// 2) Get the body entry
+	const { oldPassword, password, confirmPassword } = req.body;
+	// 3) check if user old password == the password in DB
+	if (!(await user.comparePassword(oldPassword, user.password))) {
+		throw new BadRequestError("Please Enter Your Correct Old Password");
+	}
+	// 4) check if user  new password == old password
+	if (await user.comparePassword(password, user.password)) {
+		throw new BadRequestError(
+			"New Password Must be different from old password"
+		);
+	}
+	// 5) check if password & confirmPassword are the same
+	if (password != confirmPassword) {
+		throw new BadRequestError(
+			"Password and confirm Password must be the same."
+		);
+	}
+	//6) Update password
+	user.password = password;
+	const savedUser = await user.save();
+	const token = savedUser.createJWT();
+	res.status(StatusCodes.CREATED).json({ user: token });
+};
 
 module.exports = {
 	register,
 	login,
+	updatePassword,
 };
