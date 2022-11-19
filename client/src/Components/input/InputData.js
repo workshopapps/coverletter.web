@@ -1,11 +1,19 @@
 import React, {useState,useContext} from 'react'
 import {useNavigate} from 'react-router-dom'
 import back from './asesets/arrow.png';
+<<<<<<< HEAD
+=======
+import { useGlobalContext } from "../../context/context";
+>>>>>>> 53ce7521bf6eae3ff1df096e4533d6538276c510
 import axios from 'axios'
 import { useGlobalContext } from '../../context/context';
 
 function InputData() {
+<<<<<<< HEAD
     const { file, fileName } = useGlobalContext;
+=======
+    const { file, setFile } = useGlobalContext();
+>>>>>>> 53ce7521bf6eae3ff1df096e4533d6538276c510
 
     const [companyName, setCompanyName] = useState('')
     const [companyAddress, setCompanyNameAddress] = useState('')

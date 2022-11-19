@@ -1,12 +1,13 @@
 import React, { useState, useContext} from "react";
 import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../../context/context.jsx"
+import { useGlobalContext } from "../../context/context";
 import Uploaded from "../uploaded/Uploaded";
 import first from "./assets/first.svg";
 
 function SectionTwo() {
   const [fileSize, setFileSize] = useState( );
   const [show, setShow] = useState(false);
+  
   const { setFile } = useGlobalContext()
 
   const changeHandler = (e) => {
