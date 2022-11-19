@@ -37,6 +37,7 @@ app.use(
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", templateRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
+app.use("/api/v1", resetRoutes);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
