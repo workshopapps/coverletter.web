@@ -5,4 +5,3 @@ import ContactUs from "./ContactUs";
 import CustomerStories from "./CustomerStories";
 import SingleProduct from "./SingleProduct";
 export { Home, ErrorPage, ContactUs, CustomerStories, SingleProduct };
-

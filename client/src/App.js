@@ -15,7 +15,6 @@ const App = () => {
 	return (
 		<Router>
 			<ScrollToTop>
-				{/* place nav bar here*/}
 				<Header />
 				<Routes>
 					<Route path="/" element={<Upload />} />
@@ -37,10 +36,11 @@ const App = () => {
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
-				{/* place footer here */}
+				
 			</ScrollToTop>
 		</Router>
-	);
+		
+	)
 };
 
 export default App;
