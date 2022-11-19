@@ -57,6 +57,7 @@ app.use("/api/v1", cvToCoverLetterRoutes);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
+	textToPdf();
 });
 
 app.use(notFoundMiddleware);
