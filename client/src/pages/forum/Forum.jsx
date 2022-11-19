@@ -1,6 +1,5 @@
 import React from 'react'
 import {useParams, Link} from 'react-router-dom'
-import {FaChevronLeft, FaChevronRight} from 'react-icons/fa'
 
 const Forum = () => {
   let {name} = useParams()
@@ -148,7 +147,7 @@ const Forum = () => {
                 <p>1 - 8 of 45 Discussions</p>
             </div>
             <div className='flex gap-5'>
-                <button className='border-r border-[#bababa] px-5 btn text-disabledDisabled'><FaChevronLeft className='inline-block' /> <span className='align-middle'>Previous</span></button>
+                <button className='border-r border-[#bababa] px-5 btn text-disabledDisabled'> <span className='align-middle'>&lt;Previous</span></button>
 
                 <div className='hidden md:flex gap-8'>
                     <button className='btn btnSecondary'>1</button>
@@ -161,7 +160,7 @@ const Forum = () => {
                     <button className='btn text-primaryMain'>8</button>
                 </div>
 
-                <button className='px-5 border-l border-[#bababa] text-primaryMain btn'><span className='align-middle'>Next</span> <FaChevronRight className='inline-block' /></button>
+                <button className='px-5 border-l border-[#bababa] text-primaryMain btn'><span className='align-middle'>Next &gt;</span></button>
             </div>
         </div>
     </main>

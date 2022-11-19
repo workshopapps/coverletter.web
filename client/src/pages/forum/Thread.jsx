@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import {AiOutlineHeart, AiOutlineDown} from 'react-icons/ai'
 
 const response = [
     {
@@ -116,7 +115,7 @@ const Thread = () => {
                         <p className='text-sm md:text-base'>Views</p>
                     </div>
                     <div>
-                        <AiOutlineHeart />
+                        <img src="../forum-images/heart.png" alt="" />
                     </div>
                     <div>
                         <button className='btn btnPrimary h-12'>Reply</button>
@@ -127,7 +126,7 @@ const Thread = () => {
         </div>
         <div className='flex items-center mb-3'>
             <p>All replies ({newData.length})</p>
-            <AiOutlineDown />
+            <img src='../forum-images/arrow-down.png' alt='' />
         </div>
         {
             newData.map(data => {
@@ -154,7 +153,7 @@ const Thread = () => {
                             </div>
                             <div className='flex gap-8 justify-start items-center basis-1/5'>
                                 <div>
-                                    <AiOutlineHeart />
+                                    <faHeart />
                                 </div>
                                 <div>
                                     <button className='btn btnPrimary h-12'>Quote</button>
