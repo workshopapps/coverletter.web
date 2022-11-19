@@ -1,3 +1,4 @@
+require("dotenv").config({ path: "../config.env" });
 require("express-async-errors");
 const express = require("express");
 const routes = require("./routes/authRoutes");
@@ -6,7 +7,6 @@ const cors = require("cors");
 const xss = require("xss-clean");
 const bodyParser = require("body-parser");
 const app = express();
-require("dotenv").config();
 //Routers
 const authRoutes = require("./routes/authRoutes");
 const templateRoutes = require("./routes/templateRoutes");
