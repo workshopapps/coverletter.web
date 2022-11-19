@@ -7,13 +7,17 @@ const resetPassword = async (req, res, next) => {
 	const { password, email, confirmPassword } = req.body;
 
 	if (password !== confirmPassword) {
-		return next(new BadRequestError("password fields should be similar"));
+		const err = new Error("passwords must be similar");
+		err.statusCode = 404;
+		throw err;
 	}
 
 	const user = await User.findOne({ email: email });
 
 	if (!user) {
-		return next(new BadRequestError("User does not exists"));
+		const err = new Error("passwords must be similar");
+		err.statusCode = 404;
+		throw err;
 	}
 
 	const hashedPassword = bcrypt.hash(password, 10);
@@ -23,9 +27,8 @@ const resetPassword = async (req, res, next) => {
 		user.password,
 		(err, isMatch) => {
 			if (err) {
-				return next(
-					new BadRequestError(err, `OTP is invalid or expired`)
-				);
+				//err.statusCode = 404;
+				throw err;
 			}
 		}
 	);
@@ -44,11 +47,17 @@ const validateOTP = async (req, res, next) => {
 	const { otp, email } = req.body;
 	//console.log(otp);
 	const user = await User.findOne({ email });
-	if (!user) return next(new BadRequestError(`User not found`));
+	if (!user) {
+		const err = new Error("email not found in database");
+		err.statusCode = 404;
+		throw err;
+	}
 
 	const verifyOTP = await bcrypt.compare(otp, user.otp, (err, isMatch) => {
 		if (err) {
-			return next(new BadRequestError(`OTP is invalid or expired`));
+			const error = new Error("OTP is invalid or expired");
+			error.statusCode = 404;
+			throw error;
 		}
 		console.log(isMatch);
 		//return isMatch;
