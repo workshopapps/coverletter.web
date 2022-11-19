@@ -8,6 +8,9 @@ import Career from "./Career";
 import Pricing from "./Pricing";
 import Blog from "./Blog";
 import SingleblogPage from "./SingleblogPage";
+import Career from "./Career";
+import ProfilePage from "./ProfilePage"
+import UploadCV from "./UploadCV";
 import Features from "./Features";
 
 export {
@@ -20,6 +23,9 @@ export {
 	Career,
 	SingleblogPage,
 	Blog,
-	Pricing,
+	Career,
+  Pricing,
+  ProfilePage,
+   UploadCV,
 	Features
 };

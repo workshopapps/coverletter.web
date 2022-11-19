@@ -74,6 +74,7 @@ module.exports = {
 			grey600: "#353535",
 			grey700: "#282828",
 			grey800: "#101010",
+			white: "#FFFFFF"
 		},
 	},
 	plugins: [],
