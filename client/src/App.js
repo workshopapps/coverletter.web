@@ -20,6 +20,9 @@ import {
 	Upload,
 	UploadData,
 	Documentation,
+	Forum,
+	Thread,
+	Post
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -60,6 +63,9 @@ const App = () => {
 						path="terms-and-conditions"
 						element={<TermsAndCondition />}
 					></Route>
+					<Route path="/forum" element={<Forum />} />
+					<Route path="/forum/thread" element={<Thread />} />
+					<Route path="/forum/post" element={<Post />} />
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
