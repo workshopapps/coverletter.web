@@ -61,7 +61,7 @@
 				}
 			}
 		},
-		"/upload": {
+		"/api/v1/upload": {
 			"post": {
 				"summary": "Upload CV",
 				"description": "Uploads a user's CV",
@@ -97,7 +97,7 @@
 				}
 			}
 		},
-		"/generate": {
+		"/api/v1/generate": {
 			"post": {
 				"summary": "Generate Cover Letter",
 				"description": "Generates a Cover Letter from GPT3",
