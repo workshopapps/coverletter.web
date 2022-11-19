@@ -1,5 +1,6 @@
 import React from "react";
 import { items, testimonials } from "../Utils/data";
+import { Link } from "react-router-dom";
 const CustomerStories = () => {
 	return (
 		<main className="bg-background  ">
@@ -32,14 +33,18 @@ const CustomerStories = () => {
 								<h3 className="mt-[2.27px] xxs:max-xs:mb-[6.18px] font-semibold xxs:max-xs:w-[240px] xs:text-[18px] leading-[21.51px] md:max-lg:text-2xl md:mt-2 mb-4 md:leading-leading-8 lg:text-4xl">
 									{text}
 								</h3>
-								<p className="leading-[11px] text-grey800 xxs:max-xs:text-[9.17px] inline-flex justify-center items-center md:text-base leading-leading-4">
+
+								<Link
+									to={`/customerstories/${id}`}
+									className="leading-[11px] text-grey800 xxs:max-xs:text-[9.17px] inline-flex justify-center items-center md:text-base leading-leading-4"
+								>
 									{read}{" "}
 									<img
 										className="xxs:max-md:h-[12px] ml-[8px] md:w-6 h-6 ml-[14px]"
 										src={arrow}
 										alt=""
 									/>
-								</p>
+								</Link>
 							</div>
 						);
 					})}
@@ -68,12 +73,15 @@ const CustomerStories = () => {
 									<h3 className="xxs:max-sm:leading-[14.5px] mt-[5px] mb-0 text-[12px] font-bold md:mt-2 mb-4 md:text-[24px] leading-[36px]">
 										{text}
 									</h3>
-									<p className="text-[12px] leading-[16px] inline-flex justify-center items-center">
+									<Link
+										to={`/customerstories/${id}`}
+										className="text-[12px] leading-[16px] inline-flex justify-center items-center"
+									>
 										{read}{" "}
 										<span className="w-[18px] h-[18px] ml-3">
 											<img src={arrow} alt="" />
 										</span>
-									</p>
+									</Link>
 								</div>
 							);
 						})}

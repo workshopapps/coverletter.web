@@ -2,6 +2,7 @@ import History from "./History";
 import ErrorPage from "./ErrorPage";
 import ContactUs from "./ContactUs";
 import CustomerStories from "./CustomerStories";
+import SingleProduct from "./SingleProduct";
 import Faq from "./Faq";
 import SeeAllHistory from "./SeeAllHistory";
 import Career from "./Career";
@@ -50,4 +51,5 @@ export {
 	ForgotPassword,
 	ResetPassword,
 	CustomerStories,
+	SingleProduct,
 };

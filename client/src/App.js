@@ -26,6 +26,7 @@ import {
 	ResetPassword,
 	EmailOTP,
 	CustomerStories,
+	SingleProduct,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -79,6 +80,11 @@ const App = () => {
 						path="/customerstories"
 						element={<CustomerStories />}
 					/>
+					<Route
+						path="/customerstories/:customerId"
+						element={<SingleProduct />}
+					/>
+
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
