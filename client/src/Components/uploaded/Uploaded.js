@@ -58,7 +58,7 @@ function Uploaded() {
                 type="file"
                 accept="application/pdf"
                 onChange={changeHandler}
-                className="upload_file absolute cursor-pointer  md:left-[55%] left-[48%] bottom-[14%] md:bottom-[25%] w-[60%] md:w-[40%] h-[8%] md-[10%] "
+                className="upload_file absolute cursor-pointer  md:left-[55%] left-[20%] bottom-[20%] md:bottom-[25%] w-[60%] md:w-[40%] h-[8%] md-[10%] "
                 id="upload_button"
                 
               />

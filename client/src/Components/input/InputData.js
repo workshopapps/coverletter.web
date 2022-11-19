@@ -24,7 +24,7 @@ function InputData() {
 	const Navigate = useNavigate();
 	const clickHandler = () => {
 
-		// Navigate("/");
+		Navigate("/");
       
 	};
 
@@ -160,13 +160,13 @@ function InputData() {
 								value={companyName}
 								id="companyName"
 							/>
-							{error && companyName <= 0 ? (
+							{error && companyName <= 0 ? 
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
 									Company's Name is required
 								</p>
-							) : (
+							 : 
 								""
-							)}
+							}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
 							<label className="my-[3px] text-textBody text-[18px]">
