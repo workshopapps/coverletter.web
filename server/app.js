@@ -24,8 +24,6 @@ app.use(
 const authRoutes = require("./routes/authRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
-// // database
-// const connectDB = require("./db/connect");
 
 app.use(
 	"/cvg-documentation",
