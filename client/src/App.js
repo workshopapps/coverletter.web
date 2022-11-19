@@ -15,11 +15,11 @@ import {
 	UploadCV,
 	Preview,
 	PgCoverLetter,
+	TermsAndCondition,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TermsAndCondition from "./pages/TermsAndConditions";
 
 const App = () => {
 	return (
