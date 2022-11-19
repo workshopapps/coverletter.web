@@ -41,6 +41,37 @@ const verify = async(req,res) => {
 	}
 }
 
+const login = async (req, res, next) => {
+	try {
+		const { email, password } = req.body;
+
+		if (!email || !password) {
+			return next(
+				new BadRequestError("Please provide a valid email and password")
+			);
+		}
+		const user = await User.findOne({ email });
+		if (!user) {
+			return next(new BadRequestError("Invalid email or password"));
+		}
+
+		if (user && !(await user.comparePassword(password))) {
+			return next(new BadRequestError("Invalid email or password"));
+		}
+
+		if (user && !(await user.comparePassword(password))) {
+			return next(new BadRequestError("Invalid email or password"));
+		}
+		const token = user.createJWT();
+
+		res.status(201).json({
+			status: "success",
+			token,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
 const updatePassword = async (req, res) => {
 	//1) Get User from collection
 	const user = await User.findById(req.user.id).select("+password");
@@ -71,6 +102,7 @@ const updatePassword = async (req, res) => {
 
 module.exports = {
 	register,
+	login,
 	updatePassword,
 	verify
 };
