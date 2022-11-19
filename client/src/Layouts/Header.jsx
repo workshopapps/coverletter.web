@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 const Header = () => {
 	return (
 		<div className="flex items-center justify-between py-5 px-5 md:px-10 xl:px-15">
-			<img src={Logo} alt="" />
+			<Link to="/">
+				<img src={Logo} alt="" />
+			</Link>
 			<ul className="space-x-6 hidden lg:block">
 				{navLinkElements.map((item) => (
 					<Link

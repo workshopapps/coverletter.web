@@ -13,13 +13,12 @@ import {
 	Features,
 	ProfilePage,
 	UploadCV,
+	Preview,
+	PgCoverLetter,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-<<<<<<< HEAD
-import TermsAndCondition from "./pages/TermsAndConditions";
-=======
 import Preview from "./pages/Preview";
 import PgCoverLetter from "./pages/PgCoverLetter";
 
@@ -57,7 +56,6 @@ const App = () => {
 					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="/generate" element={<UploadCV />} />
 					<Route path="*" element={<ErrorPage />} />
->>>>>>> dev
 				</Routes>
 				<Footer />
 				{/* place footer here */}
