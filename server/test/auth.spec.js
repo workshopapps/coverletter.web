@@ -39,7 +39,7 @@ describe("Auth", () => {
 		expect(response.body).toHaveProperty("Email already exists.");
 	});
 
-	it("should signup a user", async () => {
+	it("should login a user", async () => {
 		const response = await supertest(app)
 			.post("/api/v1/auth/login")
 			.set("content-type", "application/json")
@@ -65,7 +65,7 @@ describe("Auth", () => {
 		);
 	});
 
-	it("should verify a user", async () => {
+	it("error verifying a user", async () => {
 		const response = await supertest(app).post("/api/v1/auth/verify").send({
 			otp: "1234",
 		});
