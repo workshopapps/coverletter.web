@@ -27,7 +27,7 @@ const App = () => {
 				{/* place nav bar here*/}
 				<Header />
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route exact path="/" element={<Home />} />
 					<Route path="/preview" element={<Preview />}></Route>
 					<Route
 						path="/cover letter"
