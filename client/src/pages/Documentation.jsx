@@ -64,7 +64,7 @@ export default function Documentation() {
 						Personalize the Cover Letter(Step 3)
 					</h1>
 					<div className="grid grid-cols-2 bg-primaryLightest mx-40 max-[457px]:mx-10 mt-5 max-[685px]:grid-cols-1">
-						<div className="px-10 py-20 max-[682px]:py-4">
+						<div className="px-10 py-20 max-[682px]:py-4 max-[685px]:mt-4">
 							<img src={inputImage} alt="" className="w-50" />
 						</div>
 						<div className="m-auto">
@@ -76,7 +76,7 @@ export default function Documentation() {
 						</div>
 					</div>
 				</div>
-				<div className="bg-primaryLightest mt-40 mx-40 max-[457px]:mx-0">
+				<div className="bg-primaryLightest mt-40 mx-40 max-[457px]:mx-0 px-4 pb-4">
 					<h1 className="text-5xl pt-12 text-center font-bold mb-4 max-[698px]:text-2xl max-[889px]:text-2xl max-[549px]:text-base max-[549px]:m-auto">
 						Preview the Cover Letter(Step 4)
 					</h1>
@@ -117,7 +117,7 @@ export default function Documentation() {
 				</div>
 				<div className="bg-primaryLightest mx-40 max-[457px]:mx-0">
 					<h1 className="text-5xl pt-12 text-center font-bold pb-20 max-[698px]:text-2xl max-[889px]:pb-0 max-[889px]:text-2xl max-[549px]:text-base max-[549px]:m-auto max-[549px]:pb-0">
-						Save to profile(Step 5)
+						Save to profile(Step 6)
 					</h1>
 					<div className="grid grid-cols-2 py-32 max-[889px]:grid-cols-1 max-[549px]:py-8">
 						<div className="m-auto">
@@ -146,21 +146,21 @@ export default function Documentation() {
 					<h1 className="text-4xl pt-12 text-center font-bold mb-4 max-[698px]:text-2xl">
 						AUTHENTICATION PROCESS
 					</h1>
-					<div className="bg-grey200 mx-10 max-[457px]:mx-0">
+					<div className="bg-grey200 mx-10 max-[457px]:mx-0 max-[889px]:py-10">
 						<div className="grid grid-cols-2 my-20 pb-20  max-[457px]:pb-0 max-[889px]:grid-cols-1">
 							<div className="mt-20 max-[889px]:px-4">
-								<p className="text-primaryMain text-left mx-10 text-3xl max-[549px]:text-base max-[549px]:m-auto">
+								<p className="text-primaryMain text-left mx-10  max-[549px]:text-base max-[549px]:m-auto">
 									Step 1: Create a New Account
 								</p>
-								<p className="font-bold leading-loose text-left ml-10 text-3xl max-[549px]:text-sm max-[549px]:m-auto">
+								<p className="font-bold leading-loose text-left ml-10  max-[549px]:text-sm max-[549px]:m-auto">
 									Click on the Register button to create an
 									account.
 								</p>
-								<p className="font-bold leading-loose text-left ml-10 text-3xl max-[549px]:text-sm max-[549px]:m-auto">
+								<p className="font-bold leading-loose text-left ml-10  max-[549px]:text-sm max-[549px]:m-auto">
 									Fill in your name and email address and
 									Create a new Password.
 								</p>
-								<p className="font-bold leading-loose text-left ml-10 text-3xl max-[549px]:text-sm max-[549px]:m-auto">
+								<p className="font-bold leading-loose text-left ml-10  max-[549px]:text-sm max-[549px]:m-auto">
 									Create your password with a combination of
 									letters, numbers, and symbols to make a
 									strong password. Click on the Signup button
@@ -187,23 +187,23 @@ export default function Documentation() {
 									verify button ti continue.
 								</p>
 							</div>
-							<div className="max-[889px]:text-center ">
+							<div className="max-[889px]:text-center">
 								<img
 									src={emailVerification}
 									alt=""
-									className="w-2/4 my-4  max-[889px]:w-2/3  max-[889px]:m-auto max-[889px]:pb-2"
+									className="w-2/3 my-4  max-[889px]:w-2/3  max-[889px]:m-auto max-[889px]:pb-2"
 								/>
 
 								<img
 									src={verification}
 									alt=""
-									className="w-2/4 my-4 max-[889px]:w-2/3  max-[889px]:m-auto max-[889px]:pb-2"
+									className="w-2/3 my-4 max-[889px]:w-2/3  max-[889px]:m-auto max-[889px]:pb-2"
 								/>
 
 								<img
 									src={confirm}
 									alt=""
-									className="w-2/4 my-4 max-[889px]:w-2/3  max-[889px]:m-auto max-[889px]:pb-2"
+									className="w-2/3 my-4 max-[889px]:w-2/3  max-[889px]:m-auto max-[889px]:pb-2"
 								/>
 							</div>
 						</div>
@@ -225,20 +225,20 @@ export default function Documentation() {
 						</div>
 						<div className="grid grid-cols-2 p-20 max-[910px]:grid-cols-1 max-[457px]:p-4 max-[457px]:pt-10">
 							<div className="m-auto">
-								<p className="text-primaryMain text-left mx-10 text-3xl max-[549px]:text-base max-[549px]:m-auto ">
+								<p className="text-primaryMain text-left mx-10  max-[549px]:text-base max-[549px]:m-auto ">
 									Step 3: Log-in
 								</p>
-								<p className="font-bold leading-loose text-left ml-10 text-3xl max-[549px]:text-sm max-[549px]:m-auto">
+								<p className="font-bold leading-loose text-left ml-10  max-[549px]:text-sm max-[549px]:m-auto">
 									After successful verification, you will be
 									redirected to the login page. Log into your
 									account with your email address and
 									generated password. Click on the log-in
 									button
 								</p>
-								<p className="text-primaryMain text-left mx-10 text-3xl max-[549px]:text-base max-[549px]:m-auto">
+								<p className="text-primaryMain text-left mx-10  max-[549px]:text-base max-[549px]:m-auto">
 									Step 4: Home page
 								</p>
-								<p className="font-bold leading-loose text-left ml-10 text-3xl max-[549px]:text-base max-[549px]:m-auto ">
+								<p className="font-bold leading-loose text-left ml-10  max-[549px]:text-base max-[549px]:m-auto ">
 									After successful Sign-in, your dashboard is
 									opened.{" "}
 								</p>
@@ -256,7 +256,7 @@ export default function Documentation() {
 
 				<div className="pt-20">
 					<div className="max-[889px]">
-						<Button className="btn btnLong btnPrimary  md:block ml-10 max-[889px]:my-10 max-[889px]:text-center max-[457px]:btnShort max-[457px]:ml-32">
+						<Button className="btn mb-4 btnLong btnPrimary  md:block ml-10 max-[889px]:my-10 max-[889px]:text-center max-[457px]:btnShort max-[457px]:ml-32">
 							<p className="border-b-2 ">Extra Features</p>
 						</Button>
 					</div>
@@ -284,13 +284,13 @@ export default function Documentation() {
 						</div>
 					</div>
 				</div>
-				<div className="bg-primaryLightest pb-10  max-[889px]:px-10 mx-40 max-[889px]:p-0 max-[680px]:mt-4 max-[457px]:mx-0">
+				<div className="bg-primaryLightest pb-10  max-[889px]:px-10 mx-40 max-[889px]:p-0 max-[680px]:mt-4 max-[457px]:mx-0 max-[889px]:py-10">
 					<div className="grid grid-cols-2 max-[889px]:grid-cols-1 max-[889px]:gap-4">
 						<div className=" pt-40  [889px]:px-10  [889px]:pt-10 max-[596px]:pt-2 max-[680px]:p-2">
 							<img
 								src={history}
 								alt=""
-								className="max-[596px]:w-full"
+								className=" w-2/3 ml-20 max-[596px]:w-full max-[695px]:m-auto"
 							/>
 						</div>
 
