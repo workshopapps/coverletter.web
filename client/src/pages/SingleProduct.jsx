@@ -6,26 +6,14 @@ const SingleProduct = () => {
 	const item = contents.find((item) => {
 		return item.id === Number(customerId);
 	});
-	const {
-		id,
-		title,
-		img,
-		talk,
-		position,
-		introTalk,
-		challengeTalk,
-		reject,
-		img2,
-		outcome,
-		solutionTalk,
-	} = item;
+	const { id, title, img, talk, position, introTalk, textContents } = item;
 	return (
 		<main className="bg-background">
 			<section className="py-17 px-24" key={id}>
 				<Link to="/customerstories">Customer Stories</Link>
 				<div className="md:flex  gap-x-[25px]">
 					<div>
-						<h3 className="md:text-[53px] w-[503px]">{title}</h3>
+						<h3 className="md:text-[53px]">{title}</h3>
 						<p>
 							Talking with <span>{talk}</span> ,{position}
 						</p>
@@ -37,36 +25,31 @@ const SingleProduct = () => {
 					<p>{introTalk}</p>
 				</div>
 				<div>
-					<h3>Challenge</h3>
-					<p>{challengeTalk}</p>
-				</div>
-				<div>
-					<p>{reject}</p>
-					<div>
-						<img src={img2} alt="" />
-						<div>
-							<p>{talk}</p>
-							<p>{position}</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<h3>Solution</h3>
-					<p>{solutionTalk}</p>
-				</div>
-				<div>
-					<p>{reject}</p>
-					<div>
-						<img src={img2} alt="" />
-						<div>
-							<p>{talk}</p>
-							<p>{position}</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<h3>Outcome</h3>
-					<p>{outcome}</p>
+					{textContents.map((textContent) => {
+						const {
+							id,
+							title,
+							challengeTalk,
+							reject,
+							img2,
+							name,
+							occupation,
+						} = textContent;
+						return (
+							<div key={id}>
+								<h3>{title}</h3>
+								<p>{challengeTalk}</p>
+								<p>{reject}</p>
+								<div>
+									<img src={img2} alt="" />
+									<div>
+										<p>{name}</p>
+										<p>{occupation}</p>
+									</div>
+								</div>
+							</div>
+						);
+					})}
 				</div>
 			</section>
 		</main>
