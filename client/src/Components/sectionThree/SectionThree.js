@@ -1,12 +1,11 @@
-import React,{useContext} from 'react'
-import {UserContext} from '../../App'
+import React from 'react'
 import circle from './assets/circle.svg'
 import scissor from './assets/scissor.svg'
 import star from './assets/star.svg'
 import pen from './assets/magicpen.svg'
 
 function SectionThree() {
-    const {file, setFile, fileName, setFileName} = useContext(UserContext)
+
   return (
         <div className="div  md:px-[96px]  mt-10 mb-2">
            <main  className='  rounded-lg py-7 pb-[96px] relative bg-[#CDDCF8] '>

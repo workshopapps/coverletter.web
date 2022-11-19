@@ -1,8 +1,9 @@
-import React,{useState,useContext} from 'react'
+import React,{useState} from 'react'
 import { useNavigate } from "react-router-dom";
 import success from '../sectionTwo/assets/success.svg';
 import first from '../sectionTwo/assets/first.svg';
-import { UserContext } from "../../App";
+import { useGlobalContext } from '../../context/context';
+
 
 function Uploaded() {
     const Navigate = useNavigate();
@@ -11,7 +12,7 @@ function Uploaded() {
     };
     const [fileSize, setFileSize] = useState("");
 
-    const { file, setFile, fileName, setFileName } = useContext(UserContext);
+    const { setFile, setFileName } = useGlobalContext
 
     const changeHandler = (e) => {
       setFile(e.target.files);

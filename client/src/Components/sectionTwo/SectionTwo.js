@@ -1,17 +1,16 @@
 import React, { useState, useContext} from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../App";
+import { useGlobalContext } from "../../context/context.jsx"
 import Uploaded from "../uploaded/Uploaded";
 import first from "./assets/first.svg";
 
 function SectionTwo() {
-  const [fileSize, setFileSize] = useState("");
+  const [fileSize, setFileSize] = useState( );
   const [show, setShow] = useState(false);
-  const { file, setFile, fileName, setFileName } = useContext(UserContext);
+  const { setFile } = useGlobalContext()
 
   const changeHandler = (e) => {
     setFile(e.target.files);
-    setFileName(e.target.files[0].name);
     setFileSize(e.target.files[0].size);
   };
   const fileValidation = () => {
@@ -19,6 +18,7 @@ function SectionTwo() {
       <h2 className="text-rose-600 font-semibold text-[13px]">
         The file too large. Please Upload a file with maximum of 5mb
       </h2>
+    
     );
   };
 
@@ -36,6 +36,9 @@ function SectionTwo() {
             Maximum file size is 5MB, and you can only upload a maximum of 1
             file per upload session
           </p>
+          {
+            console.log(fileSize)
+          }
         </div>
         <div
           className={`right md:w-[540px] h-[443px] w-[100%] border-2 flex flex-col px-[8px] justify-center items-center md:ml-[3.5em] ${
@@ -51,7 +54,7 @@ function SectionTwo() {
               />
             )}
             {fileSize > 0 ? null : (
-              <form method="post" name="myFile" action="/upload" encType="multipart/form-data">
+              
               <input
                 style={{ opacity: "0" }}
                 type="file"
@@ -61,7 +64,7 @@ function SectionTwo() {
                 id="upload_button"
                 
               />
-              </form>
+              
             )}
 
 
