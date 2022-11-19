@@ -24,7 +24,7 @@ jobs:
       env:
         FORCE_COLOR: 0
       with:
-        node-version: $
+        node-version: $ 17.4.0
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
