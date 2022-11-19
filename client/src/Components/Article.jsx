@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 const Article = ({ image, id, title, text, time }) => {
 	return (
 		<div className="bg-backgroundWhite">
