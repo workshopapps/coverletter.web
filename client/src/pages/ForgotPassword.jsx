@@ -1,12 +1,34 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react'
+import { useFormik } from 'formik';
 import SuccessModal from '../Components/Ui/SuccessModal';
 import checkEmailIcon from '../Assets/check-email.svg'
 import Input from "../Components/Ui/Input";
 import Label from '../Components/Ui/Label'
 
+const validate = (values) => {
+    const errors = {}
+
+    if (!values.email) {
+        errors.email = 'Email field cannot be empty!'
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Looks like an invalid email address'
+    }
+
+    return errors
+    }
+
 const ForgotPassword = () => {
     const [show, setShow] = useState(false)
+    const formik = useFormik({
+        initialValues: {
+          email: '',
+        },
+        validate,
+        onSubmit: (values) => {
+          alert(JSON.stringify(values, null, 2))
+        },
+      })
     return ( 
         <div className="forgot-password-content mx-auto mt-36 w-[89%] py-8 bg-transparent
         tb:bg-white tb:w-[60%] tb:px-14 py-[70px]
@@ -33,21 +55,28 @@ const ForgotPassword = () => {
             lg:text-[18px] w-[99%]">To reset your password, enter the email associated with your Aplicar account</p>
             
             <div className="form-container">
-                <form action="/forgot-password" className="form mb-5">
+                <form onSubmit={formik.handleSubmit} className="form mb-5">
                     <div className="email-field my-9 relative
                     tb:my-10">
-                        <Label className={"text-left text-gray-700"}>Email</Label>
-                        <Input type={"email"}  placeholder={"John Doe"} className={'input_password mt-2 w-full py-[12px] pl-4 rounded-lg border border-gray-700 outline-2 outline-gray-700 bg-transparent'}
-                                id={'input-pass'} required/>
+                        <label className="text-left text-gray-700" for='email'>Email</label>
+                        <input type="email"  placeholder="John Doe" className='input_password mt-2 w-full py-[12px] pl-4 rounded-lg border border-gray-700 outline-2 outline-gray-700 bg-transparent'
+                                id='email'
+                                name="email"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.email}/>
+                            {formik.touched.email && formik.errors.email && (
+                            <span className="text-red-700">{formik.errors.email}</span>
+          )}
                         <span className="absolute top-[48px] right-[15px]"><img src={checkEmailIcon} alt="" /></span>
                     </div>
                     <div className="send-link">
-                        <Link to='/forgot-password'>
+                        <Link>
                             <input 
-                            onClick={()=>{setShow(true)}}
+                            // onClick={()=>{setShow(true)}}
                             type="submit" 
                             value='Send link to email' 
-                            className="text-center w-full bg-[#0652DD] border rounded-lg text-white py-4 cursor-pointer hover:scale-x-[1.03] font-semibold" />
+                            className="text-center w-full bg-[#0652DD] border rounded-lg text-white py-4 cursor-pointer hover:scale-x-[1.01] font-semibold" />
                         </Link>
                     </div>
                 </form>
