@@ -16,6 +16,7 @@ import PgCoverLetter from "./PgCoverLetter";
 import TermsAndCondition from "./TermsAndConditions";
 import Upload from "./upload/Upload";
 import UploadData from "./uploadData/UploadData";
+import About from "./About";
 
 export {
 	Home,
@@ -36,4 +37,5 @@ export {
 	TermsAndCondition,
 	Upload,
 	UploadData,
+	About,
 };
