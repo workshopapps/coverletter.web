@@ -218,7 +218,7 @@ const ContactUs = () => {
 					<FollowUsLinks className="md:block hidden" />
 				</div>
 				<div className="flex-auto md:w-1/2">
-					<div className="bg-[#fff] rounded-lg p-4 py-10 mb-5 md:px-10">
+					<div className="bg-[#fff] rounded-lg p-4 py-10 mb-5 md:px-10 border-[1px] border-[#CAD0DD]">
 						<H2>Contact us</H2>
 						<BodyText>
 							Reach out to our{" "}
@@ -272,7 +272,6 @@ const ContactUs = () => {
 							/>
 							<Select
 								id="issue"
-								icon={["fas", "user"]}
 								labelText="What can we help you with?"
 								options={[
 									"Couldn’t upload CV",
