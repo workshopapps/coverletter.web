@@ -7,7 +7,7 @@ services:
       - "5000:5000"
     volumes:
       - ./server:/server
-    command: npm run dev:server
+    command: npm run start
     depends_on:
       - mongodb
     env_file:
