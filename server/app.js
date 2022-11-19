@@ -10,6 +10,7 @@ const app = express();
 require("dotenv").config();
 //Routers
 const authRoutes = require("./routes/authRoutes");
+const resetRoutes = require("./routes/resetRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
 // database
