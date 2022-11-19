@@ -16,6 +16,10 @@ module.exports = {
 			"leading-4": "1.5rem",
 			"leading-8": "3rem",
 			"leading-10": "4.5rem",
+		extend: {
+			gridTemplateColumns: {
+				grid: "repeat(auto-fit, minmax(297px, 1fr))",
+			},
 		},
 		colors: {
 			background: "#F2F2F7",
@@ -50,7 +54,6 @@ module.exports = {
 			grey700: "#282828",
 			grey800: "#101010",
 		},
-
 		screens: {
 			xxs: "320px",
 			// => @media (min-width: 320px) { ... }
