@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 module.exports = async (email, subject, url) => {
 	try {
@@ -18,8 +19,7 @@ module.exports = async (email, subject, url) => {
 			from: "Aplicar",
 			to: email,
 			subject: subject,
-			html: url
-            
+			html: url,
 		});
 		console.log("email sent successfully");
 	} catch (error) {
