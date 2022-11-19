@@ -93,6 +93,7 @@ const Pricing = () => {
 					</p>
 				</div>
 			</Parallax>
+
 			{shouldShow && (
 				<div>
 					<div className="pb-36 xl:h-[1150px] absolute flex flex-col items-center xl:justify-between space-y-5 xl:space-y-0 xl:flex-row xl:items-start top-[70%] lg:top-[85%] w-full px-5">

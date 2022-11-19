@@ -18,7 +18,7 @@ module.exports = async (email, subject, url) => {
 			from: "Aplicar",
 			to: email,
 			subject: subject,
-			text: url
+			html: url
             
 		});
 		console.log("email sent successfully");
