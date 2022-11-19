@@ -19,7 +19,7 @@ describe("Auth: Signup", () => {
 	it("should signup a user", async () => {
 		const response = await supertest(app).post("/api/v1/auth/signup").send({
 			name: "Jane Doe",
-			email: "jane@gmail.com",
+			email: "janed@gmail.com",
 			password: "Jam123",
 		});
 
