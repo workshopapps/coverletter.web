@@ -47,7 +47,7 @@ const updatePassword = async (req, res) => {
 	// 5) check if password & confirmPassword are the same
 	if (password != confirmPassword) {
 		throw new BadRequestError(
-			"Password and confirm Password must be the same"
+			"Password and confirm Password must be the same."
 		);
 	}
 	//6) Update password
