@@ -26,18 +26,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 const App = () => {
-<<<<<<< HEAD
 
-	
 	return (
-
-=======
-	
-	r
-	return (
-		<>
-		
->>>>>>> 53ce7521bf6eae3ff1df096e4533d6538276c510
 		<Router>
 			<ScrollToTop>
 				{/* place nav bar here*/}
@@ -78,11 +68,7 @@ const App = () => {
 			</ScrollToTop>
 		</Router>
 		
-<<<<<<< HEAD
-=======
-		</>
->>>>>>> 53ce7521bf6eae3ff1df096e4533d6538276c510
-	);
+	)
 };
 
 export default App;
