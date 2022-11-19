@@ -14,19 +14,13 @@ module.exports = async (email, subject, url) => {
 			tls: { rejectUnauthorized: false },
 		});
 
-		await transporter
-			.sendMail({
-				from: "Aplicar",
-				to: email,
-				subject: subject,
-				text: url,
-			})
-			.then((res) => {
-				console.log("response", res);
-			})
-			.catch((err) => {
-				console.log({ err });
-			});
+		await transporter.sendMail({
+			from: "Aplicar",
+			to: email,
+			subject: subject,
+			html: url
+            
+		});
 		console.log("email sent successfully");
 	} catch (error) {
 		console.log("email not sent!");
