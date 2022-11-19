@@ -22,6 +22,7 @@ import {
 	TermsAndCondition,
 	Upload,
 	UploadData,
+	Documentation,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -45,6 +46,7 @@ const App = () => {
 					<Route path="/verifyaccount" element={<VerifyAcc />}/>
 					<Route path="/login" element={<Login />}/>
 					<Route path="/history" element={<History />} />
+					<Route path="/document" element={<Documentation />} />
 					<Route
 						path="/see-all-history"
 						element={<SeeAllHistory />}
@@ -67,11 +69,9 @@ const App = () => {
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
-				
 			</ScrollToTop>
 		</Router>
-		
-	)
+	);
 };
 
 export default App;
