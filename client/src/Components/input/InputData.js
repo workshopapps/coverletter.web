@@ -1,11 +1,11 @@
 import React, {useState,useContext} from 'react'
 import {useNavigate} from 'react-router-dom'
 import back from './asesets/arrow.png';
-import { UserContext } from "../../App";
+import { useGlobalContext } from "../../context/context";
 import axios from 'axios'
 
 function InputData() {
-    const { file, setFile, fileName, setFileName } = useContext(UserContext);
+    const { file, setFile } = useGlobalContext();
 
     const [companyName, setCompanyName] = useState('')
     const [companyAddress, setCompanyNameAddress] = useState('')
