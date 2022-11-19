@@ -5,6 +5,7 @@ const { BadRequestError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 
+
 const register = async (req, res) => {
 	const { email, name, password } = req.body;
 

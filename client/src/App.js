@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import {
 	Home,
@@ -16,6 +17,8 @@ import {
 	Preview,
 	PgCoverLetter,
 	TermsAndCondition,
+	Upload,
+	UploadData,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -25,10 +28,10 @@ const App = () => {
 	return (
 		<Router>
 			<ScrollToTop>
-				{/* place nav bar here*/}
 				<Header />
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Upload />} />
+					<Route path="/upload-data" element={<UploadData />} />
 					<Route path="/preview" element={<Preview />}></Route>
 					<Route
 						path="/cover letter"
@@ -58,10 +61,11 @@ const App = () => {
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
-				{/* place footer here */}
+				
 			</ScrollToTop>
 		</Router>
-	);
+		
+	)
 };
 
 export default App;
