@@ -14,6 +14,8 @@ import Features from "./Features";
 import Preview from "./Preview";
 import PgCoverLetter from "./PgCoverLetter";
 import TermsAndCondition from "./TermsAndConditions";
+import Upload from "./upload/Upload";
+import UploadData from "./uploadData/UploadData";
 
 export {
 	Home,
@@ -32,4 +34,6 @@ export {
 	Preview,
 	PgCoverLetter,
 	TermsAndCondition,
+	Upload,
+	UploadData,
 };
