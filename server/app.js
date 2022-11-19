@@ -5,6 +5,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
 const app = express();
 require("dotenv").config();
 //Routers
@@ -22,6 +23,14 @@ app.use(bodyParser.json());
 app.use(helmet());
 app.use(cors());
 app.use(xss());
+app.use(
+	fileUpload({
+		limits: {
+			fileSize: 5 * 1024 * 1024, //5MB
+		},
+		abortOnLimit: true,
+	})
+);
 
 // routes
 app.use("/api/v1/auth", authRoutes);
