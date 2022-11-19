@@ -19,7 +19,6 @@ import {
 	TermsAndCondition,
 	Upload,
 	UploadData,
-	Documentation,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -29,7 +28,6 @@ const App = () => {
 	return (
 		<Router>
 			<ScrollToTop>
-				{/* place nav bar here*/}
 				<Header />
 				<Routes>
 					<Route path="/" element={<Upload />} />
@@ -52,7 +50,6 @@ const App = () => {
 					<Route path="/pricing" element={<Pricing />} />
 					<Route path="/career" element={<Career />} />
 					<Route path="blog" element={<Blog />} />
-					<Route path="/document" element={<Documentation />} />
 					<Route
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
@@ -64,10 +61,11 @@ const App = () => {
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
-				{/* place footer here */}
+				
 			</ScrollToTop>
 		</Router>
-	);
+		
+	)
 };
 
 export default App;
