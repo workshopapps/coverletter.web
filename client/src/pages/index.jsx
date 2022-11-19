@@ -16,6 +16,9 @@ import TermsAndCondition from "./TermsAndConditions";
 import Upload from "./upload/Upload";
 import UploadData from "./uploadData/UploadData";
 import Documentation from "./Documentation";
+import Forum from "./forum/Forum";
+import Thread from "./forum/Thread";
+import Post from "./forum/Post";
 import EmailOTP from './EmailOTP'
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
@@ -39,6 +42,9 @@ export {
 	Upload,
 	UploadData,
 	Documentation,
+	Forum,
+	Thread,
+	Post
 	EmailOTP,
 	ForgotPassword,
 	ResetPassword,
