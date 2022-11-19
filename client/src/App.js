@@ -20,6 +20,9 @@ import {
 	Upload,
 	UploadData,
 	Documentation,
+	ForgotPassword,
+	ResetPassword,
+	EmailOTP,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -52,6 +55,12 @@ const App = () => {
 					<Route path="/pricing" element={<Pricing />} />
 					<Route path="/career" element={<Career />} />
 					<Route path="blog" element={<Blog />} />
+					<Route path="/email-otp" element={<EmailOTP />} />
+					<Route
+						path="/forgot-password"
+						element={<ForgotPassword />}
+					/>
+					<Route path="/reset" element={<ResetPassword />} />
 					<Route
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
