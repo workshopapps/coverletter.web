@@ -44,7 +44,11 @@ const App = () => {
 					<Route path="/faq" element={<Faq />} />
 					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="/generate" element={<UploadCV />} />
-					element={<TermsAndCondition />}
+					<Route
+						path="/terms-and-conditions"
+						element={<TermsAndCondition />}
+					/>
+
 					<Route path="*" element={<ErrorPage />}></Route>
 					<Route path="/terms-and-conditions" />
 					<Route path="/profile" element={<ProfilePage />} />
