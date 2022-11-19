@@ -4,7 +4,7 @@ const { BadRequestError } = require("../errors");
 const { StatusCodes } = require("http-status-codes");
 
 const contact = async (req, res) => {
-	try {
+
 		const { email, fullname, phone, subject, description } = req.body;
 
 		const contactError = ContactValidation.contactUs(fullname, email, subject, phone, description)
@@ -19,12 +19,7 @@ const contact = async (req, res) => {
 			});	
 		}
 	
-	}
 	
-	catch (error) {
-		return res.status(500).json({
-			message: error.message,
-		});
 	}
 };
 module.exports = {
