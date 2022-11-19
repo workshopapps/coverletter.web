@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { useNavigate } from "react-router-dom";
-import success from '../sectionTwo/assets/success.svg';
+import mark from '../sectionTwo/assets/success.svg';
 import first from '../sectionTwo/assets/first.svg';
 import { useGlobalContext } from '../../context/context';
 import axios from 'axios'
@@ -37,7 +37,7 @@ function Uploaded() {
   return (
     <div>
         <main className='flex flex-col items-center justify-center'>
-            <img className='h-[0] md:h-[80px] w-[0] md:w-[80px] ' src={success} alt="" />
+            <img className='h-[0] md:h-[80px] w-[0] md:w-[80px] ' src={mark} alt="" />
             <img
                 src={first}
                 className="w-[67px] md:w-[0] h-[67px] md:h-[0]"
