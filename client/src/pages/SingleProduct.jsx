@@ -6,7 +6,7 @@ const SingleProduct = () => {
 	const item = contents.find((item) => {
 		return item.id === Number(customerId);
 	});
-	const { id, title, img, talk, position, introTalk, textContents } = item;
+	const { id, title, img, name, occupation, introTalk, textContents } = item;
 	return (
 		<main className="bg-background">
 			<section className="py-17 px-24" key={id}>
@@ -15,7 +15,7 @@ const SingleProduct = () => {
 					<div>
 						<h3 className="md:text-[53px]">{title}</h3>
 						<p>
-							Talking with <span>{talk}</span> ,{position}
+							Talking with <span>{name}</span> ,{occupation}
 						</p>
 					</div>
 					<img src={img} alt="" />
