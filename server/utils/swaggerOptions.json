@@ -65,17 +65,22 @@
 			"post": {
 				"summary": "Upload CV",
 				"description": "Uploads a user's CV",
-				"produces": ["application/json"],
-				"consumes": ["multipart/form-data"],
-				"parameters": [
-					{
-						"in": "formData",
-						"name": "cvfile",
-						"description": "CV file",
-						"required": true,
-						"type":"file"
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"media": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
 					}
-				],
+				},
 				"responses": {
 					"201": {
 						"description": "Successful Upload",
@@ -95,8 +100,24 @@
 		"/generate": {
 			"post": {
 				"summary": "Generate Cover Letter",
-				"description": "Generates a Cover Letter from GPT3",		
+				"description": "Generates a Cover Letter from GPT3",
 				"consumes": ["application/json"],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"media": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				},
 				"parameters": [
 					{
 						"in": "body",
@@ -106,29 +127,22 @@
 						"schema": {
 							"type": "object",
 							"properties": {
-								"companyName": {"type": "string"},
-								"companyAddress" : { "type": "string" },
+								"companyName": { "type": "string" },
+								"companyAddress": { "type": "string" },
 								"city": { "type": "string" },
-								"role" : { "type": "string" },
+								"role": { "type": "string" },
 								"yearsOfExperience": { "type": "string" },
 								"recipientName": { "type": "string" },
 								"recipientDepartment": { "type": "string" },
 								"receipientEmail": { "type": "string" },
-								"receipientPhoneNo": { "type": "string" }	
+								"receipientPhoneNo": { "type": "string" }
 							}
 						}
-					},
-					{
-						"in": "formData",
-						"name": "cvfile",
-						"description": "CV file",
-						"required": true,
-						"type": "file"
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Successful Signup",
+						"description": "Ok",
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -154,7 +168,7 @@
 						}
 					},
 					"500": {
-						"description": "Its not you. Its Us",
+						"description": "Internal Server Error",
 						"schema": {
 							"$ref": "#/definitions/InvalidResponse"
 						}
@@ -194,55 +208,54 @@
 				}
 			}
 		},
-		"/template/{id}" : {
-            "patch" : {
-                "summary" : "Edit a cover letter",
-                "description": "Edit a cover letter",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "cover letter id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "template object",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "template" : {
-                                    "type": "object"                                    
-                                } 
-                            }							
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {                           
+		"/template/{id}": {
+			"patch": {
+				"summary": "Edit a cover letter",
+				"description": "Edit a cover letter",
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "cover letter id that needs to be deleted",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "template object",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"template": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
 							"type": "object",
 							"properties": {
 								"message": { "type": "string" },
 								"data": "string"
 							}
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        }
-		
+						}
+					},
+					"400": {
+						"description": "Invalid status value",
+						"schema": {
+							"$ref": "#/definitions/InvalidResponse"
+						}
+					}
+				}
+			}
+		}
 	},
 	"definitions": {
 		"User": {
