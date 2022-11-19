@@ -6,12 +6,12 @@ const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const bodyParser = require("body-parser");
+const connectDB = require("./db/connect");
+require("dotenv").config();
 
 const port = process.env.PORT || 5001;
 const fileUpload = require("express-fileupload");
 const app = express();
-
-require("dotenv").config();
 
 app.use(
 	"/cvg-documentation",
@@ -63,9 +63,9 @@ app.use(errorHandlerMiddleware);
 const start = async () => {
 	try {
 		//connect DB
-		await connectDB(process.env.MONGO_URI).then(() =>
-			console.log("DB connection successful")
-		);
+		connectDB(process.env.MONGO_URI).then(() => {
+			console.log("Connection succesful");
+		});
 		app.listen(port, () =>
 			console.log(`Server is listening on port ${port}...`)
 		);
