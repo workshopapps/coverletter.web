@@ -1,4 +1,3 @@
-import Home from "./Home";
 import History from "./History";
 import ErrorPage from "./ErrorPage";
 import ContactUs from "./ContactUs";
@@ -20,9 +19,11 @@ import Documentation from "./Documentation";
 import Forum from "./forum/Forum";
 import Thread from "./forum/Thread";
 import Post from "./forum/Post";
+import EmailOTP from './EmailOTP'
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 export {
-	Home,
 	History,
 	ErrorPage,
 	ContactUs,
@@ -44,4 +45,7 @@ export {
 	Forum,
 	Thread,
 	Post
+	EmailOTP,
+	ForgotPassword,
+	ResetPassword,
 };
