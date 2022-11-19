@@ -21,7 +21,10 @@ import {
 	TermsAndCondition,
 	Upload,
 	UploadData,
+<<<<<<< HEAD
 	Documentation,
+>>>>>>> dev
+=======
 >>>>>>> dev
 } from "./pages";
 import TermsAndCondition from "./pages/TermsAndConditions";
@@ -58,7 +61,10 @@ const App = () => {
 					<Route path="/pricing" element={<Pricing />} />
 					<Route path="/career" element={<Career />} />
 					<Route path="blog" element={<Blog />} />
+<<<<<<< HEAD
 					<Route path="/document" element={<Documentation />} />
+>>>>>>> dev
+=======
 >>>>>>> dev
 					<Route
 						path="/terms-and-conditions"
