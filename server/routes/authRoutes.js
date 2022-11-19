@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { login } = require("../controllers/authController");
 const {
 	register,
 	updatePassword,
 	verify,
+	login
 } = require("../controllers/authController");
 
 //Add your routes here
