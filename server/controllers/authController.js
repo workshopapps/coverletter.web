@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 const { randomString } = require("../utils/randomString");
-const { BadRequestError, UnauthenticatedError } = require("../errors");
+const { BadRequestError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
 
 const register = async (req, res) => {
@@ -35,24 +35,16 @@ const login = async (req, res, next) => {
 
 		if (!email || !password) {
 			return next(
-				new UnauthenticatedError(
-					"Please provide a valid email and password"
-				)
+				new BadRequestError("Please provide a valid email and password")
 			);
 		}
 		const user = await User.findOne({ email });
 		if (!user) {
-			return next(
-				new UnauthenticatedError(
-					"Authentication failed! User doesn't exist"
-				)
-			);
+			return next(new BadRequestError("Invalid email or password"));
 		}
 
 		if (user && !(await user.comparePassword(password))) {
-			return next(
-				new UnauthenticatedError("Incorrect email or password")
-			);
+			return next(new BadRequestError("Invalid email or password"));
 		}
 		const token = user.createJWT();
 
