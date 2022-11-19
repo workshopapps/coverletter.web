@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import {
 	Home,
@@ -9,6 +10,7 @@ import {
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 const App = () => {
 	return (
 		<Router>
@@ -16,7 +18,13 @@ const App = () => {
 				{/* place nav bar here*/}
 				<Header />
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Upload />} />
+					<Route path="/upload-data" element={<UploadData />} />
+					<Route path="/preview" element={<Preview />}></Route>
+					<Route
+						path="/cover letter"
+						element={<PgCoverLetter />}
+					></Route>
 					<Route path="/contactus" element={<ContactUs />} />
 					<Route
 						path="/customerstories"
@@ -26,7 +34,6 @@ const App = () => {
 						path="/customerstories/:customerId"
 						element={<SingleProduct />}
 					/>
-
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />

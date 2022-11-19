@@ -50,7 +50,6 @@ module.exports = {
 			grey700: "#282828",
 			grey800: "#101010",
 		},
-
 		screens: {
 			xxs: "320px",
 			// => @media (min-width: 320px) { ... }
