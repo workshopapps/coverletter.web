@@ -14,8 +14,7 @@ import {
 	ProfilePage,
 	UploadCV,
 	Preview,
-	PgCoverLetter,
-	TermsAndCondition,
+	PgCoverLetter
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -54,10 +53,6 @@ const App = () => {
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
 					/>
-					<Route
-						path="terms-and-conditions"
-						element={<TermsAndCondition />}
-					></Route>
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
