@@ -1,3 +1,4 @@
+import React from 'react'
 import "./App.css";
 import {
 	Home,
@@ -16,19 +17,34 @@ import {
 	Preview,
 	PgCoverLetter,
 	TermsAndCondition,
+	Upload,
+	UploadData
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+
 const App = () => {
+<<<<<<< HEAD
+
+	
 	return (
+
+=======
+	
+	r
+	return (
+		<>
+		
+>>>>>>> 53ce7521bf6eae3ff1df096e4533d6538276c510
 		<Router>
 			<ScrollToTop>
 				{/* place nav bar here*/}
 				<Header />
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Upload />} />
+					<Route path="/upload-data" element={<UploadData/>} />
 					<Route path="/preview" element={<Preview />}></Route>
 					<Route
 						path="/cover letter"
@@ -61,6 +77,11 @@ const App = () => {
 				{/* place footer here */}
 			</ScrollToTop>
 		</Router>
+		
+<<<<<<< HEAD
+=======
+		</>
+>>>>>>> 53ce7521bf6eae3ff1df096e4533d6538276c510
 	);
 };
 
