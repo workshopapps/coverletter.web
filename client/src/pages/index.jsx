@@ -16,6 +16,9 @@ import TermsAndCondition from "./TermsAndConditions";
 import Upload from "./upload/Upload";
 import UploadData from "./uploadData/UploadData";
 import Documentation from "./Documentation";
+import EmailOTP from './EmailOTP'
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 export {
 	History,
@@ -36,4 +39,7 @@ export {
 	Upload,
 	UploadData,
 	Documentation,
+	EmailOTP,
+	ForgotPassword,
+	ResetPassword,
 };
