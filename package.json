@@ -16,6 +16,7 @@
 		"@emotion/react": "^11.10.5",
 		"@emotion/styled": "^11.10.5",
 		"@mui/material": "^5.10.14",
+		"bcrypt": "^5.1.0",
 		"bcryptjs": "^2.4.3",
 		"concurrently": "^7.5.0",
 		"cors": "^2.8.5",

@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const { resetPassword, validateOtp } = require("../controllers/resetPassword");
+const { resetPassword, validateOTP } = require("../controllers/resetPassword");
 
 // forgot password route here
 router.post("/reset_password", resetPassword);
-router.post("/validate_otp", validateOtp);
+router.post("/validate_otp", validateOTP);
 
 module.exports = router;
