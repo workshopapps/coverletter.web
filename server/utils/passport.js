@@ -8,12 +8,11 @@ module.exports = function (passport) {
  },
   async (accessToken, refreshToken, profile, email, done) => {
    const newUser = {
-    googleId: profile.id,
     name: profile.displayName,
     email: profile.emails[0].value
    }
    try {
-    let user = await User.findOne({ googleId: profile.id })
+    let user = await User.findOne({ email })
     if (user) {
      done(null, user)
     } else {
