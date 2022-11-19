@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import back from "./asesets/arrow.png";
-import axios from "axios";
 import { useGlobalContext } from "../../context/context";
+import axios from "axios";
 
 function InputData() {
-	const { file, setFile } = useGlobalContext();
+	const { file, setCoverLetter} = useGlobalContext();
 
 	const [companyName, setCompanyName] = useState("");
 	const [companyAddress, setCompanyNameAddress] = useState("");
@@ -17,15 +17,19 @@ function InputData() {
 	const [name, setName] = useState("");
 	const [department, setDepartment] = useState("");
 	const [error, setError] = useState(false);
+	
+	
 	// const [show, setShow] = useState(true)
 
 	const Navigate = useNavigate();
 	const clickHandler = () => {
-		Navigate("/");
+
+		// Navigate("/");
+      
 	};
 
 	const continueHandler = () => {
-		Navigate("/preview");
+		// Navigate("/preview");
 	};
 
 	const companyHandler = (e) => {
@@ -74,22 +78,45 @@ function InputData() {
 			alert("Dude calm down, i have not linked the API");
 		}
 
-		axios({
+        let data = {
+            company_name: companyName,
+            company_address: companyAddress,
+            city: city,
+            country: country,
+            role: role,
+            years_of_exp: years,
+            recipient_name: name,
+            recipient_department: department
+        }
+        
+
+        var bodyForm = new FormData();
+
+        bodyForm.append('data', data);
+        bodyForm.append('myFile', file)
+
+        axios({
 			method: "POST",
-			headers: { Content_Type: "application/pdf" },
-			body: file,
+            url: "server_url/v1/generate",
+            data: bodyForm,
+			headers: { "Content-Type": "multipart/form-data"},
+			
 		})
 			.then((res) => {
 				console.log(res);
+                setCoverLetter(res);
+                Navigate("/preview");
+                
 			})
 			.catch((err) => {
-				console.log(error);
+				console.log(err);
+                alert('Error processing your CV')
 			});
+	
 	};
 
 	return (
 		<div className="bg-background md:px-[204px] md:py-[120px] font-manrope">
-			<h1></h1>
 			<main className=" md:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite ">
 				<button
 					onClick={clickHandler}
@@ -117,6 +144,7 @@ function InputData() {
 					encType="multipart/form-data"
 					onSubmit={submit}
 					className="form font-manrope grid w-[100%]  md:grid-cols-2 md:gap-20 gap-12 my-[80px] grid-cols-1 "
+                    
 				>
 					<div className="left">
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
