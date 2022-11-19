@@ -5,7 +5,6 @@ import man3 from "../Assets/man3.png";
 import eyeslash from "../Assets/eye-slash.svg";
 import Button from "../Components/Ui/Button";
 import { Link } from "react-router-dom";
-import closeIcon from "../Assets/close-square.svg";
 
 const CreateAcount = () => {
 
