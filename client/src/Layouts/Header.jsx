@@ -2,15 +2,20 @@ import Logo from "../Assets/headerLogo.png";
 import navLinkElements from "../Constants/navLinkElements";
 import Button from "../Components/Ui/Button";
 import Hamburger from "../Assets/menu.svg";
+import { Link } from "react-router-dom";
 const Header = () => {
 	return (
 		<div className="flex items-center justify-between py-5 px-5 md:px-10 xl:px-15">
 			<img src={Logo} alt="" />
 			<ul className="space-x-6 hidden lg:block">
 				{navLinkElements.map((item) => (
-					<li key={item.name} className="inline-block">
+					<Link
+						key={item.name}
+						to={item.url}
+						className="inline-block"
+					>
 						{item.name}
-					</li>
+					</Link>
 				))}
 			</ul>
 			<div className="space-x-5 flex">

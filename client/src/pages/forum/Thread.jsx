@@ -3,25 +3,25 @@ import {AiOutlineHeart, AiOutlineDown} from 'react-icons/ai'
 
 const Thread = () => {
   return <>
-    <main className='bg-[#f2f2f7] mx-0 my-0 py-5 px-16'>
-        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-12 flex flex-col gap-5 mb-5 relative'>
+    <main className='bg-[#f2f2f7] mx-0 my-0 py-5 px-5 md:px-16'>
+        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5 relative'>
             <div className='flex gap-3 items-center'>
                 <div>
-                    <img className='rounded-full w-16' src="../forum-images/f1.png" alt="" />
+                    <img className='rounded-full w-16' src="../forum-images/forum/f1.png" alt="" />
                 </div>
                 <div>
-                    <div className='capitalize text-2xl font-semibold'>
-                        The best work from home jobs in 2022
+                    <div className='capitalize text-base md:text-2xl font-semibold'>
+                        <p>Quick Career Upgrade Tip for 2022</p>
                     </div>
-                    <div className='flex gap-5 text-five text-base'>
-                        <p>By Ida Peterson</p>
-                        <p>November 14, 2022</p>
+                    <div className='flex flex-col md:flex-row md:gap-5 text-[#bababa] md:text-base text-sm absolute left-5 top-20 md:static'>
+                        <p>By Lite16nl</p>
+                        <p>November 2, 2022</p>
                     </div>
                 </div>
             </div>
-            <div className='flex flex-col gap-5 mb-5'>
+            <div className='flex flex-col gap-5 mt-10 md:mt-0 mb-5'>
                 <div className='basis-4/5'>
-                    <p className='text-base flex flex-col gap-3'>
+                    <p className='text-sm md:text-base flex flex-col gap-3'>
                         <span>
                             1. Identify your career strengths and weaknesses.
                         </span>
@@ -51,38 +51,14 @@ const Thread = () => {
                         </span>
                     </p>
                 </div>
-                <div>
-                    <div className='flex gap-3 mx-10 items-center'>
-                        <div>
-                            <img className='rounded-full w-16' src="../forum-images/f1.png" alt="" />
-                        </div>
-                        <div>
-                            <div className='capitalize text-2xl font-semibold'>
-                                The best work from home jobs in 2022
-                            </div>
-                            <div className='flex gap-5 text-five text-base'>
-                                <p>By Ida Peterson</p>
-                                <p>November 14, 2022</p>
-                            </div>
-                        </div>
-                    </div>
-                    <form className='mt-5 mx-10' method='post'>
-                        <div className='flex flex-col gap-5 h-[400px] bg-[#fcfcfc]'>
-                            <textarea rows='14' className='p-5 outline-none resize-none' name="" id="" placeholder='Type text here' ></textarea>
-                        </div>
-                        <div className='w-full text-right mt-3'>
-                            <button type="submit" className='btn btnPrimary w-[170px] text-base font-bold'>Post</button>
-                        </div>
-                    </form>
-                </div>
-                <div className='flex gap-8 justify-start items-center basis-1/5'>
+                <div className='flex gap-8 justify-between md:justify-start items-center basis-1/5'>
                     <div className='text-center'>
-                        <p className='text-base font-bold'>20</p>
-                        <p className='text-base'>Replies</p>
+                        <p className='md:text-base text-sm font-bold'>20</p>
+                        <p className='text-sm md:text-base'>Replies</p>
                     </div>
                     <div className='text-center'>
-                        <p className='text-base font-bold'>20</p>
-                        <p className='text-base'>Views</p>
+                        <p className='text-sm md:text-base font-bold'>20</p>
+                        <p className='text-sm md:text-base'>Views</p>
                     </div>
                     <div>
                         <AiOutlineHeart />
@@ -98,25 +74,24 @@ const Thread = () => {
             <p>All replies (6)</p>
             <AiOutlineDown />
         </div>
-        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-12 flex flex-col gap-5 mb-5'>
+        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5'>
             <div className='flex gap-3 items-center'>
                 <div>
-                    <img className='rounded-full w-16' src="../forum-images/f1.png" alt="" />
+                    <img className='rounded-full w-16' src="../forum-images/reply/r1.png" alt="" />
                 </div>
                 <div>
-                    <div className='capitalize text-2xl font-semibold'>
-                        The best work from home jobs in 2022
+                    <div className='capitalize text-base md:text-2xl font-semibold'>
+                        <p className='text-[#101010]'>ecolime</p>
                     </div>
-                    <div className='flex gap-5 text-five text-base'>
-                        <p>By Ida Peterson</p>
-                        <p>November 14, 2022</p>
+                    <div className='flex gap-5 text-[#bababa] text-sm md:text-base'>
+                        <p>November 2, 2022</p>
                     </div>
                 </div>
             </div>
             <div className='flex flex-col gap-5 mb-5'>
                 <div className='basis-4/5'>
-                    <p className='text-base text-six'>
-                        If long commutes and noisy office environments are something you'd like to avoid, getting a remote job is a good option. We've compiled a list of the best work from home jobs for you to consider. Over the past couple of years, many companies in the US and around the world have adopted work from home policies.
+                    <p className='text-sm md:text-base text-six'>
+                        Dear Op,Thanks for the tips.However, when last did you come across job adverts for NPA, NNPC, CBN, NDIC, FIRS, DPR, EFCC, etc... ??It may interest you to know that people retire from these organisations and are always replaced by young folks on a daily basis.Career upgrade tips are useless for the vast majority because the few opportunities in public sector have been cannibalised and hijack by people in power for their children.The SMEs that should actually be the major employers of Labour have limited room for expansion due to crazy and thoughtless government policies by these same cannibals. Thus unable to absorb jobless graduates in large numbers.Shebi na when you get job you fit dey upgrade your career na?
                     </p>
                 </div>
                 <div className='flex gap-8 justify-start items-center basis-1/5'>
@@ -129,25 +104,24 @@ const Thread = () => {
                 </div>
             </div>
         </div>
-        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-12 flex flex-col gap-5 mb-5'>
+        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5'>
             <div className='flex gap-3 items-center'>
                 <div>
-                    <img className='rounded-full w-16' src="../forum-images/f1.png" alt="" />
+                    <img className='rounded-full w-16' src="../forum-images/reply/r2.png" alt="" />
                 </div>
                 <div>
-                    <div className='capitalize text-2xl font-semibold'>
-                        The best work from home jobs in 2022
+                    <div className='capitalize text-base md:text-2xl font-semibold text-[#101010]'>
+                        <p>Tobicjucks18</p>
                     </div>
-                    <div className='flex gap-5 text-five text-base'>
-                        <p>By Ida Peterson</p>
-                        <p>November 14, 2022</p>
+                    <div className='flex gap-5 text-[#bababa] text-sm md:text-base'>
+                        <p>November 2, 2022</p>
                     </div>
                 </div>
             </div>
             <div className='flex flex-col gap-5 mb-5'>
                 <div className='basis-4/5'>
-                    <p className='text-base text-six'>
-                        If long commutes and noisy office environments are something you'd like to avoid, getting a remote job is a good option. We've compiled a list of the best work from home jobs for you to consider. Over the past couple of years, many companies in the US and around the world have adopted work from home policies.
+                    <p className='text-sm md:text-base text-six'>
+                       85 percent of what you listed above @OP can only be archived when your alone and have no dependent..I mean one can only do this if he or she has a sponsor, or someone seeing to his or her bill's.Majority of youth's in Nigeria strive for survival and sadly enough alot never attains their potential.
                     </p>
                 </div>
                 <div className='flex gap-8 justify-start items-center basis-1/5'>
@@ -160,25 +134,24 @@ const Thread = () => {
                 </div>
             </div>
         </div>
-        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-12 flex flex-col gap-5 mb-5'>
+        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5'>
             <div className='flex gap-3 items-center'>
                 <div>
-                    <img className='rounded-full w-16' src="../forum-images/f1.png" alt="" />
+                    <img className='rounded-full w-16' src="../forum-images/reply/r3.png" alt="" />
                 </div>
                 <div>
-                    <div className='capitalize text-2xl font-semibold'>
-                        The best work from home jobs in 2022
+                    <div className='capitalize text-base md:text-2xl font-semibold text-[#101010]'>
+                        <p>johnUbah</p>
                     </div>
-                    <div className='flex gap-5 text-five text-base'>
-                        <p>By Ida Peterson</p>
-                        <p>November 14, 2022</p>
+                    <div className='flex gap-5 text-[#bababa] text-sm md:text-base'>
+                        <p>November 2, 2022</p>
                     </div>
                 </div>
             </div>
             <div className='flex flex-col gap-5 mb-5'>
                 <div className='basis-4/5'>
-                    <p className='text-base text-six'>
-                        If long commutes and noisy office environments are something you'd like to avoid, getting a remote job is a good option. We've compiled a list of the best work from home jobs for you to consider. Over the past couple of years, many companies in the US and around the world have adopted work from home policies.
+                    <p className='text-sm md:text-base text-six'>
+                        Some of the smartest people are not among the richest.Personality is too abstract, some of the richest men have shitty personality (eg Steve Jobs and Jeff Bezos) while some are cool (Gates, Buffet).
                     </p>
                 </div>
                 <div className='flex gap-8 justify-start items-center basis-1/5'>
@@ -191,25 +164,24 @@ const Thread = () => {
                 </div>
             </div>
         </div>
-        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-12 flex flex-col gap-5 mb-5'>
+        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5'>
             <div className='flex gap-3 items-center'>
                 <div>
-                    <img className='rounded-full w-16' src="../forum-images/f1.png" alt="" />
+                    <img className='rounded-full w-16' src="../forum-images/reply/r4.png" alt="" />
                 </div>
                 <div>
-                    <div className='capitalize text-2xl font-semibold'>
-                        The best work from home jobs in 2022
+                    <div className='capitalize text-base md:text-2xl font-semibold text-[#101010]'>
+                        <p>Tobicjucks18</p>
                     </div>
-                    <div className='flex gap-5 text-five text-base'>
-                        <p>By Ida Peterson</p>
-                        <p>November 14, 2022</p>
+                    <div className='flex gap-5 text-[#bababa] text-sm md:text-base'>
+                        <p>November 2, 2022</p>
                     </div>
                 </div>
             </div>
             <div className='flex flex-col gap-5 mb-5'>
                 <div className='basis-4/5'>
-                    <p className='text-base text-six'>
-                        If long commutes and noisy office environments are something you'd like to avoid, getting a remote job is a good option. We've compiled a list of the best work from home jobs for you to consider. Over the past couple of years, many companies in the US and around the world have adopted work from home policies.
+                    <p className='text-sm md:text-base text-six'>
+                        Check the list well; He also talk about skill to get the job and how to position yourself for jobs. It's not all about government job. One can create his own job and be self-employed. You can also work remotely if you got the skill sets that will put you in the employer spot light. Above all, God is the source of help for all mankind!!
                     </p>
                 </div>
                 <div className='flex gap-8 justify-start items-center basis-1/5'>
@@ -222,25 +194,24 @@ const Thread = () => {
                 </div>
             </div>
         </div>
-        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-12 flex flex-col gap-5 mb-5'>
+        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5'>
             <div className='flex gap-3 items-center'>
                 <div>
-                    <img className='rounded-full w-16' src="../forum-images/f1.png" alt="" />
+                    <img className='rounded-full w-16' src="../forum-images/reply/r5.png" alt="" />
                 </div>
                 <div>
-                    <div className='capitalize text-2xl font-semibold'>
-                        The best work from home jobs in 2022
+                    <div className='capitalize text-base md:text-2xl font-semibold text-[#101010]'>
+                        <p>HRsweetness24</p>
                     </div>
-                    <div className='flex gap-5 text-five text-base'>
-                        <p>By Ida Peterson</p>
-                        <p>November 14, 2022</p>
+                    <div className='flex gap-5 text-[#bababa] text-sm md:text-base'>
+                        <p>November 2, 2022</p>
                     </div>
                 </div>
             </div>
             <div className='flex flex-col gap-5 mb-5'>
                 <div className='basis-4/5'>
-                    <p className='text-base text-six'>
-                        If long commutes and noisy office environments are something you'd like to avoid, getting a remote job is a good option. We've compiled a list of the best work from home jobs for you to consider. Over the past couple of years, many companies in the US and around the world have adopted work from home policies.    
+                    <p className='text-sm md:text-base text-six'>
+                        Networking is very key, skiils acquisition is paramount. Infact all the points are on point. You however missed a very very critical point which is consistency.    
                     </p>
                 </div>
                 <div className='flex gap-8 justify-start items-center basis-1/5'>
@@ -253,25 +224,26 @@ const Thread = () => {
                 </div>
             </div>
         </div>
-        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-12 flex flex-col gap-5 mb-5'>
+        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5'>
             <div className='flex gap-3 items-center'>
                 <div>
-                    <img className='rounded-full w-16' src="../forum-images/f1.png" alt="" />
+                    <img className='rounded-full w-16' src="../forum-images/reply/r6.png" alt="" />
                 </div>
                 <div>
-                    <div className='capitalize text-2xl font-semibold'>
-                        The best work from home jobs in 2022
+                    <div className='capitalize text-base md:text-2xl font-semibold text-[#101010]'>
+                        <p>Madridstar007</p>
                     </div>
-                    <div className='flex gap-5 text-five text-base'>
-                        <p>By Ida Peterson</p>
-                        <p>November 14, 2022</p>
+                    <div className='flex gap-5 text-[#bababa] text-sm md:text-base'>
+                        <p>November 2, 2022</p>
                     </div>
                 </div>
             </div>
             <div className='flex flex-col gap-5 mb-5'>
                 <div className='basis-4/5'>
-                    <p className='text-base text-six'>
-                        If long commutes and noisy office environments are something you'd like to avoid, getting a remote job is a good option. We've compiled a list of the best work from home jobs for you to consider. Over the past couple of years, many companies in the US and around the world have adopted work from home policies.
+                    <p className='text-sm md:text-base text-six'>
+                        10. Ruthless efficiency in execution and completion of tasks. If they have to cut off social media, cut of certain people, cut of social activities, stay up all night, meet people/collaborators who can support, etc, they will do it. They are not emotional about things that wouldnt add value. There is a certain ruthless streak in highly successful people.Most people dont know this and when you tell them, they say "it is harsh, no na..."
+                        <br /><br />
+                        11. Consistency. Excellence isnt what you do once, but maintaining a high standard and performance repeatedly. This is what highly successful people do. It takes ruthlessness, it takes sacrifice, it takes being tunnel-visioned.
                     </p>
                 </div>
                 <div className='flex gap-8 justify-start items-center basis-1/5'>
@@ -281,6 +253,52 @@ const Thread = () => {
                     <div>
                         <button className='btn btnPrimary h-12'>Quote</button>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div className='border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5'>
+            <div className='flex gap-3 items-center'>
+                <div>
+                    <img className='rounded-full w-16' src="../forum-images/reply/r3.png" alt="" />
+                </div>
+                <div>
+                    <div className='capitalize text-base md:text-2xl font-semibold text-[#101010]'>
+                        <p>johnUbah</p>
+                    </div>
+                    <div className='flex gap-5 text-[#bababa] text-sm md:stext-base'>
+                        <p>November 2, 2022</p>
+                    </div>
+                </div>
+            </div>
+            <div className='flex flex-col gap-5 mb-5'>
+                <div className='basis-4/5'>
+                    <p className='text-sm md:text-base text-six'>
+                        10. Ruthless efficiency in execution and completion of tasks. If they have to cut off social media, cut of certain people, cut of social activities, stay up all night, meet people/collaborators who can support, etc, they will do it. They are not emotional about things that wouldnt add value. There is a certain ruthless streak in highly successful people.Most people dont know this and when you tell them, they say "it is harsh, no na..."
+                        <br /><br />
+                        11. Consistency. Excellence isnt what you do once, but maintaining a high standard and performance repeatedly. This is what highly successful people do. It takes ruthlessness, it takes sacrifice, it takes being tunnel-visioned.
+                    </p>
+                </div>
+                <div className='h-16 w-[2px] ml-8 bg-[#bababa]'></div>
+                <div className='flex gap-3 items-center'>
+                    <div>
+                        <img className='rounded-full w-16' src="../forum-images/reply/r7.png" alt="" />
+                    </div>
+                    <div>
+                        <div className='capitalize text-base md:text-2xl font-semibold text-[#101010]'>
+                            <p>Kreativ Mind</p>
+                        </div>
+                        <div className='flex gap-5 text-[#bababa] text-sm md:text-base'>
+                            <p>November 2, 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form>
+                        <textarea className='w-full p-3 outline-none resize-none' rows="10" placeholder='Type text here'></textarea>
+                    </form>
+                </div>
+                <div className='flex gap-8 justify-end items-center '>
+                        <button className='btn btnPrimary h-12'>Reply</button>
                 </div>
             </div>
         </div>

@@ -6,5 +6,23 @@ import Faq from "./Faq";
 import Forum from "./forum/Forum";
 import Post from "./forum/Post";
 import Thread from "./forum/Thread";
+import SeeAllHistory from "./SeeAllHistory";
+import Career from "./Career";
+import Pricing from "./Pricing";
+import Blog from "./Blog";
+import SingleblogPage from "./SingleblogPage";
+import Features from "./Features";
 
-export { Home, History, ErrorPage, ContactUs, Faq, Forum, Post, Thread };
+export {
+	Home,
+	History,
+	ErrorPage,
+	ContactUs,
+	Faq, Forum, Post, Thread,
+	SeeAllHistory,
+	Career,
+	SingleblogPage,
+	Blog,
+	Pricing,
+	Features
+};

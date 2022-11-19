@@ -24,7 +24,7 @@ const Footer = () => {
 							<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
 								<Link to="/">Documentation</Link>
 								<Link to="/">Help</Link>
-								<Link to="/">Career</Link>
+								<Link to="/career">Career</Link>
 								<Link to="/">Pricing</Link>
 							</div>
 						</div>
@@ -37,7 +37,7 @@ const Footer = () => {
 							<Link to="/">About us</Link>
 							<Link to="/">Blog</Link>
 							<Link to="/forum">Forum</Link>
-							<Link to="/">Contact us</Link>
+							<Link to="/contactus">Contact us</Link>
 						</div>
 					</div>
 					<div className="">
