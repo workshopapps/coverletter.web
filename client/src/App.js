@@ -16,23 +16,20 @@ import {
 	UploadCV,
 	Preview,
 	PgCoverLetter,
+	TermsAndCondition,
+	Upload,
+	UploadData
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TermsAndCondition from "./pages/TermsAndConditions";
-import Upload from "./pages/upload/Upload";
-import UploadData from "./pages/uploadData/UploadData";
 
-export const UserContext = React.createContext()
 
 const App = () => {
-	const [file,setFile]= useState()
-	const [fileName,setFileName]= useState('')
-	const Provider = UserContext.Provider
+
+	
 	return (
-		<>
-		<Provider value= {{ file, setFile, fileName, setFileName }}>
+
 		<Router>
 			<ScrollToTop>
 				{/* place nav bar here*/}
@@ -72,8 +69,7 @@ const App = () => {
 				{/* place footer here */}
 			</ScrollToTop>
 		</Router>
-		</Provider>
-		</>
+		
 	);
 };
 
