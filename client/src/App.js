@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import {
 	Home,
@@ -15,6 +16,10 @@ import {
 	UploadCV,
 	Preview,
 	PgCoverLetter,
+	TermsAndCondition,
+	Upload,
+	UploadData,
+	Documentation,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -24,10 +29,11 @@ const App = () => {
 	return (
 		<Router>
 			<ScrollToTop>
-				{/* place nav bar here*/}
 				<Header />
 				<Routes>
-					<Route exact path="/" element={<Home />} />
+					<Route path="/" element={<Home />} />
+					<Route exact path="/" element={<Upload />} />
+					<Route path="/upload-data" element={<UploadData />} />
 					<Route path="/preview" element={<Preview />}></Route>
 					<Route
 						path="/cover letter"
@@ -35,6 +41,7 @@ const App = () => {
 					></Route>
 					<Route path="/contactus" element={<ContactUs />} />
 					<Route path="/history" element={<History />} />
+					<Route path="/document" element={<Documentation />} />
 					<Route
 						path="/see-all-history"
 						element={<SeeAllHistory />}
@@ -50,10 +57,13 @@ const App = () => {
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
 					/>
+					<Route
+						path="terms-and-conditions"
+						element={<TermsAndCondition />}
+					></Route>
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />
-				{/* place footer here */}
 			</ScrollToTop>
 		</Router>
 	);
