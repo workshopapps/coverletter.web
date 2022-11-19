@@ -3,6 +3,9 @@ import History from "./History";
 import ErrorPage from "./ErrorPage";
 import ContactUs from "./ContactUs";
 import Faq from "./Faq";
+import Forum from "./forum/Forum";
+import Post from "./forum/Post";
+import Thread from "./forum/Thread";
 import SeeAllHistory from "./SeeAllHistory";
 import Career from "./Career";
 import Pricing from "./Pricing";
@@ -19,7 +22,7 @@ export {
 	History,
 	ErrorPage,
 	ContactUs,
-	Faq,
+	Faq, Forum, Post, Thread,
 	SeeAllHistory,
 	Career,
 	SingleblogPage,

@@ -5,7 +5,7 @@ import {
 	ContactUs,
 	History,
 	SeeAllHistory,
-	Faq,
+	Faq, Forum, Post, Thread,
 	Career,
 	Pricing,
 	Blog,
@@ -42,6 +42,9 @@ const App = () => {
 					/>
 					<Route path="/features" element={<Features />} />
 					<Route path="/faq" element={<Faq />} />
+					<Route path="forum" element={<Forum />} />
+					<Route path="/forum/post" element={<Post />} />
+					<Route path="/forum/thread" element={<Thread />} />
 					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="/generate" element={<UploadCV />} />
 					<Route path="/pricing" element={<Pricing />} />
