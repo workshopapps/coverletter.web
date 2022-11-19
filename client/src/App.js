@@ -27,12 +27,11 @@ import UploadData from "./pages/uploadData/UploadData";
 export const UserContext = React.createContext()
 
 const App = () => {
-	const [file,setFile]= useState()
-	const [fileName,setFileName]= useState('')
-	const Provider = UserContext.Provider
+	
+	r
 	return (
 		<>
-		<Provider value= {{ file, setFile, fileName, setFileName }}>
+		
 		<Router>
 			<ScrollToTop>
 				{/* place nav bar here*/}
@@ -72,7 +71,7 @@ const App = () => {
 				{/* place footer here */}
 			</ScrollToTop>
 		</Router>
-		</Provider>
+		
 		</>
 	);
 };
