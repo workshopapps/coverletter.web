@@ -24,6 +24,7 @@
 		font-family: "Manrope", sans-serif;
 	}
 
+
 	.contents__holder::-webkit-scrollbar {
 		width: 5px;
 	}
@@ -33,6 +34,14 @@
 	.contents__holder::-webkit-scrollbar-thumb {
 		background: #49494b7a;
 		border-radius: 5px;
+
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 700;
+	}
+
+	p {
+		font-weight: 400;
+
 	}
 }
 

@@ -1,9 +1,12 @@
 import "./App.css";
-import { Home, ErrorPage, ContactUs, Faq, Career, PrivacyPolicy } from "./pages";
+
+import { Home, ErrorPage, ContactUs, History, SeeAllHistory, Faq, Career, Pricing,	Blog,
+	SingleblogPage, Features, PrivacyPolicy } from "./pages";
+
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Features from "./pages/Features";
+
 const App = () => {
 	return (
 		<Router>
@@ -11,12 +14,20 @@ const App = () => {
 				{/* place nav bar here*/}
 				<Header />
 				<Routes>
-					<Route path="/" element={<Home />} />
+        	<Route exact path="/" element={<Home />} />
 					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 					<Route path="/contactus" element={<ContactUs />} />
+					<Route path="/history" element={<History />} />
+					<Route path="/see-all-history" element={<SeeAllHistory />} />
 					<Route path="/features" element={<Features />} />
 					<Route path="/faq" element={<Faq />} />
 					<Route path="/career" element={<Career />} />
+					<Route path="blog" element={<Blog />} />
+					<Route
+						path="blogArticle/:id"
+						element={<SingleblogPage />}
+					/>
+					<Route path="/pricing" element={<Pricing />} />
 					<Route path="*" element={<ErrorPage />}></Route>
 				</Routes>
 				<Footer />

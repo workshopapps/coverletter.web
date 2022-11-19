@@ -158,14 +158,16 @@ const Career = () => {
 
 					<div className=" md:rounded-2xl lg:pt-[140px] pt-[110px] lg:pb-[180px] pb-[100px]">
 						<div className="relative">
-							<div
-								className="flex justify-between items-center border-[1.5px] text-textWhite py-6 px-4 rounded-lg cursor-pointer mb-2"
-								onClick={() => setShowOpenings(!showOpenings)}
-							>
+							<div className="flex justify-between items-center border-[1.5px] text-textWhite py-6 px-4 rounded-lg mb-2">
 								<h3 className=" text-textWhite font-bold xl:text-[40px] text-xl leading-[48px]">
 									Current Openings
 								</h3>
-								<CareerArrowDown />
+								<CareerArrowDown
+									className="cursor-pointer"
+									onClick={() =>
+										setShowOpenings(!showOpenings)
+									}
+								/>
 							</div>
 							{showOpenings ? (
 								<div className="text-left bg-[#F0F0F8] px-4 border border-[#CAD0DD] rounded-b-lg absolute w-full overflow-x-hidden">
