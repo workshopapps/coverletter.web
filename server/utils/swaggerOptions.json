@@ -86,7 +86,7 @@
 							"schema": {
 								"type": "object",
 								"properties": {
-									"media": {
+									"myFile": {
 										"type": "string",
 										"format": "binary"
 									}
@@ -118,13 +118,13 @@
 				"description": "Generates a Cover Letter from GPT3",
 				"consumes": ["application/json"],
 				"requestBody": {
-					"required": true,
+					"required": true,					
 					"content": {
 						"multipart/form-data": {
 							"schema": {
 								"type": "object",
 								"properties": {
-									"media": {
+									"myFile": {										
 										"type": "string",
 										"format": "binary"
 									}
