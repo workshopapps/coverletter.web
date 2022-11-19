@@ -16,10 +16,10 @@ const SeeAllHistory = () => {
 		<main className="bg-background py-10">
 			<div className="max-w-screen-2xl m-auto px-5">
 				<div className="mb-16 max-[576px]:mb-8">
-					<h1 className="text-grey800 text-[56px] leading-[4.5rem] max-[576px]:text-2xl">
+					<h1 className="text-grey800 text-[56px] leading-[4.5rem] max-[768px]:text-2xl">
 						Recently uploaded CVs
 					</h1>
-					<p className="text-grey400 text-2xl mt-1 max-[576px]:text-base">
+					<p className="text-grey400 text-2xl mt-1 max-[768px]:text-base">
 						See all your CVs use d to generate cover letters
 					</p>
 				</div>

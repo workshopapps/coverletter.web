@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import HistoryList from "../Layouts/HistoryList";
 
 // CVImages
@@ -19,7 +20,7 @@ import FifthCl from "../Assets/Images/cl5.png";
 import SixthCl from "../Assets/Images/cl6.png";
 import SeventhCl from "../Assets/Images/cl7.png";
 import EighthCl from "../Assets/Images/cl8.png";
-import { Link } from "react-router-dom";
+
 
 const History = () => {
 	return (
@@ -33,58 +34,56 @@ const History = () => {
 						View previous CVs and cover letters
 					</p>
 				</div>
-				<div className="bg-white px-12 py-9 mb-[100px]">
-					<div className="flex justify-between items-center mb-8">
-						<p className="text-grey800 font-semibold text-[40px] leading-[3rem] max-[768px]:text-xl">
+				<div className="bg-white px-12 py-9 mb-[100px] max-[567px]:px-0">
+					<div className="flex justify-between items-center mb-8 max-[567px]:px-4">
+						<p className="text-grey800 font-semibold text-[40px] leading-[3rem] max-[768px]:text-xl max-[567px]:text-sm">
 							Recently uploaded CVs
 						</p>
 						<Link
 							to="/see-all-history"
-							className="text-primaryMain cursor-pointer font-bold text-2xl underline max-[768px]:text-xl"
+							className="text-primaryMain cursor-pointer font-bold text-2xl underline max-[768px]:text-xl max-[567px]:text-sm"
 						>
 							See all
 						</Link>
 					</div>
-					<div className="max-[768px]:flex max-[768px]:justify-center">
-						<div className="grid grid-cols-grid gap-5 justify-center">
-							<HistoryList
-								src={FirstCV}
-								message="Generate new  Cover Letter"
-							/>
-							<HistoryList
-								src={ThirdCV}
-								message="Generate new  Cover Letter"
-							/>
-							<HistoryList
-								src={FifthCV}
-								message="Generate new  Cover Letter"
-							/>
-							<HistoryList
-								src={SeventhCV}
-								message="Generate new  Cover Letter"
-							/>
+					<div className="grid grid-cols-grid gap-5">
+						<HistoryList
+							src={FirstCV}
+							message="Generate new  Cover Letter"
+						/>
+						<HistoryList
+							src={ThirdCV}
+							message="Generate new  Cover Letter"
+						/>
+						<HistoryList
+							src={FifthCV}
+							message="Generate new  Cover Letter"
+						/>
+						<HistoryList
+							src={SeventhCV}
+							message="Generate new  Cover Letter"
+						/>
 
-							<HistoryList
-								src={SecondCV}
-								message="Generate new  Cover Letter"
-							/>
-							<HistoryList
-								src={ForthCV}
-								message="Generate new  Cover Letter"
-							/>
-							<HistoryList
-								src={SixthCV}
-								message="Generate new  Cover Letter"
-							/>
-							<HistoryList
-								src={EighthCV}
-								message="Generate new  Cover Letter"
-							/>
-						</div>
+						<HistoryList
+							src={SecondCV}
+							message="Generate new  Cover Letter"
+						/>
+						<HistoryList
+							src={ForthCV}
+							message="Generate new  Cover Letter"
+						/>
+						<HistoryList
+							src={SixthCV}
+							message="Generate new  Cover Letter"
+						/>
+						<HistoryList
+							src={EighthCV}
+							message="Generate new  Cover Letter"
+						/>
 					</div>
 				</div>
 				<div className="bg-white px-12 py-9">
-					<p className="text-grey800 font-semibold text-[40px] leading-[3rem] mb-8">
+					<p className="text-grey800 font-semibold text-[40px] leading-[3rem] mb-8 max-[768px]:text-xl">
 						All Cover Letters
 					</p>
 					<div className="max-[576px]:flex max-[576px]:justify-center">
@@ -94,7 +93,6 @@ const History = () => {
 								title="Chevron Cover Letter"
 								dateCreated="Created 1 day ago"
 								option={true}
-								// onDisplayModal={openModal()}
 							/>
 							<HistoryList
 								src={ThirdCl}

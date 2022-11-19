@@ -39,9 +39,9 @@ const HistoryList = (props) => {
 		<div>
 			{isModalOpen && deleteModal && (
 				<Modal>
-					<div className="flex flex-col items-center bg-white w-[757px] h-[398px] rounded-lg py-12 px-4">
+					<div className="flex flex-col items-center bg-white w-[757px] h-[398px] max-[768px]:w-[458px] max-[768px]:h-[366px] max-[768px]:text-center max-[460px]:w-[243px] max-[460px]:h-[334px]  rounded-lg py-12 px-4">
 						<Question className="w-[150px] h-[150px]" />
-						<p className="text-2xl font-bold text-grey400 mt-8">
+						<p className="text-2xl font-bold text-grey400 mt-8 max-[768px]:text-lg max-[460px]:text-sm">
 							Are you sure you want to delete this cover letter?
 						</p>
 						<Button onClick={hideDeleteModal} className="font-bold text-[#fefefe] text-lg bg-errorMain mt-8 py-3 px-[53px] rounded-lg">
@@ -52,9 +52,9 @@ const HistoryList = (props) => {
 			)}
 			{isModalOpen && downloadModal && (
 				<Modal>
-					<div className="flex flex-col items-center bg-white w-[757px] h-[398px] rounded-lg py-12 px-4">
+					<div className="flex flex-col items-center bg-white w-[757px] h-[398px] max-[768px]:w-[458px] max-[768px]:h-[366px] max-[768px]:text-center max-[460px]:w-[243px] max-[460px]:h-[334px] rounded-lg py-12 px-4">
 						<Check className="w-[150px] h-[150px]" />
-						<p className="text-2xl font-bold text-grey400 mt-8">
+						<p className="text-2xl font-bold text-grey400 mt-8 max-[768px]:text-lg max-[460px]:text-sm">
 							Downloaded successfully
 						</p>
 						<Button onClick={hideDownloadModal} className="font-bold text-[#fefefe] text-lg bg-primaryMain mt-8 py-3 px-[53px] rounded-lg">
@@ -63,7 +63,7 @@ const HistoryList = (props) => {
 					</div>
 				</Modal>
 			)}
-			<div className="bg-[#f1f6ff] w-[297px] h-[433px] px-[45px] pt-[53px] pb-[26px] hover:outline hover:outline-primaryMain relative">
+			<div className="bg-[#f1f6ff] w-[297px] h-[433px] px-[45px] pt-[53px] pb-[26px] hover:outline hover:outline-primaryMain relative m-auto">
 				{props.option && (
 					<div>
 						<Options
