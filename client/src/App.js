@@ -19,6 +19,9 @@ import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Preview from "./pages/Preview";
 import PgCoverLetter from "./pages/PgCoverLetter";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import EmailOTP from "./pages/EmailOTP";
 
 const App = () => {
 	return (
@@ -43,6 +46,9 @@ const App = () => {
 					<Route path="/faq" element={<Faq />} />
 					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="/generate" element={<UploadCV />} />
+					<Route path='/email-otp'  element={<EmailOTP/>}/>
+					<Route path='/reset'  element={<ResetPassword/>}/>
+        			<Route path='/forgot-password'  element={<ForgotPassword/>}/>
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 				<Footer />
