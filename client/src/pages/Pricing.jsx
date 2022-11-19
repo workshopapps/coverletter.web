@@ -12,7 +12,7 @@ const Pricing = () => {
 		};
 		return (
 			<div
-				className={`bg-textWhite flex flex-col space-y-16 justify-center w-[320px] xl:w-[403px] md:w-[738px] h-[1000px] text-center rounded-md border ${className}`}
+				className={`bg-textWhite flex flex-col space-y-16 justify-center w-[320px] xl:w-[403px] md:w-[738px] h-[900px] text-center rounded-md border ${className}`}
 			>
 				<div className="space-y-4">
 					<p className="text-[24px] text-center font-bold px-8">
@@ -48,8 +48,13 @@ const Pricing = () => {
 			</div>
 		);
 	};
+	const freeFeatures = [
+		"-Limited PDF downloads",
+		"-Limited cover letter generation",
+		"-Limited cover letter edits",
+	];
 
-	const features1 = [
+	const professionalFeatures = [
 		"-Unlimited PDF Downloads",
 		"-Unlimited Cover Letters generation",
 		"-Free linkedin profile generator",
@@ -58,12 +63,12 @@ const Pricing = () => {
 		"-Storage space for cover letters generated",
 	];
 
-	const freeFeatures = [
-		"-Limited PDF downloads",
-		"-Limited cover letter generation",
-		"-Limited cover letter edits",
+	const modernFeatures = [
+		...professionalFeatures,
+		"-Free resume generator",
+		"-Free relocation cover letter generator",
+		"-24/7 standby support from team",
 	];
-
 	return (
 		<div className="bg-background">
 			<Parallax
@@ -88,9 +93,10 @@ const Pricing = () => {
 					</p>
 				</div>
 			</Parallax>
+
 			{shouldShow && (
 				<div>
-					<div className="pb-36 xl:h-[1250px] absolute flex flex-col items-center xl:justify-between space-y-5 xl:space-y-0 xl:flex-row xl:items-start top-[70%] lg:top-[85%] w-full px-5">
+					<div className="pb-36 xl:h-[1150px] absolute flex flex-col items-center xl:justify-between space-y-5 xl:space-y-0 xl:flex-row xl:items-start top-[70%] lg:top-[85%] w-full px-5">
 						<Plate
 							planName="Free Plan"
 							monthly="0"
@@ -101,17 +107,17 @@ const Pricing = () => {
 							planName="Professional Plan"
 							monthly="3"
 							yearly="30"
-							features={features1}
+							features={professionalFeatures}
 						/>
 						<Plate
 							planName="Modern Plan"
 							monthly="5"
 							yearly="54"
-							features={features1}
+							features={modernFeatures}
 							className="xl:self-end"
 						/>
 					</div>
-					<div className="h-[3200px] lg:h-[2800px] xl:h-[1000px]"></div>
+					<div className="h-[2700px] lg:h-[2600px] xl:h-[800px]"></div>
 				</div>
 			)}
 			{!shouldShow && (
