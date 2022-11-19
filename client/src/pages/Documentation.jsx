@@ -271,7 +271,7 @@ export default function Documentation() {
 							<img
 								src={line}
 								alt=""
-								className="absolute left-64 top-16 max-[1300px]:hidden "
+								className="absolute left-64 top-16 max-[1301px]:hidden "
 							/>
 						</div>
 
