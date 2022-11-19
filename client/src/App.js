@@ -1,5 +1,4 @@
 import "./App.css";
-import { Home, ErrorPage, ContactUs, Documentation } from "./pages";
 import {
 	Home,
 	ErrorPage,
@@ -35,8 +34,6 @@ const App = () => {
 						element={<PgCoverLetter />}
 					></Route>
 					<Route path="/contactus" element={<ContactUs />} />
-
-					<Route path="/document" element={<Documentation />} />
 					<Route path="/history" element={<History />} />
 					<Route
 						path="/see-all-history"
