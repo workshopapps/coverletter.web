@@ -49,9 +49,14 @@ const Footer = () => {
 			<div className="bg-[#F2F2F7] px-24 py-[18px]">
 				<div className="flex justify-between items-center text-[12px] text-grey400">
 					<p>© 2022 Cover. All rights reserved.</p>
-					<Link to="/termsandconditions">Terms and Conditions</Link>
-					<Link to="/privacypolicy">Privacy Policy</Link>
+					<Link to="/">Terms and Conditions</Link>
+					<Link to="/privacy-policy" className="sm:flex hidden">
+						Privacy Policy
+					</Link>
 				</div>
+				<Link to="/privacy-policy" className="sm:hidden flex">
+					Privacy Policy
+				</Link>
 			</div>
 		</footer>
 	);
