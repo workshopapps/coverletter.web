@@ -11,6 +11,9 @@ import SingleblogPage from "./SingleblogPage";
 import ProfilePage from "./ProfilePage";
 import UploadCV from "./UploadCV";
 import Features from "./Features";
+import EmailOTP from './EmailOTP'
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 export {
 	Home,
@@ -26,4 +29,8 @@ export {
 	ProfilePage,
 	UploadCV,
 	Features,
+	EmailOTP,
+	ForgotPassword,
+	ResetPassword,
+	
 };

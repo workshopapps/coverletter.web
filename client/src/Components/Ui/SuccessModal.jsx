@@ -2,7 +2,6 @@ import React, { useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 import successCheck from '../../Assets/success-check.svg'
-// import Input from "./Input";
 
 import './SuccessModal.css'
 const SuccessModal = props => {        

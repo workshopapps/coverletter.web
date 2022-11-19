@@ -18,30 +18,31 @@ const EmailOTP = () => {
 
     return ( 
         <div className="email-content mx-auto mt-36 w-[89%] py-8 text-center bg-transparent
-        tb:bg-white tb:w-[65%] bg-white py-12
+        sm:w-[75%]
+        md:bg-white md:w-[65%] bg-white py-12
         lg:w-6/12 py-12
-        xxl:w-[528px]">
+        xl:w-[528px]">
             <h1 className="text-black text-2xl font-semibold leading-8 mb-7
             sm:text-3xl mb-5
-            tb:text-3xl mb-5
-            lg:text-4xl">Email Verification</h1>
-            <p className='w-10/12 mx-auto text-base font-normal leading-6 text-gray-700 
+            md:text-[32px] mb-5
+            lg:text-[40px]">Email Verification</h1>
+            <p className='w-10/12 mx-auto text-base font-normal leading-6 text-[#6D6D6D] 
             sm:text-lg w-3/4
             lg:text-lg w-5/6'>Enter the OTP code sent to the email associated with your account to reset your password.</p>
             <h2 className='mt-10'>
-                <span className='block text-xl leading-8 text-gray-700 
-                tb:text-2xl
+                <span className='block text-xl leading-8 text-[#6D6D6D] 
+                md:text-[24px]
                 lg:text-2xl'>Please Enter OTP</span>
-                <span className='text-red-600 text-xl leading-8 font-semibold 
-                tb:text-2xl
+                <span className='text-[#FF2635] text-xl leading-8 font-semibold 
+                md:text-[24px]
                 lg:text-2xl'>1:04</span>
             </h2>
             <div className="otp-input mt-8 mb-10">
                 {otp.map((data, index) => {
                         return (
                             <input
-                                className="otp-field font-bold w-12 h-12 px-2 pl-4 py-4 mr-4  border border-gray-700 outine-1 outline-gray-700 rounded-lg text-gray-700 text-xl leading-8
-                                tb:mr-6
+                                className="otp-field font-bold w-12 h-12 px-2 pl-4 py-4 mr-4 border border-[#6D6D6D] outine-1 outline-[#6D6D6D] rounded-lg text-[#6D6D6D] text-xl leading-8
+                                md:mr-6
                                 lg:mr-8"
                                 type="text"
                                 name="otp"
@@ -57,17 +58,16 @@ const EmailOTP = () => {
 
              <div className="otp-btn mb-8
              grid grid-cols-2 gap-4 justify-between items-center 
-             sm:w-80 mx-auto
-             tb:w-80 mx-auto
+             sm:w-[380px] mx-auto
              lg:w-96 mx-auto">
-                <div className="resend-otp border border-[#ACC5F4] rounded-lg py-3 cursor-pointer hover:scale-x-[1.03]">
+                <div className="resend-otp border border-[#ACC5F4] rounded-lg py-3 cursor-pointer hover:scale-x-[1.02]">
                     <input type="button"  value='Resend OTP' className='text-[#ACC5F4] '/>
                 </div>
-                <div className="validate-otp rounded-lg bg-[#0652DD] py-3 cursor-pointer hover:scale-x-[1.03]">
+                <div className="validate-otp rounded-lg bg-[#0652DD] py-3 cursor-pointer hover:scale-x-[1.02]">
                     <input type="button" value='Validate OTP' className='text-white'/>
                 </div>
              </div>
-             <div className="change-email text-[#0652DD] text-base leading-6 underline font-semibold">
+             <div className="change-email text-[#0652DD] text-[17px] leading-6 underline font-semibold">
                 <Link to='/'>Change Email</Link>
              </div>
         </div>

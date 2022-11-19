@@ -4,7 +4,6 @@ import { useFormik } from "formik";
 import SuccessModal from "../Components/Ui/SuccessModal";
 import checkEmailIcon from "../Assets/check-email.svg";
 import Input from "../Components/Ui/Input";
-import Label from "../Components/Ui/Label";
 
 const validate = (values) => {
 	const errors = {};
@@ -34,10 +33,11 @@ const ForgotPassword = () => {
 
 	return (
 		<div
-			className="forgot-password-content mx-auto mt-36 w-[89%] py-8 bg-transparent
-        tb:bg-white tb:w-[60%] tb:px-14 py-[70px]
+			className="forgot-password mx-auto mt-36 w-[89%] py-8 bg-transparent
+        sm:w-[75%]
+        md:bg-white md:w-[65%] bg-white py-12
         lg:w-6/12 py-12
-        xxl:w-[528px]"
+        xl:w-[448px]"
 		>
 			<SuccessModal onClose={() => setShow(false)} show={show}>
 				<div className="modal-body-text">
@@ -59,23 +59,23 @@ const ForgotPassword = () => {
 				</div>
 			</SuccessModal>
 			<h1
-				className="text-black text-2xl font-semibold leading-8 mb-7 text-center
-            sm:text-3x1 mb-5
-            tb:text-[30px] mb-5
-            lg:text-[38px]"
+				className="text-black text-2xl text-center font-semibold leading-8 mb-7
+            sm:text-3xl mb-5
+            md:text-[32px] mb-5
+            lg:text-[40px]"
 			>
 				Forgot Password?
 			</h1>
 			<p
-				className="w-[92%] mx-auto text-base font-normal leading-6 text-gray-700 text-center
+				className="w-[92%] mx-auto text-base font-normal leading-6 text-[#6D6D6D] text-center
             sm:text-lg w-3/4
-            tb:text-[18px] w-7/8
-            lg:text-[18px] w-[99%]"
+            md:text-[18px] w-7/8
+            lg:text-[18px] w-[99%]
+            xl:w-[418px] mx-auto"
 			>
 				To reset your password, enter the email associated with your
 				Aplicar account
 			</p>
-
 			<div className="form-container">
 				<form onSubmit={formik.handleSubmit} className="form mb-5">
 					<div
@@ -88,7 +88,7 @@ const ForgotPassword = () => {
 						<input
 							type="email"
 							placeholder="John Doe"
-							className="input_password mt-2 w-full py-[12px] pl-4 rounded-lg border border-gray-700 outline-2 outline-gray-700 bg-transparent"
+							className="input_password mt-2 w-full py-[12px] pl-4 rounded-lg border border-[#6D6D6D] outline-2 outline-[#6D6D6D] bg-transparent"
 							id="email"
 							name="email"
 							onChange={formik.handleChange}
@@ -96,7 +96,7 @@ const ForgotPassword = () => {
 							value={formik.values.email}
 						/>
 						{formik.touched.email && formik.errors.email && (
-							<span className="text-red-700">
+							<span className="text-left text-[#FF2635]">
 								{formik.errors.email}
 							</span>
 						)}
@@ -119,7 +119,7 @@ const ForgotPassword = () => {
 					<span className="text-gray-700 font-semibold">
 						Back to{" "}
 					</span>
-					<span className="text-blue-700 text-base leading-6 underline font-semibold">
+					<span className="text-[#0652DD] text-base leading-6 underline font-semibold">
 						<Link to="/forgot-password">Login Page</Link>
 					</span>
 				</p>
