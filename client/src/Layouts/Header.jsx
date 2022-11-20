@@ -65,11 +65,6 @@ const Header = () => {
 				>
 					Register
 				</Button>
-<<<<<<< HEAD
-				<button>
-					<img src={Hamburger} alt="" className="lg:hidden" />
-				</button>
-=======
 			</aside>
 		);
 	};
@@ -100,7 +95,6 @@ const Header = () => {
 						/>
 					</button>
 				</div>
->>>>>>> dev
 			</div>
 		</>
 	);
