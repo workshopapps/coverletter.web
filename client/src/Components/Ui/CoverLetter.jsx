@@ -1,6 +1,7 @@
-import React from 'react'
-
+import React from "react";
+import { useGlobalContext } from "../../context/context";
 const CoverLetter = () => {
+<<<<<<< HEAD
   return (
     <div className='w-[98%] bg-textWhite border-grey300 border-2 py-8 px-7 rounded-lg'>
         <div className='flex w-full justify-between items-end'>
@@ -30,17 +31,38 @@ const CoverLetter = () => {
                 After all, a fresh idea, in line with current trends will be a good solution for you, and I will be happy to help you complete it.
 
                 I look forward to your call. Thank you for your time and consideration.
+=======
+	const { coverLetter: data } = useGlobalContext();
+	console.log(data);
+>>>>>>> 44716b00a4f8b03c1258cfcc81820b4bbe5bee28
 
-            </p><br/>
-            <p>
-                Best regards,
-            </p><br/>
-            <p>
-                Sam Johnson
-            </p>
-        </div>
-    </div>
-  )
-}
+	return (
+		<div className="w-[98%] bg-textWhite border-grey300 border-2 py-8 px-7 rounded-lg">
+			<div className="flex w-full justify-between items-end">
+				<p className="w-[50%] text-xs md:text-base flex text-grey300">
+					1,Lanre Avenue, Lagos 08133334556 / Sam@gmail.com
+					www.linkedin.com/in/SamJohnson
+				</p>
+				<p className="w-[50%] text-right md:text-2xl text-base font-black ">
+					Sam Johnson
+				</p>
+			</div>
+			<hr className="w-full outline-none h-2 mt-2 bg-primaryDeep border-none" />
+			<div className="mt-10 w-full">
+				<p className="w-[40%] text-xs md:text-base flex">
+					{data.company_address}
+				</p>
+			</div>
+			<div className="mt-5 text-xs md:text-base">
+				<p className=""> Dear {data.recipient_name},</p> <br />
+				<p>{data.cover_letter}</p>
+				<br />
+				<p>Best regards,</p>
+				<br />
+				<p>Sam Johnson</p>
+			</div>
+		</div>
+	);
+};
 
-export default CoverLetter
+export default CoverLetter;
