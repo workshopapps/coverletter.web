@@ -124,37 +124,24 @@
 							"schema": {
 								"type": "object",
 								"properties": {
-									"myFile": {										
+									"myFile": {
 										"type": "string",
 										"format": "binary"
-									}
+									},
+									"companyName": { "type": "string" },
+									"companyAddress": { "type": "string" },
+									"city": { "type": "string" },
+									"role": { "type": "string" },
+									"yearsOfExperience": { "type": "string" },
+									"recipientName": { "type": "string" },
+									"recipientDepartment": { "type": "string" },
+									"receipientEmail": { "type": "string" },
+									"receipientPhoneNo": { "type": "string" }
 								}
 							}
 						}
 					}
 				},
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "user object",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"companyName": { "type": "string" },
-								"companyAddress": { "type": "string" },
-								"city": { "type": "string" },
-								"role": { "type": "string" },
-								"yearsOfExperience": { "type": "string" },
-								"recipientName": { "type": "string" },
-								"recipientDepartment": { "type": "string" },
-								"receipientEmail": { "type": "string" },
-								"receipientPhoneNo": { "type": "string" }
-							}
-						}
-					}
-				],
 				"responses": {
 					"200": {
 						"description": "Ok",
