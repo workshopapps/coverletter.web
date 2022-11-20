@@ -1,4 +1,7 @@
 import History from "./History";
+import CreateAccount from "./CreateAccount";
+import VerifyAcc from "./VerifyAcc";
+import Login from "./Login";
 import ErrorPage from "./ErrorPage";
 import PrivacyPolicy from "./PrivacyPolicy";
 import ContactUs from "./ContactUs";
@@ -25,8 +28,12 @@ import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 
 export {
+	Home,
+	CreateAccount,
 	History,
+	VerifyAcc,
 	ErrorPage,
+	Login,
 	ContactUs,
 	Faq,
 	SeeAllHistory,

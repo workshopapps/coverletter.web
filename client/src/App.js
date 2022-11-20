@@ -1,6 +1,10 @@
 import React from "react";
 import "./App.css";
 import {
+	Home,
+	CreateAccount,
+	VerifyAcc,
+	Login,
 	ErrorPage,
 	ContactUs,
 	History,
@@ -46,6 +50,9 @@ const App = () => {
 					></Route>
 					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 					<Route path="/contactus" element={<ContactUs />} />
+					<Route path="/createaccount" element={<CreateAccount />}/>
+					<Route path="/verifyaccount" element={<VerifyAcc />}/>
+					<Route path="/login" element={<Login />}/>
 					<Route path="/history" element={<History />} />
 					<Route path="/document" element={<Documentation />} />
 					<Route
