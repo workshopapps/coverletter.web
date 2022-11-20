@@ -21,7 +21,7 @@ import {
 	Documentation,
 	Forum,
 	Thread,
-	Post
+	Post,
 	ForgotPassword,
 	ResetPassword,
 	EmailOTP,

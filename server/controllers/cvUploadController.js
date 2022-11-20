@@ -3,9 +3,11 @@ const { StatusCodes } = require("http-status-codes");
 
 const cvUpload = async (req, res) => {
 	// check if you selected a file
+	console.log(req.files);
 	if (!req.files) throw new BadRequestError("You Must upload a File");
 
 	const file = req.files.myFile;
+	console.log(1);
 	const splitName = file.name.split(".");
 	const extension = splitName[splitName.length - 1];
 
