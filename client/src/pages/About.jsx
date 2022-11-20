@@ -33,7 +33,7 @@ const About = () => {
 					</p>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-14 mt-[32px] sm:mt-[48px] lg:mt-[58px]">
 						<div className="flex flex-col justify-center align-center">
-							<h2 className="text-3xl  font-semibold">
+							<h2 className="text-xl sm:text-2xl lg:text-[32px] font-semibold">
 								Who we are
 							</h2>
 							<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-4">
@@ -57,7 +57,7 @@ const About = () => {
 							</div>
 						</div>
 						<div className="flex flex-col order-1 md:order-2 justify-center align-center">
-							<h2 className="text-3xl  font-semibold">
+							<h2 className="text-xl sm:text-2xl lg:text-[32px] font-semibold">
 								Our mission
 							</h2>
 							<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-4">
@@ -70,7 +70,9 @@ const About = () => {
 						</div>
 					</div>
 					<div className="mt-[32px] sm:mt-[48px] lg:mt-[58px]">
-						<h2 className="text-3xl font-semibold">Our History</h2>
+						<h2 className="text-xl sm:text-2xl lg:text-[32px] font-semibold">
+							Our History
+						</h2>
 						<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-4">
 							At Aplicar, we reckon that creating a cover letter
 							ought to be a quick and easy procedure. Aplicar
@@ -95,7 +97,9 @@ const About = () => {
 						</p>
 					</div>
 					<div className="mt-[32px] sm:mt-[48px] lg:mt-[58px]">
-						<h2 className="text-3xl font-semibold">Our Teams</h2>
+						<h2 className="text-xl sm:text-2xl lg:text-[32px] font-semibold">
+							Our Teams
+						</h2>
 						<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-4">
 							People are the foundation of every successful
 							company. We strive to innovate and grow by meeting
@@ -255,19 +259,21 @@ const About = () => {
 					</div>
 
 					<div className="mt-[32px] sm:mt-[48px] lg:mt-[58px] mb-[150px]">
-						<h2 className="text-3xl font-semibold">Resources</h2>
+						<h2 className="text-xl sm:text-2xl lg:text-[32px] font-semibold">
+							Resources
+						</h2>
 						<div className="grid mt-10 grid-cols-1 md:grid-cols-2 gap-14">
 							<div className="bg-white flex flex-col p-10  justify-center align-center h-full">
 								<p className="font-semibold text-xl sm:text-2xl">
 									Blog
 								</p>
-								<p className="mt-3 text-xl text-[#6D6D6D] max-w-[350px]">
+								<p className="mt-3 text-base sm:text-lg lg:text-xl text-[#6D6D6D] max-w-[350px]">
 									Click on the link below to read more about
 									Aplica on our blog
 								</p>
 
 								<Link to="/blog">
-									<p className="mt-5 text-xl text-[#03296F] ">
+									<p className="mt-5 text-base sm:text-lg lg:text-xl text-[#03296F] ">
 										Click here
 									</p>
 								</Link>
@@ -277,12 +283,12 @@ const About = () => {
 								<p className="font-semibold text-xl sm:text-2xl">
 									Careers
 								</p>
-								<p className="mt-3 text-xl text-[#6D6D6D] max-w-[350px]">
+								<p className="mt-3 text-base sm:text-lg lg:text-xl text-[#6D6D6D] max-w-[350px]">
 									Looking for career opportunity? Join out
 									team to unlock creativity.
 								</p>
 								<Link to="/career">
-									<p className="mt-5 text-xl text-[#03296F]">
+									<p className="mt-5 text-base sm:text-lg lg:text-xl text-[#03296F]">
 										Click here
 									</p>
 								</Link>
