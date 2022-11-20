@@ -24,6 +24,7 @@ app.use(
 const authRoutes = require("./routes/authRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
+const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes")
 
 app.use(
 	"/cvg-documentation",
@@ -53,6 +54,7 @@ app.use(
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", templateRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
+app.use("/api/v1",downloadCoverLetter);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
