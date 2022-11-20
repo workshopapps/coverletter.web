@@ -27,7 +27,7 @@ const Header = () => {
 	const Small = () => {
 		return (
 			<aside
-				className={`border-r border-primaryMain fixed bg-white bottom-0 top-0 w-3/4 sm:w-1/2 lg:hidden py-4 px-6 z-50 ${
+				className={`border-r border-primaryMain fixed bg-white bottom-0 top-0 w-3/4 sm:w-1/2 lg:hidden py-4 px-6 z-50 bg-background ${
 					toggleMenu ? "left-0" : "-left-full"
 				}`}
 			>
