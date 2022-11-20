@@ -13,6 +13,7 @@ const CoverLetter = () => {
         </div>
         <hr  className='w-full outline-none h-2 mt-2 bg-primaryDeep border-none'/>
         <div className='mt-10 w-full'>
+            <p className='font w-[40%] text-xs font-bold mb-5 md:text-base flex'>10/11/2022</p>
             <p className='w-[40%] text-xs md:text-base flex'>
                 Oasis David
                 321 Hollywood Ave, 
