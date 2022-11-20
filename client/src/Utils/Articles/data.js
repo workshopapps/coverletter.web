@@ -24,7 +24,7 @@ export const articles = [
 	},
 	{
 		id: 2,
-		title: "The Aplicar Cover Letter Generator- What  To Know",
+		title: "The Aplicar Cover Letter Generator- What you need to know",
 		text: "With the Aplicar cover letter generator, students and professionals are able to easily create a cover letter without having to spend a lot of ...",
 		image: articleImage2,
 		time: "5 MIN READ",

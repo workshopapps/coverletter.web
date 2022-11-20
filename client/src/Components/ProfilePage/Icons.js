@@ -127,3 +127,46 @@ export const ViewIcon = () => {
 
     )
 }
+
+export const CVUpload = ({ ...props }) => {
+    return (
+        <svg {...props} width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30.0002 56.6667V36.6667L23.3335 43.3334" stroke="#434343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M30 36.6667L36.6667 43.3334" stroke="#434343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M73.3332 33.3334V50.0001C73.3332 66.6668 66.6665 73.3334 49.9998 73.3334H29.9998C13.3332 73.3334 6.6665 66.6668 6.6665 50.0001V30.0001C6.6665 13.3334 13.3332 6.66675 29.9998 6.66675H46.6665" stroke="#434343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M73.3332 33.3334H59.9998C49.9998 33.3334 46.6665 30.0001 46.6665 20.0001V6.66675L73.3332 33.3334Z" stroke="#434343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+    )
+}
+
+export const PasswordLockIcon = ({ ...props }) => {
+    return (
+        <svg {...props} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.99994 14.4584C10.7501 14.4584 11.3583 13.8502 11.3583 13.1C11.3583 12.3498 10.7501 11.7417 9.99994 11.7417C9.24975 11.7417 8.6416 12.3498 8.6416 13.1C8.6416 13.8502 9.24975 14.4584 9.99994 14.4584Z" fill="#BABABA" />
+            <path d="M13.8753 7.8665H6.12533C6.05866 7.8665 6.00033 7.8665 5.93366 7.8665V6.89984C5.93366 4.45817 6.62533 2.83317 10.0003 2.83317C13.6087 2.83317 14.067 4.5915 14.067 6.12484C14.067 6.44984 14.3253 6.70817 14.6503 6.70817C14.9753 6.70817 15.2337 6.44984 15.2337 6.12484C15.2337 3.1665 13.4753 1.6665 10.0003 1.6665C5.30866 1.6665 4.76699 4.64984 4.76699 6.89984V7.9415C2.43366 8.23317 1.66699 9.4165 1.66699 12.3248V13.8748C1.66699 17.2915 2.70866 18.3332 6.12533 18.3332H13.8753C17.292 18.3332 18.3337 17.2915 18.3337 13.8748V12.3248C18.3337 8.90817 17.292 7.8665 13.8753 7.8665ZM10.0003 15.6165C8.60866 15.6165 7.48366 14.4832 7.48366 13.0998C7.48366 11.7082 8.61699 10.5832 10.0003 10.5832C11.3837 10.5832 12.517 11.7165 12.517 13.0998C12.517 14.4915 11.392 15.6165 10.0003 15.6165Z" fill="#BABABA" />
+        </svg>
+
+    )
+}
+
+export const ArrowLeft = ({ ...props }) => {
+    return (
+        <svg { ...props } width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.355 8.89502L5.25 18L14.355 27.105" stroke="#434343" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M30.7499 18H5.50488" stroke="#434343" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+    )
+}
+
+export const SuccessIcon =({ ...props }) =>{
+    return (
+        <svg { ...props } width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="100" height="100" rx="50" fill="#E5FCF6"/>
+<rect x="10" y="8.75" width="80" height="80" rx="40" fill="#0FB56D"/>
+<path d="M32.4375 48.9904L43.9838 60.5366L67.5625 36.9629" stroke="#FCFCFC" stroke-width="5.50125" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+    )
+}

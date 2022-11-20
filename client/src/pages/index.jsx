@@ -1,7 +1,12 @@
-import Home from "./Home";
 import History from "./History";
+import Register from "./Register";
+import VerifyAcc from "./VerifyAcc";
+import SignIn from "./SignIn";
 import ErrorPage from "./ErrorPage";
+import PrivacyPolicy from "./PrivacyPolicy";
 import ContactUs from "./ContactUs";
+import CustomerStories from "./CustomerStories";
+import SingleProduct from "./SingleProduct";
 import Faq from "./Faq";
 import SeeAllHistory from "./SeeAllHistory";
 import Career from "./Career";
@@ -16,15 +21,23 @@ import PgCoverLetter from "./PgCoverLetter";
 import TermsAndCondition from "./TermsAndConditions";
 import Upload from "./upload/Upload";
 import UploadData from "./uploadData/UploadData";
-
+import Documentation from "./Documentation";
+import Forum from "./forum/Forum";
+import Thread from "./forum/Thread";
+import Post from "./forum/Post";
+import EmailOTP from "./EmailOTP";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
+import About from "./About";
 export {
-	Home,
+	Register,
 	History,
+	VerifyAcc,
 	ErrorPage,
+	SignIn,
 	ContactUs,
 	Faq,
 	SeeAllHistory,
-	Career,
 	SingleblogPage,
 	Blog,
 	Pricing,
@@ -36,4 +49,17 @@ export {
 	TermsAndCondition,
 	Upload,
 	UploadData,
+	About,
+	PrivacyPolicy,
+	Documentation,
+	Forum,
+	Thread,
+	Post,
+	EmailOTP,
+	ForgotPassword,
+	ResetPassword,
+	CustomerStories,
+	SingleProduct,
+	Career,
+	
 };

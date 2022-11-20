@@ -9,7 +9,8 @@ const bodyParser = require("body-parser");
 const connectDB = require("./db/connect");
 require("dotenv").config();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
+
 const fileUpload = require("express-fileupload");
 const app = express();
 
@@ -62,11 +63,9 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 const start = async () => {
 	try {
-		//connect DB
-		// connectDB(process.env.MONGO_URI).then(() => {
-		// 	console.log("Connection succesful");
-		// });
-		
+		connectDB(process.env.MONGO_URI).then(() => {
+			console.log("Connection succesful");
+		});
 		app.listen(port, () =>
 			console.log(`Server is listening on port ${port}...`)
 		);
