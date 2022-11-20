@@ -74,8 +74,10 @@ function InputData() {
 			name.length
 		) {
 			setError(true);
-		} else {
-			alert("Dude calm down, i have not linked the API");
+		}
+		 if(companyAddress&&companyName&&city&&country&&date&&role&&years&&name){
+                
+			uploadFile();
 		}
 
 		const uploadFile = async (e) => {
@@ -102,7 +104,7 @@ function InputData() {
 				alert("Error processing your CV");
 			}
 		};
-		uploadFile();
+		
 	};
 
 	return (
