@@ -29,7 +29,6 @@ import ResetPassword from "./ResetPassword";
 import About from "./About";
 
 export {
-	Home,
 	CreateAccount,
 	History,
 	VerifyAcc,
