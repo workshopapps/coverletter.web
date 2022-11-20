@@ -51,9 +51,9 @@ const App = () => {
 					></Route>
 					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 					<Route path="/contactus" element={<ContactUs />} />
-					<Route path="/register" element={<Register />}/>
-					<Route path="/verifyaccount" element={<VerifyAcc />}/>
-					<Route path="/signin" element={<SignIn />}/>
+					<Route path="/register" element={<Register />} />
+					<Route path="/verifyaccount" element={<VerifyAcc />} />
+					<Route path="/signin" element={<SignIn />} />
 					<Route path="/history" element={<History />} />
 					<Route path="/document" element={<Documentation />} />
 					<Route
@@ -74,6 +74,10 @@ const App = () => {
 						element={<ForgotPassword />}
 					/>
 					<Route path="/reset" element={<ResetPassword />} />
+					<Route
+						path="/blogArticle/:id"
+						element={<SingleblogPage />}
+					/>
 					<Route
 						path="/terms-and-conditions"
 						element={<TermsAndCondition />}
