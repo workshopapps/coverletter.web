@@ -1,10 +1,10 @@
 import Logo from "../Assets/headerLogo.png";
-import navLinkElements from "../Constants/navLinkElements";
-import Button from "../Components/Ui/Button";
 import Hamburger from "../Assets/menu.svg";
 import { Link } from "react-router-dom";
 import Close from "../Assets/close.svg";
 import { useState } from "react";
+import Button from "../Components/Ui/Button";
+import navLinkElements from "../Constants/navLinkElements";
 
 const Header = () => {
 	const [toggleMenu, setToggleMenu] = useState(false);
@@ -53,18 +53,24 @@ const Header = () => {
 						</Link>
 					))}
 				</ul>
-				<Button
-					className="btn btnShort btnSecondary block md:hidden w-full my-4"
-					onClick={() => setToggleMenu((prev) => (prev = false))}
-				>
-					Sign in
-				</Button>
-				<Button
-					className="btn btnShort btnPrimary block md:hidden w-full"
-					onClick={() => setToggleMenu((prev) => (prev = false))}
-				>
-					Register
-				</Button>
+
+				<Link to="/signin">
+					<Button
+						className="btn btnShort btnSecondary block md:hidden w-full my-4"
+						onClick={() => setToggleMenu((prev) => (prev = false))}
+					>
+						Sign in
+					</Button>
+				</Link>
+
+				<Link to="/register">
+					<Button
+						className="btn btnShort btnPrimary block md:hidden w-full"
+						onClick={() => setToggleMenu((prev) => (prev = false))}
+					>
+						Register
+					</Button>
+				</Link>
 			</aside>
 		);
 	};
@@ -78,12 +84,16 @@ const Header = () => {
 				</Link>
 				<Large />
 				<div className="space-x-5 flex">
-					<Button className="btn btnShort btnSecondary hidden md:block">
-						Sign in
-					</Button>
-					<Button className="btn btnShort btnPrimary hidden md:block">
-						Register
-					</Button>
+					<Link to="/signin">
+						<Button className="btn btnShort btnSecondary hidden md:block">
+							Sign in
+						</Button>
+					</Link>
+					<Link to="/register">
+						<Button className="btn btnShort btnPrimary hidden md:block">
+							Register
+						</Button>
+					</Link>
 					<button>
 						<img
 							src={Hamburger}

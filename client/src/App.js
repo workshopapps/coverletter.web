@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import {
-	Home,
 	Register,
 	VerifyAcc,
 	SignIn,
@@ -46,7 +45,7 @@ const App = () => {
 				<Routes>
 					<Route exact path="/" element={<Upload />} />
 					<Route path="/upload-data" element={<UploadData />} />
-					<Route path="/preview" element={<Preview />}></Route>
+					<Route path="/preview" element={<Preview />} />
 					<Route
 						path="/cover letter"
 						element={<PgCoverLetter />}
@@ -97,7 +96,6 @@ const App = () => {
 					/>
 					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 
-					<Route path="*" element={<ErrorPage />}></Route>
 					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="/generate" element={<UploadCV />} />
 					<Route path="*" element={<ErrorPage />} />
