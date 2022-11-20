@@ -15,7 +15,7 @@ function Uploaded() {
 		formData.append("myFile", file);
 		try {
 			const res = await axios.post(
-				"http://localhost:5000/api/v1/upload",
+				"http://localhost:5001/api/v1/upload",
 				formData
 			);
 			console.log(res);

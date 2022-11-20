@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import {
-	Home,
 	Register,
 	VerifyAcc,
 	SignIn,
@@ -31,6 +30,8 @@ import {
 	ForgotPassword,
 	ResetPassword,
 	EmailOTP,
+	CustomerStories,
+	SingleProduct,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -85,6 +86,16 @@ const App = () => {
 					<Route path="/forum" element={<Forum />} />
 					<Route path="/forum/thread" element={<Thread />} />
 					<Route path="/forum/post" element={<Post />} />
+					<Route
+						path="/customerstories"
+						element={<CustomerStories />}
+					/>
+					<Route
+						path="/customerstories/:customerId"
+						element={<SingleProduct />}
+					/>
+					<Route path="privacy-policy" element={<PrivacyPolicy />} />
+
 					<Route path="*" element={<ErrorPage />}></Route>
 					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="/generate" element={<UploadCV />} />
