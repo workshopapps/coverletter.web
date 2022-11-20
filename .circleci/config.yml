@@ -9,8 +9,8 @@ jobs:
           name: Deploy App
           command: |
             # ssh @20.228.142.174 "cd /var/www/nodebackend/ && sudo git pull && cd /home/centos && sudo pm2 restart app"
-            # ssh -i aprica_key.pem azureuser@20.228.142.174
-            npm start
+            # ssh -i PUBLICKEY USER@IPADDRESS
+            
 
 workflows:
   version: 2
