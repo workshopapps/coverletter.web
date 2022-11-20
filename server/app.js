@@ -56,7 +56,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", templateRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
 app.use("/api/v1", downloadCoverLetter);
-app.use("/api/v1/contact", contactRoutes)
+app.use("/api/v1", contactRoutes)
 
 app.get("/", (req, res) => {
 	res.send("templates api");
