@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Event from './pages/Event'
 import {
 	Register,
 	VerifyAcc,
@@ -32,7 +33,6 @@ import {
 	EmailOTP,
 	CustomerStories,
 	SingleProduct,
-	Event,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
