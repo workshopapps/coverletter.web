@@ -85,7 +85,6 @@ const App = () => {
 						path="/customerstories/:customerId"
 						element={<SingleProduct />}
 					/>
-					{/* <Route path="/" element={<Home />} /> */}
 					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 
 					<Route path="*" element={<ErrorPage />}></Route>

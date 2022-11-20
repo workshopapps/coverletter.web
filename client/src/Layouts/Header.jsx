@@ -1,5 +1,5 @@
 import Logo from "../Assets/headerLogo.png";
-import navLinkElements from "../Constants/navLinkElements";
+import navCustomerElements from "../Constants/navCustomerElements";
 import Hamburger from "../Assets/menu.svg";
 import { Link, NavLink } from "react-router-dom";
 import user from "../Assets/user.png";
@@ -10,7 +10,7 @@ const Header = () => {
 				<img src={Logo} alt="" />
 			</Link>
 			<ul className="xxs:max-lg:hidden lg:flex items-center justify-center">
-				{navLinkElements.map((item) => {
+				{navCustomerElements.map((item) => {
 					const { name, url } = item;
 					return (
 						<li
