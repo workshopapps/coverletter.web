@@ -2,7 +2,11 @@
 module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
-		extend: {},
+		extend: {
+			gridTemplateColumns: {
+				grid: "repeat(auto-fit, minmax(297px, 1fr))",
+			},
+		},
 		fontSize: {
 			sm: "0.8rem",
 			base: "1rem",

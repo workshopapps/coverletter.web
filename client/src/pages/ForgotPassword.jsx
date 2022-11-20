@@ -58,6 +58,23 @@ const ForgotPassword = () => {
 									"border rounded-lg text-white py-3 px-10 bg-[#0544B8] cursor-pointer hover:scale-x-[1.03] text-[20px]"
 								}
 							/>
+					</div>
+				</SuccessModal>
+				<h1
+					className="text-black text-2xl text-center font-semibold leading-8 mb-7
+            sm:text-3xl mb-5
+            md:text-[32px] mb-5
+            lg:text-[40px]"
+				>
+					Forgot Password?
+				</h1>
+				<p
+					className="w-[92%] mx-auto text-base font-normal leading-6 text-[#6D6D6D] text-center
+            sm:text-lg w-3/4
+            md:text-[18px] w-7/8
+            lg:text-[18px] w-[99%]
+            xl:w-[418px] mx-auto"
+				>
 						</a>
 					</div>
 				</SuccessModal>
@@ -120,7 +137,7 @@ const ForgotPassword = () => {
 							Back to{" "}
 						</span>
 						<span className="text-[#0652DD] text-base leading-6 underline font-semibold">
-							<Link to="/forgot-password">Login Page</Link>
+							<Link to="/signin">Login Page</Link>
 						</span>
 					</p>
 				</div>
