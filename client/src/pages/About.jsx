@@ -118,7 +118,7 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className=" text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className=" text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Erica Osawaru
 									</p>
 									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
@@ -142,7 +142,7 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className="text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Adedokun Ayomide
 									</p>
 									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
@@ -167,7 +167,7 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className="text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Adelakun Rotimi
 									</p>
 									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
@@ -191,7 +191,7 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className="text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Harold Obasi
 									</p>
 									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
@@ -216,7 +216,7 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className="text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Destiny Aigbe
 									</p>
 									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
@@ -240,7 +240,7 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className="text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Jewel Uguru
 									</p>
 									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
