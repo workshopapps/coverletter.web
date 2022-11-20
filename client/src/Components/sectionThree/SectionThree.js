@@ -10,7 +10,7 @@ function SectionThree() {
         <div className="div  md:px-[96px]  mt-10 mb-2">
            <main  className='  rounded-lg py-7 pb-[96px] relative bg-[#CDDCF8] '>
             {/* <div className=' absolute h-[100vh] w-[80vh] bg-red-900 ' /> */}
-            <h2 className='text-2xl w-[80%] inline-block md:w-[100%] md:text-4xl font-bold text-center my-[50px] mt-[7px] md:my-[90px] text-textBody'>Benefits of Using Our Cover Letter Builder</h2>
+            <h2 className='text-2xl w-[100%] inline-block md:w-[100%] md:text-4xl font-bold text-center my-[50px] mt-[7px] md:my-[90px] text-textBody'>Benefits of Using Our Cover Letter Builder</h2>
             <div className="top grid md:px-[6rem] px-[7.5%]  lg:grid-cols-2 grid-cols-1 gap-[60px] md:gap-[90px] ">
                 <div className=" w-[327] h-[424px] lg:w-[100%] md:h-[320px] py-10 bg-textWhite text-left px-[50px] md:px-8 box-border flex flex-col rounded-[8px]">
                     <img src={circle} className='w-[80px] mb-5 md:mb-3 h-[80px]' alt="" />
