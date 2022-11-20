@@ -36,7 +36,7 @@ function Uploaded() {
 			<main className="flex flex-col items-center justify-center">
 				<img
 					className="h-[0] md:h-[80px] w-[0] md:w-[80px] "
-					src={success}
+					src={mark}
 					alt=""
 				/>
 				<img

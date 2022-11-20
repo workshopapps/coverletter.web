@@ -17,7 +17,7 @@ function SectionTwo() {
 	  };
 	  const fileValidation = () => {
 		return (
-		  <h2 className="text-rose-600 font-semibold text-[13px]">
+		  <h2 className="text-errorMain font-semibold text-[13px]">
 			The file too large. Please Upload a file with maximum of 5mb
 		  </h2>
 		);
@@ -69,7 +69,7 @@ function SectionTwo() {
 							<label for="upload_file" className="">
 								<img src="" alt="" />
 
-								<h3 className=" text-primaryMain md:text-[24px]  mt-4 text-[20px] font-semibold">
+								<h3 className=" text-primaryMain md:text-[24px] text-center mt-4 text-[20px] font-semibold">
 									Drag & Drop to Upload{" "}
 								</h3>
 
