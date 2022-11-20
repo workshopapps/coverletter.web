@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
+import EmailFooter from '../Layouts/EmailFooter';
 
 const EmailOTP = () => {
 
@@ -17,10 +18,10 @@ const EmailOTP = () => {
     };
 
     return ( 
-        <div className="email-content mx-auto mt-36 w-[89%] py-8 text-center bg-transparent
+        <section className='email-otp bg-[#F2F2F7] pt-36 pb-20'>
+                    <div className="email-content mx-auto w-[89%] py-8 text-center bg-[transparent]
         sm:w-[75%]
-        md:bg-white md:w-[65%] bg-white py-12
-        lg:w-6/12 py-12
+        md:bg-white md:w-[474px] bg-white py-16 px-10
         xl:w-[528px]">
             <h1 className="text-black text-2xl font-semibold leading-8 mb-7
             sm:text-3xl mb-5
@@ -28,7 +29,7 @@ const EmailOTP = () => {
             lg:text-[40px]">Email Verification</h1>
             <p className='w-10/12 mx-auto text-base font-normal leading-6 text-[#6D6D6D] 
             sm:text-lg w-3/4
-            lg:text-lg w-5/6'>Enter the OTP code sent to the email associated with your account to reset your password.</p>
+            lg:text-lg w-[400px] mx-auto'>Enter the OTP code sent to the email associated with your account to reset your password.</p>
             <h2 className='mt-10'>
                 <span className='block text-xl leading-8 text-[#6D6D6D] 
                 md:text-[24px]
@@ -56,21 +57,23 @@ const EmailOTP = () => {
                     })}
             </div>
 
-             <div className="otp-btn mb-8
-             grid grid-cols-2 gap-4 justify-between items-center 
-             sm:w-[380px] mx-auto
-             lg:w-96 mx-auto">
+                <div className="otp-btn mb-8
+                grid grid-cols-2 gap-4 justify-between items-center 
+                sm:w-[380px] mx-auto
+                lg:w-96 mx-auto">
                 <div className="resend-otp border border-[#ACC5F4] rounded-lg py-3 cursor-pointer hover:scale-x-[1.02]">
                     <input type="button"  value='Resend OTP' className='text-[#ACC5F4] '/>
                 </div>
                 <div className="validate-otp rounded-lg bg-[#0652DD] py-3 cursor-pointer hover:scale-x-[1.02]">
                     <input type="button" value='Validate OTP' className='text-white'/>
                 </div>
-             </div>
-             <div className="change-email text-[#0652DD] text-[17px] leading-6 underline font-semibold">
+                </div>
+                <div className="change-email text-[#0652DD] text-[17px] leading-6 underline font-semibold">
                 <Link to='/'>Change Email</Link>
-             </div>
+                </div>
         </div>
+        <EmailFooter/>
+        </section>
      );
 }
  

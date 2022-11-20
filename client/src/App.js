@@ -1,10 +1,15 @@
 import React from "react";
 import "./App.css";
 import {
+	Home,
+	Register,
+	VerifyAcc,
+	SignIn,
 	ErrorPage,
 	ContactUs,
 	History,
 	SeeAllHistory,
+	About,
 	Faq,
 	Career,
 	Pricing,
@@ -18,6 +23,7 @@ import {
 	TermsAndCondition,
 	Upload,
 	UploadData,
+	PrivacyPolicy,
 	Documentation,
 	Forum,
 	Thread,
@@ -46,7 +52,11 @@ const App = () => {
 						path="/cover letter"
 						element={<PgCoverLetter />}
 					></Route>
+					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 					<Route path="/contactus" element={<ContactUs />} />
+					<Route path="/register" element={<Register />} />
+					<Route path="/verifyaccount" element={<VerifyAcc />} />
+					<Route path="/signin" element={<SignIn />} />
 					<Route path="/history" element={<History />} />
 					<Route path="/document" element={<Documentation />} />
 					<Route
@@ -55,6 +65,7 @@ const App = () => {
 					/>
 					<Route path="/features" element={<Features />} />
 					<Route path="/faq" element={<Faq />} />
+					<Route path="/about" element={<About />} />
 					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="/generate" element={<UploadCV />} />
 					<Route path="/pricing" element={<Pricing />} />
@@ -71,7 +82,7 @@ const App = () => {
 						element={<SingleblogPage />}
 					/>
 					<Route
-						path="terms-and-conditions"
+						path="/terms-and-conditions"
 						element={<TermsAndCondition />}
 					></Route>
 					<Route path="/forum" element={<Forum />} />
@@ -88,6 +99,9 @@ const App = () => {
 					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 
 					<Route path="*" element={<ErrorPage />}></Route>
+					<Route path="/profile" element={<ProfilePage />} />
+					<Route path="/generate" element={<UploadCV />} />
+					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 				<Footer />
 			</ScrollToTop>

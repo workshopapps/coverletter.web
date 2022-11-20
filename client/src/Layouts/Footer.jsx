@@ -11,16 +11,22 @@ const Footer = () => {
 					<FooterLogo className="block md:hidden" />
 					<FooterLogoMobile className="hidden md:block" />
 				</div>
-				<div className="grid grid-cols-2 text-left mb-[59px] gap-10 md:grid-cols-3 w-full">
-					<div>
-						<h4 className="text-textBody font-normal text-base leading-6">
-							Product
-						</h4>
-						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
-							<Link to="/documentation">Documentation</Link>
-							<Link to="/help">Help</Link>
-							<Link to="/career">Career</Link>
-							<Link to="/pricing">Pricing</Link>
+				<div className="grid grid-cols-2 text-left mb-[59px] gap-10 md:space-x-24 w-full md:grid-cols-3">
+					<div className="flex md:flex-row flex-col md:space-x-16 ">
+						<div className="md:flex hidden">
+							<FooterLogo />
+						</div>
+						<div className="w-full">
+							<h2 className="text-textBody font-normal text-base leading-6">
+								Product
+							</h2>
+
+							<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
+								<Link to="/">Documentation</Link>
+								<Link to="/faq">fAQs</Link>
+								<Link to="/career">Career</Link>
+								<Link to="/pricing">Pricing</Link>
+							</div>
 						</div>
 					</div>
 					<div>
@@ -28,7 +34,7 @@ const Footer = () => {
 							Company
 						</h4>
 						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
-							<Link to="/aboutus">About us</Link>
+							<Link to="/about">About us</Link>
 							<Link to="/blog">Blog</Link>
 							<Link to="/forum">Forum</Link>
 							<Link to="/contactus">Contact us</Link>
@@ -39,9 +45,9 @@ const Footer = () => {
 							Activity
 						</h4>
 						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
-							<Link to="/events">Events</Link>
+							<Link to="/">Events</Link>
 							<Link to="/customerstories">Customers stories</Link>
-							<Link to="/features">Features</Link>
+							<Link to="/">Features</Link>
 						</div>
 					</div>
 				</div>
@@ -49,7 +55,7 @@ const Footer = () => {
 			<div className="bg-[#F2F2F7] px-24 py-[18px]">
 				<div className="flex justify-between items-center text-[12px] text-grey400">
 					<p>© 2022 Cover. All rights reserved.</p>
-					<Link to="/">Terms and Conditions</Link>
+					<Link to="/terms-and-conditions">Terms and Conditions</Link>
 					<Link to="/privacy-policy" className="sm:flex hidden">
 						Privacy Policy
 					</Link>

@@ -1,4 +1,7 @@
 import History from "./History";
+import Register from "./Register";
+import VerifyAcc from "./VerifyAcc";
+import SignIn from "./SignIn";
 import ErrorPage from "./ErrorPage";
 import PrivacyPolicy from "./PrivacyPolicy";
 import ContactUs from "./ContactUs";
@@ -25,13 +28,16 @@ import Post from "./forum/Post";
 import EmailOTP from "./EmailOTP";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
+import About from "./About";
 export {
+	Register,
 	History,
+	VerifyAcc,
 	ErrorPage,
+	SignIn,
 	ContactUs,
 	Faq,
 	SeeAllHistory,
-	Career,
 	SingleblogPage,
 	Blog,
 	Pricing,
@@ -43,6 +49,8 @@ export {
 	TermsAndCondition,
 	Upload,
 	UploadData,
+	About,
+	PrivacyPolicy,
 	Documentation,
 	Forum,
 	Thread,
@@ -52,5 +60,5 @@ export {
 	ResetPassword,
 	CustomerStories,
 	SingleProduct,
-	PrivacyPolicy,
+	Career,
 };
