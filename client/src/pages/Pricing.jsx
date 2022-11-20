@@ -82,11 +82,11 @@ const Pricing = () => {
 						Pricing
 					</p>
 					<p className="text-[32px] xl:text-[56px] mb-5">
-						The right for you, whoever you are
+						Find the right pricing that suits you
 					</p>
 					<p className="text-[16px] md:text-[24px] ">
-						Pay for one month and get all benefits needed for 30
-						days
+						Monthly: Pay for one month and get all benefits needed
+						for 30 days
 					</p>
 					<p className="text-[24px] ">
 						Yearly: Get $6 off with yearly plan
