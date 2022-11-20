@@ -1,0 +1,18 @@
+.modal{
+    transition: all .3s ease-in-out;
+    pointer-events: none;
+ }
+ 
+ .modal.show{
+     opacity: 1;
+     pointer-events: visible;
+ }
+ 
+ .modal-content{
+     transition: all .3s ease-in-out;
+     transform: translateY(-200px);
+ }
+ 
+ .modal.show .modal-content{
+     transform: translateY(0);
+ }

@@ -18,8 +18,13 @@ describe("Auth", () => {
 	it("should signup a user", async () => {
 		const response = await supertest(app).post("/api/v1/auth/signup").send({
 			name: "Jane Doe",
+<<<<<<< HEAD
+			email: "janed@gmail.com",
+			password: "Jam123",
+=======
 			email: "jao@gmail.com",
 			password: "Janio123",
+>>>>>>> dev
 		});
 
 		console.log(response.body);
