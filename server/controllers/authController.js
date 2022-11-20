@@ -5,7 +5,6 @@ const { BadRequestError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 
-
 const register = async (req, res) => {
 	const { email, name, password } = req.body;
 
@@ -109,11 +108,13 @@ const updatePassword = async (req, res) => {
 
 const forgotPassword = async (req, res, next) => {
 	const user = await User.findOne({ email: req.body.email });
+
 	if (!user) {
 		return next(
 			new BadRequestError("There is no user with this email address.")
 		);
 	}
+
 	const otpResetToken = user.createPasswordResetToken();
 	await user.save();
 

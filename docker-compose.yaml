@@ -1,18 +1,17 @@
 version: "3"
 
 services:
-
-  server:
-    build: ./server     
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./server:/server
-    command: npm run start
-    depends_on:
-      - mongodb
-    env_file:
-      - ./.env
+    server:
+        build: ./server
+        ports:
+            - "5000:5000"
+        volumes:
+            - ./server:/server
+        command: npm run start
+        depends_on:
+            - mongodb
+        env_file:
+            - ./.env
     client:
         build: ./client
         ports:

@@ -65,10 +65,7 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
 
 UserSchema.methods.createPasswordResetToken = function () {
 	const otp = generateOTP(4);
-	this.resetPasswordOtp = crypto
-		.createHash("sha256")
-		.update(otp)
-		.digest("hex");
+	this.resetPasswordOtp = otp;
 	return otp;
 };
 
