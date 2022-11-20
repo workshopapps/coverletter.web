@@ -5,6 +5,8 @@ import SignIn from "./SignIn";
 import ErrorPage from "./ErrorPage";
 import PrivacyPolicy from "./PrivacyPolicy";
 import ContactUs from "./ContactUs";
+import CustomerStories from "./CustomerStories";
+import SingleProduct from "./SingleProduct";
 import Faq from "./Faq";
 import SeeAllHistory from "./SeeAllHistory";
 import Career from "./Career";
@@ -27,8 +29,6 @@ import EmailOTP from "./EmailOTP";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import About from "./About";
-// import Home from './Home'
-
 export {
 	Register,
 	History,
@@ -58,6 +58,8 @@ export {
 	EmailOTP,
 	ForgotPassword,
 	ResetPassword,
+	CustomerStories,
+	SingleProduct,
 	Career,
 	
 };
