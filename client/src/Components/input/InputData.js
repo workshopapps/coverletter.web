@@ -75,11 +75,6 @@ function InputData() {
 		) {
 			setError(true);
 		}
-		 if(companyAddress&&companyName&&city&&country&&date&&role&&years&&name){
-                
-			uploadFile();
-		}
-
 		const uploadFile = async (e) => {
 			const formData = new FormData();
 			formData.append("myFile", file);
@@ -104,6 +99,13 @@ function InputData() {
 				alert("Error processing your CV");
 			}
 		};
+		 if(companyAddress&&companyName&&city&&country&&date&&role&&years&&name){
+			
+
+			uploadFile();
+		}
+
+		
 		
 	};
 
