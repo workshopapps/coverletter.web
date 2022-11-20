@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import {
-	Home,
 	Register,
 	VerifyAcc,
 	SignIn,
@@ -33,7 +32,6 @@ import {
 	EmailOTP,
 	CustomerStories,
 	SingleProduct,
-	PrivacyPolicy,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
