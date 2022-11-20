@@ -33,7 +33,6 @@ import {
 	EmailOTP,
 	CustomerStories,
 	SingleProduct,
-	PrivacyPolicy,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
