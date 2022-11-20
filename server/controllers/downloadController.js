@@ -1,26 +1,16 @@
 const {convertToDoc} = require("../utils/convertToDoc");
 
-//This is the content of the body sent to the download endpoint
-// {
-//     cover_letter,
-//     company_name,
-//     company_address,
-//     city,
-//     country,
-//     years_of_exp,
-//     date,
-//     recipient_name,
-//     recipient_department,
-//     recipient_email,
-//     recipient_phone_no,
-//     format
-// }
-
 const downloadCoverLetter = async function(req,res){
     const data = req.body;
-    const pathToFile = convertToDoc(data.cover_letter,data.format)
-    return res.download(pathToFile);
+    const pathToFile = convertToDoc(data.cover_letter,data.format);
+    let full_route = req.get('host') + req.originalUrl
+    let url = `http://${full_route}?file=${pathToFile}`
+    return res.status(201).json({redirect:url});
 }
 
+const download = async function(req,res){
+    const pathToFile = req.query.file
+    res.download(pathToFile);
+}
 
-module.exports = {downloadCoverLetter}
+module.exports = {downloadCoverLetter, download}
