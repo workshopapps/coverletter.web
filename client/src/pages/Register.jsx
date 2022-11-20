@@ -105,7 +105,7 @@ const CreateAcount = () => {
                             type={"submit"}
                              />
                     </div>
-                    <p className="text-textBody text-center mt-[16px] text-base">Already have an account?<Link to="/login" className="text-primaryMain font-bold">Sign In</Link></p>
+                    <p className="text-textBody text-center mt-[16px] text-base">Already have an account?<Link to="/signin" className="text-primaryMain font-bold">Sign In</Link></p>
                 </form>
             </div>
         </div>
