@@ -19,6 +19,7 @@ import {
 	TermsAndCondition,
 	Upload,
 	UploadData,
+	PrivacyPolicy,
 	Documentation,
 	Forum,
 	Thread,
@@ -44,6 +45,7 @@ const App = () => {
 						path="/cover letter"
 						element={<PgCoverLetter />}
 					></Route>
+					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 					<Route path="/contactus" element={<ContactUs />} />
 					<Route path="/history" element={<History />} />
 					<Route path="/document" element={<Documentation />} />

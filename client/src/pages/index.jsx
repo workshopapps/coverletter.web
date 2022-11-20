@@ -1,5 +1,6 @@
 import History from "./History";
 import ErrorPage from "./ErrorPage";
+import PrivacyPolicy from "./PrivacyPolicy";
 import ContactUs from "./ContactUs";
 import Faq from "./Faq";
 import SeeAllHistory from "./SeeAllHistory";
@@ -43,6 +44,7 @@ export {
 	Upload,
 	UploadData,
 	About,
+	PrivacyPolicy,
 	Documentation,
 	Forum,
 	Thread,
