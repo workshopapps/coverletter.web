@@ -1,23 +1,32 @@
-import { useFormik } from "formik";
+import { Formik, useFormik } from "formik";
+import { useState } from "react";
 import * as Yup from "yup";
 import InputField from "../Components/Ui/InputField";
 import man3 from "../Assets/man3.png";
 import eyeslash from "../Assets/eye-slash.svg";
 import Button from "../Components/Ui/Button";
 import { Link, useNavigate } from "react-router-dom";
+import SuccessModal from "../Components/Ui/SuccessModal";
+import Input from "../Components/Ui/Input";
 
 const CreateAcount = () => {
     const navigate = useNavigate();
+    const [show, setShow] = useState(false);
 
     
     const onSubmit = async () => {
 
-        if(isValid) {
-            navigate("/verifyaccount");
-        }
-     
+       
+        setShow(true);
+
+        setTimeout(() => {
+            if(show == true) {
+                navigate("/verifyaccount");
+            }
+        }, 1000)
         try {
             
+           
 
         } catch(err) {
 
@@ -36,7 +45,7 @@ const CreateAcount = () => {
     });
 
 
-    const { values, errors, handleBlur, handleChange, handleSubmit, touched, isValid}  = useFormik({
+    const { values, errors, handleBlur, handleChange, handleSubmit, touched, isValid, isValidating}  = useFormik({
         initialValues: {
             fullName: "",
             email: "",
@@ -118,6 +127,29 @@ const CreateAcount = () => {
                     <p className="text-textBody text-center mt-[16px] text-base">Already have an account?<Link to="/signin" className="text-primaryMain font-bold">Sign In</Link></p>
                 </form>
             </div>
+            <SuccessModal className={"rounded-[8px]"}  onClose={() =>{
+                navigate("/verifyaccount")
+                 setShow(false)}} 
+                   show={show} 
+                   >
+					<div>
+                    <h3 className="text-textHeader mb-[4px] text-[24px]">Success</h3>
+						<p className="text-[16px] text-textBody leading-6 text-gray-700 font-semibold mb-10">
+							We sent an email with login instructions to <span className="underline">{values.email}</span>
+						</p>
+					</div>
+                    <div className="home-btn">
+						<Link to="/verifyaccount">
+							<Input
+								type={"button"}
+								value={"Continue"}
+								className={
+									"border rounded-lg text-white py-3 px-10 bg-[#0544B8] cursor-pointer hover:scale-x-[1.02] text-[20px]"
+								}
+							/>
+						</Link>
+					</div>
+				</SuccessModal>
         </div>
     );
 }
