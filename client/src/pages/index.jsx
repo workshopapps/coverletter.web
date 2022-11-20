@@ -27,7 +27,7 @@ import EmailOTP from "./EmailOTP";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import About from "./About";
-import Home from './Home'
+// import Home from './Home'
 
 export {
 	Register,
@@ -59,4 +59,5 @@ export {
 	ForgotPassword,
 	ResetPassword,
 	Career,
+	
 };

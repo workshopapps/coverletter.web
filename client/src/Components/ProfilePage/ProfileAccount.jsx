@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { ChatIcon, UserProfile, LockIcon, EditIcon } from './Icons';
 import PasswordModal from './PasswordModal';
+import SuccessModal from './SuccessModal';
 
 const ChatIcons = <ChatIcon />;
 const UserProfiles = <UserProfile />
@@ -9,6 +10,7 @@ const UserProfiles = <UserProfile />
 
 function ProfileAccount() {
     const [showPassModal, setShowPassModal] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
 
 
     const AccountTabs = [
@@ -81,8 +83,10 @@ function ProfileAccount() {
 
             {showPassModal &&
 
-                <PasswordModal showPassModal={showPassModal} setShowPassModal={setShowPassModal} />
+                <PasswordModal setShowSuccess={setShowSuccess} showPassModal={showPassModal} setShowPassModal={setShowPassModal} />
             }
+
+            {showSuccess && <SuccessModal setShowSuccess={setShowSuccess}/>}
         </div>
     )
 }
