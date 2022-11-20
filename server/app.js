@@ -62,7 +62,6 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 const start = async () => {
 	try {
-		//connect DB
 		connectDB(process.env.MONGO_URI).then(() => {
 			console.log("Connection succesful");
 		});
