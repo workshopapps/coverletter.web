@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import SuccessModal from "../Components/Ui/SuccessModal";
 import checkEmailIcon from "../Assets/check-email.svg";
 import Input from "../Components/Ui/Input";
+import EmailFooter from "../Layouts/EmailFooter";
 
 const validate = (values) => {
 	const errors = {};
@@ -32,12 +33,12 @@ const ForgotPassword = () => {
 	});
 
 	return (
-		<div
-			className="forgot-password mx-auto mt-36 w-[89%] py-8 bg-transparent
+		<section className="forgot-password bg-[#f2f2f7] pt-36 pb-20">
+					<div
+			className="forgot-password mx-auto w-[89%] py-8 bg-[transparent]
         sm:w-[75%]
-        md:bg-white md:w-[65%] bg-white py-12
-        lg:w-6/12 py-12
-        xl:w-[448px]"
+        md:bg-white md:w-[474px] bg-white py-16 px-14
+        xl:w-[528px]"
 		>
 			<SuccessModal onClose={() => setShow(false)} show={show}>
 				<div className="modal-body-text">
@@ -125,6 +126,8 @@ const ForgotPassword = () => {
 				</p>
 			</div>
 		</div>
+		<EmailFooter/>
+		</section>
 	);
 };
 
