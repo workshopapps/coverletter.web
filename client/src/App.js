@@ -27,7 +27,6 @@ import {
 	EmailOTP,
 	CustomerStories,
 	SingleProduct,
-	Home,
 	PrivacyPolicy,
 } from "./pages";
 import { ScrollToTop } from "./Components";

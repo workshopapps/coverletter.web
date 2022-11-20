@@ -37,6 +37,7 @@
 		font-weight: 400;
 	.contents__holder::-webkit-scrollbar {
 		display: none;
+
 		width: 5px;
 	}
 	.contents__holder::-webkit-scrollbar-track {
@@ -50,6 +51,7 @@
 		background-image: url("./Assets/bannerLogo.png");
 
 	}
+
 }
 
 @layer components {
