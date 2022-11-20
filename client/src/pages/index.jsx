@@ -26,6 +26,7 @@ import Post from "./forum/Post";
 import EmailOTP from "./EmailOTP";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
+import About from "./About";
 
 export {
 	Register,
@@ -36,7 +37,6 @@ export {
 	ContactUs,
 	Faq,
 	SeeAllHistory,
-	Career,
 	SingleblogPage,
 	Blog,
 	Pricing,
@@ -48,6 +48,7 @@ export {
 	TermsAndCondition,
 	Upload,
 	UploadData,
+	About,
 	PrivacyPolicy,
 	Documentation,
 	Forum,
@@ -56,4 +57,5 @@ export {
 	EmailOTP,
 	ForgotPassword,
 	ResetPassword,
+	Career,
 };
