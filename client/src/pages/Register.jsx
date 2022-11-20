@@ -4,9 +4,26 @@ import InputField from "../Components/Ui/InputField";
 import man3 from "../Assets/man3.png";
 import eyeslash from "../Assets/eye-slash.svg";
 import Button from "../Components/Ui/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CreateAcount = () => {
+    const navigate = useNavigate();
+
+    
+    const onSubmit = async () => {
+
+        if(isValid) {
+            navigate("/verifyaccount");
+        }
+     
+        try {
+            
+
+        } catch(err) {
+
+        }
+     
+ }
 
     const passwordRules = /(?=.*[!#$%&?^*@~() "])(?=.{8,})/;
 
@@ -18,18 +35,8 @@ const CreateAcount = () => {
 
     });
 
-    const onSubmit = async () => {
-        
-        try {
-            
 
-        } catch(err) {
-
-        }
-        
-    }
-
-    const { values, errors, handleBlur, handleChange, handleSubmit, touched, }  = useFormik({
+    const { values, errors, handleBlur, handleChange, handleSubmit, touched, isValid}  = useFormik({
         initialValues: {
             fullName: "",
             email: "",
@@ -42,10 +49,13 @@ const CreateAcount = () => {
     });
 
 
+ 
+
+
     return (
-        <div className="relative bg-background px-[22px] md:px-[95px] py-[76px] lg:pt-[76px] lg:pb-[150px]">
+        <div className="relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[150px]">
             <div className="hidden lg:flex justify-end">
-                <img src={man3} className="w-[997px] rounded-[8px]" alt="" />
+                <img src={man3} className="w-[1045px] rounded-[8px]" alt="" />
             </div>
             <div className="lg:absolute top-[120px] px-[18px] py-[36px] md:p-[64px] rounded-lg bg-[#ffff]">
                 <div className="text-center">

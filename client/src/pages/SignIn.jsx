@@ -33,9 +33,9 @@ const Login = () => {
 
 
     return ( 
-        <div className="relative bg-background px-[22px] md:px-[95px] py-[76px] lg:pt-[76px] lg:pb-[200px]">
+        <div className="relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[200px]">
         <div className="hidden lg:flex justify-end">
-            <img src={man3} className="w-[997px] rounded-[8px]" alt="" />
+            <img src={man3} className="w-[1045px] rounded-[8px]" alt="" />
         </div>
         <div className="lg:absolute top-[120px] px-[18px] py-[36px] md:p-[64px] rounded-lg bg-[#ffff]">
             <div className="text-center">
