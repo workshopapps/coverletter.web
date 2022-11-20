@@ -36,7 +36,7 @@ function UploadCV() {
                             <div>
                                 <CVUpload />
                             </div>
-                            <p className='text-primaryMain text-2xl font-semibold'>Drag & Drop top Upload</p>
+                            <p className='text-primaryMain text-2xl font-semibold'>Drag & Drop to Upload</p>
                             <p className='text-[#6D6D6D]'>File Supported: PDF</p>
                             <p className='font-bold '>Or Browse</p>
 

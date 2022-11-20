@@ -74,10 +74,10 @@ function PasswordModal({ setShowPassModal, setShowSuccess }) {
                 <div className='absolute bg-white w-11/12 md:w-6/12 h-max z-30 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-3 md:p-6 rounded-3xl'>
                     <div className='w-11/12  mx-auto overflow-hidden'>
                         {/* Close Button */}
-                        <p className='inline rounded-full py-2 px-4  absolute top-[-2%] right-[-1%] z-40 font-bold text-xl bg-primaryMain text-white cursor-pointer border-4 border-white'
+                        {/* <p className='inline rounded-full py-2 px-4  absolute top-[-2%] right-[-1%] z-40 font-bold text-xl bg-primaryMain text-white cursor-pointer border-4 border-white'
                             onClick={() => {
                                 setShowPassModal(false)
-                            }}>X</p>
+                            }}>X</p> */}
 
                         <div>
 
