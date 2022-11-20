@@ -28,6 +28,4 @@ const contact = async (req, res) => {
 		message: error.message,
 	});
 };
-module.exports = {
-	contact,
-};
+module.exports = { contact };
