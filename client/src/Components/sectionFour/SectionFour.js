@@ -1,6 +1,8 @@
 import React from 'react'
 import male from './assets/male.jpg'
 import arrow from './assets/arrow.svg'
+import mentor from './assets/mentor.svg'
+import designer from './assets/designer.svg'
 
 function SectionFour() {
   
@@ -24,13 +26,13 @@ function SectionFour() {
                 </div>
                 <div className="review w-[90%] text-textBody md:h-[372px] text-left bg-textWhite flex flex-col p-5 py-4 pt-8 rounded-lg border-[1px] border-primaryLight ">
                     <p className='text-[18px] text-textBody'>Really helpful with the format template that is provided and when you pair your resume with it makes it easier</p>
-                    <img  className='w-12 text-textBody my-[20px] md:mt-[28%] mb-3  h-12 rounded-full' src={male} alt="" />
+                    <img  className='w-12 text-textBody my-[20px] md:mt-[28%] mb-3  h-12 rounded-full' src={designer} alt="" />
                     <p className='font-bold text-textBody text-[16px]'>Designer Bamifemi</p>
                     <span className='text-[14px] text-textBody ' >CEO, Bamifemi Arts</span>
                 </div>
                 <div className="review w-[90%] text-textBody md:h-[372px] text-left bg-textWhite flex flex-col p-5 py-4 pt-8 rounded-lg border-[1px] border-primaryLight ">
                     <p className='text-[18px] text-textBody'>Quick and easy way to create a professional cover letter and allows for my own personal touch to the cover letter</p>
-                    <img  className='w-12 my-[20px] md:mt-[28%] mb-3  h-12 rounded-full' src={male} alt="" />
+                    <img  className='w-12 my-[20px] md:mt-[28%] mb-3  h-12 rounded-full' src={mentor} alt="" />
                     <p className='font-bold text-[16px]'>Mentor Mark</p>
                     <span className='text-[14px] ' >Demi-god of HNG</span>
                 </div>

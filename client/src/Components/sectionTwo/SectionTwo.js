@@ -44,7 +44,7 @@ function SectionTwo() {
 					} border-dashed rounded-lg `}
 				>
 					<div className="uploadContainer relative flex flex-col md:px-[2vh] md:py-[15vh] py-[15vh]">
-						{fileSize > 0 ? null : (
+						{fileSize > 0 && fileSize <5000000 ? null : (
 							<img
 								src={first}
 								className="w-[67px] relative left-[30%] md:left-[37%]  h-[67px]"
