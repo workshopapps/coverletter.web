@@ -76,39 +76,6 @@ function InputData() {
 			alert("Dude calm down, i have not linked the API");
 		}
 
-<<<<<<< HEAD
-		let data = {
-			company_name: companyName,
-			company_address: companyAddress,
-			city: city,
-			country: country,
-			role: role,
-			years_of_exp: years,
-			recipient_name: name,
-			recipient_department: department,
-		};
-
-		var bodyForm = new FormData();
-
-		bodyForm.append("data", data);
-		bodyForm.append("myFile", file);
-
-		axios({
-			method: "POST",
-			url: "http://localhost:5000/api/v1/generate",
-			data: bodyForm,
-			headers: { "Content-Type": "multipart/form-data" },
-		})
-			.then((res) => {
-				console.log(res);
-				setCoverLetter(res);
-				Navigate("/preview");
-			})
-			.catch((err) => {
-				console.log(err);
-				alert("Error processing your CV");
-			});
-=======
 		const uploadFile = async (e) => {
 			const formData = new FormData();
 			formData.append("myFile", file);
@@ -134,7 +101,6 @@ function InputData() {
 			}
 		};
 		uploadFile();
->>>>>>> dev
 	};
 
 	return (
