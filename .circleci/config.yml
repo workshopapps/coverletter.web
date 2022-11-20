@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Deploy App
           command: |
-            ssh centos@X.XXX.XXX.XXX "cd /var/www/nodebackend/ && sudo git pull && cd /home/centos && sudo pm2 restart app"
+            ssh centos@20.228.142.174 "cd /var/www/nodebackend/ && sudo git pull && cd /home/centos && sudo pm2 restart app"
 workflows:
   version: 2
   build-and-deploy:
