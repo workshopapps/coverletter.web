@@ -57,4 +57,5 @@ export {
 	EmailOTP,
 	ForgotPassword,
 	ResetPassword,
+	Career,
 };
