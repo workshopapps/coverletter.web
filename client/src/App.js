@@ -2,9 +2,9 @@ import React from "react";
 import "./App.css";
 import {
 	Home,
-	CreateAccount,
+	Register,
 	VerifyAcc,
-	Login,
+	SignIn,
 	ErrorPage,
 	ContactUs,
 	History,
@@ -51,9 +51,9 @@ const App = () => {
 					></Route>
 					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 					<Route path="/contactus" element={<ContactUs />} />
-					<Route path="/createaccount" element={<CreateAccount />}/>
+					<Route path="/register" element={<Register />}/>
 					<Route path="/verifyaccount" element={<VerifyAcc />}/>
-					<Route path="/login" element={<Login />}/>
+					<Route path="/signin" element={<SignIn />}/>
 					<Route path="/history" element={<History />} />
 					<Route path="/document" element={<Documentation />} />
 					<Route
