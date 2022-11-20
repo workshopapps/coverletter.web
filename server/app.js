@@ -9,7 +9,8 @@ const bodyParser = require("body-parser");
 //const connectDB = require("./db/connect");
 require("dotenv").config();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
+
 const fileUpload = require("express-fileupload");
 const app = express();
 
@@ -24,6 +25,7 @@ const authRoutes = require("./routes/authRoutes");
 const resetRoutes = require("./routes/resetRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
+const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
 
 app.use(
 	"/cvg-documentation",
@@ -54,6 +56,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", templateRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
 app.use("/api/v1", resetRoutes);
+app.use("/api/v1", downloadCoverLetter);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
@@ -64,7 +67,6 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 const start = async () => {
 	try {
-		//connect DB
 		connectDB(process.env.MONGO_URI).then(() => {
 			console.log("Connection succesful");
 		});
