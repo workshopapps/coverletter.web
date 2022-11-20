@@ -7,17 +7,31 @@ import axios from 'axios'
 
 
 function Uploaded() {
-	const [success, setSuccess] = useState(false);
+	const [percentage, setPercentage] = useState('0')
+	
 	const { file, setFile } = useGlobalContext();
 	const Navigate = useNavigate();
 
 	const uploadFile = async (e) => {
 		const formData = new FormData();
 		formData.append("myFile", file);
+
+		const option = {
+			onUploadProgress: (ProgressEvent) =>{
+				const {loaded, total} = ProgressEvent;
+				let percent = Math.floor( loaded * 100 / total)
+				console.log(`${loaded}byte of ${total}byte | ${percent}% `);
+
+				if (percentage < 100){
+					setPercentage(percent)
+				}
+			}
+		};
+
 		try {
 			const res = await axios.post(
 				"http://localhost:5001/api/v1/upload",
-				formData
+				formData, option
 			);
 			console.log(res);
 			Navigate("/upload-data");
@@ -29,6 +43,7 @@ function Uploaded() {
 	const changeHandler = (e) => {
 		setFile(e.target.files[0]);
 		console.log(file);
+
 	};
 
 	return (
