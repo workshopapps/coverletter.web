@@ -1,9 +1,9 @@
-import Home from "./Home";
 import History from "./History";
 import CreateAccount from "./CreateAccount";
 import VerifyAcc from "./VerifyAcc";
 import Login from "./Login";
 import ErrorPage from "./ErrorPage";
+import PrivacyPolicy from "./PrivacyPolicy";
 import ContactUs from "./ContactUs";
 import Faq from "./Faq";
 import SeeAllHistory from "./SeeAllHistory";
@@ -20,6 +20,12 @@ import TermsAndCondition from "./TermsAndConditions";
 import Upload from "./upload/Upload";
 import UploadData from "./uploadData/UploadData";
 import Documentation from "./Documentation";
+import Forum from "./forum/Forum";
+import Thread from "./forum/Thread";
+import Post from "./forum/Post";
+import EmailOTP from "./EmailOTP";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 export {
 	Home,
@@ -43,5 +49,12 @@ export {
 	TermsAndCondition,
 	Upload,
 	UploadData,
+	PrivacyPolicy,
 	Documentation,
+	Forum,
+	Thread,
+	Post,
+	EmailOTP,
+	ForgotPassword,
+	ResetPassword,
 };
