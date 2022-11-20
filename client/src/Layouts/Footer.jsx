@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
 	return (
-		<footer>
-			<div className="lg:px-24 md:px-12 px-6 mt-6">
-				<div className="md:hidden flex mb-6">
-					<FooterLogo className="lg:flex hidden" />
-					<FooterLogoMobile className="lg:hidden flex " />
+		<footer className="">
+			<div className="xxs:max-md:block pl-[24px]  md:px-24 flex pt-6 gap-x-16">
+				<div className="xxs:max-md: mb-[16px]">
+					<FooterLogo className="block md:hidden" />
+					<FooterLogoMobile className="hidden md:block" />
 				</div>
-				<div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 text-left mb-[59px] gap-10 md:space-x-24 w-full">
+				<div className="grid grid-cols-2 text-left mb-[59px] gap-10 md:space-x-24 w-full md:grid-cols-3">
 					<div className="flex md:flex-row flex-col md:space-x-16 ">
 						<div className="md:flex hidden">
 							<FooterLogo />
@@ -29,7 +29,7 @@ const Footer = () => {
 							</div>
 						</div>
 					</div>
-					<div className="">
+					<div>
 						<h4 className="text-textBody font-normal text-base  leading-6">
 							Company
 						</h4>
@@ -40,20 +40,20 @@ const Footer = () => {
 							<Link to="/contactus">Contact us</Link>
 						</div>
 					</div>
-					<div className="">
+					<div>
 						<h4 className="text-textBody font-normal text-base leading-6">
 							Activity
 						</h4>
 						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
 							<Link to="/">Events</Link>
-							<Link to="/history">Customers stories</Link>
+							<Link to="/customerstories">Customers stories</Link>
 							<Link to="/">Features</Link>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className="md:px-24 px-6 sm:block flex sm:justify-start justify-between items-end md:py-[18px] py-4 text-left text-xs bg-[#F2F2F7] text-textBody leading-4 sm:space-y-0 space-y-2">
-				<div className="flex sm:flex-row flex-col justify-between  sm:space-y-0 space-y-4">
+			<div className="bg-[#F2F2F7] px-24 py-[18px]">
+				<div className="flex justify-between items-center text-[12px] text-grey400">
 					<p>© 2022 Cover. All rights reserved.</p>
 					<Link to="/terms-and-conditions">Terms and Conditions</Link>
 					<Link to="/privacy-policy" className="sm:flex hidden">

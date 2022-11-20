@@ -31,6 +31,9 @@ import {
 	ForgotPassword,
 	ResetPassword,
 	EmailOTP,
+	CustomerStories,
+	SingleProduct,
+	PrivacyPolicy,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -51,9 +54,9 @@ const App = () => {
 					></Route>
 					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 					<Route path="/contactus" element={<ContactUs />} />
-					<Route path="/register" element={<Register />}/>
-					<Route path="/verifyaccount" element={<VerifyAcc />}/>
-					<Route path="/signin" element={<SignIn />}/>
+					<Route path="/register" element={<Register />} />
+					<Route path="/verifyaccount" element={<VerifyAcc />} />
+					<Route path="/signin" element={<SignIn />} />
 					<Route path="/history" element={<History />} />
 					<Route path="/document" element={<Documentation />} />
 					<Route
@@ -79,13 +82,26 @@ const App = () => {
 						element={<SingleblogPage />}
 					/>
 					<Route
-						path="terms-and-conditions"
+						path="/terms-and-conditions"
 						element={<TermsAndCondition />}
 					></Route>
 					<Route path="/forum" element={<Forum />} />
 					<Route path="/forum/thread" element={<Thread />} />
 					<Route path="/forum/post" element={<Post />} />
+					<Route
+						path="/customerstories"
+						element={<CustomerStories />}
+					/>
+					<Route
+						path="/customerstories/:customerId"
+						element={<SingleProduct />}
+					/>
+					<Route path="privacy-policy" element={<PrivacyPolicy />} />
+
 					<Route path="*" element={<ErrorPage />}></Route>
+					<Route path="/profile" element={<ProfilePage />} />
+					<Route path="/generate" element={<UploadCV />} />
+					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 				<Footer />
 			</ScrollToTop>
