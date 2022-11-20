@@ -274,7 +274,7 @@ const Preview = () => {
 										<p className="ml-3">TEXT</p>
 									</div>
 									<div
-										className="rounded-xl cursor-pointer flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
+										className="rounded-xl flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
 										onClick={() => setDtype("TEXT")}
 									>
 										<div
