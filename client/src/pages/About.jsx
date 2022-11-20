@@ -121,7 +121,7 @@ const About = () => {
 									<p className=" text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Erica Osawaru
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR PRODUCT DESIGN
 									</p>
 									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
@@ -145,7 +145,7 @@ const About = () => {
 									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Adedokun Ayomide
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR MOBILE DEVELOPMENT
 									</p>
 									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
@@ -170,7 +170,7 @@ const About = () => {
 									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Adelakun Rotimi
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR SALES AND MARKETING
 									</p>
 									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
@@ -194,7 +194,7 @@ const About = () => {
 									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Harold Obasi
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR FRONTEND DEVELOPMENT
 									</p>
 									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
@@ -219,7 +219,7 @@ const About = () => {
 									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Destiny Aigbe
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR BACKEND DEVELOPMENT
 									</p>
 									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
@@ -243,7 +243,7 @@ const About = () => {
 									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Jewel Uguru
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR PROJECT MANAGEMENT
 									</p>
 									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
