@@ -28,4 +28,4 @@ services:
             - "27017:27017"
 
 volumes:
-    data:
+    data
