@@ -3,20 +3,6 @@ module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
 		extend: {},
-		fontSize: {
-			sm: "0.8rem",
-			base: "1rem",
-			xl: "1.25rem",
-			"2xl": "1.563rem",
-			"3xl": "1.953rem",
-			"4xl": "2.5rem",
-			"5xl": "3.5rem",
-		},
-		lineHeight: {
-			"leading-4": "1.5rem",
-			"leading-8": "3rem",
-			"leading-10": "4.5rem",
-		},
 		colors: {
 			background: "#F2F2F7",
 			overlay: "rgba(3, 41, 111, 0.48)",
@@ -49,9 +35,6 @@ module.exports = {
 			grey600: "#353535",
 			grey700: "#282828",
 			grey800: "#101010",
-			coverContainer: "#CDDCF8",
-			white: "#FFFFFF",
-			backgroundWhite: "#FFFFFF",
 		},
 	},
 	plugins: [],

@@ -1,5 +1,6 @@
 import Logo from "../Assets/headerLogo.png";
 import navLinkElements from "../Constants/navLinkElements";
+import Button from "../Components/Ui/Button";
 import Hamburger from "../Assets/menu.svg";
 import { Link } from "react-router-dom";
 import Close from "../Assets/close.svg";
