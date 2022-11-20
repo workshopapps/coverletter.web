@@ -1,12 +1,38 @@
-import { useFormik } from "formik";
+import { Formik, useFormik } from "formik";
+import { useState } from "react";
 import * as Yup from "yup";
 import InputField from "../Components/Ui/InputField";
 import man3 from "../Assets/man3.png";
 import eyeslash from "../Assets/eye-slash.svg";
 import Button from "../Components/Ui/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import SuccessModal from "../Components/Ui/SuccessModal";
+import Input from "../Components/Ui/Input";
 
 const CreateAcount = () => {
+    const navigate = useNavigate();
+    const [show, setShow] = useState(false);
+
+    
+    const onSubmit = async () => {
+
+       
+        setShow(true);
+
+        setTimeout(() => {
+            if(show == true) {
+                navigate("/verifyaccount");
+            }
+        }, 1000)
+        try {
+            
+           
+
+        } catch(err) {
+
+        }
+     
+ }
 
     const passwordRules = /(?=.*[!#$%&?^*@~() "])(?=.{8,})/;
 
@@ -18,18 +44,8 @@ const CreateAcount = () => {
 
     });
 
-    const onSubmit = async () => {
-        
-        try {
-            
 
-        } catch(err) {
-
-        }
-        
-    }
-
-    const { values, errors, handleBlur, handleChange, handleSubmit, touched, }  = useFormik({
+    const { values, errors, handleBlur, handleChange, handleSubmit, touched, isValid, isValidating}  = useFormik({
         initialValues: {
             fullName: "",
             email: "",
@@ -42,10 +58,13 @@ const CreateAcount = () => {
     });
 
 
+ 
+
+
     return (
-        <div className="relative bg-background px-[22px] md:px-[95px] py-[76px] lg:pt-[76px] lg:pb-[150px]">
+        <div className="relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[150px]">
             <div className="hidden lg:flex justify-end">
-                <img src={man3} className="w-[997px] rounded-[8px]" alt="" />
+                <img src={man3} className="w-[1045px] rounded-[8px]" alt="" />
             </div>
             <div className="lg:absolute top-[120px] px-[18px] py-[36px] md:p-[64px] rounded-lg bg-[#ffff]">
                 <div className="text-center">
@@ -108,6 +127,29 @@ const CreateAcount = () => {
                     <p className="text-textBody text-center mt-[16px] text-base">Already have an account?<Link to="/signin" className="text-primaryMain font-bold">Sign In</Link></p>
                 </form>
             </div>
+            <SuccessModal className={"rounded-[8px]"}  onClose={() =>{
+                navigate("/verifyaccount")
+                 setShow(false)}} 
+                   show={show} 
+                   >
+					<div>
+                    <h3 className="text-textHeader mb-[4px] text-[24px]">Success</h3>
+						<p className="text-[16px] text-textBody leading-6 text-gray-700 font-semibold mb-10">
+							We sent an email with login instructions to <span className="underline">{values.email}</span>
+						</p>
+					</div>
+                    <div className="home-btn">
+						<Link to="/verifyaccount">
+							<Input
+								type={"button"}
+								value={"Continue"}
+								className={
+									"border rounded-lg text-white py-3 px-10 bg-[#0544B8] cursor-pointer hover:scale-x-[1.02] text-[20px]"
+								}
+							/>
+						</Link>
+					</div>
+				</SuccessModal>
         </div>
     );
 }
