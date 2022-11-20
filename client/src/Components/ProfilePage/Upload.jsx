@@ -10,7 +10,7 @@ function Upload({ resume }) {
       </div>
 
       <div className='w-5/12 md:w-6/12'>
-        <p className='font-bold text-[1.2em]'>
+        <p className='font-bold text-[0.8em] md:text-[1.2em]'>
           <span>{resume.firstName}</span>
           <span className='hidden md:inline'> {resume.lastName}</span>
           <span> {resume.extension}</span>
