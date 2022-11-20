@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import EventsList from '../Layouts/EventsList.jsx';
+
+
+
+import EventsList from '../Layouts/EventsList';
+
 import Calendar from 'react-calendar';
 import arrow_down from '../Assets/arrow_down.svg';
 import searchico from '../Assets/searchico.svg';
