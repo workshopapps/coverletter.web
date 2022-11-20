@@ -54,18 +54,23 @@ const Header = () => {
 						</Link>
 					))}
 				</ul>
+				<Link to="/signin">
 				<Button
 					className="btn btnShort btnSecondary block md:hidden w-full my-4"
 					onClick={() => setToggleMenu((prev) => (prev = false))}
 				>
 					Sign in
 				</Button>
+				</Link>
+
+				<Link to="/register" >
 				<Button
 					className="btn btnShort btnPrimary block md:hidden w-full"
 					onClick={() => setToggleMenu((prev) => (prev = false))}
 				>
 					Register
 				</Button>
+				</Link>
 			</aside>
 		);
 	};
@@ -79,12 +84,16 @@ const Header = () => {
 				</Link>
 				<Large />
 				<div className="space-x-5 flex">
+				<Link to="/signin">
 					<Button className="btn btnShort btnSecondary hidden md:block">
 						Sign in
 					</Button>
+				</Link>
+				<Link to="register">
 					<Button className="btn btnShort btnPrimary hidden md:block">
 						Register
 					</Button>
+				</Link>
 					<button>
 						<img
 							src={Hamburger}
