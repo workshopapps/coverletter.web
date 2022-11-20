@@ -37,7 +37,6 @@ export {
 	ContactUs,
 	Faq,
 	SeeAllHistory,
-	Career,
 	SingleblogPage,
 	Blog,
 	Pricing,
