@@ -9,6 +9,7 @@ import {
 	ContactUs,
 	History,
 	SeeAllHistory,
+	About,
 	Faq,
 	Career,
 	Pricing,
@@ -61,6 +62,7 @@ const App = () => {
 					/>
 					<Route path="/features" element={<Features />} />
 					<Route path="/faq" element={<Faq />} />
+					<Route path="/about" element={<About />} />
 					<Route path="/profile" element={<ProfilePage />} />
 					<Route path="/generate" element={<UploadCV />} />
 					<Route path="/pricing" element={<Pricing />} />

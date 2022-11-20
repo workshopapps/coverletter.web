@@ -26,6 +26,7 @@ import Post from "./forum/Post";
 import EmailOTP from "./EmailOTP";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
+import About from "./About";
 
 export {
 	Home,
@@ -49,6 +50,7 @@ export {
 	TermsAndCondition,
 	Upload,
 	UploadData,
+	About,
 	PrivacyPolicy,
 	Documentation,
 	Forum,
