@@ -62,9 +62,9 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 const start = async () => {
 	try {
-		// connectDB(process.env.MONGO_URI).then(() => {
-		// 	console.log("Connection succesful");
-		// });
+		connectDB(process.env.MONGO_URI).then(() => {
+			console.log("Connection succesful");
+		});
 		app.listen(port, () =>
 			console.log(`Server is listening on port ${port}...`)
 		);
