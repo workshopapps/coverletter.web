@@ -1,4 +1,3 @@
-import Home from "./Home";
 import History from "./History";
 import ErrorPage from "./ErrorPage";
 import PrivacyPolicy from "./PrivacyPolicy";
@@ -17,9 +16,15 @@ import PgCoverLetter from "./PgCoverLetter";
 import TermsAndCondition from "./TermsAndConditions";
 import Upload from "./upload/Upload";
 import UploadData from "./uploadData/UploadData";
+import Documentation from "./Documentation";
+import Forum from "./forum/Forum";
+import Thread from "./forum/Thread";
+import Post from "./forum/Post";
+import EmailOTP from "./EmailOTP";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 export {
-	Home,
 	History,
 	ErrorPage,
 	ContactUs,
@@ -37,5 +42,12 @@ export {
 	TermsAndCondition,
 	Upload,
 	UploadData,
-	PrivacyPolicy
+	PrivacyPolicy,
+	Documentation,
+	Forum,
+	Thread,
+	Post,
+	EmailOTP,
+	ForgotPassword,
+	ResetPassword,
 };
