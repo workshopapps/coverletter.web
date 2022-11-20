@@ -23,7 +23,7 @@ const Footer = () => {
 
 							<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
 								<Link to="/">Documentation</Link>
-								<Link to="/">Help</Link>
+								<Link to="/faq">fAQs</Link>
 								<Link to="/career">Career</Link>
 								<Link to="/pricing">Pricing</Link>
 							</div>
@@ -46,9 +46,8 @@ const Footer = () => {
 						</h4>
 						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
 							<Link to="/">Events</Link>
-							<Link to="/">Customers stories</Link>
+							<Link to="/history">Customers stories</Link>
 							<Link to="/">Features</Link>
-							<Link to="/">Pricing</Link>
 						</div>
 					</div>
 				</div>
@@ -56,7 +55,7 @@ const Footer = () => {
 			<div className="md:px-24 px-6 sm:block flex sm:justify-start justify-between items-end md:py-[18px] py-4 text-left text-xs bg-[#F2F2F7] text-textBody leading-4 sm:space-y-0 space-y-2">
 				<div className="flex sm:flex-row flex-col justify-between  sm:space-y-0 space-y-4">
 					<p>© 2022 Cover. All rights reserved.</p>
-					<Link to="/">Terms and Conditions</Link>
+					<Link to="/terms-and-conditions">Terms and Conditions</Link>
 					<Link to="/privacy-policy" className="sm:flex hidden">
 						Privacy Policy
 					</Link>
