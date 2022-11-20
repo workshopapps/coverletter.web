@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HistoryList from "../Layouts/HistoryList";
 
@@ -21,8 +22,115 @@ import SixthCl from "../Assets/Images/cl6.png";
 import SeventhCl from "../Assets/Images/cl7.png";
 import EighthCl from "../Assets/Images/cl8.png";
 
-
 const History = () => {
+	const [cvList, setCvList] = useState([]);
+	const [clList, setClList] = useState([]);
+
+	useEffect(() => {
+		const cvListItem = [
+			{
+				id: "cv1",
+				src: FirstCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv3",
+				src: ThirdCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv5",
+				src: FifthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv2",
+				src: SecondCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv4",
+				src: ForthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv6",
+				src: SixthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv7",
+				src: SeventhCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv8",
+				src: EighthCV,
+				message: "Generate new  Cover Letter",
+			},
+		];
+		const clListItem = [
+			{
+				id: "cl1",
+				src: FirstCl,
+				option: true,
+				title: "Chevron Cover Letter",
+				dateCreated: "Created 1 day ago",
+			},
+			{
+				id: "cl2",
+				src: ThirdCl,
+				option: true,
+				title: "Shell Cover Letter",
+				dateCreated: "Created 1 day ago",
+			},
+			{
+				id: "cl3",
+				src: FifthCl,
+				option: true,
+				title: "FCMB Cover Letter",
+				dateCreated: "Created 3 day ago",
+			},
+			{
+				id: "cl7",
+				src: SeventhCl,
+				option: true,
+				title: "KPMG Cover Letter",
+				dateCreated: "Created 4 day ago",
+			},
+			{
+				id: "cl4",
+				src: SecondCl,
+				option: true,
+				title: "Fortoil Cover Letter",
+				dateCreated: "Created 5 day ago",
+			},
+			{
+				id: "cl5",
+				src: ForthCl,
+				option: true,
+				title: "Oando Cover Letter",
+				dateCreated: "Created 5 day ago",
+			},
+			{
+				id: "cl6",
+				src: SixthCl,
+				option: true,
+				title: "HNG Cover Letter",
+				dateCreated: "Created 9 day ago",
+			},
+			{
+				id: "cl8",
+				src: EighthCl,
+				option: true,
+				title: "UBA Cover Letter",
+				dateCreated: "Created 17 day ago",
+			},
+		];
+		setCvList(cvListItem);
+		setClList(clListItem);
+	}, []);
+
 	return (
 		<main className="bg-background py-10">
 			<div className="max-w-screen-2xl m-auto px-5">
@@ -46,104 +154,13 @@ const History = () => {
 							See all
 						</Link>
 					</div>
-					<div className="grid grid-cols-grid gap-5">
-						<HistoryList
-							src={FirstCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={ThirdCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={FifthCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={SeventhCV}
-							message="Generate new  Cover Letter"
-						/>
-
-						<HistoryList
-							src={SecondCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={ForthCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={SixthCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={EighthCV}
-							message="Generate new  Cover Letter"
-						/>
-					</div>
+					<HistoryList listItem={cvList} />
 				</div>
 				<div className="bg-white px-12 py-9">
 					<p className="text-grey800 font-semibold text-[40px] leading-[3rem] mb-8 max-[768px]:text-xl">
 						All Cover Letters
 					</p>
-					<div className="max-[576px]:flex max-[576px]:justify-center">
-						<div className="grid grid-cols-grid gap-5 justify-center">
-							<HistoryList
-								src={FirstCl}
-								title="Chevron Cover Letter"
-								dateCreated="Created 1 day ago"
-								option={true}
-							/>
-							<HistoryList
-								src={ThirdCl}
-								title="Chevron Cover Letter"
-								dateCreated="Created 1 day ago"
-								option={true}
-								// onDisplayModal={openModal}
-							/>
-							<HistoryList
-								src={FifthCl}
-								title="Chevron Cover Letter"
-								dateCreated="Created 1 day ago"
-								option={true}
-								// onDisplayModal={openModal}
-							/>
-							<HistoryList
-								src={SeventhCl}
-								title="Chevron Cover Letter"
-								dateCreated="Created 1 day ago"
-								option={true}
-								// onDisplayModal={openModal}
-							/>
-							<HistoryList
-								src={SecondCl}
-								title="Chevron Cover Letter"
-								dateCreated="Created 1 day ago"
-								option={true}
-							/>
-							<HistoryList
-								src={ForthCl}
-								title="Chevron Cover Letter"
-								dateCreated="Created 1 day ago"
-								option={true}
-								// onDisplayModal={openModal}
-							/>
-							<HistoryList
-								src={SixthCl}
-								title="Chevron Cover Letter"
-								dateCreated="Created 1 day ago"
-								option={true}
-								// onDisplayModal={openModal}
-							/>
-							<HistoryList
-								src={EighthCl}
-								title="Chevron Cover Letter"
-								dateCreated="Created 1 day ago"
-								option={true}
-								// onDisplayModal={openModal}
-							/>
-						</div>
-					</div>
+					<HistoryList listItem={clList} />
 				</div>
 			</div>
 		</main>

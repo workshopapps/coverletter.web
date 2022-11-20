@@ -23,9 +23,9 @@ const Footer = () => {
 
 							<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
 								<Link to="/">Documentation</Link>
-								<Link to="/">Help</Link>
+								<Link to="/faq">fAQs</Link>
 								<Link to="/career">Career</Link>
-								<Link to="/">Pricing</Link>
+								<Link to="/pricing">Pricing</Link>
 							</div>
 						</div>
 					</div>
@@ -34,9 +34,9 @@ const Footer = () => {
 							Company
 						</h4>
 						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
-							<Link to="/">About us</Link>
-							<Link to="/">Blog</Link>
-							<Link to="/">Forum</Link>
+							<Link to="/about">About us</Link>
+							<Link to="/blog">Blog</Link>
+							<Link to="/forum">Forum</Link>
 							<Link to="/contactus">Contact us</Link>
 						</div>
 					</div>
@@ -46,9 +46,8 @@ const Footer = () => {
 						</h4>
 						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
 							<Link to="/">Events</Link>
-							<Link to="/">Customers stories</Link>
+							<Link to="/history">Customers stories</Link>
 							<Link to="/">Features</Link>
-							<Link to="/">Pricing</Link>
 						</div>
 					</div>
 				</div>
@@ -57,11 +56,15 @@ const Footer = () => {
 				<div className="flex sm:flex-row flex-col justify-between  sm:space-y-0 space-y-4">
 					<p>© 2022 Cover. All rights reserved.</p>
 					<Link to="/terms-and-conditions">Terms and Conditions</Link>
+<<<<<<< HEAD
 					<Link to="/" className="sm:flex hidden">
+=======
+					<Link to="/privacy-policy" className="sm:flex hidden">
+>>>>>>> dev
 						Privacy Policy
 					</Link>
 				</div>
-				<Link to="/" className="sm:hidden flex">
+				<Link to="/privacy-policy" className="sm:hidden flex">
 					Privacy Policy
 				</Link>
 			</div>

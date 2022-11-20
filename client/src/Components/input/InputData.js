@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import back from "./asesets/arrow.png";
-import axios from "axios";
 import { useGlobalContext } from "../../context/context";
+import axios from "axios";
+import { data } from "autoprefixer";
 
 function InputData() {
-	const { file, setFile } = useGlobalContext();
+	const { file, setCoverLetter } = useGlobalContext();
 
 	const [companyName, setCompanyName] = useState("");
 	const [companyAddress, setCompanyNameAddress] = useState("");
@@ -17,15 +18,16 @@ function InputData() {
 	const [name, setName] = useState("");
 	const [department, setDepartment] = useState("");
 	const [error, setError] = useState(false);
+
 	// const [show, setShow] = useState(true)
 
 	const Navigate = useNavigate();
 	const clickHandler = () => {
-		Navigate("/");
+		// Navigate("/");
 	};
 
 	const continueHandler = () => {
-		Navigate("/preview");
+		// Navigate("/preview");
 	};
 
 	const companyHandler = (e) => {
@@ -74,22 +76,35 @@ function InputData() {
 			alert("Dude calm down, i have not linked the API");
 		}
 
-		axios({
-			method: "POST",
-			headers: { Content_Type: "application/pdf" },
-			body: file,
-		})
-			.then((res) => {
+		const uploadFile = async (e) => {
+			const formData = new FormData();
+			formData.append("myFile", file);
+			formData.append("company_name", companyName);
+			formData.append("company_address", companyAddress);
+			formData.append("city", city);
+			formData.append("country", country);
+			formData.append("role", role);
+			formData.append("years_of_exp", years);
+			formData.append("recipient_name", name);
+			formData.append("recipient", department);
+			try {
+				const res = await axios.post(
+					"http://localhost:5000/api/v1/generate",
+					formData
+				);
 				console.log(res);
-			})
-			.catch((err) => {
-				console.log(error);
-			});
+				setCoverLetter(res.data.data);
+				Navigate("/preview");
+			} catch (ex) {
+				console.log(ex);
+				alert("Error processing your CV");
+			}
+		};
+		uploadFile();
 	};
 
 	return (
 		<div className="bg-background md:px-[204px] md:py-[120px] font-manrope">
-			<h1></h1>
 			<main className=" md:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite ">
 				<button
 					onClick={clickHandler}
