@@ -23,7 +23,9 @@ function InputData() {
 
 	const Navigate = useNavigate();
 	const clickHandler = () => {
-		// Navigate("/");
+
+		Navigate("/");
+      
 	};
 
 	const continueHandler = () => {
@@ -72,10 +74,7 @@ function InputData() {
 			name.length
 		) {
 			setError(true);
-		} else {
-			alert("Dude calm down, i have not linked the API");
 		}
-
 		const uploadFile = async (e) => {
 			const formData = new FormData();
 			formData.append("myFile", file);
@@ -100,7 +99,14 @@ function InputData() {
 				alert("Error processing your CV");
 			}
 		};
-		uploadFile();
+		 if(companyAddress&&companyName&&city&&country&&date&&role&&years&&name){
+			
+
+			uploadFile();
+		}
+
+		
+		
 	};
 
 	return (
@@ -147,13 +153,13 @@ function InputData() {
 								value={companyName}
 								id="companyName"
 							/>
-							{error && companyName <= 0 ? (
+							{error && companyName <= 0 ? 
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
 									Company's Name is required
 								</p>
-							) : (
+							 : 
 								""
-							)}
+							}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
 							<label className="my-[3px] text-textBody text-[18px]">
