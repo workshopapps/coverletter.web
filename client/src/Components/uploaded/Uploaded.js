@@ -1,37 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import mark from '../sectionTwo/assets/success.svg';
-import first from '../sectionTwo/assets/first.svg';
-import { useGlobalContext } from '../../context/context';
-import axios from 'axios'
-
+import mark from "../sectionTwo/assets/success.svg";
+import first from "../sectionTwo/assets/first.svg";
+import { useGlobalContext } from "../../context/context";
+import axios from "axios";
 
 function Uploaded() {
-	const [percentage, setPercentage] = useState('0')
-	
+	const [percentage, setPercentage] = useState("0");
+
 	const { file, setFile } = useGlobalContext();
 	const Navigate = useNavigate();
 
 	const uploadFile = async (e) => {
+		console.log(file);
 		const formData = new FormData();
 		formData.append("myFile", file);
 
 		const option = {
-			onUploadProgress: (ProgressEvent) =>{
-				const {loaded, total} = ProgressEvent;
-				let percent = Math.floor( loaded * 100 / total)
+			onUploadProgress: (ProgressEvent) => {
+				const { loaded, total } = ProgressEvent;
+				let percent = Math.floor((loaded * 100) / total);
 				console.log(`${loaded}byte of ${total}byte | ${percent}% `);
 
-				if (percentage < 100){
-					setPercentage(percent)
+				if (percentage < 100) {
+					setPercentage(percent);
 				}
-			}
+			},
 		};
 
 		try {
 			const res = await axios.post(
 				"http://localhost:5001/api/v1/upload",
-				formData, option
+				formData,
+				option
 			);
 			console.log(res);
 			Navigate("/upload-data");
@@ -43,7 +44,6 @@ function Uploaded() {
 	const changeHandler = (e) => {
 		setFile(e.target.files[0]);
 		console.log(file);
-
 	};
 
 	return (

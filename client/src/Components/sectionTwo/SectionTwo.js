@@ -10,18 +10,17 @@ function SectionTwo() {
 
 	const { setFile } = useGlobalContext();
 
-
 	const changeHandler = (e) => {
-		setFile(e.target.files);
+		setFile(e.target.files[0]);
 		setFileSize(e.target.files[0].size);
-	  };
-	  const fileValidation = () => {
+	};
+	const fileValidation = () => {
 		return (
-		  <h2 className="text-errorMain font-semibold text-[13px]">
-			The file too large. Please Upload a file with maximum of 5mb
-		  </h2>
+			<h2 className="text-errorMain font-semibold text-[13px]">
+				The file too large. Please Upload a file with maximum of 5mb
+			</h2>
 		);
-	  };
+	};
 	return (
 		<div
 			id="upload_section"
@@ -44,14 +43,14 @@ function SectionTwo() {
 					} border-dashed rounded-lg `}
 				>
 					<div className="uploadContainer relative flex flex-col md:px-[2vh] md:py-[15vh] py-[15vh]">
-						{fileSize > 0 && fileSize <5000000 ? null : (
+						{fileSize > 0 && fileSize < 5000000 ? null : (
 							<img
 								src={first}
 								className="w-[67px] relative left-[30%] md:left-[37%]  h-[67px]"
 								alt=""
 							/>
 						)}
-						 {fileSize > 0 && fileSize <5000000 ? null : (
+						{fileSize > 0 && fileSize < 5000000 ? null : (
 							<input
 								style={{ opacity: "0" }}
 								type="file"
@@ -63,9 +62,9 @@ function SectionTwo() {
 							/>
 						)}
 
-						 {fileSize > 0 && fileSize <5000000 ? 
+						{fileSize > 0 && fileSize < 5000000 ? (
 							<Uploaded />
-						:(
+						) : (
 							<label for="upload_file" className="">
 								<img src="" alt="" />
 

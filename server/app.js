@@ -24,7 +24,7 @@ app.use(
 const authRoutes = require("./routes/authRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
-const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes")
+const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
 
 app.use(
 	"/cvg-documentation",
@@ -54,7 +54,7 @@ app.use(
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", templateRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
-app.use("/api/v1",downloadCoverLetter);
+app.use("/api/v1", downloadCoverLetter);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
@@ -65,9 +65,9 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 const start = async () => {
 	try {
-		connectDB(process.env.MONGO_URI).then(() => {
-			console.log("Connection succesful");
-		});
+		// connectDB(process.env.MONGO_URI).then(() => {
+		// 	console.log("Connection succesful");
+		// });
 		app.listen(port, () =>
 			console.log(`Server is listening on port ${port}...`)
 		);
