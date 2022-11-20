@@ -32,6 +32,7 @@ import {
 	EmailOTP,
 	CustomerStories,
 	SingleProduct,
+	Event,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -78,6 +79,10 @@ const App = () => {
 					<Route
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
+					/>
+					<Route
+						path="/event"
+						element={<Event />}
 					/>
 					<Route
 						path="/terms-and-conditions"
