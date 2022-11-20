@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import back from "./asesets/arrow.png";
 import { useGlobalContext } from "../../context/context";
 import axios from "axios";
+import { data } from "autoprefixer";
 
 function InputData() {
 	const { file, setCoverLetter } = useGlobalContext();
@@ -75,6 +76,7 @@ function InputData() {
 			alert("Dude calm down, i have not linked the API");
 		}
 
+<<<<<<< HEAD
 		let data = {
 			company_name: companyName,
 			company_address: companyAddress,
@@ -106,6 +108,33 @@ function InputData() {
 				console.log(err);
 				alert("Error processing your CV");
 			});
+=======
+		const uploadFile = async (e) => {
+			const formData = new FormData();
+			formData.append("myFile", file);
+			formData.append("company_name", companyName);
+			formData.append("company_address", companyAddress);
+			formData.append("city", city);
+			formData.append("country", country);
+			formData.append("role", role);
+			formData.append("years_of_exp", years);
+			formData.append("recipient_name", name);
+			formData.append("recipient", department);
+			try {
+				const res = await axios.post(
+					"http://localhost:5000/api/v1/generate",
+					formData
+				);
+				console.log(res);
+				setCoverLetter(res.data.data);
+				Navigate("/preview");
+			} catch (ex) {
+				console.log(ex);
+				alert("Error processing your CV");
+			}
+		};
+		uploadFile();
+>>>>>>> dev
 	};
 
 	return (

@@ -9,24 +9,25 @@ function Uploaded() {
 	const [success, setSuccess] = useState(false);
 	const { file, setFile } = useGlobalContext();
 	const Navigate = useNavigate();
-	const clickHandler = () => {
-		axios({
-			url: "server_url/v1/upload",
-			method: "POST",
-			headers: { "Content-Type": "application/pdf" },
-			body: file,
-		})
-			.then((res) => {
-				console.log(res);
-				Navigate("/upload-data");
-			})
-			.catch((err) => {
-				console.log(err);
-				alert("You imported the wrong file");
-			});
+
+	const uploadFile = async (e) => {
+		const formData = new FormData();
+		formData.append("myFile", file);
+		try {
+			const res = await axios.post(
+				"http://localhost:5000/api/v1/upload",
+				formData
+			);
+			console.log(res);
+			Navigate("/upload-data");
+		} catch (ex) {
+			console.log(ex);
+			alert("You imported the wrong file");
+		}
 	};
 	const changeHandler = (e) => {
-		setFile(e.target.files);
+		setFile(e.target.files[0]);
+		console.log(file);
 	};
 
 	return (
@@ -50,7 +51,7 @@ function Uploaded() {
 				</p>
 				<div className="a grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
 					<button
-						onClick={clickHandler}
+						onClick={uploadFile}
 						className="text-[16px] bg-primaryMain font-semibold rounded-md text-textWhite px-[15px] md:px-[12px] py-[8px]"
 					>
 						Generate Cover Letter

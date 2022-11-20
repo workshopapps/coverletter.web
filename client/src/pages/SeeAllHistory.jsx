@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HistoryList from "../Layouts/HistoryList";
 
 // CVImages
@@ -12,6 +12,94 @@ import SeventhCV from "../Assets/Images/cv7.png";
 import EighthCV from "../Assets/Images/cv8.png";
 
 const SeeAllHistory = () => {
+	const [cvList, setCvList] = useState([]);
+
+	useEffect(() => {
+		const cvListItem = [
+			{
+				id: "cv1",
+				src: FirstCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv3",
+				src: ThirdCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv5",
+				src: FifthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv2",
+				src: SecondCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv4",
+				src: ForthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv6",
+				src: SixthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv7",
+				src: SeventhCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv3",
+				src: ThirdCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv5",
+				src: FifthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv8",
+				src: EighthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv4",
+				src: ForthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv6",
+				src: SixthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv1",
+				src: FirstCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv3",
+				src: ThirdCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv5",
+				src: FifthCV,
+				message: "Generate new  Cover Letter",
+			},
+			{
+				id: "cv2",
+				src: SecondCV,
+				message: "Generate new  Cover Letter",
+			},
+		];
+		setCvList(cvListItem);
+	}, []);
+
 	return (
 		<main className="bg-background py-10">
 			<div className="max-w-screen-2xl m-auto px-5">
@@ -24,72 +112,7 @@ const SeeAllHistory = () => {
 					</p>
 				</div>
 				<div className="bg-white px-12 py-9 max-[576px]:flex max-[576px]:justify-center">
-					<div className="grid grid-cols-grid gap-5 justify-center">
-						<HistoryList
-							src={FirstCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={ThirdCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={FifthCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={SeventhCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={SecondCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={ForthCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={SixthCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={EighthCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={FirstCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={ThirdCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={FifthCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={SeventhCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={SecondCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={ForthCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={SixthCV}
-							message="Generate new  Cover Letter"
-						/>
-						<HistoryList
-							src={EighthCV}
-							message="Generate new  Cover Letter"
-						/>
-					</div>
+					<HistoryList listItem={cvList} />
 				</div>
 			</div>
 		</main>
