@@ -132,7 +132,7 @@ export const contents = [
 	{
 		id: 1,
 		title: "How he used the cover letter generated to get a job",
-		img: require("../Assets/Rectangle22.png"),
+		img: require("../Assets/Rectangle21.png"),
 		name: "Faruq Abdulsalam",
 		occupation: "Product Designer",
 		introTalk: `Faruq Abdulsalam is a Product designer wwith 2 years experience and he has helped 
@@ -182,7 +182,7 @@ export const contents = [
 	{
 		id: 2,
 		title: "With no job experience, she landed a job interview.",
-		img: require("../Assets/Rectangle23.png"),
+		img: require("../Assets/Rectangle22.png"),
 		name: "Mark Doyinsola",
 		occupation: "Financial Analyst",
 		introTalk: `Mark Doyinsola is a finance graduate without any prior work experience. She believes that everyone deserves a chance to 
@@ -231,7 +231,7 @@ export const contents = [
 	{
 		id: 3,
 		title: "How he became so confident applying for lot of available jobs",
-		img: require("../Assets/Rectangle24.png"),
+		img: require("../Assets/Rectangle23.png"),
 		name: "Damilare Fatai",
 		occupation: "Product Marketer",
 		introTalk: `Damilare Fatai is a student of bio-chemistry, Obafemi Awolowo University. He is more of a product marketer than a 
@@ -274,50 +274,58 @@ export const contents = [
 	{
 		id: 4,
 		title: "How I applied for multiple internship jobs",
-		img: require("../Assets/Rectangle25.png"),
+		img: require("../Assets/Rectangle24.png"),
 		name: "Faruq Abdullahi,",
 		occupation: "Economist",
-		introTalk: `Damilare Fatai is a student of bio-chemistry, Obafemi Awolowo University. He is more of a product marketer than a 
-		student as his attention and efforts are towards his career advancement than his academics.`,
+		introTalk: `Faruq Abdullahi is an economics student that applies for student internships in order to 
+		get real life experience even while in school. He understands that undergraduate internships 
+		experience can serve as a career booster for any graduate. It is his goal to go global and compete 
+		with talents round the world.`,
 		textContents: [
 			{
 				id: 1,
 				title: "Challenge",
-				challengeTalk: `Damilare was recently laid off from his job due to reasons pretty much unknown to him. With this current 
-				occurrence, Damilare needs a job and he spends his day arranging his notion page and the job he has applied for. 
-				He applies to more than fifteen jobs per day and needs to make his job application process less stressful.`,
-				reject: `I was searching online for the perfect cover letter generator to make my life easier`,
-				img2: require("../Assets/Ellipse 14.png"),
-				name: "Damilare Fatai",
-				occupation: "Product Marketer",
+				challengeTalk: `Faruq Abdullahi is an all round student that is finding it difficult to 
+				balance his career pursuits and academics. He takes pride in being the best in his class 
+				and with this has little time to concentrate on other stuff. He has often missed some 
+				internship application deadlines due to his inability to create time to gather the necessary 
+				documents and apply.`,
+				reject: `I am a professional that needs a free cover letter generator to help me with my job search`,
+				img2: require("../Assets/Ellipse 15.png"),
+				name: "Faruq Abdullahi,",
+				occupation: "Economist",
 			},
 			{
 				id: 2,
 				title: "Solution",
-				challengeTalk: `Damilare’s friend introduced him to Aplicar. He now uses Aplicar for all his job applications and the process 
-				is now less stressful and can now focus on other stuff that can help his job application.`,
-				reject: `I found Aplicar! It is so simple and straightforward in terms of design, which makes it super user-friendly.`,
-				img2: require("../Assets/Ellipse 14.png"),
-				name: "Damilare Fatai",
-				occupation: "Product Marketer",
+				challengeTalk: `Even though Faruq has a CV already. He knows he needs a unique cover letter 
+				for every application and with Aplicar, he can generate a cover letter in minutes and apply 
+				for his internship without having to neglect his academics.`,
+				reject: `I found Aplicar and it's been working out great. I can edit the cover letter, add 
+				specific details to it, personalize it to match my job application, and then I can download 
+				it. I'm really pleased with this tool.`,
+				img2: require("../Assets/Ellipse 15.png"),
+				name: "Faruq Abdullahi,",
+				occupation: "Economist",
 			},
 			{
 				id: 3,
 				title: "Outcome",
-				challengeTalk: `Damilare has been able to increase the number of jobs he applies to everyday and by this, increase his chance 
-				of getting a job as Damilare believes that job application is a game of numbers and the more job he applies to, the higher 
-				his chances of getting a job.`,
-				reject: `With Aplicar, I was able to generate an editable cover letter for my job application.`,
-				img2: require("../Assets/Ellipse 14.png"),
-				name: "Damilare Fatai",
-				occupation: "Product Marketer",
+				challengeTalk: `Faruq has been able to apply to about five different summer internships and got into 
+				three. He is currently waiting for summer to start his internship and gain real life experiences.`,
+				reject: `It helped me write a great cover letter, added in the right information, and it all 
+				felt natural. It has since helped me write cover letters for every internship I've 
+				applied for.`,
+				img2: require("../Assets/Ellipse 15.png"),
+				name: "Faruq Abdullahi,",
+				occupation: "Economist",
 			},
 		],
 	},
 	{
 		id: 5,
 		title: "How she had the perfect cover letter as a beginner",
-		img: require("../Assets/Rectangle26.png"),
+		img: require("../Assets/Rectangle25.png"),
 		name: "Abdulazeez Hauwa,",
 		occupation: "Product Designer",
 		introTalk: `Abdulazeez Hauwa, a graduate of biochemistry who is trying to transition into the tech world. 
@@ -330,7 +338,7 @@ export const contents = [
 				challengeTalk: `Due to the fact that she is new in this field and she needs a job on time , she has been trying to come up 
 				with a solid Cover letter but still hasn't come up with the best one yet because she lacks professional design terms to use..`,
 				reject: `I really like Aplicar. It's just so easy to use and it's a great, no-hassle way to create a cover letter.`,
-				img2: require("../Assets/Ellipse 15.png"),
+				img2: require("../Assets/Ellipse 16.png"),
 				name: "Abdulazeez Hauwa,",
 				occupation: "Product Designer",
 			},
@@ -338,8 +346,9 @@ export const contents = [
 				id: 2,
 				title: "Solution",
 				challengeTalk: `Aplicar guided her in making a well detailed product designer cover letter`,
-				reject: `I was really impressed with Aplicar's cover letter creation tool. It was FREE, easy to use, and generated a cover letter that I could customize to fit my needs.`,
-				img2: require("../Assets/Ellipse 15.png"),
+				reject: `I was really impressed with Aplicar's cover letter creation tool. It was FREE, easy 
+				to use, and generated a cover letter that I could customize to fit my needs.`,
+				img2: require("../Assets/Ellipse 16.png"),
 				name: "Abdulazeez Hauwa,",
 				occupation: "Product Designer",
 			},
@@ -349,7 +358,7 @@ export const contents = [
 				challengeTalk: `Well remarkable cover letter with a successful internship job`,
 				reject: `I had previously used a paid service and wasn't happy with the results. Now, I have a cover letter that is perfect for 
 				my résumé`,
-				img2: require("../Assets/Ellipse 15.png"),
+				img2: require("../Assets/Ellipse 16.png"),
 				name: "Abdulazeez Hauwa,",
 				occupation: "Product Designer",
 			},
@@ -357,10 +366,10 @@ export const contents = [
 	},
 	{
 		id: 6,
-		title: "How I used the cover letter generated to get a job",
-		img: require("../Assets/Rectangle27.png"),
-		name: "Faruq Abdulsalam",
-		occupation: "Product Designer",
+		title: "How he secured his internship program",
+		img: require("../Assets/Rectangle26.png"),
+		name: "Chigozie Mark",
+		occupation: "Food technology",
 		introTalk: `Chigozie Mark is an undergraduate in Food technology, seeking an Internship in a Food processing company. He believes that Nigeria does not need to import processed foods since there are Food companies based on that. It is his goal to be one of the best food technologists.`,
 		textContents: [
 			{
@@ -370,28 +379,113 @@ export const contents = [
 				need full-time staff. He eventually secured placement in a food processing company and he was required to submit a CV and a 
 				Cover letter. He is finding it difficult to write a cover letter.`,
 				reject: `I'll admit it - I'm not the best with cover letters. I tried to write my own, but it was just not cutting it.`,
-				img2: require("../Assets/Ellipse 15.png"),
-				name: "Abdulazeez Hauwa,",
-				occupation: "Product Designer",
+				img2: require("../Assets/Ellipse 17.png"),
+				name: "Chigozie Mark",
+				occupation: "Food technology",
 			},
 			{
 				id: 2,
 				title: "Solution",
-				challengeTalk: `Aplicar guided her in making a well detailed product designer cover letter`,
+				challengeTalk: `Creating a Cover letter`,
 				reject: `I was really impressed with Aplicar's cover letter creation tool. It was FREE, easy to use, and generated a cover letter that I could customize to fit my needs.`,
-				img2: require("../Assets/Ellipse 15.png"),
-				name: "Abdulazeez Hauwa,",
-				occupation: "Product Designer",
+				img2: require("../Assets/Ellipse 17.png"),
+				name: "Chigozie Mark",
+				occupation: "Food technology",
 			},
 			{
 				id: 3,
 				title: "Outcome",
-				challengeTalk: `Well remarkable cover letter with a successful internship job`,
-				reject: `I had previously used a paid service and wasn't happy with the results. Now, I have a cover letter that is perfect for 
-				my résumé`,
-				img2: require("../Assets/Ellipse 15.png"),
-				name: "Abdulazeez Hauwa,",
-				occupation: "Product Designer",
+				challengeTalk: `He was able to secure the internship program!`,
+				reject: `Aplicar writes a letter that is tailored specifically to me. It's been so helpful!`,
+				img2: require("../Assets/Ellipse 17.png"),
+				name: "Chigozie Mark",
+				occupation: "Food technology",
+			},
+		],
+	},
+	{
+		id: 7,
+		title: "How he secured an Interview and got a job immediately",
+		img: require("../Assets/Rectangle27.png"),
+		name: "Steve Johnson",
+		occupation: "Mechanical Engineer",
+		introTalk: `Steve Johnson is a Mechanical Engineering graduate with an 8-month internship experience. 
+		He also has fieldwork experience and has undertaken menial jobs. His dream is to work in one of the 
+		top Engineering companies in Nigeria. And he believes he has what it takes to secure a spot.`,
+		textContents: [
+			{
+				id: 1,
+				title: "Challenge",
+				challengeTalk: `Steve has both work and internship experience. He got a job vacancy to work in an 
+				automobile company.He needs a professional Cover letter to submit along with his CV.`,
+				reject: `The first time I used Aplicar was when I was looking for a job. As a result of the 
+				time-consuming and tedious application process`,
+				img2: require("../Assets/Ellipse 18.png"),
+				name: "Steve Johnson",
+				occupation: "Mechanical Engineer",
+			},
+			{
+				id: 2,
+				title: "Solution",
+				challengeTalk: `Getting a professional Cover letter`,
+				reject: `I wanted to apply without a cover letter until I was introduced to Aplicar. It helped 
+				me write a great cover letter, added in the right information, and it all felt natural`,
+				img2: require("../Assets/Ellipse 18.png"),
+				name: "Steve Johnson",
+				occupation: "Mechanical Engineer",
+			},
+			{
+				id: 3,
+				title: "Outcome",
+				challengeTalk: `I was able to secure an interview and I got the job.`,
+				reject: `It has since helped me write cover letters for every job I've applied for.`,
+				img2: require("../Assets/Ellipse 18.png"),
+				name: "Steve Johnson",
+				occupation: "Mechanical Engineer",
+			},
+		],
+	},
+	{
+		id: 8,
+		title: "How he secured a contract job with the help of Aplicar cover letter",
+		img: require("../Assets/Rectangle28.png"),
+		name: "Victor Ekere",
+		occupation: "Product / Project management",
+		introTalk: `Victor Ekere is a mechanical engineering graduate with 3 years work experience in 
+		product / project management. He is a go-getter and passionate about building brands and bringing 
+		lasting solutions to problems.`,
+		textContents: [
+			{
+				id: 1,
+				title: "Challenge",
+				challengeTalk: `Victor has 3 years experience in product/project management and needs an 
+				extra contract job from a startup but has no time to draft a cover letter for his application.`,
+				reject: `I had a job interview coming up and I needed to write a cover letter. But I'm not 
+				really good at writing cover letters`,
+				img2: require("../Assets/Ellipse 19.png"),
+				name: "Victor Ekere",
+				occupation: "Product / Project management",
+			},
+			{
+				id: 2,
+				title: "Solution",
+				challengeTalk: `Apicar helped him to construct a good professional cover letter for free and 
+				within 5 minutes.`,
+				reject: `I downloaded this app and I had a cover letter in minutes. This app allowed me to 
+				make a cover letter in minutes`,
+				img2: require("../Assets/Ellipse 19.png"),
+				name: "Victor Ekere",
+				occupation: "Product / Project management",
+			},
+			{
+				id: 3,
+				title: "Outcome",
+				challengeTalk: `It saved him the time of drafting a cover letter myself and it gave him a professional 
+				cover letter that helped him secure the contract job.`,
+				reject: `send it off to my potential employers and got immediate feedback. I highly recommend this app.`,
+				img2: require("../Assets/Ellipse 19.png"),
+				name: "Victor Ekere",
+				occupation: "Product / Project management",
 			},
 		],
 	},
