@@ -4,6 +4,8 @@ import Hamburger from "../Assets/menu.svg";
 import { Link } from "react-router-dom";
 import Close from "../Assets/close.svg";
 import { useState } from "react";
+import Button from "../Components/Ui/Button";
+import navLinkElements from "../Constants/navLinkElements";
 
 const Header = () => {
 	const [toggleMenu, setToggleMenu] = useState(false);
