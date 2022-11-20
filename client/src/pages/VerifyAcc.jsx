@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../Components/Ui/Button";
 
-
 const VerifyAcc = () => {
 
     return ( 
