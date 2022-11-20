@@ -93,7 +93,7 @@ function InputData() {
 					formData
 				);
 				console.log(res);
-				setCoverLetter(res.data.data);
+				setCoverLetter({ ...res.data.data });
 				Navigate("/preview");
 			} catch (ex) {
 				console.log(ex);
