@@ -1,5 +1,5 @@
 import Logo from "../Assets/headerLogo.png";
-import navCustomerElements from "../Constants/navCustomerElements";
+import navLinkElements from "../Constants/navLinkElements";
 import Hamburger from "../Assets/menu.svg";
 import { Link } from "react-router-dom";
 import Close from "../Assets/close.svg";
