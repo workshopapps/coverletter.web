@@ -53,6 +53,16 @@ module.exports = {
 			grey600: "#353535",
 			grey700: "#282828",
 			grey800: "#101010",
+
+			coverContainer: "#CDDCF8",
+			white: "#FFFFFF",
+			backgroundWhite: "#FFFFFF",
+			eventshome: '#F7F7F7',
+			btnbg: '#CDDCF8',
+			searchbd: '#CAD0DD',
+			selectdesc: '#BABABA',
+
+
 		},
 	},
 	plugins: [],

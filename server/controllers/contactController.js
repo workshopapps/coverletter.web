@@ -1,3 +1,4 @@
+
 const ContactValidation = require("../utils/contact");
 const sendEmail = require("../utils/sendEmail");
 const { BadRequestError } = require("../errors");
@@ -16,18 +17,14 @@ const contact = async (req, res) => {
 
 	if (contactError) {
 		throw new BadRequestError(contactError);
-	} else {
-		await sendEmail(email, subject, description).then((result) => {
+	} else 
+    {
+       await sendEmail(email, subject, description).then((result) => {
 			if (result) {
 				res.status(StatusCodes.CREATED).json(result);
 			}
 		});
-	}
+    }
 
-	return res.status(500).json({
-		message: error.message,
-	});
 };
-module.exports = {
-	contact,
-};
+module.exports = { contact };

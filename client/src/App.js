@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Event from './pages/Event'
 import {
 	Register,
 	VerifyAcc,
@@ -78,6 +79,10 @@ const App = () => {
 					<Route
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
+					/>
+					<Route
+						path="/event"
+						element={<Event />}
 					/>
 					<Route
 						path="/terms-and-conditions"
