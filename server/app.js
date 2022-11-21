@@ -59,7 +59,7 @@ app.use("/api/v1", downloadCoverLetter);
 app.use("/api/v1", contactRoutes)
 
 app.get("/", (req, res) => {
-	res.send("template api");
+	res.send("templates api");
 	textToPdf();
 });
 
