@@ -1,18 +1,9 @@
-// const express = require("express");
-// const router = express.Router();
-// const ContactController  = require("../controllers/contactController");
-
-
-// router.post("/contact", ContactController.contact);
-
-module.exports = router;
 const express = require("express");
 const router = express.Router();
-const { cvUpload } = require("../controllers/cvUploadController");
-// const { sendCoverLetter } = require("../controllers/coverLetterGenerator");
+const ContactController  = require("../controllers/contactController");
 
-router.post("/uploads", cvUpload);
-// router.post("/generate", sendCoverLetter);
+
+router.post("/contact", ContactController.contact);
 
 module.exports = router;
 
