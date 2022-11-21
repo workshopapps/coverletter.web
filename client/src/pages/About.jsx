@@ -23,7 +23,7 @@ const About = () => {
 
 			<main className="bg-[#F2F2F7] py-[26px] sm:py-[22px] lg:py-10">
 				<div className="container max-w-6xl px-6 sm:px-[51px] mx-auto">
-					<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] py-5">
+					<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] py-5">
 						Aplicar is an outstanding and efficient website that
 						helps job seekers to generate cover letters for any
 						position. Applying for different jobs with different
@@ -36,7 +36,7 @@ const About = () => {
 							<h2 className="text-xl sm:text-2xl lg:text-[32px] font-semibold">
 								Who we are
 							</h2>
-							<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-4">
+							<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 								At Aplicar, we create unique Cover letters using
 								our AI. These Cover letters would be as unique
 								as you are. Our AI generates the Cover letter by
@@ -60,7 +60,7 @@ const About = () => {
 							<h2 className="text-xl sm:text-2xl lg:text-[32px] font-semibold">
 								Our mission
 							</h2>
-							<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-4">
+							<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 								Aplicar helps you ace the job by creating a new
 								cover letter every time you apply. Our mission
 								is to help you create a strong, personalized,
@@ -73,7 +73,7 @@ const About = () => {
 						<h2 className="text-xl sm:text-2xl lg:text-[32px] font-semibold">
 							Our History
 						</h2>
-						<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-4">
+						<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 							At Aplicar, we reckon that creating a cover letter
 							ought to be a quick and easy procedure. Aplicar
 							began as a solution to the frequent dissatisfaction
@@ -100,7 +100,7 @@ const About = () => {
 						<h2 className="text-xl sm:text-2xl lg:text-[32px] font-semibold">
 							Our Teams
 						</h2>
-						<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-4">
+						<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 							People are the foundation of every successful
 							company. We strive to innovate and grow by meeting
 							the people who motivate our team and we are proud of
@@ -118,13 +118,13 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className=" text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className=" text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Erica Osawaru
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR PRODUCT DESIGN
 									</p>
-									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Erica leads the Product design team by
 										creating timely solutions for Aplicar.
 										Erica stays on top of our solutions and
@@ -142,13 +142,13 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className="text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Adedokun Ayomide
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR MOBILE DEVELOPMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Ayomide collaborates with other
 										developers on the design and development
 										of Aplicar. He evaluates current
@@ -167,13 +167,13 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className="text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Adelakun Rotimi
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR SALES AND MARKETING
 									</p>
-									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Rotimi leads our sales and marketing
 										team. He implements our sales and
 										marketing strategies and maintains
@@ -191,13 +191,13 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className="text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Harold Obasi
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR FRONTEND DEVELOPMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Harold supervises and ensures the
 										quality of the features provided to meet
 										the standard. He leads the team to
@@ -216,13 +216,13 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className="text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Destiny Aigbe
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR BACKEND DEVELOPMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Destiny manages the entire software
 										development lifecycle, including
 										architecture, solution design, quality
@@ -240,13 +240,13 @@ const About = () => {
 								</div>
 
 								<div className="">
-									<p className="text-xl sm:text-2xl text-[32px] mt-6 font-semibold">
+									<p className="text-xl sm:text-2xl lg:text-[32px] mt-6 font-semibold">
 										Jewel Uguru
 									</p>
-									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-6 lg:leading-8 mt-2">
+									<p className="text-[16px] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px] mt-2">
 										TEAM LEAD FOR PROJECT MANAGEMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-6 md:leading-7 text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Jewel oversees the development process
 										of all products of Aplicar. Jewel is
 										credible for creating a list of all
