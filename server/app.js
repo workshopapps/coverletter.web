@@ -19,7 +19,9 @@ app.use(
 	swaggerUI.serve,
 	swaggerUI.setup(swaggerDocument)
 );
-
+app.post("/try", (req,res) => {
+	res.send("hello")
+})
 //Routers
 const authRoutes = require("./routes/authRoutes");
 const templateRoutes = require("./routes/templateRoutes");
