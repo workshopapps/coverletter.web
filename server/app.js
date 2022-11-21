@@ -19,9 +19,7 @@ app.use(
 	swaggerUI.serve,
 	swaggerUI.setup(swaggerDocument)
 );
-app.post("/try", (req,res) => {
-	res.send("hello")
-})
+
 //Routers
 const authRoutes = require("./routes/authRoutes");
 const templateRoutes = require("./routes/templateRoutes");
@@ -61,7 +59,7 @@ app.use("/api/v1", downloadCoverLetter);
 app.use("/api/v1", contactRoutes)
 
 app.get("/", (req, res) => {
-	res.send("templates api");
+	res.send("template api");
 	textToPdf();
 });
 
