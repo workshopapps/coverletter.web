@@ -10,7 +10,7 @@ const CustomerStories = () => {
 						Customer{" "}
 						<span className="text-primaryMain">Stories</span>
 					</h3>
-					<p className="text-grey400 font-semibold m-auto mt-[8px] text-[12px]  leading-[16px]  md:w-full text-base md:mt-4">
+					<p className="text-grey400 font-semibold m-auto mt-[8px] text-[12px]  leading-[16px]  md:w-full md:text-base md:mt-4">
 						More than just a cover letter generator, we are
 						applicants best friend
 					</p>
