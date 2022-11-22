@@ -9,7 +9,6 @@ import navLinkElements from "../Constants/navLinkElements";
 const Header = () => {
 	const [toggleMenu, setToggleMenu] = useState(false);
 	const location = useLocation();
-	console.log("location is: ", location.pathname);
 	const Large = () => {
 		return (
 			<ul className="space-x-6 hidden lg:block">
