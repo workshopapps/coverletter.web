@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HistoryList from "../Layouts/HistoryList";
+import axios from "axios";
 
 // CVImages
 import FirstCV from "../Assets/Images/cv1.png";
@@ -13,14 +14,14 @@ import SeventhCV from "../Assets/Images/cv7.png";
 import EighthCV from "../Assets/Images/cv8.png";
 
 // Cover Letter Images
-import FirstCl from "../Assets/Images/cl1.png";
-import SecondCl from "../Assets/Images/cl2.png";
-import ThirdCl from "../Assets/Images/cl3.png";
-import ForthCl from "../Assets/Images/cl4.png";
-import FifthCl from "../Assets/Images/cl5.png";
-import SixthCl from "../Assets/Images/cl6.png";
-import SeventhCl from "../Assets/Images/cl7.png";
-import EighthCl from "../Assets/Images/cl8.png";
+// import FirstCl from "../Assets/Images/cl1.png";
+// import SecondCl from "../Assets/Images/cl2.png";
+// import ThirdCl from "../Assets/Images/cl3.png";
+// import ForthCl from "../Assets/Images/cl4.png";
+// import FifthCl from "../Assets/Images/cl5.png";
+// import SixthCl from "../Assets/Images/cl6.png";
+// import SeventhCl from "../Assets/Images/cl7.png";
+// import EighthCl from "../Assets/Images/cl8.png";
 
 const History = () => {
 	const [cvList, setCvList] = useState([]);
@@ -69,66 +70,79 @@ const History = () => {
 				message: "Generate new  Cover Letter",
 			},
 		];
-		const clListItem = [
-			{
-				id: "cl1",
-				src: FirstCl,
-				option: true,
-				title: "Chevron Cover Letter",
-				dateCreated: "Created 1 day ago",
-			},
-			{
-				id: "cl2",
-				src: ThirdCl,
-				option: true,
-				title: "Shell Cover Letter",
-				dateCreated: "Created 1 day ago",
-			},
-			{
-				id: "cl3",
-				src: FifthCl,
-				option: true,
-				title: "FCMB Cover Letter",
-				dateCreated: "Created 3 day ago",
-			},
-			{
-				id: "cl7",
-				src: SeventhCl,
-				option: true,
-				title: "KPMG Cover Letter",
-				dateCreated: "Created 4 day ago",
-			},
-			{
-				id: "cl4",
-				src: SecondCl,
-				option: true,
-				title: "Fortoil Cover Letter",
-				dateCreated: "Created 5 day ago",
-			},
-			{
-				id: "cl5",
-				src: ForthCl,
-				option: true,
-				title: "Oando Cover Letter",
-				dateCreated: "Created 5 day ago",
-			},
-			{
-				id: "cl6",
-				src: SixthCl,
-				option: true,
-				title: "HNG Cover Letter",
-				dateCreated: "Created 9 day ago",
-			},
-			{
-				id: "cl8",
-				src: EighthCl,
-				option: true,
-				title: "UBA Cover Letter",
-				dateCreated: "Created 17 day ago",
-			},
-		];
 		setCvList(cvListItem);
-		setClList(clListItem);
+		// const clListItem = [
+		// 	{
+		// 		id: "cl1",
+		// 		src: FirstCl,
+		// 		option: true,
+		// 		title: "Chevron Cover Letter",
+		// 		dateCreated: "Created 1 day ago",
+		// 	},
+		// 	{
+		// 		id: "cl2",
+		// 		src: ThirdCl,
+		// 		option: true,
+		// 		title: "Shell Cover Letter",
+		// 		dateCreated: "Created 1 day ago",
+		// 	},
+		// 	{
+		// 		id: "cl3",
+		// 		src: FifthCl,
+		// 		option: true,
+		// 		title: "FCMB Cover Letter",
+		// 		dateCreated: "Created 3 day ago",
+		// 	},
+		// 	{
+		// 		id: "cl7",
+		// 		src: SeventhCl,
+		// 		option: true,
+		// 		title: "KPMG Cover Letter",
+		// 		dateCreated: "Created 4 day ago",
+		// 	},
+		// 	{
+		// 		id: "cl4",
+		// 		src: SecondCl,
+		// 		option: true,
+		// 		title: "Fortoil Cover Letter",
+		// 		dateCreated: "Created 5 day ago",
+		// 	},
+		// 	{
+		// 		id: "cl5",
+		// 		src: ForthCl,
+		// 		option: true,
+		// 		title: "Oando Cover Letter",
+		// 		dateCreated: "Created 5 day ago",
+		// 	},
+		// 	{
+		// 		id: "cl6",
+		// 		src: SixthCl,
+		// 		option: true,
+		// 		title: "HNG Cover Letter",
+		// 		dateCreated: "Created 9 day ago",
+		// 	},
+		// 	{
+		// 		id: "cl8",
+		// 		src: EighthCl,
+		// 		option: true,
+		// 		title: "UBA Cover Letter",
+		// 		dateCreated: "Created 17 day ago",
+		// 	},
+		// ];
+
+		const fetchCoverLetters = async () => {
+			try {
+				const response = await axios.get(
+					`${process.env.API_URL}/api/v1/template`
+				);
+				const resp = response.data;
+				console.log(resp);
+				setClList(resp);
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		fetchCoverLetters();
 	}, []);
 
 	return (
