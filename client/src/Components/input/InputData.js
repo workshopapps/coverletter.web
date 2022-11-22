@@ -8,6 +8,8 @@ import { data } from "autoprefixer";
 function InputData() {
 	const { file, setCoverLetter } = useGlobalContext();
 
+	const [fullName, setFullName] = useState("");
+	const [email, setEmail] = useState("");
 	const [companyName, setCompanyName] = useState("");
 	const [companyAddress, setCompanyNameAddress] = useState("");
 	const [city, setCity] = useState("");
@@ -32,6 +34,12 @@ function InputData() {
 		// Navigate("/preview");
 	};
 
+	const fullNameHandler = (e) => {
+		setFullName(e.target.value);
+	};
+	const emailHandler = (e) => {
+		setEmail(e.target.value);
+	};
 	const companyHandler = (e) => {
 		setCompanyName(e.target.value);
 	};
@@ -142,6 +150,27 @@ function InputData() {
 					<div className="left">
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
 							<label className="my-[4px] text-textBody text-[18px]">
+								Full Name
+							</label>
+							<input
+								name="company_name"
+								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-md"
+								onChange={fullNameHandler}
+								autoFocus
+								type="text"
+								value={fullName}
+								id="companyName"
+							/>
+							{error && fullName <= 0 ? 
+								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
+									Full name is required
+								</p>
+							 : 
+								""
+							}
+						</div>
+						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
+							<label className="my-[4px] text-textBody text-[18px]">
 								Company's Name
 							</label>
 							<input
@@ -246,6 +275,26 @@ function InputData() {
 					</div>
 
 					<div className="right mt-[-1rem] md:mt-0 ">
+						<div className="a flex flex-col text-left mb-[2rem] ">
+							<label className="my-[4px] text-textBody text-[18px]">
+								Email Address
+							</label>
+							<input
+								name="role"
+								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-md"
+								type="text"
+								onChange={emailHandler}
+								value={email}
+								id="companyName"
+							/>
+							{error && email <= 0 ? (
+								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
+									Email Address is required
+								</p>
+							) : (
+								""
+							)}
+						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
 							<label className="my-[4px] text-textBody text-[18px]">
 								What Role Are You Applying For?
