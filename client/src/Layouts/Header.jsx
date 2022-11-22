@@ -16,9 +16,9 @@ const Header = () => {
 					<Link
 						key={item.name}
 						to={item.url}
-						className={`inline-block ${
+						className={`inline-block font-semibold text-grey400  ${
 							location.pathname === item.url
-								? "text-primaryMain"
+								? "text-primaryMain font-bold"
 								: ""
 						}`}
 					>
@@ -42,7 +42,7 @@ const Header = () => {
 					className="w-12 ml-auto cursor-pointer"
 					onClick={() => setToggleMenu((prev) => (prev = false))}
 				/>
-				<ul className="flex flex-col text-textHeader gap-y-4 items-start">
+				<ul className="flex flex-col gap-y-4 items-start">
 					{navLinkElements.map((item) => (
 						<Link
 							key={item.name}
