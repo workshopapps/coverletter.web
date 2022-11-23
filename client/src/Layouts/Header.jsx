@@ -1,6 +1,6 @@
 import Logo from "../Assets/headerLogo.png";
 import Hamburger from "../Assets/menu.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Close from "../Assets/close.svg";
 import { useState } from "react";
 import Button from "../Components/Ui/Button";
@@ -8,6 +8,7 @@ import navLinkElements from "../Constants/navLinkElements";
 
 const Header = () => {
 	const [toggleMenu, setToggleMenu] = useState(false);
+	const location = useLocation();
 	const Large = () => {
 		return (
 			<ul className="space-x-6 hidden lg:block">
@@ -15,7 +16,11 @@ const Header = () => {
 					<Link
 						key={item.name}
 						to={item.url}
-						className="inline-block"
+						className={`inline-block font-semibold text-grey400  ${
+							location.pathname === item.url
+								? "text-primaryMain font-bold"
+								: ""
+						}`}
 					>
 						{item.name}
 					</Link>
@@ -37,7 +42,7 @@ const Header = () => {
 					className="w-12 ml-auto cursor-pointer"
 					onClick={() => setToggleMenu((prev) => (prev = false))}
 				/>
-				<ul className="flex flex-col text-textHeader gap-y-4 items-start">
+				<ul className="flex flex-col gap-y-4 items-start">
 					{navLinkElements.map((item) => (
 						<Link
 							key={item.name}
@@ -54,21 +59,21 @@ const Header = () => {
 					))}
 				</ul>
 				<Link to="/signin">
-				<Button
-					className="btn btnShort btnSecondary block md:hidden w-full my-4"
-					onClick={() => setToggleMenu((prev) => (prev = false))}
-				>
-					Sign in
-				</Button>
+					<Button
+						className="btn btnShort btnSecondary block md:hidden w-full my-4"
+						onClick={() => setToggleMenu((prev) => (prev = false))}
+					>
+						Sign in
+					</Button>
 				</Link>
 
-				<Link to="/register" >
-				<Button
-					className="btn btnShort btnPrimary block md:hidden w-full"
-					onClick={() => setToggleMenu((prev) => (prev = false))}
-				>
-					Register
-				</Button>
+				<Link to="/register">
+					<Button
+						className="btn btnShort btnPrimary block md:hidden w-full"
+						onClick={() => setToggleMenu((prev) => (prev = false))}
+					>
+						Register
+					</Button>
 				</Link>
 			</aside>
 		);
@@ -83,16 +88,16 @@ const Header = () => {
 				</Link>
 				<Large />
 				<div className="space-x-5 flex">
-				<Link to="/signin">
-					<Button className="btn btnShort btnSecondary hidden md:block">
-						Sign in
-					</Button>
-				</Link>
-				<Link to="register">
-					<Button className="btn btnShort btnPrimary hidden md:block">
-						Register
-					</Button>
-				</Link>
+					<Link to="/signin">
+						<Button className="btn btnShort btnSecondary hidden md:block">
+							Sign in
+						</Button>
+					</Link>
+					<Link to="register">
+						<Button className="btn btnShort btnPrimary hidden md:block">
+							Register
+						</Button>
+					</Link>
 					<button>
 						<img
 							src={Hamburger}
