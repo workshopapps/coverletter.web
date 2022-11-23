@@ -2,7 +2,7 @@ import React from "react";
 import { useGlobalContext } from "../../context/context";
 const CoverLetter = () => {
 	const { coverLetter: data } = useGlobalContext();
-	console.log(data);
+	// console.log(data);
 
 	return (
 		<div className="w-[98%] bg-textWhite border-grey300 border-2 py-8 px-7 rounded-lg">
