@@ -5,8 +5,9 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [file,setFile]= useState('');
-	const [coverLetter, setCoverLetter] = useState('');
+	const [user, setUser] = useState(false);
+	const [file, setFile] = useState("");
+	const [coverLetter, setCoverLetter] = useState("");
 
 	const openSidebar = () => {
 		setIsSidebarOpen(true);
@@ -35,7 +36,9 @@ const AppProvider = ({ children }) => {
 				file,
 				setFile,
 				coverLetter,
-				setCoverLetter
+				setCoverLetter,
+				user,
+				setUser,
 			}}
 		>
 			{children}

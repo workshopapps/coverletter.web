@@ -91,7 +91,7 @@ const HistoryItem = (props) => {
 			)}
 
 			<div className="flex flex-col">
-				<img src={props.item.src} alt="Recent-CV" className="mb-4" />
+				<img src={props.item.src} alt="Recent-CV" className="mb-3" />
 				<p className="font-bold text-base text-black underline cursor-pointer">
 					{props.item.message}
 				</p>
