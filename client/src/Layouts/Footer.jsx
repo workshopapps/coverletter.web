@@ -51,8 +51,8 @@ const Footer = () => {
 					</div>
 				</div>
 			</div>
-			<div className="bg-[#F2F2F7] px-24 py-[18px]">
-				<div className="flex justify-between items-center text-[12px] text-grey400">
+			<div className="bg-[#F2F2F7] md:px-24 px-6 sm:block flex sm:justify-start justify-between items-end md:py-[18px] py-4 text-left text-xs text-textBody leading-4 sm:space-y-0 space-y-2 ">
+				<div className="flex sm:flex-row flex-col justify-between  sm:space-y-0 space-y-4 text-[12px] text-grey400">
 					<p>© 2022 Cover. All rights reserved.</p>
 					<Link to="/terms-and-conditions">Terms and Conditions</Link>
 					<Link to="/privacy-policy" className="sm:flex hidden">

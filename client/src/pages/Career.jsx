@@ -111,7 +111,7 @@ const Career = () => {
 	const [showOpenings, setShowOpenings] = React.useState(true);
 
 	return (
-		<div className="bg-background overflow-x-hidden">
+		<div className="bg-background overflow-x-hidden max-w-screen-2xl m-auto">
 			<div
 				className="flex flex-col justify-center items-center bg-primaryDeep md:h-[295px] h-[216px] text-center md:py-[72px] py-[52px]"
 				style={{
