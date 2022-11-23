@@ -28,7 +28,7 @@ jobs:
             - run: npm run build --if-present
     
 #     securityscan:
-#         runs-on: ubuntu-latest
+#         runs-on: self-hosted
 #         name: njsscan check
 #         steps:
 #             - name: Checkout the code
