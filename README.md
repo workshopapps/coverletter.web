@@ -1,3 +1,7 @@
+[![Node.js CI](https://github.com/workshopapps/coverletter.web/actions/workflows/node.js.yml/badge.svg)](https://github.com/workshopapps/coverletter.web/actions/workflows/node.js.yml)
+
+
+
 # <div id="top">Aplicar - Cover Letter Generator</div>
 
 
