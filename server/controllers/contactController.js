@@ -5,11 +5,11 @@ const { BadRequestError } = require("../errors");
 const { StatusCodes } = require("http-status-codes");
 
 const contact = async (req, res) => {
-	const { email, fullname, phone, subject, description } = req.body;
-
+	const { Useremail, fullname, phone, subject, description } = req.body;
+    const email = "aplicarorg@gmail.com"
 	const contactError = ContactValidation.contactUs(
 		fullname,
-		email,
+		Useremail,
 		subject,
 		phone,
 		description
