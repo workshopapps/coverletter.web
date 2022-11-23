@@ -27,12 +27,11 @@
 			"description": "Holds endpoints related to authentication"
 		},
 		{
-			"name":"coverLetter",
-			"description":"Holds endpoints related to cover letter"
+			"name": "coverLetter",
+			"description": "Holds endpoints related to cover letter"
 		}
 	],
-		
-	
+
 	"paths": {
 		"/api/v1/auth/signup": {
 			"post": {
@@ -41,25 +40,16 @@
 				"description": "Signs up a user",
 				"produces": ["application/json"],
 				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "user object",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"$ref": "#/definitions/User"
-								}
-							}
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"$ref": "#/definitions/User"
 						}
 					}
-				],
+				},
 				"responses": {
-					"200": {
+					"201": {
 						"description": "Successful Signup",
 						"schema": {
 							"$ref": "#/definitions/Response"
@@ -67,6 +57,12 @@
 					},
 					"400": {
 						"description": "Email Already Exist",
+						"schema": {
+							"$ref": "#/definitions/Response"
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
 						"schema": {
 							"$ref": "#/definitions/Response"
 						}
@@ -118,7 +114,7 @@
 				"description": "Generates a Cover Letter from GPT3",
 				"consumes": ["application/json"],
 				"requestBody": {
-					"required": true,					
+					"required": true,
 					"content": {
 						"multipart/form-data": {
 							"schema": {
@@ -143,7 +139,7 @@
 					}
 				},
 				"responses": {
-					"200": {
+					"201": {
 						"description": "Ok",
 						"schema": {
 							"type": "object",
@@ -217,31 +213,37 @@
 				"tags": ["coverLetter"],
 				"description": "Edit a cover letter",
 				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "cover letter id that needs to be deleted",
-						"required": true,
-						"type": "string"
-					},
-					{
-						"in": "body",
-						"name": "body",
-						"description": "template object",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"template": {
-									"type": "object"
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"description": "cover letter id that needs to be updated",
+										"required": true,
+										"type": "string"
+									},
+									"body": {
+										"description": "content that needs to be updated",
+										"required": true,
+										"schema": {
+											"type": "object",
+											"properties": {
+												"template": {
+													"type": "object"
+												}
+											}
+										}
+									}
 								}
 							}
 						}
 					}
-				],
+				},
 				"responses": {
-					"200": {
+					"201": {
 						"description": "successful operation",
 						"schema": {
 							"type": "object",
@@ -263,26 +265,25 @@
 		"/api/v1/auth/verify": {
 			"post": {
 				"summary": "Verifies a new user",
-				"tags":["authentication"],
+				"tags": ["authentication"],
 				"description": "Verifies a user",
 				"produces": ["application/json"],
 				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "otp",
-						"description": "One Time Password",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"otp": {
-									"type": "string"
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"otp": {
+										"type": "string"
+									}
 								}
 							}
 						}
 					}
-				],
+				},
 				"responses": {
 					"200": {
 						"description": "Ok: User has been successfully verified",
@@ -302,31 +303,30 @@
 		"/api/v1/auth/login": {
 			"post": {
 				"summary": "Log's in an existing user",
-				"tags":["authentication"],
+				"tags": ["authentication"],
 				"description": "Logs in a user",
 				"produces": ["application/json"],
 				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "user object",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"email": {
-									"type": "string"
-								},
-								"password": {
-									"type": "string"
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"email": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									}
 								}
 							}
 						}
 					}
-				],
+				},
 				"responses": {
-					"200": {
+					"201": {
 						"description": "Ok: Success",
 						"schema": {
 							"$ref": "#/definitions/Response"
@@ -345,29 +345,31 @@
 			"put": {
 				"summary": "Updates a user's password",
 				"description": "Updates a user's password",
-				"tags":["authentication"],
+				"tags": ["authentication"],
 				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "password reset object",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"oldPassword": {
-									"type": "string"
-								},
-								"password": {
-									"type": "string"
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"oldPassword": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									},
+									"confirmPassword": {
+										"type": "string"
+									}
 								}
 							}
 						}
 					}
-				],
+				},
 				"responses": {
-					"200": {
+					"201": {
 						"description": "Ok: Password has been reset",
 						"schema": {
 							"$ref": "#/definitions/Response"
