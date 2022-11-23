@@ -44,7 +44,7 @@ function Uploading() {
     
             try {
                 const res = await axios.post(
-                    "http://localhost:5001/api/v1/upload",
+                    `http://${process.env.REACT_APP_API_URL}/api/v1/upload`,
                     formData,
                     option
                 );

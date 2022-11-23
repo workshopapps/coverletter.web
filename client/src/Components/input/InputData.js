@@ -9,6 +9,7 @@ function InputData() {
 	const { file, setCoverLetter } = useGlobalContext();
 
 	const [fullName, setFullName] = useState("");
+	const [isLoading, setIsloading] = useState(false);
 	const [location, setLocation] = useState("");
 	const [email, setEmail] = useState("");
 	const [companyName, setCompanyName] = useState("");
@@ -100,29 +101,31 @@ function InputData() {
 			formData.append("recipient", department);
 			try {
 				const res = await axios.post(
-					"http://localhost:5001/api/v1/generate",
+					`http://${process.env.REACT_APP_API_URL}/api/v1/generate`,
 					formData
 				);
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
-				Navigate("/preview");
+				setIsloading(false)
+				// Navigate("/preview");
 			} catch (ex) {
 				console.log(ex);
 				alert("Error processing your CV");
 			}
 		};
-		 if(companyAddress&&companyName&&city&&country&&date&&role&&years&&name){
-			
-
+		 if(companyAddress&&companyName&&city&&date&&role&&years&&name){
+	
 			uploadFile();
 		}
+		
 
 		
 		
 	};
 
 	return (
-		<div className="bg-background md:px-[204px] md:py-[120px] font-manrope">
+	
+				<div className="bg-background md:px-[204px] md:py-[120px] font-manrope">
 			<main className=" md:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite ">
 				<button
 					onClick={clickHandler}
@@ -648,7 +651,7 @@ function InputData() {
 					</button>
 				</form>
 			</main>
-		</div>
+		</div>	
 	);
 }
 
