@@ -6,8 +6,9 @@ const AppProvider = ({ children }) => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [file,setFile]= useState('');
+	const [fileName,setFileName]= useState('');
 	const [coverLetter, setCoverLetter] = useState('');
-
+	
 	const openSidebar = () => {
 		setIsSidebarOpen(true);
 	};
@@ -34,6 +35,8 @@ const AppProvider = ({ children }) => {
 				setIsModalOpen,
 				file,
 				setFile,
+				fileName,
+				setFileName,
 				coverLetter,
 				setCoverLetter
 			}}
