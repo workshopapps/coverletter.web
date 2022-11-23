@@ -1,8 +1,8 @@
-const contactUs = (fullname, email, subject, phone, description) => {
+const contactUs = (fullname, Useremail, subject, phone, description) => {
 	let result;
 	const emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 	//check required input
-	if (!email || !fullname || !subject || !phone || !description) {
+	if (!Useremail || !fullname || !subject || !phone || !description) {
 		result = "All field are required";
 	} else {
 		//sanitize email input
@@ -12,7 +12,7 @@ const contactUs = (fullname, email, subject, phone, description) => {
 			//check if input is not a number
 			if (typeof phone !== "number" || typeof phone === "string") {
 				result = "Invaild phone-number input";
-			}
+			} 
 		}
 	}
 	return result;
