@@ -1,4 +1,5 @@
 const {convertToDoc} = require("../utils/convertToDoc");
+const fs = require("fs");
 
 const downloadCoverLetter = async function(req,res){
     const data = req.body;
@@ -11,6 +12,7 @@ const downloadCoverLetter = async function(req,res){
 const download = async function(req,res){
     const pathToFile = req.query.file
     res.download(pathToFile);
+    fs.unlink(pathToFile);
 }
 
 module.exports = {downloadCoverLetter, download}

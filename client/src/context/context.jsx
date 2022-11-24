@@ -8,8 +8,8 @@ const AppProvider = ({ children }) => {
 	const [user, setUser] = useState(false);
 	const [file, setFile] = useState("");
 	const [coverLetter, setCoverLetter] = useState("");
-	const [fileName,setFileName]= useState('');
-	
+	const [fileName, setFileName] = useState("");
+
 	const openSidebar = () => {
 		setIsSidebarOpen(true);
 	};
