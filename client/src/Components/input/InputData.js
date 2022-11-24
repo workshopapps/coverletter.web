@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import back from "./asesets/arrow.png";
 import { useGlobalContext } from "../../context/context";
 import axios from "axios";
-import Spinner from "react-bootstrap/Spinner";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { data } from "autoprefixer";
 
 function InputData() {
@@ -84,7 +82,10 @@ function InputData() {
 			date.length ||
 			role.length ||
 			years.length ||
-			name.length
+			name.length ||
+			fullName.length ||
+			email.length ||
+			location.length
 		) {
 			setError(true);
 		}
@@ -103,7 +104,7 @@ function InputData() {
 			formData.append("location", location);
 			try {
 				const res = await axios.post(
-					`${process.env.REACT_APP_API_URL}/api/v1/generate`,
+					`http://api.aplicar.hng.tech/api/v1/generate`,
 					formData
 				);
 				console.log(res);
@@ -131,8 +132,6 @@ function InputData() {
 			uploadFile();
 		}
 	};
-
-
 
 	return (
 		<div className="bg-background lg:px-[204px] lg:py-[120px] font-manrope">
@@ -728,11 +727,16 @@ function InputData() {
 					)}
 					{isLoading && (
 						<button className="px-5 w-[100%] py-4 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg">
-							<Spinner animation="border" role="status">
-								<span className="visually-hidden">
-									Loading...
-								</span>
-							</Spinner>
+							<div class="flex justify-center items-center">
+								<div
+									class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+									role="status"
+								>
+									<span class="visually-hidden">
+										
+									</span>
+								</div>
+							</div>
 						</button>
 					)}
 				</form>

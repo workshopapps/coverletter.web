@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/context";
 import axios from "axios";
-import ProgressBar from "react-bootstrap/ProgressBar";
 import Uploaded from "../uploaded/Uploaded";
 
 function Uploading() {
@@ -41,7 +40,7 @@ function Uploading() {
     
             try {
                 const res = await axios.post(
-                    `${process.env.REACT_APP_API_URL}/api/v1/upload`,
+                    `http://api.aplicar.hng.tech/api/v1/upload`,
                     formData,
                     option
                 );
@@ -62,8 +61,10 @@ function Uploading() {
 			{show ? (
 				<div className="flex flex-col gap-[15px] justify-center items-center">
 					<h3 className="text-textBody text-[16px]">{fileName}</h3>
-					<div className="bar w-[300px] md:w-[350px] h-[20%] ">
-						<ProgressBar now={percentage} />
+					<div className="bar w-[100%] md:w-[380px] ">
+                         <div className="w-full bg-grey100 rounded-full dark:bg-grey200">
+                            <div className="bg-primaryMain text-xs font-medium text-textWhite p-0.5 leading-none rounded-full" style = {{ width : `${percentage}%` }}>{percentage}</div>
+                         </div>
 					</div>
 					<button className="border-[1.5px] px-4 py-2 text-[16px] font-semibold border-errorMain text-errorMain rounded-lg">
 						Cancel
