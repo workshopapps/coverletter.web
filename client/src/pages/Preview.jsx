@@ -25,63 +25,6 @@ const Preview = () => {
 		// navigate(`/cover letter`);
 	};
 
-	// get the width of the page and work on the mobile nav
-	function getWindowSize() {
-		const { innerWidth } = window;
-		return { innerWidth };
-	}
-	const [windowSize, setWindowSize] = useState(getWindowSize());
-	useEffect(() => {
-		function handleWindowResize() {
-			setWindowSize(getWindowSize());
-		}
-
-		window.addEventListener("resize", handleWindowResize);
-
-		return () => {
-			window.removeEventListener("resize", handleWindowResize);
-		};
-	}, []);
-	let mobile;
-	windowSize.innerWidth <= 764 ? (mobile = true) : (mobile = false);
-
-	// get the cover letter container so as to apply the translateX property on it
-	const [iterate, setIterate] = useState(0);
-	const [style, setStyle] = useState({
-		transform: `translateX(${iterate}px)`,
-	});
-
-	const clickLeft = () => {
-		setIterate(iterate + 1);
-	};
-
-	const clickRight = () => {
-		setIterate(iterate - 1);
-	};
-
-	var displayLeft = true;
-	var displayRight = true;
-
-	useEffect(() => {
-		setStyle({ transform: `translateX(${iterate * 380}px)` });
-	}, [iterate]);
-
-	if (!mobile) {
-		displayLeft = false;
-		displayRight = false;
-		// setIterate(0);
-	} else if (mobile && iterate >= 1) {
-		displayLeft = false;
-		displayRight = true;
-	} else if (mobile && iterate <= -1) {
-		displayRight = false;
-		displayLeft = true;
-	}
-
-	useEffect(() => {}, [mobile]);
-
-	console.log(mobile);
-
 	// the type of download select option
 	const [dType, setDtype] = useState(null);
 
@@ -119,11 +62,8 @@ const Preview = () => {
 					Your Cover Letter is Ready!
 				</p>
 			</div>
-			<div className="w-screen md:overflow-x-hidden relative mt-10 md:mt-20">
-				<div
-					className="flex relative w-full justify-center translate-x-[-200%] md:justify-center items-center md:translate-x-0 lg:translate-x-0"
-					style={mobile ? style : { transform: "translateX" + "0px" }}
-				>
+			<div className="w-screen overflow-x-scroll md:overflow-x-hidden relative mt-10 md:mt-20">
+				<div className="flex relative w-full justify-center overflow-x-scroll md:justify-center items-center md:translate-x-0 lg:translate-x-0">
 					<img
 						src={lockedCover_1}
 						alt="cover"
@@ -170,39 +110,6 @@ const Preview = () => {
 						className=" mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] md:min-h-[485px] md:min-w-[400px]"
 					/>
 				</div>
-
-				{/* left */}
-				{displayLeft && (
-					<div
-						className="absolute top-[50%] left-[5%] flex justify-center items-center text-textWhite rounded-full w-16 h-16 bg-primaryMain"
-						onClick={clickLeft}
-					>
-						<div className="flex justify-center w-8 h-8 fill-textWhite">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 384 512"
-							>
-								<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
-							</svg>
-						</div>
-					</div>
-				)}
-				{/* right */}
-				{displayRight && (
-					<div
-						className="absolute top-[50%] right-[5%] flex justify-center items-center text-textWhite rounded-full w-16 h-16 bg-primaryMain"
-						onClick={clickRight}
-					>
-						<div className="flex justify-center w-8 h-8 fill-textWhite">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 384 512"
-							>
-								<path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-							</svg>
-						</div>
-					</div>
-				)}
 			</div>
 
 			<div className="w-100 flex justify-center">

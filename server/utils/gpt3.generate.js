@@ -17,7 +17,6 @@ const generator = async (
 	const openai = new OpenAIApi(configuration);
 
 	const gpt3Prompt = `Use this resume ${resume}, to generate a cover letter for the role of ${role} at ${company_name}. Address it to ${recipient_name} in the ${recipient_department}of the organization `;
-	console.log(gpt3Prompt);
 	// create the prompt with the function parameters
 	const response = await openai.createCompletion({
 		model: "text-davinci-002",
