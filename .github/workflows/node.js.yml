@@ -24,6 +24,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: "npm"
+                  cache-dependency-path: "./server/package-lock.json"
             - run: npm i
             
             - run: pm2 restart server
