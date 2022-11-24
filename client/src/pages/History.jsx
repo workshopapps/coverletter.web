@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HistoryList from "../Layouts/HistoryList";
+// import axios from "axios";
 
 // CVImages
 import FirstCV from "../Assets/Images/cv1.png";
@@ -69,6 +70,7 @@ const History = () => {
 				message: "Generate new  Cover Letter",
 			},
 		];
+		setCvList(cvListItem);
 		const clListItem = [
 			{
 				id: "cl1",
@@ -127,8 +129,22 @@ const History = () => {
 				dateCreated: "Created 17 day ago",
 			},
 		];
-		setCvList(cvListItem);
+
 		setClList(clListItem);
+
+		// const fetchCoverLetters = async () => {
+		// 	try {
+		// 		const response = await axios.get(
+		// 			`${process.env.REACT_APP_API_KEY}/api/v1/template`
+		// 		);
+		// 		const resp = response.data;
+		// 		console.log(resp);
+		// 		setClList(resp);
+		// 	} catch (err) {
+		// 		console.log(err);
+		// 	}
+		// };
+		// fetchCoverLetters();
 	}, []);
 
 	return (
