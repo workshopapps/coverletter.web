@@ -3,6 +3,7 @@ const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
 const { BadRequestError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
+const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
@@ -194,7 +195,53 @@ const forgotPassword = async (req, res, next) => {
 		return next(new BadRequestError("Error Sending Email"));
 	}
 };
+const resetPassword = async (req, res) => {
+	const { password, email, confirmPassword } = req.body;
+	const salt = bcrypt.genSaltSync(10);
+	const hashedPassword = bcrypt.hashSync(password, salt);
 
+	if (password !== confirmPassword) {
+		throw new BadRequestError("confirm with a similar password");
+	}
+
+	const user = await User.findOne({ email: email });
+
+	if (!user) {
+		throw new BadRequestError("email not found in database");
+	}
+
+	const comparePassword = await user.compare(hashedPassword, user.password);
+	if (!comparePassword) {
+		throw new BadRequestError("Passwords fields can only be unique");
+	}
+
+	user.password = password;
+	user.passwordResetToken = undefined;
+	user.passwordResetExpires = undefined;
+	await user.save();
+
+	res.status(StatusCodes.CREATED).json({
+		msg: "Password change was successful.",
+	});
+};
+
+const validateOTP = async (req, res) => {
+	const { otp, email } = req.body;
+	//console.log(otp);
+	const user = await User.findOne({ email });
+	if (!user) {
+		throw new BadRequestError("email not found in database");
+	}
+
+	const verifyOTP = await user.compare(otp, user.otp);
+	if (!verifyOTP) {
+		throw new BadRequestError("OTP is invalid or expired");
+	}
+
+	res.status(StatusCodes.CREATED).json({
+		msg: "otp verification was successful.",
+	});
+};
 module.exports = {
 	register,
 	login,
@@ -202,4 +249,6 @@ module.exports = {
 	protect,
 	updatePassword,
 	verify,
+	resetPassword,
+	validateOTP,
 };

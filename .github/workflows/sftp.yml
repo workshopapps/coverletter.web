@@ -1,12 +1,11 @@
-name: CI-SFTP
+name: SFTP CI
  
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-#  pull_request:
-#    branches: [ main ]
+  
+  pull_request:
+    branches: ["dev"]
  
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -16,10 +15,14 @@ jobs:
   # This workflow contains a single job called "SFTP"
   deploy-via-sftp:
     runs-on: ubuntu-latest
+    strategy:
+            matrix:
+                node-version: [ 16.x]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-          
+      - uses: actions/checkout@v3
+      - name: Node LTS versions
+  
       - name: SFTP Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
@@ -30,9 +33,18 @@ jobs:
  
           
           # will put all file under this path
-          local_path: ./*    # default is ./*
+          local_path: ./client   # default is ./*
           # files will copy to under remote_path
-          remote_path: /var/www
+          remote_path: /var/www/aplicar
           
           # sftp args
           args: '-o ConnectTimeout=5'
+
+      - name: Build Project
+      - run:  npm install
+      - run:  npm run build --if-present 
+      - run: npm test --if-present 
+
+      - name: Start app
+      - run: npm start
+      
