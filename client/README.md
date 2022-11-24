@@ -129,7 +129,7 @@ Before installation, please make sure you have already installed the following t
 
 ## <p id="contribute">Contributing</p>
 
-- Check out the [contribution guidelines](/CONTRIBUTING.md) for more information.
+- Check out the [contribution guidelines](/client/CONTRIBUTING.md) for more information.
 <!-- ## 👩🏽‍💻 Contributing
 
 [![Contributors](https://contrib.rocks/image?repo=/workshopapps/coverletter.web)](https://github.com//workshopapps/coverletter.web/graphs/contributors) -->

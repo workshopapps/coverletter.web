@@ -1,5 +1,5 @@
 /* manrope */
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -23,8 +23,45 @@
 	code {
 		font-family: "Manrope", sans-serif;
 	}
-}
 
+	.contents__holder::-webkit-scrollbar {
+		width: 5px;
+	}
+	.contents__holder::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.contents__holder::-webkit-scrollbar-thumb {
+		background: #49494b7a;
+		border-radius: 5px;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: 700;
+	}
+
+	p {
+		font-weight: 400;
+	}
+	.contents__holder::-webkit-scrollbar {
+		display: none;
+
+		width: 5px;
+	}
+	.contents__holder::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.contents__holder::-webkit-scrollbar-thumb {
+		background: #49494b7a;
+		border-radius: 5px;
+	}
+	#banner_bg {
+		background-image: url("./Assets/bannerLogo.png");
+	}
+}
 @layer components {
 	.btn {
 		@apply px-4 py-3 font-bold text-base rounded-lg box-border;
