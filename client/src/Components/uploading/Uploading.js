@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/context";
 import axios from "axios";
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Uploaded from "../uploaded/Uploaded";
 
 function Uploading() {
@@ -70,7 +69,7 @@ function Uploading() {
         show ? <div className="flex flex-col gap-[15px] justify-center items-center">
         <h3 className='text-textBody text-[16px]'>{fileName}</h3>
         <div className="bar w-[300px] md:w-[350px] h-[20%] ">
-        <ProgressBar now={percentage} />
+      
         </div>
         <button className="border-[1.5px] px-4 py-2 text-[16px] font-semibold border-errorMain text-errorMain rounded-lg">Cancel</button>
    </div> : <Uploaded />

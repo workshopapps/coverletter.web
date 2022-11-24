@@ -22,7 +22,7 @@ const SuccessModal = props => {
         <div className={`modal text-center bg-[#03286d66] fixed left-0 right-0 top-0 bottom-0 flex items-center justify-center opacity-0 z-10
         h-screen
         ${props.show ? 'show': ''}`} onClick={props.onClose}>
-            <div className="modal-content w-[327px] h-[368px] bg-white
+            <div className="modal-content w-[327px] h-[368px] bg-background rounded-lg
             tb:w-[377px] tb:h-[398px]
             lg:w-[446px]" onClick={e => e.stopPropagation()}>
                 <div className="modal-body py-[25px] px-[30px]">
