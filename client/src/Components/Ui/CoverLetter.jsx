@@ -1,7 +1,7 @@
 import React from "react";
 import { useGlobalContext } from "../../context/context";
 const CoverLetter = () => {
-	// const { coverLetter: data } = useGlobalContext();
+	const { coverLetter: data } = useGlobalContext();
 	// console.log(data);
 
 	return (
@@ -18,38 +18,15 @@ const CoverLetter = () => {
 			<hr className="w-full outline-none h-2 mt-2 bg-primaryDeep border-none" />
 			<div className="mt-10 w-full">
 				<p className="w-[40%] text-sm md:text-base flex">
-					{/* {data.company_address} */}
-					10/11/2022
+					{data.company_address}
 				</p>
 				<p className="w-[40%] text-sm md:text-base flex">
-					{/* {data.company_address} */}
-					Famfresh & Co. 321 ilupeju Ave, Lagos, Nigeria
+					{data.company_address}
 				</p>
 			</div>
 			<div className="mt-5 text-sm md:text-base">
-				<p className="">
-					Dear Mr. Richard,
-					{/* Dear {data.recipient_name}, */}
-				</p>{" "}
-				<br />
-				<p>
-					{/* {data.cover_letter} */}I read with great interest your
-					ad for a graphic designer for an organic coffee shop in
-					Lagos serving vegetarian food and I am submitting my resume
-					for your review and consideration. As a graphic designer, I
-					understand the importance of logos in branding. Logo is
-					considered as the soul of the brand. Therefore, I would like
-					to contribute my talents to help you find a logo you desire.
-					Besides, I have 4 years experience in designing logos and
-					products for many customers in many fields such as food,
-					medicine, technology, That makes me realize the importance
-					of understanding customers to bring and give them the
-					products they are most satisfied with. After all, a fresh
-					idea, in line with current trends will be a good solution
-					for you, and I will be happy to help you complete it. I look
-					forward to your call. Thank you for your time and
-					consideration.
-				</p>
+				<p className="">Dear {data.recipient_name},</p> <br />
+				<p>{data.cover_letter}</p>
 				<br />
 				<p>Best regards,</p>
 				<br />

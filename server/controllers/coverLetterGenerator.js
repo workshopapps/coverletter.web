@@ -16,6 +16,7 @@ const sendCoverLetter = async (req, res) => {
 		recipient_phone_no,
 	} = req.body;
 	const file = req.files.myFile;
+	console.log(file);
 	const coverLetter = await generator(
 		file,
 		company_name,
