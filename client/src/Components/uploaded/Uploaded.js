@@ -1,32 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import success from "../sectionTwo/assets/success.svg";
+import mark from "../sectionTwo/assets/success.svg";
 import first from "../sectionTwo/assets/first.svg";
 import { useGlobalContext } from "../../context/context";
-import axios from "axios";
+import InputData from "../input/InputData";
 
 function Uploaded() {
-	const [success, setSuccess] = useState(false);
-	const { file, setFile } = useGlobalContext();
+	const { file, setFile, setFileName, fileName } = useGlobalContext();
 	const Navigate = useNavigate();
 
-	const uploadFile = async (e) => {
-		const formData = new FormData();
-		formData.append("myFile", file);
-		try {
-			const res = await axios.post(
-				"http://localhost:5001/api/v1/upload",
-				formData
-			);
-			console.log(res);
-			Navigate("/upload-data");
-		} catch (ex) {
-			console.log(ex);
-			alert("You imported the wrong file");
-		}
-	};
+	const uploadFile =() =>{
+		Navigate('/upload-data')
+	}
+	
 	const changeHandler = (e) => {
 		setFile(e.target.files[0]);
+		setFileName(e.target.files[0].name);
 		console.log(file);
 	};
 
@@ -35,7 +24,7 @@ function Uploaded() {
 			<main className="flex flex-col items-center justify-center">
 				<img
 					className="h-[0] md:h-[80px] w-[0] md:w-[80px] "
-					src={success}
+					src={mark}
 					alt=""
 				/>
 				<img
@@ -43,10 +32,10 @@ function Uploaded() {
 					className="w-[67px] md:w-[0] h-[67px] md:h-[0]"
 					alt=""
 				/>
-				<h2 className="text-primaryMain mb-4 mt-5 font-semibold text-[24px] ">
+				<h2 className="text-primaryMain text-center mb-4 mt-5 font-semibold text-[24px] ">
 					Your CV has Been Uploaded
 				</h2>
-				<p className="text-textBody mb-4 text-[16px] ">
+				<p className="text-textBody text-center mb-4 text-[16px] ">
 					Proceed to customize your cover letter
 				</p>
 				<div className="a grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">

@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const bodyParser = require("body-parser");
-const connectDB = require("./db/connect");
+//const connectDB = require("./db/connect");
 require("dotenv").config();
 
 const port = process.env.PORT || 5001;
@@ -22,9 +22,11 @@ app.use(
 
 //Routers
 const authRoutes = require("./routes/authRoutes");
+const resetRoutes = require("./routes/resetRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
-const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes")
+const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
+const contactRoutes       = require("./routes/contactRoutes")
 
 app.use(
 	"/cvg-documentation",
@@ -70,7 +72,9 @@ app.use(
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", templateRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
-app.use("/api/v1",downloadCoverLetter);
+app.use("/api/v1", resetRoutes);
+app.use("/api/v1", downloadCoverLetter);
+app.use("/api/v1", contactRoutes)
 
 app.get("/", (req, res) => {
 	res.send("templates api");

@@ -1,6 +1,5 @@
+import { Link } from "react-router-dom";
 import Button from "../Components/Ui/Button";
-import InputField from "../Components/Ui/InputField";
-
 
 const VerifyAcc = () => {
 
@@ -33,7 +32,9 @@ const VerifyAcc = () => {
                         <Button className={"btn btnPrimary w-[100%] btnShort"} children={"Validate OTP"} />
                     </div>
                 </div>
-                <p className="font-semibold text-primaryMain text-base underline underline-offset-[5px] cursor-pointer mt-[24px]">Change email</p>
+                <div className="mt-[24px]">
+                    <Link to="/register" className="font-semibold text-primaryMain text-base underline underline-offset-[5px] cursor-pointer">Change email</Link>
+                </div>
             </div>
         </div>
      );

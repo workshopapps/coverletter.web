@@ -29,6 +29,7 @@ import EmailOTP from "./EmailOTP";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import About from "./About";
+import Event from "./Event";
 export {
 	Register,
 	History,
@@ -61,5 +62,5 @@ export {
 	CustomerStories,
 	SingleProduct,
 	Career,
-	
+	Event,
 };

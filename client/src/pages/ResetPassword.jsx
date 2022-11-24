@@ -40,7 +40,8 @@ const ResetPassword = () => {
 
 	return (
 		<section className="reset-password bg-[#f2f2f7] pt-36 pb-20">
-			<div className="reset-password-content mx-auto w-[89%] py-8 bg-[transparent]
+			<div
+				className="reset-password-content mx-auto w-[89%] py-8 bg-[transparent]
 			sm:w-[75%]
 			md:bg-white md:w-[474px] bg-white md:px-16 py-[70px]
 			xl:w-[528px] xl:px-16"
@@ -97,7 +98,7 @@ const ResetPassword = () => {
 										name="password"
 										placeholder="New Password"
 										required
-										className="input_password mt-2 w-full py-[12px] pl-4 rounded-lg border border-gray-800 outline-2 outline-gray-800 bg-transparent"
+										className="input_password mt-2 w-full py-[12px] pl-4 rounded-lg bg-[transparent] border border-gray-800 outline-2 outline-gray-800 bg-transparent"
 										id="input-pass"
 									/>
 									<span
@@ -122,7 +123,7 @@ const ResetPassword = () => {
 										name="password"
 										placeholder="Confirm Password"
 										required
-										className="input_password input_password mt-2 w-full py-[12px] pl-4 rounded-lg outline-2 outline-gray-800 border border-gray-800 bg-transparent"
+										className="input_password input_password mt-2 w-full py-[12px] bg-[transparent] pl-4 rounded-lg outline-2 outline-gray-800 border border-gray-800 bg-transparent"
 										id="input-pass"
 									/>
 									<span
@@ -153,7 +154,7 @@ const ResetPassword = () => {
 					</form>
 				</div>
 			</div>
-			<EmailFooter/>
+			<EmailFooter />
 		</section>
 	);
 };

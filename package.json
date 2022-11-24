@@ -17,7 +17,7 @@
 		"concurrently": "^7.5.0",
 		"connect-mongo": "^4.6.0",
 		"cors": "^2.8.5",
-		"docker": "^1.0.0",
+		"crypto": "^1.0.1",
 		"dotenv": "^10.0.0",
 		"eslint": "^8.27.0",
 		"eslint-config-prettier": "^8.5.0",

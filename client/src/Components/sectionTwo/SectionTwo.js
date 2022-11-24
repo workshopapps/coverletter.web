@@ -2,27 +2,27 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/context";
 import Uploaded from "../uploaded/Uploaded";
+import Uploading from "../uploading/Uploading";
 import first from "./assets/first.svg";
 
 function SectionTwo() {
 	const [fileSize, setFileSize] = useState();
 	const [show, setShow] = useState(false);
 
-	const { setFile } = useGlobalContext();
+	const { setFile, setFileName } = useGlobalContext();
 
 	const changeHandler = (e) => {
-		console.log(e.target.files[0]);
 		setFile(e.target.files[0]);
 		setFileSize(e.target.files[0].size);
+		setFileName(e.target.files[0].name);
 	};
 	const fileValidation = () => {
 		return (
-			<h2 className="text-rose-600 font-semibold text-[13px]">
+			<h2 className="text-errorMain font-semibold text-[13px]">
 				The file too large. Please Upload a file with maximum of 5mb
 			</h2>
 		);
 	};
-
 	return (
 		<div
 			id="upload_section"
@@ -44,15 +44,15 @@ function SectionTwo() {
 						show ? "border-[#e42424]" : "border-[gray]"
 					} border-dashed rounded-lg `}
 				>
-					<div className="uploadContainer relative flex flex-col md:px-[2vh] md:py-[15vh] py-[15vh]">
-						{fileSize > 0 ? null : (
+					<div className="uploadContainer relative flex flex-col items-center justify-center md:px-[2vh] md:py-[15vh] py-[15vh]">
+						{fileSize > 0 && fileSize < 5000000 ? null : (
 							<img
 								src={first}
-								className="w-[67px] relative left-[30%] md:left-[37%]  h-[67px]"
+								className="w-[67px] md:left-[37%]  h-[67px]"
 								alt=""
 							/>
 						)}
-						{fileSize > 0 ? null : (
+						{fileSize > 0 && fileSize < 5000000 ? null : (
 							<input
 								style={{ opacity: "0" }}
 								type="file"
@@ -64,13 +64,14 @@ function SectionTwo() {
 							/>
 						)}
 
-						{fileSize > 0 ? (
-							<Uploaded />
+						{fileSize > 0 && fileSize < 5000000 ? (
+							// <Uploaded />
+							<Uploading />
 						) : (
-							<label for="upload_file" className="">
+							<label for="upload_file" className="flex flex-col items-center justify-center">
 								<img src="" alt="" />
 
-								<h3 className=" text-primaryMain md:text-[24px]  mt-4 text-[20px] font-semibold">
+								<h3 className=" text-primaryMain md:text-[24px] text-center mt-4 text-[20px] font-semibold">
 									Drag & Drop to Upload{" "}
 								</h3>
 
@@ -78,7 +79,7 @@ function SectionTwo() {
 									File Supported: PDF
 								</p>
 								{fileSize > 5000000 ? fileValidation() : null}
-								<button className="text-primaryMain relative left-[40%] text-[16px]  mt-3 text-center font-bold ">
+								<button className="text-primaryMain text-[16px]  mt-3 text-center font-bold ">
 									Or browse
 								</button>
 							</label>

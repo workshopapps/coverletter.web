@@ -11,7 +11,7 @@ function SectionFive() {
     <div>
       <div className="ads my-20 bg-primaryDeep md:rounded-lg  md:mx-[96px] flex flex-col py-9 justify-center items-center ">
         <p className="text-grey100 text-[40px] mb-5">Try it out !</p>
-        <h1 className="text-3xl text-textWhite md:text-[56px] mb-5 text-white font-bold ">
+        <h1 className="text-3xl text-center text-textWhite md:text-[56px] mb-5  font-bold ">
           Create Your Free Cover letter
         </h1>
         <p className="text-grey100 font-[300] text-[14px] md:text-[24px] mt-2">
