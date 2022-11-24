@@ -3,7 +3,7 @@ import { items } from "../Utils/data";
 import { Link } from "react-router-dom";
 const CustomerStories = () => {
 	return (
-		<main className="bg-background">
+		<main className="bg-background max-w-screen-2xl m-auto">
 			<section className="lg:px-24">
 				<div className="text-center pt-10 mx-10 mb-10 md:mb-[72px] md:pt-[63px]">
 					<h3 className="text-textHeader text-[32px] leading-10  lg:text-[56px] lg:leading-[72px]">
