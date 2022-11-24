@@ -123,7 +123,10 @@ function InputData() {
 			date &&
 			role &&
 			years &&
-			name
+			name &&
+			fullName &&
+			location &&
+			email
 		) {
 			uploadFile();
 		}
