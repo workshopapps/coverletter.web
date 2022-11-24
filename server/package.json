@@ -4,9 +4,8 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"dev:server": "nodemon server/app.js",
+		"dev:server": "nodemon app.js",
 		"dev:client": "cd client && npm run dev",
-		"dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
 		"start": "node app.js",
 		"test": "jest --detectOpenHandles"
 	},
