@@ -7,7 +7,7 @@ pipeline {
         dockerImageBackend = ''
     }
     agent any
-    tools { nodejs 'Nodjs16' }
+    tools { nodejs 'Node' }
     stages {
             stage('Unit Tests') {
             steps {
