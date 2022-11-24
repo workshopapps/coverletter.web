@@ -31,8 +31,7 @@ const UserSchema = mongoose.Schema({
 		default: "Pending",
 	},
 	confirmationCode: {
-		type: String,
-		unique: true,
+		type: String
 	},
 	resetPasswordOtp: String,
 	passwordResetExpires: Date,
