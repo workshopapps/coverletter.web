@@ -44,7 +44,7 @@ function Uploading() {
     
             try {
                 const res = await axios.post(
-                    `http://${process.env.REACT_APP_API_URL}/api/v1/upload`,
+                    `${process.env.REACT_APP_API_URL}/api/v1/upload`,
                     formData,
                     option
                 );

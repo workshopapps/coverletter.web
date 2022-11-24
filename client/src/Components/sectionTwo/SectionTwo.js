@@ -26,29 +26,29 @@ function SectionTwo() {
 	return (
 		<div
 			id="upload_section"
-			className="px-1 z-20  relative flex flex-col items-center md:flex-rol bg-gray-100  py-[50px]"
+			className="px-1 z-20  relative flex flex-col items-center lg:flex-rol bg-gray-100  py-[50px]"
 		>
-			<main className="flex flex-col items-center  md:w-[98%] w-[90%]  md:flex-row md:mt-[60px]  ">
-				<div className="left text-left text-gray-800  md:px-[14vh] md:w-[49%] w-[100%] mb-[20px] md:mb-09  flex flex-col justify-center items-center ">
-					<h2 className="md:text-4xl text-textBody text-[24px] font-bold leading-[3rem] mb-[11px]   ">
+			<main className="flex flex-col items-center  lg:w-[98%] w-[90%]  lg:flex-row lg:mt-[60px]  ">
+				<div className="left text-left text-gray-800  lg:px-[14vh] lg:w-[49%] w-[100%] mb-[20px] lg:mb-09  flex flex-col justify-center items-center ">
+					<h2 className="lg:text-4xl text-textBody text-[24px] font-bold leading-[3rem] mb-[11px]   ">
 						Upload your CV/Resume to make a Cover Letter
 					</h2>
-					<p className="text-gray md:text-[22px] mt-2 text-[20px] text-[#666060] ">
+					<p className="text-gray lg:text-[22px] mt-2 text-[20px] text-[#666060] ">
 						Maximum file size is 5MB, and you can only upload a
 						maximum of 1 file per upload session
 					</p>
 					{console.log(fileSize)}
 				</div>
 				<div
-					className={`right md:w-[540px] h-[443px] w-[100%] border-2 flex flex-col px-[8px] justify-center items-center md:ml-[3.5em] ${
+					className={`right lg:w-[540px] h-[443px] w-[100%] border-2 flex flex-col px-[8px] justify-center items-center lg:ml-[3.5em] ${
 						show ? "border-[#e42424]" : "border-[gray]"
 					} border-dashed rounded-lg `}
 				>
-					<div className="uploadContainer relative flex flex-col items-center justify-center md:px-[2vh] md:py-[15vh] py-[15vh]">
+					<div className="uploadContainer relative flex flex-col items-center justify-center lg:px-[2vh] lg:py-[15vh] py-[15vh]">
 						{fileSize > 0 && fileSize < 5000000 ? null : (
 							<img
 								src={first}
-								className="w-[67px] md:left-[37%]  h-[67px]"
+								className="w-[67px] lg:left-[37%]  h-[67px]"
 								alt=""
 							/>
 						)}
@@ -71,7 +71,7 @@ function SectionTwo() {
 							<label for="upload_file" className="flex flex-col items-center justify-center">
 								<img src="" alt="" />
 
-								<h3 className=" text-primaryMain md:text-[24px] text-center mt-4 text-[20px] font-semibold">
+								<h3 className=" text-primaryMain lg:text-[24px] text-center mt-4 text-[20px] font-semibold">
 									Drag & Drop to Upload{" "}
 								</h3>
 
