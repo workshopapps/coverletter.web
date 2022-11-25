@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import SuccessModal from "../Components/Ui/SuccessModal";
 import checkEmailIcon from "../Assets/check-email.svg";
+import checkEmailSuccess from "../Assets/checkEmailSuccess.svg";
 import Input from "../Components/Ui/Input";
 import EmailFooter from "../Layouts/EmailFooter";
 
@@ -13,7 +14,7 @@ const ForgotPassword = () => {
 	const { register, handleSubmit, formState, setError } = useForm();
 	const onEmailSubmit = (FormData) => {
 		setLoading(true);
-		fetch(`${process.env.REACT_APP_BASE_URL}/api/v1/auth/forgotPassword`, {
+		fetch(`${process.env.REACT_APP_BASE_URL}api/v1/auth/forgotPassword`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -44,7 +45,7 @@ const ForgotPassword = () => {
 				<SuccessModal onClose={() => setShow(false)} show={show}>
 					<div className="modal-body-text">
 						<p className="text-[16px] leading-6 text-gray-700 font-semibold mb-10">
-							Account found! We have sent further instructions on
+							Account found! We  further instructions on
 							how to reset your password to the email provided
 						</p>
 					</div>
@@ -84,9 +85,9 @@ const ForgotPassword = () => {
 								placeholder="John Doe"
 								className={`${
 									formState.errors.email
-										? "border border-[#D92D20]"
+										? "border border-[#D92D20] outline-1 outline-[#D92D20] "
 										: ""
-								} input_password mt-2 w-full py-[12px] bg-[transparent] pl-4 rounded-lg border border-[#6D6D6D] outline-none bg-transparent`}
+								} input_password mt-2 w-full py-[12px] bg-[transparent] pl-4 rounded-lg border border-[#6D6D6D] outline-1 outline-[#6D6D6D] bg-transparent`}
 								id="email"
 								name="email"
 								{...register("email", {
@@ -95,11 +96,16 @@ const ForgotPassword = () => {
 							/>
 							{formState.errors.email && (
 								<span className="text-left text-[#FF2635]">
+									<img
+										src={checkEmailIcon}
+										alt=""
+										className="absolute top-[48px] right-[15px] z-10"
+									/>
 									{formState.errors.email.message}
 								</span>
 							)}
 							<span className="absolute top-[48px] right-[15px]">
-								<img src={checkEmailIcon} alt="" />
+								<img src={checkEmailSuccess} alt="" />
 							</span>
 						</div>
 						<div className="send-link">
@@ -119,7 +125,7 @@ const ForgotPassword = () => {
 							Back to{" "}
 						</span>
 						<span className="text-[#0652DD] text-base leading-6 underline font-semibold">
-							<Link to="/forgot-password">Login Page</Link>
+							<Link to="/signin">Login Page</Link>
 						</span>
 					</p>
 				</div>
