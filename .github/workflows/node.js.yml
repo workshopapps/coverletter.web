@@ -27,7 +27,25 @@ jobs:
                   cache-dependency-path: "./server/package-lock.json"
         
             - run: cd server && npm i
-            
+            - name: Secret file testing
+              env: 
+               MONGO_URI: ${{secrets.MONGO_URI}}
+               OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
+               EMAIL: ${{secrets.EMAIL}}
+               PASS : ${{secrets.PASS}}
+               GOOGLE_CLIENT_ID : ${{secrets.GOOGLE_CLIENT_ID}}
+               GOOGLE_CLIENT_SECRET : ${{secrets.GOOGLE_CLIENT_SECRET}}
+               JWT_SECRET : ${{secrets.JWT_SECRET}}
+               
+              run: | 
+                echo $MONGO_URI >> .env
+                echo $OPENAI_API_KEY >> .env
+                echo $EMAIL >> .env
+                echo $PASS >> .env
+                echo $GOOGLE_CLIENT_ID >> .env
+                echo $GOOGLE_CLIENT_SECRET >> .env
+                echo $JWT_SECRET >> .env
+                
             - run: pm2 restart server
     
 #     securityscan:
