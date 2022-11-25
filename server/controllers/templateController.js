@@ -2,6 +2,7 @@ const Template = require("../models/Template");
 
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
+const mongoose = require("mongoose");
 
 /**
  * @desc It gets all the convert Letters created by a user
@@ -57,7 +58,21 @@ const editACovertLetter = async (req, res) => {
 	});
 };
 
+const deleteCoverLetter = async (req, res) => {
+	const { userId, templateId } = req.body;
+
+	if (!mongoose.Types.ObjectId.isValid(userId))
+		return res.status(404).json({ message: "This user id is not valid!" });
+
+	const template = await Template.findByIdAndDelete({ id: templateId });
+
+	return res.status(StatusCodes.OK).json({
+		message: "Cover Letter deleted successfully",
+	});
+};
+
 module.exports = {
 	getAllConvertLettersByAUser,
 	editACovertLetter,
+	deleteCoverLetter,
 };
