@@ -45,10 +45,14 @@ module.exports = async (email, subject, fileName) => {
 				},
 			],
 		});
-		console.log("PDF Has been successfully sent to your email address 🎉");
+		return {
+			status: 200,
+			message: "PDF Has been successfully sent to your email address 🎉",
+		};
 	} catch (error) {
-		console.log("Something went wrong. Please try again");
-
-		return error;
+		return {
+			status: 500,
+			error: "Something went wrong. Please try again",
+		};
 	}
 };
