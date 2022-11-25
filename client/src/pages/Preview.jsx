@@ -5,6 +5,7 @@ import { useGlobalContext } from "../context/context";
 import lockedCover_1 from "../Assets/cover_letter_full_2.jpg";
 import lockedCover_2 from "../Assets/cover_letter_full_3.jpg";
 import CoverLetter from "../Components/Ui/CoverLetter";
+import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 
 const Preview = () => {
@@ -12,9 +13,52 @@ const Preview = () => {
 
 	// logic for the modal
 	const [firstModal, setFirstModal] = useState(false);
+
+	// the type of download select option
+	// const { coverLetter: data } = useGlobalContext();
+
+	const [dType, setDtype] = useState("pdf");
+
 	const handleClick = () => {
+		const data = {
+			data: {
+				cover_letter:
+					"\\n\\nDear Mr. / Ms. (Lastname): (or “Dear Campus Recruitment Representative/Hiring Manager”) \\n \\nRe:  Backend Developer at Google \\n \\nFirst paragraph: Briefly sum up your value to the employer by stating your interest in the \\nposition and the organization. You should also list your relevant education in the opening. Your \\ngoal is to capture the reader's attention and encourage them to read on! This paragraph \\nhighlights what you will expand on and demonstrate in your resume. It summarizes your relevant \\nand then indicates the top two or three skills that make you a great fit for the position. Also try \\ndemonstrating your knowledge/interest in the organization by integrating something specific \\nabout what you know about them (i.e., mission/mandate, projects/activities, research interests, \\nstrategic goals) in relation to how you can contribute or skills you offer.  \\n \\nMiddle paragraphs: Further highlight your suitability for the position by expanding on your \\nskills through specific examples of your previous accomplishments (i.e., work experience and \\nroles, volunteer experience, and/or academic examples). Think from the employer’s point of view \\nas you write. In what ways are you a good fit for the organization? Be sure to emphasize \\noutcomes and results whenever possible. Try to keep your paragraphs to 3-5 concise, confident \\nstatements. Remember that this letter will serve as a writing sample so grammar/spelling is \\ncritical.  \\n \\nUse the closing paragraph to express your appreciation for reviewing your cover letter and \\nresume.  This is also a great place to let them know how they can easily contact you. Be sure to \\nlist that contacting you through the TRU Co-op program is also an option (email/phone).   \\n \\nSincerely, \\n \\nYour Signature (John Henry) \\n \\nTyped Name",
+				company_name: "Google",
+				company_address: "USA",
+				city: "California",
+				country: "USA",
+				years_of_exp: "3",
+				date: "12-11-2022",
+				recipient_name: "Mark",
+				recipient_department: "HR",
+				recipient_email: "t@email.com",
+				recipient_phone_no: "2223334446",
+				format: dType,
+			},
+		};
+
+		const dData = JSON.stringify(data);
+		console.log(dData);
+
+		var raw =
+			'{\n    "status": "success",\n    "data": {\n        "cover_letter": "\\n\\nDear Mr. / Ms. (Lastname): (or “Dear Campus Recruitment Representative/Hiring Manager”) \\n \\nRe:  Backend Developer at Google \\n \\nFirst paragraph: Briefly sum up your value to the employer by stating your interest in the \\nposition and the organization. You should also list your relevant education in the opening. Your \\ngoal is to capture the reader\'s attention and encourage them to read on! This paragraph \\nhighlights what you will expand on and demonstrate in your resume. It summarizes your relevant \\nand then indicates the top two or three skills that make you a great fit for the position. Also try \\ndemonstrating your knowledge/interest in the organization by integrating something specific \\nabout what you know about them (i.e., mission/mandate, projects/activities, research interests, \\nstrategic goals) in relation to how you can contribute or skills you offer.  \\n \\nMiddle paragraphs: Further highlight your suitability for the position by expanding on your \\nskills through specific examples of your previous accomplishments (i.e., work experience and \\nroles, volunteer experience, and/or academic examples). Think from the employer’s point of view \\nas you write. In what ways are you a good fit for the organization? Be sure to emphasize \\noutcomes and results whenever possible. Try to keep your paragraphs to 3-5 concise, confident \\nstatements. Remember that this letter will serve as a writing sample so grammar/spelling is \\ncritical.  \\n \\nUse the closing paragraph to express your appreciation for reviewing your cover letter and \\nresume.  This is also a great place to let them know how they can easily contact you. Be sure to \\nlist that contacting you through the TRU Co-op program is also an option (email/phone).   \\n \\nSincerely, \\n \\nYour Signature (John Henry) \\n \\nTyped Name",\n        "company_name": "Google",\n        "company_address": "USA",\n        "city": "California",\n        "country": "USA",\n        "years_of_exp": "3",\n        "date": "12-11-2022",\n        "recipient_name": "Mark",\n        "recipient_department": "HR",\n        "recipient_email": "t@email.com",\n        "recipient_phone_no": "2223334446"\n    }\n}';
+
+		var requestOptions = {
+			method: "POST",
+			body: dData,
+			redirect: "follow",
+		};
+
+		axios
+			.post(`http://api.aplicar.hng.tech/api/v1/download`, requestOptions)
+			.then((response) => response.text())
+			.then((result) => console.log(result))
+			.catch((error) => console.log("error", error));
+
 		setFirstModal(!firstModal);
 	};
+
 	useEffect(() => {
 		setFirstModal(false);
 	}, [openModal]);
@@ -25,8 +69,62 @@ const Preview = () => {
 		// navigate(`/cover letter`);
 	};
 
-	// the type of download select option
-	const [dType, setDtype] = useState(null);
+	// get the width of the page and work on the mobile nav
+	function getWindowSize() {
+		const { innerWidth } = window;
+		return { innerWidth };
+	}
+	const [windowSize, setWindowSize] = useState(getWindowSize());
+	useEffect(() => {
+		function handleWindowResize() {
+			setWindowSize(getWindowSize());
+		}
+
+		window.addEventListener("resize", handleWindowResize);
+
+		return () => {
+			window.removeEventListener("resize", handleWindowResize);
+		};
+	}, []);
+	let mobile;
+	windowSize.innerWidth <= 764 ? (mobile = true) : (mobile = false);
+
+	// get the cover letter container so as to apply the translateX property on it
+	const [iterate, setIterate] = useState(0);
+	const [style, setStyle] = useState({
+		transform: `translateX(${iterate}px)`,
+	});
+
+	const clickLeft = () => {
+		setIterate(iterate + 1);
+	};
+
+	const clickRight = () => {
+		setIterate(iterate - 1);
+	};
+
+	var displayLeft = true;
+	var displayRight = true;
+
+	useEffect(() => {
+		setStyle({ transform: `translateX(${iterate * 380}px)` });
+	}, [iterate]);
+
+	if (!mobile) {
+		displayLeft = false;
+		displayRight = false;
+		// setIterate(0);
+	} else if (mobile && iterate >= 1) {
+		displayLeft = false;
+		displayRight = true;
+	} else if (mobile && iterate <= -1) {
+		displayRight = false;
+		displayLeft = true;
+	}
+
+	useEffect(() => {}, [mobile]);
+
+	console.log(mobile);
 
 	return (
 		<div className="bg-background pt-6 pb-36 overflow-x-hidden">
@@ -44,7 +142,7 @@ const Preview = () => {
 						strokeWidth="1.5"
 						strokeMiterlimit="10"
 						strokeLinecap="round"
-						stroke-linejoin="round"
+						strokeLinejoin="round"
 					/>
 					<path
 						d="M30.7489 18H5.50391"
@@ -52,7 +150,7 @@ const Preview = () => {
 						strokeWidth="1.5"
 						strokeMiterlimit="10"
 						strokeLinecap="round"
-						stroke-linejoin="round"
+						strokeLinejoin="round"
 					/>
 				</svg>
 				<p className="ml-1 text-sm font-bold">Back</p>
@@ -62,8 +160,11 @@ const Preview = () => {
 					Your Cover Letter is Ready!
 				</p>
 			</div>
-			<div className="w-screen overflow-x-scroll md:overflow-x-hidden relative mt-10 md:mt-20">
-				<div className="flex relative w-full justify-center overflow-x-scroll md:justify-center items-center md:translate-x-0 lg:translate-x-0">
+			<div className="w-screen md:overflow-x-hidden relative mt-10 md:mt-20">
+				<div
+					className="flex relative w-full justify-center translate-x-[-200%] md:justify-center items-center md:translate-x-0 lg:translate-x-0"
+					style={mobile ? style : { transform: "translateX" + "0px" }}
+				>
 					<img
 						src={lockedCover_1}
 						alt="cover"
@@ -110,6 +211,39 @@ const Preview = () => {
 						className=" mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] md:min-h-[485px] md:min-w-[400px]"
 					/>
 				</div>
+
+				{/* left */}
+				{displayLeft && (
+					<div
+						className="absolute top-[50%] left-[5%] flex justify-center items-center text-textWhite rounded-full w-16 h-16 bg-primaryMain"
+						onClick={clickLeft}
+					>
+						<div className="flex justify-center w-8 h-8 fill-textWhite">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 384 512"
+							>
+								<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+							</svg>
+						</div>
+					</div>
+				)}
+				{/* right */}
+				{displayRight && (
+					<div
+						className="absolute top-[50%] right-[5%] flex justify-center items-center text-textWhite rounded-full w-16 h-16 bg-primaryMain"
+						onClick={clickRight}
+					>
+						<div className="flex justify-center w-8 h-8 fill-textWhite">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 384 512"
+							>
+								<path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+							</svg>
+						</div>
+					</div>
+				)}
 			</div>
 
 			<div className="w-100 flex justify-center">
@@ -187,11 +321,11 @@ const Preview = () => {
 
 									<div
 										className="rounded-xl cursor-pointer flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
-										onClick={() => setDtype("PDF")}
+										onClick={() => setDtype("pdf")}
 									>
 										<div
 											className={
-												dType === "PDF"
+												dType === "pdf"
 													? "w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2"
 													: "w-3 h-3 rounded-lg border-primaryMain border-2"
 											}
@@ -231,11 +365,11 @@ const Preview = () => {
 									</div>
 									<div
 										className="rounded-xl cursor-pointer flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
-										onClick={() => setDtype("DOC")}
+										onClick={() => setDtype("doc")}
 									>
 										<div
 											className={
-												dType === "DOC"
+												dType === "doc"
 													? "w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2"
 													: "w-3 h-3 rounded-lg border-primaryMain border-2"
 											}
@@ -275,11 +409,11 @@ const Preview = () => {
 									</div>
 									<div
 										className="rounded-xl cursor-pointer flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
-										onClick={() => setDtype("TEXT")}
+										onClick={() => setDtype("text")}
 									>
 										<div
 											className={
-												dType === "TEXT"
+												dType === "text"
 													? "w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2"
 													: "w-3 h-3 rounded-lg border-primaryMain border-2"
 											}
