@@ -13,7 +13,6 @@
 		"axios": "^1.1.3",
 		"formik": "^2.2.9",
 		"react": "^18.2.0",
-		"react-bootstrap": "^2.6.0",
 		"react-calendar": "^4.0.0",
 		"react-collapsible": "^2.10.0",
 		"react-dom": "^18.2.0",
@@ -29,8 +28,9 @@
 		"dev": "npm run build && npm run start",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
+		"eject": "react-scripts eject",
+		"coverage": "yarn test --coverage --watchAll "
 	},
 	"eslintConfig": {
 		"extends": [
