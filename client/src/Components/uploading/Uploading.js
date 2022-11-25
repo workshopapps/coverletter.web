@@ -6,8 +6,9 @@ import Uploaded from "../uploaded/Uploaded";
 
 function Uploading() {
 	const [percentage, setPercentage] = useState("0");
+	const [status, setStatus] = useState("");
 	const [show, setShow] = useState(true);
-	const { file, fileName, setStatus } = useGlobalContext();
+	const { file, fileName } = useGlobalContext();
 	const Navigate = useNavigate();
 
 	useEffect(() => {
@@ -26,11 +27,6 @@ function Uploading() {
                         setPercentage(percent);
                         console.log(percentage);
                     }
-                    if(percent === 100){
-                        setTimeout(() =>{
-                            setShow(false)
-                        },1500)
-                    }
                 },
             };
     
@@ -41,7 +37,7 @@ function Uploading() {
                     option
                 );
                 console.log(res);
-                setStatus(res.data.status)
+                setStatus(res.status)
             } catch (ex) {
                 console.log(ex);
                 alert("You imported the wrong file");
@@ -51,6 +47,14 @@ function Uploading() {
         uploadFile();
     
     },[])
+
+    if(status> 100 && status < 250){
+        setTimeout(() =>{
+            setShow(false)
+        },1500)
+    }
+
+    console.log(status)
 
     return (
 		<div className="whole">
