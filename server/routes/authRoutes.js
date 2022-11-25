@@ -7,6 +7,8 @@ const {
 	verify,
 	protect,
 	login,
+	validateOTP,
+	resetPassword,
 } = require("../controllers/authController");
 
 //Add your routes here
@@ -14,6 +16,8 @@ router.post("/signup", register);
 router.post("/verify", verify);
 router.post("/login", login);
 router.post("/forgotPassword", forgotPassword);
+router.post("/validateOTP", validateOTP);
+router.post("/resetPassword", resetPassword);
 
 // All After login routes goes below PROTECT ROUTE
 router.use(protect);
