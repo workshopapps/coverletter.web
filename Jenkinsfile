@@ -38,10 +38,10 @@ pipeline {
             stage('Deploying Docker Image to Dockerhub') {
                 steps {
                     script {
-                       /* docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
+                        docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
                         dockerImageFrontend.push()
                         dockerImageBackend.push()
-                        }*/
+                        }
                     }
                 }
             }
