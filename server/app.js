@@ -6,6 +6,9 @@ const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const bodyParser = require("body-parser");
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo');
 const connectDB = require("./db/connect");
 require("dotenv").config();
 
