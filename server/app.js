@@ -6,6 +6,9 @@ const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const bodyParser = require("body-parser");
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo');
 const connectDB = require("./db/connect");
 require("dotenv").config();
 
@@ -26,14 +29,30 @@ const authRoutes = require("./routes/authRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
 const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
-const contactRoutes       = require("./routes/contactRoutes");
-const generateOtpRoutes   = require("./routes/generateOtpRoutes");
+const contactRoutes = require("./routes/contactRoutes");
+const generateOtpRoutes = require("./routes/generateOtpRoutes");
 
 app.use(
 	"/cvg-documentation",
 	swaggerUI.serve,
 	swaggerUI.setup(swaggerDocument)
 );
+
+//Passport config
+require('./utils/passport')(passport)
+//Sessions
+app.use(
+  session({
+    secret: 'secretkey',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({mongoUrl: process.env.MONGO_URI}),
+  })
+)
+
+// Passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -60,11 +79,10 @@ app.use("/api/v1", templateRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
 // app.use("/api/v1", resetRoutes);
 app.use("/api/v1", downloadCoverLetter);
-app.use("/api/v1", contactRoutes)
+app.use("/api/v1", contactRoutes);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
-	textToPdf();
 });
 
 app.use(notFoundMiddleware);
