@@ -13,19 +13,19 @@ services:
       - mongodb
     env_file:
       - ./.env
-    client:
-        build: ./client
-        ports:
-            - "80:80"
-        volumes:
-            - ./frontend:/frontend
+   client:
+     build: ./client
+     ports:
+       - "3000:3000"
+     volumes:
+      - ./frontend:/frontend
 
     mongodb:
-        image: "mongo"
-        volumes:
-            - data:/data/db
-        ports:
-            - "27017:27017"
+      image: "mongo"
+      volumes:
+        - data:/data/db
+      ports:
+        - "27017:27017"
 
 volumes:
     data:
