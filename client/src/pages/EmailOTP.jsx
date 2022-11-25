@@ -1,11 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 import EmailFooter from "../Layouts/EmailFooter";
-import "../Components/Ui/SuccessModal.css";
+// import FailModal "../Components/Ui/FailModal.css";
+import Input from "../Components/Ui/Input";
+import SuccessModal from "../Components/Ui/SuccessModal";
 
 const EmailOTP = () => {
+	const [show, setShow] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [failShow, setFailShow] = useState(false);
 	const [minutes, setMinutes] = useState(0);
-	const [seconds, setSeconds] = useState(59);
+	const [seconds, setSeconds] = useState(30);
 
 	const [input, setInput] = useState({
 		one: "",
@@ -49,9 +53,41 @@ const EmailOTP = () => {
 		}
 	};
 
+	const validateOTP = () => {
+		const otp = input.one + input.two + input.three + input.four;
+		console.log(otp);
+		fetch(`${process.env.REACT_APP_BASE_URL}/validateOTP`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				otp,
+			}),
+		})
+			.then((res) => {
+				if (res.ok) {
+					setShow(true);
+				} else {
+					setFailShow(true);
+				}
+				setLoading(false);
+			})
+			.catch((err) => {
+				console.log(err);
+				setLoading(false);
+			});
+	};
+
 	const resendOTP = () => {
-		setMinutes(1);
+		setMinutes(0);
 		setSeconds(30);
+		setInput({
+			one: "",
+			two: "",
+			three: "",
+			four: "",
+		});
 	};
 
 	useEffect(() => {
@@ -73,11 +109,30 @@ const EmailOTP = () => {
 		return () => {
 			clearInterval(interval);
 		};
-	}, [seconds]);
+	}, [minutes, seconds]);
 
 	return (
 		<section className="email-otp bg-[#F2F2F7] pt-36 pb-20">
 			<div className="email-content mx-auto w-[89%] py-8 text-center bg-[transparent] sm:w-[75%] md:bg-white md:w-[474px] bg-white py-16 md:px-1 xl:w-[528px]">
+				<SuccessModal onClose={() => setShow(false)} show={show}>
+					<div className="modal-body-text">
+						<p className="text-[16px] leading-6 text-gray-700 font-semibold mb-10">
+							Account found! We have sent further instructions on
+							how to reset your password to the email provided
+						</p>
+					</div>
+					<div className="home-btn">
+						<a href="https://gmail.com">
+							<Input
+								type={"button"}
+								value={"Open Email"}
+								className={
+									"border rounded-lg text-white py-3 px-10 bg-[#0544B8] cursor-pointer hover:scale-x-[1.03] text-[20px]"
+								}
+							/>
+						</a>
+					</div>
+				</SuccessModal>
 				<h1 className="text-black text-2xl font-semibold leading-8 mb-7 sm:text-3xl mb-5 md:text-[32px] mb-5 lg:text-[40px]">
 					Email Verification
 				</h1>
@@ -101,6 +156,7 @@ const EmailOTP = () => {
 						{/* 1:04 */}
 					</span>
 				</h2>
+				<form action="/validateOTP"></form>
 				<div className="otp-input mt-8 mb-10">
 					<input
 						className="otp-field font-bold w-12 h-12 px-2 pl-4 py-4 mr-4 border border-[#6D6D6D] outine-1 outline-[#6D6D6D] rounded-lg text-[#6D6D6D] text-xl leading-8 md:mr-6 lg:mr-8"
@@ -162,22 +218,20 @@ const EmailOTP = () => {
 							value="Resend OTP"
 							className={`${
 								seconds > 0 || minutes > 0
-									? "text-[#ACC5F4]"
-									: "text-[#0652DD]"
-							} py-3 px-10 cursor-pointer`}
+									? "text-[#ACC5F4] cursor-not-allowed"
+									: "text-[#0652DD] cursor-pointer"
+							} py-3 px-10`}
 							onClick={resendOTP}
 						/>
 					</div>
 					<div className="validate-otp rounded-lg bg-[#0652DD] hover:scale-x-[1.02]">
 						<input
-							type="button"
-							value="Validate OTP"
+							type="submit"
+							value={loading ? "Validating..." : "Validate OTP"}
 							className="text-white py-3 px-10 cursor-pointer"
+							onClick={validateOTP}
 						/>
 					</div>
-				</div>
-				<div className="change-email text-[#0652DD] text-[17px] leading-6 underline font-semibold">
-					<Link to="/email-otp">Change Email</Link>
 				</div>
 			</div>
 			<EmailFooter />
