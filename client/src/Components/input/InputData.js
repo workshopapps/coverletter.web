@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import back from "./asesets/arrow.png";
 import { useGlobalContext } from "../../context/context";
-import axios from "axios";
-import { data } from "autoprefixer";
+
 
 function InputData() {
 	const { file, setCoverLetter } = useGlobalContext();
@@ -608,7 +608,7 @@ function InputData() {
 							<input
 								name="role"
 								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
-								type="text"
+								type="email"
 								onChange={emailHandler}
 								value={email}
 								id="companyName"
@@ -733,7 +733,7 @@ function InputData() {
 									role="status"
 								>
 									<span class="visually-hidden">
-										
+										a
 									</span>
 								</div>
 							</div>

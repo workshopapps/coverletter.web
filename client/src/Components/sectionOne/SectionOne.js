@@ -12,7 +12,7 @@ function SectionOne() {
           <p className='text-grey100 text-left w-[100%] text-[20px] mt-3 lg:text-[40px] '>100% Automated and Free</p>
         </div>
         <div className="shape hidden md:flex flex-auto">
-            <img className=' w-[1440px] h-[440px] left-[200px] bottom-[-100px] absolute'src={pic} alt="" />
+            <img className=' w-[1440px] h-[440px] left-[200px] bottom-[-100px] absolute'src={pic} alt="hero" />
         </div>
       </main>
 

@@ -5,10 +5,9 @@ import axios from "axios";
 import Uploaded from "../uploaded/Uploaded";
 
 function Uploading() {
-	const [percentage, setPercentage] = useState("");
+	const [percentage, setPercentage] = useState("0");
 	const [show, setShow] = useState(true);
-
-	const { file, fileName } = useGlobalContext();
+	const { file, fileName, setStatus } = useGlobalContext();
 	const Navigate = useNavigate();
 
 	useEffect(() => {
@@ -29,12 +28,9 @@ function Uploading() {
                     }
                     if(percent === 100){
                         setTimeout(() =>{
-                            alert('Uploaded succesfully');
-                            setShow(false)
-                        },2000)
+                            // setShow(false)
+                        },1500)
                     }
-                   
-                    
                 },
             };
     
@@ -45,7 +41,7 @@ function Uploading() {
                     option
                 );
                 console.log(res);
-                // Navigate("/upload-data");
+                setStatus(res.data.status)
             } catch (ex) {
                 console.log(ex);
                 alert("You imported the wrong file");
@@ -59,11 +55,11 @@ function Uploading() {
     return (
 		<div className="whole">
 			{show ? (
-				<div className="flex flex-col gap-[15px] justify-center items-center">
+				<div className="flex w-[100%] h-[100%] bg-primaryMain flex-col gap-[15px] justify-center items-center">
 					<h3 className="text-textBody text-[16px]">{fileName}</h3>
-					<div className="bar w-[100%] md:w-[380px] ">
+					<div className="bar w-[80%] md:w-[380px] ">
                          <div className="w-full bg-grey100 rounded-full dark:bg-grey200">
-                            <div className="bg-primaryMain text-xs font-medium text-textWhite p-0.5 leading-none rounded-full" style = {{ width : `${percentage}%` }}>{percentage}</div>
+                            <div className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full" style = {{ width : `${percentage}%` }}> </div>
                          </div>
 					</div>
 					<button className="border-[1.5px] px-4 py-2 text-[16px] font-semibold border-errorMain text-errorMain rounded-lg">

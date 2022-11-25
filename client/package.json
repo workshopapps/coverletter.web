@@ -28,8 +28,9 @@
 		"dev": "npm run build && npm run start",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
+		"eject": "react-scripts eject",
+		"coverage": "yarn test --coverage --watchAll "
 	},
 	"eslintConfig": {
 		"extends": [

@@ -7,8 +7,6 @@ import first from "./assets/first.svg";
 
 function SectionTwo() {
 	const [fileSize, setFileSize] = useState();
-	const [show, setShow] = useState(false);
-
 	const { setFile, setFileName } = useGlobalContext();
 
 	const changeHandler = (e) => {
@@ -41,8 +39,8 @@ function SectionTwo() {
 				</div>
 				<div
 					className={`right lg:w-[540px] h-[443px] w-[100%] border-2 flex flex-col px-[8px] justify-center items-center lg:ml-[3.5em] ${
-						show ? "border-[#e42424]" : "border-[gray]"
-					} border-dashed rounded-lg `}
+						fileSize > 5000000 ? "border-[#e42424]" : "border-[gray]"
+					}  border-dashed rounded-lg `}
 				>
 					<div className="uploadContainer relative flex flex-col items-center justify-center lg:px-[2vh] lg:py-[15vh] py-[15vh]">
 						{fileSize > 0 && fileSize < 5000000 ? null : (
