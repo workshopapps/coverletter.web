@@ -38,13 +38,14 @@ jobs:
                JWT_SECRET : ${{secrets.JWT_SECRET}}
                
               run: | 
-                echo $MONGO_URI >> .env
-                echo $OPENAI_API_KEY >> .env
-                echo $EMAIL >> .env
-                echo $PASS >> .env
-                echo $GOOGLE_CLIENT_ID >> .env
-                echo $GOOGLE_CLIENT_SECRET >> .env
-                echo $JWT_SECRET >> .env
+                cd server
+                echo MONGO_URI= $MONGO_URI >> .env
+                echo OPENAI_API_KEY= $OPENAI_API_KEY >> .env
+                echo EMAIL= $EMAIL >> .env
+                echo PASS= $PASS >> .env
+                echo GOOGLE_CLIENT_ID= $GOOGLE_CLIENT_ID >> .env
+                echo GOOGLE_CLIENT_SECRET= $GOOGLE_CLIENT_SECRET >> .env
+                echo JWT_SECRET= $JWT_SECRET >> .env
                 
             - run: pm2 restart server
     
