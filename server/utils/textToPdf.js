@@ -1,12 +1,20 @@
-// const html_to_pdf = require("html-pdf-node");
-// const fs = require("fs");
+const PDFDocument = require("pdfkit");
+const getStream = require("get-stream");
 
-// module.exports = async () => {
-// 	let options = { format: "A4" };
-// 	let file = {
-// 		url: "https://remarkable-profiterole-835791.netlify.app/cover%20letter",
-// 	};
-// 	const pdfBuffer = await html_to_pdf.generatePdf(file, options);
-// 	console.log("PDF Buffer:-", pdfBuffer);
-// 	fs.createWriteStream("res.pdf").write(pdfBuffer);
-// };
+module.exports = async (text, extra = {}) => {
+	const doc = new PDFDocument();
+
+	// you need to pass in the path to the .tff if you want to change the font
+	doc.font(`${extra.font ? extra.font : "Helvetica"}`)
+		.fontSize(`${extra.fontSize ? extra.fontSize : 17.6}`)
+		.text(text);
+	doc.end();
+
+	// this base64 can be stored in the database later on.
+	const stream = await getStream.buffer(doc);
+	const base64 = stream.toString("base64");
+	return base64;
+};
+
+// how to use me
+// textToPdf("this should be in the pdf").then((res) => console.log(res));

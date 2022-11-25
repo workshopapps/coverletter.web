@@ -90,7 +90,7 @@ export const items = [
 		id: 4,
 		img: require("../Assets/Rectangle 24.png"),
 		story: "Customer Story",
-		text: "How I applied formultiple internship jobs",
+		text: "How I applied for multiple internship jobs",
 		read: "Read customer story",
 		arrow: require("../Assets/arrow-right.png"),
 	},
