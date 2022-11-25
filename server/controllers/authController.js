@@ -201,7 +201,7 @@ const resetPassword = async (req, res) => {
 	const hashedPassword = bcrypt.hashSync(password, salt);
 
 	if (password !== confirmPassword) {
-		throw new BadRequestError("confirm with a similar password");
+		throw new BadRequestError("confirmation password should be similar");
 	}
 
 	const user = await User.findOne({ email: email });
@@ -210,14 +210,14 @@ const resetPassword = async (req, res) => {
 		throw new BadRequestError("email not found in database");
 	}
 
-	const comparePassword = await user.compare(hashedPassword, user.password);
+	const comparePassword = hashedPassword !== user.password;
 	if (!comparePassword) {
-		throw new BadRequestError("Passwords fields can only be unique");
+		throw new BadRequestError("Old passwords are not allowed");
 	}
 
 	user.password = password;
-	user.passwordResetToken = undefined;
-	user.passwordResetExpires = undefined;
+	user.passwordResetToken = null;
+	user.passwordResetExpires = null;
 	await user.save();
 
 	res.status(StatusCodes.CREATED).json({
@@ -233,7 +233,7 @@ const validateOTP = async (req, res) => {
 		throw new BadRequestError("email not found in database");
 	}
 
-	const verifyOTP = await user.compare(otp, user.otp);
+	const verifyOTP = otp !== user.otp;
 	if (!verifyOTP) {
 		throw new BadRequestError("OTP is invalid or expired");
 	}
