@@ -41,7 +41,7 @@ const AppProvider = ({ children }) => {
 				coverLetter,
 				setCoverLetter,
 				user,
-				setUser,
+				setUser
 			}}
 		>
 			{children}
