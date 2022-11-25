@@ -20,7 +20,7 @@ const contact = async (req, res) => {
 		return;
 	} else 
     {
-       await sendEmail(email, subject, description).then((result) => {
+      return await sendEmail(email, subject, description).then((result) => {
 			if (result) {
 			 return	res.status(StatusCodes.CREATED).json(result);
 			}
