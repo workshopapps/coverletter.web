@@ -40,7 +40,7 @@ const ForgotPassword = () => {
 			});
 	};
 	return (
-		<section className="forgot-password bg-[#f2f2f7] pt-36 pb-3465720">
+		<section className="forgot-password bg-[#f2f2f7] pt-36 pb-24">
 			<div className="forgot-password mx-auto w-[89%] py-8 bg-[transparent] sm:w-[75%] md:bg-white md:w-[474px] bg-white py-16 md:px-10 lg:px-16 xl:w-[528px]">
 				<SuccessModal onClose={() => setShow(false)} show={show}>
 					<div className="modal-body-text">
