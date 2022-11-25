@@ -29,8 +29,8 @@ const authRoutes = require("./routes/authRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
 const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
-const contactRoutes       = require("./routes/contactRoutes");
-const generateOtpRoutes   = require("./routes/generateOtpRoutes");
+const contactRoutes = require("./routes/contactRoutes");
+const generateOtpRoutes = require("./routes/generateOtpRoutes");
 
 app.use(
 	"/cvg-documentation",
@@ -79,11 +79,10 @@ app.use("/api/v1", templateRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
 // app.use("/api/v1", resetRoutes);
 app.use("/api/v1", downloadCoverLetter);
-app.use("/api/v1", contactRoutes)
+app.use("/api/v1", contactRoutes);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
-	textToPdf();
 });
 
 app.use(notFoundMiddleware);

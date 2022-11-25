@@ -4,8 +4,7 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"dev:server": "nodemon app.js",
-		"dev:client": "cd client && npm run dev",
+		"dev": "nodemon app.js",
 		"start": "node app.js",
 		"test": "jest --detectOpenHandles"
 	},
@@ -25,6 +24,7 @@
 		"express-async-errors": "^3.1.1",
 		"express-fileupload": "^1.4.0",
 		"express-session": "^1.17.3",
+		"get-stream": "^6.0.1",
 		"helmet": "^4.6.0",
 		"http-status-codes": "^2.1.4",
 		"joi": "^17.7.0",
@@ -35,6 +35,7 @@
 		"passport": "^0.6.0",
 		"passport-google-oauth20": "^2.0.0",
 		"pdf-parse": "^1.1.1",
+		"pdfkit": "^0.13.0",
 		"swagger-jsdoc": "^6.2.5",
 		"swagger-ui-express": "^4.6.0",
 		"xss-clean": "^0.1.1"
