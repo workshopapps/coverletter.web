@@ -1,5 +1,5 @@
 
-const ContactValidation = require("../utils/contact");
+const ContactUsValidation = require("../utils/contactUs.validation");
 const sendEmail = require("../utils/sendEmail");
 const { BadRequestError } = require("../errors");
 const { StatusCodes } = require("http-status-codes");
@@ -7,7 +7,7 @@ const { StatusCodes } = require("http-status-codes");
 const contact = async (req, res) => {
 	const { userEmail, fullName, phone, subject, description } = req.body;
     const email = "aplicarorg@gmail.com"
-	const contactError = ContactValidation.contactUs(
+	const contactError = ContactUsValidation.ContactValidation(
 		fullName,
 		userEmail,
 		subject,
