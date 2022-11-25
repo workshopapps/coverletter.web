@@ -28,7 +28,7 @@ function Uploading() {
                     }
                     if(percent === 100){
                         setTimeout(() =>{
-                            // setShow(false)
+                            setShow(false)
                         },1500)
                     }
                 },
@@ -56,7 +56,7 @@ function Uploading() {
 		<div className="whole">
 			{show ? (
 				<div className="flex w-[100%] h-[100%] flex-col gap-[15px] justify-center items-center">
-					<h3 className="text-textBody text-[16px]">{fileName}</h3>
+					<h3 className="text-textBody text-center text-[16px]">{fileName}</h3>
 					<div className="bar w-[220px] md:w-[380px] ">
                          <div className="w-full bg-grey100 rounded-full dark:bg-grey200">
                             <div className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full" style = {{ width : `${percentage}%` }}> </div>
