@@ -43,7 +43,7 @@ const ResetPassword = () => {
 			<div
 				className="reset-password-content mx-auto w-[89%] py-8 bg-[transparent]
 			sm:w-[75%]
-			md:bg-white md:w-[474px] bg-white md:px-16 py-[70px]
+			md:bg-white md:w-[474px] bg-white md:px-16 py-16
 			xl:w-[528px] xl:px-16"
 			>
 				<SuccessModal onClose={() => setShow(false)} show={show}>
@@ -66,17 +66,17 @@ const ResetPassword = () => {
 				</SuccessModal>
 				<h1
 					className="text-black text-2xl text-center font-semibold leading-8 mb-7
-				sm:text-3xl mb-5
-				md:text-[32px] mb-5
+				sm:text-3xl
+				md:text-[32px]
 				xl:text-[40px]"
 				>
 					Set a new password
 				</h1>
 				<p
-					className="w-[92%] mx-auto text-base font-normal leading-6 text-[#6D6D6D] text-center
+					className="w-11/12 mx-auto text-base font-normal leading-6 text-[#6D6D6D] text-center
 				sm:text-lg w-3/4
 				tb:text-[18px] w-7/8
-				lg:text-[18px] w-[99%]"
+				lg:text-[18px]"
 				>
 					Your new password must contain an uppercase, a lowercase, a
 					number and a unique character. You can not use a previously
