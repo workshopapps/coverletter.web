@@ -43,7 +43,7 @@ jobs:
       - name: Build Project
       - run:  npm install
       - run:  npm run build --if-present 
-      - run: npm test --if-present 
+
 
       - name: Start app
       - run: npm start
