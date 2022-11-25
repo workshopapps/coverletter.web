@@ -16,7 +16,7 @@ const contact = async (req, res) => {
 	);
 
 	if (contactError) {
-		throw new BadRequestError(contactError);
+		 throw new BadRequestError(contactError);
 	} else 
     {
        await sendEmail(email, subject, description).then((result) => {
