@@ -16,12 +16,13 @@ const contact = async (req, res) => {
 	);
 
 	if (contactError) {
-		throw new BadRequestError(contactError);
+		throw new BadRequestError(contactError)
+		return;
 	} else 
     {
        await sendEmail(email, subject, description).then((result) => {
 			if (result) {
-				res.status(StatusCodes.CREATED).json(result);
+			 return	res.status(StatusCodes.CREATED).json(result);
 			}
 		});
     }
