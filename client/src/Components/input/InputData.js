@@ -6,8 +6,9 @@ import { useGlobalContext } from "../../context/context";
 
 
 function InputData() {
-	const { file, setCoverLetter } = useGlobalContext();
+	const Navigate = useNavigate();
 
+	const { file, setCoverLetter } = useGlobalContext();
 	const [fullName, setFullName] = useState("");
 	const [isLoading, setIsloading] = useState(false);
 	const [location, setLocation] = useState("");
@@ -23,16 +24,12 @@ function InputData() {
 	const [department, setDepartment] = useState("");
 	const [error, setError] = useState(false);
 
-	// const [show, setShow] = useState(true)
-
-	const Navigate = useNavigate();
+	
 	const clickHandler = () => {
 		Navigate("/");
 	};
 
-	const continueHandler = () => {
-		// Navigate("/preview");
-	};
+	
 
 	const fullNameHandler = (e) => {
 		setFullName(e.target.value);
@@ -110,7 +107,7 @@ function InputData() {
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
 				setIsloading(false);
-				// Navigate("/preview");
+				Navigate("/preview");
 			} catch (ex) {
 				console.log(ex);
 				alert("Error processing your CV");
@@ -165,17 +162,17 @@ function InputData() {
 				>
 					<div className="left">
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
-							<label className="my-[4px] text-textBody text-[18px]">
+							<label htmlFor="fullName" className="my-[4px] text-textBody text-[18px]">
 								Full Name
 							</label>
 							<input
-								name="company_name"
+								name="full_name"
 								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
 								onChange={fullNameHandler}
 								autoFocus
 								type="text"
 								value={fullName}
-								id="companyName"
+								id="fullName"
 							/>
 							{error && fullName <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
@@ -186,7 +183,7 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
-							<label className="my-[4px] text-textBody text-[18px]">
+							<label htmlFor="companyName" className="my-[4px] text-textBody text-[18px]">
 								Company's Name
 							</label>
 							<input
@@ -207,7 +204,7 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label className="my-[3px] text-textBody text-[18px]">
+							<label htmlFor="companyAddress" className="my-[3px] text-textBody text-[18px]">
 								Company's Address
 							</label>
 							<input
@@ -216,7 +213,7 @@ function InputData() {
 								onChange={companyAddressHandler}
 								type="text"
 								value={companyAddress}
-								id="companyName"
+								id="companyAddress"
 							/>
 							{error && companyAddress <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
@@ -227,7 +224,7 @@ function InputData() {
 							)}
 						</div>
 						<div className="b flex flex-col text-left mb-[2rem] ">
-							<label className="my-[4px] text-textBody text-[18px]">
+							<label htmlFor="city" className="my-[4px] text-textBody text-[18px]">
 								City
 							</label>
 							<input
@@ -236,7 +233,7 @@ function InputData() {
 								onChange={cityHandler}
 								type="text"
 								value={city}
-								id="companyName"
+								id="city"
 							/>
 							{error && city <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
@@ -579,7 +576,7 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-2rem lg:mb-[0]">
-							<label className="my-[4px] text-textBody text-[18px]">
+							<label htmlFor="date" className="my-[4px] text-textBody text-[18px]">
 								Date of Application
 							</label>
 							<input
@@ -588,7 +585,7 @@ function InputData() {
 								onChange={dateHandler}
 								type="text"
 								value={date}
-								id="companyName"
+								id="date"
 							/>
 							{error && date <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
@@ -602,16 +599,16 @@ function InputData() {
 
 					<div className="right mt-[-1rem] lg:mt-0 ">
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label className="my-[4px] text-textBody text-[18px]">
+							<label htmlFor="email" className="my-[4px] text-textBody text-[18px]">
 								Email Address
 							</label>
 							<input
-								name="role"
+								name="email"
 								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
 								type="email"
 								onChange={emailHandler}
 								value={email}
-								id="companyName"
+								id="email"
 							/>
 							{error && email <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
@@ -622,7 +619,7 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label className="my-[4px] text-textBody text-[18px]">
+							<label htmlFor="location" className="my-[4px] text-textBody text-[18px]">
 								Your Address(Preferred Location)
 							</label>
 							<input
@@ -641,8 +638,8 @@ function InputData() {
 								""
 							)}
 						</div>
-						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label className="my-[4px] text-textBody text-[18px]">
+						<div  className="a flex flex-col text-left mb-[2rem] ">
+							<label htmlFor="role" className="my-[4px] text-textBody text-[18px]">
 								What Role Are You Applying For?
 							</label>
 							<input
@@ -651,7 +648,7 @@ function InputData() {
 								type="text"
 								onChange={roleHandler}
 								value={role}
-								id="companyName"
+								id="role"
 							/>
 							{error && role <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
@@ -662,7 +659,7 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label className="my-[4px] text-textBody text-[18px]">
+							<label htmlFor="years" className="my-[4px] text-textBody text-[18px]">
 								Years of Experience
 							</label>
 							<input
@@ -671,7 +668,7 @@ function InputData() {
 								type="text"
 								onChange={yearsHandler}
 								value={years}
-								id="companyName"
+								id="years"
 							/>
 							{error && years <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
@@ -682,7 +679,7 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label className="my-[4px] text-textBody text-[18px]">
+							<label htmlFor="rec_name" className="my-[4px] text-textBody text-[18px]">
 								Recipient's Name
 							</label>
 							<input
@@ -691,7 +688,7 @@ function InputData() {
 								type="text"
 								onChange={nameHandler}
 								value={name}
-								id="companyName"
+								id="rec_name"
 							/>
 							{error && name <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
@@ -702,7 +699,7 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left">
-							<label className="my-[4px] text-textBody text-[18px]">
+							<label htmlFor="rec_dept" className="my-[4px] text-textBody text-[18px]">
 								Recipient's Department(Optional)
 							</label>
 							<input
@@ -711,14 +708,13 @@ function InputData() {
 								type="text"
 								onChange={departmentHandler}
 								value={department}
-								id="companyName"
+								id="rec_dept"
 							/>
 						</div>
 					</div>
 
 					{!isLoading && (
 						<button
-							onClick={continueHandler}
 							type="submit"
 							className="px-5 w-[100%] py-4 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg"
 						>
