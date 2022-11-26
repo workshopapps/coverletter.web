@@ -13,13 +13,14 @@ const contact = async (req, res) => {
 		phone,
 		description
 	);
-
+	const body = `${description}
+	My name is ${fullName} and you can contact me on ${phone} or send a mail to ${userEmail}.`
 	if (contactError) {
            throw new BadRequestError(contactError);
 		return;
 	} else 
 	{
-		return await sendEmail(email, subject, description).then((result) => {
+		return await sendEmail(email, subject, body).then((result) => {
 			if (result) return res.status(StatusCodes.CREATED).json(result);
 		});
 	}
