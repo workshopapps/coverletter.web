@@ -3,6 +3,7 @@ require("dotenv").config();
 
 module.exports = async (email, subject, url) => {
 	try {
+		let result;
 		const transporter = nodemailer.createTransport({
 			host: "smtp.gmail.com",
 			service: "Gmail",
@@ -15,16 +16,19 @@ module.exports = async (email, subject, url) => {
 			tls: { rejectUnauthorized: false },
 		});
 
-		await transporter.sendMail({
+		
+		result = await transporter.sendMail({
 			from: "Aplicar",
 			to: email,
 			subject: subject,
 			html: url,
 		});
 		console.log("email sent successfully");
+		return result;
 	} catch (error) {
 		console.log("email not sent!");
 
 		return error;
 	}
 };
+
