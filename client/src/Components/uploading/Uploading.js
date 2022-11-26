@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/context";
 import axios from "axios";
 import Uploaded from "../uploaded/Uploaded";
@@ -7,8 +6,7 @@ import Uploaded from "../uploaded/Uploaded";
 function Uploading() {
 	const [percentage, setPercentage] = useState("0");
 	const [show, setShow] = useState(true);
-	const { file, fileName, setStatus } = useGlobalContext();
-	const Navigate = useNavigate();
+	const { file, fileName} = useGlobalContext();
 
 	useEffect(() => {
 		const uploadFile = async (e) => {
@@ -41,7 +39,6 @@ function Uploading() {
                     option
                 );
                 console.log(res);
-                setStatus(res.data.status)
             } catch (ex) {
                 console.log(ex);
                 alert("You imported the wrong file");
