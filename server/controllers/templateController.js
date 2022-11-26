@@ -4,7 +4,7 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
 
 /**
- * @desc It gets a convert Letter
+ * @desc It gets a cover Letter
  *
  * @param {object} req
  * @param {object} res
@@ -12,7 +12,7 @@ const { BadRequestError } = require("../errors");
  * @returns {object} the result
  */
 
-const getAConvertLetter = async (req, res) => {
+const getACoverLetter = async (req, res) => {
 	try {
 		const { id } = req.params;
 		const isTemplateIdValid = !!id;
@@ -46,7 +46,7 @@ const getAConvertLetter = async (req, res) => {
  * @returns {object} the object
  */
 
-const getAllConvertLettersByAUser = async (req, res) => {
+const getAllCoverLettersByAUser = async (req, res) => {
 	const { id } = req.user;
 	const template = await Template.find({ user_id: id }).exec();
 
@@ -63,7 +63,7 @@ const getAllConvertLettersByAUser = async (req, res) => {
 };
 
 /**
- * @desc It edits a convert Letter
+ * @desc It edits a cover Letter
  *
  * @param {object} req
  * @param {object} res
@@ -71,7 +71,7 @@ const getAllConvertLettersByAUser = async (req, res) => {
  * @returns {object} the result
  */
 
-const editACovertLetter = async (req, res) => {
+const editACoverLetter = async (req, res) => {
 	const { id } = req.params;
 	const { template } = req.body;
 	const isTemplateIdValid = !!id || template;
@@ -92,7 +92,7 @@ const editACovertLetter = async (req, res) => {
 };
 
 module.exports = {
-	getAConvertLetter,
-	getAllConvertLettersByAUser,
-	editACovertLetter,
+	getACoverLetter,
+	getAllCoverLettersByAUser,
+	editACoverLetter,
 };
