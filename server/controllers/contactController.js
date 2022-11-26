@@ -20,9 +20,14 @@ const contact = async (req, res) => {
 		return;
 	} else 
 	{
-		return await sendEmail(email, subject, body).then((result) => {
-			if (result) return res.status(StatusCodes.CREATED).json(result);
-		});
+		try {
+			return await sendEmail(email, subject, body).then((result) => {
+				if (result) return res.status(StatusCodes.CREATED).json(result);
+			});
+		} catch (error) {
+			return res.status(500).json({ msg: error.message})
+		}
+	
 	}
 	
 };
