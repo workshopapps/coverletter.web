@@ -32,6 +32,23 @@ describe("Templates", () => {
 		await mongoose.connection.close();
 	});
 
+	it("should get a template", async () => {
+		const response = await supertest(app).get(`api/v1/get-doctor/${1}`);
+
+		expect(response.status).toBe(200);
+		expect(response.body.message).toEqual(
+			"Template requested successfully"
+		);
+		expect(response.body.data).toEqual({ template });
+	});
+
+	it("should return an error for an invalid template request", async () => {
+		const response = await supertest(app).get(`api/v1/get-doctor/${""}`);
+
+		expect(response.status).toBe(400);
+		expect(response.body.message).toEqual("Template does not exist");
+	});
+
 	it("getAlltemplates", async () => {
 		const response = await supertest(app).get("/api/v1/template");
 
