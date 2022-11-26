@@ -7,11 +7,12 @@ pipeline {
         dockerImageBackend = ''
     }
     agent any
-    tools { nodejs 'Node' }
+    tools {nodejs 'Node'}
     stages {
             stage('Unit Tests') {
             steps {
                 script {
+                        sh 'npm config ls'
                         sh 'cd client/ && npm install --verbose'
                         //sh 'cd ..'
                         sh 'cd server/ && npm install --verbose'
@@ -38,16 +39,16 @@ pipeline {
             stage('Deploying Docker Image to Dockerhub') {
                 steps {
                     script {
-                       /* docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
+                        docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
                         dockerImageFrontend.push()
                         dockerImageBackend.push()
-                        }*/
+                        }
                     }
                 }
             }
         stage('Deploying') {
                 steps {
-                        sh 'docker-compose up -d'                        }
+                        sh 'docker-compose up --build -d'                        }
         }
     }
 }
