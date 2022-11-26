@@ -33,8 +33,4 @@ jobs:
             - name: Start project
             - run: cd client && npm install
             - run: pm2 restart frontend
-            
-
-      - name: Start app
-      - run: npm start
       
