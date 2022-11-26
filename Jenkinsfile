@@ -19,6 +19,14 @@ pipeline {
                 }
             }
             }
+        stage('Setting Enviroment Variables') {
+            steps {
+                script {
+                    env. GOOGLE_CLIENT_ID = "55786759606-5d4a3tajvph8a153kcuksk0b800urrva.apps.googleusercontent.com"
+                    env. GOOGLE_CLIENT_SECRETS = "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"
+            }
+            }
+        }
         stage('Building Docker Image') {
                 steps {
                     script {
