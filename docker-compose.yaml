@@ -11,8 +11,7 @@ services:
     command: npm run start
     depends_on:
       - mongodb
-    env_file:
-      - ./.env
+
   client:
      build: ./client
      ports:
