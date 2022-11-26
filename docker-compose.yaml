@@ -5,7 +5,7 @@ services:
   server:
     build: ./server     
     ports:
-      - "8000:8000"
+      - "5000:5000"
     volumes:
       - ./server:/server
     command: npm run start
@@ -15,7 +15,7 @@ services:
   client:
      build: ./client
      ports:
-       - "80:80"
+       - "3000:3000"
      volumes:
       - ./frontend:/frontend
 
