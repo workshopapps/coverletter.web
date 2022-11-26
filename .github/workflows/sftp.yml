@@ -1,16 +1,9 @@
-name: SFTP CI
- 
-# Controls when the action will run. 
+name: React CI
+
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  
-  pull_request:
-    branches: ["dev"]
- 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
- 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    pull_request:
+        branches: ["dev"]
+
 jobs:
     build:
         runs-on: [self-hosted,frontend]
@@ -28,9 +21,27 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: "npm"
-                  cache-dependency-path: "./client/package-lock.json"
+                  cache-dependency-path: "./server/package-lock.json"
         
-            - name: Start project
-            - run: cd client && npm install
+            - run: cd server && npm i
+            - name: Secret file testing
+              env: 
+               MONGO_URI: ${{secrets.MONGO_URI}}
+               OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
+               EMAIL: ${{secrets.EMAIL}}
+               PASS : ${{secrets.PASS}}
+               GOOGLE_CLIENT_ID : ${{secrets.GOOGLE_CLIENT_ID}}
+               GOOGLE_CLIENT_SECRET : ${{secrets.GOOGLE_CLIENT_SECRET}}
+               JWT_SECRET : ${{secrets.JWT_SECRET}}
+               
+              run: | 
+                cd server
+                echo MONGO_URI= $MONGO_URI >> .env
+                echo OPENAI_API_KEY= $OPENAI_API_KEY >> .env
+                echo EMAIL= $EMAIL >> .env
+                echo PASS= $PASS >> .env
+                echo GOOGLE_CLIENT_ID= $GOOGLE_CLIENT_ID >> .env
+                echo GOOGLE_CLIENT_SECRET= $GOOGLE_CLIENT_SECRET >> .env
+                echo JWT_SECRET= $JWT_SECRET >> .env
+                
             - run: pm2 restart frontend
-      
