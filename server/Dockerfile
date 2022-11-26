@@ -11,6 +11,6 @@ RUN npm install -g nodemon
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE 5000
 
 CMD ["node", "app.js"]
