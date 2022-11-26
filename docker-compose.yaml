@@ -13,14 +13,14 @@ services:
       - mongodb
     env_file:
       - ./.env
-   client:
+  client:
      build: ./client
      ports:
        - "3000:3000"
      volumes:
       - ./frontend:/frontend
 
-    mongodb:
+  mongodb:
       image: "mongo"
       volumes:
         - data:/data/db
