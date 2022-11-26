@@ -13,21 +13,24 @@ const contact = async (req, res) => {
 		phone,
 		description
 	);
-	const body = `${description}
-	My name is ${fullName} and you can contact me on ${phone} or send a mail to ${userEmail}.`
+	const body = `
+	My name is ${fullName} and I have an issue. ${description}. \n\nYou can contact me on ${phone} or send a mail to ${userEmail}.`
 	if (contactError) {
            throw new BadRequestError(contactError);
 		return;
 	} else 
 	{
 		try {
-			return await sendEmail(email, subject, body).then((result) => {
-				if (result) return res.status(StatusCodes.CREATED).json(result);
-			});
+		  const result = await sendEmail(email, subject, body);
+		  if(result) {
+			 return res.status(StatusCodes.CREATED).json({msg: "Email sent successfully", result });
+		  }
+		  return res.status(500).json({msg: "Email not sent successfully"})
 		} catch (error) {
-			return res.status(500).json({ msg: error.message})
+			return res.status(500).json({ msg: error.m})
 		}
 	
+
 	}
 	
 };
