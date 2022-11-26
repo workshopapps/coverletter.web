@@ -10,7 +10,7 @@ function Uploading() {
 	const { file, fileName } = useGlobalContext();
 
 	useEffect(() => {
-		const uploadFile = async (e) => {
+	const uploadFile = async (e) => {
 			console.log(file);
 			const formData = new FormData();
 			formData.append("myFile", file);
@@ -41,6 +41,7 @@ function Uploading() {
                 alert("You imported the wrong file");
             }
         };
+
     
         uploadFile();
     

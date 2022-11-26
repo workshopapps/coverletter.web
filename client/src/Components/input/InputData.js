@@ -106,7 +106,7 @@ function InputData() {
 				);
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
-				setIsloading(false);
+				setIsloading(true);
 				Navigate("/preview");
 			} catch (ex) {
 				console.log(ex);
@@ -182,6 +182,46 @@ function InputData() {
 								""
 							)}
 						</div>
+						<div className="a flex flex-col text-left mb-[2rem] ">
+							<label htmlFor="email" className="my-[4px] text-textBody text-[18px]">
+								Email Address
+							</label>
+							<input
+								name="email"
+								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								type="email"
+								onChange={emailHandler}
+								value={email}
+								id="email"
+							/>
+							{error && email <= 0 ? (
+								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
+									Email Address is required
+								</p>
+							) : (
+								""
+							)}
+						</div>
+						<div className="a flex flex-col text-left mb-[2rem] ">
+							<label htmlFor="location" className="my-[4px] text-textBody text-[18px]">
+								Your Address(Preferred Location)
+							</label>
+							<input
+								name="role"
+								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								type="text"
+								onChange={locationHandler}
+								value={location}
+								id="location"
+							/>
+							{error && location <= 0 ? (
+								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
+									Your Location is required
+								</p>
+							) : (
+								""
+							)}
+						</div>
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
 							<label htmlFor="companyName" className="my-[4px] text-textBody text-[18px]">
 								Company's Name
@@ -223,27 +263,7 @@ function InputData() {
 								""
 							)}
 						</div>
-						<div className="b flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="city" className="my-[4px] text-textBody text-[18px]">
-								City
-							</label>
-							<input
-								name="city"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
-								onChange={cityHandler}
-								type="text"
-								value={city}
-								id="city"
-							/>
-							{error && city <= 0 ? (
-								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
-									City is required
-								</p>
-							) : (
-								""
-							)}
-						</div>
-						<div className="b  flex flex-col text-left mb-[2rem]">
+						<div className="b  flex flex-col text-left ">
 							<label className="my-[4px] text-textBody text-[18px]">
 								Country
 							</label>
@@ -575,70 +595,31 @@ function InputData() {
 								""
 							)}
 						</div>
-						<div className="a flex flex-col text-left mb-2rem lg:mb-[0]">
-							<label htmlFor="date" className="my-[4px] text-textBody text-[18px]">
-								Date of Application
-							</label>
-							<input
-								name="date"
-								className="px-3 py-[9px]  border-[1.5px] border-gray-300 rounded-lg"
-								onChange={dateHandler}
-								type="text"
-								value={date}
-								id="date"
-							/>
-							{error && date <= 0 ? (
-								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
-									Date is required
-								</p>
-							) : (
-								""
-							)}
-						</div>
+						
 					</div>
 
 					<div className="right mt-[-1rem] lg:mt-0 ">
-						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="email" className="my-[4px] text-textBody text-[18px]">
-								Email Address
+					<div className="b flex flex-col text-left mb-[2rem] ">
+							<label htmlFor="city" className="my-[4px] text-textBody text-[18px]">
+								City
 							</label>
 							<input
-								name="email"
+								name="city"
 								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
-								type="email"
-								onChange={emailHandler}
-								value={email}
-								id="email"
-							/>
-							{error && email <= 0 ? (
-								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
-									Email Address is required
-								</p>
-							) : (
-								""
-							)}
-						</div>
-						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="location" className="my-[4px] text-textBody text-[18px]">
-								Your Address(Preferred Location)
-							</label>
-							<input
-								name="role"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								onChange={cityHandler}
 								type="text"
-								onChange={locationHandler}
-								value={location}
-								id="location"
+								value={city}
+								id="city"
 							/>
-							{error && location <= 0 ? (
+							{error && city <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
-									Your Location is required
+									City is required
 								</p>
 							) : (
 								""
 							)}
 						</div>
-						<div  className="a flex flex-col text-left mb-[2rem] ">
+					<div  className="a flex flex-col text-left mb-[2rem] ">
 							<label htmlFor="role" className="my-[4px] text-textBody text-[18px]">
 								What Role Are You Applying For?
 							</label>
@@ -653,6 +634,27 @@ function InputData() {
 							{error && role <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
 									Role is required
+								</p>
+							) : (
+								""
+							)}
+						</div>
+						
+						<div className="a flex flex-col text-left mb-[2rem]">
+							<label htmlFor="date" className="my-[4px]  text-textBody text-[18px]">
+								Date of Application
+							</label>
+							<input
+								name="date"
+								className="px-3 py-[9px]  border-[1.5px] border-gray-300 rounded-lg"
+								onChange={dateHandler}
+								type="text"
+								value={date}
+								id="date"
+							/>
+							{error && date <= 0 ? (
+								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
+									Date is required
 								</p>
 							) : (
 								""

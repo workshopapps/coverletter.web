@@ -1,7 +1,5 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState} from "react";
 import { useGlobalContext } from "../../context/context";
-import Uploaded from "../uploaded/Uploaded";
 import Uploading from "../uploading/Uploading";
 import first from "./assets/first.svg";
 
@@ -35,7 +33,6 @@ function SectionTwo() {
 						Maximum file size is 5MB, and you can only upload a
 						maximum of 1 file per upload session
 					</p>
-					{console.log(fileSize)}
 				</div>
 				<div
 					className={`right lg:w-[540px] h-[443px] w-[100%] border-2 flex flex-col px-[8px] justify-center items-center lg:ml-[3.5em] ${
@@ -52,6 +49,7 @@ function SectionTwo() {
 						)}
 						{fileSize > 0 && fileSize < 5000000 ? null : (
 							<input
+								data-testid="element"
 								style={{ opacity: "0" }}
 								type="file"
 								name="file"
@@ -63,7 +61,6 @@ function SectionTwo() {
 						)}
 
 						{fileSize > 0 && fileSize < 5000000 ? (
-							// <Uploaded />
 							<Uploading />
 						) : (
 							<label for="upload_file" className="flex flex-col items-center justify-center">
