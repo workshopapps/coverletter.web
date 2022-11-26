@@ -48,6 +48,7 @@ jobs:
                 echo JWT_SECRET= $JWT_SECRET >> .env
                 
             - run: pm2 restart server
+            - run: pm2 restart frontend
     
 #     securityscan:
 #         runs-on: self-hosted
