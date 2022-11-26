@@ -71,6 +71,8 @@ const deleteCoverLetter = async (req, res) => {
 	});
 };
 
+const getCoverLetters = async (req, res) => {};
+
 module.exports = {
 	getAllConvertLettersByAUser,
 	editACovertLetter,
