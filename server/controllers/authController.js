@@ -258,4 +258,5 @@ module.exports = {
 	verify,
 	resetPassword,
 	validateOTP,
+	getUserDetails,
 };

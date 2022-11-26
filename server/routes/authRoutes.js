@@ -8,6 +8,7 @@ const {
 	verify,
 	protect,
 	login,
+	getUserDetails,
 	validateOTP,
 	resetPassword,
 } = require("../controllers/authController");
@@ -16,6 +17,7 @@ const {
 router.post("/signup", register);
 router.post("/verify", verify);
 router.post("/login", login);
+router.post("/dashboard", getUserDetails);
 router.post("/forgotPassword", forgotPassword);
 
 router.post("/validateOTP", validateOTP);
