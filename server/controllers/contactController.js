@@ -15,11 +15,15 @@ const contact = async (req, res) => {
 	);
 
 	if (contactError) {
-		throw new BadRequestError(contactError);
+           throw new BadRequestError(contactError);
 		return;
+	} else 
+	{
+		return await sendEmail(email, subject, description).then((result) => {
+			if (result) return res.status(StatusCodes.CREATED).json(result);
+		});
 	}
-	return await sendEmail(email, subject, description).then((result) => {
-		if (result) return res.status(StatusCodes.CREATED).json(result);
-	});
+	
 };
+
 module.exports = { contact };
