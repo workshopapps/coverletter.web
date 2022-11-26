@@ -93,9 +93,9 @@ const editACoverLetter = async (req, res) => {
 };
 
 const deleteCoverLetter = async (req, res) => {
-	const { userId, templateId } = req.body;
+	const { templateId } = req.params;
 
-	if (!mongoose.Types.ObjectId.isValid(userId))
+	if (!mongoose.Types.ObjectId.isValid(templateId))
 		return res.status(404).json({ message: "This user id is not valid!" });
 
 	const template = await Template.findByIdAndDelete({ id: templateId });
