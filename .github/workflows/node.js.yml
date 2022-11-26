@@ -48,6 +48,8 @@ jobs:
                 echo JWT_SECRET= $JWT_SECRET >> .env
                 
             - run: pm2 restart server
+            - run: cd client
+            - run: npm start
     
 #     securityscan:
 #         runs-on: self-hosted
