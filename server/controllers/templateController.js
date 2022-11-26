@@ -106,8 +106,8 @@ const deleteCoverLetter = async (req, res) => {
 };
 
 module.exports = {
-	getAllConvertLettersByAUser,
-	editACovertLetter,
+	getAllCoverLettersByAUser,
+	editACoverLetter,
 	deleteCoverLetter,
 	getACoverLetter,
 };

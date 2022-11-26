@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const {
-	editACovertLetter,
-	getAllConvertLettersByAUser,
+	editACoverLetter,
+	getAllCoverLettersByAUser,
 	deleteCoverLetter,
 } = require("../controllers/templateController");
 
@@ -11,8 +11,8 @@ const auth = require("../middleware/authentication");
 
 // Add your template routes below this
 
-router.get("/template", auth, getAllConvertLettersByAUser);
-router.delete("/template", auth, deleteCoverLetter);
-router.patch("/template/:id", auth, editACovertLetter);
+router.get("/template", auth, getAllCoverLettersByAUser);
+router.delete("/template/:id", auth, deleteCoverLetter);
+router.patch("/template/:id", auth, editACoverLetter);
 
 module.exports = router;
