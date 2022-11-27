@@ -14,7 +14,7 @@ pipeline {
                 script {
                         sh 'npm config ls'
                         sh 'cd client/ && npm install'
-                        //sh 'cd ..'
+                        //sh cd ..
                         sh 'cd server/ && npm install '
                 }
             }
