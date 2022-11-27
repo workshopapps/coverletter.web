@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import SuccessModal from "../Components/Ui/SuccessModal";
 import Input from "../Components/Ui/Input";
@@ -38,6 +39,34 @@ const ResetPassword = () => {
 		setPasswordType2("password");
 	};
 
+	const { register, formState, getValues, setError, handleSubmit } =
+		useForm();
+	const onResetPassword = (FormData) => {
+		setShow(true);
+		fetch(`${process.env.REACT_APP_BASE_URL}api/v1/auth/reset`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				password: FormData.password,
+			}),
+		})
+			.then((res) => {
+				if (res.ok) {
+					setShow(true);
+				} else {
+					setError("email", {
+						type: "custom",
+						message: "We can not find your mail",
+					});
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<section className="reset-password bg-[#f2f2f7] pt-36 pb-20">
 			<div
@@ -53,7 +82,7 @@ const ResetPassword = () => {
 						</p>
 					</div>
 					<div className="home-btn">
-						<Link to="/reset">
+						<Link to="/signin">
 							<Input
 								type={"button"}
 								value={"Sign In"}
@@ -83,7 +112,7 @@ const ResetPassword = () => {
 					used password.
 				</p>
 				<div className="form-container">
-					<form action="/reset">
+					<form onSubmit={handleSubmit(onResetPassword)}>
 						<div
 							className="password-field my-12
 						tb:my-10"
@@ -93,14 +122,30 @@ const ResetPassword = () => {
 									<Label>{"New Password"}</Label>
 									<input
 										type={passwordType}
-										value={passwordInput}
+										// value={passwordInput}
 										onChange={handlePasswordChange}
 										name="password"
 										placeholder="New Password"
-										required
-										className="input_password mt-2 w-full py-[12px] pl-4 rounded-lg bg-[transparent] border border-gray-800 outline-2 outline-gray-800 bg-transparent"
+										className={`${
+											formState.errors.password
+												? "border border-[#D92D20] outline-2 outline-[#D92D20]"
+												: ""
+										} input_password mt-2 w-full py-[12px] pl-4 rounded-lg bg-[transparent] border border-gray-800 outline-2 outline-gray-800 bg-transparent`}
 										id="input-pass"
+										{...register("password", {
+											required: "⚠ Password is required!",
+											minLength: {
+												value: 5,
+												message:
+													"Password must have at least 5 characters",
+											},
+										})}
 									/>
+									{formState.errors.password && (
+										<span className="text-left text-[#FF2635]">
+											{formState.errors.password.message}
+										</span>
+									)}
 									<span
 										className="hide-icon absolute top-[45px] right-[15px]"
 										onClick={togglePassword}
@@ -118,14 +163,42 @@ const ResetPassword = () => {
 									<Label>{"Confirm Password"}</Label>
 									<input
 										type={passwordType2}
-										value={passwordInput2}
+										// value={passwordInput2}
 										onChange={handlePasswordChange2}
 										name="password"
 										placeholder="Confirm Password"
-										required
-										className="input_password input_password mt-2 w-full py-[12px] bg-[transparent] pl-4 rounded-lg outline-2 outline-gray-800 border border-gray-800 bg-transparent"
+										{...register("passwordConfirmation", {
+											required:
+												"⚠ Please confirm password!",
+											validate: {
+												matchesPreviousPassword: (
+													value
+												) => {
+													const { password } =
+														getValues();
+													return (
+														password === value ||
+														"⚠ Passwords do not match!"
+													);
+												},
+											},
+										})}
+										className={`${
+											formState.errors.password
+												? "border border-[#D92D20] outline-2 outline-[#D92D20]"
+												: ""
+										} input_password mt-2 w-full py-[12px] pl-4 rounded-lg bg-[transparent] border border-gray-800 outline-2 outline-gray-800 bg-transparent`}
 										id="input-pass"
 									/>
+									{formState.errors.passwordConfirmation && (
+										<span className="text-left text-[#FF2635] ">
+											{
+												formState.errors
+													.passwordConfirmation
+													.message
+											}
+										</span>
+									)}
 									<span
 										className="hide-icon absolute top-[45px] right-[15px]"
 										onClick={togglePassword2}
@@ -140,16 +213,11 @@ const ResetPassword = () => {
 							</div>
 						</div>
 						<div className="reset-password">
-							<Link to="/reset">
-								<input
-									type="submit"
-									value={"Reset Password"}
-									onClick={() => {
-										setShow(true);
-									}}
-									className="reset-btn text-center text-white w-full bg-[#0652DD] rounded-lg py-4 cursor-pointer hover:scale-x-[1.02]"
-								/>
-							</Link>
+							<input
+								type="submit"
+								value={"Reset Password"}
+								className="reset-btn text-center text-white w-full bg-[#0652DD] rounded-lg py-4 cursor-pointer hover:scale-x-[1.02]"
+							/>
 						</div>
 					</form>
 				</div>
