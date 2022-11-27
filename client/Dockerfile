@@ -10,5 +10,5 @@ COPY --from=builder /app/build /usr/share/nginx/html
 # Add your nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 # Expose port
-EXPOSE 3000
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
