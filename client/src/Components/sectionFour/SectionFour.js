@@ -11,7 +11,7 @@ function SectionFour() {
         <main className='lg:px-[96px] flex flex-col justify-center px[2px]'>
             <h2 className='text-2xl lg:text-4xl text-center font-bold py-10 lg:py-[96px] text-textBody'>What Others Are Saying...</h2>
 
-            <div className=" px-[8%] lg:px-[1px]  flex flex-col lg:flex-row justify-center items-center gap-5   ">
+            <div className=" px-[7%] lg:px-[1px]  flex flex-col lg:flex-row justify-center items-center gap-5   ">
                 <div className="review w-[100%] text-left bg-textWhite flex flex-col p-4 py-4 pt-8 rounded-lg border-[1px] border-primaryLight ">
                     <p className='text-[18px] text-textBody' >I am impressed by the strength of the AI on this page and I think it's the best choice on the market</p>
                     <img  className='w-12 my-[20px] lg:mt-[28%] mb-3  h-12 rounded-full' src={male} alt="" />

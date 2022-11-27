@@ -11,7 +11,7 @@ function SectionThree() {
            <main  className='  rounded-lg py-7 pb-[96px] relative bg-[#CDDCF8] '>
             {/* <div className=' absolute h-[100vh] w-[80vh] bg-red-900 ' /> */}
             <h2 className='text-2xl w-[100%] inline-block lg:w-[100%] lg:text-4xl font-bold text-center my-[50px] mt-[7px] lg:my-[90px] text-textBody'>Benefits of Using Our Cover Letter Builder</h2>
-            <div className="top grid lg:px-[6rem] px-[7.5%]  lg:grid-cols-2 grid-cols-1 gap-[60px] lg:gap-[90px] ">
+            <div className="top grid lg:px-[6rem] px-[7%]  lg:grid-cols-2 grid-cols-1 gap-[60px] lg:gap-[90px] ">
                 <div className=" w-[327] lg:w-[100%] py-[50px] lg:py-[40px] bg-textWhite text-left px-[50px] lg:px-8  flex flex-col rounded-[8px]">
                     <img src={circle} className='w-[80px] mb-2 lg:mb-3 h-[80px]' alt="" />
                     <p className='font-bold  text-left text-[24px] text-textBody '>Make Your Job Search Easy</p>
