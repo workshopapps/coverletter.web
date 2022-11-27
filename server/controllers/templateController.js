@@ -2,7 +2,6 @@ const Template = require("../models/Template");
 
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
-const mongoose = require("mongoose");
 
 /**
  * @desc It gets a cover Letter
@@ -92,29 +91,8 @@ const editACoverLetter = async (req, res) => {
 	});
 };
 
-const deleteCoverLetter = async (req, res) => {
-	const { templateId } = req.params;
-
-	if (!mongoose.Types.ObjectId.isValid(templateId))
-		return res.status(404).json({ message: "This user id is not valid!" });
-
-	const checkIfTemplateExists = await Template.find({}).count();
-
-	if (!checkIfTemplateExists < 1) {
-		const template = await Template.findByIdAndDelete({ id: templateId });
-		return res.status(StatusCodes.OK).json({
-			message: `Cover Letter deleted with the id ${templateId} successfully`,
-		});
-	} else {
-		return res.status(StatusCodes.NOT_FOUND).json({
-			message: `Cover Letter with the id ${templateId} does not exist`,
-		});
-	}
-};
-
 module.exports = {
+	getACoverLetter,
 	getAllCoverLettersByAUser,
 	editACoverLetter,
-	deleteCoverLetter,
-	getACoverLetter,
 };
