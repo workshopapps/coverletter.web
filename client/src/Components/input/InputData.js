@@ -106,9 +106,9 @@ function InputData() {
 				);
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
-				setIsloading(true);
 				Navigate("/preview");
 			} catch (ex) {
+				setIsloading(false);
 				console.log(ex);
 				alert("Error processing your CV");
 			}
@@ -126,6 +126,8 @@ function InputData() {
 			location &&
 			email
 		) {
+
+			setIsloading(true);
 			uploadFile();
 		}
 	};
@@ -731,7 +733,7 @@ function InputData() {
 									role="status"
 								>
 									<span class="visually-hidden">
-										a
+										l
 									</span>
 								</div>
 							</div>
