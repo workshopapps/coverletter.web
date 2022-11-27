@@ -13,13 +13,14 @@ pipeline {
             steps {
                 script {
                         sh 'npm config ls'
-                        sh 'cd client/ && npm install --verbose'
-                        //sh 'cd ..'
-                        sh 'cd server/ && npm install --verbose'
+                        sh 'cd client/ && npm install'
+                        //sh cd ..
+                        sh 'cd server/ && npm install '
                 }
             }
             }
-        stage('Building Docker Image') {
+      
+            stage('Building Docker Image') {
                 steps {
                     script {
                         /* remove all container */

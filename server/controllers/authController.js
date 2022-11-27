@@ -242,6 +242,13 @@ const validateOTP = async (req, res) => {
 		msg: "otp verification was successful.",
 	});
 };
+
+const getUserDetails = async (req, res) => {
+	const { email } = req.body;
+	const user = await User.findOne({ email });
+	return res.status(StatusCodes.OK).send(user);
+};
+
 module.exports = {
 	register,
 	login,
@@ -251,4 +258,5 @@ module.exports = {
 	verify,
 	resetPassword,
 	validateOTP,
+	getUserDetails,
 };
