@@ -4,11 +4,10 @@ import axios from "axios";
 import back from "./asesets/arrow.png";
 import { useGlobalContext } from "../../context/context";
 
-
 function InputData() {
 	const Navigate = useNavigate();
 
-	const { file, setCoverLetter } = useGlobalContext();
+	const { file, setCoverLetter, setUserData } = useGlobalContext();
 	const [fullName, setFullName] = useState("");
 	const [isLoading, setIsloading] = useState(false);
 	const [location, setLocation] = useState("");
@@ -24,12 +23,9 @@ function InputData() {
 	const [department, setDepartment] = useState("");
 	const [error, setError] = useState(false);
 
-	
 	const clickHandler = () => {
 		Navigate("/");
 	};
-
-	
 
 	const fullNameHandler = (e) => {
 		setFullName(e.target.value);
@@ -106,6 +102,11 @@ function InputData() {
 				);
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
+				setUserData({
+					name: fullName,
+					address: location,
+					email: email,
+				});
 				Navigate("/preview");
 			} catch (ex) {
 				setIsloading(false);
@@ -164,7 +165,10 @@ function InputData() {
 				>
 					<div className="left">
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
-							<label htmlFor="fullName" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="fullName"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Full Name
 							</label>
 							<input
@@ -225,7 +229,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
-							<label htmlFor="companyName" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="companyName"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Company's Name
 							</label>
 							<input
@@ -246,7 +253,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="companyAddress" className="my-[3px] text-textBody text-[18px]">
+							<label
+								htmlFor="companyAddress"
+								className="my-[3px] text-textBody text-[18px]"
+							>
 								Company's Address
 							</label>
 							<input
@@ -621,8 +631,11 @@ function InputData() {
 								""
 							)}
 						</div>
-					<div  className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="role" className="my-[4px] text-textBody text-[18px]">
+						<div className="a flex flex-col text-left mb-[2rem] ">
+							<label
+								htmlFor="role"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								What Role Are You Applying For?
 							</label>
 							<input
@@ -663,7 +676,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="years" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="years"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Years of Experience
 							</label>
 							<input
@@ -683,7 +699,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="rec_name" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="rec_name"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Recipient's Name
 							</label>
 							<input
@@ -703,7 +722,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left">
-							<label htmlFor="rec_dept" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="rec_dept"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Recipient's Department(Optional)
 							</label>
 							<input
@@ -726,7 +748,7 @@ function InputData() {
 						</button>
 					)}
 					{isLoading && (
-						<button className="px-5 w-[100%] py-4 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg">
+						<button className="px-5 w-[100%] py-3 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg">
 							<div class="flex justify-center items-center">
 								<div
 									class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
