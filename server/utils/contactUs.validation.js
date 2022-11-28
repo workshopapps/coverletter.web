@@ -9,7 +9,6 @@ const ContactValidation = (
 		/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 	// const phoneRegex =
 	// 	/((^090)([23589]))|((^070)([1-9]))|((^080)([2-9]))|((^081)([0-9]))(\d{7})/;
-
 	let result;
 	if (!userEmail || !fullName || !phone || !subject || !description) {
 		result = "All input are required";
