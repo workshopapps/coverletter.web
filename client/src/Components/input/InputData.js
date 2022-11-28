@@ -173,7 +173,7 @@ function InputData() {
 							</label>
 							<input
 								name="full_name"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && fullName <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={fullNameHandler}
 								autoFocus
 								type="text"
@@ -194,7 +194,7 @@ function InputData() {
 							</label>
 							<input
 								name="email"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && email <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								type="email"
 								onChange={emailHandler}
 								value={email}
@@ -214,7 +214,7 @@ function InputData() {
 							</label>
 							<input
 								name="role"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && location <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={locationHandler}
 								value={location}
@@ -237,7 +237,7 @@ function InputData() {
 							</label>
 							<input
 								name="company_name"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && companyName <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={companyHandler}
 								autoFocus
 								type="text"
@@ -261,7 +261,7 @@ function InputData() {
 							</label>
 							<input
 								name="company_address"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && companyAddress <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={companyAddressHandler}
 								type="text"
 								value={companyAddress}
@@ -281,7 +281,7 @@ function InputData() {
 							</label>
 							<select
 								id="country"
-								className="px-3 py-[9px]  border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && country <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={countryHandler}
 								name="country"
 							>
@@ -617,7 +617,7 @@ function InputData() {
 							</label>
 							<input
 								name="city"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && city <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={cityHandler}
 								type="text"
 								value={city}
@@ -640,7 +640,7 @@ function InputData() {
 							</label>
 							<input
 								name="role"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && role <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={roleHandler}
 								value={role}
@@ -661,7 +661,7 @@ function InputData() {
 							</label>
 							<input
 								name="date"
-								className="px-3 py-[9px]  border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && date <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={dateHandler}
 								type="text"
 								value={date}
@@ -684,7 +684,7 @@ function InputData() {
 							</label>
 							<input
 								name="years_of_exp"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && years <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={yearsHandler}
 								value={years}
@@ -707,7 +707,7 @@ function InputData() {
 							</label>
 							<input
 								name="recipient_email"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && name <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={nameHandler}
 								value={name}
@@ -730,7 +730,7 @@ function InputData() {
 							</label>
 							<input
 								name="recipient_department"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg focus:outline-primaryMain"
 								type="text"
 								onChange={departmentHandler}
 								value={department}
@@ -742,13 +742,13 @@ function InputData() {
 					{!isLoading && (
 						<button
 							type="submit"
-							className="px-5 w-[100%] py-4 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg"
+							className="hover:bg-primaryDark px-5 w-[100%] py-4 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg"
 						>
 							Continue
 						</button>
 					)}
 					{isLoading && (
-						<button className="px-5 w-[100%] py-3 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg">
+						<button className=" hover:bg-primaryDark px-5 w-[100%] py-3 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg">
 							<div class="flex justify-center items-center">
 								<div
 									class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
