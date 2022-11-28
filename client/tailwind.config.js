@@ -2,7 +2,11 @@
 module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
-		extend: {},
+		extend: {
+			gridTemplateColumns: {
+				grid: "repeat(auto-fit, minmax(297px, 1fr))",
+			},
+		},
 		colors: {
 			background: "#F2F2F7",
 			overlay: "rgba(3, 41, 111, 0.48)",
@@ -10,7 +14,6 @@ module.exports = {
 			textBody: "#48484A",
 			textPlacecholder: "#A7A7A7",
 			textWhite: "#FCFCFC",
-			backgroundWhite: "#FFFFFF",
 			successLight: "#E5FCF6",
 			successMain: "#0FB56D",
 			successDark: "#26704C",
@@ -36,6 +39,13 @@ module.exports = {
 			grey600: "#353535",
 			grey700: "#282828",
 			grey800: "#101010",
+			coverContainer: "#CDDCF8",
+			white: "#FFFFFF",
+			backgroundWhite: "#FFFFFF",
+			eventshome: "#F7F7F7",
+			btnbg: "#CDDCF8",
+			searchbd: "#CAD0DD",
+			selectdesc: "#BABABA",
 		},
 	},
 	plugins: [],

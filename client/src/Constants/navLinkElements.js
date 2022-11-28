@@ -1,8 +1,9 @@
 const navLinkElements = [
-	{ name: "Blog", url: "/blog" },
-	{ name: "About us", url: "/faq" },
-	{ name: "Career", url: "/career" },
+	{ name: "Features", url: "/features" },
+	{ name: "Pricing", url: "/pricing" },
+	{ name: "About us", url: "/about" },
 	{ name: "Contact us", url: "/contactus" },
+	{ name: "Blog", url: "/blog" },
 ];
 
 export default navLinkElements;

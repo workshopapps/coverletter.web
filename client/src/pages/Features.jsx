@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import stackLettersImg from "../Assets/stack-letters.svg";
 import feature1 from "../Assets/feature1.svg";
 import feature2 from "../Assets/feature2.svg";
 import feature3 from "../Assets/feature3.svg";
 import feature4 from "../Assets/feature4.svg";
 import feature5 from "../Assets/feature5.svg";
-import featureBackgroundImg from "../Assets/feature-background-img.svg";
+import featureBackgroundImg from "../Assets/feature-background-img.jpg";
 import featureBackgroundImg2 from "../Assets/feature-section-bg-blue.svg";
 import Button from "../Components/Ui/Button";
 
@@ -21,23 +20,6 @@ const H1 = (props) => {
 		"text-3xl leading-10 font-bold leading-normal  md:text-4xl md:leading-relaxed lg:text-5xl lg:leading-relaxed xl:text-6xl xl:leading-relaxed";
 	return <h1 className={`${defaultClassName} ${className}`}>{children}</h1>;
 };
-
-// const Button = (props) => {
-// 	const { type, text, className } = props;
-// 	const defaultClassName =
-// 		"btnPrimary py-4 px-8 rounded-md mx-auto font-bold";
-// 	const primaryClassName = "bg-primaryMain";
-// 	const secondaryClassName = "bg-secondaryMain";
-// 	return (
-// 		<button
-// 			className={`${defaultClassName} ${
-// 				type === "primary" ? primaryClassName : secondaryClassName
-// 			}`}
-// 		>
-// 			{text}
-// 		</button>
-// 	);
-// };
 
 const featureCards = (props) => {
 	const { title, body, img, textColor, btn } = props;
@@ -85,7 +67,7 @@ const featureCards = (props) => {
 		</div>
 	);
 };
-
+// flex flex-col gap-4 md:flex-row md:gap-16 items-center w-full max-sm:gap-8
 const featureCards2 = (props) => {
 	const { title, body, img, textColor, btn } = props;
 
@@ -176,7 +158,7 @@ const Features = () => {
 			</section>
 
 			<section
-				className="bg-primaryMain p-12"
+				className="bg-primaryMain p-12 max-sm:p-6"
 				style={{
 					backgroundImage: isTablet
 						? "none"
@@ -207,7 +189,7 @@ const Features = () => {
 				</div>
 			</section>
 
-			<section className="bg-white p-12">
+			<section className="bg-white p-12 max-sm:p-6">
 				<div className="featureOne-content  relative container mx-auto max-w-[1400px] ">
 					{/* import feature cards */}
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row mb-20">
@@ -231,7 +213,7 @@ const Features = () => {
 				</div>
 			</section>
 
-			<section className="bg-background p-12">
+			<section className="bg-background p-12 max-sm:p-6">
 				<div className="featureOne-content  relative container mx-auto max-w-[1400px] ">
 					{/* import feature cards */}
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row mb-20">
@@ -247,7 +229,7 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row "></div>
 				</div>
 
-				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 py-11 rounded-lg flex items-center max-md:flex-col max-md:gap-7 max-sm:gap-6">
+				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 py-11 rounded-lg flex items-center max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
 					<div className="">
 						<H1 className=" text-textWhite text-left leading-relaxed max-md:text-center max-md:leading-10">
 							{" "}

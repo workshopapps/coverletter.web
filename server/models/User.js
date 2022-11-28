@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
+const { generateOTP } = require("../utils/generateOTP");
 
 const UserSchema = mongoose.Schema({
 	name: {
@@ -29,9 +31,10 @@ const UserSchema = mongoose.Schema({
 		default: "Pending",
 	},
 	confirmationCode: {
-		type: String,
-		unique: true,
+		type: String
 	},
+	resetPasswordOtp: String,
+	passwordResetExpires: Date,
 });
 
 UserSchema.pre("save", async function () {
@@ -57,6 +60,15 @@ UserSchema.methods.createJWT = function () {
 UserSchema.methods.comparePassword = async function (canditatePassword) {
 	const isMatch = await bcrypt.compare(canditatePassword, this.password);
 	return isMatch;
+};
+
+UserSchema.methods.createPasswordResetToken = function () {
+	const otp = generateOTP(4);
+	this.resetPasswordOtp = crypto
+		.createHash("sha256")
+		.update(otp)
+		.digest("hex");
+	return otp;
 };
 
 module.exports = mongoose.model("User", UserSchema);
