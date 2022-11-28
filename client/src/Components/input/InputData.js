@@ -239,7 +239,6 @@ function InputData() {
 								name="company_name"
 								className= {`px-3 py-[9px] border-[1.5px] ${error && companyName <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={companyHandler}
-								autoFocus
 								type="text"
 								value={companyName}
 								id="companyName"
