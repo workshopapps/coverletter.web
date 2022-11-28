@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Input, { TextField, Select } from "../Components/Ui/Form";
+import axios from "axios"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -129,6 +130,8 @@ const ContactUs = () => {
 
 	const [formData, setFormData] = React.useState(emptyForm);
 	const [errors, setErrors] = React.useState(emptyForm);
+	const [loading, setLoading] = React.useState(false);
+	const [alert, setAlert] = React.useState({msg:"", type:""});
 
 	const navigate = useNavigate();
 
@@ -175,14 +178,23 @@ const ContactUs = () => {
 		return errorObject;
 	};
 
-	const submit = (e) => {
+	const submit = async (e) => {
 		e.preventDefault();
+		setLoading(true)
 		const errorResult = validate();
 		setErrors(validate());
 		if (!anyError(errorResult)) {
-			setFormData(emptyForm);
-			navigate("/");
+			try {
+				const body = {fullName:formData.name, userEmail: formData.email, subject: formData.issue, description: formData.message, phone:formData.phone};
+				await axios.post("https://api.aplicar.hng.tech/api/v1/contact", body);
+				setFormData(emptyForm);
+				navigate("/");
+			} catch (error) {
+				setAlert({msg:"Internal Server Error", type:"error"});
+				console.error(error);
+			}
 		}
+		setLoading(false);
 	};
 
 	const anyError = (errors) => {
