@@ -14,7 +14,7 @@ const followUsData = [
 	{
 		icon: ["fab", "instagram"],
 		text: "Instagram",
-		link: "http://www.instagram.com/aplicar_org",
+		link: "http://www.instagram.com/aplicar_ng",
 	},
 	{
 		icon: ["fab", "facebook"],
@@ -37,7 +37,7 @@ const IconButton = (props) => {
 					<FontAwesomeIcon icon={icon} className=" text-grey400" />
 				)}
 			</div>
-			<p className="text-xs text-grey400">{text}</p>
+			<p className="text-sm text-grey400">{text}</p>
 		</div>
 	);
 	const holderClassName = "cursor-pointer flex space-y-2 items-center";
@@ -65,7 +65,7 @@ const TertiaryButton = (props) => {
 			href={href}
 		>
 			<div className="overflow-hidden">
-				<p className="text-xs font-bold">{label}</p>
+				<p className="text-sm font-semibold">{label}</p>
 				<p className="font-bold">{text}</p>
 			</div>
 		</a>
@@ -73,14 +73,14 @@ const TertiaryButton = (props) => {
 };
 
 const Button = (props) => {
-	const { type, children, disabled, onClick } = props;
+	const { type, children, disabled, onClick, className } = props;
 	return (
 		<button
 			disabled={disabled}
 			onClick={disabled ? undefined : onClick}
 			className={`${
 				type === "secondary" ? "btnSecondary" : "btnPrimary"
-			} p-3 px-6 rounded-md ${!!disabled && "bg-[#acc5f4]"}`}
+			} p-3 px-6 rounded-md ${!!disabled && "bg-[#acc5f4]"} ${className}`}
 		>
 			<p className="font-bold">{children}</p>
 		</button>
@@ -89,19 +89,19 @@ const Button = (props) => {
 
 const H1 = (props) => {
 	const { children, className } = props;
-	const defaultClassName = "text-5xl font-semibold mb-5";
+	const defaultClassName = "text-5xl text-grey600 font-semibold mb-5";
 	return <h1 className={`${defaultClassName} ${className}`}>{children}</h1>;
 };
 
 const H2 = (props) => {
 	const { children, className } = props;
-	const defaultClassName = "text-3xl font-semibold mb-5";
+	const defaultClassName = "text-3xl text-grey600 font-semibold mb-5";
 	return <h2 className={`${defaultClassName} ${className}`}>{children}</h2>;
 };
 
 const BodyText = (props) => {
 	const { children, className } = props;
-	const defaultClassName = "text-base text-grey400 font-semibold mb-2";
+	const defaultClassName = "text-base text-grey400  mb-2";
 	return <p className={`${defaultClassName} ${className}`}>{children}</p>;
 };
 
@@ -119,6 +119,37 @@ const FollowUsLinks = (props) => {
 	);
 };
 
+const Alert = (props) => {
+	const {msg, type} = props
+	const alertContainer = React.useRef(null);
+	const [height, setHeight] = React.useState("0px");
+
+	React.useEffect(() => {
+	  setHeight(!!msg ? "100px": "0px");
+	}, [msg, setHeight])
+	
+	return  <div ref={alertContainer} style={{maxHeight:height}} className="transition-all duration-200 overflow-hidden">
+		<div className={`w-full py-2 px-4 bg-${type||"error"}Main rounded flex justify-between items-center text-textWhite`}> 
+	<p className="text-sm">{msg}</p> <FontAwesomeIcon icon={["fas", "circle-info"]} />
+	</div>
+	</div>
+}
+
+const SuccessModal = (props) => {
+	const {open, onClose} = props;
+	if(!open) return <React.Fragment />
+ 	return <div className="h-screen w-screen fixed top-0 left-0 z-50 bg-[#03296F7A] flex items-center justify-center" onClick={onClose}>
+		<div className="w-[250px] p-8 bg-[#fff] rounded flex items-center flex-col text-center space-y-2">
+			<div className=" bg-successMain rounded-full text-textWhite text-2xl h-[70px] w-[70px]  flex items-center justify-center border-8 border-successLight">
+				<FontAwesomeIcon icon={["fas", "check"]} />
+			</div>
+			<h4 className="text-grey600 text-lg">Success</h4>
+			<p className="text-grey400 text-sm">Thanks for contacting us, we will get back to you </p>
+			<Button onClick={onClose}>Continue</Button>
+		</div>
+	</div>
+}
+
 const ContactUs = () => {
 	const emptyForm = {
 		name: "",
@@ -132,10 +163,19 @@ const ContactUs = () => {
 	const [errors, setErrors] = React.useState(emptyForm);
 	const [loading, setLoading] = React.useState(false);
 	const [alert, setAlert] = React.useState({msg:"", type:""});
+	const [openModal, setOpenModal] = React.useState(false);
 
 	const navigate = useNavigate();
 
+	React.useEffect(() => {
+	  return () => {
+		setOpenModal(false)
+	  }
+	}, [setOpenModal])
+	
+
 	const handleChange = (id, value) => {
+		setAlert({msg:"", alert:""})
 		setFormData((prevFormData) => {
 			return { ...prevFormData, [id]: value };
 		});
@@ -181,16 +221,18 @@ const ContactUs = () => {
 	const submit = async (e) => {
 		e.preventDefault();
 		setLoading(true)
+		setAlert({msg:"", alert:""})
 		const errorResult = validate();
 		setErrors(validate());
 		if (!anyError(errorResult)) {
 			try {
 				const body = {fullName:formData.name, userEmail: formData.email, subject: formData.issue, description: formData.message, phone:formData.phone};
-				await axios.post("https://api.aplicar.hng.tech/api/v1/contact", body);
+				await axios.post("http://api.aplicar.hng.tech/api/v1/contact", body);
 				setFormData(emptyForm);
-				navigate("/");
+				setLoading(false);
+				setOpenModal(true);
 			} catch (error) {
-				setAlert({msg:"Internal Server Error", type:"error"});
+				setAlert({msg:"Internal server error, please try again", type:"error"});
 				console.error(error);
 			}
 		}
@@ -242,6 +284,7 @@ const ContactUs = () => {
 							</Link>{" "}
 							or contact our team
 						</BodyText>
+						<Alert {...alert} />
 						<form className="flex flex-col space-y-3 mt-6">
 							<Input
 								id="name"
@@ -310,13 +353,13 @@ const ContactUs = () => {
 							/>
 							<div>
 								<Button
-									className="rounded p-3"
-									disabled={Object.values(formData).some(
+									className="rounded p-3 min-w-[90px] text-center"
+									disabled={loading || Object.values(formData).some(
 										(val, index) => val === ""
 									)}
 									onClick={submit}
 								>
-									Send
+									{ loading? <FontAwesomeIcon icon={["fas","spinner"]} spin /> : "Send"}
 								</Button>
 							</div>
 						</form>
@@ -324,6 +367,11 @@ const ContactUs = () => {
 				</div>
 				<FollowUsLinks className="block md:hidden pt-6" />
 			</div>
+			
+			<SuccessModal open={openModal} onClose={()=>{
+				setOpenModal(false);
+				navigate("/");
+			}} />
 		</div>
 	);
 };
