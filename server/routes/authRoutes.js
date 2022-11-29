@@ -8,6 +8,7 @@ const {
 	verify,
 	protect,
 	login,
+	getUserDetails,
 	validateOTP,
 	resetPassword,
 } = require("../controllers/authController");
@@ -16,10 +17,10 @@ const {
 router.post("/signup", register);
 router.post("/verify", verify);
 router.post("/login", login);
+router.post("/dashboard", getUserDetails);
 router.post("/forgotPassword", forgotPassword);
 
 router.post("/validateOTP", validateOTP);
-router.post("/resetPassword", resetPassword);
 
 router.get('/google', 
   passport.authenticate('google', { scope : ['profile', 'email'] }));
@@ -34,6 +35,7 @@ router.get('/google/callback',
 
 // All After login routes goes below PROTECT ROUTE
 router.use(protect);
+router.post("/resetPassword", resetPassword);
 router.put("/updatePassword", updatePassword);
 // router.post('/resetPassword', resetPassword)
 

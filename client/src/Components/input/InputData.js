@@ -4,11 +4,10 @@ import axios from "axios";
 import back from "./asesets/arrow.png";
 import { useGlobalContext } from "../../context/context";
 
-
 function InputData() {
 	const Navigate = useNavigate();
 
-	const { file, setCoverLetter } = useGlobalContext();
+	const { file, setCoverLetter, setUserData } = useGlobalContext();
 	const [fullName, setFullName] = useState("");
 	const [isLoading, setIsloading] = useState(false);
 	const [location, setLocation] = useState("");
@@ -24,12 +23,9 @@ function InputData() {
 	const [department, setDepartment] = useState("");
 	const [error, setError] = useState(false);
 
-	
 	const clickHandler = () => {
 		Navigate("/");
 	};
-
-	
 
 	const fullNameHandler = (e) => {
 		setFullName(e.target.value);
@@ -107,6 +103,11 @@ function InputData() {
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
 				setIsloading(false);
+				setUserData({
+					name: fullName,
+					address: location,
+					email: email,
+				});
 				Navigate("/preview");
 			} catch (ex) {
 				console.log(ex);
@@ -162,7 +163,10 @@ function InputData() {
 				>
 					<div className="left">
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
-							<label htmlFor="fullName" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="fullName"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Full Name
 							</label>
 							<input
@@ -183,7 +187,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
-							<label htmlFor="companyName" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="companyName"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Company's Name
 							</label>
 							<input
@@ -204,7 +211,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="companyAddress" className="my-[3px] text-textBody text-[18px]">
+							<label
+								htmlFor="companyAddress"
+								className="my-[3px] text-textBody text-[18px]"
+							>
 								Company's Address
 							</label>
 							<input
@@ -224,7 +234,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="b flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="city" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="city"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								City
 							</label>
 							<input
@@ -576,7 +589,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-2rem lg:mb-[0]">
-							<label htmlFor="date" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="date"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Date of Application
 							</label>
 							<input
@@ -599,7 +615,10 @@ function InputData() {
 
 					<div className="right mt-[-1rem] lg:mt-0 ">
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="email" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="email"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Email Address
 							</label>
 							<input
@@ -619,7 +638,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="location" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="location"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Your Address(Preferred Location)
 							</label>
 							<input
@@ -638,8 +660,11 @@ function InputData() {
 								""
 							)}
 						</div>
-						<div  className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="role" className="my-[4px] text-textBody text-[18px]">
+						<div className="a flex flex-col text-left mb-[2rem] ">
+							<label
+								htmlFor="role"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								What Role Are You Applying For?
 							</label>
 							<input
@@ -659,7 +684,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="years" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="years"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Years of Experience
 							</label>
 							<input
@@ -679,7 +707,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="rec_name" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="rec_name"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Recipient's Name
 							</label>
 							<input
@@ -699,7 +730,10 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left">
-							<label htmlFor="rec_dept" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="rec_dept"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Recipient's Department(Optional)
 							</label>
 							<input
@@ -728,9 +762,7 @@ function InputData() {
 									class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
 									role="status"
 								>
-									<span class="visually-hidden">
-										a
-									</span>
+									<span class="visually-hidden">a</span>
 								</div>
 							</div>
 						</button>

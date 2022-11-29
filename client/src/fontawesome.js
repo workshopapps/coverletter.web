@@ -5,6 +5,9 @@ import {
 	faPhone,
 	faEnvelope,
 	faChevronDown,
+	faSpinner,
+	faCheck,
+	faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -22,5 +25,8 @@ library.add(
 	faTwitter,
 	faInstagram,
 	faFacebook,
-	faYoutube
+	faYoutube,
+	faSpinner,
+	faCheck,
+	faCircleInfo,
 );
