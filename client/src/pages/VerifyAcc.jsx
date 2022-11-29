@@ -99,7 +99,7 @@ const VerifyAcc = () => {
 						<p className="font-semibold text-[20px] md:text-[24px] mt-[24px] text-textBody ">
 							Please Enter OTP
 						</p>
-						<p className="text-errorMain font-semibold text-[20px] md:text-[24px] mt-[4px]">
+						<p className="text-errorMain font-semibold text-16px] md:text-[20px] mt-[4px]">
 							<Timer initialMinute={1} initialSeconds={59} />
 						</p>
 					</div>
