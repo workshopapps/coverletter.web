@@ -13,7 +13,7 @@ pipeline {
                 }
             }
             }
-      
+    }
             stage('Building') {
                 steps {
                     script {
@@ -25,4 +25,3 @@ pipeline {
                     }
                 }
         }
-            
