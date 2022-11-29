@@ -11,6 +11,7 @@ import cancelIcon from "../Assets/cancel.svg";
 import leftArrowIcon from "../Assets/leftArrow.svg";
 import BigLeftArrowIcon from "../Assets/bigLeftArrow";
 import { downloadPdf } from "../Utils/download-util";
+import { convertToTxt } from "../Utils/txtDownload";
 
 // import { useNavigate } from "react-router-dom";
 
@@ -26,7 +27,7 @@ const Preview = () => {
 		} else if (dType === "DOC") {
 			//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
 		} else if (dType === "TEXT") {
-			//ADD YOUR FUNCTION TO DOWNLOAD TEXT HERE
+			convertToTxt();
 		} else {
 			//TELL USER TO PICK ONE OF THE 3 OPTIONS
 		}
