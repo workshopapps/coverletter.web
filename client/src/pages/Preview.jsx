@@ -203,7 +203,7 @@ const Preview = () => {
 							<Button
 								type="submit"
 								className="w-full min-h-[48px] bg-primaryMain rounded-lg font-bold text-background mt-7"
-								children="Download 2"
+								children="Download"
 								onClick={handleClick}
 							/>
 						</div>
