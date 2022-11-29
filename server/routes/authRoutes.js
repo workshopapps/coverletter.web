@@ -1,6 +1,7 @@
 const express = require("express");
+const { StatusCodes } = require("http-status-codes");
 const router = express.Router();
-const passport = require('passport')
+const passport = require("passport");
 const {
 	register,
 	updatePassword,
@@ -22,16 +23,19 @@ router.post("/forgotPassword", forgotPassword);
 
 router.post("/validateOTP", validateOTP);
 
-router.get('/google', 
-  passport.authenticate('google', { scope : ['profile', 'email'] }));
- 
-router.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/error' }),
-  function(req, res) {
-    console.log(req)
-    res.status(200).json(req.user);
-  });
+router.get(
+	"/google",
+	passport.authenticate("google", { scope: ["profile", "email"] })
+);
 
+router.get(
+	"/google/callback",
+	passport.authenticate("google", { failureRedirect: "/error" }),
+	function (req, res) {
+		console.log(req);
+		res.status(StatusCodes.OK).json(req.user);
+	}
+);
 
 // All After login routes goes below PROTECT ROUTE
 router.use(protect);

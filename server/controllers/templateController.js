@@ -1,7 +1,7 @@
 const Template = require("../models/Template");
 
 const { StatusCodes } = require("http-status-codes");
-const { BadRequestError } = require("../errors");
+const { NotFoundError } = require("../errors");
 const mongoose = require("mongoose");
 
 /**
@@ -21,12 +21,10 @@ const getACoverLetter = async (req, res) => {
 			throw new BadRequestError("Invalid template ID");
 		}
 
-		const template = await Template.findById(id).exec();
+		const template = await Template.findById(id);
 
 		if (!template) {
-			return res.status(404).json({
-				error: "Template does not exist",
-			});
+			throw new NotFoundError("Template does not exist");
 		}
 
 		return res.status(StatusCodes.OK).json({
@@ -49,12 +47,10 @@ const getACoverLetter = async (req, res) => {
 
 const getAllCoverLettersByAUser = async (req, res) => {
 	const { id } = req.user;
-	const template = await Template.find({ user_id: id }).exec();
+	const template = await Template.find({ user_id: id });
 
 	if (!template) {
-		return res.status(404).json({
-			error: "Template does not exist",
-		});
+		throw new NotFoundError("Template does not exist");
 	}
 
 	return res.status(StatusCodes.OK).json({
@@ -81,10 +77,9 @@ const editACoverLetter = async (req, res) => {
 		throw new BadRequestError("Invalid template request");
 	}
 
-	const editedTemplate = await Template.update(
-		{ _id: id },
-		{ $set: { template: template } }
-	).exec();
+	const editedTemplate = await Template.findByIdAndUpdate(id, {
+		$set: { template: template },
+	});
 
 	return res.status(StatusCodes.OK).json({
 		message: "Template edited successfully",
@@ -95,21 +90,21 @@ const editACoverLetter = async (req, res) => {
 const deleteCoverLetter = async (req, res) => {
 	const { templateId } = req.params;
 
-	if (!mongoose.Types.ObjectId.isValid(templateId))
-		return res.status(404).json({ message: "This user id is not valid!" });
-
+	if (!mongoose.Types.ObjectId.isValid(templateId)) {
+		throw new NotFoundError("Template not found");
+	}
 	const checkIfTemplateExists = await Template.find({}).count();
 
-	if (!checkIfTemplateExists < 1) {
-		const template = await Template.findByIdAndDelete({ id: templateId });
-		return res.status(StatusCodes.OK).json({
-			message: `Cover Letter deleted with the id ${templateId} successfully`,
-		});
-	} else {
-		return res.status(StatusCodes.NOT_FOUND).json({
-			message: `Cover Letter with the id ${templateId} does not exist`,
-		});
+	if (checkIfTemplateExists < 1) {
+		throw new NotFoundError(
+			`Cover Letter with the id ${templateId} does not exist`
+		);
 	}
+
+	await Template.findByIdAndDelete({ id: templateId });
+	return res.status(StatusCodes.OK).json({
+		message: `Cover Letter deleted with the id ${templateId} successfully`,
+	});
 };
 
 module.exports = {
