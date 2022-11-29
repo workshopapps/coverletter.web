@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
-import Event from './pages/Event'
+import Event from "./pages/Event";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
 	Register,
 	VerifyAcc,
@@ -37,6 +39,7 @@ import {
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
 	return (
@@ -80,10 +83,7 @@ const App = () => {
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
 					/>
-					<Route
-						path="/event"
-						element={<Event />}
-					/>
+					<Route path="/event" element={<Event />} />
 					<Route
 						path="/terms-and-conditions"
 						element={<TermsAndCondition />}
@@ -105,6 +105,8 @@ const App = () => {
 					<Route path="/generate" element={<UploadCV />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
+				<ToastContainer position="top-center"></ToastContainer>
+
 				<Footer />
 			</ScrollToTop>
 		</Router>
