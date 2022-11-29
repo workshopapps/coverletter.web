@@ -40,13 +40,13 @@ const ForgotPassword = () => {
 			});
 	};
 	return (
-		<section className="forgot-password bg-[#f2f2f7] pt-36 pb-24">
-			<div className="forgot-password mx-auto w-[89%] py-8 bg-[transparent] sm:w-[75%] md:bg-white md:w-[474px] bg-white py-16 md:px-10 lg:px-16 xl:w-[528px]">
+		<section className="forgot-password bg-[#f2f2f7] pt-36 pb-24 max-[425px]:pt-20">
+			<div className="forgot-password mx-auto w-[89%] py-8 bg-[transparent] sm:w-[75%] md:bg-white md:w-[474px] bg-white py-16 md:px-10 lg:px-16 xl:w-[528px] ">
 				<SuccessModal onClose={() => setShow(false)} show={show}>
 					<div className="modal-body-text">
 						<p className="text-[16px] leading-6 text-gray-700 font-semibold mb-10">
-							Account found! We  further instructions on
-							how to reset your password to the email provided
+							Account found! We further instructions on how to
+							reset your password to the email provided
 						</p>
 					</div>
 					<div className="home-btn">
@@ -116,7 +116,7 @@ const ForgotPassword = () => {
 										? "Loading..."
 										: "Send link to email"
 								}
-								className="text-center w-full bg-[#0652DD] border rounded-lg text-white py-4 cursor-pointer hover:scale-x-[1.01] font-semibold"
+								className="text-center w-full bg-[#0652DD] border rounded-lg text-white py-4 cursor-pointer hover:scale-x-[1.01]font-semibold"
 							/>
 						</div>
 					</form>
