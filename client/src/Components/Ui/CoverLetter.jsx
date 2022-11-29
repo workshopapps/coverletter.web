@@ -1,7 +1,12 @@
 import React from "react";
 import { useGlobalContext } from "../../context/context";
+import { useRef, useEffect } from "react";
 const CoverLetter = () => {
 	const { coverLetter: data, userData } = useGlobalContext();
+	const coverLetterRef = useRef(null);
+	useEffect(() => {
+		console.log(coverLetterRef.current.target);
+	}, []);
 
 	return (
 		<div className="w-[98%] bg-textWhite border-grey300 border-2 py-8 px-7 rounded-lg">
@@ -19,7 +24,10 @@ const CoverLetter = () => {
 					{/* {data.company_address} */}
 					10/11/2022
 				</p>
-				<p className="w-[40%] text-sm md:text-base flex">
+				<p
+					className="w-[40%] text-sm md:text-base flex"
+					ref={coverLetterRef}
+				>
 					{data.company_address}
 					{/* Famfresh & Co. 321 ilupeju Ave, Lagos, Nigeria */}
 				</p>
