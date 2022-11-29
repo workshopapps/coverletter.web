@@ -1,6 +1,5 @@
 import React from "react";
 import { useGlobalContext } from "../../context/context";
-import { useRef, useEffect } from "react";
 const CoverLetter = () => {
 	const { coverLetter: data, userData } = useGlobalContext();
 
