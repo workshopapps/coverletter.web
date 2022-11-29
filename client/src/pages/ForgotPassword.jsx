@@ -116,7 +116,7 @@ const ForgotPassword = () => {
 										? "Loading..."
 										: "Send link to email"
 								}
-								className="text-center w-full bg-[#0652DD] border rounded-lg text-white py-4 cursor-pointer hover:scale-x-[1.01] font-semibold"
+								className="text-center w-full bg-[#0652DD] border rounded-lg text-white py-4 cursor-pointer hover:scale-x-[1.01]font-semibold"
 							/>
 						</div>
 					</form>
