@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
+const hashPassword = require("../utils/hashPassword")
 const { BadRequestError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
 const bcrypt = require("bcryptjs");
@@ -31,7 +32,7 @@ const register = async (req, res) => {
 		"<h3>OTP for account verification is </h3>" +
 			`<h1 style='font-weight:bold;'>" + ${confirmationCode} +"</h1>`
 	);
-
+	user.password = await hashPassword(user.password)
 	await user.save();
 
 	res.status(StatusCodes.CREATED).json("Signup was successful.");
@@ -197,8 +198,6 @@ const forgotPassword = async (req, res, next) => {
 };
 const resetPassword = async (req, res) => {
 	const { password, email, confirmPassword } = req.body;
-	const salt = bcrypt.genSaltSync(10);
-	const hashedPassword = bcrypt.hashSync(password, salt);
 
 	if (password !== confirmPassword) {
 		throw new BadRequestError("confirm with a similar password");
@@ -210,14 +209,9 @@ const resetPassword = async (req, res) => {
 		throw new BadRequestError("email not found in database");
 	}
 
-	const comparePassword = await user.compare(hashedPassword, user.password);
-	if (!comparePassword) {
-		throw new BadRequestError("Passwords fields can only be unique");
-	}
-
-	user.password = password;
-	user.passwordResetToken = undefined;
-	user.passwordResetExpires = undefined;
+	user.password = await hashPassword(password);
+	user.otp= null;
+	user.passwordResetExpires = null;
 	await user.save();
 
 	res.status(StatusCodes.CREATED).json({
@@ -226,20 +220,19 @@ const resetPassword = async (req, res) => {
 };
 
 const validateOTP = async (req, res) => {
-	const { otp, email } = req.body;
-	//console.log(otp);
+	const { otp, email} = req.body;
 	const user = await User.findOne({ email });
 	if (!user) {
 		throw new BadRequestError("email not found in database");
 	}
-
-	const verifyOTP = await user.compare(otp, user.otp);
+	const verifyOTP = otp==user.otp;
 	if (!verifyOTP) {
 		throw new BadRequestError("OTP is invalid or expired");
 	}
-
+	const token = user.createJWT();
 	res.status(StatusCodes.CREATED).json({
 		msg: "otp verification was successful.",
+		token: token
 	});
 };
 

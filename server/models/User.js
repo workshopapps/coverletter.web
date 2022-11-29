@@ -33,14 +33,10 @@ const UserSchema = mongoose.Schema({
 	confirmationCode: {
 		type: String
 	},
-	resetPasswordOtp: String,
-	passwordResetExpires: Date,
+	otp: {type:String,default:null},
+	passwordResetExpires: {type:Date,default:null},
 });
 
-UserSchema.pre("save", async function () {
-	const salt = await bcrypt.genSalt(10);
-	this.password = await bcrypt.hash(this.password, salt);
-});
 
 UserSchema.methods.createJWT = function () {
 	return jwt.sign(
@@ -64,10 +60,7 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
 
 UserSchema.methods.createPasswordResetToken = function () {
 	const otp = generateOTP(4);
-	this.resetPasswordOtp = crypto
-		.createHash("sha256")
-		.update(otp)
-		.digest("hex");
+	this.otp = otp;
 	return otp;
 };
 
