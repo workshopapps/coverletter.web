@@ -54,7 +54,7 @@ const App = () => {
 						path="/cover letter"
 						element={<PgCoverLetter />}
 					></Route>
-					<Route path="privacy-policy" element={<PrivacyPolicy />} />
+					<Route path="/privacy-policy" element={<PrivacyPolicy />} />
 					<Route path="/contactus" element={<ContactUs />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/verifyaccount" element={<VerifyAcc />} />
