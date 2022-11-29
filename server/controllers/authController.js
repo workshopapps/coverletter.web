@@ -1,10 +1,9 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
+const hashPassword = require("../utils/hashPassword")
 const { BadRequestError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
-const bcrypt = require("bcryptjs");
-const crypto = require("crypto");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 
@@ -31,10 +30,10 @@ const register = async (req, res) => {
 		"<h3>OTP for account verification is </h3>" +
 			`<h1 style='font-weight:bold;'>" + ${confirmationCode} +"</h1>`
 	);
-
+	user.password = await hashPassword(user.password)
 	await user.save();
 
-	res.status(StatusCodes.CREATED).json("Signup was successful.");
+	return res.status(StatusCodes.CREATED).json("Signup was successful.");
 };
 
 const verify = async (req, res) => {
@@ -51,9 +50,9 @@ const verify = async (req, res) => {
 	);
 
 	if (user) {
-		res.status(StatusCodes.OK).json("User has been successfully verified");
+		return res.status(StatusCodes.OK).json("User has been successfully verified");
 	} else {
-		res.status(StatusCodes.BAD_REQUEST).json("Verification failed");
+		return res.status(StatusCodes.BAD_REQUEST).json("Verification failed");
 	}
 };
 
@@ -82,7 +81,7 @@ const login = async (req, res, next) => {
 		}
 		const token = user.createJWT();
 
-		res.status(201).json({
+		return res.status(201).json({
 			status: "success",
 			token,
 		});
@@ -151,21 +150,27 @@ const updatePassword = async (req, res, next) => {
 		user.password = password;
 		const savedUser = await user.save();
 		const token = savedUser.createJWT();
-		res.status(StatusCodes.CREATED).json({ user: token });
+		return res.status(StatusCodes.CREATED).json({ user: token });
 	} catch (err) {
 		console.log(err);
 	}
 };
 
 const forgotPassword = async (req, res, next) => {
-	const user = await User.findOne({ email: req.body.email });
-	if (!user) {
-		return next(
-			new BadRequestError("There is no user with this email address.")
-		);
+	try {
+		var user = await User.findOne({ email: req.body.email });
+		if (!user) {
+			return next(
+				new BadRequestError("There is no user with this email address.")
+			);
+		}
+		var otpResetToken = user.createPasswordResetToken();
+		await user.save();
+	} catch (error) {
+		return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+			msg: "Something went Wrong",
+		});
 	}
-	const otpResetToken = user.createPasswordResetToken();
-	await user.save();
 
 	const message = `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
     <div style="margin:50px auto;width:70%;padding:20px 0">
@@ -197,50 +202,55 @@ const forgotPassword = async (req, res, next) => {
 };
 const resetPassword = async (req, res) => {
 	const { password, email, confirmPassword } = req.body;
-	const salt = bcrypt.genSaltSync(10);
-	const hashedPassword = bcrypt.hashSync(password, salt);
 
 	if (password !== confirmPassword) {
 		throw new BadRequestError("confirm with a similar password");
 	}
 
-	const user = await User.findOne({ email: email });
+	try {
+		const user = await User.findOne({ email: email });
 
-	if (!user) {
-		throw new BadRequestError("email not found in database");
+		if (!user) {
+			throw new BadRequestError("email not found in database");
+		}
+
+		user.password = await hashPassword(password);
+		user.otp= null;
+		user.passwordResetExpires = null;
+		await user.save();
+
+		return res.status(StatusCodes.CREATED).json({
+			msg: "Password change was successful.",
+		});
+	} catch (error) {
+		return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+			msg: "Something went Wrong",
+		});
 	}
-
-	const comparePassword = await user.compare(hashedPassword, user.password);
-	if (!comparePassword) {
-		throw new BadRequestError("Passwords fields can only be unique");
-	}
-
-	user.password = password;
-	user.passwordResetToken = undefined;
-	user.passwordResetExpires = undefined;
-	await user.save();
-
-	res.status(StatusCodes.CREATED).json({
-		msg: "Password change was successful.",
-	});
 };
 
 const validateOTP = async (req, res) => {
-	const { otp, email } = req.body;
-	//console.log(otp);
-	const user = await User.findOne({ email });
-	if (!user) {
-		throw new BadRequestError("email not found in database");
+	const { otp, email} = req.body;
+	try {
+		const user = await User.findOne({ email });
+		if (!user) {
+			throw new BadRequestError("email not found in database");
+		}
+		const verifyOTP = otp==user.otp;
+		if (!verifyOTP) {
+			throw new BadRequestError("OTP is invalid or expired");
+		}
+		const token = user.createJWT();
+		return res.status(StatusCodes.CREATED).json({
+			msg: "otp verification was successful.",
+			token: token
+		});
+	} catch (error) {
+		return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+			msg: "Something went Wrong",
+		});
 	}
 
-	const verifyOTP = await user.compare(otp, user.otp);
-	if (!verifyOTP) {
-		throw new BadRequestError("OTP is invalid or expired");
-	}
-
-	res.status(StatusCodes.CREATED).json({
-		msg: "otp verification was successful.",
-	});
 };
 
 const getUserDetails = async (req, res) => {
