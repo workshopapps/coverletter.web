@@ -1,0 +1,25 @@
+.modal {
+	transition: all 0.3s ease-in-out;
+	pointer-events: none;
+}
+
+.modal.show {
+	opacity: 1;
+	pointer-events: visible;
+}
+
+.modal-content {
+	transition: all 0.3s ease-in-out;
+	transform: translateY(-200px);
+}
+
+.modal.show .modal-content {
+	transform: translateY(0);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
