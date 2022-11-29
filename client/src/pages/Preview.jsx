@@ -5,6 +5,8 @@ import { useGlobalContext } from "../context/context";
 import lockedCover_1 from "../Assets/cover_letter_full_2.jpg";
 import lockedCover_2 from "../Assets/cover_letter_full_3.jpg";
 import CoverLetter from "../Components/Ui/CoverLetter";
+import { Manrope } from "../jsPdf-fonts";
+import jsPdf from "jspdf";
 // import { useNavigate } from "react-router-dom";
 
 const Preview = () => {
@@ -15,6 +17,24 @@ const Preview = () => {
 	const handleClick = () => {
 		setFirstModal(!firstModal);
 	};
+
+	const testDownload = () => {
+		const doc = new jsPdf({ unit: "px", format: "a4" }); // create jsPDF object
+		doc.addFileToVFS("Manrope.ttf", Manrope);
+		doc.addFont("Manrope.ttf", "Manrope", "normal");
+		doc.setFont("Manrope");
+		const domToSave = document.getElementById("coverletter-target");
+
+		doc.html(domToSave, {
+			callback: (pdf) => {
+				pdf.save("MyPdfFile.pdf");
+			},
+			width: 50,
+			margin: [10, 20, 10, 20],
+			// optional: page margin
+		});
+	};
+
 	useEffect(() => {
 		setFirstModal(false);
 	}, [openModal]);
@@ -301,8 +321,8 @@ const Preview = () => {
 							<Button
 								type="submit"
 								className="w-full min-h-[48px] bg-primaryMain rounded-lg font-bold text-background mt-7"
-								children="Download"
-								onClick={handleClick}
+								children="Download 2"
+								onClick={testDownload}
 							/>
 						</div>
 					</Modal>
