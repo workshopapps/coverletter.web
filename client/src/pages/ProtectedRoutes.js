@@ -1,12 +1,12 @@
 import { Navigate } from "react-router-dom";
 import { useGlobalContext } from "../context/context";
 
-const AuthUserRoute = ({ children }) => {
-	const { user } = useGlobalContext();
-	if (!user) {
+const ProtectedRoutes = ({ children }) => {
+	const { coverLetter } = useGlobalContext();
+	if (!coverLetter) {
 		return <Navigate to="/" />;
 	}
 	return children;
 };
 
-export default AuthUserRoute;
+export default ProtectedRoutes;

@@ -8,7 +8,7 @@ const AppProvider = ({ children }) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [user, setUser] = useState(getUserFromLocalStorage());
 	const [file, setFile] = useState("");
-	const [coverLetter, setCoverLetter] = useState("");
+	const [coverLetter, setCoverLetter] = useState(false);
 	const [fileName, setFileName] = useState("");
 	const [userData, setUserData] = useState({});
 
