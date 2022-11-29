@@ -13,7 +13,7 @@ const downloadPdf = (domId) => {
 			pdf.save("MyPdfFile.pdf");
 		},
 		width: 50,
-		margin: [10, 20, 10, 20],
+		margin: [10, 0, 10, 0],
 	});
 };
 
