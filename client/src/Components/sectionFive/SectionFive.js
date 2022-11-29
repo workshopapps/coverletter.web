@@ -11,7 +11,7 @@ function SectionFive() {
         <p className="text-grey100  font-[300] text-[14px] text-center md:text-[24px] mt-2">
           You can download to your device straight away.
         </p>
-        <a className="px-[32px] py-[12px] mt-[25px] text-[14px] md:text-[16px] text-textWhite bg-primaryMain  font-semibold rounded-lg" href="#upload_section"> Create Cover Letter</a>
+        <a className="px-[32px] py-[12px] mt-[25px] text-[14px] md:text-[16px] text-textWhite bg-primaryMain hover:bg-primaryDark font-semibold rounded-lg" href="#upload_section"> Create Cover Letter</a>
       </div>
     </div>
   );
