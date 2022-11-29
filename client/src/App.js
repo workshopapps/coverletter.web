@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Event from './pages/Event'
+import Event from "./pages/Event";
 import {
 	Register,
 	VerifyAcc,
@@ -51,7 +51,7 @@ const App = () => {
 						path="/cover letter"
 						element={<PgCoverLetter />}
 					></Route>
-					<Route path="privacy-policy" element={<PrivacyPolicy />} />
+					<Route path="/privacy-policy" element={<PrivacyPolicy />} />
 					<Route path="/contactus" element={<ContactUs />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/verifyaccount" element={<VerifyAcc />} />
@@ -80,10 +80,7 @@ const App = () => {
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
 					/>
-					<Route
-						path="/event"
-						element={<Event />}
-					/>
+					<Route path="/event" element={<Event />} />
 					<Route
 						path="/terms-and-conditions"
 						element={<TermsAndCondition />}
