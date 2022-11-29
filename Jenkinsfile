@@ -6,10 +6,10 @@ pipeline {
             stage('Unit Tests') {
             steps {
                 script {
-                        sh 'npm config ls'
+              
                         sh 'cd client/ && npm install'
                         //sh cd ..
-                        sh 'cd server/ && npm install && npm install pm2@latest -g'
+                        sh 'cd server/ && npm install pm2@latest -g'
                 }
             }
             }
@@ -19,6 +19,7 @@ pipeline {
                     script {
                        
                         always {
+                            sh 'pm2 start --name server app.js'
                             sh 'npm run build'
                          
                         }
