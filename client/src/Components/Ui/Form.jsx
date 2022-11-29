@@ -116,12 +116,14 @@ const Select = (props) => {
 
 	const handleClick = () => {
 		setOpen(!open);
-		setHeight(open ? "0px" : `${getHeight(options.length)}px`);
+		setHeight(open ? "0px" : `${getHeight(options.length*2+1)}px`);
 	};
 
 	const handleBlur = () => {
-		setOpen(false);
+		setTimeout(() => {
+			setOpen(false);
 		setHeight("0px");
+		}, 100);
 	};
 
 	const keyDown = (event) => {
@@ -161,18 +163,15 @@ const Select = (props) => {
 				/>
 			</div>
 			<div
-				style={{ height: height }}
-				className="transition-all duration-200 border-[#6D6D6D] overflow-hidden rounded-lg"
+				style={{ maxHeight: height }}
+				className="transition-all duration-200 border-[#6D6D6D] overflow-y-scroll rounded-lg"
 			>
-				<ul className="h-full bg-[#fff]  border-[#6D6D6D] border-[1px] rounded-lg">
+				<ul className="h-full bg-[#fff]  border-[#6D6D6D] border-[1px] rounded-lg ">
 					{options.map((item, index) => (
 						<li
 							key={index}
-							onClick={() =>
-								onChange &&
-								onChange({ target: { value: item } })
-							}
-							className="w-full px-5 py-2 hover:bg-[#DCDCDC] cursor-pointer"
+							onClick={() =>onChange && onChange({ target: { value: item } })}
+							className="w-full text-grey400 px-5 py-2 hover:bg-[#DCDCDC] cursor-pointer"
 						>
 							{item}
 						</li>
