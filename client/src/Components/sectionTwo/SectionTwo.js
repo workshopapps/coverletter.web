@@ -63,7 +63,7 @@ function SectionTwo() {
 						{fileSize > 0 && fileSize < 5000000 ? (
 							<Uploading />
 						) : (
-							<label for="upload_file" className="flex flex-col items-center justify-center">
+							<label htmlFor="upload_button" className="flex flex-col items-center justify-center">
 								<img src="" alt="" />
 
 								<h3 className=" text-primaryMain lg:text-[24px] text-center mt-4 text-[20px] font-semibold">

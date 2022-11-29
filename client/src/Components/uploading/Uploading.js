@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useGlobalContext } from "../../context/context";
-import axios from "axios";
+import axios, { isCancel } from "axios";
 import Uploaded from "../uploaded/Uploaded";
 
 function Uploading() {
@@ -8,6 +8,8 @@ function Uploading() {
 	const [status, setStatus] = useState("");
 	const [show, setShow] = useState(true);
 	const { file, fileName } = useGlobalContext();
+
+    const cancelFileUpload = useRef(null)
 
 	useEffect(() => {
 	const uploadFile = async (e) => {
@@ -19,13 +21,15 @@ function Uploading() {
                 onUploadProgress: (ProgressEvent) => {
                     const { loaded, total } = ProgressEvent;
                     let percent = Math.floor((loaded * 100) / total);
-                    console.log(`${loaded}byte of ${total}byte | ${percent}% `);
+                    // console.log(`${loaded}byte of ${total}byte | ${percent}% `);
     
                     if (percentage < 100) {
                         setPercentage(percent);
-                        console.log(percentage);
+                        // console.log(percentage);
                     }
                 },
+
+               cancelToken: new axios.CancelToken( cancel => (cancelFileUpload.current = cancel))
             };
     
             try {
@@ -38,7 +42,10 @@ function Uploading() {
                 setStatus(res.status)
             } catch (ex) {
                 console.log(ex);
-                alert("You imported the wrong file");
+                // alert("You imported the wrong file");
+                if(isCancel(ex)){
+                    alert(ex.message)
+                }
             }
         };
 
@@ -50,10 +57,16 @@ function Uploading() {
     if(status> 100 && status < 250){
         setTimeout(() =>{
             setShow(false)
-        },1500)
+        },500)
     }
 
     console.log(status)
+
+    const cancelUpload = () =>{
+        if(cancelFileUpload){
+        cancelFileUpload.current("User has canceled the file upload")
+    }
+    }
 
     return (
 		<div className="whole">
@@ -65,7 +78,7 @@ function Uploading() {
                             <div className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full" style = {{ width : `${percentage}%` }}> </div>
                          </div>
 					</div>
-					<button className="border-[1.5px] px-4 py-2 text-[16px] font-semibold border-errorMain text-errorMain rounded-lg">
+					<button onClick={cancelUpload} className="border-[1.5px] px-4 py-2 text-[16px] font-semibold border-errorMain text-errorMain rounded-lg">
 						Cancel
 					</button>
 				</div>
