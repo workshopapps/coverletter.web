@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require('passport')
+const jwt = require('jsonwebtoken')
 const {
 	register,
 	updatePassword,
@@ -21,21 +22,23 @@ router.post("/dashboard", getUserDetails);
 router.post("/forgotPassword", forgotPassword);
 
 router.post("/validateOTP", validateOTP);
-router.post("/resetPassword", resetPassword);
-
+//GOOGLE auth routes
 router.get('/google', 
   passport.authenticate('google', { scope : ['profile', 'email'] }));
  
 router.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/error' }),
+  passport.authenticate('google', { failureRedirect: 'coverly.hng.tech/signin' }),
   function(req, res) {
-    console.log(req)
-    res.status(200).json(req.user);
+    const user = req.user
+    const token =  jwt.sign({googleID:user._id,name:user.name, email:user.email},process.env.JWT_SECRET,{expiresIn: "2h"})
+    
+   return res.status(200).json({user,token});
   });
 
 
 // All After login routes goes below PROTECT ROUTE
 router.use(protect);
+router.post("/resetPassword", resetPassword);
 router.put("/updatePassword", updatePassword);
 // router.post('/resetPassword', resetPassword)
 

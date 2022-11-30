@@ -6,6 +6,9 @@ module.exports = {
 			gridTemplateColumns: {
 				grid: "repeat(auto-fit, minmax(297px, 1fr))",
 			},
+			screens: {
+				lw: "1440px",
+			},
 		},
 		colors: {
 			background: "#F2F2F7",

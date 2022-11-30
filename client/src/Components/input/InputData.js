@@ -68,8 +68,8 @@ function InputData() {
 		e.preventDefault();
 
 		if (
-			companyName.length == 0 ||
-			companyAddress.length == 0 ||
+			companyName.length === 0 ||
+			companyAddress.length === 0 ||
 			city.length ||
 			country.length ||
 			date.length ||
@@ -97,7 +97,7 @@ function InputData() {
 			formData.append("location", location);
 			try {
 				const res = await axios.post(
-					`http://api.aplicar.hng.tech/api/v1/generate`,
+					`http://api.coverly.hng.tech/api/v1/generate`,
 					formData
 				);
 				console.log(res);
