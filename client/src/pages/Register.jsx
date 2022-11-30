@@ -9,9 +9,12 @@ import { Link, useNavigate } from "react-router-dom";
 import SuccessModal from "../Components/Ui/SuccessModal";
 import Input from "../Components/Ui/Input";
 import { toast } from "react-toastify";
+import { useGlobalContext } from "../context/context";
+import { addEmailToLocalStorage } from "../Utils/localStorage";
 
 import axios from "axios";
 const CreateAcount = () => {
+	const { setUserEmail, userEmail } = useGlobalContext();
 	const navigate = useNavigate();
 	const [show, setShow] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);
@@ -31,6 +34,8 @@ const CreateAcount = () => {
 				}
 			);
 			setShow(true);
+			setUserEmail({ email: values.email });
+			addEmailToLocalStorage({ email: values.email });
 		} catch (err) {
 			toast.error(err.response.data.msg);
 			return;

@@ -68,8 +68,8 @@ function InputData() {
 		e.preventDefault();
 
 		if (
-			companyName.length == 0 ||
-			companyAddress.length == 0 ||
+			companyName.length === 0 ||
+			companyAddress.length === 0 ||
 			city.length ||
 			country.length ||
 			date.length ||
