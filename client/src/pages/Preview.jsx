@@ -37,20 +37,19 @@ const Preview = () => {
 			downloadPdf("coverletter-target");
 		} else if (dType === "DOC") {
 			//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
-			testDOCXDownload();
+			downloadDOCX();
 		} else if (dType === "TEXT") {
 			convertToTxt();
 		} else {
 			//TELL USER TO PICK ONE OF THE 3 OPTIONS
 		}
-
-		console.log(dType);
+		setDtype(null);
+		closeModal();
 		// setFirstModal(!firstModal);
 	};
 
-	const testDOCXDownload = async () => {
+	const downloadDOCX = async () => {
 		const docxTemplate1 = myTemplate1({ data, userData });
-
 		const blob = await Packer.toBlob(docxTemplate1);
 		saveAs(blob, "My cover letter.docx");
 	};
