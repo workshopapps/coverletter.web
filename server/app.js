@@ -10,9 +10,9 @@ const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const bodyParser = require("body-parser");
-const passport = require('passport')
-const session = require('express-session')
-const MongoStore = require('connect-mongo');
+const passport = require("passport");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const connectDB = require("./db/connect");
 require("dotenv").config();
 
@@ -30,7 +30,7 @@ app.use(
 
 //Routers
 const authRoutes = require("./routes/authRoutes");
-const adminRoutes = require("./routes/adminRoutes")
+const adminRoutes = require("./routes/adminRoutes");
 // const resetRoutes = require("./routes/resetRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
@@ -38,32 +38,25 @@ const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const generateOtpRoutes = require("./routes/generateOtpRoutes");
 
-app.use(
-	"/cvg-documentation",
-	swaggerUI.serve,
-	swaggerUI.setup(swaggerDocument)
-);
-
 //Passport config
-require('./utils/passport')(passport)
+require("./utils/passport")(passport);
 //Sessions
 app.use(
-  session({
-    secret: 'secretkey',
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({mongoUrl: process.env.MONGO_URI}),
-  })
-)
+	session({
+		secret: "secretkey",
+		resave: false,
+		saveUninitialized: false,
+		store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+	})
+);
 
 // Passport middleware
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
-const textToPdf = require("./utils/textToPdf");
 
 app.use(bodyParser.json());
 app.use(helmet());
@@ -84,7 +77,6 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", generateOtpRoutes);
 app.use("/api/v1", templateRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
-// app.use("/api/v1", resetRoutes);
 app.use("/api/v1", downloadCoverLetter);
 app.use("/api/v1", contactRoutes);
 
@@ -108,7 +100,5 @@ const start = async () => {
 };
 
 start();
-
-
 
 module.exports = app;

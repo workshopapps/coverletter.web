@@ -39,7 +39,7 @@ const sendCoverLetter = async (req, res) => {
 			recipient_phone_no: recipient_phone_no,
 		},
 	};
-	return res.status(StatusCodes.CREATED).json(response);
+	return res.status(StatusCodes.CREATED).json({ response });
 };
 
 module.exports = { sendCoverLetter };
