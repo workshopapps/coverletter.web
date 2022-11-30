@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useGlobalContext } from "../../context/context";
-import axios, { isCancel } from "axios";
+import axios from "axios";
 import Uploaded from "../uploaded/Uploaded";
 import Upload from "../upload/Upload";
 import {ToastContainer, toast} from 'react-toastify';
@@ -13,13 +13,18 @@ function Uploading() {
 	const [error, setError] = useState('');
 	const { file, setFile, setFileSize, fileName } = useGlobalContext();
 
-    const cancelFileUpload = useRef(null)
+    const ourRequest = useRef(null)
 
 	const showToast = () => {
 		    toast(" You imported the wrong file! ")
 		  };
 
+		const cancelToast = () =>{
+			    toast(" You cancelled the operation! ")
+		};
+
 	useEffect(() => {
+		 ourRequest.current = axios.CancelToken.source()
 	const uploadFile = async (e) => {
 			const formData = new FormData();
 			formData.append("myFile", file);
@@ -33,22 +38,18 @@ function Uploading() {
                         setPercentage(percent);
                     }
                 },
-
-               cancelToken: new axios.CancelToken( cancel => cancelFileUpload.current = cancel)
+				cancelToken: ourRequest.current.token
             };
     
             try {
                 const res = await axios.post(
                     `http://api.coverly.hng.tech/api/v1/upload`,
-                    formData,
-                    option
+                    formData, option,
                 );
                 setStatus(res.status)
             } catch (ex) {
                 setError(ex.code);
-                if(isCancel(ex)){
-                    alert(ex.message)
-                }
+                
             }
         };
 
@@ -74,13 +75,15 @@ function Uploading() {
     }			
 
     const cancelUpload = () =>{
-        if(cancelFileUpload.current)
-        cancelFileUpload.current("User has canceled the file upload")
+		ourRequest.current.cancel();
+		setError('ERR_BAD_REQUEST');
+		setFile("");
+		setFileSize();
+		cancelToast();
     }
 
     return (
 		<div className="whole"> 
-		
 		{
 			error === 'ERR_BAD_REQUEST' ? <Upload /> : 
 			show ? (

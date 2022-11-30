@@ -662,7 +662,7 @@ function InputData() {
 								name="date"
 								className= {`px-3 py-[9px] border-[1.5px] ${error && date <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={dateHandler}
-								type="text"
+								type="date"
 								value={date}
 								id="date"
 							/>

@@ -14,7 +14,7 @@ function SectionTwo() {
 			id="upload_section"
 			className="px-1 z-20  relative flex flex-col items-center lg:flex-rol bg-gray-100  py-[50px]"
 		>
-			<main className="flex flex-col items-center gap-7 w-[85%] m-auto lg:flex-row lg:mt-[60px] xl:w-[1080px] lw:w-[1250px] ">
+			<main className="flex flex-col items-center gap-7 w-[85%]  m-auto lg:flex-row lg:mt-[60px] xl:w-[1160px] lw:w-[1250px] ">
 				<div className="left text-left text-gray-800 lg:w-[50%] w-[100%] mb-[20px] lg:mb-09  flex flex-col justify-center items-center lw:w-[550px]">
 					<h2 className="lg:text-3xl text-textBody text-left text-[24px] font-bold leading-[2.4rem] mb-[4px] xl:text-4xl ">
 						Upload your CV/Resume to make a Cover Letter
