@@ -1,50 +1,27 @@
-name: SFTP CI
- 
-# Controls when the action will run. 
+name: React CI
+
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  
-  pull_request:
-    branches: ["dev"]
- 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
- 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    pull_request:
+        branches: ["dev"]
+
 jobs:
-  # This workflow contains a single job called "SFTP"
-  deploy-via-sftp:
-    runs-on: ubuntu-latest
-    strategy:
+    build:
+        runs-on: [self-hosted,frontend]
+        strategy:
             matrix:
                 node-version: [ 16.x]
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - name: Node LTS versions
-  
-      - name: SFTP Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
-        with:
-          username: azureuser
-          server: aplicar.hng.tech
-          port: 22 # default is 22
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
- 
-          
-          # will put all file under this path
-          local_path: ./client   # default is ./*
-          # files will copy to under remote_path
-          remote_path: /var/www/aplicar
-          
-          # sftp args
-          args: '-o ConnectTimeout=5'
-
-      - name: Build Project
-      - run:  npm install
-      - run:  npm run build --if-present 
-      - run: npm test --if-present 
-
-      - name: Start app
-      - run: npm start
-      
+        steps:
+            - uses: actions/checkout@v3
+            - name: Node LTS versions
+              uses: msimerson/node-lts-versions@v1.1.1
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              env:
+                  FORCE_COLOR: 0
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: "npm"
+                  cache-dependency-path: "./client/package-lock.json"
+        
+            - run: cd client && npm i    
+            - run: pm2 restart frontend
