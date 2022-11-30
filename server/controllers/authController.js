@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
-const hashPassword = require("../utils/hashPassword")
+const hashPassword = require("../utils/hashPassword");
 const { BadRequestError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
 const { promisify } = require("util");
@@ -30,7 +30,7 @@ const register = async (req, res) => {
 		"<h3>OTP for account verification is </h3>" +
 			`<h1 style='font-weight:bold;'>" + ${confirmationCode} +"</h1>`
 	);
-	user.password = await hashPassword(user.password)
+	user.password = await hashPassword(user.password);
 	await user.save();
 
 	return res.status(StatusCodes.CREATED).json("Signup was successful.");
@@ -50,7 +50,9 @@ const verify = async (req, res) => {
 	);
 
 	if (user) {
-		return res.status(StatusCodes.OK).json("User has been successfully verified");
+		return res
+			.status(StatusCodes.OK)
+			.json("User has been successfully verified");
 	} else {
 		return res.status(StatusCodes.BAD_REQUEST).json("Verification failed");
 	}
@@ -147,7 +149,7 @@ const updatePassword = async (req, res, next) => {
 			);
 		}
 		//6) Update password
-		user.password = password;
+		user.password = await hashPassword(password);
 		const savedUser = await user.save();
 		const token = savedUser.createJWT();
 		return res.status(StatusCodes.CREATED).json({ user: token });
@@ -215,7 +217,7 @@ const resetPassword = async (req, res) => {
 		}
 
 		user.password = await hashPassword(password);
-		user.otp= null;
+		user.otp = null;
 		user.passwordResetExpires = null;
 		await user.save();
 
@@ -230,27 +232,26 @@ const resetPassword = async (req, res) => {
 };
 
 const validateOTP = async (req, res) => {
-	const { otp, email} = req.body;
+	const { otp, email } = req.body;
 	try {
 		const user = await User.findOne({ email });
 		if (!user) {
 			throw new BadRequestError("email not found in database");
 		}
-		const verifyOTP = otp==user.otp;
+		const verifyOTP = otp == user.otp;
 		if (!verifyOTP) {
 			throw new BadRequestError("OTP is invalid or expired");
 		}
 		const token = user.createJWT();
 		return res.status(StatusCodes.CREATED).json({
 			msg: "otp verification was successful.",
-			token: token
+			token: token,
 		});
 	} catch (error) {
 		return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
 			msg: "Something went Wrong",
 		});
 	}
-
 };
 
 const getUserDetails = async (req, res) => {
