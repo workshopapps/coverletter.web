@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/context";
 import axios, { isCancel } from "axios";
 import Uploaded from "../uploaded/Uploaded";
-
 import Upload from "../upload/Upload";
 
 function Uploading() {
@@ -14,11 +12,9 @@ function Uploading() {
 	const { file, setFile, setFileSize, fileName } = useGlobalContext();
 
     const cancelFileUpload = useRef(null)
-	const Navigate = useNavigate()
 
 	useEffect(() => {
 	const uploadFile = async (e) => {
-			console.log(file);
 			const formData = new FormData();
 			formData.append("myFile", file);
     
@@ -26,15 +22,13 @@ function Uploading() {
                 onUploadProgress: (ProgressEvent) => {
                     const { loaded, total } = ProgressEvent;
                     let percent = Math.floor((loaded * 100) / total);
-                    // console.log(`${loaded}byte of ${total}byte | ${percent}% `);
     
-                    if (percentage < 100) {
+                    if (percent < 100) {
                         setPercentage(percent);
-                        // console.log(percentage);
                     }
                 },
 
-               cancelToken: new axios.CancelToken( cancel => (cancelFileUpload.current = cancel))
+               cancelToken: new axios.CancelToken( cancel => cancelFileUpload.current = cancel)
             };
     
             try {
@@ -43,13 +37,12 @@ function Uploading() {
                     formData,
                     option
                 );
-                // console.log(res.status);
                 setStatus(res.status)
             } catch (ex) {
                 setError(ex.code);
-                // if(isCancel(ex)){
-                //     alert(ex.message)
-                // }
+                if(isCancel(ex)){
+                    alert(ex.message)
+                }
             }
         };
 
@@ -63,7 +56,7 @@ function Uploading() {
 		}
 	
     
-    },[error])
+    },[])
 
 
     if(status> 100 && status < 250){
@@ -73,9 +66,8 @@ function Uploading() {
     }			
 
     const cancelUpload = () =>{
-        if(cancelFileUpload){
+        if(cancelFileUpload.current)
         cancelFileUpload.current("User has canceled the file upload")
-    }
     }
 
     return (
@@ -93,7 +85,6 @@ function Uploading() {
 								className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full"
 								style={{ width: `${percentage}%` }}
 							>
-								{" "}
 							</div>
 						</div>
 					</div>
