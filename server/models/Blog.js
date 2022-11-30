@@ -16,10 +16,15 @@ const BlogSchema = new Schema({
 	likes: {
 		type: String,
 		default: 0,
+	},
+	lastEdited: {
+		type: Date,
 		required: true,
+		default: Date.now,
 	},
 	createdAt: {
 		type: Date,
+    required: true,
 		default: Date.now,
 	},
 });
