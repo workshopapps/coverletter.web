@@ -22,12 +22,12 @@ router.post("/dashboard", getUserDetails);
 router.post("/forgotPassword", forgotPassword);
 
 router.post("/validateOTP", validateOTP);
-
+//GOOGLE auth routes
 router.get('/google', 
   passport.authenticate('google', { scope : ['profile', 'email'] }));
  
 router.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: 'coverly.hng.tech/sigin' }),
+  passport.authenticate('google', { failureRedirect: 'coverly.hng.tech/signin' }),
   function(req, res) {
     const user = req.user
     const token =  jwt.sign({googleID:user._id,name:user.name, email:user.email},process.env.JWT_SECRET,{expiresIn: "2h"})
