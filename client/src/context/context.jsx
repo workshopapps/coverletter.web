@@ -10,6 +10,7 @@ const AppProvider = ({ children }) => {
 	const [file, setFile] = useState("");
 	const [coverLetter, setCoverLetter] = useState("");
 	const [fileName, setFileName] = useState("");
+	const [fileSize, setFileSize] = useState();
 	const [userData, setUserData] = useState({});
 
 	const openSidebar = () => {
@@ -46,6 +47,8 @@ const AppProvider = ({ children }) => {
 				setUser,
 				userData,
 				setUserData,
+				fileSize,
+				setFileSize,
 			}}
 		>
 			{children}

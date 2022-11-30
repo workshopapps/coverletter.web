@@ -1,15 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/context";
 import axios, { isCancel } from "axios";
 import Uploaded from "../uploaded/Uploaded";
+
+import Upload from "../upload/Upload";
 
 function Uploading() {
 	const [percentage, setPercentage] = useState("0");
 	const [status, setStatus] = useState("");
 	const [show, setShow] = useState(true);
-	const { file, fileName } = useGlobalContext();
+	const [error, setError] = useState('');
+	const { file, setFile, setFileSize, fileName } = useGlobalContext();
 
     const cancelFileUpload = useRef(null)
+	const Navigate = useNavigate()
 
 	useEffect(() => {
 	const uploadFile = async (e) => {
@@ -38,30 +43,34 @@ function Uploading() {
                     formData,
                     option
                 );
-                console.log(res);
+                // console.log(res.status);
                 setStatus(res.status)
             } catch (ex) {
-                console.log(ex);
-                // alert("You imported the wrong file");
-                if(isCancel(ex)){
-                    alert(ex.message)
-                }
+                setError(ex.code);
+                // if(isCancel(ex)){
+                //     alert(ex.message)
+                // }
             }
         };
 
     
         uploadFile();
+
+		if(error === 'ERR_BAD_REQUEST'){
+			alert('You imported the wrong file')
+			setFile("")
+			setFileSize()
+		}
+	
     
-    },[])
+    },[error])
 
 
     if(status> 100 && status < 250){
         setTimeout(() =>{
             setShow(false)
         },500)
-    }
-
-			
+    }			
 
     const cancelUpload = () =>{
         if(cancelFileUpload){
@@ -70,8 +79,10 @@ function Uploading() {
     }
 
     return (
-		<div className="whole">
-			{show ? (
+		<div className="whole"> 
+		{
+			error === 'ERR_BAD_REQUEST' ? <Upload /> : 
+			show ? (
 				<div className="flex w-[100%] h-[100%] flex-col gap-[15px] justify-center items-center">
 					<h3 className="text-textBody text-center text-[16px]">
 						{fileName}
@@ -92,7 +103,9 @@ function Uploading() {
 				</div>
 			) : (
 				<Uploaded />
-			)}
+			)
+		}
+			
 		</div>
 	);
 }
