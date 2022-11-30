@@ -1,64 +1,94 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
 import { useGlobalContext } from "../../context/context";
 import axios from "axios";
 import Uploaded from "../uploaded/Uploaded";
+import Upload from "../upload/Upload";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Uploading() {
 	const [percentage, setPercentage] = useState("0");
 	const [status, setStatus] = useState("");
 	const [show, setShow] = useState(true);
-	const { file, fileName } = useGlobalContext();
-	const Navigate = useNavigate();
+	const [error, setError] = useState('');
+	const { file, setFile, setFileSize, fileName } = useGlobalContext();
 
-	useEffect(() => {
-		const uploadFile = async (e) => {
-			console.log(file);
-			const formData = new FormData();
-			formData.append("myFile", file);
+    const ourRequest = useRef(null)
 
-			const option = {
-				onUploadProgress: (ProgressEvent) => {
-					const { loaded, total } = ProgressEvent;
-					let percent = Math.floor((loaded * 100) / total);
-					console.log(`${loaded}byte of ${total}byte | ${percent}% `);
+	const showToast = () => {
+		    toast(" You imported the wrong file! ")
+		  };
 
-					if (percentage < 100) {
-						setPercentage(percent);
-						console.log(percentage);
-					}
-				},
-			};
-
-			try {
-				const res = await axios.post(
-					`http://api.coverly.hng.tech/api/v1/upload`,
-					formData,
-					option
-				);
-				console.log(res);
-				setStatus(res.status);
-			} catch (ex) {
-				console.log(ex);
-				alert("You imported the wrong file");
-			}
+		const cancelToast = () =>{
+			    toast(" You cancelled the operation! ")
 		};
 
-		uploadFile();
-	}, []);
+	useEffect(() => {
+		 ourRequest.current = axios.CancelToken.source()
+	const uploadFile = async (e) => {
+			const formData = new FormData();
+			formData.append("myFile", file);
+    
+            const option = {
+                onUploadProgress: (ProgressEvent) => {
+                    const { loaded, total } = ProgressEvent;
+                    let percent = Math.floor((loaded * 100) / total);
+    
+                    if (percent < 100) {
+                        setPercentage(percent);
+                    }
+                },
+				cancelToken: ourRequest.current.token
+            };
+    
+            try {
+                const res = await axios.post(
+                    `http://api.coverly.hng.tech/api/v1/upload`,
+                    formData, option,
+                );
+                setStatus(res.status)
+            } catch (ex) {
+                setError(ex.code);
+                
+            }
+        };
 
-	if (status > 100 && status < 250) {
-		setTimeout(() => {
-			setShow(false);
-		}, 1500);
-	}
+    
+        uploadFile();
 
-	console.log(status);
+		if(error === 'ERR_BAD_REQUEST'){
+			showToast();
+			setFile("")
+			setFileSize()
+		}
 
-	return (
-		<div className="whole">
-			{show ? (
+		
+	
+    
+    },[error])
+
+
+    if(status> 100 && status < 250){
+        setTimeout(() =>{
+            setShow(false)
+        },500)
+    }			
+
+    const cancelUpload = () =>{
+		ourRequest.current.cancel();
+		setError('ERR_BAD_REQUEST');
+		setFile("");
+		setFileSize();
+		cancelToast();
+    }
+
+    return (
+		<div className="whole"> 
+		{
+			error === 'ERR_BAD_REQUEST' ? <Upload /> : 
+			show ? (
 				<div className="flex w-[100%] h-[100%] flex-col gap-[15px] justify-center items-center">
+					<ToastContainer />
 					<h3 className="text-textBody text-center text-[16px]">
 						{fileName}
 					</h3>
@@ -68,17 +98,18 @@ function Uploading() {
 								className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full"
 								style={{ width: `${percentage}%` }}
 							>
-								{" "}
 							</div>
 						</div>
 					</div>
-					<button className="border-[1.5px] px-4 py-2 text-[16px] font-semibold border-errorMain text-errorMain rounded-lg">
+					<button onClick={cancelUpload} className="border-[1.5px] px-4 py-2 text-[16px] font-semibold border-errorMain text-errorMain rounded-lg">
 						Cancel
 					</button>
 				</div>
 			) : (
 				<Uploaded />
-			)}
+			)
+		}
+			
 		</div>
 	);
 }
