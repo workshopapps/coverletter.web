@@ -116,7 +116,7 @@ const useTemplate1 = (props) => {
 						children: [new TextRun("")],
 					}),
 					addressBox({
-						text: userData.address || "[Company address]",
+						text: userData.address || "[Your address]",
 						alignment: "RIGHT",
 					}),
 					new Paragraph({
