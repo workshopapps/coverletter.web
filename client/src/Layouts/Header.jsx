@@ -7,7 +7,8 @@ import Button from "../Components/Ui/Button";
 import navLinkElements from "../Constants/navLinkElements";
 import historyElements from "../Constants/historyElements";
 import { useGlobalContext } from "../context/context";
-import { ReactComponent as Avatar } from "../Assets/Avatar.svg";
+// import { ReactComponent as Avatar } from "../Assets/Avatar.svg";
+import { toast } from "react-toastify";
 
 const Header = () => {
 	const { user } = useGlobalContext();
@@ -27,6 +28,23 @@ const Header = () => {
 			document.removeEventListener("click", handleClickOutside, true);
 		};
 	}, []);
+
+	/*
+	 * Logout user
+	 */
+
+	const logout = async () => {
+		try {
+			localStorage.removeItem("user");
+			toast.success("You have been logged out");
+			setTimeout(() => {
+				window.location.reload();
+			}, 1000);
+		} catch (err) {
+			console.log(err);
+			toast.error("Something went wrong");
+		}
+	};
 
 	const Large = () => {
 		return (
@@ -135,7 +153,11 @@ const Header = () => {
 					))}
 				</ul>
 				<hr className="border-[0.3px] border-searchbd" />
-				<Link to="/" className="text-center cursor-pointer">
+				<Link
+					to="/"
+					className="text-center cursor-pointer"
+					onClick={logout}
+				>
 					<p className="font-bold text-base mt-4">Log Out</p>
 				</Link>
 			</aside>
@@ -180,7 +202,11 @@ const Header = () => {
 							</Button>
 							{toggleUserMenu && <UserMenu />}
 							<Link to="/">
-								<Avatar className="w-12 h-12 hidden lg:block" />
+								{/* <Avatar className="w-12 h-12 hidden lg:block" /> */}
+
+								<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-fill">
+									{user?.name[0].toUpperCase()}
+								</div>
 							</Link>
 						</>
 					)}

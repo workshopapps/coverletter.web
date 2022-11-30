@@ -32,35 +32,34 @@ const PrivacyPolicy = () => {
 		<div className="bg-background">
 			<div
 				id="top"
-				className="max-w-screen-2xl m-auto h-full relative scroll-smooth pb-[80px] bg-background"
+				className="h-full relative scroll-smooth pb-[80px] bg-background"
 			>
 				<div
 					id="banner"
 					className="w-full flex flex-col justify-center items-center gap-[8px] "
 				>
-					<div
-						id="banner_bg"
-						className="uppercase text-textWhite font-bold flex flex-col gap-[8px] justify-center items-center w-full h-[216px] bg-primaryDeep relative overflow-hidden"
-					>
-						<p className="text-base z-20">Understanding our</p>
-						<h1 className="text-[32px] sm:text-[56px] z-20">
-							{" "}
-							Privacy Policy
-						</h1>
-						{privacyBannerElements.map((banner) => (
-							<img
-								key={banner.id}
-								src={BannerLogo}
-								className={banner.class}
-								alt="banner_logo"
-							/>
-						))}
+					<div id="banner_bg" className="w-full bg-primaryDeep">
+						<div className="max-w-screen-2xl m-auto uppercase text-textWhite h-[216px] font-bold flex flex-col gap-[8px] justify-center items-center relative overflow-hidden">
+							<p className="text-base z-20">Understanding our</p>
+							<h1 className="text-[32px] sm:text-[56px] z-20">
+								{" "}
+								Privacy Policy
+							</h1>
+							{privacyBannerElements.map((banner) => (
+								<img
+									key={banner.id}
+									src={BannerLogo}
+									className={banner.class}
+									alt="banner_logo"
+								/>
+							))}
+						</div>
 					</div>
 					<h2 className="text-base text-textBody font-normal">
 						Last Updated November 15th, 2022.
 					</h2>
 				</div>
-				<main className="px-[25px] sm:px-[47px] xl:px-[96px] mt-[68px] flex flex-col-reverse gap-[50px] md:flex-row justify-between relative">
+				<main className="max-w-screen-2xl m-auto px-[25px] sm:px-[47px] xl:px-[96px] mt-[68px] flex flex-col-reverse gap-[50px] md:flex-row justify-between relative">
 					<section
 						id="privacy_policy"
 						className="md:max-w-[460px] lg:max-w-[822px] flex flex-col gap-[56px]"

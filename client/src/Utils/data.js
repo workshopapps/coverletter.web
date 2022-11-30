@@ -20,13 +20,13 @@ export const faqQA = [
 	},
 	{
 		id: 4,
-		question: "Why should I use the Aplicar cover letter generator?",
-		answer: "The Aplicar cover letter generator is a convenient and easy to use model with multiple template options and an up to date design. Apart from being free, it creates your new cover letter in less than 5 minutes. Not to mention the assortment of templates and fonts, colors and designs.",
+		question: "Why should I use the Coverly cover letter generator?",
+		answer: "The Coverly cover letter generator is a convenient and easy to use model with multiple template options and an up to date design. Apart from being free, it creates your new cover letter in less than 5 minutes. Not to mention the assortment of templates and fonts, colors and designs.",
 		isOpen: false,
 	},
 	{
 		id: 5,
-		question: "Does the Aplicar cover letter generator save my cv?",
+		question: "Does the Coverly cover letter generator save my cv?",
 		answer: "Your cover letter is available for download immediately after editing and generating. You can choose the format you want your cover letter in (eg. PDF, Word, JPEG, or SVG.)",
 		isOpen: false,
 	},
@@ -38,8 +38,8 @@ export const faqQA = [
 	},
 	{
 		id: 7,
-		question: "Is Aplicar’s cover letter generator free?",
-		answer: "You can use Aplicar Cover Letter Generator for free to generate cover letters, resumes, and CVs.",
+		question: "Is Coverly’s cover letter generator free?",
+		answer: "You can use Coverly Cover Letter Generator for free to generate cover letters, resumes, and CVs.",
 		isOpen: false,
 	},
 	{
@@ -122,7 +122,7 @@ export const items = [
 		id: 8,
 		img: require("../Assets/Rectangle 28.png"),
 		story: "Customer Story",
-		text: "How he secured a contract job with the help of Aplicar cover letter",
+		text: "How he secured a contract job with the help of Coverly cover letter",
 		read: "Read customer story",
 		arrow: require("../Assets/arrow-right.png"),
 	},
@@ -149,7 +149,7 @@ export const contents = [
 				He needed a way to connect his CV document to the cover letter attached to his documents while 
 				applying to get a job with this companies.`,
 				reject: `Due to the reject of the last  cover letter, I was feeling so bad and started doubting my 
-				capabilities until I was referred to Aplicar cover letter genertaor  by a friend.`,
+				capabilities until I was referred to Coverly cover letter genertaor  by a friend.`,
 				img2: require("../Assets/Ellipse 12.png"),
 				name: "Faruq Abdulsalam",
 				occupation: "Product Designer",
@@ -157,10 +157,10 @@ export const contents = [
 			{
 				id: 2,
 				title: "Solution",
-				challengeTalk: `The Aplicar  cover letter generator allows Faruq Abdulsalam to merge his CV with with the cover letter process. 
-				Thanks to Aplicar cover letter generator, the website and mobile app can create deeper and more personal cover letter 
-				interacting with company standard through automated recommendations. Now Aplicar use the CV to generate cover letter content.`,
-				reject: `Aplicar cover letter made my cover letter easy by uploading my CV and interpreting the information from my CV 
+				challengeTalk: `The Coverly  cover letter generator allows Faruq Abdulsalam to merge his CV with with the cover letter process. 
+				Thanks to Coverly cover letter generator, the website and mobile app can create deeper and more personal cover letter 
+				interacting with company standard through automated recommendations. Now Coverly use the CV to generate cover letter content.`,
+				reject: `Coverly cover letter made my cover letter easy by uploading my CV and interpreting the information from my CV 
 				into the cover letter. Got my cover letter in kess than 10 mins.`,
 				img2: require("../Assets/Ellipse 12.png"),
 				name: "Faruq Abdulsalam",
@@ -169,10 +169,10 @@ export const contents = [
 			{
 				id: 3,
 				title: "Outcome",
-				challengeTalk: `The Aplicar cover letter generator has helped Faruq Abdulsalam to generate standard cover letter. The goal of 
+				challengeTalk: `The Coverly cover letter generator has helped Faruq Abdulsalam to generate standard cover letter. The goal of 
 				convincing the companies with a personalised service is now simpler to achieve than ever. As a result he has seen a good job 
 				immediately`,
-				reject: `The outcome of this cover letter generated from Aplicar cover letter generator gave me an instant job in 1 week.`,
+				reject: `The outcome of this cover letter generated from Coverly cover letter generator gave me an instant job in 1 week.`,
 				img2: require("../Assets/Ellipse 12.png"),
 				name: "Faruq Abdulsalam",
 				occupation: "Product Designer",
@@ -195,7 +195,7 @@ export const contents = [
 				challengeTalk: `Doyinsola had no prior experience and has been finding it difficult to get a role as most jobs need someone 
 				with experience. Eventually, she got a job vacancy that required some skills and no experience, but Doyinsola is more of a 
 				technical person than a writer and has trouble writing a cover letter.`,
-				reject: `I did not have the experience writting a cover letter as it is my first job interview but i got introduced to Aplicar cover 
+				reject: `I did not have the experience writting a cover letter as it is my first job interview but i got introduced to Coverly cover 
 				letter`,
 				img2: require("../Assets/Ellipse 13.png"),
 				name: "Mark Doyinsola",
@@ -204,11 +204,11 @@ export const contents = [
 			{
 				id: 2,
 				title: "Solution",
-				challengeTalk: `By using the Aplicar cover letter, she can provide additional information about her skill set and projects 
-				she has worked on, rather than just using information from her CV. With Aplicar, she can create a cover letter that 
+				challengeTalk: `By using the Coverly cover letter, she can provide additional information about her skill set and projects 
+				she has worked on, rather than just using information from her CV. With Coverly, she can create a cover letter that 
 				emphasizes her strength ( her skill set) rather than her weakness (her lack of experience). In order to generate the contents 
-				of the cover letter, Aplicar uses additional information.`,
-				reject: `I just used Aplicar to write my cover letter and I loved how it turned out. The interface is simple and well-designed. 
+				of the cover letter, Coverly uses additional information.`,
+				reject: `I just used Coverly to write my cover letter and I loved how it turned out. The interface is simple and well-designed. 
 				It was easy to use and I was impressed with the end result.`,
 				img2: require("../Assets/Ellipse 13.png"),
 				name: "Mark Doyinsola",
@@ -217,11 +217,11 @@ export const contents = [
 			{
 				id: 3,
 				title: "Outcome",
-				challengeTalk: `The Aplicar cover letter generator helped Doyinsola Mark to generate a cover letter that landed her an 
+				challengeTalk: `The Coverly cover letter generator helped Doyinsola Mark to generate a cover letter that landed her an 
 				interview. The hiring manager specifically commended her skill sets as highlighted in her cover letter. Although she didn't 
 				get the job, she now has a cover letter she can use to apply for other jobs and will be able to prove herself during the 
 				interview phase.`,
-				reject: `I had no idea what to say in the letter, but Aplicar made it so easy! And got a job interview.`,
+				reject: `I had no idea what to say in the letter, but Coverly made it so easy! And got a job interview.`,
 				img2: require("../Assets/Ellipse 13.png"),
 				name: "Mark Doyinsola",
 				occupation: "Financial Analyst",
@@ -251,9 +251,9 @@ export const contents = [
 			{
 				id: 2,
 				title: "Solution",
-				challengeTalk: `Damilare’s friend introduced him to Aplicar. He now uses Aplicar for all his job applications and the process 
+				challengeTalk: `Damilare’s friend introduced him to Coverly. He now uses Coverly for all his job applications and the process 
 				is now less stressful and can now focus on other stuff that can help his job application.`,
-				reject: `I found Aplicar! It is so simple and straightforward in terms of design, which makes it super user-friendly.`,
+				reject: `I found Coverly! It is so simple and straightforward in terms of design, which makes it super user-friendly.`,
 				img2: require("../Assets/Ellipse 14.png"),
 				name: "Damilare Fatai",
 				occupation: "Product Marketer",
@@ -264,7 +264,7 @@ export const contents = [
 				challengeTalk: `Damilare has been able to increase the number of jobs he applies to everyday and by this, increase his chance 
 				of getting a job as Damilare believes that job application is a game of numbers and the more job he applies to, the higher 
 				his chances of getting a job.`,
-				reject: `With Aplicar, I was able to generate an editable cover letter for my job application.`,
+				reject: `With Coverly, I was able to generate an editable cover letter for my job application.`,
 				img2: require("../Assets/Ellipse 14.png"),
 				name: "Damilare Fatai",
 				occupation: "Product Marketer",
@@ -299,9 +299,9 @@ export const contents = [
 				id: 2,
 				title: "Solution",
 				challengeTalk: `Even though Faruq has a CV already. He knows he needs a unique cover letter 
-				for every application and with Aplicar, he can generate a cover letter in minutes and apply 
+				for every application and with Coverly, he can generate a cover letter in minutes and apply 
 				for his internship without having to neglect his academics.`,
-				reject: `I found Aplicar and it's been working out great. I can edit the cover letter, add 
+				reject: `I found Coverly and it's been working out great. I can edit the cover letter, add 
 				specific details to it, personalize it to match my job application, and then I can download 
 				it. I'm really pleased with this tool.`,
 				img2: require("../Assets/Ellipse 15.png"),
@@ -337,7 +337,7 @@ export const contents = [
 				title: "Challenge",
 				challengeTalk: `Due to the fact that she is new in this field and she needs a job on time , she has been trying to come up 
 				with a solid Cover letter but still hasn't come up with the best one yet because she lacks professional design terms to use..`,
-				reject: `I really like Aplicar. It's just so easy to use and it's a great, no-hassle way to create a cover letter.`,
+				reject: `I really like Coverly. It's just so easy to use and it's a great, no-hassle way to create a cover letter.`,
 				img2: require("../Assets/Ellipse 16.png"),
 				name: "Abdulazeez Hauwa,",
 				occupation: "Product Designer",
@@ -345,8 +345,8 @@ export const contents = [
 			{
 				id: 2,
 				title: "Solution",
-				challengeTalk: `Aplicar guided her in making a well detailed product designer cover letter`,
-				reject: `I was really impressed with Aplicar's cover letter creation tool. It was FREE, easy 
+				challengeTalk: `Coverly guided her in making a well detailed product designer cover letter`,
+				reject: `I was really impressed with Coverly's cover letter creation tool. It was FREE, easy 
 				to use, and generated a cover letter that I could customize to fit my needs.`,
 				img2: require("../Assets/Ellipse 16.png"),
 				name: "Abdulazeez Hauwa,",
@@ -387,7 +387,7 @@ export const contents = [
 				id: 2,
 				title: "Solution",
 				challengeTalk: `Creating a Cover letter`,
-				reject: `I was really impressed with Aplicar's cover letter creation tool. It was FREE, easy to use, and generated a cover letter that I could customize to fit my needs.`,
+				reject: `I was really impressed with Coverly's cover letter creation tool. It was FREE, easy to use, and generated a cover letter that I could customize to fit my needs.`,
 				img2: require("../Assets/Ellipse 17.png"),
 				name: "Chigozie Mark",
 				occupation: "Food technology",
@@ -396,7 +396,7 @@ export const contents = [
 				id: 3,
 				title: "Outcome",
 				challengeTalk: `He was able to secure the internship program!`,
-				reject: `Aplicar writes a letter that is tailored specifically to me. It's been so helpful!`,
+				reject: `Coverly writes a letter that is tailored specifically to me. It's been so helpful!`,
 				img2: require("../Assets/Ellipse 17.png"),
 				name: "Chigozie Mark",
 				occupation: "Food technology",
@@ -418,7 +418,7 @@ export const contents = [
 				title: "Challenge",
 				challengeTalk: `Steve has both work and internship experience. He got a job vacancy to work in an 
 				automobile company.He needs a professional Cover letter to submit along with his CV.`,
-				reject: `The first time I used Aplicar was when I was looking for a job. As a result of the 
+				reject: `The first time I used Coverly was when I was looking for a job. As a result of the 
 				time-consuming and tedious application process`,
 				img2: require("../Assets/Ellipse 18.png"),
 				name: "Steve Johnson",
@@ -428,7 +428,7 @@ export const contents = [
 				id: 2,
 				title: "Solution",
 				challengeTalk: `Getting a professional Cover letter`,
-				reject: `I wanted to apply without a cover letter until I was introduced to Aplicar. It helped 
+				reject: `I wanted to apply without a cover letter until I was introduced to Coverly. It helped 
 				me write a great cover letter, added in the right information, and it all felt natural`,
 				img2: require("../Assets/Ellipse 18.png"),
 				name: "Steve Johnson",
@@ -447,7 +447,7 @@ export const contents = [
 	},
 	{
 		id: 8,
-		title: "How he secured a contract job with the help of Aplicar cover letter",
+		title: "How he secured a contract job with the help of Coverly cover letter",
 		img: require("../Assets/Rectangle28.png"),
 		name: "Victor Ekere",
 		occupation: "Product / Project management",
