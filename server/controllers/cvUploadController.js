@@ -15,7 +15,7 @@ const cvUpload = async (req, res) => {
 	if (extension != "pdf") {
 		throw new BadRequestError("You Must Upload a PDF File");
 	}
-	res.status(StatusCodes.CREATED).json({ status: "success" });
+	return res.status(StatusCodes.CREATED).json({ status: "success" });
 };
 
 module.exports = { cvUpload };
