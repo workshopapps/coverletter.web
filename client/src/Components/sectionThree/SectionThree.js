@@ -1,8 +1,8 @@
-import React from 'react'
-import circle from './assets/circle.svg'
-import scissor from './assets/scissor.svg'
-import star from './assets/star.svg'
-import pen from './assets/magicpen.svg'
+import React from "react";
+import circle from "./assets/circle.svg";
+import scissor from "./assets/scissor.svg";
+import star from "./assets/star.svg";
+import pen from "./assets/magicpen.svg";
 
 function SectionThree() {
 
@@ -47,4 +47,4 @@ function SectionThree() {
   )
 }
 
-export default SectionThree
+export default SectionThree;

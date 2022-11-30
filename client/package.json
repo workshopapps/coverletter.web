@@ -17,6 +17,7 @@
 		"react": "^18.2.0",
 		"react-calendar": "^4.0.0",
 		"react-collapsible": "^2.10.0",
+		"react-countdown": "^2.3.5",
 		"react-dom": "^18.2.0",
 		"react-hook-form": "^7.39.5",
 		"react-icons": "^4.6.0",

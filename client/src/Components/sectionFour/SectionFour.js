@@ -52,4 +52,4 @@ function SectionFour() {
   )
 }
 
-export default SectionFour
+export default SectionFour;

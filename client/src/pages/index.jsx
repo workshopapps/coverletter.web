@@ -30,6 +30,8 @@ import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import About from "./About";
 import Event from "./Event";
+import AuthUserRoute from "./AuthUserRoutes";
+import ProtectedRoutes from "./ProtectedRoutes";
 export {
 	Register,
 	History,
@@ -63,4 +65,6 @@ export {
 	SingleProduct,
 	Career,
 	Event,
+	AuthUserRoute,
+	ProtectedRoutes,
 };

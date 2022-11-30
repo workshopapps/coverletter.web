@@ -1,8 +1,8 @@
-import React from 'react'
-import  first from '../sectionTwo/assets/first.svg'
-import  second from '../sectionTwo/assets/second.svg'
-import  third from '../sectionTwo/assets/third.svg'
-import  fourth from '../sectionTwo/assets/fourth.svg'
+import React from "react";
+import first from "../sectionTwo/assets/first.svg";
+import second from "../sectionTwo/assets/second.svg";
+import third from "../sectionTwo/assets/third.svg";
+import fourth from "../sectionTwo/assets/fourth.svg";
 
 function Drop() {
   return (
@@ -30,4 +30,4 @@ function Drop() {
   )
 }
 
-export default Drop
+export default Drop;
