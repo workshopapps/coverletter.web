@@ -10,32 +10,39 @@ import pauseIcon from "../Assets/pause.svg";
 import cancelIcon from "../Assets/cancel.svg";
 import leftArrowIcon from "../Assets/leftArrow.svg";
 import BigLeftArrowIcon from "../Assets/bigLeftArrow";
-import { downloadPdf } from "../Utils/download-util";
+import { downloadPdf, downloadDOCX } from "../Utils/download-util";
 import { convertToTxt } from "../Utils/txtDownload";
-
-// import { useNavigate } from "react-router-dom";
+/// import { useNavigate } from "react-router-dom";
 
 const Preview = () => {
-	const { openModal, isModalOpen, closeModal } = useGlobalContext();
+	const {
+		openModal,
+		isModalOpen,
+		closeModal,
+		coverLetter: data,
+		userData,
+	} = useGlobalContext();
 
 	// logic for the modal
 	const [firstModal, setFirstModal] = useState(false);
-	const [dType, setDtype] = useState("PDF");
+  const [dType, setDtype] = useState("");
 
 	const handleClick = () => {
-		if (dType === "PDF") {
+		if (dType === "pdf") {
 			downloadPdf("coverletter-target");
-		} else if (dType === "DOC") {
+		} else if (dType === "doc") {
 			//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
-		} else if (dType === "TEXT") {
+			downloadDOCX(data, userData);
+		} else if (dType === "text") {
 			convertToTxt();
 		} else {
 			//TELL USER TO PICK ONE OF THE 3 OPTIONS
 		}
-
-		console.log(dType);
+		setDtype(null);
+		closeModal();
 		// setFirstModal(!firstModal);
 	};
+
 
 	useEffect(() => {
 		setFirstModal(false);
@@ -296,6 +303,7 @@ const Preview = () => {
 								type="submit"
 								className="w-full min-h-[48px] bg-primaryMain rounded-lg font-bold text-background mt-7"
 								children="Download"
+								disabled={!dType}
 								onClick={handleClick}
 							/>
 						</div>
