@@ -68,7 +68,13 @@ const verifyAdmin = async (req, res) => {
 
 const deleteAdmin = async (req,res) => {
 	
-	if(req.user.role !== "Lead-admin") {
+     const admin = await Admin.findById(req.params.id)
+	
+	 if(!admin) {
+		throw new BadRequestError(`user does not exist`)
+	}
+	
+	if(req.user.role !== "Lead-admin" && admin._id !== req.user.id) {
 		throw new BadRequestError(`you are not authorized to carry out this operation`);
 	}
 
