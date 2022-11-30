@@ -40,7 +40,7 @@ const VerifyAcc = () => {
 			setIsLoading(true);
 			try {
 				const resp = await axios.post(
-					`${process.env.REACT_APP_API_URL}/api/v1/auth/verify`,
+					`http://api.coverly.hng.tech/api/v1/auth/verify`,
 					{
 						otp,
 					}
@@ -64,7 +64,7 @@ const VerifyAcc = () => {
 			setIsLoading(true);
 			try {
 				const resp = await axios.post(
-					`${process.env.REACT_APP_API_URL}/api/v1/auth/generateOtp`,
+					`http://api.coverly.hng.tech/api/v1/auth/generateOtp`,
 					{
 						type: "verify",
 						email: "dfelastevetest@gmail.com",
