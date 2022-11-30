@@ -34,7 +34,7 @@ const ProfilePage = () => {
 		<div className="bg-[#03296f11] py-8">
 			<div className="relative max-w-screen-2xl m-auto py-5  md:px-10 xl:px-15 max-[759px]:px-5">
 				<div className="md:flex gap-8 md:gap-4 pr-8 pl-3 max-[1023px]:pr-0">
-					<div className="bg-white w-4/12 max-[1078px]:w-5/12 rounded-md h-max mt-2 p-6 max-[938px]:hidden">
+					<div className="bg-white w-4/12 max-[1078px]:w-5/12 rounded-md h-max mt- p-6 max-[938px]:hidden">
 						<ProfileSide />
 					</div>
 
