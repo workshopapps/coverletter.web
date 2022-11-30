@@ -16,9 +16,8 @@ module.exports = async (email, subject, url) => {
 			tls: { rejectUnauthorized: false },
 		});
 
-		
 		result = await transporter.sendMail({
-			from: "Aplicar",
+			from: "Coverly",
 			to: email,
 			subject: subject,
 			html: url,
@@ -31,4 +30,3 @@ module.exports = async (email, subject, url) => {
 		return error;
 	}
 };
-

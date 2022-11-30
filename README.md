@@ -1,6 +1,4 @@
-
-# <div id="top">Aplicar - Cover Letter Generator</div>
-
+# <div id="top">Coverly - Cover Letter Generator</div>
 
 ### Built With
 
@@ -50,45 +48,44 @@ To get a local copy, follow these simple steps.
 
 Before installation, please make sure you have already installed the following tools:
 
-- [Git](https://git-scm.com/downloads)
-- [NodeJs](https://nodejs.org/en/download/)
+-   [Git](https://git-scm.com/downloads)
+-   [NodeJs](https://nodejs.org/en/download/)
 
 ## <p id="installation">Installation</p>
 
 1. Clone the project, you can use the following command:
 
-   ```bash
-   git clone https://github.com/<your-github-username>/coverletter.web.git
-   ```
+    ```bash
+    git clone https://github.com/<your-github-username>/coverletter.web.git
+    ```
 
 2. Navigate to the project directory
 
-   ```bash
-   cd coverletter.web
-   ```
+    ```bash
+    cd coverletter.web
+    ```
 
 3. Install dependencies with `npm install`
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 4. Start development server
 
-   ```bash
-   npm run dev
-   ```
+    ```bash
+    npm run dev
+    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## <p id="server">To set up client</p>
 
-  - [Set up client](/client/README.md)
-
+-   [Set up client](/client/README.md)
 
 ## <p id="contribute">Contributing</p>
 
-- Check out the [contribution guidelines](/client/CONTRIBUTING.md) for more information.
+-   Check out the [contribution guidelines](/client/CONTRIBUTING.md) for more information.
 <!-- ## 👩🏽‍💻 Contributing
 
 [![Contributors](https://contrib.rocks/image?repo=/workshopapps/coverletter.web)](https://github.com//workshopapps/coverletter.web/graphs/contributors) -->

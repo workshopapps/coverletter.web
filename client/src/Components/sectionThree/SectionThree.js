@@ -36,7 +36,7 @@ function SectionThree() {
                 <div className=" w-[327] lg:w-[100%] py-[50px] lg:py-[40px] bg-textWhite text-left px-[50px] lg:px-8  flex flex-col rounded-[8px]">
                     <img src={star} className='w-[80px] mb-2 lg:mb-3 h-[80px]' alt="" />
                     <p className='font-bold  text-left lg:text-[24px] text-textBody '>Proven Success</p>
-                    <span className=' text-[16px]  mt-2 '>Thousands of job seekers have successfully built cover letters using Aplicar Cover Letter Builder to get the jobs they want.
+                    <span className=' text-[16px]  mt-2 '>Thousands of job seekers have successfully built cover letters using Coverly Cover Letter Builder to get the jobs they want.
                         
                     </span>
                 </div>

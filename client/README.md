@@ -1,11 +1,10 @@
-# <div id="top">Aplicar - Cover Letter Generator</div>
-
-
+# <div id="top">Coverly - Cover Letter Generator</div>
 
 ### Table of Content
-  - [Installation](#getting_started)
-  - [Set up server](#server)
-  - [How to contribute](#contribute)
+
+-   [Installation](#getting_started)
+-   [Set up server](#server)
+-   [How to contribute](#contribute)
 
 <!-- <div>
 <p  align="center">
@@ -70,40 +69,40 @@ To get a local copy, follow these simple steps.
 
 Before installation, please make sure you have already installed the following tools:
 
-- [Git](https://git-scm.com/downloads)
-- [NodeJs](https://nodejs.org/en/download/)
+-   [Git](https://git-scm.com/downloads)
+-   [NodeJs](https://nodejs.org/en/download/)
 
 ## <p id="installation">Installation</p>
 
 1. Clone the project, you can use the following command:
 
-   ```bash
-   git clone https://github.com/<your-github-username>/coverletter.web.git
-   ```
+    ```bash
+    git clone https://github.com/<your-github-username>/coverletter.web.git
+    ```
 
 2. Navigate to the project directory
 
-   ```bash
-   cd coverletter.web
-   ```
+    ```bash
+    cd coverletter.web
+    ```
 
 3. Navigate to client directory
 
-   ```bash
-   cd client
-   ```
+    ```bash
+    cd client
+    ```
 
-3. Install dependencies with `npm install`
+4. Install dependencies with `npm install`
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
-4. Start application
+5. Start application
 
-   ```bash
-   npm start
-   ```
+    ```bash
+    npm start
+    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -113,7 +112,7 @@ Before installation, please make sure you have already installed the following t
 
     ```bash
     cd ..
-    ````
+    ```
 
 2. Run `npm install`
 
@@ -129,7 +128,7 @@ Before installation, please make sure you have already installed the following t
 
 ## <p id="contribute">Contributing</p>
 
-- Check out the [contribution guidelines](/client/CONTRIBUTING.md) for more information.
+-   Check out the [contribution guidelines](/client/CONTRIBUTING.md) for more information.
 <!-- ## 👩🏽‍💻 Contributing
 
 [![Contributors](https://contrib.rocks/image?repo=/workshopapps/coverletter.web)](https://github.com//workshopapps/coverletter.web/graphs/contributors) -->

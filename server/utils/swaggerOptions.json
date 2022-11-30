@@ -1,7 +1,7 @@
 {
 	"openapi": "3.0.0",
 	"info": {
-		"description": "This is the API documentation for Aplicar: Cover Letter Generator",
+		"description": "This is the API documentation for Coverly: Cover Letter Generator",
 		"version": "1.0.0",
 		"title": "Cover Letter Generator API",
 		"contact": {
