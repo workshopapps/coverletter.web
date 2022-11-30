@@ -112,13 +112,13 @@ const Forum = () => {
                                     <div className='capitalize text-base md:text-2xl font-semibold'>
                                         <p>{detail.title}</p>
                                     </div>
-                                    <div className='absolute left-0 md:static flex flex-col md:flex-row md:gap-5 text-[#bababa] text-sm md:text-base'>
+                                    <div className='absolute mt-4 sm:mt-0 left-0 sm:static flex flex-col sm:flex-row sm:gap-5 text-[#bababa] text-sm md:text-base'>
                                         <p>{detail.name}</p>
                                         <p>{detail.date}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className='flex flex-col md:flex-row gap-5 mt-8 md:mt-0 mb-5'>
+                            <div className='flex flex-col md:flex-row gap-5 mt-12 sm:mt-0 mb-5'>
                                 <div className='basis-4/5'>
                                     <p className='text-base text-[#6d6d6d]'>
                                         {detail.content}
@@ -146,9 +146,9 @@ const Forum = () => {
                 <p>1 - 8 of 45 Discussions</p>
             </div>
             <div className='flex gap-5'>
-                <button className='border-r border-[#bababa] px-5 btn text-disabledDisabled'> <span className='align-middle'>&lt;Previous</span></button>
+                <button className='border-r border-[#bababa] px-5 btn text-disabledDisabled'><span className='align-middle'>&lt;Previous</span></button>
 
-                <div className='hidden md:flex gap-8'>
+                <div className='hidden md:flex md:gap-2 lg:gap-8'>
                     <button className='btn btnSecondary'>1</button>
                     <button className='btn text-primaryMain'>2</button>
                     <button className='btn text-primaryMain'>3</button>
