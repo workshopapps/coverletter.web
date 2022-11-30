@@ -66,7 +66,23 @@ const verifyAdmin = async (req, res) => {
 	}
 };
 
+const deleteAdmin = async (req,res) => {
+	
+	if(req.user.role !== "Lead-admin") {
+		throw new BadRequestError(`you are not authorized to carry out this operation`);
+	}
+
+	await Admin.findByIdAndDelete(req.params.id);
+	return res.status(StatusCodes.OK).json({
+		success: true,
+		data: {}
+	  });
+
+
+}
+
 module.exports = {
 	createAdmin,
 	verifyAdmin,
+	deleteAdmin
 };
