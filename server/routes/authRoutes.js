@@ -11,12 +11,14 @@ const {
 	getUserDetails,
 	validateOTP,
 	resetPassword,
+	logout
 } = require("../controllers/authController");
 
 //Add your routes here
 router.post("/signup", register);
 router.post("/verify", verify);
 router.post("/login", login);
+router.post("/logout", logout);
 router.post("/dashboard", getUserDetails);
 router.post("/forgotPassword", forgotPassword);
 

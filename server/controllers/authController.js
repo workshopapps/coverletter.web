@@ -82,7 +82,7 @@ const login = async (req, res, next) => {
 			return next(new BadRequestError("Invalid email or password"));
 		}
 		const token = user.createJWT();
-
+ delete user.tokens
 		return res.status(201).json({
 			status: "success",
 			token,
@@ -91,6 +91,36 @@ const login = async (req, res, next) => {
 		console.log(error);
 	}
 };
+
+const logout = async (req,res)=>{
+	let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+
+  if (!token) {
+    return next(new BadRequestError("You are not logged in"));
+  }
+
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  const user = await User.findById(decoded.userId);
+  if (!user) {
+	return next(new BadRequestError("Invalid User token"));
+  }
+  req.user = user
+  req.token = token
+
+
+req.user.tokens = []
+  await req.user.save()
+	
+	res.status(201).json({
+		message:"You have logged out successfully"
+	})
+}
 
 const protect = async (req, res, next) => {
 	//////////////////////// ~ PROTECT ROUTE ~  /////////////////////////////////////
@@ -270,4 +300,5 @@ module.exports = {
 	resetPassword,
 	validateOTP,
 	getUserDetails,
+	logout
 };
