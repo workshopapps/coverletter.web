@@ -6,17 +6,17 @@ const BlogPost2 = () => {
 		<section className="mb-32">
 			<img src={image1} alt="" className="mx-auto" />
 			<p className=" my-8 text-lg">
-				The Aplicar cover letter generator takes your CV and additional
+				The Coverly cover letter generator takes your CV and additional
 				information, such as the company name, the role you are applying
 				for, your years of experience, how you prefer to work, if you
 				have a gap in your work history, and then generates an editable
 				cover letter for you.
 			</p>
 			<h4 className="text-xl font-bold mb-8 mt-3">
-				Aplicar cover letter generator: why it is necessary.
+				Coverly cover letter generator: why it is necessary.
 			</h4>
 			<p className=" my-8 text-lg mb-14">
-				With the Aplicar cover letter generator, students and
+				With the Coverly cover letter generator, students and
 				professionals are able to easily create a cover letter without
 				having to spend a lot of time and effort creating one from
 				scratch. And it also ensures that the cover letter meets
@@ -24,7 +24,7 @@ const BlogPost2 = () => {
 				the job and the company.
 			</p>
 			<h4 className="text-xl font-bold mb-4 mt-3">
-				Aplicar cover letter generator: Benefits;
+				Coverly cover letter generator: Benefits;
 			</h4>
 			<ul className="list-disc px-2 mb-10">
 				<li>
@@ -54,7 +54,7 @@ const BlogPost2 = () => {
 			</ul>
 			<img src={image2} alt="" className="mx-auto" />
 			<h4 className="text-xl font-bold mb-10 mt-6">
-				The Aplicar cover letter generator is for you if are;
+				The Coverly cover letter generator is for you if are;
 			</h4>
 			<ul className="list-disc px-6">
 				<li>
@@ -67,28 +67,28 @@ const BlogPost2 = () => {
 				</li>
 			</ul>
 			<h4 className="text-xl font-bold mt-12 mb-3">
-				How you can generate a cover letter using the Aplicar cover
+				How you can generate a cover letter using the Coverly cover
 				letter generator
 			</h4>
 			<p className=" my-8 text-lg mb-14">
-				Using Aplicar's Telegram bot, website, or mobile app, you can
+				Using Coverly's Telegram bot, website, or mobile app, you can
 				generate a cover letter;{" "}
 			</p>
 			<img src={image3} alt="" className="mx-auto" />
-			<h4 className="text-xl font-bold mt-16 mb-3">on Telegram</h4>
+			<h4 className="text-xl font-bold mt-16 mb-3">On Telegram</h4>
 
 			<p className=" mb-8 text-lg">
-				You simply have to DM Aplicar’s telegram account with your CV
+				You simply have to DM Coverly’s telegram account with your CV
 				and other details like the name of the company, the role you are
 				applying for, your years of experience, how you prefer to work,
 				if you have a gap in your work history, and you will get your
 				cover letter in your DM on telegram.
 			</p>
 			<h3 className="text-xl font-bold mt-10 mb-3">
-				On Aplicar’s Website and Mobile App
+				On Coverly’s Website and Mobile App
 			</h3>
 			<p className=" mb-14 text-lg">
-				It is as simple as visiting the Aplicar’s website or downloading
+				It is as simple as visiting the Coverly’s website or downloading
 				the app, selecting a template, uploading your cv, adding other
 				additional information, such as your name, the company you are
 				applying to, the role you are applying for, your years of
@@ -98,13 +98,13 @@ const BlogPost2 = () => {
 				email as well.
 			</p>
 			<h3 className="text-2xl font-bold mt-4 mb-3">
-				Frequently asked questions about Aplicar cover letter generator
+				Frequently asked questions about Coverly cover letter generator
 			</h3>
 			<h6 className="text-lg font-bold mt-4 mb-3">
 				In what format would I download my cover letter?
 			</h6>
 			<p className=" my-6 text-lg">
-				It depends on which Aplicar product you are using to generate
+				It depends on which Coverly product you are using to generate
 				your Cover Letter; <br />
 				For users that are generating their cover letter via Telegram,
 				you can choose from multiple formats (PDF, Word, JPEG, and SVG)
@@ -117,24 +117,24 @@ const BlogPost2 = () => {
 				Do I need to generate different cover letters for each job
 			</h6>
 			<p className=" my-6 text-lg">
-				application? Aplicar asked for additional information when
+				application? Coverly asked for additional information when
 				generating your cover letter, so as for you to be able to
 				gennerate and send a unique cover letter for eacj job
 				application.
 			</p>
 			<h6 className="text-lg font-bold mt-4 mb-3">
-				Can Aplicar help with my resume or CV too?
+				Can Coverly help with my resume or CV too?
 			</h6>
 			<p className=" my-6 text-lg">
 				No, you in fact need to already have a cv before you can
-				generate a cover letter on Aplicar.
+				generate a cover letter on Coverly.
 			</p>
 			<h6 className="text-lg font-bold mt-4 mb-3">
 				Can I have my cover letter reviewed when I am done generating
 				it?
 			</h6>
 			<p className=" my-6 text-lg">
-				One of the benefits of using Aplicar cover letter generator is
+				One of the benefits of using Coverly cover letter generator is
 				that you can preview and edit your cover letter before download.
 			</p>
 			<h6 className="text-lg font-bold mt-4 mb-3">
