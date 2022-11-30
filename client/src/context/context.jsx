@@ -52,6 +52,7 @@ const AppProvider = ({ children }) => {
 				setUserEmail,
 				setUserData,
 				userData,
+				file,
 			}}
 		>
 			{children}

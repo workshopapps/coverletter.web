@@ -38,8 +38,8 @@ const featureCards = (props) => {
 				{btn && (
 					<button
 						className="btn 
-					bg-primaryMain
-					text-textWhite px-4 py-2 rounded-full mb-4"
+					bg-background
+					text-primaryMain  px-4 py-2 rounded-md border-2 border-primaryMain mb-4"
 					>
 						{btn}
 					</button>
@@ -55,7 +55,7 @@ const featureCards = (props) => {
 					{title}
 				</h2>
 				<p
-					className={`text-base ${
+					className={`text-base lg:text-lg ${
 						textColor ? "" : "text-textWhite"
 					} mt-6 lg:max-w-[60%] font-normal`}
 					style={{
@@ -89,7 +89,7 @@ const featureCards2 = (props) => {
 					{title}
 				</h2>
 				<p
-					className={`text-base ${
+					className={`text-base lg:text-lg ${
 						textColor ? "" : "text-textWhite"
 					} mt-6 lg:max-w-[60%] font-medium`}
 					style={{
@@ -173,12 +173,18 @@ const Features = () => {
 						tools to <br className="hidden xl:block" />
 						get you that job!
 					</H1>
-					<BodyText className="text-center font-semibold">
+					<BodyText className="text-center font-semibold text-base lg:text-lg">
 						Discover why our beta users reported a 45% increase in
 						response rate from employers after using our product.
 					</BodyText>
-
-					<Button type="primary" text="Start for free" />
+					<div className="w-full flex justify-center items-center">
+						<Button
+							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
+							type="secondary"
+						>
+							Start for free
+						</Button>
+					</div>
 				</div>
 			</section>
 
@@ -248,15 +254,15 @@ const Features = () => {
 
 							img: feature5,
 							textColor: "grey800",
-							btn: "Start for free",
+							btn: "Coming soon",
 						})}
 					</div>
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row "></div>
 				</div>
 
-				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 py-11 rounded-lg flex items-center max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
-					<div className="">
-						<H1 className=" text-textWhite text-left leading-relaxed max-md:text-center max-md:leading-10">
+				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 lg:px-20 py-11 rounded-lg flex items-center lg:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
+					<div className="lg:w-[75%]">
+						<H1 className=" text-textWhite text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10">
 							{" "}
 							Increase your chances of getting employed
 						</H1>
