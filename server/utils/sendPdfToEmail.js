@@ -44,6 +44,7 @@ module.exports = async (email, subject, fileName) => {
 					path: `${__dirname}/${fileName}`,
 				},
 			],
+	
 		});
 		return {
 			status: 200,
