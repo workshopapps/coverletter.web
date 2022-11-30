@@ -8,6 +8,7 @@ import navLinkElements from "../Constants/navLinkElements";
 import historyElements from "../Constants/historyElements";
 import { useGlobalContext } from "../context/context";
 import { ReactComponent as Avatar } from "../Assets/Avatar.svg";
+import { toast } from "react-toastify";
 
 const Header = () => {
 	const { user } = useGlobalContext();
