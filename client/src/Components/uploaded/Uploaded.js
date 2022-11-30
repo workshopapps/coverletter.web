@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import mark from "../sectionTwo/assets/success.svg";
 import first from "../sectionTwo/assets/first.svg";
 import { useGlobalContext } from "../../context/context";
-import InputData from "../input/InputData";
 
 function Uploaded() {
-	const { file, setFile, setFileName, fileName } = useGlobalContext();
+	const { file, setFile, setFileName } = useGlobalContext();
 	const Navigate = useNavigate();
 
 	const uploadFile =() =>{

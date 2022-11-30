@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import back from "./asesets/arrow.png";
 import { useGlobalContext } from "../../context/context";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function InputData() {
 	const Navigate = useNavigate();
@@ -25,6 +27,10 @@ function InputData() {
 
 	const clickHandler = () => {
 		Navigate("/");
+	};
+
+	const uploadToast = () =>{
+		    toast(" Error Processing your CV ")
 	};
 
 	const fullNameHandler = (e) => {
@@ -109,9 +115,10 @@ function InputData() {
 				});
 				Navigate("/preview");
 			} catch (ex) {
+				uploadToast();
 				setIsloading(false);
 				console.log(ex);
-				alert("Error processing your CV");
+				
 			}
 		};
 		if (
@@ -135,6 +142,7 @@ function InputData() {
 
 	return (
 		<div className="bg-background lg:px-[204px] lg:py-[120px] font-manrope">
+			<ToastContainer />
 			<main className=" lg:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite ">
 				<button
 					onClick={clickHandler}
