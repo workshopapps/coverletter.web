@@ -40,8 +40,8 @@ UserSchema.methods.createJWT = function () {
   )
 }
 
-UserSchema.methods.comparePassword = async function (canditatePassword) {
-  const isMatch = await bcrypt.compare(canditatePassword, this.password)
+UserSchema.methods.comparePassword = async function (userPassword) {
+  const isMatch = await bcrypt.compare(userPassword, this.password)
   return isMatch
 }
 

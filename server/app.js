@@ -1,11 +1,12 @@
 require("dotenv").config();
 require("express-async-errors");
 const express = require("express");
-const routes = require("./routes/index");
+const routes = require("./routes/routes");
 const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const app = express();
+// const connectDB = require('./db/connect')
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -30,10 +31,10 @@ const port = process.env.PORT || 3000;
 
 const start = async () => {
   try {
-    //connect DB
-    // await connectDB(process.env.MONGO_URI); 
+    // connectDB
+    // await connectDB(process.env.MONGO_URI);
     app.listen(port, () =>
-      console.log(`Server is listening on port ${port}...`)
+      console.log(`Server is listening on http://localhost:${port}`)
     );
   } catch (error) {
     console.log(error);
