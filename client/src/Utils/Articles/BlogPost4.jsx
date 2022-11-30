@@ -11,7 +11,7 @@ const BlogPost4 = () => {
 				helping you make the best impression. Using a Cover letter
 				builder can easily create an impactful cover letter and is sure
 				to land you an interview. We spent years researching and have
-				come to a conclusion that Aplicar Cover Letter is the top
+				come to a conclusion that Coverly Cover Letter is the top
 				builder with the finest templates.
 			</p>
 			<p className=" my-10 text-lg">
@@ -25,7 +25,7 @@ const BlogPost4 = () => {
 				Writing cover letters is the biggest pain point for many job
 				seekers. Staring at a blank page can be intimidating, and
 				crafting a unique cover letter for each role can be
-				time-consuming. Aplicar Cover Letter Builder streamlines the
+				time-consuming. Coverly Cover Letter Builder streamlines the
 				process of creating a polished, professional cover letter. Here
 				is how:
 			</p>
@@ -67,7 +67,7 @@ const BlogPost4 = () => {
 			<h4 className="text-lg font-bold mt-4">Proven success</h4>
 			<p className=" mb-12 text-lg">
 				Thousands of job seekers have successfully built cover letters
-				using Aplicar Cover Letter Builder to get the jobs they want.
+				using Coverly Cover Letter Builder to get the jobs they want.
 			</p>
 			<img src={image2} alt="" className="mx-auto" />
 			<h3 className="text-xl font-bold mt-14 mb-3">
