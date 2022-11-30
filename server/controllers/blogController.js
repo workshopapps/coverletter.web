@@ -7,16 +7,16 @@ const { BadRequestError } = require("../errors");
 
 const createPost = async (req, res) => {
 	const { adminId, title, content } = req.body;
+  if (!adminId || !title || !content)
+    return res
+      .status(StatusCodes.NO_CONTENT)
+      .json({ message: "All Fields are required" });
   const admin = await Admin.findOne({ id: adminId });
 	if (!mongoose.Types.ObjectId.isValid(adminId) || !admin) {
 		throw new BadRequestError(
 			"This adminId is not valid or the admin does not exsit in our database."
 		);
 	}
-	if (!adminId || !title || !content)
-		return res
-			.status(StatusCodes.NO_CONTENT)
-			.json({ message: "All Fields are required" });
 	const post = new Blog({ adminId, title, content });
 	await post.save();
 
