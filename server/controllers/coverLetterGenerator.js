@@ -23,6 +23,7 @@ const sendCoverLetter = async (req, res) => {
 		recipient_name,
 		recipient_department
 	);
+	
 	const response = {
 		status: "success",
 		data: {
