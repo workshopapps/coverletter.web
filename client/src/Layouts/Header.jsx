@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import Logo from "../Assets/headerLogo.png";
+import Logo from "../Assets/coverly.svg";
 import Hamburger from "../Assets/menu.svg";
 import { Link, useLocation } from "react-router-dom";
-import Close from "../Assets/close.svg";
+import Close from "../Assets/close-circle.svg";
 import Button from "../Components/Ui/Button";
 import navLinkElements from "../Constants/navLinkElements";
 import historyElements from "../Constants/historyElements";
@@ -30,12 +30,12 @@ const Header = () => {
 
 	const Large = () => {
 		return (
-			<ul className="space-x-6 hidden lg:block">
+			<ul className="space-x-12 hidden lg:block">
 				{navLinkElements.map((item) => (
 					<Link
 						key={item.name}
 						to={item.url}
-						className={`inline-block font-semibold text-grey400  ${
+						className={`inline-block font-semibold text-grey400 hover:text-[#0652DD] ${
 							location.pathname === item.url
 								? "text-primaryMain font-bold"
 								: ""
@@ -58,15 +58,15 @@ const Header = () => {
 				<img
 					src={Close}
 					alt="close"
-					className="w-12 ml-auto cursor-pointer"
+					className="w-9 ml-auto cursor-pointer"
 					onClick={() => setToggleMenu((prev) => (prev = false))}
 				/>
-				<ul className="flex flex-col gap-y-4 items-start">
+				<ul className="flex flex-col gap-y-5 mb-9 items-start">
 					{navLinkElements.map((item) => (
 						<Link
 							key={item.name}
 							to={item.url}
-							className="text-2xl hover:opacity-100 opacity-80"
+							className="text-[18px] hover:text-[#0652DD]"
 							onClick={() =>
 								setToggleMenu(() =>
 									setToggleMenu((prev) => (prev = false))
@@ -147,10 +147,14 @@ const Header = () => {
 			<Small />
 			<div className="flex items-center justify-between py-5 px-5 md:px-10 xl:px-15">
 				<Link to="/">
-					<img src={Logo} alt="Aplicar" />
+					<img
+						src={Logo}
+						alt="Coverly"
+						className="w-32 sm:w-40 tb:w-40"
+					/>
 				</Link>
 				<Large />
-				<div ref={ref} className="space-x-5 flex">
+				<div ref={ref} className="space-x-6 flex">
 					{!user ? (
 						<>
 							<Link to="/signin">
@@ -184,7 +188,7 @@ const Header = () => {
 						<img
 							src={Hamburger}
 							alt="Hamburger"
-							className="block lg:hidden cursor-pointer"
+							className="block w-6 sm:w-8 tb:w-10 lg:hidden cursor-pointer"
 							onClick={() =>
 								setToggleMenu((prev) => (prev = true))
 							}
