@@ -1,11 +1,8 @@
 require("express-async-errors");
 const express = require("express");
-<<<<<<< HEAD
 const routes = require("./routes/routes");
-=======
 const swaggerUI = require("swagger-ui-express");
 const swaggerDocument = require("./utils/swaggerOptions.json");
->>>>>>> d0cbfb33381953f1f788c31b8ab61a52b7d1fb6a
 const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
