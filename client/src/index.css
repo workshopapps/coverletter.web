@@ -1,0 +1,103 @@
+/* manrope */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	*,
+	*::before,
+	*::after {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: "Manrope", sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	code {
+		font-family: "Manrope", sans-serif;
+	}
+
+	.contents__holder::-webkit-scrollbar {
+		width: 5px;
+	}
+	.contents__holder::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.contents__holder::-webkit-scrollbar-thumb {
+		background: #49494b7a;
+		border-radius: 5px;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: 700;
+	}
+
+	p {
+		font-weight: 400;
+	}
+	.contents__holder::-webkit-scrollbar {
+		width: 5px;
+	}
+	.contents__holder::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.contents__holder::-webkit-scrollbar-thumb {
+		background: #49494b7a;
+		border-radius: 5px;
+	}
+}
+@layer components {
+	.btn {
+		@apply px-4 py-3 font-bold text-base rounded-lg box-border;
+	}
+
+	.btnLong {
+		@apply w-[400px];
+	}
+	.btnShort {
+		@apply w-[140px];
+	}
+
+	.btnPrimary {
+		@apply bg-primaryMain text-textWhite;
+	}
+
+	.btnPrimary:hover {
+		@apply bg-primaryDark;
+	}
+
+	.btnPrimary:focus {
+		@apply bg-primaryDeep;
+	}
+
+	.btnPrimary:disabled {
+		@apply bg-primaryLight;
+	}
+
+	.btnSecondary {
+		@apply bg-textWhite text-primaryMain border border-primaryMain;
+	}
+
+	.btnSecondary:hover {
+		@apply bg-primaryLightest border-primaryDark;
+	}
+
+	.btnSecondary:focus {
+		@apply bg-primaryDeep text-textWhite;
+	}
+
+	.btnSecondary:disabled {
+		@apply bg-textWhite text-primaryLight border-primaryLight;
+	}
+}

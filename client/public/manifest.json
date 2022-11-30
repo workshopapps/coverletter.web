@@ -1,0 +1,25 @@
+{
+	"short_name": "Aplicar",
+	"name": "Aplicar,let's write your cover letters",
+	"icons": [
+		{
+			"src": "icon.png",
+			"sizes": "64x64 32x32 24x24 16x16",
+			"type": "image/x-icon"
+		},
+		{
+			"src": "icon.png",
+			"type": "image/png",
+			"sizes": "12x19"
+		},
+		{
+			"src": "icon.png",
+			"type": "image/png",
+			"sizes": "90x90"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
+}
