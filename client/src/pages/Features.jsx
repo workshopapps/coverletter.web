@@ -7,6 +7,7 @@ import feature5 from "../Assets/feature5.svg";
 import featureBackgroundImg from "../Assets/feature-background-img.jpg";
 import featureBackgroundImg2 from "../Assets/feature-section-bg-blue.svg";
 import Button from "../Components/Ui/Button";
+import { ReactComponent as ArrowBlue } from "../Assets/arrow-up-blue.svg";
 
 const BodyText = (props) => {
 	const { children, className } = props;
@@ -29,7 +30,7 @@ const featureCards = (props) => {
 				<img
 					src={img}
 					alt=""
-					className="	md:max-w-[200px] lg:max-w-[500px]"
+					className="	md:max-w-[380px] lg:max-w-[500px]"
 				/>
 			</div>
 			<div className="flex-auto">
@@ -37,8 +38,8 @@ const featureCards = (props) => {
 				{btn && (
 					<button
 						className="btn 
-					bg-primaryMain
-					text-textWhite px-4 py-2 rounded-full mb-4"
+					bg-background
+					text-primaryMain  px-4 py-2 rounded-md border-2 border-primaryMain mb-4"
 					>
 						{btn}
 					</button>
@@ -54,7 +55,7 @@ const featureCards = (props) => {
 					{title}
 				</h2>
 				<p
-					className={`text-base ${
+					className={`text-base lg:text-lg ${
 						textColor ? "" : "text-textWhite"
 					} mt-6 lg:max-w-[60%] font-normal`}
 					style={{
@@ -88,7 +89,7 @@ const featureCards2 = (props) => {
 					{title}
 				</h2>
 				<p
-					className={`text-base ${
+					className={`text-base lg:text-lg ${
 						textColor ? "" : "text-textWhite"
 					} mt-6 lg:max-w-[60%] font-medium`}
 					style={{
@@ -102,7 +103,7 @@ const featureCards2 = (props) => {
 				<img
 					src={img}
 					alt=""
-					className="md:max-w-[200px] lg:max-w-[500px]"
+					className="md:max-w-[380px] lg:max-w-[500px]"
 				/>
 			</div>
 		</div>
@@ -112,6 +113,30 @@ const featureCards2 = (props) => {
 // md:w-56 md:h-56 lg:w-64 xl:w-72
 
 const Features = () => {
+	// add scroll to top feature
+	const [displayArrow, setDisplayArrow] = useState(false);
+
+	const scrollUp = () => {
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+	};
+
+	const listenToScroll = () => {
+		if (
+			document.body.scrollTop > 50 ||
+			document.documentElement.scrollTop > 50
+		) {
+			setDisplayArrow(true);
+		} else {
+			setDisplayArrow(false);
+		}
+	};
+
+	useEffect(() => {
+		window.addEventListener("scroll", listenToScroll);
+		return () => window.removeEventListener("scroll", listenToScroll);
+	}, []);
+
+
 	const [isTablet, setIsTablet] = useState(false);
 	// listen to screen size event and set isTablet state
 	useEffect(() => {
@@ -148,12 +173,18 @@ const Features = () => {
 						tools to <br className="hidden xl:block" />
 						get you that job!
 					</H1>
-					<BodyText className="text-center font-semibold">
+					<BodyText className="text-center font-semibold text-base lg:text-lg">
 						Discover why our beta users reported a 45% increase in
 						response rate from employers after using our product.
 					</BodyText>
-
-					<Button type="primary" text="Start for free" />
+					<div className="w-full flex justify-center items-center">
+						<Button
+							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
+							type="secondary"
+						>
+							Start for free
+						</Button>
+					</div>
 				</div>
 			</section>
 
@@ -223,15 +254,15 @@ const Features = () => {
 
 							img: feature5,
 							textColor: "grey800",
-							btn: "Start for free",
+							btn: "Coming soon",
 						})}
 					</div>
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row "></div>
 				</div>
 
-				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 py-11 rounded-lg flex items-center max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
-					<div className="">
-						<H1 className=" text-textWhite text-left leading-relaxed max-md:text-center max-md:leading-10">
+				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 lg:px-20 py-11 rounded-lg flex items-center lg:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
+					<div className="lg:w-[75%]">
+						<H1 className=" text-textWhite text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10">
 							{" "}
 							Increase your chances of getting employed
 						</H1>
@@ -248,6 +279,12 @@ const Features = () => {
 						</Button>
 					</div>
 				</div>
+				{displayArrow && (
+					<ArrowBlue
+						className="fixed bottom-[40px] right-[5px]"
+						onClick={scrollUp}
+					/>
+				)}
 			</section>
 		</>
 	);

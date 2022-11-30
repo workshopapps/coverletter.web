@@ -68,9 +68,9 @@ const ResetPassword = () => {
 	};
 
 	return (
-		<section className="reset-password bg-[#f2f2f7] pt-36 pb-20">
+		<section className="reset-password bg-[#f2f2f7] pt-36 pb-20 max-[425px]:pt-20">
 			<div
-				className="reset-password-content mx-auto w-[89%] py-8 bg-[transparent]
+				className="reset-password-content mx-auto w-[89%]   bg-[transparent]
 			sm:w-[75%]
 			md:bg-white md:w-[474px] bg-white md:px-16 py-16
 			xl:w-[528px] xl:px-16"
