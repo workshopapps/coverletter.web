@@ -25,6 +25,8 @@ app.use(
 
 //Routers
 const authRoutes = require("./routes/authRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+// const resetRoutes = require("./routes/resetRoutes");
 const templateRoutes = require("./routes/templateRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
 const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
@@ -65,6 +67,7 @@ app.use(
 );
 
 // routes
+app.use("/api/v1", adminRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", generateOtpRoutes);
 app.use("/api/v1", templateRoutes);
