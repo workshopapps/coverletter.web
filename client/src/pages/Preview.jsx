@@ -10,11 +10,8 @@ import pauseIcon from "../Assets/pause.svg";
 import cancelIcon from "../Assets/cancel.svg";
 import leftArrowIcon from "../Assets/leftArrow.svg";
 import BigLeftArrowIcon from "../Assets/bigLeftArrow";
-import { downloadPdf } from "../Utils/download-util";
+import { downloadPdf, downloadDOCX } from "../Utils/download-util";
 import { convertToTxt } from "../Utils/txtDownload";
-import { saveAs } from "file-saver";
-import myTemplate1 from "../Components/docx-templates/Template1";
-import { Packer } from "docx";
 /// import { useNavigate } from "react-router-dom";
 
 const Preview = () => {
@@ -37,7 +34,7 @@ const Preview = () => {
 			downloadPdf("coverletter-target");
 		} else if (dType === "DOC") {
 			//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
-			downloadDOCX();
+			downloadDOCX(data, userData);
 		} else if (dType === "TEXT") {
 			convertToTxt();
 		} else {
@@ -48,11 +45,6 @@ const Preview = () => {
 		// setFirstModal(!firstModal);
 	};
 
-	const downloadDOCX = async () => {
-		const docxTemplate1 = myTemplate1({ data, userData });
-		const blob = await Packer.toBlob(docxTemplate1);
-		saveAs(blob, "My cover letter.docx");
-	};
 
 	useEffect(() => {
 		setFirstModal(false);
