@@ -15,7 +15,7 @@ const CustomerStories = () => {
 						applicants best friend
 					</p>
 				</div>
-				<div className="block px-[50px] md:grid grid-cols-2 gap-x-[18px]">
+				<div className="px-[50px] grid md:grid-cols-2 gap-x-8">
 					{items
 						.filter(
 							(item) =>
@@ -35,20 +35,20 @@ const CustomerStories = () => {
 										src={img}
 										alt=""
 									/>
-									<p className="font-bold text-[10.75px] leading-[16.13px]  text-primaryMain md:text-[24px] lg:leading-9">
+									<p className="font-bold text-[12px] leading-8  text-primaryMain md:text-[24px] md:leading-10">
 										{story}
 									</p>
-									<h3 className="font-semibold mt-[2.27px] mb-[6.18px] text-[17.92px] left-[21.51px] md:text-2xl leading-6 lg:text-[40px] md:leading-[48px] md:mb-4">
+									<h3 className="font-semibold mt-[2.27px] mb-[6.18px] text-[17.92px] left-[21.51px] md:text-2xl leading-1 lg:text-[36px] md:leading-normal md:mb-4">
 										{text}
 									</h3>
 
 									<Link
 										to={`/customerstories/${id}`}
-										className="font-semibold leading-[10.75px] text-grey800 text-[7.17px] inline-flex justify-center items-center md:text-base md:leading-6"
+										className="font-semibold leading-tight text-grey800 text-[12px] flex justify-start items-center gap-1 md:gap-2 md:text-base md:leading-6"
 									>
 										{read}{" "}
 										<img
-											className="w-[10.75px] h-[10.75px] ml-[7.63px] md:w-6 md:h-6 md:ml-[14px]"
+											className="w-[10px] h-[10px] md:w-6 md:h-6"
 											src={arrow}
 											alt=""
 										/>
@@ -57,13 +57,13 @@ const CustomerStories = () => {
 							);
 						})}
 				</div>
-				<div className="mt-[37px] md:mt-28">
-					<h3 className="text-grey800 text-2xl leading-9 mb-[17px] ml-[22px] md:text-[56px] md:mb-[59px]">
+				<div className="mt-[37px] md:mt-20 px-[35px]">
+					<h3 className="text-grey800 text-2xl leading-9 mb-[17px] md:text-[56px] md:mb-[59px] text-center">
 						Latest Customer{" "}
 						<span className="text-primaryMain">Stories</span>{" "}
 					</h3>
 
-					<div className="px-[35px] grid grid-cols-2 gap-y-[24.11px] pb-[82.11px] gap-x-[48.12px] lg:grid-cols-3 lg:gap-x-[19px] lg:gap-y-[93px] lg:pb-[233px]">
+					<div className="grid grid-cols-2 pb-[70px] gap-x-3 md:gap-x-8 gap-y-8 lg:grid-cols-3 lg:gap-x-[19px] lg:gap-y-[93px] md:pb-[150px] h-full">
 						{items
 							.filter(
 								(testimonial) =>
@@ -80,18 +80,18 @@ const CustomerStories = () => {
 											src={img}
 											alt=""
 										/>
-										<p className="font-bold text-[10px] text-primaryMain md:text-base">
+										<p className="font-bold text-[10px] text-primaryMain md:text-base mb-2">
 											{story}
 										</p>
-										<h3 className="text-[7.68px] leading-[11.5px] w-[95px] h-[35px] sm:text-2xl md:w-[297px] md:h-[108px] md:leading-9">
+										<h3 className="text-[8px] leading-[11.5px] w-[100%] h-[35px] sm:text-2xl md:w-[297px] lg:w-full md:h-[108px] mb-2 lg:mb-10 md:leading-9">
 											{text}
 										</h3>
 										<Link
 											to={`/customerstories/${id}`}
-											className="text-[6px] inline-flex justify-center items-center md:text-[12px] leading-[16px] "
+											className="font-semibold leading-tight text-grey800 text-[10px] flex justify-start items-center gap-1 md:gap-2 md:text-base md:leading-6"
 										>
 											{read}{" "}
-											<span className="w-[10.75px] h-[10.75px]md:w-[18px] md:h-[18px] ml-3">
+											<span className="w-[10px] h-[10px] md:w-6 md:h-6">
 												<img src={arrow} alt="" />
 											</span>
 										</Link>

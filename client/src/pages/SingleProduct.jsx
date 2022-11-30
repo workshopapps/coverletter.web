@@ -35,8 +35,8 @@ const SingleProduct = () => {
 						alt=""
 					/>
 				</div>
-				<div className="mt-[33px] md:mt-[65px] mb-[72px]">
-					<h3 className="text-2xl leading-9 md:text-[40px]">
+				<div className="mt-[33px] md:mt-[65px] mb-[50px]">
+					<h3 className="text-2xl leading-9 md:text-[40px] md:mb-3">
 						Introduction
 					</h3>
 					<p className="text-grey400 pr-0 text-base leading-6 lg:pr-[282px]">
@@ -56,16 +56,16 @@ const SingleProduct = () => {
 						} = textContent;
 						return (
 							<div
-								className="pr-0 pb-[72px] lg:pr-[487px]"
+								className="pr-0 pb-[50px] lg:pr-[487px]"
 								key={id}
 							>
-								<h3 className="text-2xl leading-9 md:text-[40px]">
+								<h3 className="text-2xl leading-9 md:mb-3 md:text-[40px]">
 									{title}
 								</h3>
 								<p className="text-grey400 font-normal lg:w-[857px]">
 									{challengeTalk}
 								</p>
-								<p className=" pt-[33px] pb-6 text-base text-grey400 leading-6 font-semibold md:pt-[72px] md:pb-6">
+								<p className=" pt-[28px] pb-6 text-base text-grey400 leading-6 font-semibold md:pt-[40px] md:pb-6">
 									{reject}
 								</p>
 
