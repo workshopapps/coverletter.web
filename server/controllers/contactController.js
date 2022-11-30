@@ -4,8 +4,9 @@ const { BadRequestError } = require("../errors");
 const { StatusCodes } = require("http-status-codes");
 
 const contact = async (req, res) => {
-	const { userEmail, fullName, phone, subject, description } = req.body;
-	const email = "aplicarorg@gmail.com";
+	const { userEmail, fullName, phone, subject, description, filename } = req.body;
+	const email = "Aplicar.com";
+	const filenames = req.file
 	const contactError = ContactUsValidation.ContactValidation(
 		fullName,
 		userEmail,
@@ -21,11 +22,14 @@ const contact = async (req, res) => {
 	} else 
 	{
 		try {
-		  const result = await sendEmail(email, subject, body);
+		  const result = await sendEmail(email, subject, body, filenames);
 		  if(result) {
 			 return res.status(StatusCodes.CREATED).json({msg: "Email sent successfully", result });
+		  } else 
+		  {
+			return res.status(500).json({msg: "Email not sent successfully"})
 		  }
-		  return res.status(500).json({msg: "Email not sent successfully"})
+		  
 		} catch (error) {
 			return res.status(500).json({ msg: error.m})
 		}

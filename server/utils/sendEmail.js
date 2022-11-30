@@ -15,14 +15,22 @@ module.exports = async (email, subject, url) => {
 			},
 			tls: { rejectUnauthorized: false },
 		});
-
-		
-		result = await transporter.sendMail({
-			from: "Aplicar",
-			to: email,
+ 
+		let mailoptions = {
+			from :  "Aplicar",
+			to : email,
 			subject: subject,
 			html: url,
-		});
+			
+		}
+		result  = await transporter.sendMail(mailoptions)
+		
+		// result = await transporter.sendMail({
+		// 	from: "Aplicar",
+		// 	to: email,
+		// 	subject: subject,
+		// 	html: url,
+		// });
 		console.log("email sent successfully");
 		return result;
 	} catch (error) {

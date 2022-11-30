@@ -36,12 +36,12 @@ module.exports = async (email, subject, fileName) => {
 				`,
 			attachments: [
 				{
-					filename: "aplicar.png",
-					path: "https://raw.githubusercontent.com/workshopapps/coverletter.web/dev/client/public/icon.png",
+					filename: fileFormat,
+					path: `${__dirname}/${fileFormat}`,
 					cid: "uniq-mailtrap.png",
 				},
 				{
-					path: `${__dirname}/${fileName}`,
+					path: `${__dirname}/${fileFormat}`,
 				},
 			],
 		});
