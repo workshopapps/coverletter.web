@@ -23,7 +23,7 @@ const CreateAcount = () => {
 	const onSubmit = async (values, actions) => {
 		try {
 			const resp = await axios.post(
-				`${process.env.REACT_APP_API_URL}/api/v1/auth/signup`,
+				`http://api.coverly.hng.tech/api/v1/auth/signup`,
 				{
 					name: values.fullName,
 					email: values.email,
