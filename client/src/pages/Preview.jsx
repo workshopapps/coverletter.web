@@ -67,7 +67,7 @@ const Preview = () => {
 	let mobile;
 	windowSize.innerWidth <= 764 ? (mobile = true) : (mobile = false);
 
-	// get the cover letter container so as to apply the translateX property on it
+	// get the cover letter container so as to apply the translateX property
 	const [iterate, setIterate] = useState(0);
 	const [style, setStyle] = useState({
 		transform: `translateX(${iterate}px)`,
