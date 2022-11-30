@@ -29,7 +29,7 @@ const featureCards = (props) => {
 				<img
 					src={img}
 					alt=""
-					className="	md:max-w-[200px] lg:max-w-[500px]"
+					className="	md:max-w-[380px] lg:max-w-[500px]"
 				/>
 			</div>
 			<div className="flex-auto">
@@ -102,7 +102,7 @@ const featureCards2 = (props) => {
 				<img
 					src={img}
 					alt=""
-					className="md:max-w-[200px] lg:max-w-[500px]"
+					className="md:max-w-[380px] lg:max-w-[500px]"
 				/>
 			</div>
 		</div>
