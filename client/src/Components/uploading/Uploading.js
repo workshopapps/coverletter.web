@@ -32,7 +32,7 @@ function Uploading() {
 
 			try {
 				const res = await axios.post(
-					`${process.env.REACT_APP_API_URL}/api/v1/upload`,
+					`http://api.coverly.hng.tech/api/v1/upload`,
 					formData,
 					option
 				);

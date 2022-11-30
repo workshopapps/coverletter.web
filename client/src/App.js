@@ -35,6 +35,8 @@ import {
 	EmailOTP,
 	CustomerStories,
 	SingleProduct,
+	AuthUserRoute,
+	ProtectedRoutes,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -49,7 +51,14 @@ const App = () => {
 				<Routes>
 					<Route exact path="/" element={<Upload />} />
 					<Route path="/upload-data" element={<UploadData />} />
-					<Route path="/preview" element={<Preview />} />
+					<Route
+						path="/preview"
+						element={
+							<ProtectedRoutes>
+								<Preview />
+							</ProtectedRoutes>
+						}
+					/>
 					<Route
 						path="/cover letter"
 						element={<PgCoverLetter />}
@@ -59,16 +68,34 @@ const App = () => {
 					<Route path="/register" element={<Register />} />
 					<Route path="/verifyaccount" element={<VerifyAcc />} />
 					<Route path="/signin" element={<SignIn />} />
-					<Route path="/history" element={<History />} />
+					<Route
+						path="/history"
+						element={
+							<AuthUserRoute>
+								<History />
+							</AuthUserRoute>
+						}
+					/>
 					<Route path="/document" element={<Documentation />} />
 					<Route
 						path="/see-all-history"
-						element={<SeeAllHistory />}
+						element={
+							<AuthUserRoute>
+								<SeeAllHistory />
+							</AuthUserRoute>
+						}
 					/>
 					<Route path="/features" element={<Features />} />
 					<Route path="/faq" element={<Faq />} />
 					<Route path="/about" element={<About />} />
-					<Route path="/profile" element={<ProfilePage />} />
+					<Route
+						path="/profile"
+						element={
+							<AuthUserRoute>
+								<ProfilePage />
+							</AuthUserRoute>
+						}
+					/>
 					<Route path="/generate" element={<UploadCV />} />
 					<Route path="/pricing" element={<Pricing />} />
 					<Route path="/career" element={<Career />} />
@@ -78,7 +105,14 @@ const App = () => {
 						path="/forgot-password"
 						element={<ForgotPassword />}
 					/>
-					<Route path="/reset" element={<ResetPassword />} />
+					<Route
+						path="/reset"
+						element={
+							<AuthUserRoute>
+								<ResetPassword />
+							</AuthUserRoute>
+						}
+					/>
 					<Route
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
@@ -90,7 +124,15 @@ const App = () => {
 					></Route>
 					<Route path="/forum" element={<Forum />} />
 					<Route path="/forum/thread" element={<Thread />} />
-					<Route path="/forum/post" element={<Post />} />
+
+					<Route
+						path="/forum/post"
+						element={
+							<AuthUserRoute>
+								<Post />
+							</AuthUserRoute>
+						}
+					/>
 					<Route
 						path="/customerstories"
 						element={<CustomerStories />}
@@ -101,7 +143,14 @@ const App = () => {
 					/>
 					<Route path="privacy-policy" element={<PrivacyPolicy />} />
 
-					<Route path="/profile" element={<ProfilePage />} />
+					<Route
+						path="/profile"
+						element={
+							<AuthUserRoute>
+								<ProfilePage />
+							</AuthUserRoute>
+						}
+					/>
 					<Route path="/generate" element={<UploadCV />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>

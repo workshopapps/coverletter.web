@@ -9,9 +9,12 @@ import { Link, useNavigate } from "react-router-dom";
 import SuccessModal from "../Components/Ui/SuccessModal";
 import Input from "../Components/Ui/Input";
 import { toast } from "react-toastify";
+import { useGlobalContext } from "../context/context";
+import { addEmailToLocalStorage } from "../Utils/localStorage";
 
 import axios from "axios";
 const CreateAcount = () => {
+	const { setUserEmail, userEmail } = useGlobalContext();
 	const navigate = useNavigate();
 	const [show, setShow] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);
@@ -23,7 +26,7 @@ const CreateAcount = () => {
 	const onSubmit = async (values, actions) => {
 		try {
 			const resp = await axios.post(
-				`${process.env.REACT_APP_API_URL}/api/v1/auth/signup`,
+				`http://api.coverly.hng.tech/api/v1/auth/signup`,
 				{
 					name: values.fullName,
 					email: values.email,
@@ -31,6 +34,8 @@ const CreateAcount = () => {
 				}
 			);
 			setShow(true);
+			setUserEmail({ email: values.email });
+			addEmailToLocalStorage({ email: values.email });
 		} catch (err) {
 			toast.error(err.response.data.msg);
 			return;

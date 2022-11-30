@@ -97,7 +97,7 @@ function InputData() {
 			formData.append("location", location);
 			try {
 				const res = await axios.post(
-					`${process.env.REACT_APP_API_URL}/api/v1/generate`,
+					`http://api.coverly.hng.tech/api/v1/generate`,
 					formData
 				);
 				console.log(res);
