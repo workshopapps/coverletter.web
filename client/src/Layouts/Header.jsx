@@ -29,6 +29,23 @@ const Header = () => {
 		};
 	}, []);
 
+	/*
+	 * Logout user
+	 */
+
+	const logout = async () => {
+		try {
+			localStorage.removeItem("user");
+			toast.success("You have been logged out");
+			setTimeout(() => {
+				window.location.reload();
+			}, 1000);
+		} catch (err) {
+			console.log(err);
+			toast.error("Something went wrong");
+		}
+	};
+
 	const Large = () => {
 		return (
 			<ul className="space-x-12 hidden lg:block">
@@ -136,7 +153,11 @@ const Header = () => {
 					))}
 				</ul>
 				<hr className="border-[0.3px] border-searchbd" />
-				<Link to="/" className="text-center cursor-pointer">
+				<Link
+					to="/"
+					className="text-center cursor-pointer"
+					onClick={logout}
+				>
 					<p className="font-bold text-base mt-4">Log Out</p>
 				</Link>
 			</aside>
