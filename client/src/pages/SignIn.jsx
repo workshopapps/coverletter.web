@@ -29,11 +29,11 @@ const Login = () => {
 	const onSubmit = async (values, actions) => {
 		try {
 			const resp = await axios.post(
-				`${process.env.REACT_APP_API_URL}/api/v1/auth/login`,
+				`http://api.coverly.hng.tech/api/v1/auth/login`,
 				values
 			);
 			const UserDetails = await axios.post(
-				`${process.env.REACT_APP_API_URL}/api/v1/auth/dashboard`,
+				`http://api.coverly.hng.tech/api/v1/auth/dashboard`,
 				values
 			);
 
