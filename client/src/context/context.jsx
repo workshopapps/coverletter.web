@@ -1,11 +1,12 @@
 import React, { useState, useContext, createContext } from "react";
 
+import { getUserFromLocalStorage } from "../Utils/localStorage";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [user, setUser] = useState(false);
+	const [user, setUser] = useState(getUserFromLocalStorage());
 	const [file, setFile] = useState("");
 	const [coverLetter, setCoverLetter] = useState("");
 	const [fileName, setFileName] = useState("");

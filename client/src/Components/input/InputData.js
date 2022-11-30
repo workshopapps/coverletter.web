@@ -97,7 +97,7 @@ function InputData() {
 			formData.append("location", location);
 			try {
 				const res = await axios.post(
-					`http://api.aplicar.hng.tech/api/v1/generate`,
+					`${process.env.REACT_APP_API_URL}/api/v1/generate`,
 					formData
 				);
 				console.log(res);

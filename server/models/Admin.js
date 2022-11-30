@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const { generateOTP } = require("../utils/generateOTP");
 
-const UserSchema = mongoose.Schema({
+const AdminSchema = mongoose.Schema({
 	name: {
 		type: String,
 		required: [true, "Please provide name"],
@@ -31,14 +31,25 @@ const UserSchema = mongoose.Schema({
 		default: "Pending",
 	},
 	confirmationCode: {
-		type: String
+		type: String,
 	},
-	otp: {type:String,default:null},
-	passwordResetExpires: {type:Date,default:null},
+	otp: { type: String, default: null },
+	passwordResetExpires: { type: Date, default: null },
+	isAdmin: {
+		type: Boolean,
+		default: false,
+	},
+	role: {
+		type: String,
+		enum: {
+			values: ["Admin", "Lead-admin"],
+			message: "Account is either Admin or Lead-admin",
+		},
+		default: "Admin",
+	},
 });
 
-
-UserSchema.methods.createJWT = function () {
+AdminSchema.methods.createJWT = function () {
 	return jwt.sign(
 		{
 			userId: this._id,
@@ -53,15 +64,15 @@ UserSchema.methods.createJWT = function () {
 	);
 };
 
-UserSchema.methods.comparePassword = async function (canditatePassword) {
+AdminSchema.methods.comparePassword = async function (canditatePassword) {
 	const isMatch = await bcrypt.compare(canditatePassword, this.password);
 	return isMatch;
 };
 
-UserSchema.methods.createPasswordResetToken = function () {
+AdminSchema.methods.createPasswordResetToken = function () {
 	const otp = generateOTP(4);
 	this.otp = otp;
 	return otp;
 };
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Admin", AdminSchema);
