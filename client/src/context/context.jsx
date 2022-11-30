@@ -1,6 +1,9 @@
 import React, { useState, useContext, createContext } from "react";
 
-import { getUserFromLocalStorage } from "../Utils/localStorage";
+import {
+	getUserFromLocalStorage,
+	getEmailFromLocalStorage,
+} from "../Utils/localStorage";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
@@ -10,7 +13,7 @@ const AppProvider = ({ children }) => {
 	const [file, setFile] = useState("");
 	const [coverLetter, setCoverLetter] = useState(false);
 	const [fileName, setFileName] = useState("");
-	const [userData, setUserData] = useState({});
+	const [userEmail, setUserEmail] = useState(getEmailFromLocalStorage());
 
 	const openSidebar = () => {
 		setIsSidebarOpen(true);
@@ -44,8 +47,8 @@ const AppProvider = ({ children }) => {
 				setCoverLetter,
 				user,
 				setUser,
-				userData,
-				setUserData,
+				userEmail,
+				setUserEmail,
 			}}
 		>
 			{children}

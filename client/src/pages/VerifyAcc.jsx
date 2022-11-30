@@ -6,7 +6,9 @@ import { object } from "yup/lib/locale";
 import Button from "../Components/Ui/Button";
 import { useNavigate } from "react-router-dom";
 import Timer from "../Components/Timer";
+import { useGlobalContext } from "../context/context";
 const VerifyAcc = () => {
+	const { userEmail } = useGlobalContext();
 	const navigate = useNavigate();
 	const intialState = {
 		firstInput: "",
@@ -64,13 +66,14 @@ const VerifyAcc = () => {
 			setIsLoading(true);
 			try {
 				const resp = await axios.post(
-					`http://api.coverly.hng.tech/api/v1/auth/generateOtp`,
+					`http://api.coverly.hng.tech/api/v1/generateOtp`,
 					{
 						type: "verify",
-						email: "dfelastevetest@gmail.com",
+						email: userEmail.email,
 					}
 				);
-				toast.success("A new Otp has been Sent!!");
+				toast.success("Check your email for a new OTP");
+				setIsLoading(false);
 			} catch (error) {
 				toast.error(error.response.data);
 				setIsLoading(false);
@@ -152,6 +155,7 @@ const VerifyAcc = () => {
 								children={"Resend OTP"}
 								type={"submit"}
 								disabled={isLoading}
+								onClick={generateNewOtp}
 							/>
 							<Button
 								className={
