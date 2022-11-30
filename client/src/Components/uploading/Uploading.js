@@ -3,6 +3,8 @@ import { useGlobalContext } from "../../context/context";
 import axios, { isCancel } from "axios";
 import Uploaded from "../uploaded/Uploaded";
 import Upload from "../upload/Upload";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Uploading() {
 	const [percentage, setPercentage] = useState("0");
@@ -12,6 +14,10 @@ function Uploading() {
 	const { file, setFile, setFileSize, fileName } = useGlobalContext();
 
     const cancelFileUpload = useRef(null)
+
+	const showToast = () => {
+		    toast(" You imported the wrong file! ")
+		  };
 
 	useEffect(() => {
 	const uploadFile = async (e) => {
@@ -50,13 +56,15 @@ function Uploading() {
         uploadFile();
 
 		if(error === 'ERR_BAD_REQUEST'){
-			alert('You imported the wrong file')
+			showToast();
 			setFile("")
 			setFileSize()
 		}
+
+		
 	
     
-    },[])
+    },[error])
 
 
     if(status> 100 && status < 250){
@@ -72,10 +80,12 @@ function Uploading() {
 
     return (
 		<div className="whole"> 
+		
 		{
 			error === 'ERR_BAD_REQUEST' ? <Upload /> : 
 			show ? (
 				<div className="flex w-[100%] h-[100%] flex-col gap-[15px] justify-center items-center">
+					<ToastContainer />
 					<h3 className="text-textBody text-center text-[16px]">
 						{fileName}
 					</h3>
