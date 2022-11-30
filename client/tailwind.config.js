@@ -6,12 +6,15 @@ module.exports = {
 			gridTemplateColumns: {
 				grid: "repeat(auto-fit, minmax(297px, 1fr))",
 			},
+			screens: {
+				lw: "1440px",
+			},
 		},
 		colors: {
 			background: "#F2F2F7",
 			overlay: "rgba(3, 41, 111, 0.48)",
 			textHeader: "#1C1C1E",
-			textBody: "#48484A",
+			textBody: "#101010",
 			textPlacecholder: "#A7A7A7",
 			textWhite: "#FCFCFC",
 			successLight: "#E5FCF6",
