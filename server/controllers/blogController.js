@@ -14,7 +14,7 @@ const createPost = async (req, res) => {
 	const admin = await Admin.findOne({ id: adminId });
 	if (!mongoose.Types.ObjectId.isValid(adminId) || !admin) {
 		throw new BadRequestError(
-			"This adminId is not valid or the admin does not exsit in our database."
+			"This adminId is not valid or the admin does not exist in our database."
 		);
 	}
 	const post = new Blog({ title, content });
@@ -25,6 +25,39 @@ const createPost = async (req, res) => {
 		.json({ message: "Creation of blog post was successful." });
 };
 
+const getAllPosts = async (req, res) => {
+	const result = await Blog.find()
+	
+	if (result){
+		return res
+			.status(200)
+			.json({ message: "Successfully retrieved." });
+	}
+	else{
+		throw new BadRequestError(
+			"Post not found"
+		);
+	}
+}
+
+const getOnePost = async (req, res) => {
+	const result = await Blog.findOne(req.params.blogId)
+	
+	if (result){
+		return res
+			.status(200)
+			.json({ message: "Successfully retrieved." });
+	}
+	else{
+		throw new BadRequestError(
+			"Post not found"
+		);
+	}
+}
+
+
 module.exports = {
 	createPost,
+	getAllPosts,
+	getOnePost,
 };
