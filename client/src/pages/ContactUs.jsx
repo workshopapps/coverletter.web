@@ -50,7 +50,9 @@ const TertiaryButton = (props) => {
 			href={href}
 		>
 			<div className="overflow-hidden text-center">
-				<p className="text-xs font-semibold text-[#101010]">{label}</p>
+				<p className="text-xs font-semibold text-[#101010] active:text-textWhite">
+					{label}
+				</p>
 				<p className="font-bold">{text}</p>
 			</div>
 		</a>
@@ -191,7 +193,6 @@ const ContactUs = () => {
 	const validate = () => {
 		var errorObject = emptyForm;
 		const requiredErrorText = "This is a required field";
-		const invalidFormatText = "Invalid format";
 		if (!formData.name) {
 			errorObject = { ...errorObject, name: requiredErrorText };
 		}
@@ -210,18 +211,18 @@ const ContactUs = () => {
 		if (
 			!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)
 		) {
-			errorObject = { ...errorObject, email: invalidFormatText };
+			errorObject = { ...errorObject, email: "Invalid email address" };
 		}
 		if (
 			!(
 				/^(?:(?:(?:\+?234(?:h1)?|01)h*)?(?:\(\d{3}\)|\d{3})|\d{4})(?:\W*\d{3})?\W*\d{4}$/.test(
 					formData.phone
 				) &&
-				((formData.phone.length !== 11 && formData.phone[0] !== 0) ||
-					(formData.phone.length === 11 && formData.phone[0] === 0))
+				((formData.phone.length !== 11 && formData.phone[0] !== "0") ||
+					(formData.phone.length === 11 && formData.phone[0] === "0"))
 			)
 		) {
-			errorObject = { ...errorObject, phone: invalidFormatText };
+			errorObject = { ...errorObject, phone: "Invalid phone number" };
 		}
 		return errorObject;
 	};
