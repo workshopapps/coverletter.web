@@ -19,8 +19,33 @@ import pricing from "../Assets/pricing.png";
 import arrow from "../Assets/arrow.png";
 import line from "../Assets/line.png";
 import upload from "../Assets/upload.png";
+import { useEffect, useState } from "react";
+import { ReactComponent as ArrowBlue } from "../Assets/arrow-up-blue.svg";
 
 export default function Documentation() {
+	// add scroll to top feature
+	const [displayArrow, setDisplayArrow] = useState(false);
+
+	const scrollUp = () => {
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+	};
+
+	const listenToScroll = () => {
+		if (
+			document.body.scrollTop > 50 ||
+			document.documentElement.scrollTop > 50
+		) {
+			setDisplayArrow(true);
+		} else {
+			setDisplayArrow(false);
+		}
+	};
+
+	useEffect(() => {
+		window.addEventListener("scroll", listenToScroll);
+		return () => window.removeEventListener("scroll", listenToScroll);
+	}, []);
+
 	return (
 		<div>
 			<div className="pt-10 bg-background pb-20">
@@ -43,7 +68,7 @@ export default function Documentation() {
 							<div className=" m-auto">
 								<p className="text-textWhite font-bold leading-loose text-left ml-8 max-[549px]:text-sm max-[549px]:m-auto">
 									Welcome! Let's get you acquainted with the
-									Aplicar Cover Letter Environment
+									Coverly Cover Letter Environment
 								</p>
 							</div>
 						</div>
@@ -304,6 +329,12 @@ export default function Documentation() {
 					</div>
 				</div>
 			</div>
+			{displayArrow && (
+				<ArrowBlue
+					className="fixed bottom-[40px] right-[5px]"
+					onClick={scrollUp}
+				/>
+			)}
 		</div>
 	);
 }

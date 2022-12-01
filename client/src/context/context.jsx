@@ -15,6 +15,7 @@ const AppProvider = ({ children }) => {
 	const [fileName, setFileName] = useState("");
 	const [userEmail, setUserEmail] = useState(getEmailFromLocalStorage());
 	const [userData, setUserData] = useState("");
+	const [fileSize, setFileSize] = useState();
 
 	const openSidebar = () => {
 		setIsSidebarOpen(true);
@@ -51,8 +52,10 @@ const AppProvider = ({ children }) => {
 				userEmail,
 				setUserEmail,
 				setUserData,
+				fileSize,
+				setFileSize,
 				userData,
-				file,
+				
 			}}
 		>
 			{children}

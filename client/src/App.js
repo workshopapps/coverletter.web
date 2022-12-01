@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Event from "./pages/Event";
 import "react-toastify/dist/ReactToastify.css";
+import MbScrollToTopBtn from "./Components/MbScrollToTopBtn";
 
 import {
 	Register,
@@ -155,6 +156,8 @@ const App = () => {
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 				<ToastContainer position="top-center"></ToastContainer>
+
+				<MbScrollToTopBtn />
 
 				<Footer />
 			</ScrollToTop>

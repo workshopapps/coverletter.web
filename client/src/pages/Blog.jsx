@@ -11,7 +11,7 @@ const Blog = () => {
 				<p className="mb-16 text-start text-lg font-normal ">
 					{" "}
 					You'll find the best information about cover letters, career
-					development and Aplicar. With our expert's help, you will
+					development and Coverly. With our expert's help, you will
 					not only generate a job-winning cover letter, but also
 					improve your interview skills.
 				</p>
