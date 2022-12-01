@@ -4,18 +4,18 @@ import ProfileSide from "../Components/ProfilePage/ProfileSide";
 import Upload from "../Components/ProfilePage/Upload";
 
 const ProfilePage = () => {
-	const ResumeUploaded = [
-		{
-			firstName: "Jessica",
-			lastName: "Adamee",
-			extension: ".pdf",
-		},
-		{
-			firstName: "Jessica",
-			lastName: "Adamee",
-			extension: ".pdf",
-		},
-	];
+	// const ResumeUploaded = [
+	// 	{
+	// 		firstName: "Jessica",
+	// 		lastName: "Adamee",
+	// 		extension: ".pdf",
+	// 	},
+	// 	{
+	// 		firstName: "Jessica",
+	// 		lastName: "Adamee",
+	// 		extension: ".pdf",
+	// 	},
+	// ];
 
 	const CVGenerated = [
 		{
@@ -62,7 +62,7 @@ const ProfilePage = () => {
 						</div>
 
 						{/* Resume Uploaded Section */}
-						<div className="bg-white rounded-md h-max p-6 my-6">
+						{/* <div className="bg-white rounded-md h-max p-6 my-6">
 							<h1 className="font-bold text-[1.5em]">
 								Resume Uploaded
 							</h1>
@@ -77,7 +77,7 @@ const ProfilePage = () => {
 									);
 								})}
 							</div>
-						</div>
+						</div> */}
 
 						{/* Cover Letter Generated Section */}
 						<div className="bg-white rounded-md h-max p-6 my-6">
