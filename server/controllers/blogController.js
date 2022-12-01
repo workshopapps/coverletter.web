@@ -6,8 +6,8 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
 
 const createPost = async (req, res) => {
-	const { title, content } = req.body;
-	if (!title || !content)
+	const { adminId, title, content } = req.body;
+	if (!adminId || !title || !content)
 		return res
 			.status(StatusCodes.NO_CONTENT)
 			.json({ message: "All Fields are required" });
