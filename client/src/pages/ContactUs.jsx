@@ -43,16 +43,16 @@ const IconButton = (props) => {
 };
 
 const TertiaryButton = (props) => {
-	const { type, label, text, href } = props;
+	const { type, label, text, href, className } = props;
 	return (
 		<a
 			className={`${
 				type === "secondary" ? "btnSecondary" : "btnPrimary"
-			} p-3 rounded-md min-w-[200px] lg:min-w-0`}
+			} ${className} p-3 rounded-md min-w-[200px] lg:min-w-0`}
 			href={href}
 		>
-			<div className="overflow-hidden">
-				<p className="text-sm font-semibold">{label}</p>
+			<div className="overflow-hidden text-center">
+				<p className="text-xs font-semibold text-[#101010]">{label}</p>
 				<p className="font-bold">{text}</p>
 			</div>
 		</a>
@@ -76,13 +76,13 @@ const Button = (props) => {
 
 const H1 = (props) => {
 	const { children, className } = props;
-	const defaultClassName = "text-5xl text-grey600 font-semibold mb-5";
+	const defaultClassName = "text-5xl text-grey900 font-semibold mb-5";
 	return <h1 className={`${defaultClassName} ${className}`}>{children}</h1>;
 };
 
 const H2 = (props) => {
 	const { children, className } = props;
-	const defaultClassName = "text-3xl text-grey600 font-semibold mb-5";
+	const defaultClassName = "text-3xl text-grey900 font-semibold mb-5";
 	return <h2 className={`${defaultClassName} ${className}`}>{children}</h2>;
 };
 
@@ -96,8 +96,8 @@ const FollowUsLinks = (props) => {
 	const { className } = props;
 	return (
 		<div className={className}>
-			<p className="text-base text-grey400 font-bold mb-2">Follow Us</p>
-			<div className="flex space-x-5">
+			<p className="text-grey900 font-bold mb-2 text-center text-2xl">Follow Us</p>
+			<div className="flex space-x-5 justify-center">
 				{followUsData.map(({ icon, text, url }, index) => (
 					<IconButton key={index} {...{ icon, text, href: url }} />
 				))}
@@ -230,7 +230,7 @@ const ContactUs = () => {
 		setErrors(validate());
 		if (!anyError(errorResult)) {
 			try {
-				const backendApIurl = "http://api.coverly.hng.tech";
+				const backendApIurl = "https://api.coverly.hng.tech";
 				const body = {
 					fullName: formData.name,
 					userEmail: formData.email,
@@ -263,8 +263,8 @@ const ContactUs = () => {
 
 	return (
 		<div className="bg-background">
-			<div className="container mx-auto px-6 mt-6 md:flex md:space-x-10 lg:space-x-20  py-20">
-				<div className="flex-auto md:w-1/2 ">
+			<div className="container max-w-[900px] mx-auto px-6 mt-6  py-20">
+				<div className="max-w-[600px] mx-auto lg:text-center md:mb-4">
 					<H1>Talk to Us</H1>
 					<BodyText>
 						Let us know how we can help and we will get right back
@@ -273,22 +273,24 @@ const ContactUs = () => {
 					<div className="flex flex-col lg:flex-row items-start lg:space-x-5 space-y-5 lg:space-y-0 my-10">
 						<TertiaryButton
 							label="Email Us"
-							text="coverlyorg@gmail.com"
+							text="Coverlyorg@gmail.com"
 							href="mailto:coverlyorg@gmail.com"
+							type="secondary"
+							className="w-full"
 						/>
 						<TertiaryButton
 							label="Call Us"
-							text="09074265463"
+							text="0907 426 5463"
 							href="tel:+2349074265463"
 							type="secondary"
+							className="w-full"
 						/>
 					</div>
-					<FollowUsLinks className="md:block hidden" />
 				</div>
-				<div className="flex-auto md:w-1/2">
-					<div className="bg-[#fff] rounded-lg p-4 py-10 mb-5 md:px-10 border-[1px] border-[#CAD0DD]">
-						<H2>Contact us</H2>
-						<BodyText>
+				<div className="w-full">
+					<div className="bg-[#fff] rounded-lg p-4 py-10 lg:py-16 lg:px-24 mb-5 md:px-10 border-[1px] border-[#CAD0DD]">
+						<H2 className="text-center">Contact us</H2>
+						<BodyText  className="text-center">
 							Reach out to our{" "}
 							<Link
 								to="/faq"
@@ -367,7 +369,7 @@ const ContactUs = () => {
 							/>
 							<div>
 								<Button
-									className="rounded p-3 min-w-[90px] text-center"
+									className="rounded p-3 min-w-[90px] text-center w-full"
 									disabled={
 										loading ||
 										Object.values(formData).some(
@@ -389,7 +391,7 @@ const ContactUs = () => {
 						</form>
 					</div>
 				</div>
-				<FollowUsLinks className="block md:hidden pt-6" />
+				<FollowUsLinks className="block pt-6" />
 			</div>
 
 			<SuccessModal
