@@ -8,29 +8,29 @@ import Harold from "../Assets/harold.png";
 import Destiny from "../Assets/destiny.png";
 import Jewel from "../Assets/jewel.png";
 import Mission from "../Assets/our-mission.png";
-// import BannerSm from "../Assets/about-banner-sm.svg";
-// import BannerTb from "../Assets/about-banner-tb.svg";
-// import BannerLg from "../Assets/about-banner-lg.svg";
+import BannerSm from "../Assets/about-banner-sm.svg";
+import BannerTb from "../Assets/about-banner-tb.svg";
+import BannerLg from "../Assets/about-banner-lg.svg";
 
 const About = () => {
 	return (
 		<>
 			<div className="">
-				{/* <img
+				<img
 					className="w-full h-[216px] lg:h-full object-cover md:hidden lg:hidden"
 					src={BannerSm}
 					alt=""
-				/> */}
-				{/* <img
+				/>
+				<img
 					className="w-full h-[216px] lg:h-full object-cover hidden md:block lg:hidden "
 					src={BannerTb}
 					alt=""
-				/> */}
-				{/* <img
+				/>
+				<img
 					className="w-full h-[216px] lg:h-full object-cover hidden md:hidden lg:block"
 					src={BannerLg}
 					alt=""
-				/> */}
+				/>
 			</div>
 
 			<main className="bg-[#F2F2F7] py-[26px] sm:py-[22px] lg:py-10">
