@@ -1,4 +1,5 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom';
 import bolu from './assets/bolu.jpg'
 import aloy from './assets/aloy.jpg'
 import arrow from './assets/arrow.svg'
@@ -6,6 +7,11 @@ import mentor from './assets/mentor.svg'
 import designer from './assets/designer.svg'
 
 function SectionFour() {
+    const Navigate = useNavigate();
+
+    const clickHandler = () =>{
+        Navigate('/customerstories')
+    }
   
   return (
     <div>
@@ -39,7 +45,7 @@ function SectionFour() {
                 </div>
             </div>
             <div className="a flex justify-center">
-            <button className='px-9 py-3 mt-[85px] text-[14px] flex items-center justify-center w-[85%] lg:w-[30%] text-primaryMain border-[1.5px] border-solid border-blue-700 font-semibold rounded-lg'>
+            <button onClick={clickHandler} className='px-9 py-3 mt-[85px] text-[14px] flex items-center justify-center w-[85%] lg:w-[30%] text-primaryMain border-[1.5px] border-solid border-blue-700 font-semibold rounded-lg'>
                 <span>Read Full Customer Stories</span>
                 <img className='h-[16px] w-[16px ml-[8px]' src={arrow}  alt="" />
                  </button>

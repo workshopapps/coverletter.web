@@ -43,7 +43,7 @@ function Uploading() {
     
             try {
                 const res = await axios.post(
-                    `http://api.coverly.hng.tech/api/v1/upload`,
+                    `https://api.coverly.hng.tech/api/v1/upload`,
                     formData, option,
                 );
                 setStatus(res.status)
