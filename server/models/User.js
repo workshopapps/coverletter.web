@@ -35,19 +35,12 @@ const UserSchema = mongoose.Schema({
 	},
 	otp: {type:String,default:null},
 	passwordResetExpires: {type:Date,default:null},
-	tokens:[
-		{
-			token:{
-				type:String,
-				required:true
-			}
-		}
-	]
+	
 });
 
 
 UserSchema.methods.createJWT = function () {
-	const token = jwt.sign(
+	return jwt.sign(
 		{
 			userId: this._id,
 			name: this.name,
@@ -59,10 +52,6 @@ UserSchema.methods.createJWT = function () {
 			expiresIn: "5h",
 		}
 	);
-this.tokens = this.tokens.concat({ token})
-this.save(token)
-
-	return token
 };
 
 UserSchema.methods.comparePassword = async function (canditatePassword) {
