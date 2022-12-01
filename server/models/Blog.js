@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const BlogSchema = new Schema(
 	{
-		adminId: {
-			type: String,
-			required: true,
-		},
 		title: {
 			type: String,
 			required: true,
@@ -13,10 +9,6 @@ const BlogSchema = new Schema(
 		content: {
 			type: String,
 			required: true,
-		},
-		likes: {
-			type: String,
-			default: 0,
 		},
 		createdAt: {
 			type: Date,
