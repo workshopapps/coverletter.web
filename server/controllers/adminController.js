@@ -3,8 +3,7 @@ const Admin = require("../models/Admin");
 const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
 const hashPassword = require("../utils/hashPassword");
-const { BadRequestError } = require("../errors");
-const { UnauthenticatedError } = require('../errors')
+const { BadRequestError,UnauthenticatedError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");
 
