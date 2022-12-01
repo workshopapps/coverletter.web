@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import feature1 from "../Assets/feature1.svg";
 import feature2 from "../Assets/feature2.svg";
 import feature3 from "../Assets/feature3.svg";
@@ -17,8 +18,7 @@ const BodyText = (props) => {
 
 const H1 = (props) => {
 	const { children, className } = props;
-	const defaultClassName =
-		"text-3xl leading-10 font-bold leading-normal  md:text-4xl md:leading-relaxed lg:text-5xl lg:leading-relaxed xl:text-6xl xl:leading-relaxed";
+	const defaultClassName = "";
 	return <h1 className={`${defaultClassName} ${className}`}>{children}</h1>;
 };
 
@@ -135,7 +135,6 @@ const Features = () => {
 		window.addEventListener("scroll", listenToScroll);
 		return () => window.removeEventListener("scroll", listenToScroll);
 	}, []);
-
 
 	const [isTablet, setIsTablet] = useState(false);
 	// listen to screen size event and set isTablet state
@@ -260,23 +259,22 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row "></div>
 				</div>
 
-				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 lg:px-20 py-11 rounded-lg flex items-center lg:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
-					<div className="lg:w-[75%]">
-						<H1 className=" text-textWhite text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10">
-							{" "}
+				<div className="featureOne-content max-w-[1400px] bg-[#CDDCF8] px-14 lg:px-20 py-11 rounded-lg flex items-center md:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
+					<div>
+						<h1 className=" text-[#101010] text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10 text-[32px] lg:text-[56px] lg:w-[691px] w-full">
 							Increase your chances of getting employed
-						</H1>
-						<BodyText className="text-left text-textWhite max-md:text-center">
+						</h1>
+						<p className="text-center md:text-left text-[#101010]  text-base">
 							Start for free with no credit card required.
-						</BodyText>
+						</p>
 					</div>
 					<div>
-						<Button
-							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
-							type="secondary"
+						<Link
+							to={"/"}
+							className="text-textWhite font-bold text-base bg-primaryMain py-[12px] px-[32px] active:bg-primaryDark rounded-[8px]"
 						>
 							Start for free
-						</Button>
+						</Link>
 					</div>
 				</div>
 				{displayArrow && (
