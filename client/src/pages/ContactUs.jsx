@@ -9,50 +9,37 @@ const followUsData = [
 	{
 		icon: ["fab", "twitter"],
 		text: "Twitter",
-		link: "https://twitter.com/Coverly_org",
+		url: "https://twitter.com/coverlyng",
 	},
 	{
 		icon: ["fab", "instagram"],
 		text: "Instagram",
-		link: "http://www.instagram.com/Coverly_ng",
+		url: "http://www.instagram.com/coverly_ng",
 	},
 	{
 		icon: ["fab", "facebook"],
 		text: "Facebook",
-		link: "https://www.facebook.com/Coverly_org",
-	},
-	{
-		icon: ["fab", "youtube"],
-		text: "Youtube",
-		link: "https://www.youtube.com/Coverly_org",
+		url: "https://facebook.com/profile.php?id=100088156789141",
 	},
 ];
 
 const IconButton = (props) => {
 	const { text, icon, href } = props;
-	const content = (
+	return (
 		<div className="flex items-center flex-col">
-			<div className="h-10 w-10 flex items-center justify-center border-[1px] border-[#DCDCDC] rounded-full mb-1 hover:bg-[#e9e7e7]">
-				{icon && (
-					<FontAwesomeIcon icon={icon} className=" text-grey400" />
-				)}
-			</div>
-			<p className="text-sm text-grey400">{text}</p>
-		</div>
-	);
-	const holderClassName = "cursor-pointer flex space-y-2 items-center";
-	if (href)
-		return (
 			<a
-				href={href}
+				href={href || "#"}
 				target="_blank"
 				rel="noreferrer"
-				className={holderClassName}
+				className="h-10 w-10 flex items-center justify-center border-[1px] border-[#DCDCDC] rounded-full mb-1 hover:border-[#101010] text-xl text-[#101010] active:text-white active:bg-[#101010] active:border-[#DCDCDC]"
 			>
-				{content}
+				{icon && (
+					<FontAwesomeIcon icon={icon} />
+				)}
 			</a>
-		);
-	return <div className={holderClassName}>{content}</div>;
+			<p className="text-xs text-grey400">{text}</p>
+		</div>
+	);
 };
 
 const TertiaryButton = (props) => {
@@ -111,8 +98,8 @@ const FollowUsLinks = (props) => {
 		<div className={className}>
 			<p className="text-base text-grey400 font-bold mb-2">Follow Us</p>
 			<div className="flex space-x-5">
-				{followUsData.map(({ icon, text, link }, index) => (
-					<IconButton key={index} {...{ icon, text, href: link }} />
+				{followUsData.map(({ icon, text, url }, index) => (
+					<IconButton key={index} {...{ icon, text, href: url }} />
 				))}
 			</div>
 		</div>
@@ -243,6 +230,7 @@ const ContactUs = () => {
 		setErrors(validate());
 		if (!anyError(errorResult)) {
 			try {
+				const backendApIurl = "https://api.coverly.hng.tech";
 				const body = {
 					fullName: formData.name,
 					userEmail: formData.email,
@@ -250,10 +238,7 @@ const ContactUs = () => {
 					description: formData.message,
 					phone: formData.phone,
 				};
-				await axios.post(
-					"https://api.coverly.hng.tech/api/v1/contact",
-					body
-				);
+				await axios.post(`${backendApIurl}/api/v1/contact`, body);
 				setFormData(emptyForm);
 				setLoading(false);
 				setOpenModal(true);
@@ -288,12 +273,12 @@ const ContactUs = () => {
 					<div className="flex flex-col lg:flex-row items-start lg:space-x-5 space-y-5 lg:space-y-0 my-10">
 						<TertiaryButton
 							label="Email Us"
-							text="Coverlyorg@gmail.com"
-							href="mailto:Coverlyorg@gmail.com"
+							text="coverlyorg@gmail.com"
+							href="mailto:coverlyorg@gmail.com"
 						/>
 						<TertiaryButton
 							label="Call Us"
-							text="+2349074265463"
+							text="09074265463"
 							href="tel:+2349074265463"
 							type="secondary"
 						/>
