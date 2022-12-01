@@ -4,6 +4,7 @@ const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
 const hashPassword = require("../utils/hashPassword");
 const { BadRequestError } = require("../errors");
+const { UnauthenticatedError } = require('../errors')
 const sendEmail = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");
 
@@ -75,7 +76,7 @@ const deleteAdmin = async (req,res) => {
 	}
 	
 	if(req.user.role !== "Lead-admin" && admin._id != req.user.id) {
-		throw new BadRequestError(`you are not authorized to carry out this operation`);
+		throw new UnauthenticatedError(`you are not authorized to carry out this operation`);
 	}
 
 	await Admin.findByIdAndDelete(req.params.id);
