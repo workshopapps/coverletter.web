@@ -231,7 +231,7 @@ const ContactUs = () => {
 		if (!anyError(errorResult)) {
 			try {
 <<<<<<< HEAD
-				const backendApIurl = "http://api.coverly.hng.tech";
+				const backendApIurl = "https://api.coverly.hng.tech";
 =======
 >>>>>>> 3e8d48d095e96cf18bfa6b33d66c8123c7fa22f6
 				const body = {
@@ -241,14 +241,7 @@ const ContactUs = () => {
 					description: formData.message,
 					phone: formData.phone,
 				};
-<<<<<<< HEAD
 				await axios.post(`${backendApIurl}/api/v1/contact`, body);
-=======
-				await axios.post(
-					"https://api.coverly.hng.tech/api/v1/contact",
-					body
-				);
->>>>>>> 3e8d48d095e96cf18bfa6b33d66c8123c7fa22f6
 				setFormData(emptyForm);
 				setLoading(false);
 				setOpenModal(true);
