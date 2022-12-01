@@ -131,7 +131,7 @@ const Career = () => {
 			</div>
 			<div className=" bg-primaryLightest md:mx-[98px] mx-5 md:mt-[83px] mt-3 md:pb-[59px] pb-[30px] rounded-lg">
 				<h2 className="text-center text-4xl text-textHeader font-bold leading-[48px] md:pt-[61px] pt-[26px] md:pb-[60px] pb-[30px]">
-					Why Aplicar?
+					Why Coverly?
 				</h2>
 
 				<div className="grid lg:grid-cols-2 grid-cols-1 md:gap-[72px] gap-4 md:px-[108px] px-[19px]">
