@@ -3,7 +3,7 @@ const Admin = require("../models/Admin");
 const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
 const hashPassword = require("../utils/hashPassword");
-const { BadRequestError } = require("../errors");
+const { BadRequestError,UnauthenticatedError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");
 
@@ -66,7 +66,30 @@ const verifyAdmin = async (req, res) => {
 	}
 };
 
+
+const deleteAdmin = async (req,res) => {
+	
+	const admin = await Admin.findById(req.params.id)
+   
+	if(!admin) {
+	   throw new BadRequestError(`user does not exist`)
+   }
+   
+   if(req.user.role !== "Lead-admin" && admin._id != req.user.id) {
+	   throw new UnauthenticatedError(`you are not authorized to carry out this operation`);
+   }
+
+   await Admin.findByIdAndDelete(req.params.id);
+   return res.status(StatusCodes.OK).json({
+	   success: true,
+	   data: {}
+	 });
+
+
+}
+
 module.exports = {
 	createAdmin,
 	verifyAdmin,
+	deleteAdmin
 };
