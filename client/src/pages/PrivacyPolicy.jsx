@@ -414,21 +414,6 @@ const PrivacyPolicy = () => {
 								</a>
 							</ol>
 						</div>
-						<button
-							onClick={scrollUp}
-							className="hidden md:flex justify-start items-center gap-3 border-t border-[#CAD0DD]  pt-1.5"
-						>
-							<ArrowUp />
-							<span className="text-textHeader font-bold text-base">
-								Back to top
-							</span>
-						</button>
-						{displayArrow && (
-							<ArrowBlue
-								className="fixed bottom-[40px] right-[5px] md:hidden"
-								onClick={scrollUp}
-							/>
-						)}
 					</section>
 				</main>
 				<div className="flex flex-col justify-center items-center gap-4 mt-[80px]">
