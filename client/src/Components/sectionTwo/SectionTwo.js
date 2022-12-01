@@ -3,12 +3,9 @@ import { useGlobalContext } from "../../context/context";
 import Upload from "../upload/Upload";
 import Uploading from "../uploading/Uploading";
 
-
 function SectionTwo() {
-	
 	const { fileSize } = useGlobalContext();
 
-	
 	return (
 		<div
 			id="upload_section"
@@ -32,11 +29,11 @@ function SectionTwo() {
 					}  border-dashed rounded-lg `}
 				>
 					<div className="uploadContainer relative flex flex-col items-center justify-center lg:px-[2vh] lg:py-[15vh] py-[15vh]">
-						{
-							fileSize < 5000000 && fileSize > 0  ? <Uploading /> :
-							<Upload/> 
-						}
-					
+						{fileSize < 5000000 && fileSize > 0 ? (
+							<Uploading />
+						) : (
+							<Upload />
+						)}
 					</div>
 				</div>
 			</main>
