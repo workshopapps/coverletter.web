@@ -4,7 +4,6 @@ import feature2 from "../Assets/feature2.svg";
 import feature3 from "../Assets/feature3.svg";
 import feature4 from "../Assets/feature4.svg";
 import feature5 from "../Assets/feature5.svg";
-import featureBackgroundImg from "../Assets/feature-background-img.jpg";
 import featureBackgroundImg2 from "../Assets/feature-section-bg-blue.svg";
 import Button from "../Components/Ui/Button";
 import { ReactComponent as ArrowBlue } from "../Assets/arrow-up-blue.svg";
@@ -17,9 +16,7 @@ const BodyText = (props) => {
 
 const H1 = (props) => {
 	const { children, className } = props;
-	const defaultClassName =
-		"text-3xl leading-10 font-bold leading-normal  md:text-4xl md:leading-relaxed lg:text-5xl lg:leading-relaxed xl:text-6xl xl:leading-relaxed";
-	return <h1 className={`${defaultClassName} ${className}`}>{children}</h1>;
+	return <h1 className={`text-[32px] md:text-[56px] leading-[40px] md:leading-[72px] font-bold sm:text-[40px] ${className}`}>{children}</h1>;
 };
 
 const featureCards = (props) => {
@@ -157,14 +154,6 @@ const Features = () => {
 		<>
 			<section
 				className="bg-background max:md:bg-none"
-				style={{
-					backgroundImage: isTablet
-						? "none"
-						: `url(${featureBackgroundImg})`,
-					backgroundRepeat: "no-repeat",
-					backgroundPosition: "right bottom",
-					backgroundSize: "contain",
-				}}
 			>
 				<div className="section-content px-8 mt-6 flex flex-col gap-7  py-12 justify-center md:py-16 md:px-36 lg:py-24 lg:px-48 xl:px-104 bg-no-repeat bg-none ">
 					<H1 className="text-center">
@@ -173,7 +162,7 @@ const Features = () => {
 						tools to <br className="hidden xl:block" />
 						get you that job!
 					</H1>
-					<BodyText className="text-center font-semibold text-base lg:text-lg">
+					<BodyText className="text-center font-semibold text-base">
 						Discover why our beta users reported a 45% increase in
 						response rate from employers after using our product.
 					</BodyText>
@@ -263,7 +252,6 @@ const Features = () => {
 				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 lg:px-20 py-11 rounded-lg flex items-center lg:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
 					<div className="lg:w-[75%]">
 						<H1 className=" text-textWhite text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10">
-							{" "}
 							Increase your chances of getting employed
 						</H1>
 						<BodyText className="text-left text-textWhite max-md:text-center">
