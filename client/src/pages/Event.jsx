@@ -74,7 +74,7 @@ const Event = () => {
             <h1 className="text-grey800 font-bold text-2xl pt-1 md:pt-10 pb-6">Upcoming Events</h1>
             <EventsList event={{
               img: event_img1,
-              headline: "Aplicar Career Con...",
+              headline: "Coverly Career Con...",
               place: "Event Hall 1, Shelton Hotel Abuja FCT.",
               time: "Tuesday, Nov 22, 10:00am"
             }} />

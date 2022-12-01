@@ -9,22 +9,22 @@ const followUsData = [
 	{
 		icon: ["fab", "twitter"],
 		text: "Twitter",
-		link: "https://twitter.com/Aplicar_org",
+		link: "https://twitter.com/Coverly_org",
 	},
 	{
 		icon: ["fab", "instagram"],
 		text: "Instagram",
-		link: "http://www.instagram.com/aplicar_ng",
+		link: "http://www.instagram.com/Coverly_ng",
 	},
 	{
 		icon: ["fab", "facebook"],
 		text: "Facebook",
-		link: "https://www.facebook.com/aplicar_org",
+		link: "https://www.facebook.com/Coverly_org",
 	},
 	{
 		icon: ["fab", "youtube"],
 		text: "Youtube",
-		link: "https://www.youtube.com/aplicar_org",
+		link: "https://www.youtube.com/Coverly_org",
 	},
 ];
 
@@ -227,7 +227,7 @@ const ContactUs = () => {
 		if (!anyError(errorResult)) {
 			try {
 				const body = {fullName:formData.name, userEmail: formData.email, subject: formData.issue, description: formData.message, phone:formData.phone};
-				await axios.post("http://api.aplicar.hng.tech/api/v1/contact", body);
+				await axios.post("http://api.Coverly.hng.tech/api/v1/contact", body);
 				setFormData(emptyForm);
 				setLoading(false);
 				setOpenModal(true);
@@ -259,8 +259,8 @@ const ContactUs = () => {
 					<div className="flex flex-col lg:flex-row items-start lg:space-x-5 space-y-5 lg:space-y-0 my-10">
 						<TertiaryButton
 							label="Email Us"
-							text="Aplicarorg@gmail.com"
-							href="mailto:aplicarorg@gmail.com"
+							text="Coverlyorg@gmail.com"
+							href="mailto:Coverlyorg@gmail.com"
 						/>
 						<TertiaryButton
 							label="Call Us"
