@@ -165,14 +165,14 @@ const Header = () => {
 	};
 
 	return (
-		<header className="relative max-w-screen-2xl m-auto">
+		<header className="relative max-w-screen-2xl m-auto py-1">
 			<Small />
 			<div className="flex items-center justify-between py-5 px-5 md:px-10 xl:px-15">
 				<Link to="/">
 					<img
 						src={Logo}
 						alt="Coverly"
-						className="w-32 sm:w-40 tb:w-40"
+						className="w-28 sm:w-36 tb:w-40"
 					/>
 				</Link>
 				<Large />
