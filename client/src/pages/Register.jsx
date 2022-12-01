@@ -11,9 +11,10 @@ import Input from "../Components/Ui/Input";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "../context/context";
 import { addEmailToLocalStorage } from "../Utils/localStorage";
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login";
 
 import axios from "axios";
+import GoogleAuth from "../Layouts/GoogleAuth";
 const CreateAcount = () => {
 	const { setUserEmail, userEmail } = useGlobalContext();
 	const navigate = useNavigate();
@@ -86,23 +87,23 @@ const CreateAcount = () => {
 
 	// Google Auth
 
-	const handleSignup = async (googleData) => {
-		const res = await fetch(
-			"https://api.coverly.hng.tech/api/v1/auth/google",
-			{
-				method: "POST",
-				body: JSON.stringify({
-					token: googleData.tokenId,
-				}),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			}
-		);
-		const data = await res.json();
-		console.log(data);
-		// setGoogleUserData(data);
-	};
+	// const handleSignup = async (googleData) => {
+	// 	const res = await fetch(
+	// 		"https://api.coverly.hng.tech/api/v1/auth/google",
+	// 		{
+	// 			method: "POST",
+	// 			body: JSON.stringify({
+	// 				token: googleData.tokenId,
+	// 			}),
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 		}
+	// 	);
+	// 	const data = await res.json();
+	// 	// console.log(data);
+	// 	setGoogleUserData(data);
+	// };
 
 	return (
 		<div className="relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[150px]">
@@ -245,14 +246,15 @@ const CreateAcount = () => {
 						>
 							Register with Google
 						</a> */}
-						<GoogleLogin
+						{/* <GoogleLogin
 							clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
 							buttonText="Register with Google"
 							onSuccess={handleSignup}
 							onFailure={handleSignup}
 							cookiePolicy={"single_host_origin"}
 							className={"btn btnLong w-[100%] btnSecondary"}
-						/>
+						/> */}
+						<GoogleAuth />
 					</div>
 					<p className="text-textBody text-center mt-[16px] text-base">
 						Already have an account?
