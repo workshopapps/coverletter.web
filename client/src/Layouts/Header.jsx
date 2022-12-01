@@ -139,27 +139,33 @@ const Header = () => {
 
 	const UserMenu = () => {
 		return (
-			<aside className="w-[234px] h-[160px] border border-searchbd bg-textWhite absolute top-[96px] right-16 max-[768px]:right-4 z-20 rounded-sm py-4">
-				<ul>
-					{historyElements.map((item) => (
+			<aside className="w-[234px] h-[max-content] border border-searchbd bg-textWhite absolute top-[98px] right-16 max-[768px]:right-4 z-20 rounded-sm">
+				<div className=" h-full flex flex-col gap-3">
+					<ul className="flex items-center justify-center">
+						{historyElements.map((item) => (
+							<Link
+								key={item.name}
+								to={item.url}
+								className=" text-base flex p-5 items-center gap-2 justify-center"
+							>
+								{item.icon}
+								<p className="font-bold text-base">
+									{item.name}
+								</p>
+							</Link>
+						))}
+					</ul>
+					<hr className="border-[0.3px] border-searchbd" />
+					<div>
 						<Link
-							key={item.name}
-							to={item.url}
-							className="flex gap-x-8 items-center justify-center mb-6 last:mb-4 text-base"
+							to="/"
+							className="text-center cursor-pointer p-5"
+							onClick={logout}
 						>
-							{item.icon}
-							<p className="font-bold text-base">{item.name}</p>
+							<p className="font-bold text-base">Log Out</p>
 						</Link>
-					))}
-				</ul>
-				<hr className="border-[0.3px] border-searchbd" />
-				<Link
-					to="/"
-					className="text-center cursor-pointer mt-7"
-					onClick={logout}
-				>
-					<p className="font-bold text-base mt-4">Log Out</p>
-				</Link>
+					</div>
+				</div>
 			</aside>
 		);
 	};
@@ -201,7 +207,7 @@ const Header = () => {
 								History
 							</Button>
 							<Link
-								to="/"
+								// to=""
 								onClick={() =>
 									setToggleUserMenu((prev) => !prev)
 								}
