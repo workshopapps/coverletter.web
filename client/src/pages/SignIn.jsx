@@ -145,7 +145,7 @@ const Login = () => {
 							<p className="text-base text-stokeDark">
 								Forgot password?{" "}
 								<Link
-									to="/"
+									to="/forgot-password"
 									className="text-primaryMain font-bold "
 								>
 									Click here
