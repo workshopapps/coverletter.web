@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import back from "./asesets/arrow.png";
 import { useGlobalContext } from "../../context/context";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function InputData() {
 	const Navigate = useNavigate();
@@ -25,6 +27,10 @@ function InputData() {
 
 	const clickHandler = () => {
 		Navigate("/");
+	};
+
+	const uploadToast = () =>{
+		    toast(" Error Processing your CV ")
 	};
 
 	const fullNameHandler = (e) => {
@@ -102,7 +108,6 @@ function InputData() {
 				);
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
-				setIsloading(false);
 				setUserData({
 					name: fullName,
 					address: location,
@@ -110,8 +115,10 @@ function InputData() {
 				});
 				Navigate("/preview");
 			} catch (ex) {
+				uploadToast();
+				setIsloading(false);
 				console.log(ex);
-				alert("Error processing your CV");
+				
 			}
 		};
 		if (
@@ -127,12 +134,15 @@ function InputData() {
 			location &&
 			email
 		) {
+
+			setIsloading(true);
 			uploadFile();
 		}
 	};
 
 	return (
 		<div className="bg-background lg:px-[204px] lg:py-[120px] font-manrope">
+			<ToastContainer />
 			<main className=" lg:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite ">
 				<button
 					onClick={clickHandler}
@@ -171,7 +181,7 @@ function InputData() {
 							</label>
 							<input
 								name="full_name"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && fullName <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={fullNameHandler}
 								autoFocus
 								type="text"
@@ -186,6 +196,46 @@ function InputData() {
 								""
 							)}
 						</div>
+						<div className="a flex flex-col text-left mb-[2rem] ">
+							<label htmlFor="email" className="my-[4px] text-textBody text-[18px]">
+								Email Address
+							</label>
+							<input
+								name="email"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && email <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								type="email"
+								onChange={emailHandler}
+								value={email}
+								id="email"
+							/>
+							{error && email <= 0 ? (
+								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
+									Email Address is required
+								</p>
+							) : (
+								""
+							)}
+						</div>
+						<div className="a flex flex-col text-left mb-[2rem] ">
+							<label htmlFor="location" className="my-[4px] text-textBody text-[18px]">
+								Your Address(Preferred Location)
+							</label>
+							<input
+								name="role"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && location <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								type="text"
+								onChange={locationHandler}
+								value={location}
+								id="location"
+							/>
+							{error && location <= 0 ? (
+								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
+									Your Location is required
+								</p>
+							) : (
+								""
+							)}
+						</div>
 						<div className="a flex font-manrope flex-col text-left mb-[2rem] ">
 							<label
 								htmlFor="companyName"
@@ -195,9 +245,8 @@ function InputData() {
 							</label>
 							<input
 								name="company_name"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && companyName <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={companyHandler}
-								autoFocus
 								type="text"
 								value={companyName}
 								id="companyName"
@@ -219,7 +268,7 @@ function InputData() {
 							</label>
 							<input
 								name="company_address"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && companyAddress <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={companyAddressHandler}
 								type="text"
 								value={companyAddress}
@@ -233,36 +282,13 @@ function InputData() {
 								""
 							)}
 						</div>
-						<div className="b flex flex-col text-left mb-[2rem] ">
-							<label
-								htmlFor="city"
-								className="my-[4px] text-textBody text-[18px]"
-							>
-								City
-							</label>
-							<input
-								name="city"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
-								onChange={cityHandler}
-								type="text"
-								value={city}
-								id="city"
-							/>
-							{error && city <= 0 ? (
-								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
-									City is required
-								</p>
-							) : (
-								""
-							)}
-						</div>
-						<div className="b  flex flex-col text-left mb-[2rem]">
+						<div className="b  flex flex-col text-left ">
 							<label className="my-[4px] text-textBody text-[18px]">
 								Country
 							</label>
 							<select
 								id="country"
-								className="px-3 py-[9px]  border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && country <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								onChange={countryHandler}
 								name="country"
 							>
@@ -588,73 +614,25 @@ function InputData() {
 								""
 							)}
 						</div>
-						<div className="a flex flex-col text-left mb-2rem lg:mb-[0]">
-							<label
-								htmlFor="date"
-								className="my-[4px] text-textBody text-[18px]"
-							>
-								Date of Application
-							</label>
-							<input
-								name="date"
-								className="px-3 py-[9px]  border-[1.5px] border-gray-300 rounded-lg"
-								onChange={dateHandler}
-								type="text"
-								value={date}
-								id="date"
-							/>
-							{error && date <= 0 ? (
-								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
-									Date is required
-								</p>
-							) : (
-								""
-							)}
-						</div>
+						
 					</div>
 
 					<div className="right mt-[-1rem] lg:mt-0 ">
-						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label
-								htmlFor="email"
-								className="my-[4px] text-textBody text-[18px]"
-							>
-								Email Address
+					<div className="b flex flex-col text-left mb-[2rem] ">
+							<label htmlFor="city" className="my-[4px] text-textBody text-[18px]">
+								City
 							</label>
 							<input
-								name="email"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
-								type="email"
-								onChange={emailHandler}
-								value={email}
-								id="email"
-							/>
-							{error && email <= 0 ? (
-								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
-									Email Address is required
-								</p>
-							) : (
-								""
-							)}
-						</div>
-						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label
-								htmlFor="location"
-								className="my-[4px] text-textBody text-[18px]"
-							>
-								Your Address(Preferred Location)
-							</label>
-							<input
-								name="role"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								name="city"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && city <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								onChange={cityHandler}
 								type="text"
-								onChange={locationHandler}
-								value={location}
-								id="location"
+								value={city}
+								id="city"
 							/>
-							{error && location <= 0 ? (
+							{error && city <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
-									Your Location is required
+									City is required
 								</p>
 							) : (
 								""
@@ -669,7 +647,7 @@ function InputData() {
 							</label>
 							<input
 								name="role"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && role <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={roleHandler}
 								value={role}
@@ -678,6 +656,27 @@ function InputData() {
 							{error && role <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
 									Role is required
+								</p>
+							) : (
+								""
+							)}
+						</div>
+						
+						<div className="a flex flex-col text-left mb-[2rem]">
+							<label htmlFor="date" className="my-[4px]  text-textBody text-[18px]">
+								Date of Application
+							</label>
+							<input
+								name="date"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && date <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								onChange={dateHandler}
+								type="date"
+								value={date}
+								id="date"
+							/>
+							{error && date <= 0 ? (
+								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
+									Date is required
 								</p>
 							) : (
 								""
@@ -692,7 +691,7 @@ function InputData() {
 							</label>
 							<input
 								name="years_of_exp"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && years <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={yearsHandler}
 								value={years}
@@ -715,7 +714,7 @@ function InputData() {
 							</label>
 							<input
 								name="recipient_email"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className= {`px-3 py-[9px] border-[1.5px] ${error && name <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={nameHandler}
 								value={name}
@@ -738,7 +737,7 @@ function InputData() {
 							</label>
 							<input
 								name="recipient_department"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg"
+								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg focus:outline-primaryMain"
 								type="text"
 								onChange={departmentHandler}
 								value={department}
@@ -750,19 +749,21 @@ function InputData() {
 					{!isLoading && (
 						<button
 							type="submit"
-							className="px-5 w-[100%] py-4 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg"
+							className="hover:bg-primaryDark px-5 w-[100%] py-4 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg"
 						>
 							Continue
 						</button>
 					)}
 					{isLoading && (
-						<button className="px-5 w-[100%] py-4 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg">
+						<button className=" hover:bg-primaryDark px-5 w-[100%] py-3 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg">
 							<div class="flex justify-center items-center">
 								<div
 									class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
 									role="status"
 								>
-									<span class="visually-hidden">a</span>
+									<span class="visually-hidden">
+										l
+									</span>
 								</div>
 							</div>
 						</button>

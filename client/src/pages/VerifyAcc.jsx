@@ -1,12 +1,14 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { object } from "yup/lib/locale";
 import Button from "../Components/Ui/Button";
 import { useNavigate } from "react-router-dom";
-
+import Timer from "../Components/Timer";
+import { useGlobalContext } from "../context/context";
 const VerifyAcc = () => {
+	const { userEmail } = useGlobalContext();
 	const navigate = useNavigate();
 	const intialState = {
 		firstInput: "",
@@ -16,15 +18,6 @@ const VerifyAcc = () => {
 	};
 	const [otpCode, setOtpCode] = useState(intialState);
 	const [isLoading, setIsLoading] = useState(false);
-	const [seconds, setSeconds] = useState(120);
-
-	useEffect(() => {
-		if (seconds > 0) {
-			setTimeout(() => setSeconds(seconds - 1), 1000);
-		} else {
-			setSeconds("Expired");
-		}
-	});
 
 	const handleChange = (e) => {
 		setOtpCode({ ...otpCode, [e.target.name]: e.target.value });
@@ -73,13 +66,14 @@ const VerifyAcc = () => {
 			setIsLoading(true);
 			try {
 				const resp = await axios.post(
-					`http://api.coverly.hng.tech/api/v1/auth/generateOtp`,
+					`http://api.coverly.hng.tech/api/v1/generateOtp`,
 					{
 						type: "verify",
-						email: "dfelastevetest@gmail.com",
+						email: userEmail.email,
 					}
 				);
-				toast.success("A new Otp has been Sent!!");
+				toast.success("Check your email for a new OTP");
+				setIsLoading(false);
 			} catch (error) {
 				toast.error(error.response.data);
 				setIsLoading(false);
@@ -89,6 +83,11 @@ const VerifyAcc = () => {
 		NewOtp();
 	};
 
+	function focusChange(e) {
+		if (e.target.value.length >= e.target.getAttribute("maxlength")) {
+			e.target.nextElementSibling.focus();
+		}
+	}
 	return (
 		<div className="bg-background px-[24px] py-[200px]">
 			<div className="bg-[#ffff] px-[15.5px] py-[32px] md:p-[64px] text-center rounded-[8px] my-0 mx-auto w-fit">
@@ -103,52 +102,50 @@ const VerifyAcc = () => {
 						<p className="font-semibold text-[20px] md:text-[24px] mt-[24px] text-textBody ">
 							Please Enter OTP
 						</p>
-						<p className="text-errorMain font-semibold text-[20px] md:text-[24px] mt-[4px]">
-							{seconds}
+						<p className="text-errorMain font-semibold text-16px] md:text-[20px] mt-[4px]">
+							<Timer initialMinute={1} initialSeconds={59} />
 						</p>
 					</div>
 					<form onSubmit={handleSubmit}>
 						<div className="flex justify-around">
-							<div>
-								<input
-									className="w-[45px] text-[20px] font-bold text-textBody h-[48px] outline-none border py-[8px] px-[16px] border-stokeDark  rounded-[8px]"
-									type="text"
-									name="firstInput"
-									value={firstInput}
-									onChange={handleChange}
-									maxLength="1"
-								/>
-							</div>
-							<div>
-								<input
-									className="w-[45px] text-[20px] font-bold text-textBody h-[48px] outline-none border py-[8px] px-[16px] border-stokeDark  rounded-[8px]"
-									type="text"
-									value={secondInput}
-									name="secondInput"
-									onChange={handleChange}
-									maxLength="1"
-								/>
-							</div>
-							<div>
-								<input
-									className="w-[45px] text-[20px] font-bold text-textBody h-[48px] outline-none border py-[8px] px-[16px] border-stokeDark  rounded-[8px]"
-									type="text"
-									value={thirdInput}
-									onChange={handleChange}
-									name="thirdInput"
-									maxLength="1"
-								/>
-							</div>
-							<div>
-								<input
-									className="w-[45px] text-[20px] font-bold text-textBody h-[48px] outline-none border py-[8px] px-[16px] border-stokeDark  rounded-[8px]"
-									type="text"
-									value={fourthInput}
-									name="fourthInput"
-									onChange={handleChange}
-									maxLength="1"
-								/>
-							</div>
+							<input
+								className="w-[45px] text-[20px] font-bold text-textBody h-[48px] outline-none border py-[8px] px-[16px] border-stokeDark  rounded-[8px]"
+								type="text"
+								name="firstInput"
+								value={firstInput}
+								onChange={handleChange}
+								maxLength="1"
+								onInput={focusChange}
+							/>
+
+							<input
+								className="w-[45px] text-[20px] font-bold text-textBody h-[48px] outline-none border py-[8px] px-[16px] border-stokeDark  rounded-[8px]"
+								type="text"
+								value={secondInput}
+								name="secondInput"
+								onChange={handleChange}
+								maxLength="1"
+								onInput={focusChange}
+							/>
+
+							<input
+								className="w-[45px] text-[20px] font-bold text-textBody h-[48px] outline-none border py-[8px] px-[16px] border-stokeDark  rounded-[8px]"
+								type="text"
+								value={thirdInput}
+								onChange={handleChange}
+								name="thirdInput"
+								maxLength="1"
+								onInput={focusChange}
+							/>
+
+							<input
+								className="w-[45px] text-[20px] font-bold text-textBody h-[48px] outline-none border py-[8px] px-[16px] border-stokeDark  rounded-[8px]"
+								type="text"
+								value={fourthInput}
+								name="fourthInput"
+								onChange={handleChange}
+								maxLength="1"
+							/>
 						</div>
 						<div className="flex gap-[16px] mt-10">
 							<Button
@@ -158,6 +155,7 @@ const VerifyAcc = () => {
 								children={"Resend OTP"}
 								type={"submit"}
 								disabled={isLoading}
+								onClick={generateNewOtp}
 							/>
 							<Button
 								className={

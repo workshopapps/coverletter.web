@@ -11,3 +11,15 @@ export const getUserFromLocalStorage = () => {
 	const user = result ? JSON.parse(result) : false;
 	return user;
 };
+
+export const addEmailToLocalStorage = (email) => {
+	localStorage.setItem("email", JSON.stringify(email));
+};
+export const getEmailFromLocalStorage = () => {
+	const result = localStorage.getItem("email");
+	const email = result ? JSON.parse(result) : false;
+	return email;
+};
+export const removeEmailFromLocalStorage = () => {
+	localStorage.removeItem("email");
+};

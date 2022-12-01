@@ -73,11 +73,11 @@ const BlogPost1 = () => {
 				cover letter generator, which has been rated one of the best.
 			</p>
 			<p className=" my-4 text-lg">
-				The Aplicar cover letter generator takes your CV and additional
+				The Coverly cover letter generator takes your CV and additional
 				information, such as the company name, the role you are applying
 				for, your years of experience, how you prefer to work, if you
 				have a gap in your work history, and then generates an editable
-				cover letter for you. With the Aplicar cover letter generator,
+				cover letter for you. With the Coverly cover letter generator,
 				students and professionals are able to easily create a cover
 				letter without having to spend a lot of time and effort creating
 				one from scratch. And it also ensures that the cover letter
@@ -87,7 +87,7 @@ const BlogPost1 = () => {
 			<p className=" my-4 mb-12 text-lg">
 				As the entire job application process can be exhausting,
 				reducing the number of documents you have to prepare always
-				seems like a good idea. With Aplicar, you can generate a cover
+				seems like a good idea. With Coverly, you can generate a cover
 				letter in minutes without worrying about stress.
 			</p>
 		</section>

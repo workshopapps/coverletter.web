@@ -53,7 +53,7 @@ const verifyAdmin = async (req, res) => {
 	);
 
 	if (admin) {
-		const token = user.createJWT();
+		const token = admin.createJWT();
 		const data = {
 			name: admin.name,
 			email: admin.email,
