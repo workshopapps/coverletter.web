@@ -85,7 +85,7 @@ const Login = () => {
 						Sign In to your account
 					</h2>
 					<p className="text-base text-grey400 px-[60px] md:px-0">
-						Land your dream job with Aplicar cover letter
+						Land your dream job with Coverly cover letter
 					</p>
 				</div>
 
