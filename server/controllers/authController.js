@@ -33,9 +33,7 @@ const register = async (req, res) => {
 	user.password = await hashPassword(user.password);
 	await user.save();
 
-	return res
-		.status(StatusCodes.CREATED)
-		.json({ msg: "Signup was successful." });
+	return res.status(StatusCodes.CREATED).json("Signup was successful.");
 };
 
 const verify = async (req, res) => {
@@ -54,11 +52,10 @@ const verify = async (req, res) => {
 	if (user) {
 		return res
 			.status(StatusCodes.OK)
-			.json({ msg: "User has been successfully verified" });
+			.json("User has been successfully verified");
+	} else {
+		return res.status(StatusCodes.BAD_REQUEST).json("Verification failed");
 	}
-	return res
-		.status(StatusCodes.BAD_REQUEST)
-		.json({ msg: "Verification failed" });
 };
 
 const login = async (req, res, next) => {
@@ -94,6 +91,27 @@ const login = async (req, res, next) => {
 		console.log(error);
 	}
 };
+
+const logout = async (req,res)=>{
+
+	const token = req.headers.authorization.split(' ')[1]
+  
+	const user = await User.findById(req.user.userId);
+	req.user = user
+	req.token = token
+	if (!req.user || !req.token) {
+	  return next(new BadRequestError("You are not logged in"));
+	}
+  
+	 delete req.token
+	 delete req.user
+  
+	  
+	  return res.status(201).json({
+		  message:"You have logged out successfully"
+	  })
+  
+  }
 
 const protect = async (req, res, next) => {
 	//////////////////////// ~ PROTECT ROUTE ~  /////////////////////////////////////
@@ -163,47 +181,46 @@ const updatePassword = async (req, res, next) => {
 
 const forgotPassword = async (req, res, next) => {
 	try {
-		const user = await User.findOne({ email: req.body.email });
+		var user = await User.findOne({ email: req.body.email });
 		if (!user) {
 			return next(
 				new BadRequestError("There is no user with this email address.")
 			);
 		}
-		const otpResetToken = user.createPasswordResetToken();
+		var otpResetToken = user.createPasswordResetToken();
 		await user.save();
-
-		const message = `
-		<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
-			<div style="margin:50px auto;width:70%;padding:20px 0">
-			<div style="border-bottom:1px solid #eee">
-				<a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Aplicar</a>
-			</div>
-			<p style="font-size:1.1em">Hi,</p>
-			<p>Thank you for choosing Aplicar. Use the following OTP to complete your password reset procedures. OTP is valid for 5 minutes</p>
-			<h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">${otpResetToken}</h2>
-			<p style="font-size:0.9em;">Regards,<br />Your Brand</p>
-			<hr style="border:none;border-top:1px solid #eee" />
-			<div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
-				<p>Aplicar</p>
-				<p>1600 Amphitheatre Parkway</p>
-				<p>California</p>
-			</div>
-			</div>
-		</div>`;
-
-		try {
-			await sendEmail(user.email, "Password Reset", message);
-			return res.status(200).json({
-				status: "success",
-				message: "Email Sent Successfully",
-			});
-		} catch (err) {
-			return next(new BadRequestError("Error Sending Email"));
-		}
 	} catch (error) {
 		return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
 			msg: "Something went Wrong",
 		});
+	}
+
+	const message = `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+    <div style="margin:50px auto;width:70%;padding:20px 0">
+      <div style="border-bottom:1px solid #eee">
+        <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Aplicar</a>
+      </div>
+      <p style="font-size:1.1em">Hi,</p>
+      <p>Thank you for choosing Aplicar. Use the following OTP to complete your password reset procedures. OTP is valid for 5 minutes</p>
+      <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">${otpResetToken}</h2>
+      <p style="font-size:0.9em;">Regards,<br />Your Brand</p>
+      <hr style="border:none;border-top:1px solid #eee" />
+      <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
+        <p>Aplicar</p>
+        <p>1600 Amphitheatre Parkway</p>
+        <p>California</p>
+      </div>
+    </div>
+  </div>`;
+
+	try {
+		await sendEmail(user.email, "Password Reset", message);
+		res.status(200).json({
+			status: "success",
+			message: "Email Sent Successfully",
+		});
+	} catch (err) {
+		return next(new BadRequestError("Error Sending Email"));
 	}
 };
 const resetPassword = async (req, res) => {
@@ -261,12 +278,13 @@ const validateOTP = async (req, res) => {
 const getUserDetails = async (req, res) => {
 	const { email } = req.body;
 	const user = await User.findOne({ email });
-	return res.status(StatusCodes.OK).json({ user });
+	return res.status(StatusCodes.OK).send(user);
 };
 
 module.exports = {
 	register,
 	login,
+	logout,
 	forgotPassword,
 	protect,
 	updatePassword,
