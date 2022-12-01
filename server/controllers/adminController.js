@@ -76,7 +76,7 @@ const deleteAdmin = async (req,res) => {
    }
    
    if(req.user.role !== "Lead-admin" && admin._id != req.user.id) {
-	   throw new UnauthenticatedError(`you are not authorized to carry out this operation`);
+	   throw new UnauthenticatedError(`you are not authorized to carry out this operation`)
    }
 
    await Admin.findByIdAndDelete(req.params.id);
