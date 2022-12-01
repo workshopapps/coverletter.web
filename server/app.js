@@ -32,6 +32,7 @@ const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
 const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const generateOtpRoutes = require("./routes/generateOtpRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 app.use(
 	"/cvg-documentation",
@@ -82,6 +83,7 @@ app.use("/api/v1", cvToCoverLetterRoutes);
 // app.use("/api/v1", resetRoutes);
 app.use("/api/v1", downloadCoverLetter);
 app.use("/api/v1", contactRoutes);
+app.use("/api/v1", blogRoutes);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
