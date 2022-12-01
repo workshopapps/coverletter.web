@@ -1,4 +1,4 @@
-# <div id="top">Aplicar - Cover Letter Generator</div>
+# <div id="top">Coverly - Cover Letter Generator</div>
 
 
 
