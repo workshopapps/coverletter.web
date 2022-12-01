@@ -33,9 +33,7 @@ const IconButton = (props) => {
 				rel="noreferrer"
 				className="h-10 w-10 flex items-center justify-center border-[1px] border-[#DCDCDC] rounded-full mb-1 hover:border-[#101010] text-xl text-[#101010] active:text-white active:bg-[#101010] active:border-[#DCDCDC]"
 			>
-				{icon && (
-					<FontAwesomeIcon icon={icon} />
-				)}
+				{icon && <FontAwesomeIcon icon={icon} />}
 			</a>
 			<p className="text-xs text-grey400">{text}</p>
 		</div>
@@ -96,7 +94,9 @@ const FollowUsLinks = (props) => {
 	const { className } = props;
 	return (
 		<div className={className}>
-			<p className="text-grey900 font-bold mb-2 text-center text-2xl">Follow Us</p>
+			<p className="text-grey900 font-bold mb-2 text-center text-2xl">
+				Follow Us
+			</p>
 			<div className="flex space-x-5 justify-center">
 				{followUsData.map(({ icon, text, url }, index) => (
 					<IconButton key={index} {...{ icon, text, href: url }} />
@@ -213,8 +213,12 @@ const ContactUs = () => {
 			errorObject = { ...errorObject, email: invalidFormatText };
 		}
 		if (
-			!/^(?:(?:(?:\+?234(?:h1)?|01)h*)?(?:\(\d{3}\)|\d{3})|\d{4})(?:\W*\d{3})?\W*\d{4}$/.test(
-				formData.phone
+			!(
+				/^(?:(?:(?:\+?234(?:h1)?|01)h*)?(?:\(\d{3}\)|\d{3})|\d{4})(?:\W*\d{3})?\W*\d{4}$/.test(
+					formData.phone
+				) &&
+				formData.phone.length !== 11 &&
+				formData.phone[0] !== 0
 			)
 		) {
 			errorObject = { ...errorObject, phone: invalidFormatText };
@@ -290,7 +294,7 @@ const ContactUs = () => {
 				<div className="w-full">
 					<div className="bg-[#fff] rounded-lg p-4 py-10 lg:py-16 lg:px-24 mb-5 md:px-10 border-[1px] border-[#CAD0DD]">
 						<H2 className="text-center">Contact us</H2>
-						<BodyText  className="text-center">
+						<BodyText className="text-center">
 							Reach out to our{" "}
 							<Link
 								to="/faq"
