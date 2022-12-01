@@ -92,6 +92,27 @@ const login = async (req, res, next) => {
 	}
 };
 
+const logout = async (req,res)=>{
+
+	const token = req.headers.authorization.split(' ')[1]
+  
+	const user = await User.findById(req.user.userId);
+	req.user = user
+	req.token = token
+	if (!req.user || !req.token) {
+	  return next(new BadRequestError("You are not logged in"));
+	}
+  
+	 delete req.token
+	 delete req.user
+  
+	  
+	  return res.status(201).json({
+		  message:"You have logged out successfully"
+	  })
+  
+  }
+
 const protect = async (req, res, next) => {
 	//////////////////////// ~ PROTECT ROUTE ~  /////////////////////////////////////
 	// 1) Getting token and check if it's there
@@ -263,6 +284,7 @@ const getUserDetails = async (req, res) => {
 module.exports = {
 	register,
 	login,
+	logout,
 	forgotPassword,
 	protect,
 	updatePassword,
