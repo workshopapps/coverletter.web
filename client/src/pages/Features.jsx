@@ -204,7 +204,7 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row mb-14">
 						{featureCards({
 							title: "Customization",
-							body: "The most powerful cover letter generator – Aplicar helps you write the perfect cover letter for your job applications. You can create your befitting Cover Letter in minutes. Aplicar AI uses excellent suggestions that match your personality and style. Aplicar will generate a job application/cover letter to fit all jobs, with 100% accuracy guaranteed.",
+							body: "The most powerful cover letter generator – Coverly helps you write the perfect cover letter for your job applications. You can create your befitting Cover Letter in minutes. Coverly AI uses excellent suggestions that match your personality and style. Coverly will generate a job application/cover letter to fit all jobs, with 100% accuracy guaranteed.",
 
 							img: feature1,
 						})}
@@ -212,7 +212,7 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row ">
 						{featureCards2({
 							title: "Personalization",
-							body: "The most powerful cover letter generator – Aplicar helps you write the perfect cover letter for your job applications. You can create your befitting Cover Letter in minutes. Aplicar AI uses excellent suggestions that match your personality and style. Aplicar will generate a job application/cover letter to fit all jobs, with 100% accuracy guaranteed.",
+							body: "The most powerful cover letter generator – Coverly helps you write the perfect cover letter for your job applications. You can create your befitting Cover Letter in minutes. Coverly AI uses excellent suggestions that match your personality and style. Coverly will generate a job application/cover letter to fit all jobs, with 100% accuracy guaranteed.",
 
 							img: feature2,
 						})}
@@ -226,7 +226,7 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row mb-20">
 						{featureCards({
 							title: "LinkedIn Profiles",
-							body: "Aplicar creates not just cover letters but letters you can even use on your LinkedIn profiles. Attract recruiters with your motivating talents and traits Aplicar creates for you. Generates professional-looking, personalized profile introductions for top employers in your industry.",
+							body: "Coverly creates not just cover letters but letters you can even use on your LinkedIn profiles. Attract recruiters with your motivating talents and traits Coverly creates for you. Generates professional-looking, personalized profile introductions for top employers in your industry.",
 
 							img: feature3,
 							textColor: "grey800",
@@ -235,7 +235,7 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row ">
 						{featureCards2({
 							title: "Eye Catching To Recruiters",
-							body: 'Aplicar generates cover letters that speaks directly to recruiters. The job you are applying for becomes a litter easier to get when recruiters admire your cover letter. Cover letters are important, so Aplicar has gone the extra mile to make them perfect and tailored to your personality. You may be asking yourself "How can I make my cover letter perfect, without wasting my time or someone else"s?" – The answer is Aplicar.',
+							body: 'Coverly generates cover letters that speaks directly to recruiters. The job you are applying for becomes a litter easier to get when recruiters admire your cover letter. Cover letters are important, so Coverly has gone the extra mile to make them perfect and tailored to your personality. You may be asking yourself "How can I make my cover letter perfect, without wasting my time or someone else"s?" – The answer is Coverly.',
 
 							img: feature4,
 							textColor: "grey800",
@@ -250,7 +250,7 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row mb-20">
 						{featureCards({
 							title: "Create multiple templates at a go",
-							body: "Aplicar creates not just cover letters but letters you can even use on your LinkedIn profiles. Attract recruiters with your motivating talents and traits Aplicar creates for you. Generates professional-looking, personalized profile introductions for top employers in your industry.",
+							body: "Coverly creates not just cover letters but letters you can even use on your LinkedIn profiles. Attract recruiters with your motivating talents and traits Coverly creates for you. Generates professional-looking, personalized profile introductions for top employers in your industry.",
 
 							img: feature5,
 							textColor: "grey800",

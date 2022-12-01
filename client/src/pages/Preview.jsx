@@ -12,6 +12,8 @@ import leftArrowIcon from "../Assets/leftArrow.svg";
 import BigLeftArrowIcon from "../Assets/bigLeftArrow";
 import { downloadPdf, downloadDOCX } from "../Utils/download-util";
 import { convertToTxt } from "../Utils/txtDownload";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /// import { useNavigate } from "react-router-dom";
 
 const Preview = () => {
@@ -26,26 +28,40 @@ const Preview = () => {
 	// logic for the modal
 	const [firstModal, setFirstModal] = useState(false);
   const [dType, setDtype] = useState("");
+  const [download, setDownload] = useState(false)
+  const [spin, setSpin] = useState(false)
 
 	const handleClick = () => {
-		if (dType === "pdf") {
-			downloadPdf("coverletter-target");
-		} else if (dType === "doc") {
-			//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
-			downloadDOCX(data, userData);
-		} else if (dType === "text") {
-			convertToTxt();
-		} else {
-			//TELL USER TO PICK ONE OF THE 3 OPTIONS
-		}
-		setDtype(null);
-		closeModal();
+		// INITIATE DOWNLOAD STATE ON CLICK
+		setDownload(true)
+		setTimeout(()=>{
+			if (dType === "pdf") {
+				downloadPdf("coverletter-target");
+			} else if (dType === "doc") {
+				//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
+				downloadDOCX(data, userData);
+			} else if (dType === "text") {
+				convertToTxt();
+			} else {
+				//TELL USER TO PICK ONE OF THE 3 OPTIONS
+			}
+			setDtype(null);
+			closeModal();
+		},500)
 		// setFirstModal(!firstModal);
 	};
 
 
 	useEffect(() => {
 		setFirstModal(false);
+		const downloadTime = setTimeout(()=> setDownload(false),2000)
+
+		const spinTime = setInterval(()=>setSpin(!spin),2000)
+
+		return () => {
+			clearInterval(spinTime)
+			clearTimeout(downloadTime)
+		}
 	}, [openModal]);
 
 	// redirect on click cv
@@ -112,7 +128,8 @@ const Preview = () => {
 	console.log(mobile);
 
 	return (
-		<div className="bg-background pt-6 pb-36 overflow-x-hidden">
+		<div className={`bg-background pt-6 pb-36 overflow-x-hidden relative`}>
+			<div className={`${download && 'opacity-50'}`}>
 			<div className="flex items-center px-7 lg:px-40 lg:mt-6">
 				<img src={leftArrowIcon} alt="left arrow" />
 				<p className="ml-1 text-sm font-bold">Back</p>
@@ -336,8 +353,18 @@ const Preview = () => {
 						</div>
 					</Modal>
 				))}
+				</div>
+
+				{
+					download && <div className={`absolute top-0 left-0 w-full h-[250%] bg-overlay z-50 flex justify-center items-center ${download && 'opacity-100'}`}>
+						<div className="fixed w-25% h-25% top-[37.5%] left-[50%-30px] flex flex-col gap-5">
+							<FontAwesomeIcon className={`text-textWhite text-[120px] ${spin && 'rotate-[360deg] duration-[2000ms]'}`} icon={faSpinner} />
+							<p className="text-textWhite text-[60px] font-bold">DOWNLOADING</p>
+						</div>
+					</div>
+				}
 		</div>
 	);
 };
 
-export default Preview;
+export default Preview

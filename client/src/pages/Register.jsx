@@ -26,7 +26,7 @@ const CreateAcount = () => {
 	const onSubmit = async (values, actions) => {
 		try {
 			const resp = await axios.post(
-				`http://api.coverly.hng.tech/api/v1/auth/signup`,
+				`https://api.coverly.hng.tech/api/v1/auth/signup`,
 				{
 					name: values.fullName,
 					email: values.email,
@@ -93,7 +93,7 @@ const CreateAcount = () => {
 						Create your account
 					</h2>
 					<p className="text-base text-grey400 px-[60px] md:px-0">
-						Land your dream job with Aplicar cover letter
+						Land your dream job with Coverly cover letter
 					</p>
 				</div>
 

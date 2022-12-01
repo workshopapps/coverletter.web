@@ -29,11 +29,11 @@ const Login = () => {
 	const onSubmit = async (values, actions) => {
 		try {
 			const resp = await axios.post(
-				`http://api.coverly.hng.tech/api/v1/auth/login`,
+				`https://api.coverly.hng.tech/api/v1/auth/login`,
 				values
 			);
 			const UserDetails = await axios.post(
-				`http://api.coverly.hng.tech/api/v1/auth/dashboard`,
+				`https://api.coverly.hng.tech/api/v1/auth/dashboard`,
 				values
 			);
 
@@ -85,7 +85,7 @@ const Login = () => {
 						Sign In to your account
 					</h2>
 					<p className="text-base text-grey400 px-[60px] md:px-0">
-						Land your dream job with Aplicar cover letter
+						Land your dream job with Coverly cover letter
 					</p>
 				</div>
 
@@ -145,7 +145,7 @@ const Login = () => {
 							<p className="text-base text-stokeDark">
 								Forgot password?{" "}
 								<Link
-									to="/"
+									to="/forgot-password"
 									className="text-primaryMain font-bold "
 								>
 									Click here
