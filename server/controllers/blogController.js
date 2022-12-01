@@ -7,7 +7,6 @@ const { BadRequestError } = require("../errors");
 
 const createPost = async (req, res) => {
 	const { title, content } = req.body;
-	const adminId = process.env.adminId || "niefnqelfneqoifneqoifneqoifn";
 	if (!title || !content)
 		return res
 			.status(StatusCodes.NO_CONTENT)
@@ -18,7 +17,7 @@ const createPost = async (req, res) => {
 			"This adminId is not valid or the admin does not exsit in our database."
 		);
 	}
-	const post = new Blog({ adminId, title, content });
+	const post = new Blog({ title, content });
 	await post.save();
 
 	return res
