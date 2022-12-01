@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import back from "./asesets/arrow.png";
 import { useGlobalContext } from "../../context/context";
-import {ToastContainer, toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function InputData() {
 	const Navigate = useNavigate();
@@ -29,8 +29,8 @@ function InputData() {
 		Navigate("/");
 	};
 
-	const uploadToast = () =>{
-		    toast(" Error Processing your CV ")
+	const uploadToast = () => {
+		toast(" Error Processing your CV ");
 	};
 
 	const fullNameHandler = (e) => {
@@ -103,7 +103,7 @@ function InputData() {
 			formData.append("location", location);
 			try {
 				const res = await axios.post(
-					`http://api.coverly.hng.tech/api/v1/generate`,
+					`https://api.coverly.hng.tech/api/v1/generate`,
 					formData
 				);
 				console.log(res);
@@ -118,7 +118,6 @@ function InputData() {
 				uploadToast();
 				setIsloading(false);
 				console.log(ex);
-				
 			}
 		};
 		if (
@@ -134,7 +133,6 @@ function InputData() {
 			location &&
 			email
 		) {
-
 			setIsloading(true);
 			uploadFile();
 		}
@@ -181,7 +179,11 @@ function InputData() {
 							</label>
 							<input
 								name="full_name"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && fullName <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && fullName <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={fullNameHandler}
 								autoFocus
 								type="text"
@@ -197,12 +199,19 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="email" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="email"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Email Address
 							</label>
 							<input
 								name="email"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && email <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && email <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								type="email"
 								onChange={emailHandler}
 								value={email}
@@ -217,12 +226,19 @@ function InputData() {
 							)}
 						</div>
 						<div className="a flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="location" className="my-[4px] text-textBody text-[18px]">
+							<label
+								htmlFor="location"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								Your Address(Preferred Location)
 							</label>
 							<input
 								name="role"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && location <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && location <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={locationHandler}
 								value={location}
@@ -245,7 +261,11 @@ function InputData() {
 							</label>
 							<input
 								name="company_name"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && companyName <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && companyName <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={companyHandler}
 								type="text"
 								value={companyName}
@@ -268,7 +288,11 @@ function InputData() {
 							</label>
 							<input
 								name="company_address"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && companyAddress <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && companyAddress <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={companyAddressHandler}
 								type="text"
 								value={companyAddress}
@@ -288,7 +312,11 @@ function InputData() {
 							</label>
 							<select
 								id="country"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && country <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && country <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={countryHandler}
 								name="country"
 							>
@@ -614,17 +642,23 @@ function InputData() {
 								""
 							)}
 						</div>
-						
 					</div>
 
 					<div className="right mt-[-1rem] lg:mt-0 ">
-					<div className="b flex flex-col text-left mb-[2rem] ">
-							<label htmlFor="city" className="my-[4px] text-textBody text-[18px]">
+						<div className="b flex flex-col text-left mb-[2rem] ">
+							<label
+								htmlFor="city"
+								className="my-[4px] text-textBody text-[18px]"
+							>
 								City
 							</label>
 							<input
 								name="city"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && city <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && city <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={cityHandler}
 								type="text"
 								value={city}
@@ -647,7 +681,11 @@ function InputData() {
 							</label>
 							<input
 								name="role"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && role <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && role <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={roleHandler}
 								value={role}
@@ -661,14 +699,21 @@ function InputData() {
 								""
 							)}
 						</div>
-						
+
 						<div className="a flex flex-col text-left mb-[2rem]">
-							<label htmlFor="date" className="my-[4px]  text-textBody text-[18px]">
+							<label
+								htmlFor="date"
+								className="my-[4px]  text-textBody text-[18px]"
+							>
 								Date of Application
 							</label>
 							<input
 								name="date"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && date <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && date <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={dateHandler}
 								type="date"
 								value={date}
@@ -691,7 +736,11 @@ function InputData() {
 							</label>
 							<input
 								name="years_of_exp"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && years <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && years <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={yearsHandler}
 								value={years}
@@ -714,7 +763,11 @@ function InputData() {
 							</label>
 							<input
 								name="recipient_email"
-								className= {`px-3 py-[9px] border-[1.5px] ${error && name <= 0 ? 'border-[#FF2635]' : 'border-gray-300'} rounded-lg focus:outline-primaryMain  `}
+								className={`px-3 py-[9px] border-[1.5px] ${
+									error && name <= 0
+										? "border-[#FF2635]"
+										: "border-gray-300"
+								} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={nameHandler}
 								value={name}
@@ -761,9 +814,7 @@ function InputData() {
 									class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
 									role="status"
 								>
-									<span class="visually-hidden">
-										l
-									</span>
+									<span class="visually-hidden">l</span>
 								</div>
 							</div>
 						</button>
