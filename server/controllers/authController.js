@@ -92,7 +92,7 @@ const login = async (req, res, next) => {
 };
 
 const logout = async (req,res)=>{
-  try {
+
   const token = req.headers.authorization.split(' ')[1]
 
   const user = await User.findById(req.user.userId);
@@ -109,10 +109,7 @@ const logout = async (req,res)=>{
 	return res.status(201).json({
 		message:"You have logged out successfully"
 	})
-  } catch (error) {
-	console.log(error)
-	
-  }
+
 }
 
 const protect = async (req, res, next) => {
