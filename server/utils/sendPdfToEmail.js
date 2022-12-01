@@ -35,6 +35,7 @@ module.exports = async (email, subject, fileName) => {
 				</div>
 				`,
 				attachments: [
+<<<<<<< Updated upstream
 					{
 						filename: fileName,
 						path: __dirname+`/${fileName}`,
@@ -44,6 +45,18 @@ module.exports = async (email, subject, fileName) => {
 						path: `${__dirname}/${fileName}`,
 					},
 				],
+=======
+				{
+					filename: fileName,
+					path: __dirname+`/${fileName}`,
+					cid: "uniq-mailtrap.png",
+				},
+				
+				{
+					path: `${__dirname}/${fileName}`,
+				},
+			],
+>>>>>>> Stashed changes
 		});
 		return {
 			status: 200,
