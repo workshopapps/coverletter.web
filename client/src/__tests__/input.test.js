@@ -4,6 +4,7 @@ import { AppProvider } from "../context/context";
 import InputData from "../Components/input/InputData";
 import { BrowserRouter } from "react-router-dom";
 
+
 describe("Input Data", () => {
 	test("Rendered Correctly", () => {
 		render(
