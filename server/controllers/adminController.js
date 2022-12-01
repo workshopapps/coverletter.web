@@ -79,7 +79,7 @@ const deleteAdmin = async (req,res) => {
 	   throw new UnauthenticatedError(`you are not authorized to carry out this operation`)
    }
 
-   await Admin.findByIdAndDelete(req.params.id);
+   await Admin.findByIdAndDelete(req.params.id)
    return res.status(StatusCodes.OK).json({
 	   success: true,
 	   data: {}
