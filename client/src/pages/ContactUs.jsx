@@ -230,10 +230,7 @@ const ContactUs = () => {
 		setErrors(validate());
 		if (!anyError(errorResult)) {
 			try {
-<<<<<<< HEAD
 				const backendApIurl = "https://api.coverly.hng.tech";
-=======
->>>>>>> 3e8d48d095e96cf18bfa6b33d66c8123c7fa22f6
 				const body = {
 					fullName: formData.name,
 					userEmail: formData.email,
