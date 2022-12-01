@@ -48,7 +48,7 @@ const Footer = () => {
 							Activity
 						</h4>
 						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
-							<Link to="/">Events</Link>
+							<Link to="/event">Events</Link>
 							<Link to="/customerstories">Customers stories</Link>
 							<Link to="/features">Features</Link>
 						</div>
