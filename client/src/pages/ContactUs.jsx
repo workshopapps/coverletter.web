@@ -217,8 +217,8 @@ const ContactUs = () => {
 				/^(?:(?:(?:\+?234(?:h1)?|01)h*)?(?:\(\d{3}\)|\d{3})|\d{4})(?:\W*\d{3})?\W*\d{4}$/.test(
 					formData.phone
 				) &&
-				formData.phone.length !== 11 &&
-				formData.phone[0] !== 0
+				((formData.phone.length !== 11 && formData.phone[0] !== 0) ||
+					(formData.phone.length === 11 && formData.phone[0] === 0))
 			)
 		) {
 			errorObject = { ...errorObject, phone: invalidFormatText };
