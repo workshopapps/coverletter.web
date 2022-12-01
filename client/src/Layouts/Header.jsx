@@ -122,15 +122,15 @@ const Header = () => {
 				) : (
 					<>
 						<Button
-							onClick={() => {
-								setToggleUserMenu((prev) => !prev);
-								setToggleMenu(false);
-							}}
+							// onClick={() => {
+							// 	setToggleUserMenu((prev) => !prev);
+							// 	setToggleMenu(false);
+							// }}
 							className="btn btnShort btnSecondary block md:hidden w-full my-4"
 						>
 							History
 						</Button>
-						{toggleUserMenu && <UserMenu />}
+						{/* {toggleUserMenu && <UserMenu />} */}
 					</>
 				)}
 			</aside>
@@ -139,13 +139,13 @@ const Header = () => {
 
 	const UserMenu = () => {
 		return (
-			<aside className="w-[234px] h-[217px] border border-searchbd bg-textWhite absolute top-[88px] right-24 max-[768px]:right-4 z-20 rounded-sm py-4">
+			<aside className="w-[234px] h-[160px] border border-searchbd bg-textWhite absolute top-[96px] right-16 max-[768px]:right-4 z-20 rounded-sm py-4">
 				<ul>
 					{historyElements.map((item) => (
 						<Link
 							key={item.name}
 							to={item.url}
-							className="flex gap-x-8 items-center justify-center mb-6 last:mb-4"
+							className="flex gap-x-8 items-center justify-center mb-6 last:mb-4 text-base"
 						>
 							{item.icon}
 							<p className="font-bold text-base">{item.name}</p>
@@ -155,7 +155,7 @@ const Header = () => {
 				<hr className="border-[0.3px] border-searchbd" />
 				<Link
 					to="/"
-					className="text-center cursor-pointer"
+					className="text-center cursor-pointer mt-7"
 					onClick={logout}
 				>
 					<p className="font-bold text-base mt-4">Log Out</p>
@@ -193,21 +193,26 @@ const Header = () => {
 					) : (
 						<>
 							<Button
-								onClick={() =>
-									setToggleUserMenu((prev) => !prev)
-								}
+								// onClick={() =>
+								// 	setToggleUserMenu((prev) => !prev)
+								// }
 								className="btn btnShort btnSecondary hidden md:block"
 							>
 								History
 							</Button>
-							{toggleUserMenu && <UserMenu />}
-							<Link to="/">
+							<Link
+								to="/"
+								onClick={() =>
+									setToggleUserMenu((prev) => !prev)
+								}
+							>
 								{/* <Avatar className="w-12 h-12 hidden lg:block" /> */}
 
 								<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-fill">
 									{user?.name[0].toUpperCase()}
 								</div>
 							</Link>
+							{toggleUserMenu && <UserMenu />}
 						</>
 					)}
 					<button>
