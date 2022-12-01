@@ -42,7 +42,7 @@ const VerifyAcc = () => {
 			setIsLoading(true);
 			try {
 				const resp = await axios.post(
-					`http://api.coverly.hng.tech/api/v1/auth/verify`,
+					`https://api.coverly.hng.tech/api/v1/auth/verify`,
 					{
 						otp,
 					}
@@ -66,7 +66,7 @@ const VerifyAcc = () => {
 			setIsLoading(true);
 			try {
 				const resp = await axios.post(
-					`http://api.coverly.hng.tech/api/v1/generateOtp`,
+					`https://api.coverly.hng.tech/api/v1/generateOtp`,
 					{
 						type: "verify",
 						email: userEmail.email,

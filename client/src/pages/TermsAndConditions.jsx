@@ -11,7 +11,7 @@ function TermsAndCondition() {
 							Terms And Conditions
 						</h1>
 						<p className="text-center text-[15px] font-extralight text-textWhite">
-							Please read the legal information about Aplicar to
+							Please read the legal information about Coverly to
 							ensure you understand the terms of use of our AI
 							generated cover letters.
 						</p>
@@ -28,15 +28,15 @@ function TermsAndCondition() {
 						</h1>
 
 						<p className="text-grey400 text-sm mb-2">
-							Welcome to aplicar.com ,by using our website and the
+							Welcome to Coverly.com ,by using our website and the
 							services provided, you acknowledge that you have
 							read, understood and agree to comply and be bound by
 							our terms and conditions outlined below. These terms
 							applies to the entire website and any email or other
-							type of communication between you and Aplicar.
+							type of communication between you and Coverly.
 							<br />
 							<br />
-							Aplicar will not be responsible for any outcome that
+							Coverly will not be responsible for any outcome that
 							may occur during the course of usage of our
 							resources. We reserve the rights to change prices
 							and revise the resources usage policy in any moment.
@@ -48,7 +48,7 @@ function TermsAndCondition() {
 
 						<p className="text-grey400 text-sm mb-1">
 							These terms and conditions are a contract between
-							you and Aplicar. Aplicar grants you a revocable.
+							you and Coverly. Coverly grants you a revocable.
 							Non-transferrable, limited license to download,
 							install and use our website strictly in accordance
 							with the terms of the agreement.
@@ -69,8 +69,8 @@ function TermsAndCondition() {
 							conditions and other agreements
 							<div className="mt-2 md:mt-3 lg:mt-4">
 								<span className="font-bold">Website: </span>
-								Aplicar site, which can be accessible via URL
-								www.aplicar.com
+								Coverly site, which can be accessible via URL
+								www.Coverly.com
 							</div>
 							<div className="mt-2 md:mt-3 lg:mt-4">
 								<span className="font-bold">User: </span>This

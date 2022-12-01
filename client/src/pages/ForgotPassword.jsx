@@ -66,7 +66,7 @@ const ForgotPassword = () => {
 				</h1>
 				<p className="w-[92%] mx-auto text-base font-normal leading-6 text-[#6D6D6D] text-center sm:text-lg w-3/4 md:text-[18px] w-7/8 lg:text-[18px] w-[99%] xl:w-[418px] mx-auto">
 					To reset your password, enter the email associated with your
-					Aplicar account
+					Coverly account
 				</p>
 				<div className="form-container">
 					<form

@@ -54,7 +54,7 @@ const Faq = () => {
 						Frequently Asked Questions
 					</h2>
 					<p className="text-xs font-semibold w-[252px] mx-auto sm:w-[400px] sm:font-normal sm:text-base md:w-[601px]">
-						Find out all you need to know about using Aplicar to
+						Find out all you need to know about using Coverly to
 						easily generate professional cover letters.
 					</p>
 				</div>

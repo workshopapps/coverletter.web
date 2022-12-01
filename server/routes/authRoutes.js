@@ -1,8 +1,8 @@
 const express = require("express");
-const { StatusCodes } = require("http-status-codes");
 const router = express.Router();
-const passport = require("passport");
-const jwt = require("jsonwebtoken");
+const passport = require('passport')
+const jwt = require('jsonwebtoken')
+const auth = require('../middleware/authentication')
 const {
 	register,
 	updatePassword,
@@ -10,6 +10,7 @@ const {
 	verify,
 	protect,
 	login,
+	logout,
 	getUserDetails,
 	validateOTP,
 	resetPassword,
@@ -19,32 +20,24 @@ const {
 router.post("/signup", register);
 router.post("/verify", verify);
 router.post("/login", login);
+router.post("/logout", auth, logout);
 router.post("/dashboard", getUserDetails);
 router.post("/forgotPassword", forgotPassword);
 
 router.post("/validateOTP", validateOTP);
 //GOOGLE auth routes
-router.get(
-	"/google",
-	passport.authenticate("google", { scope: ["profile", "email"] })
-);
+router.get('/google', 
+  passport.authenticate('google', { scope : ['profile', 'email'] }));
+ 
+router.get('/google/callback', 
+  passport.authenticate('google', { failureRedirect: 'coverly.hng.tech/signin' }),
+  function(req, res) {
+    const user = req.user
+    const token =  jwt.sign({googleID:user._id,name:user.name, email:user.email},process.env.JWT_SECRET,{expiresIn: "2h"})
+    
+   return res.status(200).json({user,token});
+  });
 
-router.get(
-	"/google/callback",
-	passport.authenticate("google", {
-		failureRedirect: "coverly.hng.tech/signin",
-	}),
-	function (req, res) {
-		const user = req.user;
-		const token = jwt.sign(
-			{ googleID: user._id, name: user.name, email: user.email },
-			process.env.JWT_SECRET,
-			{ expiresIn: "2h" }
-		);
-
-		return res.status(200).json({ user, token });
-	}
-);
 
 // All After login routes goes below PROTECT ROUTE
 router.use(protect);

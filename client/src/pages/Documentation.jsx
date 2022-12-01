@@ -43,7 +43,7 @@ export default function Documentation() {
 							<div className=" m-auto">
 								<p className="text-textWhite font-bold leading-loose text-left ml-8 max-[549px]:text-sm max-[549px]:m-auto">
 									Welcome! Let's get you acquainted with the
-									Aplicar Cover Letter Environment
+									Coverly Cover Letter Environment
 								</p>
 							</div>
 						</div>
