@@ -5,6 +5,7 @@ const { replyForumPost } = require("../controllers/forumController");
 const { createForumPost } = require("../controllers/forumController");
 const { getAllForumPosts } = require("../controllers/forumController");
 const { getOneForumPost } = require("../controllers/forumController");
+const { getAllRepliesToAForumPost } = require("../controllers/forumController");
 const router = express.Router();
 
 // your routes here
@@ -12,5 +13,6 @@ router.post("/createPost", auth, createForumPost);
 router.get("/getAllPost", getAllForumPosts);
 router.get("/getOnePost/:id", getOneForumPost);
 router.post("/:pid/reply", auth, replyForumPost);
+router.get("/:pid/replies", getAllRepliesToAForumPost);
 
 module.exports = router;
