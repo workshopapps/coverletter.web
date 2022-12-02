@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import WhoWeAre from "../Assets/who-we-are.png";
 import Erica from "../Assets/erica.png";
 import Ayomide from "../Assets/ayomide.png";
@@ -9,8 +8,6 @@ import Destiny from "../Assets/destiny.png";
 import Jewel from "../Assets/jewel.png";
 import Mission from "../Assets/our-mission.png";
 import History from "../Assets/our-history.png";
-import BannerSm from "../Assets/mobile-banner.png";
-import BannerLg from "../Assets/desktop-banner.png";
 
 import "../Layouts/About/About.css";
 
@@ -151,7 +148,7 @@ const About = () => {
 						<h2 className="text-[32px] xl:text-[40px] text-[#101010] text-center sm:text-2xl lg:text-[32px] font-semibold">
 							Our Teams
 						</h2>
-						<p className="text-base text-center md:text-[18px] lg:w-[840px] lg:ml-auto lg:mr-auto xl:w-[1040px] xl:ml-auto xl:mr-auto sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
+						<p className="text-base text-center md:text-[18px] lg:w-[840px] lg:ml-auto lg:mr-auto xl:w-[1040px] xl:ml-auto xl:mr-auto sm:text-lg  leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 							People are the foundation of every successful
 							company. We strive to innovate and grow by meeting
 							the people who motivate our team and we are proud of
