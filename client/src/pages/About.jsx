@@ -43,7 +43,7 @@ const About = () => {
 								<h2 className="text-2xl md:text-[24px] sm:text-2xl lg:text-[32px] font-semibold">
 									Who we are
 								</h2>
-								<p className="text-base md:text-[16px] sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
+								<p className="text-base md:text-[16px] sm:text-lg leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 									At Coverly, we create unique Cover letters
 									using our AI. These Cover letters would be
 									as unique as you are. Our AI generates the
@@ -78,7 +78,7 @@ const About = () => {
 								<h2 className="text-2xl md:text-[24px] sm:text-2xl lg:text-[32px] font-semibold">
 									Our mission
 								</h2>
-								<p className="text-base md:text-[16px] sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
+								<p className="text-base md:text-[16px] sm:text-lg leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 									Coverly helps you ace the job by creating a
 									new cover letter every time you apply. Our
 									mission is to help you create a strong,
@@ -95,7 +95,7 @@ const About = () => {
 								<h2 className="text-2xl md:text-[24px] sm:text-2xl lg:text-[32px] font-semibold">
 									Our History
 								</h2>
-								<p className="text-base sm:text-lg md:text-xl md:text-[16px] xl:text-[16px]  leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
+								<p className="text-base sm:text-lg md:text-[16px] xl:text-[16px]  leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 									<span className="block mb-4 lg:mb-3">
 										At Coverly, we reckon that creating a
 										cover letter ought to be a quick and
@@ -132,8 +132,8 @@ const About = () => {
 								</p>
 							</div>
 							<div className="our-history-image">
-								<img src={History} alt="" />
-								<p className="block  text-base sm:text-lg md:text-[16px] md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
+								<img src={History} alt="" className="w-full" />
+								<p className="block  text-base sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 									We decided to focus solely on cover letter
 									development to provide more value to our
 									users.We discovered that a cover letter must
@@ -172,10 +172,10 @@ const About = () => {
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-bold">
 										Erica Osawaru
 									</p>
-									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
+									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR PRODUCT DESIGN
 									</p>
-									<p className="text-base sm:text-g md:text-xl md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-base sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Erica leads the Product design team by
 										creating timely solutions for Coverly.
 										Erica stays on top of our solutions and
@@ -199,7 +199,7 @@ const About = () => {
 									<p className="text-xs md:text-[12px] text-[#0652DD] font-semibold sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR MOBILE DEVELOPMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl  md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Ayomide collaborates with other
 										developers on the design and development
 										of Coverly. He evaluates current
@@ -221,7 +221,7 @@ const About = () => {
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-semibold">
 										Adelakun Rotimi
 									</p>
-									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
+									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR SALES AND MARKETING
 									</p>
 									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
@@ -245,10 +245,10 @@ const About = () => {
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-semibold">
 										Harold Obasi
 									</p>
-									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
+									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR FRONTEND DEVELOPMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl  md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Harold supervises and ensures the
 										quality of the features provided to meet
 										the standard. He leads the team to
@@ -270,10 +270,10 @@ const About = () => {
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-semibold">
 										Destiny Aigbe
 									</p>
-									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
+									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR BACKEND DEVELOPMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl  md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Destiny manages the entire software
 										development lifecycle, including
 										architecture, solution design, quality
@@ -294,10 +294,10 @@ const About = () => {
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-semibold">
 										Jewel Uguru
 									</p>
-									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
+									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR PROJECT MANAGEMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl  md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
 										Jewel oversees the development process
 										of all products of Coverly. Jewel is
 										credible for creating a list of all
