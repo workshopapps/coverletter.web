@@ -8,6 +8,6 @@ const {
 const auth = require("../middleware/authentication");
 
 router.post("/admin/blog/", auth, createPost);
-router.delete("/blog/:blogId", auth, deleteABlogPost);
+router.delete("/admin/blog/:blogId", auth, deleteABlogPost);
 
 module.exports = router;
