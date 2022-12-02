@@ -25,6 +25,9 @@ function InputData() {
 	const [department, setDepartment] = useState("");
 	const [error, setError] = useState(false);
 	const [percentage, setPercentage] = useState("0");
+	const [first, setFirst] = useState(false);
+	const [second, setSecond] = useState(false);
+	const [third, setThird] = useState(false);
 
 	const clickHandler = () => {
 		Navigate("/");
@@ -151,6 +154,20 @@ function InputData() {
 			uploadFile();
 		}
 	};
+
+	if (percentage > "0" && percentage < "30") {
+		setFirst(true);
+	}
+
+	if (percentage > "30" && percentage < "80") {
+		setFirst(false);
+		setSecond(true);
+	}
+	if (percentage > "80") {
+		setFirst(false);
+		setSecond(false);
+		setThird(true);
+	}
 
 	return (
 		<div className="bg-background lg:px-[204px] lg:py-[120px] font-manrope">
@@ -330,7 +347,7 @@ function InputData() {
 							</label>
 							<select
 								id="country"
-								className={`px-3 py-[9px]   border-[#CAD0DD] border-[1.5px] ${
+								className={`px-3 py-[9px]  border-[#CAD0DD] border-[1.5px] ${
 									error && country <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
@@ -831,7 +848,9 @@ function InputData() {
 			{isLoading && (
 				<div className=" bg-textWhite absolute top-[90%] sm:top-[60%] left-[5%] sm:left-[25%] w-[90%] sm:w-[50%] rounded-lg h-[300px] flex flex-col justify-center items-center gap-[20px]">
 					<h3 className="text-textBody text-center text-[16px]">
-						Extracting your details...
+						{first ? "Extracting your details..." : null}
+						{second ? "Almost done..." : null}
+						{third ? "Finished" : null}
 					</h3>
 					<div className="bar w-[80%] ">
 						<div className="w-full bg-grey100 rounded-full dark:bg-grey200">
