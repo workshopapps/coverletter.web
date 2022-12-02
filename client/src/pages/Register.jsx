@@ -47,7 +47,7 @@ const CreateAcount = () => {
 		actions.resetForm();
 	};
 
-	const passwordRules = /(?=.*[!#$%&?^*@~() "])(?=.{8,})/;
+	const passwordRules = /(?=.{5,})/;
 
 	const CreateAccSchema = Yup.object().shape({
 		fullName: Yup.string().required("Please Enter your name"),
