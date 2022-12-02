@@ -24,8 +24,7 @@ function InputData() {
 	const [name, setName] = useState("");
 	const [department, setDepartment] = useState("");
 	const [error, setError] = useState(false);
-	const [percentage, setPercentage] = useState("0");
-	
+
 	const clickHandler = () => {
 		Navigate("/");
 	};
@@ -103,22 +102,11 @@ function InputData() {
 			formData.append("email", email);
 			formData.append("location", location);
 
-			const option = {
-				onUploadProgress: (ProgressEvent) => {
-					const { loaded, total } = ProgressEvent;
-					let percent = Math.floor((loaded * 100) / total);
-
-					if (percentage < 100) {
-						setPercentage(percent);
-					}
-				},
-			};
 
 			try {
 				const res = await axios.post(
 					`https://api.coverly.hng.tech/api/v1/generate`,
-					formData,
-					option
+					formData
 				);
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
@@ -828,21 +816,7 @@ function InputData() {
 					)}
 				</form>
 			</main>
-			{isLoading && (
-				<div className=" bg-textWhite absolute top-[90%] sm:top-[60%] left-[5%] sm:left-[25%] w-[90%] sm:w-[50%] rounded-lg h-[300px] flex flex-col justify-center items-center gap-[20px]">
-					<h3 className="text-textBody text-center text-[16px]">
-					Extracting your details...
-					</h3>
-					<div className="bar w-[80%] ">
-						<div className="w-full bg-grey100 rounded-full dark:bg-grey200">
-							<div
-								className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full"
-								style={{ width: `${percentage}%` }}
-							></div>
-						</div>
-					</div>
-				</div>
-			)}
+		
 		</div>
 	);
 }
