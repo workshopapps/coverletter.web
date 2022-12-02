@@ -82,7 +82,6 @@ app.use("/api/v1", downloadCoverLetter);
 app.use("/api/v1", contactRoutes);
 app.use("/api/v1", replyPostRoutes);
 
-
 app.get("/", (req, res) => {
 	res.send("templates api");
 });
