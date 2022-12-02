@@ -24,6 +24,10 @@ function InputData() {
 	const [name, setName] = useState("");
 	const [department, setDepartment] = useState("");
 	const [error, setError] = useState(false);
+	const [percentage, setPercentage] = useState("0");
+	const [first, setFirst] = useState(false);
+	const [second, setSecond] = useState(false);
+	const [third, setThird] = useState(false);
 
 	const clickHandler = () => {
 		Navigate("/");
@@ -101,10 +105,23 @@ function InputData() {
 			formData.append("full_name", fullName);
 			formData.append("email", email);
 			formData.append("location", location);
+
+			const option = {
+				onUploadProgress: (ProgressEvent) => {
+					const { loaded, total } = ProgressEvent;
+					let percent = Math.floor((loaded * 100) / total);
+
+					if (percentage < 100) {
+						setPercentage(percent);
+					}
+				},
+			};
+
 			try {
 				const res = await axios.post(
 					`https://api.coverly.hng.tech/api/v1/generate`,
-					formData
+					formData,
+					option
 				);
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
@@ -138,10 +155,28 @@ function InputData() {
 		}
 	};
 
+	if (percentage > "0" && percentage < "30") {
+		setFirst(true);
+	}
+
+	if (percentage > "30" && percentage < "80") {
+		setFirst(false);
+		setSecond(true);
+	}
+	if (percentage > "80") {
+		setFirst(false);
+		setSecond(false);
+		setThird(true);
+	}
+
 	return (
 		<div className="bg-background lg:px-[204px] lg:py-[120px] font-manrope">
 			<ToastContainer />
-			<main className=" lg:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite ">
+			<main
+				className={` ${
+					isLoading && "filter blur-[1px] opacity-50"
+				}  lg:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite `}
+			>
 				<button
 					onClick={clickHandler}
 					className="flex items-center  mt-[55px] gap-3 font-semibold"
@@ -179,11 +214,11 @@ function InputData() {
 							</label>
 							<input
 								name="full_name"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px] border-[#CAD0DD] border-[1.5px] ${
 									error && fullName <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1 `}
 								onChange={fullNameHandler}
 								autoFocus
 								type="text"
@@ -207,11 +242,11 @@ function InputData() {
 							</label>
 							<input
 								name="email"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px]  border-[#CAD0DD] border-[1.5px] ${
 									error && email <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1  `}
 								type="email"
 								onChange={emailHandler}
 								value={email}
@@ -234,11 +269,11 @@ function InputData() {
 							</label>
 							<input
 								name="role"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px]  border-[#CAD0DD] border-[1.5px] ${
 									error && location <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1 `}
 								type="text"
 								onChange={locationHandler}
 								value={location}
@@ -261,11 +296,11 @@ function InputData() {
 							</label>
 							<input
 								name="company_name"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px] border-[#CAD0DD] border-[1.5px] ${
 									error && companyName <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1  `}
 								onChange={companyHandler}
 								type="text"
 								value={companyName}
@@ -288,11 +323,11 @@ function InputData() {
 							</label>
 							<input
 								name="company_address"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px] border-[#CAD0DD] border-[1.5px] ${
 									error && companyAddress <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1  `}
 								onChange={companyAddressHandler}
 								type="text"
 								value={companyAddress}
@@ -312,15 +347,15 @@ function InputData() {
 							</label>
 							<select
 								id="country"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px]  border-[#CAD0DD] border-[1.5px] ${
 									error && country <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1 `}
 								onChange={countryHandler}
 								name="country"
 							>
-								<option>select country</option>
+								<option>Select Country</option>
 								<option value="AF">Afghanistan</option>
 								<option value="AX">Aland Islands</option>
 								<option value="AL">Albania</option>
@@ -654,11 +689,11 @@ function InputData() {
 							</label>
 							<input
 								name="city"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px] border-[#CAD0DD] border-[1.5px] ${
 									error && city <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1  `}
 								onChange={cityHandler}
 								type="text"
 								value={city}
@@ -681,11 +716,11 @@ function InputData() {
 							</label>
 							<input
 								name="role"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px] border-[#CAD0DD] border-[1.5px] ${
 									error && role <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1 `}
 								type="text"
 								onChange={roleHandler}
 								value={role}
@@ -709,11 +744,11 @@ function InputData() {
 							</label>
 							<input
 								name="date"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px] border-[#CAD0DD] border-[1.5px] ${
 									error && date <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1  `}
 								onChange={dateHandler}
 								type="date"
 								value={date}
@@ -736,15 +771,16 @@ function InputData() {
 							</label>
 							<input
 								name="years_of_exp"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px] border-[#CAD0DD] border-[1.5px] ${
 									error && years <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
-								type="text"
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1  `}
+								type="number"
 								onChange={yearsHandler}
 								value={years}
 								id="years"
+								min="1"
 							/>
 							{error && years <= 0 ? (
 								<p className="text-[#FF2635] mt-2 ml-2 text-[14px]">
@@ -763,11 +799,11 @@ function InputData() {
 							</label>
 							<input
 								name="recipient_email"
-								className={`px-3 py-[9px] border-[1.5px] ${
+								className={`px-3 py-[9px] border-[#CAD0DD] border-[1.5px] ${
 									error && name <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[#434343] focus:outline-1  `}
 								type="text"
 								onChange={nameHandler}
 								value={name}
@@ -790,7 +826,7 @@ function InputData() {
 							</label>
 							<input
 								name="recipient_department"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg focus:outline-primaryMain"
+								className="px-3 py-[9px] border-[#CAD0DD] border-[1.5px] border-gray-300 rounded-lg focus:outline focus:outline-[#434343] focus:outline-1"
 								type="text"
 								onChange={departmentHandler}
 								value={department}
@@ -807,20 +843,25 @@ function InputData() {
 							Continue
 						</button>
 					)}
-					{isLoading && (
-						<button className=" hover:bg-primaryDark px-5 w-[100%] py-3 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg">
-							<div class="flex justify-center items-center">
-								<div
-									class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-									role="status"
-								>
-									<span class="visually-hidden">l</span>
-								</div>
-							</div>
-						</button>
-					)}
 				</form>
 			</main>
+			{isLoading && (
+				<div className=" bg-textWhite absolute top-[90%] sm:top-[60%] left-[5%] sm:left-[25%] w-[90%] sm:w-[50%] rounded-lg h-[300px] flex flex-col justify-center items-center gap-[20px]">
+					<h3 className="text-textBody text-center text-[16px]">
+						{first ? "Extracting your details..." : null}
+						{second ? "Almost done..." : null}
+						{third ? "Finished" : null}
+					</h3>
+					<div className="bar w-[80%] ">
+						<div className="w-full bg-grey100 rounded-full dark:bg-grey200">
+							<div
+								className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full"
+								style={{ width: `${percentage}%` }}
+							></div>
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }
