@@ -176,7 +176,7 @@ export default function Documentation() {
 					/>
 				</div>
 				<div className="w-full">
-					<div className="flex flex-col gap-4 mx-w-8/12 justify-center items-center mt-12">
+					<div className="flex flex-col gap-4 mx-w-8/12 justify-center items-center mt-12 p-4 text-center">
 						<h1 className="text-[24px] md:text-[40px] font-semibold">How it works</h1>
 						<p>Generating a cover letter with our simple interface following 4 steps</p>
 					</div>
