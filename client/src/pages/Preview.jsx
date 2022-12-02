@@ -10,6 +10,7 @@ import pauseIcon from "../Assets/pause.svg";
 import cancelIcon from "../Assets/cancel.svg";
 import leftArrowIcon from "../Assets/leftArrow.svg";
 import BigLeftArrowIcon from "../Assets/bigLeftArrow";
+import PDFtemplate1 from "../Components/pdf-templates/pdfTemplate1";
 import { downloadPdf, downloadDOCX } from "../Utils/download-util";
 import { convertToTxt } from "../Utils/txtDownload";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -102,7 +103,7 @@ const Preview = () => {
 		setDownload(true);
 		setTimeout(() => {
 			if (dType === "pdf") {
-				downloadPdf("coverletter-target");
+				downloadPdf("pdf-coverletter-target");
 			} else if (dType === "doc") {
 				//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
 				downloadDOCX(data, userData);
@@ -257,6 +258,7 @@ const Preview = () => {
 						/>
 					</div>
 				</div>
+				<PDFtemplate1 />
 
 				{isModalOpen &&
 					(!firstModal ? (
