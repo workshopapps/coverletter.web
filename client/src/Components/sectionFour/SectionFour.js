@@ -9,7 +9,7 @@ import designer from "./assets/designer.svg";
 function SectionFour() {
 	const Navigate = useNavigate();
 
-	const clickHandler = () => {
+	const handler = () => {
 		Navigate("/customerstories");
 	};
 	return (
@@ -88,7 +88,7 @@ function SectionFour() {
 				</div>
 				<div className="a flex justify-center">
 					<button
-						onclick={clickHandler}
+						onClick={handler}
 						className="hover:bg-primaryLight px-9 py-3 mt-[85px] text-[14px] flex items-center justify-center w-[85%] lg:w-[30%] text-primaryMain border-[1.5px] border-solid border-blue-700 font-semibold rounded-lg lw:w-[294px] mb-[50px]"
 					>
 						<span>Read Full Customer Stories</span>
