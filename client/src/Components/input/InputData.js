@@ -157,7 +157,7 @@ function InputData() {
 			<ToastContainer />
 			<main
 				className={` ${
-					!isLoading && "filter blur-[1px] opacity-50"
+					isLoading && "filter blur-[1px] opacity-50"
 				}  lg:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite `}
 			>
 				<button
@@ -828,7 +828,7 @@ function InputData() {
 					)}
 				</form>
 			</main>
-			{!isLoading && (
+			{isLoading && (
 				<div className=" bg-textWhite absolute top-[90%] sm:top-[60%] left-[5%] sm:left-[25%] w-[90%] sm:w-[50%] rounded-lg h-[300px] flex flex-col justify-center items-center gap-[20px]">
 					<h3 className="text-textBody text-center text-[16px]">
 						Extracting your details...
