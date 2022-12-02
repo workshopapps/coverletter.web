@@ -1,9 +1,19 @@
 import React from 'react'
 import { useEffect, useState } from "react";
-import { ReactComponent as ArrowBlue } from "../Assets/arrow-up-blue.svg";
+import { ReactComponent as ArrowWhite } from "../Assets/arrow-up-white.svg";
 
 export default function MbScrollToTopBtn() {
-    const [displayArrow, setDisplayArrow] = useState(false);
+    // show text on hover
+	const [showBTT, setShowBTT] = useState(false);
+	const handleMouseOver = () => {
+		setShowBTT(true);
+	}
+	const handleMouseOut = () => {
+		setShowBTT(false);
+	}
+
+	// add scroll to top feature
+	const [displayArrow, setDisplayArrow] = useState(false);
 
 	const scrollUp = () => {
 		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -25,14 +35,19 @@ export default function MbScrollToTopBtn() {
 		return () => window.removeEventListener("scroll", listenToScroll);
 	}, []);
 
+
   return (
     <div>
         {displayArrow && (
-            <ArrowBlue
-                className="fixed bottom-[40px] right-[5px] md:hidden"
-                onClick={scrollUp}
-            />
-		)}
+            <div className="flex gap-4 items-center p-4 fixed bottom-[40px] right-[5px] bg-primaryDeep border-primaryDeep rounded-lg cursor-pointer" onClick={scrollUp} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+                <div className="text-white">
+                    <ArrowWhite className=""/>
+                </div>
+                <div className={`text-white ${showBTT ? "hidden md:block" : "hidden"}`}>
+                    Back to Top
+                </div>
+            </div>
+        )}
     </div>
   )
 }
