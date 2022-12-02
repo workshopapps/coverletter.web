@@ -18,7 +18,7 @@ function TermsAndCondition() {
 					</div>
 				</div>
 				<div className="max-w-screen-2xl m-auto px-5">
-					<div className="max-w-[90vw] flex flex-col py-10 text-left justify-center items-start md:mb-5 lg:max-w-[70vw]">
+					<div className="flex flex-col py-10 text-left justify-center items-start md:mb-5">
 						<p className="text-grey800 font-extrabold md:text-grey400">
 							Last Updated: 15th,November, 2022
 						</p>
