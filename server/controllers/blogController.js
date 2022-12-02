@@ -47,8 +47,7 @@ const deleteABlogPost = async (req, res) => {
 	return res.status(StatusCodes.OK).json({
 		message: `Blog with id ${blogId} was deleted successfully.`,
 	});
-
-}
+};
 const searchPost = async (req, res) => {
 	const { query } = req.query;
 	if (!query) {
@@ -66,8 +65,23 @@ const searchPost = async (req, res) => {
 		.json({ message: "Blog found successfully.", query, posts });
 };
 
+const updatePost = async (req, res, next) => {
+	const { title, content } = req.body;
+	//1) Get Admin from params and update
+	const admin = await Blog.findByIdAndUpdate(req.params.id, req.body, {
+		new: true,
+		runValidators: true,
+	});
+	if (!admin) {
+		return next(new BadRequestError("No Blog found with this ID."));
+	} else {
+		return res.status(StatusCodes.OK).json("Blog Updated Successfully");
+	}
+};
+
 module.exports = {
 	createPost,
 	deleteABlogPost,
 	searchPost,
+	updatePost,
 };
