@@ -80,7 +80,7 @@ app.use("/api/v1", cvToCoverLetterRoutes);
 // app.use("/api/v1", resetRoutes);
 app.use("/api/v1", downloadCoverLetter);
 app.use("/api/v1", contactRoutes);
-app.use("/api/v1", forumRoutes);
+app.use("/api/v1/forum", forumRoutes);
 
 
 app.get("/", (req, res) => {
