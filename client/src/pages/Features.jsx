@@ -5,7 +5,6 @@ import feature2 from "../Assets/feature2.svg";
 import feature3 from "../Assets/feature3.svg";
 import feature4 from "../Assets/feature4.svg";
 import feature5 from "../Assets/feature5.svg";
-import featureBackgroundImg from "../Assets/feature-background-img.jpg";
 import featureBackgroundImg2 from "../Assets/feature-section-bg-blue.svg";
 import Button from "../Components/Ui/Button";
 import { ReactComponent as ArrowBlue } from "../Assets/arrow-up-blue.svg";
@@ -18,7 +17,8 @@ const BodyText = (props) => {
 
 const H1 = (props) => {
 	const { children, className } = props;
-	const defaultClassName = "";
+	const defaultClassName =
+		"text-3xl leading-10 font-bold leading-normal  md:text-4xl md:leading-relaxed lg:text-5xl lg:leading-relaxed xl:text-6xl xl:leading-relaxed";
 	return <h1 className={`${defaultClassName} ${className}`}>{children}</h1>;
 };
 
@@ -154,17 +154,7 @@ const Features = () => {
 	console.log(isTablet);
 	return (
 		<>
-			<section
-				className="bg-background max:md:bg-none"
-				style={{
-					backgroundImage: isTablet
-						? "none"
-						: `url(${featureBackgroundImg})`,
-					backgroundRepeat: "no-repeat",
-					backgroundPosition: "right bottom",
-					backgroundSize: "contain",
-				}}
-			>
+			<section className="bg-background max:md:bg-none">
 				<div className="section-content px-8 mt-6 flex flex-col gap-7  py-12 justify-center md:py-16 md:px-36 lg:py-24 lg:px-48 xl:px-104 bg-no-repeat bg-none ">
 					<H1 className="text-center">
 						Providing{" "}
@@ -177,12 +167,13 @@ const Features = () => {
 						response rate from employers after using our product.
 					</BodyText>
 					<div className="w-full flex justify-center items-center">
-						<Button
+						<Link
+							to={"/"}
 							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
 							type="secondary"
 						>
 							Start for free
-						</Button>
+						</Link>
 					</div>
 				</div>
 			</section>
