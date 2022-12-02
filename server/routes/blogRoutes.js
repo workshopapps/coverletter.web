@@ -4,7 +4,7 @@ const router = express.Router();
 const { createPost, searchPost } = require("../controllers/blogController");
 const auth = require("../middleware/authentication");
 
-router.get("/bloggs", searchPost);
-router.post("/admin/blog/", auth, createPost);
+router.get("/blogs/search", searchPost);
+router.post("/admin/blog/", createPost);
 
 module.exports = router;
