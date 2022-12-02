@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import feature1 from "../Assets/feature1.svg";
 import feature2 from "../Assets/feature2.svg";
 import feature3 from "../Assets/feature3.svg";
@@ -9,6 +8,7 @@ import featureBackgroundImg from "../Assets/feature-background-img.jpg";
 import featureBackgroundImg2 from "../Assets/feature-section-bg-blue.svg";
 import Button from "../Components/Ui/Button";
 import { ReactComponent as ArrowBlue } from "../Assets/arrow-up-blue.svg";
+import { Link } from "react-router-dom";
 
 const BodyText = (props) => {
 	const { children, className } = props;
@@ -18,7 +18,8 @@ const BodyText = (props) => {
 
 const H1 = (props) => {
 	const { children, className } = props;
-	const defaultClassName = "";
+	const defaultClassName =
+		"text-3xl leading-10 font-bold leading-normal  md:text-4xl md:leading-relaxed lg:text-5xl lg:leading-relaxed xl:text-6xl xl:leading-relaxed";
 	return <h1 className={`${defaultClassName} ${className}`}>{children}</h1>;
 };
 
@@ -136,6 +137,7 @@ const Features = () => {
 		return () => window.removeEventListener("scroll", listenToScroll);
 	}, []);
 
+
 	const [isTablet, setIsTablet] = useState(false);
 	// listen to screen size event and set isTablet state
 	useEffect(() => {
@@ -181,7 +183,7 @@ const Features = () => {
 							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
 							type="secondary"
 						>
-							Start for free
+							<Link to='/'>Start for free</Link>
 						</Button>
 					</div>
 				</div>
@@ -259,22 +261,23 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row "></div>
 				</div>
 
-				<div className="featureOne-content max-w-[1400px] bg-[#CDDCF8] px-14 lg:px-20 py-11 rounded-lg flex items-center md:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
-					<div>
-						<h1 className=" text-[#101010] text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10 text-[32px] lg:text-[56px] lg:w-[691px] w-full">
+				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 lg:px-20 py-11 rounded-lg flex items-center lg:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
+					<div className="lg:w-[75%]">
+						<H1 className=" text-textWhite text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10">
+							{" "}
 							Increase your chances of getting employed
-						</h1>
-						<p className="text-center md:text-left text-[#101010]  text-base">
+						</H1>
+						<BodyText className="text-left text-textWhite max-md:text-center">
 							Start for free with no credit card required.
-						</p>
+						</BodyText>
 					</div>
 					<div>
-						<Link
-							to={"/"}
-							className="text-textWhite font-bold text-base bg-primaryMain py-[12px] px-[32px] active:bg-primaryDark rounded-[8px]"
+						<Button
+							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
+							type="secondary"
 						>
-							Start for free
-						</Link>
+							<Link to='/'>Start for free</Link>
+						</Button>
 					</div>
 				</div>
 				{displayArrow && (
