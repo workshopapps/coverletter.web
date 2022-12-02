@@ -6,7 +6,7 @@ import { useGlobalContext } from "../../context/context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function InputData({ setModal }) {
+function InputData() {
 	const Navigate = useNavigate();
 
 	const { file, setCoverLetter, setUserData } = useGlobalContext();
@@ -118,7 +118,6 @@ function InputData({ setModal }) {
 			};
 
 			try {
-				setModal(true);
 				const res = await axios.post(
 					`https://api.coverly.hng.tech/api/v1/generate`,
 					formData,
@@ -131,10 +130,8 @@ function InputData({ setModal }) {
 					address: location,
 					email: email,
 				});
-				setModal(false);
 				Navigate("/preview");
 			} catch (ex) {
-				setModal(false);
 				uploadToast();
 				setIsloading(false);
 				console.log(ex);
