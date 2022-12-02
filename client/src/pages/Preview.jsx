@@ -35,14 +35,14 @@ const Preview = () => {
 	const [touchPosition, setTouchPosition] = useState(null);
 	const [mouseClickPosiition, setMouseClickPosition] = useState(null);
 
-	window.addEventListener("resize", (e) => {
-		if (e.target.screen.width > 900) {
-			setIterate(0);
-			setStyle({
-				transform: `translateX(${iterate}px)`,
-			});
-		}
-	});
+	// window.addEventListener("resize", (e) => {
+	// 	if (e.target.screen.width > 900) {
+	// 		setIterate(0);
+	// 		setStyle({
+	// 			transform: `translateX(${iterate}px)`,
+	// 		});
+	// 	}
+	// });
 
 	//handles click start event
 	const handleMouseDown = (e) => {
