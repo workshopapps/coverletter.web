@@ -15,6 +15,22 @@ const BlogSchema = new Schema(
 			required: true,
 			default: Date.now,
 		},
+		imageDetail: [
+			{
+				url: {
+					type: String,
+					required: false,
+					maxlength: 255,
+					default: "",
+				},
+				cloudinaryId: {
+					type: String,
+					required: false,
+					maxlength: 255,
+					default: "",
+				},
+			},
+		],
 	},
 	{
 		timestamps: true,
