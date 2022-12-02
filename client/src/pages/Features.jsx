@@ -4,7 +4,6 @@ import feature2 from "../Assets/feature2.svg";
 import feature3 from "../Assets/feature3.svg";
 import feature4 from "../Assets/feature4.svg";
 import feature5 from "../Assets/feature5.svg";
-import featureBackgroundImg from "../Assets/feature-background-img.jpg";
 import featureBackgroundImg2 from "../Assets/feature-section-bg-blue.svg";
 import Button from "../Components/Ui/Button";
 import { Link } from "react-router-dom";
@@ -131,17 +130,7 @@ const Features = () => {
 	console.log(isTablet);
 	return (
 		<>
-			<section
-				className="bg-background max:md:bg-none"
-				style={{
-					backgroundImage: isTablet
-						? "none"
-						: `url(${featureBackgroundImg})`,
-					backgroundRepeat: "no-repeat",
-					backgroundPosition: "right bottom",
-					backgroundSize: "contain",
-				}}
-			>
+			<section className="bg-background max:md:bg-none">
 				<div className="section-content px-8 mt-6 flex flex-col gap-7  py-12 justify-center md:py-16 md:px-36 lg:py-24 lg:px-48 xl:px-104 bg-no-repeat bg-none ">
 					<H1 className="text-center">
 						Providing{" "}
@@ -154,12 +143,13 @@ const Features = () => {
 						response rate from employers after using our product.
 					</BodyText>
 					<div className="w-full flex justify-center items-center">
-						<Button
+						<Link
+							to={"/"}
 							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
 							type="secondary"
 						>
-							<Link to='/'>Start for free</Link>
-						</Button>
+							Start for free
+						</Link>
 					</div>
 				</div>
 			</section>
@@ -251,7 +241,7 @@ const Features = () => {
 							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
 							type="secondary"
 						>
-							<Link to='/'>Start for free</Link>
+							<Link to="/">Start for free</Link>
 						</Button>
 					</div>
 				</div>

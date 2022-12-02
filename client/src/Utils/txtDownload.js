@@ -1,9 +1,14 @@
+import saveAs from "file-saver";
+import { convert } from "html-to-text";
+
 export const convertToTxt = async () => {
-	const html = document.getElementById("coverletter-target").innerText;
-	const blob = new Blob([html], { type: "text/plain" });
-	const file = URL.createObjectURL(blob);
-	const link = document.createElement("a");
-	link.download = "cover-letter-txt";
-	link.href = file;
-	link.click();
+	const html = document.getElementById("coverletter-target").innerHTML;
+	const text = convert(html, {
+		wordwrap: 130,
+	});
+	var blob = new Blob([text], {
+		type: "text/plain;charset=utf-8",
+	});
+	saveAs(blob, "download.txt");
+	console.log(text);
 };
