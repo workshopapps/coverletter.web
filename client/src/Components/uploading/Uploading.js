@@ -28,30 +28,30 @@ function Uploading() {
 		const uploadFile = async (e) => {
 			const formData = new FormData();
 			formData.append("myFile", file);
-
-			const option = {
-				onUploadProgress: (ProgressEvent) => {
-					const { loaded, total } = ProgressEvent;
-					let percent = Math.floor((loaded * 100) / total);
-
-					if (percent < 100) {
-						setPercentage(percent);
-					}
-				},
-				cancelToken: ourRequest.current.token,
-			};
-
-			try {
-				const res = await axios.post(
-					`https://api.coverly.hng.tech/api/v1/upload`,
-					formData,
-					option
-				);
-				setStatus(res.status);
-			} catch (ex) {
-				setError(ex.code);
-			}
-		};
+    
+            const option = {
+                onUploadProgress: (ProgressEvent) => {
+                    const { loaded, total } = ProgressEvent;
+                    let percent = Math.floor((loaded * 100) / total);
+    
+                    if (percent < 100) {
+                        setPercentage(percent);
+                    }
+                },
+				cancelToken: ourRequest.current.token
+            };
+    
+            try {
+                const res = await axios.post(
+                    `https://api.coverly.hng.tech/api/v1/upload`,
+                    formData, option,
+                );
+                setStatus(res.status)
+            } catch (ex) {
+                setError(ex.code);
+                
+            }
+        };
 
 		uploadFile();
 

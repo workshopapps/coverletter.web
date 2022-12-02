@@ -9,63 +9,50 @@ const followUsData = [
 	{
 		icon: ["fab", "twitter"],
 		text: "Twitter",
-		link: "https://twitter.com/Coverly_org",
+		url: "https://twitter.com/coverlyng",
 	},
 	{
 		icon: ["fab", "instagram"],
 		text: "Instagram",
-		link: "http://www.instagram.com/Coverly_ng",
+		url: "http://www.instagram.com/coverly_ng",
 	},
 	{
 		icon: ["fab", "facebook"],
 		text: "Facebook",
-		link: "https://www.facebook.com/Coverly_org",
-	},
-	{
-		icon: ["fab", "youtube"],
-		text: "Youtube",
-		link: "https://www.youtube.com/Coverly_org",
+		url: "https://facebook.com/profile.php?id=100088156789141",
 	},
 ];
 
 const IconButton = (props) => {
 	const { text, icon, href } = props;
-	const content = (
+	return (
 		<div className="flex items-center flex-col">
-			<div className="h-10 w-10 flex items-center justify-center border-[1px] border-[#DCDCDC] rounded-full mb-1 hover:bg-[#e9e7e7]">
-				{icon && (
-					<FontAwesomeIcon icon={icon} className=" text-grey400" />
-				)}
-			</div>
-			<p className="text-sm text-grey400">{text}</p>
-		</div>
-	);
-	const holderClassName = "cursor-pointer flex space-y-2 items-center";
-	if (href)
-		return (
 			<a
-				href={href}
+				href={href || "#"}
 				target="_blank"
 				rel="noreferrer"
-				className={holderClassName}
+				className="h-10 w-10 flex items-center justify-center border-[1px] border-[#DCDCDC] rounded-full mb-1 hover:border-[#101010] text-xl text-[#101010] active:text-white active:bg-[#101010] active:border-[#DCDCDC]"
 			>
-				{content}
+				{icon && <FontAwesomeIcon icon={icon} />}
 			</a>
-		);
-	return <div className={holderClassName}>{content}</div>;
+			<p className="text-xs text-grey400">{text}</p>
+		</div>
+	);
 };
 
 const TertiaryButton = (props) => {
-	const { type, label, text, href } = props;
+	const { type, label, text, href, className } = props;
 	return (
 		<a
 			className={`${
 				type === "secondary" ? "btnSecondary" : "btnPrimary"
-			} p-3 rounded-md min-w-[200px] lg:min-w-0`}
+			} ${className} p-3 rounded-md min-w-[200px] lg:min-w-0`}
 			href={href}
 		>
-			<div className="overflow-hidden">
-				<p className="text-sm font-semibold">{label}</p>
+			<div className="overflow-hidden text-center">
+				<p className="text-xs font-semibold text-[#101010] active:text-textWhite">
+					{label}
+				</p>
 				<p className="font-bold">{text}</p>
 			</div>
 		</a>
@@ -89,13 +76,13 @@ const Button = (props) => {
 
 const H1 = (props) => {
 	const { children, className } = props;
-	const defaultClassName = "text-5xl text-grey600 font-semibold mb-5";
+	const defaultClassName = "text-5xl text-grey900 font-semibold mb-5";
 	return <h1 className={`${defaultClassName} ${className}`}>{children}</h1>;
 };
 
 const H2 = (props) => {
 	const { children, className } = props;
-	const defaultClassName = "text-3xl text-grey600 font-semibold mb-5";
+	const defaultClassName = "text-3xl text-grey900 font-semibold mb-5";
 	return <h2 className={`${defaultClassName} ${className}`}>{children}</h2>;
 };
 
@@ -109,10 +96,12 @@ const FollowUsLinks = (props) => {
 	const { className } = props;
 	return (
 		<div className={className}>
-			<p className="text-base text-grey400 font-bold mb-2">Follow Us</p>
-			<div className="flex space-x-5">
-				{followUsData.map(({ icon, text, link }, index) => (
-					<IconButton key={index} {...{ icon, text, href: link }} />
+			<p className="text-grey900 font-bold mb-2 text-center text-2xl">
+				Follow Us
+			</p>
+			<div className="flex space-x-5 justify-center">
+				{followUsData.map(({ icon, text, url }, index) => (
+					<IconButton key={index} {...{ icon, text, href: url }} />
 				))}
 			</div>
 		</div>
@@ -204,7 +193,6 @@ const ContactUs = () => {
 	const validate = () => {
 		var errorObject = emptyForm;
 		const requiredErrorText = "This is a required field";
-		const invalidFormatText = "Invalid format";
 		if (!formData.name) {
 			errorObject = { ...errorObject, name: requiredErrorText };
 		}
@@ -223,14 +211,18 @@ const ContactUs = () => {
 		if (
 			!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)
 		) {
-			errorObject = { ...errorObject, email: invalidFormatText };
+			errorObject = { ...errorObject, email: "Invalid email address" };
 		}
 		if (
-			!/^(?:(?:(?:\+?234(?:h1)?|01)h*)?(?:\(\d{3}\)|\d{3})|\d{4})(?:\W*\d{3})?\W*\d{4}$/.test(
-				formData.phone
+			!(
+				/^(?:(?:(?:\+?234(?:h1)?|01)h*)?(?:\(\d{3}\)|\d{3})|\d{4})(?:\W*\d{3})?\W*\d{4}$/.test(
+					formData.phone
+				) &&
+				((formData.phone.length !== 11 && formData.phone[0] !== "0") ||
+					(formData.phone.length === 11 && formData.phone[0] === "0"))
 			)
 		) {
-			errorObject = { ...errorObject, phone: invalidFormatText };
+			errorObject = { ...errorObject, phone: "Invalid phone number" };
 		}
 		return errorObject;
 	};
@@ -243,6 +235,7 @@ const ContactUs = () => {
 		setErrors(validate());
 		if (!anyError(errorResult)) {
 			try {
+				const backendApIurl = "https://api.coverly.hng.tech";
 				const body = {
 					fullName: formData.name,
 					userEmail: formData.email,
@@ -250,10 +243,7 @@ const ContactUs = () => {
 					description: formData.message,
 					phone: formData.phone,
 				};
-				await axios.post(
-					"https://api.coverly.hng.tech/api/v1/contact",
-					body
-				);
+				await axios.post(`${backendApIurl}/api/v1/contact`, body);
 				setFormData(emptyForm);
 				setLoading(false);
 				setOpenModal(true);
@@ -278,8 +268,8 @@ const ContactUs = () => {
 
 	return (
 		<div className="bg-background">
-			<div className="container mx-auto px-6 mt-6 md:flex md:space-x-10 lg:space-x-20  py-20">
-				<div className="flex-auto md:w-1/2 ">
+			<div className="container max-w-[900px] mx-auto px-6 mt-6  py-20">
+				<div className="max-w-[600px] mx-auto lg:text-center md:mb-4">
 					<H1>Talk to Us</H1>
 					<BodyText>
 						Let us know how we can help and we will get right back
@@ -289,21 +279,23 @@ const ContactUs = () => {
 						<TertiaryButton
 							label="Email Us"
 							text="Coverlyorg@gmail.com"
-							href="mailto:Coverlyorg@gmail.com"
+							href="mailto:coverlyorg@gmail.com"
+							type="secondary"
+							className="w-full"
 						/>
 						<TertiaryButton
 							label="Call Us"
-							text="+2349074265463"
+							text="0907 426 5463"
 							href="tel:+2349074265463"
 							type="secondary"
+							className="w-full"
 						/>
 					</div>
-					<FollowUsLinks className="md:block hidden" />
 				</div>
-				<div className="flex-auto md:w-1/2">
-					<div className="bg-[#fff] rounded-lg p-4 py-10 mb-5 md:px-10 border-[1px] border-[#CAD0DD]">
-						<H2>Contact us</H2>
-						<BodyText>
+				<div className="w-full">
+					<div className="bg-[#fff] rounded-lg p-4 py-10 lg:py-16 lg:px-24 mb-5 md:px-10 border-[1px] border-[#CAD0DD]">
+						<H2 className="text-center">Contact us</H2>
+						<BodyText className="text-center">
 							Reach out to our{" "}
 							<Link
 								to="/faq"
@@ -382,7 +374,7 @@ const ContactUs = () => {
 							/>
 							<div>
 								<Button
-									className="rounded p-3 min-w-[90px] text-center"
+									className="rounded p-3 min-w-[90px] text-center w-full"
 									disabled={
 										loading ||
 										Object.values(formData).some(
@@ -404,7 +396,7 @@ const ContactUs = () => {
 						</form>
 					</div>
 				</div>
-				<FollowUsLinks className="block md:hidden pt-6" />
+				<FollowUsLinks className="block pt-6" />
 			</div>
 
 			<SuccessModal

@@ -48,7 +48,7 @@ const Header = () => {
 
 	const Large = () => {
 		return (
-			<ul className="space-x-12 hidden lg:block">
+			<ul className="space-x-8 xl:space-x-12 hidden lg:block ">
 				{navLinkElements.map((item) => (
 					<Link
 						key={item.name}
@@ -122,15 +122,15 @@ const Header = () => {
 				) : (
 					<>
 						<Button
-							onClick={() => {
-								setToggleUserMenu((prev) => !prev);
-								setToggleMenu(false);
-							}}
+							// onClick={() => {
+							// 	setToggleUserMenu((prev) => !prev);
+							// 	setToggleMenu(false);
+							// }}
 							className="btn btnShort btnSecondary block md:hidden w-full my-4"
 						>
 							History
 						</Button>
-						{toggleUserMenu && <UserMenu />}
+						{/* {toggleUserMenu && <UserMenu />} */}
 					</>
 				)}
 			</aside>
@@ -139,35 +139,41 @@ const Header = () => {
 
 	const UserMenu = () => {
 		return (
-			<aside className="w-[234px] h-[217px] border border-searchbd bg-textWhite absolute top-[88px] right-24 max-[768px]:right-4 z-20 rounded-sm py-4">
-				<ul>
-					{historyElements.map((item) => (
+			<aside className="w-[234px] h-[max-content] border border-searchbd bg-textWhite absolute top-[98px] right-16 max-[768px]:right-4 z-20 rounded-sm">
+				<div className=" h-full flex flex-col gap-3">
+					<ul className="flex items-center justify-center">
+						{historyElements.map((item) => (
+							<Link
+								key={item.name}
+								to={item.url}
+								className=" text-base flex p-5 items-center gap-2 justify-center"
+							>
+								{item.icon}
+								<p className="font-bold text-base">
+									{item.name}
+								</p>
+							</Link>
+						))}
+					</ul>
+					<hr className="border-[0.3px] border-searchbd" />
+					<div>
 						<Link
-							key={item.name}
-							to={item.url}
-							className="flex gap-x-8 items-center justify-center mb-6 last:mb-4"
+							to="/"
+							className="text-center cursor-pointer p-5"
+							onClick={logout}
 						>
-							{item.icon}
-							<p className="font-bold text-base">{item.name}</p>
+							<p className="font-bold text-base">Log Out</p>
 						</Link>
-					))}
-				</ul>
-				<hr className="border-[0.3px] border-searchbd" />
-				<Link
-					to="/"
-					className="text-center cursor-pointer"
-					onClick={logout}
-				>
-					<p className="font-bold text-base mt-4">Log Out</p>
-				</Link>
+					</div>
+				</div>
 			</aside>
 		);
 	};
 
 	return (
-		<header className="relative max-w-screen-2xl m-auto py-1">
+		<header className="relative max-w-screen-2xl m-auto py-1 md:w-[87%] w-[89%] lw:w-[1250px] ">
 			<Small />
-			<div className="flex items-center justify-between py-5 px-5 md:px-10 xl:px-15">
+			<div className="flex items-center justify-between py-5">
 				<Link to="/">
 					<img
 						src={Logo}
@@ -176,7 +182,7 @@ const Header = () => {
 					/>
 				</Link>
 				<Large />
-				<div ref={ref} className="space-x-6 flex">
+				<div ref={ref} className="space-x-4 xl:space-x-6 flex">
 					{!user ? (
 						<>
 							<Link to="/signin">
@@ -193,21 +199,26 @@ const Header = () => {
 					) : (
 						<>
 							<Button
-								onClick={() =>
-									setToggleUserMenu((prev) => !prev)
-								}
+								// onClick={() =>
+								// 	setToggleUserMenu((prev) => !prev)
+								// }
 								className="btn btnShort btnSecondary hidden md:block"
 							>
 								History
 							</Button>
-							{toggleUserMenu && <UserMenu />}
-							<Link to="/">
+							<Link
+								// to=""
+								onClick={() =>
+									setToggleUserMenu((prev) => !prev)
+								}
+							>
 								{/* <Avatar className="w-12 h-12 hidden lg:block" /> */}
 
 								<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-fill">
 									{user?.name[0].toUpperCase()}
 								</div>
 							</Link>
+							{toggleUserMenu && <UserMenu />}
 						</>
 					)}
 					<button>
