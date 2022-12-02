@@ -1,4 +1,4 @@
-const Template = require("../models/Template");
+const Template = require("../models/coverletter");
 
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
