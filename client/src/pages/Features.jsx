@@ -230,13 +230,13 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row "></div>
 				</div>
 
-				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 lg:px-20 py-11 rounded-lg flex items-center lg:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
+				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryLightest px-14 lg:px-20 py-11 rounded-lg flex items-center lg:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
 					<div className="lg:w-[75%]">
-						<H1 className=" text-textWhite text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10">
+						<H1 className=" text-textHeader text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10">
 							{" "}
 							Increase your chances of getting employed
 						</H1>
-						<BodyText className="text-left text-textWhite max-md:text-center">
+						<BodyText className="text-left text-textHeader max-md:text-center">
 							Start for free with no credit card required.
 						</BodyText>
 					</div>
