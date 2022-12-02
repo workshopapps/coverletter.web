@@ -4,19 +4,6 @@ import ProfileSide from "../Components/ProfilePage/ProfileSide";
 import Upload from "../Components/ProfilePage/Upload";
 
 const ProfilePage = () => {
-	const ResumeUploaded = [
-		{
-			firstName: "Jessica",
-			lastName: "Adamee",
-			extension: ".pdf",
-		},
-		{
-			firstName: "Jessica",
-			lastName: "Adamee",
-			extension: ".pdf",
-		},
-	];
-
 	const CVGenerated = [
 		{
 			firstName: "Bisola",
@@ -59,24 +46,6 @@ const ProfilePage = () => {
 							</div>
 
 							<ProfileAccount />
-						</div>
-
-						{/* Resume Uploaded Section */}
-						<div className="bg-white rounded-md h-max p-6 my-6">
-							<h1 className="font-bold text-[1.5em]">
-								Resume Uploaded
-							</h1>
-
-							<div>
-								{ResumeUploaded.map((resume) => {
-									return (
-										<Upload
-											resume={resume}
-											key={resume.index}
-										/>
-									);
-								})}
-							</div>
 						</div>
 
 						{/* Cover Letter Generated Section */}
