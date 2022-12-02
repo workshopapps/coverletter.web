@@ -130,6 +130,7 @@ function InputData() {
 					address: location,
 					email: email,
 				});
+				console.log(3);
 				Navigate("/preview");
 			} catch (ex) {
 				uploadToast();
@@ -845,23 +846,6 @@ function InputData() {
 					)}
 				</form>
 			</main>
-			{isLoading && (
-				<div className=" bg-textWhite absolute top-[90%] sm:top-[60%] left-[5%] sm:left-[25%] w-[90%] sm:w-[50%] rounded-lg h-[300px] flex flex-col justify-center items-center gap-[20px]">
-					<h3 className="text-textBody text-center text-[16px]">
-						{first ? "Extracting your details..." : null}
-						{second ? "Almost done..." : null}
-						{third ? "Finished" : null}
-					</h3>
-					<div className="bar w-[80%] ">
-						<div className="w-full bg-grey100 rounded-full dark:bg-grey200">
-							<div
-								className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full"
-								style={{ width: `${percentage}%` }}
-							></div>
-						</div>
-					</div>
-				</div>
-			)}
 		</div>
 	);
 }
