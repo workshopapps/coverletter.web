@@ -1,7 +1,7 @@
 import React from "react";
-import { ReactComponent as FooterLogoMobile } from "../Assets/footerlogomobile.svg";
 import { Link } from "react-router-dom";
 import Logo from "../Assets/coverly.svg";
+import { ReactComponent as FooterLogoMobile } from "../Assets/footerlogomobile.svg";
 
 const Footer = () => {
 	return (
@@ -52,19 +52,19 @@ const Footer = () => {
 							Activity
 						</h4>
 						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
-							<Link to="/">Events</Link>
+							<Link to="/event">Events</Link>
 							<Link to="/customerstories">Customers stories</Link>
 							<Link to="/features">Features</Link>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className="bg-[#F2F2F7] px-24 py-[18px] max-[767px]:px-14 max-[425px]:px-8 max-[425px]:wrap max-[366px]:gap-10">
-				<div className="flex justify-between text-[12px] text-grey400 flex-wrap max-[366px]:gap-4">
-					<p classname="max-[425px]:w-full max-[425px]:flex-1 ">
+			<div className="bg-[#F2F2F7] px-24 py-[18px] max-[767px]:px-14 max-[425px]:px-8 max-[425px]:wrap max-[366px]:gap-28">
+				<div className="flex justify-between text-[12px] text-grey400 flex-wrap max-[425px]:gap-4">
+					<p className="max-[425px]:mr-20 max-[340px]:mr-0">
 						© 2022 Cover. All rights reserved.
 					</p>
-					<Link to="/terms-and-conditions" className="block">
+					<Link to="/terms-and-conditions" className="block  ">
 						Terms and Conditions
 					</Link>
 					<Link to="/privacy-policy" className="">
