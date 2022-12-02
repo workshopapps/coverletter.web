@@ -11,6 +11,9 @@ const createView = async (postId, userId) => {
 	return await Views.create({ postId: postId, userId: userId });
 };
 
+const getAllViews = async (postId) => {
+	return await Views.find({ postId: postId });
+};
 
 
 module.exports = {createView}
