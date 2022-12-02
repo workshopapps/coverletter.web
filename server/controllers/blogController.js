@@ -83,6 +83,20 @@ const getABlogPost = async (req, res) => {
 		message: "Blog request was successfully.",
 		data: blog,
 	});
+}
+
+const updatePost = async (req, res, next) => {
+	const { title, content } = req.body;
+	//1) Get Admin from params and update
+	const admin = await Blog.findByIdAndUpdate(req.params.id, req.body, {
+		new: true,
+		runValidators: true,
+	});
+	if (!admin) {
+		return next(new BadRequestError("No Blog found with this ID."));
+	} else {
+		return res.status(StatusCodes.OK).json("Blog Updated Successfully");
+	}
 };
 
 module.exports = {
@@ -90,4 +104,5 @@ module.exports = {
 	getABlogPost,
 	deleteABlogPost,
 	searchPost,
+	updatePost,
 };
