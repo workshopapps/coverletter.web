@@ -36,7 +36,7 @@ const Blog = () => {
 							onChange={(e) => setSrch(e.target.value)}
 						/>
 						<div
-							className="absolute top-50 right-0 mr-3"
+							className="absolute top-50 right-0 mr-3 cursor-pointer"
 							onClick={handleSearch}
 						>
 							<img src={search} alt="" />
