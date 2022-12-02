@@ -20,7 +20,7 @@ const CreateAcount = () => {
 	const navigate = useNavigate();
 	const [show, setShow] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);
-	const [googleUserData, setGoogleUserData] = useState({});
+	// const [googleUserData, setGoogleUserData] = useState({});
 	const togglePassword = () => {
 		// When the handler is invoked
 		// inverse the boolean state of passwordShown
@@ -29,7 +29,7 @@ const CreateAcount = () => {
 	const onSubmit = async (values, actions) => {
 		try {
 			const resp = await axios.post(
-				`http://api.coverly.hng.tech/api/v1/auth/signup`,
+				`https://api.coverly.hng.tech/api/v1/auth/signup`,
 				{
 					name: values.fullName,
 					email: values.email,

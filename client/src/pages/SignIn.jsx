@@ -11,6 +11,7 @@ import { useGlobalContext } from "../context/context";
 import { addUserToLocalStorage } from "../Utils/localStorage";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import GoogleAuth from "../Layouts/GoogleAuth";
 const Login = () => {
 	const { setUser } = useGlobalContext();
 	const [passwordShown, setPasswordShown] = useState(false);
@@ -29,11 +30,11 @@ const Login = () => {
 	const onSubmit = async (values, actions) => {
 		try {
 			const resp = await axios.post(
-				`http://api.coverly.hng.tech/api/v1/auth/login`,
+				`https://api.coverly.hng.tech/api/v1/auth/login`,
 				values
 			);
 			const UserDetails = await axios.post(
-				`http://api.coverly.hng.tech/api/v1/auth/dashboard`,
+				`https://api.coverly.hng.tech/api/v1/auth/dashboard`,
 				values
 			);
 
@@ -152,7 +153,7 @@ const Login = () => {
 								</Link>
 							</p>
 						</div>
-						<Button
+						{/* <Button
 							className={
 								"btn btnLong w-[100%] btnSecondary disabled:opacity-50 disabled:cursor-not-allowed"
 							}
@@ -173,7 +174,8 @@ const Login = () => {
 								</svg>
 							}
 							type={"submit"}
-						/>
+						/> */}
+						<GoogleAuth />
 					</div>
 				</form>
 
