@@ -7,6 +7,7 @@ import feature5 from "../Assets/feature5.svg";
 import featureBackgroundImg from "../Assets/feature-background-img.jpg";
 import featureBackgroundImg2 from "../Assets/feature-section-bg-blue.svg";
 import Button from "../Components/Ui/Button";
+import { Link } from "react-router-dom";
 
 const BodyText = (props) => {
 	const { children, className } = props;
@@ -157,7 +158,7 @@ const Features = () => {
 							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
 							type="secondary"
 						>
-							Start for free
+							<Link to='/'>Start for free</Link>
 						</Button>
 					</div>
 				</div>
@@ -250,7 +251,7 @@ const Features = () => {
 							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
 							type="secondary"
 						>
-							Start for free
+							<Link to='/'>Start for free</Link>
 						</Button>
 					</div>
 				</div>
