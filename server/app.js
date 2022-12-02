@@ -73,7 +73,6 @@ app.use(
 // routes
 app.use("/api/v1", blogRoutes);
 app.use("/api/v1", adminRoutes);
-app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1", generateOtpRoutes);
 app.use("/api/v1", templateRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
@@ -81,14 +80,15 @@ app.use("/api/v1", cvToCoverLetterRoutes);
 app.use("/api/v1", downloadCoverLetter);
 app.use("/api/v1", contactRoutes);
 app.use("/api/v1/forum", forumRoutes);
+app.use("/api/v1/auth", authRoutes);
 
 
 app.get("/", (req, res) => {
 	res.send("templates api");
 });
 
-app.use(notFoundMiddleware);
-app.use(errorHandlerMiddleware);
+// app.use(notFoundMiddleware);
+// app.use(errorHandlerMiddleware);
 const start = async () => {
 	try {
 		connectDB(process.env.MONGO_URI).then(() => {

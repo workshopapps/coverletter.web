@@ -7,6 +7,6 @@ const router = express.Router();
 
 // your routes here
 router.post("/createPost", auth, createForumPost);
-router.post("/getAllPost", getAllForumPosts);
+router.get("/getAllPost", getAllForumPosts);
 
 module.exports = router;
