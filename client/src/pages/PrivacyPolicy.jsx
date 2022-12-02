@@ -1,33 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "../Components/Ui/Button";
-import { ReactComponent as ArrowUp } from "../Assets/arrow-up.svg";
-import { ReactComponent as ArrowBlue } from "../Assets/arrow-up-blue.svg";
 import BannerLogo from "../Assets/bannerLogo.png";
 import privacyBannerElements from "../Constants/privacyBannerElements";
 
 const PrivacyPolicy = () => {
-	const [displayArrow, setDisplayArrow] = useState(false);
-
-	const scrollUp = () => {
-		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-	};
-
-	const listenToScroll = () => {
-		if (
-			document.body.scrollTop > 50 ||
-			document.documentElement.scrollTop > 50
-		) {
-			setDisplayArrow(true);
-		} else {
-			setDisplayArrow(false);
-		}
-	};
-
-	useEffect(() => {
-		window.addEventListener("scroll", listenToScroll);
-		return () => window.removeEventListener("scroll", listenToScroll);
-	}, []);
-
 	return (
 		<div className="bg-background">
 			<div
@@ -414,21 +390,6 @@ const PrivacyPolicy = () => {
 								</a>
 							</ol>
 						</div>
-						<button
-							onClick={scrollUp}
-							className="hidden md:flex justify-start items-center gap-3 border-t border-[#CAD0DD]  pt-1.5"
-						>
-							<ArrowUp />
-							<span className="text-textHeader font-bold text-base">
-								Back to top
-							</span>
-						</button>
-						{displayArrow && (
-							<ArrowBlue
-								className="fixed bottom-[40px] right-[5px] md:hidden"
-								onClick={scrollUp}
-							/>
-						)}
 					</section>
 				</main>
 				<div className="flex flex-col justify-center items-center gap-4 mt-[80px]">
