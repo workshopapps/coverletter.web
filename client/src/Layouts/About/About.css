@@ -1,0 +1,13 @@
+.about-hero {
+	background-image: url("../../Assets/mobile-banner.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+@media only screen and (min-width: 1024px) {
+	.about-hero {
+		background-image: url("../../Assets/desktop-banner.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+}
