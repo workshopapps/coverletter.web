@@ -27,7 +27,7 @@ const SingleblogPage = () => {
 
 	return (
 		<main className="bg-[#F2F2F7] pt-12 pb-32 ">
-			<section className="w-4/5 mx-auto mt-1 sm:mt-12">
+			<section className="w-4/5 mx-auto mt-1 sm:mt-12 lw:w-[1250px]">
 				<div className="flex items-start sm:items-center flex-col">
 					<h1 className="text-3xl sm:text-5xl font-bold sm:text-center">
 						{item.title}
