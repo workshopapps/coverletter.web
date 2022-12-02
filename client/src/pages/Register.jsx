@@ -11,13 +11,16 @@ import Input from "../Components/Ui/Input";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "../context/context";
 import { addEmailToLocalStorage } from "../Utils/localStorage";
+// import { GoogleLogin } from "react-google-login";
 
 import axios from "axios";
+import GoogleAuth from "../Layouts/GoogleAuth";
 const CreateAcount = () => {
 	const { setUserEmail, userEmail } = useGlobalContext();
 	const navigate = useNavigate();
 	const [show, setShow] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);
+	const [googleUserData, setGoogleUserData] = useState({});
 	const togglePassword = () => {
 		// When the handler is invoked
 		// inverse the boolean state of passwordShown
@@ -82,8 +85,28 @@ const CreateAcount = () => {
 		onSubmit,
 	});
 
+	// Google Auth
+
+	// const handleSignup = async (googleData) => {
+	// 	const res = await fetch(
+	// 		"https://api.coverly.hng.tech/api/v1/auth/google",
+	// 		{
+	// 			method: "POST",
+	// 			body: JSON.stringify({
+	// 				token: googleData.tokenId,
+	// 			}),
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 		}
+	// 	);
+	// 	const data = await res.json();
+	// 	// console.log(data);
+	// 	setGoogleUserData(data);
+	// };
+
 	return (
-		<div className="relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[150px]">
+		<div className="max-w-screen-2xl m-auto relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[150px]">
 			<div className="hidden lg:flex justify-end">
 				<img src={man3} className="w-[1045px] rounded-[8px]" alt="" />
 			</div>
@@ -193,7 +216,7 @@ const CreateAcount = () => {
 							type={"submit"}
 							disabled={isSubmitting}
 						/>
-						<Button
+						{/* <Button
 							className={
 								"btn btnLong w-[100%] btnSecondary disabled:opacity-50 disabled:cursor-not-allowed"
 							}
@@ -214,7 +237,24 @@ const CreateAcount = () => {
 								</svg>
 							}
 							type={"submit"}
-						/>
+						/> */}
+						{/* <a
+							href="https://api.coverly.hng.tech/api/v1/auth/google"
+							target="_blank"
+							rel="noreferrer"
+							className={"btn btnLong w-[100%] btnSecondary"}
+						>
+							Register with Google
+						</a> */}
+						{/* <GoogleLogin
+							clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+							buttonText="Register with Google"
+							onSuccess={handleSignup}
+							onFailure={handleSignup}
+							cookiePolicy={"single_host_origin"}
+							className={"btn btnLong w-[100%] btnSecondary"}
+						/> */}
+						<GoogleAuth />
 					</div>
 					<p className="text-textBody text-center mt-[16px] text-base">
 						Already have an account?

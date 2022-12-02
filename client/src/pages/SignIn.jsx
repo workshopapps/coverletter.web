@@ -75,7 +75,7 @@ const Login = () => {
 	});
 
 	return (
-		<div className="relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[200px]">
+		<div className="max-w-screen-2xl m-auto relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[200px]">
 			<div className="hidden lg:flex justify-end">
 				<img src={man3} className="w-[1045px] rounded-[8px]" alt="" />
 			</div>
