@@ -48,7 +48,7 @@ const Header = () => {
 
 	const Large = () => {
 		return (
-			<ul className="space-x-12 hidden lg:block ">
+			<ul className="space-x-8 xl:space-x-12 hidden lg:block ">
 				{navLinkElements.map((item) => (
 					<Link
 						key={item.name}
@@ -182,7 +182,7 @@ const Header = () => {
 					/>
 				</Link>
 				<Large />
-				<div ref={ref} className="space-x-6 flex">
+				<div ref={ref} className="space-x-4 xl:space-x-6 flex">
 					{!user ? (
 						<>
 							<Link to="/signin">
