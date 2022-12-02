@@ -1,8 +1,14 @@
-const Reply = require("../models/Reply");
-const Post = require("../models/Posts");
+const Reply = require("../models/ReplyToForum");
+const forumPost = require("../models/ForumPost");
 
 const getAllReplies = async (postId) => {
 	return await Reply.find({ postId }).sort("createdAt");
 };
 
-module.exports = { getAllReplies };
+const updatePostsRepliesCounter = async (postId)=>{
+	const getAll = await getAllReplies(postId);
+	const length = getAll.length;
+	await forumPost.findOneAndUpdate(postId,{repliesCounter:length},{new:true, runValidators:true});
+}
+
+module.exports = { updatePostsRepliesCounter,getAllReplies };
