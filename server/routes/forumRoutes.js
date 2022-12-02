@@ -9,6 +9,6 @@ const router = express.Router();
 // your routes here
 router.post("/createPost", auth, createForumPost);
 router.get("/getAllPost", getAllForumPosts);
-router.get("/getOnePost/:postId", getOneForumPost);
+router.get("/getOnePost/:id", getOneForumPost);
 
 module.exports = router;
