@@ -6,7 +6,6 @@ const CoverLetterSchema = new mongoose.Schema({
 		ref: "User",
 		required: [true, "Please provide user"],
 	},
-	user_id: String,
 	cover_letter: String,
 	company_name: String,
 	company_address: String,
