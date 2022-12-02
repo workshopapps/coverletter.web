@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const jwt = require("jsonwebtoken");
 const auth = require("../middleware/authentication");
 const {
 	register,
@@ -14,6 +13,7 @@ const {
 	getUserDetails,
 	validateOTP,
 	resetPassword,
+	googleLogin,
 } = require("../controllers/authController");
 
 //Add your routes here
@@ -34,19 +34,10 @@ router.get(
 router.get(
 	"/google/callback",
 	passport.authenticate("google", {
-		failureRedirect: "coverly.hng.tech/signin",
+		failureRedirect: "https://coverly.hng.tech/signin",
 		successRedirect: "https://coverly.hng.tech",
 	}),
-	function (req, res) {
-		const user = req.user;
-		const token = jwt.sign(
-			{ googleID: user._id, name: user.name, email: user.email },
-			process.env.JWT_SECRET,
-			{ expiresIn: "2h" }
-		);
-
-		return res.status(200).json({ user, token });
-	}
+	googleLogin
 );
 
 // All After login routes goes below PROTECT ROUTE
