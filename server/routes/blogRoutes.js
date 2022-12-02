@@ -9,7 +9,8 @@ const {
 const auth = require("../middleware/authentication");
 
 router.get("/blogs/search", searchPost);
-router.post("/admin/blog/", createPost);
+router.post("/admin/blog/",auth, createPost);
 router.delete("/admin/blog/:blogId", auth, deleteABlogPost);
 
 module.exports = router;
+
