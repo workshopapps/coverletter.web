@@ -16,7 +16,7 @@ const Footer = () => {
 				{/* max-[425px]:px-8 max-[320px]:px-6 */}
 			</div>
 			<div className="xxs:max-md:block pl-[24px]  md:px-24 pt-6 max-[767px]:px-14 max-[425px]:px-8 max-[320px]:px-6">
-				<div className="grid grid-cols-2 text-left mb-[59px] gap-10 md:space-x-24 w-full md:grid-cols-3">
+				<div className="grid grid-cols-2 text-left mb-[59px] gap-10 md:space-x-24 w-full md:grid-cols-3 max-[823px]:gap-24">
 					<div className="flex md:flex-row flex-col md:space-x-16 ">
 						<div className="xxs:max-md: mb-[16px] max-md:w-full max-md:hidden">
 							<Link to="/" className="block w-32">
@@ -34,7 +34,7 @@ const Footer = () => {
 
 							<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
 								<Link to="/document">Documentation</Link>
-								<Link to="/faq">fAQs</Link>
+								<Link to="/faq">FAQs</Link>
 								<Link to="/career">Career</Link>
 								<Link to="/pricing">Pricing</Link>
 							</div>
@@ -51,7 +51,7 @@ const Footer = () => {
 							<Link to="/contactus">Contact us</Link>
 						</div>
 					</div>
-					<div>
+					<div className="max-[823px]:ml-0">
 						<h4 className="text-textBody font-normal text-base leading-6">
 							Activity
 						</h4>
