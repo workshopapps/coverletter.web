@@ -38,7 +38,7 @@ const deleteABlogPost = async (req, res) => {
 
 	if (!mongoose.Types.ObjectId.isValid(blogId) || !blog)
 		throw new BadRequestError(
-			`Invalid Blog ID request or Blog  with id ${blogId} does not exist`
+			`Invalid Blog ID request or Blog  with id ${blogId} does not exist.`
 		);
 
 	const blog = await Blog.findById(blogId);
