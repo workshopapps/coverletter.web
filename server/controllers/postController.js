@@ -6,7 +6,7 @@ const createPost = async (req, res) => {
 	req.body.userId = req.user.userId;
 	if (!req.body.title || !req.body.content)
 		throw new BadRequestError("Cannot create post");
-	var post = await Post.create(req.body);
+	const post = await Post.create(req.body);
 	return res.status(StatusCodes.CREATED).json({ post });
 };
 
