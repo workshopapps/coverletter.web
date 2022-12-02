@@ -32,7 +32,6 @@ const CoverLetter = () => {
 					</p>{" "}
 					<br />
 					<p
-						className="overflow-hidden"
 						dangerouslySetInnerHTML={{
 							__html: data.cover_letter,
 						}}
