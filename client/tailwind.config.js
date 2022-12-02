@@ -10,15 +10,6 @@ module.exports = {
 				lw: "1440px",
 			},
 		},
-		animation: {
-			move: "move 1s ease-in-out alternate infinite",
-		},
-		keyframes: {
-			move: {
-				"0%": { left: "0", transform: "translateX(0)" },
-				"100%": { left: "100%", transform: "translateX(-100%)" },
-			},
-		},
 		colors: {
 			background: "#F2F2F7",
 			overlay: "rgba(3, 41, 111, 0.48)",
