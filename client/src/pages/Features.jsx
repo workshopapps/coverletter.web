@@ -7,7 +7,7 @@ import feature5 from "../Assets/feature5.svg";
 import featureBackgroundImg from "../Assets/feature-background-img.jpg";
 import featureBackgroundImg2 from "../Assets/feature-section-bg-blue.svg";
 import Button from "../Components/Ui/Button";
-import { ReactComponent as ArrowBlue } from "../Assets/arrow-up-blue.svg";
+import { Link } from "react-router-dom";
 
 const BodyText = (props) => {
 	const { children, className } = props;
@@ -113,30 +113,6 @@ const featureCards2 = (props) => {
 // md:w-56 md:h-56 lg:w-64 xl:w-72
 
 const Features = () => {
-	// add scroll to top feature
-	const [displayArrow, setDisplayArrow] = useState(false);
-
-	const scrollUp = () => {
-		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-	};
-
-	const listenToScroll = () => {
-		if (
-			document.body.scrollTop > 50 ||
-			document.documentElement.scrollTop > 50
-		) {
-			setDisplayArrow(true);
-		} else {
-			setDisplayArrow(false);
-		}
-	};
-
-	useEffect(() => {
-		window.addEventListener("scroll", listenToScroll);
-		return () => window.removeEventListener("scroll", listenToScroll);
-	}, []);
-
-
 	const [isTablet, setIsTablet] = useState(false);
 	// listen to screen size event and set isTablet state
 	useEffect(() => {
@@ -182,7 +158,7 @@ const Features = () => {
 							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
 							type="secondary"
 						>
-							Start for free
+							<Link to='/'>Start for free</Link>
 						</Button>
 					</div>
 				</div>
@@ -275,16 +251,10 @@ const Features = () => {
 							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
 							type="secondary"
 						>
-							Start for free
+							<Link to='/'>Start for free</Link>
 						</Button>
 					</div>
 				</div>
-				{displayArrow && (
-					<ArrowBlue
-						className="fixed bottom-[40px] right-[5px]"
-						onClick={scrollUp}
-					/>
-				)}
 			</section>
 		</>
 	);
