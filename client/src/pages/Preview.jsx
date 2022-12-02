@@ -30,6 +30,72 @@ const Preview = () => {
 	const [dType, setDtype] = useState("");
 	const [download, setDownload] = useState(false);
 	const [spin, setSpin] = useState(false);
+	const [windowWidth, setWindowWidth] = useState(0);
+
+	const [touchPosition, setTouchPosition] = useState(null);
+	const [mouseClickPosiition, setMouseClickPosition] = useState(null);
+
+	window.addEventListener("resize", (e) => {
+		if (e.target.screen.width > 900) {
+			setIterate(0);
+			setStyle({
+				transform: `translateX(${iterate}px)`,
+			});
+		}
+	});
+
+	//handles click start event
+	const handleMouseDown = (e) => {
+		const mouseDown = e.clientX;
+		setMouseClickPosition(mouseDown);
+	};
+
+	const handleMouseMove = (e) => {
+		const mouseDown = mouseClickPosiition;
+
+		if (mouseDown === null) {
+			return;
+		}
+
+		const currentClick = e.clientX;
+		const dragDiff = mouseDown - currentClick;
+
+		if (dragDiff > 5) {
+			clickRight();
+		}
+		if (dragDiff < -5) {
+			clickLeft();
+		}
+
+		setMouseClickPosition(null);
+	};
+	//handles touch start event
+	const handleTouchStart = (e) => {
+		const touchDown = e.touches[0].clientX;
+		setTouchPosition(touchDown);
+	};
+
+	//decides whether or not div should move left or right based on difference between swipe positions
+	const handleTouchMove = (e) => {
+		const touchDown = touchPosition;
+
+		if (touchDown === null) {
+			return;
+		}
+
+		const currentTouch = e.touches[0].clientX;
+		const swipeDiff = touchDown - currentTouch;
+
+		if (swipeDiff > 5) {
+			clickRight();
+		}
+
+		if (swipeDiff < -5) {
+			clickLeft();
+		}
+
+		setTouchPosition(null);
+	};
 
 	const handleClick = () => {
 		// INITIATE DOWNLOAD STATE ON CLICK
@@ -87,7 +153,7 @@ const Preview = () => {
 		};
 	}, []);
 	let mobile;
-	windowSize.innerWidth <= 764 ? (mobile = true) : (mobile = false);
+	windowSize.innerWidth <= 950 ? (mobile = true) : (mobile = false);
 
 	// get the cover letter container so as to apply the translateX property
 	const [iterate, setIterate] = useState(0);
@@ -96,10 +162,16 @@ const Preview = () => {
 	});
 
 	const clickLeft = () => {
+		if (iterate === 1) {
+			return;
+		}
 		setIterate(iterate + 1);
 	};
 
 	const clickRight = () => {
+		if (iterate === -1) {
+			return;
+		}
 		setIterate(iterate - 1);
 	};
 
@@ -107,7 +179,7 @@ const Preview = () => {
 	var displayRight = true;
 
 	useEffect(() => {
-		setStyle({ transform: `translateX(${iterate * 380}px)` });
+		setStyle({ transform: `translateX(${iterate * 280}px)` });
 	}, [iterate]);
 
 	if (!mobile) {
@@ -121,10 +193,6 @@ const Preview = () => {
 		displayRight = false;
 		displayLeft = true;
 	}
-
-	useEffect(() => {}, [mobile]);
-
-	console.log(mobile);
 
 	return (
 		<div className={`bg-background pt-6 pb-36 overflow-x-hidden relative`}>
@@ -140,10 +208,15 @@ const Preview = () => {
 				</div>
 				<div className="w-screen md:overflow-x-hidden relative mt-10 md:mt-20">
 					<div
-						className="flex relative w-full justify-center translate-x-[-200%] md:justify-center items-center md:translate-x-0 lg:translate-x-0"
+						className="testing1 flex relative w-full justify-center md:justify-center items-center transition-all duration-200 "
 						style={
 							mobile ? style : { transform: "translateX" + "0px" }
 						}
+						onMouseDown={handleMouseDown}
+						onMouseMove={handleMouseMove}
+						onTouchStart={handleTouchStart}
+						onTouchMove={handleTouchMove}
+						// onTouchMove={(e)}
 					>
 						<img
 							src={lockedCover_1}
@@ -169,39 +242,6 @@ const Preview = () => {
 							className=" mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] sm:min-h-[485px] sm:min-w-[400px]"
 						/>
 					</div>
-
-					{/* left */}
-					{displayLeft && (
-						<div
-							className="absolute top-[50%] left-[5%] flex justify-center items-center text-textWhite rounded-full w-16 h-16 bg-primaryMain"
-							onClick={clickLeft}
-						>
-							<div className="flex justify-center w-8 h-8 fill-textWhite">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 384 512"
-								>
-									<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
-								</svg>
-							</div>
-						</div>
-					)}
-					{/* right */}
-					{displayRight && (
-						<div
-							className="absolute top-[50%] right-[5%] flex justify-center items-center text-textWhite rounded-full w-16 h-16 bg-primaryMain"
-							onClick={clickRight}
-						>
-							<div className="flex justify-center w-8 h-8 fill-textWhite">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 384 512"
-								>
-									<path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-								</svg>
-							</div>
-						</div>
-					)}
 				</div>
 
 				<div className="w-100 flex justify-center">
