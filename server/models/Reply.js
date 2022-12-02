@@ -8,4 +8,4 @@ const replySchema = new Schema(
 	{ timestamps: true }
 );
 
-module.exports = new model("Re", commentSchema);
+module.exports = new model("Reply", replySchema);
