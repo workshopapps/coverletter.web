@@ -94,7 +94,7 @@ function PasswordModal({ setShowPassModal, setShowSuccess }) {
                                     </div>
                                 </div>
                                 <div className='flex gap-6 justify-end'>
-                                    <button disabled={!oldPassword || !newPassword || !confirmNewPassword}  type='submit' className='bg-primaryMain px-8 py-4 rounded-lg text-white font-bold cursor-pointer disabled:bg-disabledDisabled'>
+                                    <button disabled={!oldPassword || !newPassword || !confirmNewPassword}  type='submit' className='bg-primaryMain px-8 py-4 rounded-lg text-white font-bold cursor-pointer disabled:bg-primaryLight'>
                                         Save
                                     </button>
                                     <p className='border-2 border-primaryMain px-8 py-4 rounded-lg text-primaryMain font-bold cursor-pointer' onClick={() => {

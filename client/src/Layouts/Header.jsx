@@ -48,7 +48,7 @@ const Header = () => {
 
 	const Large = () => {
 		return (
-			<ul className="space-x-12 hidden lg:block">
+			<ul className="space-x-8 xl:space-x-12 hidden lg:block ">
 				{navLinkElements.map((item) => (
 					<Link
 						key={item.name}
@@ -171,9 +171,9 @@ const Header = () => {
 	};
 
 	return (
-		<header className="relative max-w-screen-2xl m-auto py-1">
+		<header className="relative max-w-screen-2xl m-auto py-1 md:w-[87%] w-[89%] lw:w-[1250px] ">
 			<Small />
-			<div className="flex items-center justify-between py-5 px-5 md:px-10 xl:px-15">
+			<div className="flex items-center justify-between py-5">
 				<Link to="/">
 					<img
 						src={Logo}
@@ -182,7 +182,7 @@ const Header = () => {
 					/>
 				</Link>
 				<Large />
-				<div ref={ref} className="space-x-6 flex">
+				<div ref={ref} className="space-x-4 xl:space-x-6 flex">
 					{!user ? (
 						<>
 							<Link to="/signin">
