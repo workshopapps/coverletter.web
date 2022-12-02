@@ -3,6 +3,7 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
 const Reply = require("../models/ReplyToForum");
 const {updatePostsRepliesCounter} = require("../utils/updateRepliesCounter");
+const {createView, updatePostsViewsCounter,} = require("../utils/updateViewsCounter");
 
 const createForumPost = async (req, res) => {
 	req.body.userId = req.user.userId;
@@ -44,18 +45,15 @@ const replyForumPost = async (req, res) => {
 };
 
 const getOneForumPost = async (req, res) => {
-	try{
-		const { id: postId } = req.params;
-		const post = await Post.findOne({ _id: postId });
-		if (!post) {
-			throw new BadRequestError(res.status(404).json({message: "Post not found."}));
-		}else{
-			return res.status(200).json({post})
-		}
-	}catch(err){
-		res.status(500).json({message: err.message})
+	const { id: postId } = req.params;
+	const post = await Post.findOne({ _id: postId });
+	if (!post) {
+		throw new BadRequestError("Unable to find this post");
 	}
-}
+	await createView(postId, req.user.userId);
+	await updatePostsViewsCounter(postId);
+	return res.status(StatusCodes.OK).json({ post });
+};
 
 module.exports = {
 	createForumPost,
