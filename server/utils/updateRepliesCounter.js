@@ -8,7 +8,7 @@ const getAllReplies = async (postId) => {
 const updatePostsRepliesCounter = async (postId)=>{
 	const getAll = await getAllReplies(postId);
 	const length = getAll.length;
-	await forumPost.findOneAndUpdate(postId,{repliesCounter:length},{new:true, runValidators:true});
+	await forumPost.findOneAndUpdate(postId,{$set:{repliesCounter:length}},{new:true, runValidators:true});
 }
 
 module.exports = { updatePostsRepliesCounter,getAllReplies };
