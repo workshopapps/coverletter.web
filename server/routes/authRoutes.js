@@ -41,7 +41,7 @@ router.get(
 );
 
 // All After login routes goes below PROTECT ROUTE
-router.use(protect);
+// router.use(protect);
 router.post("/resetPassword", resetPassword);
 router.put("/updatePassword", updatePassword);
 // router.post('/resetPassword', resetPassword)
