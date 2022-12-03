@@ -808,7 +808,10 @@ function InputData() {
 						</button>
 					)}
 					{isLoading && (
-						<button className=" hover:bg-primaryDark px-5 w-[100%] py-3 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg">
+						<button
+							disabled={isLoading}
+							className=" hover:bg-primaryDark px-5 w-[100%] py-3 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg disabled:opacity-80 disabled:cursor-not-allowed"
+						>
 							<div class="flex justify-center items-center">
 								<div
 									class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"

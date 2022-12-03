@@ -47,7 +47,7 @@ const CreateAcount = () => {
 		actions.resetForm();
 	};
 
-	const passwordRules = /(?=.*[!#$%&?^*@~() "])(?=.{8,})/;
+	const passwordRules = /(?=.{5,})/;
 
 	const CreateAccSchema = Yup.object().shape({
 		fullName: Yup.string().required("Please Enter your name"),
@@ -106,7 +106,7 @@ const CreateAcount = () => {
 	// };
 
 	return (
-		<div className="relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[150px]">
+		<div className="max-w-screen-2xl m-auto relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[150px]">
 			<div className="hidden lg:flex justify-end">
 				<img src={man3} className="w-[1045px] rounded-[8px]" alt="" />
 			</div>
