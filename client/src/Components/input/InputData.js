@@ -844,7 +844,7 @@ function InputData() {
 				</form>
 			</main>
 			{isLoading && (
-				<div className=" bg-textWhite absolute bottom-[90%] sm:top-[50rem] left-[5%] sm:left-[25%] w-[90%] sm:w-[50%] rounded-lg h-[369px] md:h-[512px] flex flex-col justify-center items-center gap-[20px]">
+				<div className=" bg-textWhite absolute bottom-[90%] top-[80rem] sm:top-[50rem] left-[5%] md:left-[10%] lg:left-[25%] w-[90%] md:w-[80%] lg:w-[50%] rounded-lg h-[369px] md:h-[512px] flex flex-col justify-center items-center gap-[20px]">
 					<h3 className="text-textBody text-center text-[16px]">
 						{percentage < 78
 							? "Extracting your details..."
