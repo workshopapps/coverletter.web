@@ -3,6 +3,8 @@ import { Article } from "../Components";
 import { articles } from "../Utils/Articles/data";
 import search from "../Assets/search.svg";
 import axios from "axios";
+import previous from "../Assets/previous.svg";
+import next from "../Assets/next.svg";
 
 const Blog = () => {
 	const [srch, setSrch] = useState("");
@@ -80,6 +82,16 @@ const Blog = () => {
 					</section>
 				)}
 			</section>
+			<div className="w-full justify-center flex mt-7">
+				<div className="cursor-pointer flex justify-center items-center mr-4 border-[2px] px-3 rounded-lg">
+					<img src={previous} alt="" />
+					<p>PREVIOUS ARTICLE</p>
+				</div>
+				<div className="cursor-pointer flex justify-center items-center border-[2px] py-2 px-3 rounded-lg">
+					<p>NEXT ARTICLE</p>
+					<img src={next} alt="" />
+				</div>
+			</div>
 		</main>
 	);
 };
