@@ -92,26 +92,23 @@ const login = async (req, res, next) => {
 	}
 };
 
-const logout = async (req,res)=>{
+const logout = async (req, res) => {
+	const token = req.headers.authorization.split(" ")[1];
 
-	const token = req.headers.authorization.split(' ')[1]
-  
 	const user = await User.findById(req.user.userId);
-	req.user = user
-	req.token = token
+	req.user = user;
+	req.token = token;
 	if (!req.user || !req.token) {
-	  return next(new BadRequestError("You are not logged in"));
+		return next(new BadRequestError("You are not logged in"));
 	}
-  
-	 delete req.token
-	 delete req.user
-  
-	  
-	  return res.status(201).json({
-		  message:"You have logged out successfully"
-	  })
-  
-  }
+
+	delete req.token;
+	delete req.user;
+
+	return res.status(201).json({
+		message: "You have logged out successfully",
+	});
+};
 
 const protect = async (req, res, next) => {
 	//////////////////////// ~ PROTECT ROUTE ~  /////////////////////////////////////
@@ -280,7 +277,16 @@ const getUserDetails = async (req, res) => {
 	const user = await User.findOne({ email });
 	return res.status(StatusCodes.OK).send(user);
 };
+const googleLogin = (req, res) => {
+	const user = req.user;
+	const token = jwt.sign(
+		{ googleID: user._id, name: user.name, email: user.email },
+		process.env.JWT_SECRET,
+		{ expiresIn: "2h" }
+	);
 
+	return res.status(200).json({ user, token });
+};
 module.exports = {
 	register,
 	login,
@@ -292,4 +298,5 @@ module.exports = {
 	resetPassword,
 	validateOTP,
 	getUserDetails,
+	googleLogin,
 };

@@ -8,6 +8,8 @@ import {
 	faSpinner,
 	faCheck,
 	faCircleInfo,
+	faQuoteLeft,
+	faQuoteRight
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -29,4 +31,6 @@ library.add(
 	faSpinner,
 	faCheck,
 	faCircleInfo,
+	faQuoteLeft,
+	faQuoteRight
 );
