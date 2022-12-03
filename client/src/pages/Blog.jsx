@@ -13,8 +13,23 @@ const Blog = () => {
 			const res = await axios.get(
 				`https://api.coverly.hng.tech/api/v1/blogs/search?query=${srch}`
 			);
-			console.log(res);
-			setDiArticle(res);
+			const values = res.data.posts;
+
+			const dValue = [];
+			values.map((value) => {
+				const { _id, title, content, createdAt } = value;
+				const formatVal = {
+					id: _id,
+					title: title,
+					text: content,
+					time: createdAt,
+				};
+				dValue.push(formatVal);
+			});
+
+			console.log(dValue);
+
+			setDiArticle(dValue);
 		} catch (error) {
 			console.log(error);
 			setDiArticle(null);
