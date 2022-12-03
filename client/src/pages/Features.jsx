@@ -4,7 +4,7 @@ import feature2 from "../Assets/feature2.svg";
 import feature3 from "../Assets/feature3.svg";
 import feature4 from "../Assets/feature4.svg";
 import feature5 from "../Assets/feature5.svg";
-import featureBackgroundImg from "../Assets/feature-background-img.jpg";
+import stacks from "../Assets/stack.png";
 import featureBackgroundImg2 from "../Assets/feature-section-bg-blue.svg";
 import Button from "../Components/Ui/Button";
 import { Link } from "react-router-dom";
@@ -131,39 +131,33 @@ const Features = () => {
 	console.log(isTablet);
 	return (
 		<>
-			<section
-				className="bg-background max:md:bg-none"
-				style={{
-					backgroundImage: isTablet
-						? "none"
-						: `url(${featureBackgroundImg})`,
-					backgroundRepeat: "no-repeat",
-					backgroundPosition: "right bottom",
-					backgroundSize: "contain",
-				}}
-			>
-				<div className="section-content px-8 mt-6 flex flex-col gap-7  py-12 justify-center md:py-16 md:px-36 lg:py-24 lg:px-48 xl:px-104 bg-no-repeat bg-none ">
-					<H1 className="text-center">
-						Providing{" "}
-						<span className="text-primaryMain">AI-powered</span>{" "}
-						tools to <br className="hidden xl:block" />
-						get you that job!
-					</H1>
-					<BodyText className="text-center font-semibold text-base lg:text-lg">
-						Discover why our beta users reported a 45% increase in
-						response rate from employers after using our product.
-					</BodyText>
-					<div className="w-full flex justify-center items-center">
-						<Button
-							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
-							type="secondary"
+			<section className="bg-[#F2F2F7] relative">
+				<div className="grid place-items-center h-[442px] container mx-auto">
+					<div className="flex flex-col items-center gap-y-[22px] text-center">
+						<h1 className="md:w-[792px] md:text-[56px] text-center font-bold text-textHeader sm:text-[40px] text-[32px]">
+							Providing{" "}
+							<span className="text-primaryMain">AI-powered</span>{" "}
+							tools to get you that job!
+						</h1>
+						<p className="text-base font-bold text-textBody">
+							Discover why our beta users reported a 45% increase
+							in response rate from employers after using our
+							product
+						</p>
+						<Link
+							to={"/"}
+							className="text-textWhite bg-primaryMain rounded-[8px] py-[12px] px-[32px] text-base font-bold"
 						>
-							<Link to='/'>Start for free</Link>
-						</Button>
+							Start for free
+						</Link>
 					</div>
 				</div>
+				<img
+					src={stacks}
+					alt="stack of paper"
+					className="hidden xl:block absolute top-16 -right-6"
+				/>
 			</section>
-
 			<section
 				className="bg-primaryMain p-12 max-sm:p-6"
 				style={{
@@ -236,13 +230,13 @@ const Features = () => {
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row "></div>
 				</div>
 
-				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryDeep px-14 lg:px-20 py-11 rounded-lg flex items-center lg:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
+				<div className="featureOne-content  relative container mx-auto max-w-[1400px] bg-primaryLightest px-14 lg:px-20 py-11 rounded-lg flex items-center lg:justify-between max-md:flex-col max-md:gap-7 max-sm:gap-6 max-sm:p-6">
 					<div className="lg:w-[75%]">
-						<H1 className=" text-textWhite text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10">
+						<H1 className=" text-textHeader text-left mb-2 leading-relaxed max-md:text-center max-md:leading-10">
 							{" "}
 							Increase your chances of getting employed
 						</H1>
-						<BodyText className="text-left text-textWhite max-md:text-center">
+						<BodyText className="text-left text-textHeader max-md:text-center">
 							Start for free with no credit card required.
 						</BodyText>
 					</div>
@@ -251,7 +245,7 @@ const Features = () => {
 							className="btnPrimary w-44 px-8 py-4 rounded-lg font-bold text-base"
 							type="secondary"
 						>
-							<Link to='/'>Start for free</Link>
+							<Link to="/">Start for free</Link>
 						</Button>
 					</div>
 				</div>
