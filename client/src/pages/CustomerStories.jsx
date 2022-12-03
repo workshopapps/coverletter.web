@@ -3,6 +3,13 @@ import { items } from "../Utils/data";
 import { Link } from "react-router-dom";
 
 const CustomerStories = () => {
+	const handleMouseOver = (e) => {
+		e.target.classList.add('border-4', 'border-[#ACC5F4]', 'rounded-[24px]', 'bg-[#ACC5F4]');
+	}
+
+	const handleMouseOut = (e) => {
+		e.target.classList.remove('border-4', 'border-[#ACC5F4]', 'rounded-[24px]', 'bg-[#ACC5F4]');
+	}
 
 	return (
 		<main className="bg-background max-w-screen-2xl m-auto">
@@ -34,6 +41,8 @@ const CustomerStories = () => {
 								<div className="first:mb-[29px]" key={id}>
 									<Link to={`/customerstories/${id}`}>
 										<img
+											onMouseOver={handleMouseOver}
+											onMouseOut={handleMouseOut}
 											className="mb-[7px] md:mb-4 w-full"
 											src={img}
 											alt=""
@@ -80,6 +89,8 @@ const CustomerStories = () => {
 									<div className="first:mb-[29px]" key={id}>
 										<Link to={`/customerstories/${id}`}>
 											<img
+												onMouseOver={handleMouseOver}
+												onMouseOut={handleMouseOut}
 												className="mb-[7px] md:mb-4 w-full"
 												src={img}
 												alt=""
