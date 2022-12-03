@@ -48,7 +48,7 @@ const deleteABlogPost = async (req, res) => {
 
 	await Blog.findByIdAndDelete(blogId);
 	return res.status(StatusCodes.OK).json({
-		message: `Blog with id ${blogId} was deleted successfully.`,
+		status: "success",
 	});
 };
 
@@ -105,7 +105,7 @@ const updatePost = async (req, res, next) => {
 };
 
 const getAllPosts = async (req, res) => {
-	const result = await Blog.find();
+	const result = await Blog.find({});
 
 	if (result) {
 		return res.status(200).json({
