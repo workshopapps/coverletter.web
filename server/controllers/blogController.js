@@ -8,15 +8,13 @@ const Reply = require("../models/Reply");
 const Comment = require("../models/Comment");
 
 const createPost = async (req, res) => {
-	const { adminId, title, content } = req.body;
-	if (!adminId || !title || !content)
+	const { title, content } = req.body;
+	if (!title || !content)
 		return res.status(StatusCodes.NO_CONTENT).json({
 			message: "All Fields are required",
 		});
-	const admin = await Admin.findOne({
-		id: adminId,
-	});
-	if (!mongoose.Types.ObjectId.isValid(adminId) || !admin) {
+	const admin = await Admin.findById(req.user.userId);
+	if (!mongoose.Types.ObjectId.isValid(req.user.userId) || !admin) {
 		throw new BadRequestError(
 			"This adminId is not valid or the admin does not exist in our database."
 		);
@@ -30,15 +28,15 @@ const createPost = async (req, res) => {
 
 	return res.status(StatusCodes.CREATED).json({
 		message: "Creation of blog post was successful.",
+		data: post,
 	});
 };
 
 const deleteABlogPost = async (req, res) => {
 	const { blogId } = req.params;
-	const { adminId } = req.body;
 
-	const admin = await Admin.findById(adminId);
-	if (!mongoose.Types.ObjectId.isValid(adminId) || !admin) {
+	const admin = await Admin.findById(req.user.userId);
+	if (!mongoose.Types.ObjectId.isValid(req.user.userId) || !admin) {
 		throw new BadRequestError(
 			"This adminId is not valid or the admin does not exist in our database."
 		);
@@ -53,7 +51,7 @@ const deleteABlogPost = async (req, res) => {
 
 	await Blog.findByIdAndDelete(blogId);
 	return res.status(StatusCodes.OK).json({
-		message: `Blog with id ${blogId} was deleted successfully.`,
+		status: "success",
 	});
 };
 
@@ -111,7 +109,7 @@ const updatePost = async (req, res, next) => {
 };
 
 const getAllPosts = async (req, res) => {
-	const result = await Blog.find();
+	const result = await Blog.find({});
 
 	if (result) {
 		return res.status(200).json({
@@ -199,11 +197,11 @@ const createALikeForABlogPost = async (req, res) => {
 		});
 	}
 
-	const hasUserLikedBlogPost = await Blog.find({
+	const isUserLikedABlogPost = await Blog.find({
 		likes: { $elemMatch: { userId } },
 	});
 
-	if (!hasUserLikedBlogPost) {
+	if (!isUserLikedABlogPost) {
 		// update the like for the blog
 		await Blog.findByIdAndUpdate(
 			blogId,
@@ -215,8 +213,8 @@ const createALikeForABlogPost = async (req, res) => {
 	}
 
 	return;
-};
-
+}
+		
 module.exports = {
 	createPost,
 	getABlogPost,
