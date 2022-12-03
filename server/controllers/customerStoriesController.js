@@ -39,7 +39,7 @@ const createStory = async (req, res) => {
 	}
 
 	const user = await User.findOne({
-		id: adminId,
+		id: userId,
 	});
 	if (!mongoose.Types.ObjectId.isValid(userId) || !user) {
 		throw new BadRequestError(
