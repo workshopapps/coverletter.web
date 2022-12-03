@@ -10,13 +10,15 @@ import pauseIcon from "../Assets/pause.svg";
 import cancelIcon from "../Assets/cancel.svg";
 import leftArrowIcon from "../Assets/leftArrow.svg";
 import BigLeftArrowIcon from "../Assets/bigLeftArrow";
+import BigRightArrowIcon from "../Assets/bigRightArrow";
 import PDFtemplate1 from "../Components/pdf-templates/pdfTemplate1";
 import { downloadPdf, downloadDOCX } from "../Utils/download-util";
 import { convertToTxt } from "../Utils/txtDownload";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loader from "../Assets/Loader.png";
-/// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const Preview = () => {
 	const {
@@ -193,6 +195,11 @@ const Preview = () => {
 		displayLeft = true;
 	}
 
+	const navigate = useNavigate();
+	const reRegister = () => {
+		navigate("/register");
+	};
+
 	return (
 		<div className={`bg-background pt-6 pb-36 overflow-x-hidden relative`}>
 			<div className={`${download && "opacity-0"}`}>
@@ -220,9 +227,10 @@ const Preview = () => {
 						<img
 							src={lockedCover_1}
 							alt="cover"
-							className=" mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] sm:min-h-[485px] sm:min-w-[400px]"
+							className=" cursor-pointer mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] sm:min-h-[485px] sm:min-w-[400px]"
+							onClick={reRegister}
 						/>
-						<div className="md:mr-[-25px]">
+						<div className="md:mr-[-25px] flex ">
 							<BigLeftArrowIcon className="w-[15] h-[15px]md:w-[32px] md:h-[30px]" />
 						</div>
 						<div
@@ -233,12 +241,13 @@ const Preview = () => {
 							<CoverLetter />
 						</div>
 						<div className="md:ml-[-25px]">
-							<BigLeftArrowIcon className="w-[15] h-[15px]md:w-[32px] md:h-[30px]" />
+							<BigRightArrowIcon className="w-[15] h-[15px]md:w-[32px] md:h-[30px]" />
 						</div>
 						<img
 							src={lockedCover_2}
 							alt="cover"
-							className=" mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] sm:min-h-[485px] sm:min-w-[400px]"
+							className="cursor-pointer mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] sm:min-h-[485px] sm:min-w-[400px]"
+							onClick={reRegister}
 						/>
 					</div>
 				</div>

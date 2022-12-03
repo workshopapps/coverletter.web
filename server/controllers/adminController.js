@@ -75,7 +75,7 @@ const deleteAdmin = async (req,res) => {
 	   throw new BadRequestError(`user does not exist`)
    }
    
-   if(req.user.role !== "Lead-admin" && admin._id != req.user.id) {
+   if(req.user.role !== "Lead-admin" && admin._id != req.user.userId) {
 	   throw new UnauthenticatedError(`you are not authorized to carry out this operation`)
    }
 
