@@ -12,13 +12,13 @@ const Footer = () => {
 				</Link>
 			</div>
 			<div className="xxs:max-md:block pl-[24px]  md:px-24 pt-6 max-[767px]:px-14 max-[425px]:px-8 max-[320px]:px-6">
-				<div className="grid grid-cols-2 text-left mb-[59px] gap-10 md:space-x-24 w-full md:grid-cols-3 max-[823px]:gap-24">
-					<div className="flex md:flex-row flex-col md:space-x-16 ">
+				<div className="grid grid-cols-2 text-left mb-[59px] gap-10 md:space-x-24 w-full md:grid-cols-3 max-[823px]:gap-24 max-[767px]:gap-10">
+					<div className="flex md:flex-row flex-col md:space-x-16 wrap">
 						<div>
 							<Link to="/">
 								<img
 									src={Logo}
-									alt=""
+									alt="logo"
 									className="max-w-[132px] h-[46px] hidden md:block"
 								/>
 							</Link>
@@ -36,7 +36,7 @@ const Footer = () => {
 							</div>
 						</div>
 					</div>
-					<div>
+					<div className="">
 						<h4 className="text-textBody font-normal text-base  leading-6">
 							Company
 						</h4>
@@ -47,13 +47,13 @@ const Footer = () => {
 							<Link to="/contactus">Contact us</Link>
 						</div>
 					</div>
-					<div className="max-[823px]:ml-0">
+					<div className="max-[823px]:ml-0 max-[425px]:ml-0 max-[425px]:col-span-3">
 						<h4 className="text-textBody font-normal text-base leading-6">
 							Activity
 						</h4>
 						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
 							<Link to="/event">Events</Link>
-							<Link to="/customerstories">Customers stories</Link>
+							<Link to="/customerstories">Customer Stories</Link>
 							<Link to="/features">Features</Link>
 						</div>
 					</div>

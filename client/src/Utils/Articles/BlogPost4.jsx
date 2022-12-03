@@ -4,7 +4,7 @@ import image3 from "../../Assets/artimg43.png";
 const BlogPost4 = () => {
 	return (
 		<section className="lw:w-[1250px] lw:mx-auto">
-			<img src={image1} alt="" className="mx-auto" />
+			<img src={image1} alt="" className="mx-auto w-full" />
 			<h4 className="text-xl font-bold mt-10 mb-3">Introduction</h4>
 			<p className=" my-10 text-lg">
 				Finding the right job can be difficult, but we are committed to
