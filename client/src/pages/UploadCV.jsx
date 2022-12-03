@@ -1,65 +1,9 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { CVUpload, ArrowLeft } from "../Components/ProfilePage/Icons";
-import { useGlobalContext } from "../context/context";
 
 function UploadCV() {
 	const navigate = useNavigate();
-	const { user, setUser } = useGlobalContext();
-
-	// const [googleUser, setGoogleUser] = useState(null);
-
-	useEffect(() => {
-		// const getUser = async () => {
-		// 	try {
-		// 		const response = await axios.get(
-		// 			`https://api.coverly.hng.tech/api/v1/auth/success`,
-		// 			{
-		// 				credentials: "include",
-		// 				headers: {
-		// 					Accept: "application/json",
-		// 					"Content-Type": "application/json",
-		// 					"Access-Control-Allow-Credentials": true,
-		// 				},
-		// 			}
-		// 		);
-		// 		const resp = response.data;
-		// 		if (resp.status === 200) return response.json();
-		// 		console.log(resp);
-		// 		// setGoogleUser();
-		// 	} catch (err) {
-		// 		console.log(err);
-		// 	}
-		// };
-		// getUser();
-		const getUser = () => {
-			fetch(`https://api.coverly.hng.tech/api/v1/auth/success`, {
-				method: "GET",
-				credentials: "include",
-				headers: {
-					Accept: "application/json",
-					"Content-Type": "application/json",
-					"Access-Control-Allow-Credentials": true,
-				},
-			})
-				.then((response) => {
-					console.log(response);
-					if (response.status === 200) return response.json();
-					throw new Error("authentication has been failed!");
-				})
-				.then((resObject) => {
-					console.log(resObject.user);
-					setUser(resObject.user);
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-		};
-		getUser();
-	}, []);
-
-	console.log(user);
 
 	return (
 		<div className="bg-[#03296f11] py-8">
