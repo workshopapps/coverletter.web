@@ -229,7 +229,7 @@ function InputData() {
 									error && email <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
 								type="email"
 								onChange={emailHandler}
 								value={email}
@@ -256,7 +256,7 @@ function InputData() {
 									error && location <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
 								type="text"
 								onChange={locationHandler}
 								value={location}
@@ -283,7 +283,7 @@ function InputData() {
 									error && companyName <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
 								onChange={companyHandler}
 								type="text"
 								value={companyName}
@@ -310,7 +310,7 @@ function InputData() {
 									error && companyAddress <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
 								onChange={companyAddressHandler}
 								type="text"
 								value={companyAddress}
@@ -334,7 +334,7 @@ function InputData() {
 									error && country <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
 								onChange={countryHandler}
 								name="country"
 							>
@@ -676,7 +676,7 @@ function InputData() {
 									error && city <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
 								onChange={cityHandler}
 								type="text"
 								value={city}
@@ -703,7 +703,7 @@ function InputData() {
 									error && role <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
 								type="text"
 								onChange={roleHandler}
 								value={role}
@@ -731,7 +731,7 @@ function InputData() {
 									error && date <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
 								onChange={dateHandler}
 								type="date"
 								value={date}
@@ -758,7 +758,7 @@ function InputData() {
 									error && years <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
 								type="text"
 								onChange={yearsHandler}
 								value={years}
@@ -785,7 +785,7 @@ function InputData() {
 									error && name <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
 								type="text"
 								onChange={nameHandler}
 								value={name}
@@ -808,7 +808,7 @@ function InputData() {
 							</label>
 							<input
 								name="recipient_department"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg focus:outline-primaryMain"
+								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300"
 								type="text"
 								onChange={departmentHandler}
 								value={department}
