@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Logo from "../Assets/coverly.svg";
 import Hamburger from "../Assets/menu.svg";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Close from "../Assets/close-circle.svg";
 import Button from "../Components/Ui/Button";
 import navLinkElements from "../Constants/navLinkElements";
