@@ -30,7 +30,7 @@ const Event = () => {
 				>
 					<div
 						id="left"
-						className="flex-[0.4] max-[940px]:flex-[0.3]"
+						className="flex-[0.4] max-[1218px]:flex-[0.3]"
 					>
 						<div className="flex flex-col gap-10">
 							{/* Search */}
@@ -152,7 +152,7 @@ const Event = () => {
 					</div>
 					<div
 						id="right"
-						className="flex-[0.6] max-[940px]:flex-[0.7] "
+						className="flex-[0.6] max-[1218px]:flex-[0.7] "
 					>
 						<h1 className="text-grey800 font-bold text-2xl mb-6">
 							Upcoming Events
@@ -163,6 +163,8 @@ const Event = () => {
 								headline: "Coverly Career Con...",
 								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
 								time: "Tuesday, Nov 22, 10:00am",
+								description:
+									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nunc auctor.",
 							}}
 						/>
 						<EventsList
@@ -171,6 +173,8 @@ const Event = () => {
 								headline: "Applicar Luanch Par...",
 								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
 								time: "Tuesday, Nov 29, 09:00am",
+								description:
+									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nunc auctor.",
 							}}
 						/>
 						<EventsList
@@ -179,6 +183,8 @@ const Event = () => {
 								headline: "Beta Watch Party...",
 								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
 								time: "Friday, Dec 02, 10:00am",
+								description:
+									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nunc auctor.",
 							}}
 						/>
 						<EventsList
@@ -187,6 +193,8 @@ const Event = () => {
 								headline: "Lesson for Your Now...",
 								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
 								time: "Tuesday, Dec 06, 10:00am",
+								description:
+									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nunc auctor.",
 							}}
 						/>
 						<EventsList
@@ -195,6 +203,8 @@ const Event = () => {
 								headline: "The importance of ...",
 								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
 								time: "Thursday, Dec 08, 10:00am",
+								description:
+									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nunc auctor.",
 							}}
 						/>
 						<EventsList
@@ -203,6 +213,8 @@ const Event = () => {
 								headline: "Networking for Intro...",
 								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
 								time: "Wednesday, Dec 14, 10:00am",
+								description:
+									"Join Coverly’s first ever yearly online Career Conference aimed at helping people newly introduced into the job market, find their way around important processes like job applications, cover letter writing, resume creation, passing in person and online interviews etc.Career Con is a global community event bridging job seekers with industry recruiters and employment coaches. Career con aims at reducing the large unemployment pool globally. We invite speakers from across all industries around the world to speak to attendees on the ever-changing employment requirements and how to not just keep up but also to stay ahead.At Coverly, our goal is to make it easier for our users to get their dream jobs. In keeping to that aim, we are introducing the first ever Career Con, themed “Breaking In”. The idea behind our theme is to give attendees the tools and resources needed to break into any industry they wish to.",
 							}}
 						/>
 					</div>
