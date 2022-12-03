@@ -56,6 +56,7 @@ const verifyAdmin = async (req, res) => {
 		const token = admin.createJWT();
 		const data = {
 			name: admin.name,
+			admin: admin._id,
 			email: admin.email,
 			role: admin.role,
 			token,
