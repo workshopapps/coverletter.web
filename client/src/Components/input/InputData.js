@@ -202,7 +202,7 @@ function InputData() {
 									error && fullName <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300 `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200 `}
 								onChange={fullNameHandler}
 								autoFocus
 								type="text"
@@ -230,7 +230,7 @@ function InputData() {
 									error && email <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
 								type="email"
 								onChange={emailHandler}
 								value={email}
@@ -257,7 +257,7 @@ function InputData() {
 									error && location <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
 								type="text"
 								onChange={locationHandler}
 								value={location}
@@ -284,7 +284,7 @@ function InputData() {
 									error && companyName <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
 								onChange={companyHandler}
 								type="text"
 								value={companyName}
@@ -311,7 +311,7 @@ function InputData() {
 									error && companyAddress <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
 								onChange={companyAddressHandler}
 								type="text"
 								value={companyAddress}
@@ -335,7 +335,7 @@ function InputData() {
 									error && country <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
 								onChange={countryHandler}
 								name="country"
 							>
@@ -677,7 +677,7 @@ function InputData() {
 									error && city <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
 								onChange={cityHandler}
 								type="text"
 								value={city}
@@ -704,7 +704,7 @@ function InputData() {
 									error && role <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
 								type="text"
 								onChange={roleHandler}
 								value={role}
@@ -732,7 +732,7 @@ function InputData() {
 									error && date <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
 								onChange={dateHandler}
 								type="date"
 								value={date}
@@ -759,7 +759,7 @@ function InputData() {
 									error && years <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
 								type="number"
 								onChange={yearsHandler}
 								value={years}
@@ -786,7 +786,7 @@ function InputData() {
 									error && name <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
 								type="text"
 								onChange={nameHandler}
 								value={name}
@@ -809,7 +809,7 @@ function InputData() {
 							</label>
 							<input
 								name="recipient_department"
-								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300"
+								className="px-3 py-[9px] rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200"
 								type="text"
 								onChange={departmentHandler}
 								value={department}
@@ -851,7 +851,7 @@ function InputData() {
 							: "Almost Finished..."}
 					</h3>
 					<div className="bar w-[80%] ">
-						<div className="w-full bg-grey100 rounded-full dark:bg-grey200">
+						<div className="w-full bg-grey100 rounded-full dark:bg-grey300">
 							<div
 								className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full"
 								style={{ width: `${percentage}%` }}
