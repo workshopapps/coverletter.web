@@ -15,6 +15,7 @@ const {
 	resetPassword,
 	googleLogin,
 	googleSuccess,
+	adminLogin
 } = require("../controllers/authController");
 
 //Add your routes here
@@ -24,12 +25,15 @@ router.post("/login", login);
 router.post("/logout", auth, logout);
 router.post("/dashboard", getUserDetails);
 router.post("/forgotPassword", forgotPassword);
+router.post('/admin/login', adminLogin)
 
 router.post("/validateOTP", validateOTP);
 //GOOGLE auth routes
 router.get(
 	"/google",
-	passport.authenticate("google", { scope: ["profile", "email"] })
+	passport.authenticate("google", {
+		scope: ["profile", "email"]
+	})
 );
 
 router.get(
