@@ -83,7 +83,7 @@ const getABlogPost = async (req, res) => {
 		message: "Blog request was successfully.",
 		data: blog,
 	});
-}
+};
 
 const updatePost = async (req, res, next) => {
 	const { title, content } = req.body;
@@ -100,19 +100,16 @@ const updatePost = async (req, res, next) => {
 };
 
 const getAllPosts = async (req, res) => {
-	const result = await Blog.find()
-	
-	if (result){
+	const result = await Blog.find();
+
+	if (result) {
 		return res
 			.status(200)
-			.json({ message: "Successfully retrieved." });
+			.json({ message: "Successfully retrieved.", posts: result });
+	} else {
+		throw new BadRequestError("Post not found");
 	}
-	else{
-		throw new BadRequestError(
-			"Post not found"
-		);
-	}
-}
+};
 
 module.exports = {
 	createPost,
@@ -120,5 +117,5 @@ module.exports = {
 	deleteABlogPost,
 	searchPost,
 	updatePost,
-  getAllPosts
+	getAllPosts,
 };
