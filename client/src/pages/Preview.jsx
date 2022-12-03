@@ -15,6 +15,7 @@ import { downloadPdf, downloadDOCX } from "../Utils/download-util";
 import { convertToTxt } from "../Utils/txtDownload";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Loader from "../Assets/Loader.png";
 /// import { useNavigate } from "react-router-dom";
 
 const Preview = () => {
@@ -35,6 +36,8 @@ const Preview = () => {
 
 	const [touchPosition, setTouchPosition] = useState(null);
 	const [mouseClickPosiition, setMouseClickPosition] = useState(null);
+
+	const [title, setTitle] = useState('Your Cover Letter is Ready')
 
 	// window.addEventListener("resize", (e) => {
 	// 	if (e.target.screen.width > 900) {
@@ -100,8 +103,9 @@ const Preview = () => {
 
 	const handleClick = () => {
 		// INITIATE DOWNLOAD STATE ON CLICK
-		setDownload(true);
-		setTimeout(() => {
+		setDownload(true)
+		setFirstModal(true)
+		const save = setTimeout(() => {
 			if (dType === "pdf") {
 				downloadPdf("pdf-coverletter-target");
 			} else if (dType === "doc") {
@@ -113,22 +117,16 @@ const Preview = () => {
 				//TELL USER TO PICK ONE OF THE 3 OPTIONS
 			}
 			setDtype(null);
-			closeModal();
+			setTitle('Your Cover letter has been downloaded.')
 		}, 500);
+		const close = setTimeout(() => {
+			setDownload(false)
+			setFirstModal(false)
+			closeModal()
+		}, 4000)
+		
 		// setFirstModal(!firstModal);
 	};
-
-	useEffect(() => {
-		setFirstModal(false);
-		const downloadTime = setTimeout(() => setDownload(false), 2000);
-
-		const spinTime = setInterval(() => setSpin(!spin), 2000);
-
-		return () => {
-			clearInterval(spinTime);
-			clearTimeout(downloadTime);
-		};
-	}, [openModal]);
 
 	// redirect on click cv
 	// const navigate = useNavigate();
@@ -197,14 +195,14 @@ const Preview = () => {
 
 	return (
 		<div className={`bg-background pt-6 pb-36 overflow-x-hidden relative`}>
-			<div className={`${download && "opacity-50"}`}>
+			<div className={`${download && "opacity-0"}`}>
 				<div className="flex items-center px-7 lg:px-40 lg:mt-6">
 					<img src={leftArrowIcon} alt="left arrow" />
 					<p className="ml-1 text-sm font-bold">Back</p>
 				</div>
 				<div className="w-full flex justify-center mt-5 px-7 md:mt-11">
 					<p className="font-bold text-2xl w-[65%] text-center md:text-3xl md:w-[40%] lg:text-5xl lg:w-[40%]">
-						Your Cover Letter is Ready!
+						{title}
 					</p>
 				</div>
 				<div className="w-screen md:overflow-x-hidden relative mt-10 md:mt-20">
@@ -259,9 +257,9 @@ const Preview = () => {
 					</div>
 				</div>
 				<PDFtemplate1 />
+			</div>
 
-				{isModalOpen &&
-					(!firstModal ? (
+				{isModalOpen && (!firstModal && !download ? (
 						<Modal>
 							<div className="w-[350px] md:w-[450px] bg-background flex items-center flex-col min-w-[311px] min-h-[376px] rounded-md py-11 px-9">
 								<div className="w-full flex justify-end mb-4">
@@ -371,66 +369,29 @@ const Preview = () => {
 							</div>
 						</Modal>
 					) : (
-						<Modal>
-							<div className="bg-textWhite top-[-250px] md:top-[-190px] md:left-[80%] lg:left-[150%] left-0 relative flex items-center flex-col min-w-[311px] rounded-sm py-4 px-4">
-								<div className="flex w-full items-center justify-between">
-									<div className="w-[82%] bg-background h-1">
-										<div className="bg-successDark w-[65%] h-1"></div>
-									</div>
-									<div className="w-[14%] flex text-2xl justify-between">
+							<div className="bg-textWhite top-1/2 left-0 flex items-start flex-col w-screen h-screen rounded-sm py-12 px-4 absolute">
+								<div className="flex flex-col w-full h-[30rem] items-center justify-start">
+									<div className=" h-2/3 flex flex-col justify-between items-center">
+										<p className="font-bold text-2xl leading-9 text-[#252b42] text-center">Downloading Cover letter...</p>
 										<div>
-											{
-												<img
-													src={pauseIcon}
-													alt="pause"
-												/>
-											}
-										</div>
-										<div>
-											{
-												<img
-													src={cancelIcon}
-													alt="cancel"
-												/>
-											}
+											<div className="mb-5">
+												{
+													<img
+														src={Loader}
+														alt="pause"
+													/>
+												}
+											</div>
+											<p className="text-[15px] font-normal leading-normal text-[#73747d]">Loading...</p>
 										</div>
 									</div>
-								</div>
-								<div className="flex items-center w-full pl-3 mt-5">
-									<div className="mr-3">
-										{<img src={notePad} alt="pause" />}
-									</div>
-									<p className="text-lg font-bold mr-3">
-										TEXT
-									</p>
-									<p className="text-grey400 text-sm">
-										Download in progress
-									</p>
+									<div className="h-1/3 w-full flex items-end justify-center">
+										<button className="btn btnPrimary w-full md:w-1/2 lg:w-1/3 xl:w-[28%]">Cancel Download</button>
+									</div>		
 								</div>
 							</div>
-						</Modal>
-					))}
-			</div>
-
-			{download && (
-				<div
-					className={`absolute top-0 left-0 w-full h-[250%] bg-overlay z-50 flex justify-center items-center ${
-						download && "opacity-100"
-					}`}
-				>
-					<div className="fixed w-25% h-25% top-[37.5%] left-[50%-30px] flex flex-col gap-5">
-						<FontAwesomeIcon
-							className={`text-textWhite text-[120px] ${
-								spin && "rotate-[360deg] duration-[2000ms]"
-							}`}
-							icon={faSpinner}
-						/>
-						<p className="text-textWhite text-[60px] font-bold">
-							DOWNLOADING
-						</p>
-					</div>
-				</div>
-			)}
+						)
+					)}
 		</div>
 	);
 };
