@@ -167,7 +167,7 @@ function InputData() {
 							<div className="w-full bg-grey100 rounded-full h-[4px]">
 								<div
 									className="bg-primaryMain text-xs font-medium h-[4px] leading-none rounded-full"
-									style={{ width: `${50}%` }}
+									style={{ width: `${percentage}%` }}
 								></div>
 							</div>
 						</div>
