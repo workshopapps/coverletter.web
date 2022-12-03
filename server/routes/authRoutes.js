@@ -35,7 +35,7 @@ router.get(
 router.get(
 	"/google/callback",
 	passport.authenticate("google", {
-		failureRedirect: "https://coverly.hng.tech/signup",
+		failureRedirect: "https://coverly.hng.tech/register",
 	}),
 	googleLogin
 );
