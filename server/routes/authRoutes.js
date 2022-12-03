@@ -14,6 +14,7 @@ const {
 	validateOTP,
 	resetPassword,
 	googleLogin,
+	googleSuccess,
 } = require("../controllers/authController");
 
 //Add your routes here
@@ -34,14 +35,14 @@ router.get(
 router.get(
 	"/google/callback",
 	passport.authenticate("google", {
-		failureRedirect: "https://coverly.hng.tech/signin",
-		successRedirect: "https://coverly.hng.tech",
+		failureRedirect: "https://coverly.hng.tech/signup",
 	}),
 	googleLogin
 );
+router.get("/success", googleSuccess);
 
 // All After login routes goes below PROTECT ROUTE
-router.use(protect);
+// router.use(protect);
 router.post("/resetPassword", resetPassword);
 router.put("/updatePassword", updatePassword);
 // router.post('/resetPassword', resetPassword)

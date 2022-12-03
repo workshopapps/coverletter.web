@@ -22,7 +22,8 @@ const Pricing = () => {
 
 					<div>
 						<p className="text-center text-[20px] ">
-							${monthly}/{monthly === "0" ? "" : "monthly"}
+							${monthly}
+							{monthly === "0" ? "" : "/monthly"}
 						</p>
 
 						{yearly && (
@@ -72,33 +73,27 @@ const Pricing = () => {
 	];
 	return (
 		<div className="bg-background">
-			<Parallax
-				bgImage={backdrop}
-				blur={0}
-				bgImageAlt="blue backdrop"
-				strength={600}
-			>
-				<div className="h-[400px] text-textWhite text-center">
-					<p className="text-[30px] sm:text-[32px] md:text-[40px] mt-16 mb-7">
-						Pricing
-					</p>
-					<p className="text-[16px] xl:text-[56px] mb-5">
-						Find the right pricing that suits you
-					</p>
-					<p className="text-[16px] md:text-[24px] ">
+			<div className="pb-[50px] mt-0 border border-[transparent] text-textWhite text-center bg-[#03296F]">
+				<p className="text-[22px] sm:text-[28px] lg:text-[35px] xl	:text-[40px] font-semibold mt-16 mb-7">
+					Pricing
+				</p>
+				<p className="text-[18px] sm:text-[24px] lg:text-[50px] xl:text-[56px] font-semibold mb-5">
+					Find the right pricing that suits you
+				</p>
+				<div className="w-[85%] mx-auto">
+					<p className="text-[14px] sm:text-[16px] lg:text-[22px] xl:text-[24px] ">
 						Monthly: Pay for one month and get all benefits needed
 						for 30 days
 					</p>
-					<p className="text-[24px] ">
+					<p className="text-[14px] sm:text-[16px] lg:text-[22px] xl:text-[24px]">
 						Yearly: Get $6 off with yearly plan
 					</p>
 				</div>
-			</Parallax>
+			</div>
 
 			{shouldShow && (
 				<div>
-					{/* <div className="pb-36 xl:h-[1150px] border absolute flex flex-col items-center xl:justify-between space-y-5 xl:space-y-0 xl:flex-row xl:items-start top-[70%] lg:top-[85%] w-full px-5"> */}
-					<div className="mt-10 pb-36 grid grid-cols-1 lw:justify-items-start gap-10 lw:grid-cols-3 lw:gap-3 border border-[red] lw:w-[1250px] lw:ml-auto lw:mr-auto ">
+					<div className="mt-10 pb-36 grid grid-cols-1 lw:justify-items-start gap-10 xl:grid-cols-3 xl:mt-12 lw:gap-3 xl:w-[1210px] xl:mx-auto lw:w-[1250px] lw:mx-auto ">
 						<Plate
 							planName="Free Plan"
 							monthly="0"
@@ -126,7 +121,7 @@ const Pricing = () => {
 			{!shouldShow && (
 				<div className="py-40 text-center">
 					<div className="co w-[335px] md:w-[595px] m-auto">
-						<button className="py-[18px] px-[26px] md:w-[320px] md:py-[22px] md:text-[40px] bg-[#03286d] text-[20px] text-[white] rounded-lg">
+						<button className="py-[18px] px-[26px] md:w-[300px] md:h-[80px] md:py-0 lg:w-[400px] lg:h-[104px] md:text-[40px] lg:text-[56px] bg-[#03286d] text-[20px] text-[white] rounded-lg">
 							Coming Soon
 						</button>
 						<div className="flex justify-center mt-5">
