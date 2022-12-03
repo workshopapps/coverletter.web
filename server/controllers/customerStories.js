@@ -1,9 +1,8 @@
-require("dotenv").config();
 const Admin = require("../models/Admin");
 const CustomerStories = require("../models/CustomerStories");
 const mongoose = require("mongoose");
 const { StatusCodes } = require("http-status-codes");
-const { BadRequestError, NotFoundError } = require("../errors");
+const { BadRequestError } = require("../errors");
 
 const createStory = async (req, res) => {
 	const {
