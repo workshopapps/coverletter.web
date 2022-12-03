@@ -118,7 +118,8 @@ function InputData() {
 			try {
 				const res = await axios.post(
 					`https://api.coverly.hng.tech/api/v1/generate`,
-					formData,option
+					formData,
+					option
 				);
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
@@ -201,7 +202,7 @@ function InputData() {
 									error && fullName <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300 `}
 								onChange={fullNameHandler}
 								autoFocus
 								type="text"
@@ -759,7 +760,7 @@ function InputData() {
 										? "border-[#FF2635]"
 										: "border-gray-300"
 								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey300  `}
-								type="text"
+								type="number"
 								onChange={yearsHandler}
 								value={years}
 								id="years"
@@ -843,7 +844,7 @@ function InputData() {
 				</form>
 			</main>
 			{isLoading && (
-				<div className=" bg-textWhite absolute top-[90%] sm:top-[70%] left-[5%] sm:left-[25%] w-[90%] sm:w-[50%] rounded-lg h-[369px] md:h-[512px] flex flex-col justify-center items-center gap-[20px]">
+				<div className=" bg-textWhite absolute bottom-[90%] sm:top-[50rem] left-[5%] sm:left-[25%] w-[90%] sm:w-[50%] rounded-lg h-[369px] md:h-[512px] flex flex-col justify-center items-center gap-[20px]">
 					<h3 className="text-textBody text-center text-[16px]">
 						{percentage < 78
 							? "Extracting your details..."
