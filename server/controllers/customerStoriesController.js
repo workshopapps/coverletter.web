@@ -12,9 +12,12 @@ const createStory = async (req, res) => {
 		title,
 		subTitle,
 		introduction,
-		challenge,
-		solution,
-		outcome,
+		challengeBody,
+		challengeContent,
+		solutionBody,
+		solutionContent,
+		outomeBody,
+		outomeContent,
 	} = req.body;
 	if (
 		!adminId ||
@@ -22,9 +25,12 @@ const createStory = async (req, res) => {
 		!title ||
 		!subTitle ||
 		!introduction ||
-		!challenge ||
-		!solution ||
-		!outcome
+		!challengeBody ||
+		!challengeContent ||
+		!solutionBody ||
+		!solutionContent ||
+		!outomeBody ||
+		!outomeContent
 	)
 		return res.status(StatusCodes.NO_CONTENT).json({
 			message: "All Fields are required",
@@ -52,9 +58,12 @@ const createStory = async (req, res) => {
 		title,
 		subTitle,
 		introduction,
-		challenge,
-		solution,
-		outcome,
+		challengeBody,
+		challengeContent,
+		solutionBody,
+		solutionContent,
+		outomeBody,
+		outomeContent,
 	});
 	await story.save();
 

@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const CustomerStoriesSchema = new Schema(
 	{
-		adminId: {
-			type: Schema.Types.ObjectId,
-			required: true,
-		},
-		userId: {
-			type: Schema.Types.ObjectId,
-			required: true,
-		},
+		// adminId: {
+		// 	type: Schema.Types.ObjectId,
+		// 	required: true,
+		// },
+		// userId: {
+		// 	type: Schema.Types.ObjectId,
+		// 	required: true,
+		// },
 		title: {
 			type: String,
 			required: true,
@@ -22,42 +22,30 @@ const CustomerStoriesSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		challenge: [
-			{
-				body: {
-					type: String,
-					required: true,
-				},
-				comment: {
-					type: String,
-					required: true,
-				},
-			},
-		],
-		solution: [
-			{
-				body: {
-					type: String,
-					required: true,
-				},
-				comment: {
-					type: String,
-					required: true,
-				},
-			},
-		],
-		outcome: [
-			{
-				body: {
-					type: String,
-					required: true,
-				},
-				comment: {
-					type: String,
-					required: true,
-				},
-			},
-		],
+		challengeBody: {
+      type: String,
+      required: true,
+    },
+		challengeContent: {
+      type: String,
+      required: true,
+    },
+		solutionBody: {
+      type: String,
+      required: true,
+    },
+		solutionContent: {
+      type: String,
+      required: true,
+    },
+		outomeBody: {
+      type: String,
+      required: true,
+    },
+		outomeContent: {
+      type: String,
+      required: true,
+    },
 	},
 	{
 		timestamps: true,
