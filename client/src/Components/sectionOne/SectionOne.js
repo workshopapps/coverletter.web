@@ -7,8 +7,7 @@ function SectionOne() {
 			<main className="flex h-[418px] md:h-[45vh] lg:h-[720px] bg-primaryDeep lg:px-3 lg:py-5 relative box-border overflow-hidden border border-[white]">
 				<div className="text relative bottom-[0px] w-[98%] md:w-[94%] lg:pr-[20rem] m-auto lg:bottom-[20%] flex flex-col px-[2rem] h-[30vh] lg:h-[60vh] justify-center auto lw:m-auto lw:px-0 lw:w-[1250px]">
 					<h1 className="font-bold  text-textWhite lg:text-[56px] md:text-[50px] text-[32px]  lg:leading-[4rem] leading-[3rem] text-left lg:pr-[200px] lw:w-[700px] lw:px-0">
-						Create a{" "}
-						<span className="hidden sm:inline-block">
+						Create a <span className="hidden sm:inline">
 							Job-Landing Cover Letter in seconds
 						</span>
 					</h1>

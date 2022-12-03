@@ -24,6 +24,7 @@ function InputData() {
 	const [name, setName] = useState("");
 	const [department, setDepartment] = useState("");
 	const [error, setError] = useState(false);
+	const [percentage, setPercentage] = useState("0");
 
 	const clickHandler = () => {
 		Navigate("/");
@@ -101,10 +102,23 @@ function InputData() {
 			formData.append("full_name", fullName);
 			formData.append("email", email);
 			formData.append("location", location);
+
+			const option = {
+				onUploadProgress: (ProgressEvent) => {
+					const { loaded, total } = ProgressEvent;
+					let percent = Math.floor((loaded * 100) / total);
+					let changed = percent - 20;
+
+					if (changed < 100) {
+						setPercentage(changed);
+					}
+				},
+			};
+
 			try {
 				const res = await axios.post(
 					`https://api.coverly.hng.tech/api/v1/generate`,
-					formData
+					formData,option
 				);
 				console.log(res);
 				setCoverLetter({ ...res.data.data });
@@ -141,7 +155,11 @@ function InputData() {
 	return (
 		<div className="bg-background lg:px-[204px] lg:py-[120px] font-manrope">
 			<ToastContainer />
-			<main className=" lg:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite ">
+			<main
+				className={` ${
+					isLoading && "filter blur-[0.7px] opacity-30"
+				}  lg:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite `}
+			>
 				<button
 					onClick={clickHandler}
 					className="flex items-center  mt-[55px] gap-3 font-semibold"
@@ -808,7 +826,10 @@ function InputData() {
 						</button>
 					)}
 					{isLoading && (
-						<button className=" hover:bg-primaryDark px-5 w-[100%] py-3 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg">
+						<button
+							disabled={isLoading}
+							className=" hover:bg-primaryDark px-5 w-[100%] py-3 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg disabled:opacity-80 disabled:cursor-not-allowed"
+						>
 							<div class="flex justify-center items-center">
 								<div
 									class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
@@ -821,6 +842,23 @@ function InputData() {
 					)}
 				</form>
 			</main>
+			{isLoading && (
+				<div className=" bg-textWhite absolute top-[90%] sm:top-[70%] left-[5%] sm:left-[25%] w-[90%] sm:w-[50%] rounded-lg h-[369px] md:h-[512px] flex flex-col justify-center items-center gap-[20px]">
+					<h3 className="text-textBody text-center text-[16px]">
+						{percentage < 78
+							? "Extracting your details..."
+							: "Almost Finished..."}
+					</h3>
+					<div className="bar w-[80%] ">
+						<div className="w-full bg-grey100 rounded-full dark:bg-grey200">
+							<div
+								className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full"
+								style={{ width: `${percentage}%` }}
+							></div>
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }
