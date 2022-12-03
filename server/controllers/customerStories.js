@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, NotFoundError } = require("../errors");
 
-const createPost = async (req, res) => {
+const createStory = async (req, res) => {
 	const {
 		adminId,
 		fullName,
@@ -57,5 +57,5 @@ const createPost = async (req, res) => {
 };
 
 module.exports = {
-	createPost,
+	createStory,
 };
