@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const { createStory } = require("../controllers/customerStoriesController");
-const auth = require("../middleware/authentication");
+const admin = require("../middleware/admin");
 
-router.post("/customer-story/", auth, createStory);
+router.post("/customer-story/", admin, createStory);
 
 module.exports = router;
