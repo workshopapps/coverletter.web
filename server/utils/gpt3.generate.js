@@ -21,7 +21,7 @@ const generator = async (
 	});
 	const openai = new OpenAIApi(configuration);
 
-	const gpt3Prompt = `With a Limit of 250 words, Use this resume ${resume}, to generate a cover letter for the role of ${role} at ${company_name}. Address it to ${recipient_name} in the ${recipient_department}of the organization `;
+	const gpt3Prompt = `With a Limit of 350 words, Use this resume ${resume}, to generate a cover letter for the role of ${role} at ${company_name}. Address it to ${recipient_name} in the ${recipient_department}of the organization `;
 	if (gpt3Prompt.length > 25000) return false
 	const response = await openai.createCompletion({
 		model: "text-davinci-002",
