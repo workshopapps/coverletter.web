@@ -23,7 +23,7 @@ const createPost = async (req, res) => {
 				message: "All Fields are required"
 			});
 	const admin = await Admin.findOne({
-		id: adminId
+		_id: adminId
 	});
 	if (!mongoose.Types.ObjectId.isValid(adminId) || !admin) {
 		throw new BadRequestError(
@@ -39,7 +39,7 @@ const createPost = async (req, res) => {
 	return res
 		.status(StatusCodes.CREATED)
 		.json({
-			message: "Creation of blog post was successful."
+			status: "success", data: post
 		});
 };
 
@@ -47,18 +47,8 @@ const deleteABlogPost = async (req, res) => {
 	const {
 		blogId
 	} = req.params;
-	const {
-		adminId
-	} = req.body;
-
-	const admin = await Admin.findById(adminId);
-	if (!mongoose.Types.ObjectId.isValid(adminId) || !admin) {
-		throw new BadRequestError(
-			"This adminId is not valid or the admin does not exist in our database."
-		);
-	}
-
-	const blog = await Blog.findById(blogId);
+	
+	const blog = await Blog.findById({_id: blogId});
 
 	if (!mongoose.Types.ObjectId.isValid(blogId) || !blog)
 		throw new BadRequestError(
@@ -67,7 +57,7 @@ const deleteABlogPost = async (req, res) => {
 
 	await Blog.findByIdAndDelete(blogId);
 	return res.status(StatusCodes.OK).json({
-		message: `Blog with id ${blogId} was deleted successfully.`,
+		status: "success"
 	});
 };
 
@@ -134,7 +124,7 @@ const updatePost = async (req, res, next) => {
 };
 
 const getAllPosts = async (req, res) => {
-	const result = await Blog.find();
+	const result = await Blog.find({});
 
 	if (result) {
 		return res
