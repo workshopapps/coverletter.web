@@ -16,6 +16,8 @@ const {
 	searchPost,
 	getABlogPost,
 	updatePost,
+	getAllPosts,
+	getOnePost,
 } = require("../controllers/blogController");
 const auth = require("../middleware/authentication");
 
@@ -24,9 +26,9 @@ router.get("/blogs/:blogId", getABlogPost);
 router.get("/blog/", getAllPosts);
 
 router.post("/admin/blog/", createPost);
-router.post("/blogs", createABlogPostComment);
-router.post("/blogs", createALikeForABlogPost);
-router.post("/blogs/comment", createAReplyToABlogComment);
+router.post("/blog", createABlogPostComment);
+router.post("/blog", createALikeForABlogPost);
+router.post("/blog/comment", createAReplyToABlogComment);
 
 router.delete("/admin/blog/:blogId", auth, deleteABlogPost);
 
