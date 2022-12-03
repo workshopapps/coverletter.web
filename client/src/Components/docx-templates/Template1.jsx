@@ -11,7 +11,7 @@ import {
 const useTemplate1 = (props) => {
 	const { data, userData } = props;
 
-	const addressBox = ({ text, height, alignment, frameProps }) =>
+	const addressBox = ({ text, height, alignment, frameProps, props }) =>
 		new Paragraph({
 			frame: {
 				position: {
@@ -32,6 +32,7 @@ const useTemplate1 = (props) => {
 				...(frameProps || {}),
 			},
 			style: "regular",
+			...(props || {}),
 			children: [
 				new TextRun(
 					text ||
@@ -48,7 +49,7 @@ const useTemplate1 = (props) => {
 					y: 0,
 				},
 				wrap: FrameWrap.NOT_BESIDE,
-				width: 10000,
+				width: 9120,
 				height: height || 1000,
 				anchor: {
 					horizontal: FrameAnchorType.MARGIN,
@@ -66,6 +67,19 @@ const useTemplate1 = (props) => {
 			children: [new TextRun("")],
 		});
 
+	const lineBreak = ({ style }) =>
+		new Paragraph({
+			style: style ? style : "body",
+			children: [new TextRun("")],
+		});
+
+	const body = (data.cover_letter || "[Test Cover Letter]").trim().split("\n").map((text, index) => new Paragraph({
+		style: "body",
+		children: [
+			new TextRun(text),
+		]
+	}))
+
 	const doc = new Document({
 		creator: "Coverly",
 		title: "My cover Letter",
@@ -79,11 +93,27 @@ const useTemplate1 = (props) => {
 					run: {
 						color: "8A8A8A",
 						font: "Manrope",
-						size: "10pt",
+						size: "11pt",
 					},
 					paragraph: {
 						spacing: {
-							after: 180,
+							after: 120,
+						},
+					},
+				},
+				{
+					id: "body",
+					name: "Body font",
+					basedOn: "Normal",
+					next: "Normal",
+					run: {
+						color: "8A8A8A",
+						font: "Manrope",
+						size: "14pt",
+					},
+					paragraph: {
+						spacing: {
+							after: 120,
 						},
 					},
 				},
@@ -110,59 +140,35 @@ const useTemplate1 = (props) => {
 			{
 				properties: {},
 				children: [
-					decorativeLine({ height: 200 }),
-					new Paragraph({
-						style: "large",
-						children: [new TextRun("")],
-					}),
 					addressBox({
-						text: userData.address || "[Your address]",
-						alignment: "RIGHT",
-					}),
-					new Paragraph({
-						children: [new TextRun("")],
-					}),
-					addressBox({
-						text: userData.email || "[testemail@coverly.com]",
-						alignment: "RIGHT",
+						text: `${userData.address || "[Your address]"}  ${
+							userData.email || "[testemail@coverly.com]"
+						}`,
+						frameProps: {
+							wrap: FrameWrap.THROUGH,
+						},
 					}),
 					new Paragraph({
 						style: "large",
 						children: [new TextRun(userData.name || "[Test Name]")],
+						alignment: HorizontalPositionAlign.RIGHT,
 					}),
+					lineBreak({style:"body"}),
+					decorativeLine({ height: 150 }),
+					lineBreak({ style: "large" }),
 					new Paragraph({
-						style: "regular",
+						style: "body",
 						children: [
 							new TextRun(new Date().toLocaleDateString()),
 						],
 					}),
 					addressBox({
+						props: {
+							style: "body",
+						},
 						text: data.company_address || "[Company address]",
 					}),
-					new Paragraph({
-						style: "regular",
-						children: [
-							new TextRun(
-								`Dear ${data.recipient_name || "[Recipient]"},`
-							),
-						],
-					}),
-					new Paragraph({
-						style: "regular",
-						children: [
-							new TextRun(
-								`${data.cover_letter || "[Cover letter text]"}`
-							),
-						],
-					}),
-					new Paragraph({
-						style: "regular",
-						children: [new TextRun("Best Regards,")],
-					}),
-					new Paragraph({
-						style: "regular",
-						children: [new TextRun(userData.name || "[Your Name]")],
-					}),
+					...body
 				],
 			},
 		],

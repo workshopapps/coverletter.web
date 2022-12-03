@@ -19,287 +19,291 @@ import pricing from "../Assets/pricing.png";
 import arrow from "../Assets/arrow.png";
 import line from "../Assets/line.png";
 import upload from "../Assets/upload.png";
+//new
+import doc_banner_md from "../Assets/doc-banner-md.svg"
+import docimg1_md from "../Assets/docimg1-md.png"
+import docimg2_md from "../Assets/docimg2-md.png"
+import docimg3_md from "../Assets/docimg3-md.png"
+import docimg4_md from "../Assets/docimg4-md.png"
+import docimg5_md from "../Assets/docimg5-md.png"
+import docauth1_lg from "../Assets/docauth1-lg.png"
+import docauth2_lg from "../Assets/docauth2-lg.png"
+import docauth3_lg from "../Assets/docauth3-lg.png"
+import docex1_lg from "../Assets/docex1-lg.png"
+import docex2_lg from "../Assets/docex2-lg.png"
+import doc_banner_sm from "../Assets/doc-banner-sm.svg"
+import docimg1_sm from "../Assets/docimg1-sm.png"
+import docimg2_sm from "../Assets/docimg2-sm.png"
+import docimg3_sm from "../Assets/docimg3-sm.png"
+import docimg4_sm from "../Assets/docimg4-sm.png"
+import docimg5_sm from "../Assets/docimg5-sm.png"
+import docauth1_sm from "../Assets/docauth1-sm.png"
+import docauth2_sm from "../Assets/docauth2-sm.png"
+import docauth3_sm from "../Assets/docauth3-sm.png"
+import docex1_sm from "../Assets/docex1-sm.png"
+import docex2_sm from "../Assets/docex2-sm.png"
+
+
+const docCards = (props) => {
+	const { title, body, img, img2, numb } = props;
+	return (
+		<div className="flex flex-col-reverse gap-4 md:flex-row md:gap-16 items-center w-full max-sm:gap-8 px-6 md:px-16 lg:px-32">
+			<div className="flex-none">
+				<img
+					src={img}
+					alt=""
+					className="	md:max-w-[380px] lg:max-w-[500px] hidden md:block"
+				/>
+				<img
+					src={img2}
+					alt=""
+					className="	md:max-w-[380px] lg:max-w-[500px] block md:hidden"
+				/>
+			</div>
+			<div className="flex-auto">
+				<h2 className="text-[24px] md:text-[40px] font-semibold">{numb}</h2>
+				<h2 className="text-[#0652DD] text-[24px] md:text-[40px] font-semibold">
+					{title}
+				</h2>
+				<p className="">
+					{body}
+				</p>
+			</div>
+		</div>
+	);
+};
+// flex flex-col gap-4 md:flex-row md:gap-16 items-center w-full max-sm:gap-8
+const docCards2 = (props) => {
+	const { title, body, img, img2, numb } = props;
+
+	return (
+		<div className="flex flex-col gap-4 md:flex-row md:gap-16 items-center w-full max-sm:gap-8 px-6 md:px-16 lg:px-32">
+			<div className="flex-auto">
+				<h2 className="text-[24px] md:text-[40px] font-semibold">{numb}</h2>
+				<h2 className="text-[#0652DD] text-[24px] md:text-[40px] font-semibold">
+					{title}
+				</h2>
+				<p className="">
+					{body}
+				</p>
+			</div>
+			<div className="flex-none">
+				<img
+					src={img}
+					alt=""
+					className="md:max-w-[380px] lg:max-w-[500px] hidden md:block"
+				/>
+				<img
+					src={img2}
+					alt=""
+					className="	md:max-w-[380px] lg:max-w-[500px] block md:hidden"
+				/>
+			</div>
+		</div>
+	);
+};
+
+const docAuth = (props) => {
+	const { title, body, img, img2 } = props;
+
+	return (
+		<div className="flex flex-col gap-4 md:flex-row md:gap-16 items-center w-full max-sm:gap-8 px-6 md:px-16 lg:px-32">
+			<div className="flex-auto">
+				<h2 className="text-[#0652DD] text-[24px] md:text-[40px] font-semibold">
+					{title}
+				</h2>
+				<p className="">
+					{body}
+				</p>
+			</div>
+			<div className="flex-none">
+				<img
+					src={img}
+					alt=""
+					className="md:max-w-[380px] lg:max-w-[500px] hidden md:block"
+				/>
+				<img
+					src={img2}
+					alt=""
+					className="md:max-w-[380px] lg:max-w-[500px] block md:hidden"
+				/>
+			</div>
+		</div>
+	);
+};
+
+const docExFeat = (props) => {
+	const { body, img, img2 } = props;
+
+	return (
+		<div className="flex flex-row gap-4 md:flex-row md:gap-16 w-full max-sm:gap-8 px-6 md:px-16 lg:px-32">
+			<div className="flex-auto">
+				<p className="text-[16px] md:text-[40px] text-[#6D6D6D]">
+					{body}
+				</p>
+			</div>
+			<div className="flex-none">
+			<img
+					src={img}
+					alt=""
+					className="md:max-w-[380px] lg:max-w-[500px] hidden md:block"
+				/>
+				<img
+					src={img2}
+					alt=""
+					className="md:max-w-[380px] lg:max-w-[500px] block md:hidden"
+				/>
+			</div>
+		</div>
+	);
+};
+
 
 export default function Documentation() {
 	return (
 		<div>
-			<div className="pt-10 bg-background pb-20">
-				<Button className="btn btnLong btnPrimary  md:block ml-40 max-[650px]:btnLong max-[650px]:ml-28 max-[550px]:ml-16 max-[480px]:m-auto max-[457px]:btnShort max-[457px]:ml-32">
-					<p className="border-b-2">Step by step Guide</p>
-				</Button>
+			<div className="pt-0 bg-white pb-20">
 				<div>
-					<h1 className="text-5xl mt-12 text-center font-bold mb-12 max-[698px]:text-3xl max-[549px]:text-base max-[549px]:m-auto max-[457px]:pt-6">
-						Landing Page (Step 1)
-					</h1>
-					<div className="bg-primaryMain  mx-40 max-[457px]:mx-0">
-						<div className="grid grid-cols-2  pt-9 pb-28 px-20 max-[650px]:grid-cols-1  max-[650px]:px-10 max-[650px]:gap-4 max-[510px]-px-2 ">
-							<div>
-								<img
-									src={landingPage}
-									alt=""
-									className="w-50 max-[510px]-w-full"
-								/>
-							</div>
-							<div className=" m-auto">
-								<p className="text-textWhite font-bold leading-loose text-left ml-8 max-[549px]:text-sm max-[549px]:m-auto">
-									Welcome! Let's get you acquainted with the
-									Coverly Cover Letter Environment
-								</p>
-							</div>
-						</div>
+					<img
+						className="w-full h-[216px] lg:h-full object-cover hidden md:block"
+						src={doc_banner_md}
+						alt=""
+					/>
+					<img
+						className="w-full h-[216px] object-cover block md:hidden"
+						src={doc_banner_sm}
+						alt=""
+					/>
+				</div>
+				<div className="w-full">
+					<div className="flex flex-col gap-4 mx-w-8/12 justify-center items-center mt-12 p-4 text-center">
+						<h1 className="text-[24px] md:text-[40px] font-semibold">How it works</h1>
+						<p>Generating a cover letter with our simple interface following 4 steps</p>
 					</div>
 				</div>
-				<div>
-					<h1 className="text-5xl pt-12 text-center font-bold mb-4 max-[698px]:text-3xl max-[549px]:text-base max-[549px]:m-auto">
-						Upload CV(Step 2)
-					</h1>
-					<div>
-						<div className="bg-textWhite p-10 mx-40 max-[640px]:mx-10">
-							<img src={upload} alt="" className="m-auto " />
-						</div>
+				
+				<div className="mt-20">
+					<div className="flex flex-col gap-6 md:flex-row mb-20">
+						{docCards2({
+							numb: "1.",
+							title: "Upload CV/ Resume",
+							body: "Individuals who would like to change their resume into cover letter would use the upload page on the landing page",
+							img: docimg1_md,
+							img2: docimg1_sm
+						})}
 					</div>
-				</div>
-				<div>
-					<h1 className="text-5xl pt-20 pb-10 text-center font-bold mb-4 max-[698px]:text-3xl max-[549px]:text-base max-[549px]:m-auto ">
-						Personalize the Cover Letter(Step 3)
-					</h1>
-					<div className="grid grid-cols-2 bg-primaryLightest mx-40 max-[457px]:mx-10 mt-5 max-[685px]:grid-cols-1 max-[457px]:pb-10">
-						<div className="px-10 py-20 max-[682px]:py-4 max-[685px]:mt-8">
-							<img src={inputImage} alt="" className="w-50" />
-						</div>
-						<div className="m-auto">
-							<p className="font-bold leading-loose text-left m-auto max-[685px]:m-4 max-[549px]:text-sm max-[549px]:m-auto p-2">
-								Give us more relevant details by filling in all
-								questions on this page. it helps us accurately
-								generate Cover letter tailored to your job.
-							</p>
-						</div>
+					<div className="flex flex-col gap-6 md:flex-row mb-20">
+						{docCards({
+							numb: "2.",
+							title: "Personalize the cover letter",
+							body: "Give us more relevant details by filling  in all questions on this page. It helps us accurately generate a Cover Letter tailored to your job.",
+							img: docimg2_md,
+							img2: docimg2_sm
+						})}
 					</div>
-				</div>
-				<div className="bg-primaryLightest mt-40 mx-40 max-[457px]:mx-0 px-4 pb-4 max-[457px]:pb-10">
-					<h1 className="text-5xl pt-12 text-center font-bold mb-4 max-[698px]:text-2xl max-[889px]:text-2xl max-[549px]:text-base max-[549px]:m-auto">
-						Preview the Cover Letter(Step 4)
-					</h1>
-					<div className="grid grid-cols-2 max-[889px]:grid-cols-1 mx-40 mt-5 max-[1068px]:mx-10">
-						<div className="px-10 py-20 max-[889px]:py-10">
-							<img
-								src={previewImage}
-								alt=""
-								className=" max-[889px]:w-72  max-[910px]:w-full"
-							/>
-						</div>
-						<div className="m-auto">
-							<p className="font-bold leading-loose text-left m-auto max-[549px]:text-sm max-[549px]:m-auto">
-								Preview the Cover Letter generated before
-								downloading. if you want to make changes to the
-								cover letter, hit the back button at the
-								top-left part of the screen and edit. if not,
-								get ready for download, your are almost there!
-							</p>
-						</div>
+					<div className="flex flex-col gap-6 md:flex-row mb-20">
+						{docCards2({
+							numb: "3.",
+							title: "Preview the cover letter",
+							body: "Preview the Cover Letter generated before downloading. If you want to make changes to the Cover Letter, hit the back button at the top-left part of the screen and edit. If not, get ready for download , you are almost there!",
+							img: docimg3_md,
+							img2: docimg3_sm
+						})}
 					</div>
-				</div>
-				<div className="pb-40 max-[457px]:pb-4">
-					<h1 className="text-5xl pt-20 text-center font-bold max-[889px]:text-2xl max-[549px]:text-base max-[549px]:m-auto ">
-						Download the Cover Letter(Step 5)
-					</h1>
-					<div className="grid grid-cols-2 mt-20 mx-40 max-[889px]:grid-cols-1 max-[889px]:gap-4 max-[457px]:mx-10">
-						<div>
-							<img src={downloadImage} alt="" className="w-50 " />
-						</div>
-						<div className="m-auto">
-							<p className="font-bold leading-loose text-left ml-10 max-[549px]:text-sm max-[549px]:m-auto max-[870px]:m-auto">
-								Click the download button to start downloading
-								directly and save to PDF, DOCX OR Text format
-							</p>
-						</div>
+					<div className="flex flex-col gap-6 md:flex-row mb-20">
+						{docCards({
+							numb: "4.",
+							title: "Download cover letter",
+							body: "Click the download button to start downloading directly and save to PDF, DOCX, OR Text format",
+							img: docimg4_md,
+							img2: docimg4_sm
+						})}
 					</div>
-				</div>
-				<div className="bg-primaryLightest mx-40 max-[457px]:mx-0">
-					<h1 className="text-5xl pt-12 text-center font-bold pb-20 max-[698px]:text-2xl max-[889px]:pb-0 max-[889px]:text-2xl max-[549px]:text-base max-[549px]:m-auto max-[549px]:pb-0">
-						Save to profile(Step 6)
-					</h1>
-					<div className="grid grid-cols-2 py-32 max-[889px]:grid-cols-1 max-[549px]:py-8">
-						<div className="m-auto">
-							<p className="font-bold leading-loose text-left ml-10 max-[549px]:text-sm max-[549px]:m-auto p-2">
-								You can save the Cover letter to your Dashboard
-								by clicking on the save save button. For your
-								document, to save, you have to be a registered
-								user.
-							</p>
-						</div>
-						<div className="m-auto top-10">
-							<img
-								src={downloadSave}
-								alt=""
-								className="max-[889px]:w-28"
-							/>
-						</div>
+					<div className="flex flex-col gap-6 md:flex-row mb-20">
+						{docCards2({
+							numb: "5.",
+							title: "Save to Profile",
+							body: "You can save the Cover letter to your Dashboard by clicking on the Save to Profile button. For your document to Save, you have to be a registered user.",
+							img: docimg5_md,
+							img2: docimg5_sm
+						})}
 					</div>
 				</div>
 
-				<div className="pt-10 ">
-					<img src={arrow} alt="" className="w-10  m-auto" />
-				</div>
-
-				<div>
-					<h1 className="text-4xl pt-12 text-center font-bold mb-4 max-[698px]:text-2xl">
+				<div className="bg-[#F2F2F7]">
+					<h1 className="text-2xl md:text-4xl pt-12 text-center font-bold mb-4">
 						AUTHENTICATION PROCESS
 					</h1>
-					<div className="bg-grey200 mx-10 max-[457px]:mx-0 max-[889px]:py-1">
-						<div className="grid grid-cols-2 my-20 pb-20  max-[457px]:pb-0 max-[889px]:grid-cols-1">
-							<div className="mt-20 max-[889px]:px-4 max-[889px]:mt-0">
-								<p className="text-primaryMain text-left mx-10  max-[549px]:text-base max-[549px]:m-auto">
-									Step 1: Create a New Account
-								</p>
-								<p className="font-bold leading-loose text-left ml-10  max-[549px]:text-sm max-[549px]:m-auto">
-									Click on the Register button to create an
-									account.
-								</p>
-								<p className="font-bold leading-loose text-left ml-10  max-[549px]:text-sm max-[549px]:m-auto">
-									Fill in your name and email address and
-									Create a new Password.
-								</p>
-								<p className="font-bold leading-loose text-left ml-10  max-[549px]:text-sm max-[549px]:m-auto">
-									Create your password with a combination of
-									letters, numbers, and symbols to make a
-									strong password. Click on the Signup button
-									to continue.
-								</p>
-							</div>
-							<div>
-								<img
-									src={createAccount}
-									alt=""
-									className=" max-[457px]:pt-2 max-[457px]:w-full max-[457px]:mt-4 w-2/4 pt-20 m-auto"
-								/>
-							</div>
+					<div className="py-16">
+						<div className="flex flex-col gap-6 md:flex-row mb-20">
+							{docAuth({
+								title: "Step 1: Create a New Account",
+								body: "Click on the Register button to create an account. Fill in your name, and email address and Create a New Password. Create your password with a combination of letters, numbers, and symbols to make a strong password. Click on the Signup button to continue.",
+								img: docauth1_lg,
+								img2: docauth1_sm
+							})}
 						</div>
-						<div className="grid grid-cols-2 max-[889px]:grid-cols-1 max-[889px]:gap-4">
-							<div className="m-auto ">
-								<p className="text-primaryMain text-left mx-10 max-[549px]:text-base max-[549px]:m-auto p-2">
-									Step 2: Verification
-								</p>
-								<p className="font-bold leading-loose text-left ml-10 max-[549px]:text-sm max-[549px]:m-auto p-2">
-									After creating your account, a verification
-									code will be sent to the provided Email
-									address. inpu the code and click on the
-									verify button ti continue.
-								</p>
-							</div>
-							<div className="max-[889px]:text-center">
-								<img
-									src={emailVerification}
-									alt=""
-									className="w-2/3 my-4  max-[889px]:w-2/3  max-[889px]:m-auto max-[889px]:pb-2"
-								/>
-
-								<img
-									src={verification}
-									alt=""
-									className="w-2/3 my-4 max-[889px]:w-2/3  max-[889px]:m-auto max-[889px]:pb-2"
-								/>
-
-								<img
-									src={confirm}
-									alt=""
-									className="w-2/3 my-4 max-[889px]:w-2/3  max-[889px]:m-auto max-[889px]:pb-2"
-								/>
-							</div>
+						<div className="flex flex-col gap-6 md:flex-row mb-20">
+							{docAuth({
+								title: "Step 2: Verification",
+								body: "After creating your account, a verification code will be sent to the provided Email address. Input the code and click on the verify button to continue",
+								img: docauth2_lg,
+								img2: docauth2_sm
+							})}
 						</div>
-						<div className="m-auto p-20 max-[889px]:p-10">
-							<div className="grid grid-cols-2 gap-20 max-[889px]:gap-10 max-[520px]:grid-cols-1">
-								<div>
-									<img src={inactive} alt="" />
+						<div className="flex flex-col gap-4 md:flex-row md:gap-16 items-center w-full max-sm:gap-8 px-6 md:px-16 lg:px-32">
+							<div className="flex-auto py-16">
+								<div className="mb-10">
+									<h2 className="text-[#0652DD] text-[24px] md:text-[40px] font-semibold">
+										Step 3: Log-in
+									</h2>
+									<p className="">
+										After successful verification, you will be redirected to the login page. Log into your account with your email address and generated password. Click on the log-in button.
+									</p>
 								</div>
-								<div>
-									<img src={register} alt="" />
-								</div>
-								<div>
-									<img src={loading} alt="" />
-								</div>
-								<div>
-									<img src={success} alt="" />
+								<div className="pt-5">
+									<h2 className="text-[#0652DD] text-[24px] md:text-[40px] font-semibold">
+										Step 4: Home Page
+									</h2>
+									<p className="">
+										After successful Sign-in your dashboard is opened.
+									</p>
 								</div>
 							</div>
-						</div>
-						<div className="grid grid-cols-2 p-20 max-[910px]:grid-cols-1 max-[457px]:p-4 max-[457px]:pt-10">
-							<div className="m-auto">
-								<p className="text-primaryMain text-left mx-10  max-[549px]:text-base max-[549px]:m-auto ">
-									Step 3: Log-in
-								</p>
-								<p className="font-bold leading-loose text-left ml-10  max-[549px]:text-sm max-[549px]:m-auto">
-									After successful verification, you will be
-									redirected to the login page. Log into your
-									account with your email address and
-									generated password. Click on the log-in
-									button
-								</p>
-								<p className="text-primaryMain text-left mx-10  max-[549px]:text-base max-[549px]:m-auto">
-									Step 4: Home page
-								</p>
-								<p className="font-bold leading-loose text-left ml-10  max-[549px]:text-base max-[549px]:m-auto ">
-									After successful Sign-in, your dashboard is
-									opened.{" "}
-								</p>
-							</div>
-							<div>
+							<div className="flex-none">
 								<img
-									src={login}
+									src={docauth3_lg}
 									alt=""
-									className="w-2/3 m-auto pt-20 max-[889px]:w-full max-[457px]:pt-4"
+									className="md:max-w-[380px] lg:max-w-[500px] hidden md:block"
+								/>
+								<img
+									src={docauth3_sm}
+									alt=""
+									className="md:max-w-[380px] lg:max-w-[500px] block md:hidden"
 								/>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div className="pt-20">
-					<div className="max-[889px]">
-						<Button className="btn mb-4 btnLong btnPrimary  md:block ml-10 max-[889px]:my-10 max-[889px]:text-center max-[457px]:btnShort max-[457px]:ml-32">
-							<p className="border-b-2 ">Extra Features</p>
-						</Button>
-					</div>
-					<div className="bg-primaryLightest p-10 mx-40 max-[457px]:mx-0">
-						<h1 className="text-3xl pt-20 text-lef font-bold max-[698px]:text-2xl max-[680px]:pt-4 max-[549px]:text-base">
-							Get accessible features when you sign up to our
-						</h1>
-						<div className="flex relative">
-							<h1 className="text-3xl pt-10  text-left font-bold max-[698px]:text-2xl max-[549px]:text-base">
-								PRICING PACKAGE
-							</h1>
-							<img
-								src={line}
-								alt=""
-								className="absolute left-64 top-16 max-[1300px]:hidden "
-							/>
+				<div className="pt-20 bg-[#CDDCF8]">
+					<h1 className="text-2xl md:text-4xl text-center font-bold mb-4">
+						Extra Features
+					</h1>
+					<div className="py-16">
+						<div className="flex flex-col gap-6 md:flex-row mb-20">
+							{docExFeat({
+								body: "Get  accessible features when you sign up to our PRICING PACKAGE",
+								img: docex1_lg,
+								img2: docex1_sm
+							})}
 						</div>
-
-						<div className="text-center pt-64 max-[1300px]:pt-10 ">
-							<img
-								src={pricing}
-								alt=""
-								className="w-2/4 m-auto  max-[889px]:pb-10 max-[596px]:p-2 max-[596px]:w-full"
-							/>
-						</div>
-					</div>
-				</div>
-				<div className="bg-primaryLightest pb-10  max-[889px]:px-10 mx-40 max-[889px]:p-0 max-[680px]:mt-4 max-[457px]:mx-0 max-[889px]:py-10">
-					<div className="grid grid-cols-2 max-[889px]:grid-cols-1 max-[889px]:gap-4">
-						<div className=" pt-4  [889px]:px-10  [889px]:pt-10 max-[596px]:pt-2 max-[680px]:p-2">
-							<img
-								src={history}
-								alt=""
-								className=" w-2/3 ml-20 max-[596px]:w-full max-[695px]:m-auto"
-							/>
-						</div>
-
-						<div className="m-auto text-left leading-loose font-bold max-[549px]:text-sm">
-							<p>
-								The History Feature is available for you so you
-								can have your experience journey documented and
-								pick up where you stopped
-							</p>
+						<div className="flex flex-col gap-6 md:flex-row mb-20">
+							{docExFeat({
+								body: "The History Feature is  available for  you so you can have  your  experience  journey documented  and pick up where you stopped.",
+								img: docex2_lg,
+								img2: docex2_sm
+							})}
 						</div>
 					</div>
 				</div>

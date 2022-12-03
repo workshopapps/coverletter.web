@@ -139,7 +139,7 @@ const Header = () => {
 
 	const UserMenu = () => {
 		return (
-			<aside className="w-[234px] h-[max-content] border border-searchbd bg-textWhite absolute top-[98px] right-16 max-[768px]:right-4 z-20 rounded-sm">
+			<aside className="w-[234px] h-[max-content] border border-searchbd bg-textWhite absolute top-[98px] right-6 max-[768px]:right-4 z-20 rounded-sm">
 				<div className=" h-full flex flex-col gap-3">
 					<ul className="flex items-center justify-center">
 						{historyElements.map((item) => (

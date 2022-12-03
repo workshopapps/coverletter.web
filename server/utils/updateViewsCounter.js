@@ -2,15 +2,41 @@ const Views = require("../models/Views");
 const Post = require("../models/Posts");
 
 const createView = async (postId, userId) => {
-	const viewedAlready = await Views.findOne({ userId: userId });
+	const viewedAlready = await Views.findOne({
+		userId: userId
+	});
 
 	if (viewedAlready) {
 		return null;
 	}
 
-	return await Views.create({ postId: postId, userId: userId });
+	return await Views.create({
+		postId: postId,
+		userId: userId
+	});
 };
 
+const getAllViews = async (postId) => {
+	return await Views.find({
+		postId: postId
+	});
+};
 
-
-module.exports = {createView}
+const updatePostsViewsCounter = async (postId) => {
+	const getAll = await getAllViews(postId);
+	const length = getAll.length;
+	return await Post.findOneAndUpdate(
+		postId, {
+			$set: {
+				viewCounter: length
+			}
+		}, {
+			new: true,
+			runValidators: true
+		}
+	);
+};
+module.exports = {
+	createView,
+	updatePostsViewsCounter
+};
