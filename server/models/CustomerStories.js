@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 const CustomerStoriesSchema = new Schema(
 	{
 		adminId: {
-			type: String,
+			type: Schema.Types.ObjectId,
 			required: true,
 		},
 		userId: {
-			type: String,
+			type: Schema.Types.ObjectId,
 			required: true,
 		},
 		title: {
