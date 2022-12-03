@@ -3,12 +3,11 @@ const Admin = require("../models/Admin");
 const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
 const hashPassword = require("../utils/hashPassword");
-const { BadRequestError,UnauthenticatedError } = require("../errors");
+const { BadRequestError, UnauthenticatedError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
-const jwt = require("jsonwebtoken");
 
 const createAdmin = async (req, res) => {
-	const { email, name, password, adminCode, role } = req.body;
+	const { email, name, password, adminCode } = req.body;
 
 	const isEmailUsed = await Admin.findOne({ email });
 
@@ -21,7 +20,6 @@ const createAdmin = async (req, res) => {
 		email,
 		password,
 		confirmationCode,
-		role,
 	});
 	if (adminCode === process.env.ADMIN_CODE) {
 		admin.isAdmin = true;
@@ -66,30 +64,28 @@ const verifyAdmin = async (req, res) => {
 	}
 };
 
+const deleteAdmin = async (req, res) => {
+	const admin = await Admin.findById(req.params.id);
 
-const deleteAdmin = async (req,res) => {
-	
-	const admin = await Admin.findById(req.params.id)
-   
-	if(!admin) {
-	   throw new BadRequestError(`user does not exist`)
-   }
-   
-   if(req.user.role !== "Lead-admin" && admin._id != req.user.userId) {
-	   throw new UnauthenticatedError(`you are not authorized to carry out this operation`)
-   }
+	if (!admin) {
+		throw new BadRequestError(`user does not exist`);
+	}
 
-   await Admin.findByIdAndDelete(req.params.id)
-   return res.status(StatusCodes.OK).json({
-	   success: true,
-	   data: {}
-	 });
+	if (admin._id != req.user.userId) {
+		throw new UnauthenticatedError(
+			`you are not authorized to carry out this operation`
+		);
+	}
 
-
-}
+	await Admin.findByIdAndDelete(req.params.id);
+	return res.status(StatusCodes.OK).json({
+		success: true,
+		data: {},
+	});
+};
 
 module.exports = {
 	createAdmin,
 	verifyAdmin,
-	deleteAdmin
+	deleteAdmin,
 };
