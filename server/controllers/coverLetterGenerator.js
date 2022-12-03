@@ -1,5 +1,9 @@
-const { generator } = require("../utils/gpt3.generate");
-const { StatusCodes } = require("http-status-codes");
+const {
+	generator
+} = require("../utils/gpt3.generate");
+const {
+	StatusCodes
+} = require("http-status-codes");
 
 const sendCoverLetter = async (req, res) => {
 	const {
@@ -23,6 +27,11 @@ const sendCoverLetter = async (req, res) => {
 		recipient_name,
 		recipient_department
 	);
+	if (!coverLetter) {
+		return res.status(StatusCodes.BAD_REQUEST).json({
+			message: 'Max resume text content, Upload summarized resume!'
+		})
+	}
 	const response = {
 		status: "success",
 		data: {
@@ -42,4 +51,6 @@ const sendCoverLetter = async (req, res) => {
 	return res.status(StatusCodes.CREATED).json(response);
 };
 
-module.exports = { sendCoverLetter };
+module.exports = {
+	sendCoverLetter
+};
