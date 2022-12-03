@@ -4,7 +4,7 @@ function SectionFive() {
 	return (
 		<div className="border border-[transparent]">
 			<div className="ads my-20 bg-primaryDeep px-[13%] md:rounded-lg  lg:mx-[96px] flex flex-col py-9 justify-center items-center lw:w-[1250px] lw:ml-auto lw:mr-auto  ">
-				<p className="text-grey100 text-[16px] lw:text-[40px] mb-4 md:mb-5">
+				<p className="text-grey100 text-[16px] md:text-[40px] mb-4 md:mb-5">
 					Try it out !
 				</p>
 				<h1 className="text-[32px] text-center leading-[50px] md:leading-[70px] text-textWhite md:text-[56px] mb-4 md:mb-5  font-bold ">
