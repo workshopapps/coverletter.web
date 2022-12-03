@@ -13,7 +13,6 @@ const {
 	getUserDetails,
 	validateOTP,
 	resetPassword,
-	googleLogin,
 	googleSuccess,
 } = require("../controllers/authController");
 
@@ -36,8 +35,8 @@ router.get(
 	"/google/callback",
 	passport.authenticate("google", {
 		failureRedirect: "https://coverly.hng.tech/signup",
-	}),
-	googleLogin
+		successRedirect: "https://coverly.hng.tech/",
+	})
 );
 router.get("/success", googleSuccess);
 

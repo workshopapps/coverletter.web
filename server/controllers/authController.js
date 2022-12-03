@@ -277,23 +277,20 @@ const getUserDetails = async (req, res) => {
 	const user = await User.findOne({ email });
 	return res.status(StatusCodes.OK).send(user);
 };
-var googleUser;
-var token;
-const googleLogin = (req, res) => {
-	googleUser = req.user;
-	token = jwt.sign(
-		{
-			googleID: googleUser._id,
-			name: googleUser.name,
-			email: googleUser.email,
-		},
-		process.env.JWT_SECRET,
-		{ expiresIn: "2h" }
-	);
-	res.redirect("/api/v1/auth/success");
-};
+
 const googleSuccess = (req, res) => {
-	return res.status(200).json({ status: "Success", user: googleUser, token });
+	const user = req.user;
+	const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+		expiresIn: "2h",
+	});
+	if (req.user) {
+		res.status(200).json({
+			success: true,
+			message: "successfull",
+			user: req.user,
+			token: token,
+		});
+	}
 };
 module.exports = {
 	register,
@@ -306,6 +303,5 @@ module.exports = {
 	resetPassword,
 	validateOTP,
 	getUserDetails,
-	googleLogin,
 	googleSuccess,
 };
