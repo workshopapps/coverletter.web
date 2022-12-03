@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Logo from "../Assets/coverly.svg";
 import Hamburger from "../Assets/menu.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import Close from "../Assets/close-circle.svg";
 import Button from "../Components/Ui/Button";
 import navLinkElements from "../Constants/navLinkElements";
@@ -127,6 +127,7 @@ const Header = () => {
 							// 	setToggleMenu(false);
 							// }}
 							className="btn btnShort btnSecondary block md:hidden w-full my-4"
+							onClick={reHistory}
 						>
 							History
 						</Button>
@@ -135,6 +136,11 @@ const Header = () => {
 				)}
 			</aside>
 		);
+	};
+
+	const navigate = useNavigate();
+	const reHistory = () => {
+		navigate("/history");
 	};
 
 	const UserMenu = () => {
@@ -203,6 +209,7 @@ const Header = () => {
 								// 	setToggleUserMenu((prev) => !prev)
 								// }
 								className="btn btnShort btnSecondary hidden md:block"
+								onClick={reHistory}
 							>
 								History
 							</Button>
