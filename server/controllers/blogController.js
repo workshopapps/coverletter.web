@@ -36,18 +36,19 @@ const deleteABlogPost = async (req, res) => {
 		);
 	}
 
+	const blog = await Blog.findById(blogId);
+
 	if (!mongoose.Types.ObjectId.isValid(blogId) || !blog)
 		throw new BadRequestError(
 			`Invalid Blog ID request or Blog  with id ${blogId} does not exist.`
 		);
-
-	const blog = await Blog.findById(blogId);
 
 	await Blog.findByIdAndDelete(blogId);
 	return res.status(StatusCodes.OK).json({
 		message: `Blog with id ${blogId} was deleted successfully.`,
 	});
 };
+
 const searchPost = async (req, res) => {
 	const { query } = req.query;
 	if (!query) {
@@ -65,6 +66,25 @@ const searchPost = async (req, res) => {
 		.json({ message: "Blog found successfully.", query, posts });
 };
 
+const getABlogPost = async (req, res) => {
+	const { blogId } = req.params;
+
+	if (!mongoose.Types.ObjectId.isValid(blogId)) {
+		throw new BadRequestError(`Invalid Blog ID request.`);
+	}
+
+	if (!blog) {
+		throw new BadRequestError(`Blog with id ${blogId} does not exist.`);
+	}
+
+	const blog = await Blog.findById(blogId);
+
+	return res.status(StatusCodes.OK).json({
+		message: "Blog request was successfully.",
+		data: blog,
+	});
+}
+
 const updatePost = async (req, res, next) => {
 	const { title, content } = req.body;
 	//1) Get Admin from params and update
@@ -81,6 +101,7 @@ const updatePost = async (req, res, next) => {
 
 module.exports = {
 	createPost,
+	getABlogPost,
 	deleteABlogPost,
 	searchPost,
 	updatePost,
