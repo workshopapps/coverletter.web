@@ -86,14 +86,14 @@ function SectionFour() {
 						<span className="text-[14px] ">Demi-god of HNG</span>
 					</div>
 				</div>
-				<div className="a flex justify-center">
+				<div className="a flex gap-[20px] justify-center">
 					<button
 						onClick={handler}
 						className="hover:bg-primaryLight px-9 py-3 mt-[85px] text-[14px] flex items-center justify-center w-[85%] lg:w-[30%] text-primaryMain border-[1.5px] border-solid border-blue-700 font-semibold rounded-lg lw:w-[294px] mb-[50px]"
 					>
 						<span>Read Full Customer Stories</span>
 						<img
-							className="h-[16px] w-[16px ml-[8px]"
+							className="h-[16px] w-[16px ml-[20px]"
 							src={arrow}
 							alt=""
 						/>
