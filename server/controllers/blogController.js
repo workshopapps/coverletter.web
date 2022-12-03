@@ -107,7 +107,7 @@ const getAllPosts = async (req, res) => {
 			.status(200)
 			.json({ message: "Successfully retrieved.", posts: result });
 	} else {
-		throw new BadRequestError("Post not found");
+		return res.status(404).json({ message: "Post not found" });
 	}
 };
 
