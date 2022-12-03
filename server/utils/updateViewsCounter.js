@@ -1,5 +1,5 @@
 const Views = require("../models/Views");
-const Post = require("../models/Posts");
+const Post = require("../models/ForumPost");
 
 const createView = async (postId, userId) => {
 	const viewedAlready = await Views.findOne({
