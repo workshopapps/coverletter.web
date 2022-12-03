@@ -1,4 +1,5 @@
 const Admin = require("../models/Admin");
+const User = require("../models/User");
 const CustomerStories = require("../models/CustomerStories");
 const mongoose = require("mongoose");
 const { StatusCodes } = require("http-status-codes");
@@ -7,8 +8,7 @@ const { BadRequestError } = require("../errors");
 const createStory = async (req, res) => {
 	const {
 		adminId,
-		fullName,
-		job,
+		userId,
 		title,
 		subTitle,
 		introduction,
@@ -18,8 +18,7 @@ const createStory = async (req, res) => {
 	} = req.body;
 	if (
 		!adminId ||
-		!fullName ||
-		!job ||
+		!userId ||
 		!title ||
 		!subTitle ||
 		!introduction ||
@@ -38,9 +37,18 @@ const createStory = async (req, res) => {
 			"This adminId is not valid or the admin does not exist in our database."
 		);
 	}
+
+	const user = await User.findOne({
+		id: adminId,
+	});
+	if (!mongoose.Types.ObjectId.isValid(userId) || !user) {
+		throw new BadRequestError(
+			"This userId is not valid or the admin does not exist in our database."
+		);
+	}
 	const story = new CustomerStories({
-		fullName,
-		job,
+		adminId,
+		userId,
 		title,
 		subTitle,
 		introduction,

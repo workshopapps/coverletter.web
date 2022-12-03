@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const CustomerStoriesSchema = new Schema(
 	{
+		adminId: {
+			type: String,
+			required: true,
+		},
+		userId: {
+			type: String,
+			required: true,
+		},
 		title: {
 			type: String,
 			required: true,
 		},
 		subTitle: {
-			type: String,
-			required: true,
-		},
-		fullName: {
-			type: String,
-			required: true,
-		},
-		job: {
 			type: String,
 			required: true,
 		},
