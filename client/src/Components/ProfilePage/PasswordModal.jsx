@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useState } from "react";
+import { useGlobalContext } from "../../context/context.jsx";
 import { PasswordLockIcon } from "./Icons.js";
 
 function PasswordModal({ setShowPassModal, setShowSuccess }) {
@@ -15,6 +16,10 @@ function PasswordModal({ setShowPassModal, setShowSuccess }) {
 		newPass: "",
 		confirmPass: "",
 	});
+
+	const { user } = useGlobalContext();
+
+	console.log(user);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -58,11 +63,15 @@ function PasswordModal({ setShowPassModal, setShowSuccess }) {
 			// TODO: Handle the change in password submit event here
 			try {
 				const baseUrl = "https://api.coverly.hng.tech";
-				await axios.put(`${baseUrl}/api/v1/auth/updatePassword`, {
-					oldPassword,
-					password: newPassword,
-					confirmPassword: confirmNewPassword,
-				});
+				await axios.put(
+					`${baseUrl}/api/v1/auth/updatePassword`,
+					{
+						oldPassword,
+						password: newPassword,
+						confirmPassword: confirmNewPassword,
+					},
+					{ headers: { authorization: `Bearer ${user?.token}` } }
+				);
 				setLoading(false);
 				setShowSuccess(true);
 				setShowPassModal(false);
