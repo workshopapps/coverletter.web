@@ -9,7 +9,7 @@ const replyPost = async (req, res) => {
 	try {
         const userId = req.params.userId
         const postId = req.params.postId
-        const user = await User.find({_id : userId})
+        const user = await User.findByIdAndUpdate({_id : userId})
         
         if(user) 
         {
@@ -44,7 +44,7 @@ const getAllreplies = async (req, res) => {
 	try {
         const id =  req.params.postId
         const postId =  mongoose.Types.ObjectId.isValid(id)
-		const getReply = await Blog.find({_id : postId});
+		const getReply = await Blog.findById({_id : postId});
 		if (!getReply) {
             throw new NotFoundError(
 				res.json({
