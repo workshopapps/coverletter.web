@@ -16,6 +16,6 @@ router.get("/blogs/:blogId", getABlogPost);
 router.get("/blog/", getAllPosts);
 router.post("/admin/blog/", createPost);
 router.delete("/admin/blog/:blogId", auth, deleteABlogPost);
-router.patch("/blog/:id", updatePost);
+router.put("/blog/:id", updatePost);
 
 module.exports = router;
