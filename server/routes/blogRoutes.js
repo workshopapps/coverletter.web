@@ -15,8 +15,8 @@ const auth = require("../middleware/authentication");
 router.get("/blogs/search", searchPost);
 router.get("/blogs/:blogId", getABlogPost);
 router.get("/blog/", getAllPosts);
-router.post("/admin/blog/", auth,createPost);
+router.post("/admin/blog/", auth, createPost);
 router.delete("/admin/blog/:blogId", auth, deleteABlogPost);
-router.patch("/blog/:id", updatePost);
+router.patch("/blog/:id", auth, updatePost);
 
 module.exports = router;
