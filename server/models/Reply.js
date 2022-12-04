@@ -1,14 +1,14 @@
-const { model, Schema } = require("mongoose");
+const { model, Schema, Types } = require("mongoose");
 
 const replySchema = new Schema(
 	{
 		commentId: {
-			type: mongoose.Types.ObjectId,
+			type: Types.ObjectId,
 			ref: "Comment",
 			required: [true, "Please provide a Comment Id"],
 		},
 		userId: {
-			type: mongoose.Types.ObjectId,
+			type: Types.ObjectId,
 			ref: "User",
 			required: [true, "Please provide user"],
 		},
@@ -17,4 +17,4 @@ const replySchema = new Schema(
 	{ timestamps: true }
 );
 
-module.exports = new model("Reply", replySchema);
+module.exports = new model("ReplyToBlog", replySchema);
