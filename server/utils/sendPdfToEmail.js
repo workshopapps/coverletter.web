@@ -37,7 +37,7 @@ module.exports = async (email, subject, fileName) => {
 			attachments: [
 				{
 					filename: fileName,
-					path: __dirname`${fileName}`,
+					path: __dirname+`${fileName}`,
 					cid: "uniq-mailtrap.png",
 				},
 				{
