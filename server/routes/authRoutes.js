@@ -46,7 +46,7 @@ router.get("/success", googleSuccess);
 
 // All After login routes goes below PROTECT ROUTE
 // router.use(protect);
-router.post("/resetPassword", resetPassword);
+router.post("/resetPassword", auth, resetPassword);
 router.put("/updatePassword", auth, updatePassword);
 // router.post('/resetPassword', resetPassword)
 
