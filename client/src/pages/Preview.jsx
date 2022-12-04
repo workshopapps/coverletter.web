@@ -206,7 +206,13 @@ const Preview = () => {
 			try {
 				const resp = await axios.post(
 					`https://api.coverly.hng.tech/api/v1/saveCoverletter`,
-					info
+
+					info,
+					{
+						headers: {
+							Authorization: `Bearer ${user.token}`,
+						},
+					}
 				);
 
 				toast.success(`saved successfully`);
