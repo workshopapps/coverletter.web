@@ -11,11 +11,11 @@ import Input from "../Components/Ui/Input";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "../context/context";
 import { addEmailToLocalStorage } from "../Utils/localStorage";
-
 import axios from "axios";
 import GoogleAuth from "../Layouts/GoogleAuth";
+
 const CreateAcount = () => {
-	const { setUserEmail, userEmail } = useGlobalContext();
+	const { setUserEmail, userEmail, googleSignIn } = useGlobalContext();
 	const navigate = useNavigate();
 	const [show, setShow] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);

@@ -1,13 +1,65 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CVUpload, ArrowLeft } from "../Components/ProfilePage/Icons";
-import Uploading from "../Components/uploading/Uploading";
-import { useGlobalContext } from "../context/context";
-import Upload from "../Components/upload/Upload";
+// import { useGlobalContext } from "../context/context";
 
 function UploadCV() {
 	const navigate = useNavigate();
-	const { fileSize } = useGlobalContext();
+	// const { user, setUser } = useGlobalContext();
+
+	const [googleUser, setGoogleUser] = useState(null);
+
+	useEffect(() => {
+		const getUser = async () => {
+			try {
+				const response = await axios.get(
+					`https://api.coverly.hng.tech/api/v1/auth/success`,
+					{
+						credentials: "include",
+						headers: {
+							Accept: "application/json",
+							"Content-Type": "application/json",
+							"Access-Control-Allow-Credentials": true,
+						},
+					}
+				);
+				const resp = response.data;
+				if (resp.status === 200) return response.json();
+				console.log(resp);
+				setGoogleUser();
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		getUser();
+		// const getUser = () => {
+		// 	fetch(`https://api.coverly.hng.tech/api/v1/auth/success`, {
+		// 		method: "GET",
+		// 		credentials: "include",
+		// 		headers: {
+		// 			Accept: "application/json",
+		// 			"Content-Type": "application/json",
+		// 			"Access-Control-Allow-Credentials": true,
+		// 		},
+		// 	})
+		// 		.then((response) => {
+		// 			console.log(response);
+		// 			if (response.status === 200) return response.json();
+		// 			throw new Error("authentication has been failed!");
+		// 		})
+		// 		.then((resObject) => {
+		// 			console.log(resObject.user);
+		// 			setUser(resObject.user);
+		// 		})
+		// 		.catch((err) => {
+		// 			console.log(err);
+		// 		});
+		// };
+		// getUser();
+	}, []);
+
+	// console.log(user);
 
 	return (
 		<div className="bg-[#03296f11] py-8">
@@ -40,7 +92,7 @@ function UploadCV() {
 						</div>
 					</div>
 
-					{/* <div className="w-full md:w-7/12 border-2 border-dashed py-[5em] rounded-xl">
+					<div className="w-full md:w-7/12 border-2 border-dashed py-[5em] rounded-xl">
 						<label
 							htmlFor="fileUpload"
 							className="items-center flex flex-col gap-4 py-8"
@@ -62,22 +114,6 @@ function UploadCV() {
 								className="hidden"
 							/>
 						</label>
-					</div> */}
-
-					<div
-						className={`right lg:w-[540px] lw:w-[640px] h-[443px] w-[100%] border-2 flex flex-col px-[8px] justify-center items-center lg:ml-[3.5em] ${
-							fileSize > 5000000
-								? "border-[#e42424]"
-								: "border-[gray]"
-						}  border-dashed rounded-lg `}
-					>
-						<div className="uploadContainer relative flex flex-col items-center justify-center lg:px-[2vh] lg:py-[15vh] py-[15vh]">
-							{fileSize < 5000000 && fileSize > 0 ? (
-								<Uploading />
-							) : (
-								<Upload />
-							)}
-						</div>
 					</div>
 				</div>
 			</div>
