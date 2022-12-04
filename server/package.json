@@ -10,13 +10,9 @@
   "author": "Team Chisel",
   "license": "ISC",
   "dependencies": {
-    "@admin-bro/express": "^3.1.0",
-    "@adminjs/express": "^5.0.1",
-    "@adminjs/mongoose": "^3.0.1",
     "admin-bro": "^4.0.1",
     "admin-bro-expressjs": "^2.1.1",
     "admin-bro-mongoose": "^0.5.2",
-    "adminjs": "^6.7.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.5.0",
     "connect-mongo": "^4.6.0",
