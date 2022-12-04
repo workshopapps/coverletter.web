@@ -39,7 +39,7 @@ const CreateAcount = () => {
 			setUserEmail({ email: values.email });
 			addEmailToLocalStorage({ email: values.email });
 		} catch (err) {
-			toast.error(err.response.data.msg);
+			toast.error("Email already in use");
 			return;
 		}
 		await new Promise((resolve) => setTimeout(resolve, 20000));
