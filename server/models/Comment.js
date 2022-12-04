@@ -1,20 +1,20 @@
-const { model, Schema } = require("mongoose");
+const { model, Schema, Types } = require("mongoose");
 
 const commentsSchema = new Schema(
 	{
 		blogId: {
-			type: mongoose.Types.ObjectId,
+			type: Types.ObjectId,
 			ref: "Blog",
 			required: [true, "Please provide a Blog Id"],
 		},
 		userId: {
-			type: mongoose.Types.ObjectId,
+			type: Types.ObjectId,
 			ref: "User",
 			required: [true, "Please provide user"],
 		},
 		replies: [
 			{
-				type: mongoose.Types.ObjectId,
+				type: Types.ObjectId,
 				ref: "Reply",
 			},
 		],
