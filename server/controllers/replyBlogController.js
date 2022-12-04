@@ -24,18 +24,17 @@ const replyPost = async (req, res) => {
 
 const getAllreplies = async (req, res) => {
 	try {
-		const id = req.params.postId;
-		const postId = mongoose.Types.ObjectId.isValid(id);
+		const postId = req.params.postId
 		const getReply = await Blog.findById({ _id: postId });
-		const allReplies = getReply.replies;
-		if (!allReplies) {
+		const replies = getReply.replies
+		if (!replies) {
 			throw new NotFoundError(
 				res.json({
 					message: "Sorry we can't find any replies for this post",
 				})
 			);
 		} else {
-			return res.status(200).json({ allReplies });
+			return res.status(200).json({ replies });
 		}
 	} catch (error) {
 		res.status(500).json({ msg: error.message });
