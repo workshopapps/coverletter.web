@@ -15,6 +15,7 @@
     "@adminjs/mongoose": "^3.0.1",
     "admin-bro": "^4.0.1",
     "admin-bro-expressjs": "^2.1.1",
+    "admin-bro-mongoose": "^0.5.2",
     "adminjs": "^6.7.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.5.0",
@@ -48,6 +49,7 @@
     "pdfkit": "^0.13.0",
     "swagger-jsdoc": "^6.2.5",
     "swagger-ui-express": "^4.6.0",
+    "uninstall": "^0.0.0",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
