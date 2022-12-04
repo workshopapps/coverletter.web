@@ -33,15 +33,20 @@ const Login = () => {
 				`https://api.coverly.hng.tech/api/v1/auth/login`,
 				values
 			);
-			const UserDetails = await axios.post(
-				`https://api.coverly.hng.tech/api/v1/auth/dashboard`,
-				values
+
+			const UserDetails = await axios.get(
+				`https://api.coverly.hng.tech/api/v1/auth/dashboard/${resp.data.user}`,
+				{
+					headers: {
+						Authorization: `Bearer ${resp.data.token}`,
+					},
+				}
 			);
 
 			const user = {
 				name: UserDetails.data.name,
 				email: UserDetails.data.email,
-				userId: UserDetails.data._id,
+				userId: resp.data.user,
 				token: resp.data.token,
 			};
 			addUserToLocalStorage(user);
@@ -49,7 +54,7 @@ const Login = () => {
 			toast.success(`Welcome Back ${UserDetails.data.name}`);
 			navigate("/");
 		} catch (err) {
-			toast.error(err.response.data.msg);
+			toast.error("invalid email or password");
 			return;
 		}
 

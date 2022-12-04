@@ -1,30 +1,18 @@
 const User = require("../models/User");
-const Admin = require('../models/Admin')
-const {
-	StatusCodes
-} = require("http-status-codes");
-const {
-	generateOTP
-} = require("../utils/generateOTP");
+const Admin = require("../models/Admin");
+const { StatusCodes } = require("http-status-codes");
+const { generateOTP } = require("../utils/generateOTP");
 const hashPassword = require("../utils/hashPassword");
-const {
-	BadRequestError
-} = require("../errors");
+const { BadRequestError } = require("../errors");
 const sendEmail = require("../utils/sendEmail");
-const {
-	promisify
-} = require("util");
+const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
-	const {
-		email,
-		name,
-		password
-	} = req.body;
+	const { email, name, password } = req.body;
 
 	const oldUser = await User.findOne({
-		email
+		email,
 	});
 
 	if (oldUser) {
@@ -43,7 +31,7 @@ const register = async (req, res) => {
 		req.body.email,
 		"Verify email",
 		"<h3>OTP for account verification is </h3>" +
-		`<h1 style='font-weight:bold;'>" + ${confirmationCode} +"</h1>`
+			`<h1 style='font-weight:bold;'>" + ${confirmationCode} +"</h1>`
 	);
 	user.password = await hashPassword(user.password);
 	await user.save();
@@ -56,11 +44,13 @@ const verify = async (req, res) => {
 		status: "Active",
 		confirmationCode: "",
 	};
-	const user = await User.findOneAndUpdate({
+	const user = await User.findOneAndUpdate(
+		{
 			confirmationCode: req.body.otp,
 		},
-		update, {
-			new: true
+		update,
+		{
+			new: true,
 		}
 	);
 
@@ -75,10 +65,7 @@ const verify = async (req, res) => {
 
 const login = async (req, res, next) => {
 	try {
-		const {
-			email,
-			password
-		} = req.body;
+		const { email, password } = req.body;
 
 		if (!email || !password) {
 			return next(
@@ -86,7 +73,7 @@ const login = async (req, res, next) => {
 			);
 		}
 		const user = await User.findOne({
-			email
+			email,
 		});
 		if (!user) {
 			return next(new BadRequestError("Invalid email or password"));
@@ -105,6 +92,7 @@ const login = async (req, res, next) => {
 
 		return res.status(201).json({
 			status: "success",
+			user: user._id,
 			token,
 		});
 	} catch (error) {
@@ -161,13 +149,9 @@ const protect = async (req, res, next) => {
 const updatePassword = async (req, res, next) => {
 	try {
 		//1) Get User from collection
-		const user = await User.findById(req.user.id).select("+password");
+		const user = await User.findById(req.user.userId).select("+password");
 		// 2) Get the body entry
-		const {
-			oldPassword,
-			password,
-			confirmPassword
-		} = req.body;
+		const { oldPassword, password, confirmPassword } = req.body;
 		// 3) check if user old password == the password in DB
 		if (!(await user.comparePassword(oldPassword, user.password))) {
 			return next(
@@ -195,7 +179,7 @@ const updatePassword = async (req, res, next) => {
 		const savedUser = await user.save();
 		const token = savedUser.createJWT();
 		return res.status(StatusCodes.CREATED).json({
-			user: token
+			user: token,
 		});
 	} catch (err) {
 		console.log(err);
@@ -205,7 +189,7 @@ const updatePassword = async (req, res, next) => {
 const forgotPassword = async (req, res, next) => {
 	try {
 		var user = await User.findOne({
-			email: req.body.email
+			email: req.body.email,
 		});
 		if (!user) {
 			return next(
@@ -249,11 +233,7 @@ const forgotPassword = async (req, res, next) => {
 	}
 };
 const resetPassword = async (req, res) => {
-	const {
-		password,
-		email,
-		confirmPassword
-	} = req.body;
+	const { password, email, confirmPassword } = req.body;
 
 	if (password !== confirmPassword) {
 		throw new BadRequestError("confirm with a similar password");
@@ -261,7 +241,7 @@ const resetPassword = async (req, res) => {
 
 	try {
 		const user = await User.findOne({
-			email: email
+			email: email,
 		});
 
 		if (!user) {
@@ -284,13 +264,10 @@ const resetPassword = async (req, res) => {
 };
 
 const validateOTP = async (req, res) => {
-	const {
-		otp,
-		email
-	} = req.body;
+	const { otp, email } = req.body;
 	try {
 		const user = await User.findOne({
-			email
+			email,
 		});
 		if (!user) {
 			throw new BadRequestError("email not found in database");
@@ -312,43 +289,32 @@ const validateOTP = async (req, res) => {
 };
 
 const getUserDetails = async (req, res) => {
-	const {
-		email
-	} = req.body;
-	const user = await User.findOne({
-		email
-	});
-	return res.status(StatusCodes.OK).send(user);
+	const { id: userId } = req.params;
+	const user = await User.findOne({ _id: userId });
+	delete user.password;
+	return res
+		.status(StatusCodes.OK)
+		.json({ name: user.name, email: user.email });
 };
-var googleUser;
-var token;
-const googleLogin = (req, res) => {
-	googleUser = req.user;
-	token = jwt.sign({
-			googleID: googleUser._id,
-			name: googleUser.name,
-			email: googleUser.email,
-		},
-		process.env.JWT_SECRET, {
-			expiresIn: "2h"
-		}
-	);
-	res.redirect("/api/v1/auth/success");
-};
+
 const googleSuccess = (req, res) => {
-	return res.status(200).json({
-		status: "Success",
-		user: googleUser,
-		token
+	const user = req.user;
+	const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+		expiresIn: "2h",
 	});
+	if (req.user) {
+		res.status(200).json({
+			success: true,
+			message: "successfull",
+			user: req.user,
+			token: token,
+		});
+	}
 };
 
 const adminLogin = async (req, res, next) => {
 	try {
-		const {
-			email,
-			password
-		} = req.body;
+		const { email, password } = req.body;
 
 		if (!email || !password) {
 			return next(
@@ -356,14 +322,14 @@ const adminLogin = async (req, res, next) => {
 			);
 		}
 		const admin = await Admin.findOne({
-			email
+			email,
 		});
 
 		if (!admin || !(await admin.comparePassword(password))) {
 			return next(new BadRequestError("Invalid email or password"));
 		}
-		if (admin.status !== 'Active') {
-			return next(new BadRequestError('Unverified Account!!!'))
+		if (admin.status !== "Active") {
+			return next(new BadRequestError("Unverified Account!!!"));
 		}
 		const token = admin.createJWT();
 		const data = {
@@ -372,20 +338,19 @@ const adminLogin = async (req, res, next) => {
 			isAdmin: admin.isAdmin,
 			role: admin.role,
 			email: admin.email,
-
-		}
+		};
 		return res.status(201).json({
 			status: "success",
 			token,
-			data
+			data,
 		});
 	} catch (error) {
 		res.status(StatusCodes.BAD_REQUEST).json({
-			status: 'fail',
-			message: error.message
+			status: "fail",
+			message: error.message,
 		});
 	}
-}
+};
 module.exports = {
 	register,
 	login,
@@ -397,7 +362,6 @@ module.exports = {
 	resetPassword,
 	validateOTP,
 	getUserDetails,
-	googleLogin,
 	googleSuccess,
-	adminLogin
+	adminLogin,
 };
