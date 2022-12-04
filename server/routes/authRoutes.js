@@ -7,7 +7,6 @@ const {
 	updatePassword,
 	forgotPassword,
 	verify,
-	protect,
 	login,
 	logout,
 	getUserDetails,
