@@ -4,7 +4,7 @@ import image3 from "../../Assets/artimg23.png";
 const BlogPost2 = () => {
 	return (
 		<section className="mb-32 lw:w-[1250px] lw:mx-auto">
-			<img src={image1} alt="" className="mx-auto" />
+			<img src={image1} alt="" className="mx-auto w-full" />
 			<p className=" my-8 text-lg">
 				The Coverly cover letter generator takes your CV and additional
 				information, such as the company name, the role you are applying

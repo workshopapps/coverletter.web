@@ -40,7 +40,7 @@ const Blog = () => {
 
 	return (
 		<main className="flex flex-col py-14 sm:py-24 bg-[#F2F2F7] mx-auto">
-			<section className="w-4/5 mx-auto">
+			<section className="w-4/5 mx-auto border lw:w-[1250px]">
 				<div className="w-full justify-between flex items-center mb-5 flex-wrap">
 					<h1 className="text-3xl sm:text-5xl mb-4  font-bold">
 						Welcome to our blog!
