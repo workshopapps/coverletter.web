@@ -38,7 +38,7 @@ const BlogSchema = new Schema(
                type: mongoose.Schema.Types.ObjectId,
 			   ref : 'user'
 			}}
-			required : true
+			
 
 		]
 	},
