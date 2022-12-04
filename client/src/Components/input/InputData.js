@@ -75,8 +75,8 @@ function InputData() {
 		e.preventDefault();
 
 		if (
-			companyName.length == 0 ||
-			companyAddress.length == 0 ||
+			companyName.length === 0 ||
+			companyAddress.length === 0 ||
 			city.length ||
 			country.length ||
 			date.length ||
@@ -126,6 +126,9 @@ function InputData() {
 					name: fullName,
 					address: location,
 					email: email,
+					...res.data.data,
+					date: date,
+					recipient_department: department,
 				});
 				Navigate("/preview");
 			} catch (ex) {
