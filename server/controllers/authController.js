@@ -105,6 +105,7 @@ const login = async (req, res, next) => {
 
 		return res.status(201).json({
 			status: "success",
+			user: user._id,
 			token,
 		});
 	} catch (error) {
@@ -161,7 +162,7 @@ const protect = async (req, res, next) => {
 const updatePassword = async (req, res, next) => {
 	try {
 		//1) Get User from collection
-		const user = await User.findById(req.user.id).select("+password");
+		const user = await User.findById(req.user.userId).select("+password");
 		// 2) Get the body entry
 		const {
 			oldPassword,
@@ -312,13 +313,10 @@ const validateOTP = async (req, res) => {
 };
 
 const getUserDetails = async (req, res) => {
-	const {
-		email
-	} = req.body;
-	const user = await User.findOne({
-		email
-	});
-	return res.status(StatusCodes.OK).send(user);
+	const { id: userId } = req.params;
+	const user = await User.findOne({ _id: userId });
+	delete user.password
+	return res.status(StatusCodes.OK).json({ name: user.name, email: user.email });
 };
 var googleUser;
 var token;

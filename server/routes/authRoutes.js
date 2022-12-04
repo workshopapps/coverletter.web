@@ -23,7 +23,7 @@ router.post("/signup", register);
 router.post("/verify", verify);
 router.post("/login", login);
 router.post("/logout", auth, logout);
-router.post("/dashboard", getUserDetails);
+router.get("/dashboard/:id", auth, getUserDetails);
 router.post("/forgotPassword", forgotPassword);
 router.post('/admin/login', adminLogin)
 
@@ -48,7 +48,7 @@ router.get("/success", googleSuccess);
 // All After login routes goes below PROTECT ROUTE
 // router.use(protect);
 router.post("/resetPassword", resetPassword);
-router.put("/updatePassword", updatePassword);
+router.put("/updatePassword", auth, updatePassword);
 // router.post('/resetPassword', resetPassword)
 
 module.exports = router;

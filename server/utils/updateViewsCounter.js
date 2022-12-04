@@ -26,7 +26,7 @@ const updatePostsViewsCounter = async (postId) => {
 	const getAll = await getAllViews(postId);
 	const length = getAll.length;
 	return await Post.findOneAndUpdate(
-		postId,
+		{ _id: postId },
 		{
 			$set: {
 				viewCounter: length,
