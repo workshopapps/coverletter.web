@@ -33,8 +33,8 @@ const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const generateOtpRoutes = require("./routes/generateOtpRoutes");
 const blogRoutes = require("./routes/blogRoutes");
-const forumRoutes = require('./routes/forumRoutes')
-
+const forumRoutes = require("./routes/forumRoutes");
+const adminDashboard = require("./routes/adminDashboard");
 
 //Passport config
 require("./utils/passport")(passport);
@@ -47,6 +47,9 @@ app.use(
 		store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
 	})
 );
+
+// Adminjs Dashboard
+app.use("/admin", adminDashboard);
 
 // Passport middleware
 app.use(passport.initialize());
@@ -81,7 +84,6 @@ app.use("/api/v1", downloadCoverLetter);
 app.use("/api/v1", contactRoutes);
 app.use("/api/v1/forum", forumRoutes);
 app.use("/api/v1/auth", authRoutes);
-
 
 app.get("/", (req, res) => {
 	res.send("templates api");
