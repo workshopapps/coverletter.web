@@ -7,13 +7,15 @@ const {
 	searchPost,
 	getABlogPost,
 	updatePost,
+	getAllPosts,
 } = require("../controllers/blogController");
-const auth = require("../middleware/authentication");
+const { admin } = require("../middleware/admin");
 
 router.get("/blogs/search", searchPost);
 router.get("/blogs/:blogId", getABlogPost);
-router.post("/admin/blog/", createPost);
-router.delete("/admin/blog/:blogId", auth, deleteABlogPost);
-router.put("/admin/blogd/:id", updatePost);
+router.get("/blog/", getAllPosts);
+router.post("/admin/blog/", admin, createPost);
+router.delete("/admin/blog/:blogId", admin, deleteABlogPost);
+router.patch("/blog/:id", admin, updatePost);
 
 module.exports = router;

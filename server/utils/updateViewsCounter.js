@@ -1,9 +1,9 @@
 const Views = require("../models/Views");
-const Post = require("../models/Posts");
+const Post = require("../models/ForumPost");
 
 const createView = async (postId, userId) => {
 	const viewedAlready = await Views.findOne({
-		userId: userId
+		userId: userId,
 	});
 
 	if (viewedAlready) {
@@ -12,13 +12,13 @@ const createView = async (postId, userId) => {
 
 	return await Views.create({
 		postId: postId,
-		userId: userId
+		userId: userId,
 	});
 };
 
 const getAllViews = async (postId) => {
 	return await Views.find({
-		postId: postId
+		postId: postId,
 	});
 };
 
@@ -26,17 +26,19 @@ const updatePostsViewsCounter = async (postId) => {
 	const getAll = await getAllViews(postId);
 	const length = getAll.length;
 	return await Post.findOneAndUpdate(
-		postId, {
+		{ _id: postId },
+		{
 			$set: {
-				viewCounter: length
-			}
-		}, {
+				viewCounter: length,
+			},
+		},
+		{
 			new: true,
-			runValidators: true
+			runValidators: true,
 		}
 	);
 };
 module.exports = {
 	createView,
-	updatePostsViewsCounter
+	updatePostsViewsCounter,
 };
