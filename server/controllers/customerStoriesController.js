@@ -36,7 +36,7 @@ const createStory = async (req, res) => {
 			message: "All Fields are required",
 		});
 	const admin = await Admin.findOne({
-		id: adminId,
+		_id: adminId,
 	});
 	if (!mongoose.Types.ObjectId.isValid(adminId) || !admin) {
 		throw new BadRequestError(
@@ -45,7 +45,7 @@ const createStory = async (req, res) => {
 	}
 
 	const user = await User.findOne({
-		id: userId,
+		_id: userId,
 	});
 	if (!mongoose.Types.ObjectId.isValid(userId) || !user) {
 		throw new BadRequestError(
