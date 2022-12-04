@@ -36,6 +36,7 @@ const blogRoutes = require("./routes/blogRoutes");
 const forumRoutes = require("./routes/forumRoutes");
 const adminDashboard = require("./routes/adminDashboard");
 const customerStoriesRoutes = require("./routes/customerStoriesRoutes");
+const ReplyBlogRoute = require("./routes/replyBlogRoutes");
 
 //Passport config
 require("./utils/passport")(passport);
@@ -86,6 +87,7 @@ app.use("/api/v1", downloadCoverLetter);
 app.use("/api/v1", contactRoutes);
 app.use("/api/v1/forum", forumRoutes);
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/", ReplyBlogRoute);
 
 app.get("/", (req, res) => {
 	res.send("templates api");
