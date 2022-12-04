@@ -13,9 +13,8 @@ const {
 	getUserDetails,
 	validateOTP,
 	resetPassword,
-	googleLogin,
 	googleSuccess,
-	adminLogin
+	adminLogin,
 } = require("../controllers/authController");
 
 //Add your routes here
@@ -25,23 +24,23 @@ router.post("/login", login);
 router.post("/logout", auth, logout);
 router.get("/dashboard/:id", auth, getUserDetails);
 router.post("/forgotPassword", forgotPassword);
-router.post('/admin/login', adminLogin)
+router.post("/admin/login", adminLogin);
 
 router.post("/validateOTP", validateOTP);
 //GOOGLE auth routes
 router.get(
 	"/google",
 	passport.authenticate("google", {
-		scope: ["profile", "email"]
+		scope: ["profile", "email"],
 	})
 );
 
 router.get(
 	"/google/callback",
 	passport.authenticate("google", {
-		failureRedirect: "https://coverly.hng.tech/register",
-	}),
-	googleLogin
+		failureRedirect: "https://coverly.hng.tech/signup",
+		successRedirect: "https://coverly.hng.tech/",
+	})
 );
 router.get("/success", googleSuccess);
 
