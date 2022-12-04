@@ -10,6 +10,8 @@ const adminBro = new AdminBro({
 	rootPath: "/admin", // Path to the AdminJS dashboard.
 });
 // Build and use a router to handle AdminJS routes.
-const adminDashboard = AdminBroExpress.buildRouter(adminBro);
+const adminDashboard = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
+	cookieName: process.env.ADMIN_COOKIE_NAME || "admin-bro",
+});
 
 module.exports = adminDashboard;
