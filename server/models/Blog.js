@@ -15,7 +15,15 @@ const BlogSchema = new Schema(
 			required: true,
 			default: Date.now,
 		},
+		replies : [
+		{	text: String,
+			user_id: String,
+			replyId : {
+               type: mongoose.Schema.Types.ObjectId
+			}}
+		]
 	},
+
 	{
 		timestamps: true,
 	}

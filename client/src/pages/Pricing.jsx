@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Parallax } from "react-parallax";
 import Button from "../Components/Ui/Button";
-import backdrop from "../Assets/backdrop.png";
-import comingSoon from "../Assets/comingSoon.png";
+import { Link } from "react-router-dom";
 
 const Pricing = () => {
 	const [shouldShow, setShouldShow] = useState(true);
@@ -50,6 +49,11 @@ const Pricing = () => {
 			</div>
 		);
 	};
+
+	const removeMain = () => {
+		setShouldShow(!shouldShow);
+	};
+
 	const freeFeatures = [
 		"-Limited PDF downloads",
 		"-Limited cover letter generation",
@@ -121,9 +125,14 @@ const Pricing = () => {
 			{!shouldShow && (
 				<div className="py-40 text-center">
 					<div className="co w-[335px] md:w-[595px] m-auto">
-						<button className="py-[18px] px-[26px] md:w-[300px] md:h-[80px] md:py-0 lg:w-[400px] lg:h-[104px] md:text-[40px] lg:text-[56px] bg-[#03286d] text-[20px] text-[white] rounded-lg">
-							Coming Soon
-						</button>
+						<Link to="/pricing">
+							<Button
+								onClick={removeMain}
+								className="py-[18px] px-[26px] md:w-[300px] md:h-[80px] md:py-0 lg:w-[400px] lg:h-[104px] md:text-[40px] lg:text-[56px] bg-[#03286d] text-[20px] text-[white] rounded-lg"
+							>
+								Coming Soon
+							</Button>
+						</Link>
 						<div className="flex justify-center mt-5">
 							<p className="text-primaryDeep font-bold text-center text-base md:text-[24px] w-[481px] md:leading-[40px]">
 								{" "}

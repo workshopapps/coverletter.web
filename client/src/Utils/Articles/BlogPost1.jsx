@@ -4,7 +4,7 @@ import image3 from "../../Assets/artimg13.png";
 const BlogPost1 = () => {
 	return (
 		<section className="lw:w-[1250px] lw:mx-auto">
-			<img src={image1} alt="" className="mx-auto " />
+			<img src={image1} alt="" className="mx-auto w-full " />
 			<p className=" my-4 text-lg">
 				‘’If applicants don't include a cover letter, how do we know
 				they are serious about working for us?’’ Adam Karpiak ‘’
