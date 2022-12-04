@@ -10,6 +10,22 @@ const BlogSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		userId: {
+			type: mongoose.Types.ObjectId,
+			ref: "User",
+			required: [true, "Please provide user"],
+		},
+		comments: [
+			{
+				type: mongoose.Types.ObjectId,
+				ref: "Comment",
+			},
+		],
+		likes: [
+			{
+				userId: String,
+			},
+		],
 		createdAt: {
 			type: Date,
 			required: true,
