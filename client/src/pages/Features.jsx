@@ -55,7 +55,7 @@ const featureCards = (props) => {
 					{title}
 				</h2>
 				<p
-					className={`text-base lg:text-lg ${
+					className={`text-base ${
 						textColor ? "" : "text-textWhite"
 					} mt-6 lg:max-w-[60%] font-normal`}
 					style={{
@@ -79,7 +79,7 @@ const featureCards2 = (props) => {
 				{btn && <Button type="primary" text={btn} />}
 
 				<h2
-					className={` text-2xl font-bold xl:text-4xl ${
+					className={` text-2xl font-bold w-[60%] xl:text-4xl ${
 						textColor ? "" : "text-textWhite"
 					} `}
 					style={{
@@ -89,7 +89,7 @@ const featureCards2 = (props) => {
 					{title}
 				</h2>
 				<p
-					className={`text-base lg:text-lg ${
+					className={`text-base ${
 						textColor ? "" : "text-textWhite"
 					} mt-6 lg:max-w-[60%] font-medium`}
 					style={{
@@ -181,7 +181,7 @@ const Features = () => {
 					</div>
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row ">
 						{featureCards2({
-							title: "Personalization",
+							title: "Editing & Update Formatting",
 							body: "The most powerful cover letter generator – Coverly helps you write the perfect cover letter for your job applications. You can create your befitting Cover Letter in minutes. Coverly AI uses excellent suggestions that match your personality and style. Coverly will generate a job application/cover letter to fit all jobs, with 100% accuracy guaranteed.",
 
 							img: feature2,
