@@ -19,8 +19,10 @@ const BlogSchema = new Schema(
 		{	text: String,
 			user_id: String,
 			replyId : {
-               type: mongoose.Schema.Types.ObjectId
+               type: mongoose.Schema.Types.ObjectId,
+			   ref : 'user'
 			}}
+			
 		]
 	},
 
