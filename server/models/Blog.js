@@ -35,13 +35,13 @@ const BlogSchema = new Schema(
 			type: String,
 			required: false,
 			maxlength: 255,
-			default: "",
+			default: null,
 		},
 		imageCloudinaryId: {
 			type: String,
 			required: false,
 			maxlength: 255,
-			default: "",
+			default: null,
 		},
 		replies: [
 			{
