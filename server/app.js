@@ -27,7 +27,7 @@ app.use(
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 // const resetRoutes = require("./routes/resetRoutes");
-const templateRoutes = require("./routes/templateRoutes");
+const coverLetterRoutes = require("./routes/coverLetterRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
 const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
 const contactRoutes = require("./routes/contactRoutes");
@@ -82,7 +82,7 @@ app.use("/api/v1", blogRoutes);
 app.use("/api/v1", customerStoriesRoutes);
 app.use("/api/v1", adminRoutes);
 app.use("/api/v1", generateOtpRoutes);
-app.use("/api/v1", templateRoutes);
+app.use("/api/v1", coverLetterRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
 // app.use("/api/v1", resetRoutes);
 app.use("/api/v1", downloadCoverLetter);

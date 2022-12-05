@@ -1,13 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const { cvUpload } = require("../controllers/cvUploadController");
-const {
-	sendCoverLetter,
-	getACoverLetter,
-} = require("../controllers/coverLetterGenerator");
+const { sendCoverLetter } = require("../controllers/coverLetterGenerator");
 const { uploadCoverLetter } = require("../controllers/saveCoverletter");
 const { saveCoverletter } = require("../controllers/saveCoverletter");
 const auth = require("../middleware/authentication");
+const { getACoverLetter } = require("../controllers/coverLetterController");
 
 router.post("/upload", cvUpload);
 router.post("/generate", sendCoverLetter);

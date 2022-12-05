@@ -43,29 +43,4 @@ const sendCoverLetter = async (req, res) => {
 	return res.status(StatusCodes.CREATED).json(response);
 };
 
-const getACoverLetter = async (req, res) => {
-	const { userId } = req.user;
-	const { id: coverLetterId } = req.params;
-
-	if (!mongoose.Types.ObjectId.isValid(coverLetterId)) {
-		throw new BadRequestError(`Cover Letter Blog ID request.`);
-	}
-
-	const coverLetter = await CoverLetter.findOne({
-		_id: coverLetterId,
-		user_id: userId,
-	});
-
-	if (!coverLetter) {
-		throw new BadRequestError(
-			`Cover Letter with id ${coverLetterId} does not exist.`
-		);
-	}
-
-	return res.status(StatusCodes.OK).json({
-		message: "Cover Letter request was successfully.",
-		data: coverLetter,
-	});
-};
-
-module.exports = { sendCoverLetter, getACoverLetter };
+module.exports = { sendCoverLetter };
