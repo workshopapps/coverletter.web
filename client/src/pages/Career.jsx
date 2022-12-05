@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CareerBg from "../Assets/careerbg.svg";
-import CareerBgMobile from "../Assets/careerbg-mobile.svg";
+import CareerBgMobile from "../Assets/mobile-banner.png";
 import CardIcon1 from "../Assets/careercard-icon1.svg";
 import CardIcon2 from "../Assets/careercard-icon2.svg";
 import CardIcon3 from "../Assets/careercard-icon3.svg";
@@ -12,6 +12,8 @@ import { ReactComponent as CareerArrowRight } from "../Assets/careerarrow-right.
 import { ReactComponent as CareerArrowDown } from "../Assets/careerarrow-down.svg";
 import { ReactComponent as CareerProcess } from "../Assets/careerprocess.svg";
 import { ReactComponent as CareerProcessMobile } from "../Assets/careerprocess-mobile.svg";
+
+import "../Layouts/About/About.css";
 
 const whyApplyList = [
 	{
@@ -112,24 +114,16 @@ const Career = () => {
 
 	return (
 		<div className="bg-background overflow-x-hidden">
-			<div
-				className="flex flex-col justify-center items-center bg-primaryDeep md:h-[295px] h-[216px] text-center md:py-[72px] py-[52px]"
-				style={{
-					backgroundImage:
-						width >= 768
-							? `url(${CareerBg})`
-							: `url(${CareerBgMobile})`,
-				}}
-			>
+			<div className=" career flex flex-col justify-center items-center  md:h-[295px] h-[216px] text-center md:py-[72px] py-[52px]">
 				<h1 className="md:text-[56px] text-2xl font-bold md:leading-[72px] leading-10 text-textWhite">
 					Join Our Team
 				</h1>
-				<p className="mt-[6px] text-textWhite md:text-2xl text-base md:leading-9 leading-6 font-normal sm:w-[617px] sm:px-0 px-5 m-auto">
+				<p className="mt-[6px] text-[#E3E3E3] md:text-2xl text-base md:leading-9 leading-6 font-normal sm:w-[617px] sm:px-0 px-5 m-auto">
 					Work in a team that allows for inclusiveness, with a mix of
 					talents working in a conducive environment.
 				</p>
 			</div>
-			<div className=" bg-primaryLightest md:mx-[98px] mx-5 md:mt-[83px] mt-3 md:pb-[59px] pb-[30px] rounded-lg">
+			<div className=" lw:w-[1250px] lw:mx-auto bg-primaryLightest md:mx-[48px] mx-5 md:mt-[83px] mt-3 md:pb-[59px] pb-[30px] rounded-lg">
 				<h2 className="text-center text-4xl text-textHeader font-bold leading-[48px] md:pt-[61px] pt-[26px] md:pb-[60px] pb-[30px]">
 					Why Coverly?
 				</h2>
@@ -147,31 +141,31 @@ const Career = () => {
 						: ""}
 				</div>
 			</div>
-			<div className="text-center md:pt-[53px] pt-[43px] bg-primaryDark lg:mx-0 md:mx-[98px] mx-5 lg:mt-20 mt-[22px] overflow-x-hidden lg:mb-0 mb-8">
+			<div className="text-center md:pt-[93px] py-[53px] bg-primaryDark lg:mx-0 md:mx-[48px] mx-5 lg:mt-20 mt-[22px] overflow-x-hidden lg:mb-0 mb-8 rounded-lg">
 				<h1 className="text-textWhite font-bold md:text-[40px] text-[32px] md:leading-[48px] leading-8 md:px-0 lg:px-[49px] px-[27px] lg:pb-[99px] pb-[43px]">
 					Our Recruitment Process
 				</h1>
 
-				<div className="md:px-[92px] px-[22px]">
+				<div className=" md:px-[92px] px-[22px] lw:w-[1250px] lw:mx-auto lw:px-0">
 					<CareerProcess className="w-full lg:flex hidden" />
 					<CareerProcessMobile className="w-full lg:hidden flex" />
 
 					<div className=" md:rounded-2xl lg:pt-[140px] pt-[110px] lg:pb-[180px] pb-[100px]">
 						<div className="relative">
-							<div className="flex justify-between items-center border-[1.5px] text-textWhite py-6 px-4 rounded-lg mb-2">
-								<h3 className=" text-textWhite font-bold xl:text-[40px] text-xl leading-[48px]">
-									Current Openings
+							<div className="flex justify-between items-center h-[68px] border-[1.5px] text-textWhite py-6 px-4 rounded-lg mb-2">
+								<h3 className=" text-textWhite font-bold xl:text-[24px] text-xl leading-[48px]">
+									Our Current Openings
 								</h3>
 								<CareerArrowDown
-									className="cursor-pointer"
+									className="cursor-pointer lg:w-[18.67px] lg:h-[10.19px] w-[14px] h-[7.64px]"
 									onClick={() =>
 										setShowOpenings(!showOpenings)
 									}
 								/>
 							</div>
 							{showOpenings ? (
-								<div className="text-left bg-[#F0F0F8] px-4 border border-[#CAD0DD] rounded-b-lg absolute w-full overflow-x-hidden">
-									<p className="text-base leading-6 py-4">
+								<div className="text-left bg-[#CAD0DD] px-4 border border-[#CAD0DD] rounded-b-lg absolute w-full overflow-x-hidden">
+									<p className="text-base leading-6 text-[#101010] py-4">
 										No Job Openings At This Time
 									</p>
 								</div>
