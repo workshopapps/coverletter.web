@@ -76,7 +76,12 @@ app.use(
 		abortOnLimit: true,
 	})
 );
-
+app.use(
+	cors({
+		origin: ["*", "https://coverly.hng.tech", "http://localhost:3000"],
+		credentials: true,
+	})
+);
 // routes
 app.use("/api/v1", blogRoutes);
 app.use("/api/v1", customerStoriesRoutes);
