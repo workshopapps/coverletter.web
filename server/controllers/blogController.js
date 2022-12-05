@@ -31,7 +31,7 @@ const createPost = async (req, res) => {
 
 	return res.status(StatusCodes.CREATED).json({
 		status: "success",
-		// data: post,
+		data: post,
 	});
 };
 
