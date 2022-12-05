@@ -32,6 +32,7 @@ const forumRoutes = require("./routes/forumRoutes");
 const adminDashboard = require("./routes/adminDashboard");
 const customerStoriesRoutes = require("./routes/customerStoriesRoutes");
 const ReplyBlogRoute = require("./routes/replyBlogRoutes");
+const GetHistory = require("./routes/getCoverLetterHistoryRoutes")
 
 //Passport config
 require("./utils/passport")(passport);
@@ -90,6 +91,7 @@ app.use("/api/v1", contactRoutes);
 app.use("/api/v1/forum", forumRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/", ReplyBlogRoute);
+app.use("/api/v1", GetHistory)
 
 app.get("/", (req, res) => {
 	res.send("templates api");
