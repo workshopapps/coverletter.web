@@ -10,6 +10,7 @@ const CoverLetterSchema = new mongoose.Schema({
 	company_name: String,
 	company_address: String,
 	city: String,
+	role: String,
 	country: String,
 	years_of_exp: String,
 	date: String,
