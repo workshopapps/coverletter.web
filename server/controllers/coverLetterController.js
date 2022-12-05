@@ -3,6 +3,7 @@ const CoverLetter = require("../models/coverletter");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
 const mongoose = require("mongoose");
+const coverletter = require("../models/coverletter");
 
 /**
  * @desc It gets a cover Letter
@@ -93,21 +94,19 @@ const editACoverLetter = async (req, res) => {
 };
 
 const deleteCoverLetter = async (req, res) => {
-	const { templateId } = req.params;
-
-	if (!mongoose.Types.ObjectId.isValid(templateId))
+	if (!mongoose.Types.ObjectId.isValid(req.user.userId))
 		return res.status(404).json({ message: "This user id is not valid!" });
 
-	const checkIfTemplateExists = await Template.find({}).count();
+	const coverletter = await CoverLetter.findById(req.params.id);
 
-	if (!checkIfTemplateExists < 1) {
-		const template = await Template.findByIdAndDelete({ id: templateId });
+	if (coverletter) {
+		const template = await CoverLetter.findByIdAndDelete(req.params.id);
 		return res.status(StatusCodes.OK).json({
-			message: `Cover Letter deleted with the id ${templateId} successfully`,
+			message: `Cover Letter deleted with the id ${req.params.id} Deleted successfully`,
 		});
 	} else {
 		return res.status(StatusCodes.NOT_FOUND).json({
-			message: `Cover Letter with the id ${templateId} does not exist`,
+			message: `Cover Letter with the id ${req.params.id} does not exist`,
 		});
 	}
 };

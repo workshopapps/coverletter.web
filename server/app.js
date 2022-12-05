@@ -1,7 +1,7 @@
 require("express-async-errors");
 const express = require("express");
 const swaggerUI = require("swagger-ui-express");
-const swaggerDocument = require("./utils/swaggerOptions.json");
+const swaggerDocument = require("./utils/swagger.json");
 const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
@@ -17,12 +17,7 @@ const port = process.env.PORT || 5001;
 const fileUpload = require("express-fileupload");
 const app = express();
 
-app.use(
-	"/cvg-documentation",
-	swaggerUI.serve,
-	swaggerUI.setup(swaggerDocument)
-);
-
+app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 //Routers
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
@@ -76,7 +71,12 @@ app.use(
 		abortOnLimit: true,
 	})
 );
-
+app.use(
+	cors({
+		origin: ["*", "https://coverly.hng.tech", "http://localhost:3000"],
+		credentials: true,
+	})
+);
 // routes
 app.use("/api/v1", blogRoutes);
 app.use("/api/v1", customerStoriesRoutes);
@@ -95,8 +95,8 @@ app.get("/", (req, res) => {
 	res.send("templates api");
 });
 
-app.use(notFoundMiddleware);
-app.use(errorHandlerMiddleware);
+// app.use(notFoundMiddleware);
+// app.use(errorHandlerMiddleware);
 const start = async () => {
 	try {
 		connectDB(process.env.MONGO_URI).then(() => {

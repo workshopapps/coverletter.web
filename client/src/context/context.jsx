@@ -55,7 +55,6 @@ const AppProvider = ({ children }) => {
 				fileSize,
 				setFileSize,
 				userData,
-				
 			}}
 		>
 			{children}
