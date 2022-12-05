@@ -1,7 +1,7 @@
 const CoverLetter = require("../models/coverletter");
 
 const { StatusCodes } = require("http-status-codes");
-const { BadRequestError } = require("../errors");
+const { BadRequestError,UnauthenticatedError } = require("../errors");
 const mongoose = require("mongoose");
 const coverletter = require("../models/coverletter");
 
@@ -111,9 +111,36 @@ const deleteCoverLetter = async (req, res) => {
 	}
 };
 
+const updateCoverLetter = async (req,res)=>{
+	try {
+	const user_id = req.user.userId
+	
+
+	let coverletter = await CoverLetter.findById(req.params.id)
+	
+
+	if(!coverletter){
+		throw new BadRequestError("No cover letter found")
+	}
+	
+	if(coverletter.user_id !=user_id){
+		throw new UnauthenticatedError("you cannot carry out this operation")
+	}
+	
+	coverletter = await CoverLetter.findByIdAndUpdate(req.params.id,req.body,{new:true})
+
+	return res.status(StatusCodes.OK).json({success:true,coverletter})
+	} catch (error) {
+		return res.status(400).json({success:false,error:error.message})
+	}
+	
+
+}
+
 module.exports = {
 	getAllCoverLettersByAUser,
 	editACoverLetter,
 	deleteCoverLetter,
 	getACoverLetter,
+	updateCoverLetter
 };
