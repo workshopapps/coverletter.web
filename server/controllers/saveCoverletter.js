@@ -18,6 +18,8 @@ const saveCoverletter = async (req, res) => {
 		.json({ message: "Cover Letter Saved successfully", coverletter });
 };
 
+
+
 module.exports = {
-	saveCoverletter,
+	saveCoverletter
 };
