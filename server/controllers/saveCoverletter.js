@@ -8,6 +8,7 @@ const { StatusCodes } = require("http-status-codes");
 const User = require("../models/User");
 const CoverLetter = require("../models/coverletter");
 
+
 uploadCoverLetter = async (req, res) => {
 	MongoClient.connect(process.env.MONGO_URI).then((client) => {
 		const database = client.db("database");
@@ -52,7 +53,9 @@ const saveCoverletter = async (req, res) => {
 		.json({ message: "Cover Letter Saved successfully", coverletter });
 };
 
+
+
 module.exports = {
 	uploadCoverLetter,
-	saveCoverletter,
+	saveCoverletter
 };
