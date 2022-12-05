@@ -1,7 +1,7 @@
 require("express-async-errors");
 const express = require("express");
-const swaggerUI = require("swagger-ui-express");
-const swaggerDocument = require("./utils/swaggerOptions.json");
+const swaggerUI = require("swagger-ui-express")
+const swaggerDocument = require("./utils/swagger.json");
 const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
@@ -18,11 +18,10 @@ const fileUpload = require("express-fileupload");
 const app = express();
 
 app.use(
-	"/cvg-documentation",
+	"/docs",
 	swaggerUI.serve,
 	swaggerUI.setup(swaggerDocument)
-);
-
+)
 //Routers
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
