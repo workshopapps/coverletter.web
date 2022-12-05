@@ -14,7 +14,7 @@ const {
 	getAllPosts,
 } = require("../controllers/blogController");
 const { admin } = require("../middleware/admin");
-const upload  = require("../utils/multer");
+const upload = require("../utils/multer");
 const { uploadImage } = require("../middleware/image");
 
 router.get("/blogs/search", searchPost);

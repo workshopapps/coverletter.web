@@ -3,6 +3,7 @@ const imageRouter = express.Router();
 const upload = require("../utils/multer");
 const { cloudinary } = require("../utils/cloudinary");
 const { image } = require("../utils/cloudinary");
+const BadRequestError = require("../errors/bad-request");
 
 const uploadImage = async (req, res, next) => {
 	try {
@@ -12,18 +13,20 @@ const uploadImage = async (req, res, next) => {
 			resource_type: "auto",
 			folder: "images",
 		});
-		// req.upload = upload;
-	req.upload = upload;
+		req.upload = {
+			public_id: upload.public_id,
+			url: upload.url,
+		};
 		next();
 	} catch (err) {
-		throw new Error("Failed to upload the image");
+		throw new BadRequestError("Failed to upload the image");
 	}
 };
 
 const deleteImage = async (req, res, next) => {
 	try {
 		const result = await cloudinary.uploader.destroy(req.body.public_id);
-		const { public_id } = req.public_id;
+		req.delete = result;
 		next();
 	} catch (err) {
 		throw new Error("Failed to delete the image");

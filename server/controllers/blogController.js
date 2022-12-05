@@ -23,15 +23,16 @@ const createPost = async (req, res) => {
 	const post = new Blog({
 		title,
 		content,
-		adminId,
+		userId: req.user.userId,
+		imageUrl: url,
+		imageCloudinaryId: public_id,
 	});
 	await post.save();
 
 	return res.status(StatusCodes.CREATED).json({
-		message: "Creation of blog post was successful.",
+		status: "success",
 		// data: post,
 	});
-	// return res.send(1);
 };
 
 const deleteABlogPost = async (req, res) => {
