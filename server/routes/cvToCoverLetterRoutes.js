@@ -12,6 +12,4 @@ router.post("/generate", sendCoverLetter);
 router.post("/coverletterUpload", uploadCoverLetter);
 router.post("/saveCoverletter", auth, saveCoverletter);
 
-router.get("/coverletter/:id", auth, getACoverLetter);
-
 module.exports = router;
