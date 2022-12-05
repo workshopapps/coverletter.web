@@ -5,8 +5,7 @@ const { BadRequestError, NotFoundError } = require("../errors");
 
 const GetCoverLetters = async (req, res) => {
     
-    const user_id = req.params
-    const userId = mongoose.Types.ObjectId.isValid(user_id)
+    const userId = mongoose.Types.ObjectId.isValid(req.params.id)
     const coverLetters = await CoverLetter.findById({ user_id : userId})
 
     if(coverLetters) 
