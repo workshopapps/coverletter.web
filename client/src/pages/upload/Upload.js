@@ -21,7 +21,6 @@ function Upload() {
 	useEffect(() => {
 		const getUser = async () => {
 			try {
-				console.log("Hello");
 				const response = await axios.get(
 					`https://api.coverly.hng.tech/api/v1/auth/success`,
 					{
@@ -29,7 +28,6 @@ function Upload() {
 					}
 				);
 				const resp = response.data;
-				console.log(resp);
 				const user = {
 					name: resp?.user?.name,
 					email: resp?.user?.email,
