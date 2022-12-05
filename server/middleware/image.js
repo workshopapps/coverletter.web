@@ -1,8 +1,8 @@
 const express = require("express");
 const imageRouter = express.Router();
-const upload = require("./multer");
-const cloudinary = require("./cloudinary");
-const { image } = require("./cloudinary");
+const upload = require("../utils/multer");
+const cloudinary = require("../utils/cloudinary");
+const { image } = require("../utils/cloudinary");
 
 imageRouter.post("/", upload.single("image"), async (req, res) => {
 	try {
