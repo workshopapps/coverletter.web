@@ -14,8 +14,8 @@ const adminBro = new AdminBro({
 // Here is just dummy code for the admin details and the admin email and password which would be stored in the env file
 
 const ADMIN = {
-	email: process.env.ADMIN_EMAIL || "peter@gmail.com",
-	password: process.env.ADMIN_PASS || "qwerop",
+	email: "peter@gmail.com",
+	password: "qwerop",
 };
 
 // Here I am creating an authenticated build for the admin login so anybody cannot just login to the dashboard without an email address and password
