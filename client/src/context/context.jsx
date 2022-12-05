@@ -1,11 +1,4 @@
-import React, { useState, useContext, createContext, useEffect } from "react";
-import {
-	GoogleAuthProvider,
-	signInWithPopup,
-	onAuthStateChanged,
-	// signInWithRedirect,
-} from "firebase/auth";
-import { auth } from "../firebase";
+import React, { useState, useContext, createContext } from "react";
 
 import {
 	getUserFromLocalStorage,
@@ -17,7 +10,6 @@ const AppProvider = ({ children }) => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [user, setUser] = useState(getUserFromLocalStorage());
-	const [googleUser, setGoogleUser] = useState({});
 	const [file, setFile] = useState("");
 	const [coverLetter, setCoverLetter] = useState(false);
 	const [fileName, setFileName] = useState("");
@@ -38,21 +30,6 @@ const AppProvider = ({ children }) => {
 	const closeModal = () => {
 		setIsModalOpen(false);
 	};
-
-	const googleSignIn = () => {
-		const provider = new GoogleAuthProvider();
-		signInWithPopup(auth, provider);
-	};
-
-	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			setGoogleUser(currentUser);
-			console.log("User", currentUser);
-		});
-		return () => {
-			unsubscribe();
-		};
-	}, []);
 
 	return (
 		<AppContext.Provider
@@ -78,8 +55,6 @@ const AppProvider = ({ children }) => {
 				fileSize,
 				setFileSize,
 				userData,
-				googleSignIn,
-				googleUser,
 			}}
 		>
 			{children}

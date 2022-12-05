@@ -43,37 +43,9 @@ uploadCoverLetter = async (req, res) => {
 };
 
 const saveCoverletter = async (req, res) => {
-	const {
-		user_id,
-		cover_letter,
-		company_name,
-		company_address,
-		city,
-		country,
-		years_of_exp,
-		date,
-		recipient_name,
-		recipient_department,
-		recipient_email,
-		recipient_phone_no,
-	} = req.body;
+	req.body.user_id = req.user.userId;
 
-	// console.log(User.findById(req.body.user_id));
-
-	const coverletter = await CoverLetter.create({
-		user_id,
-		cover_letter,
-		company_name,
-		company_address,
-		city,
-		country,
-		years_of_exp,
-		date,
-		recipient_name,
-		recipient_department,
-		recipient_email,
-		recipient_phone_no,
-	});
+	const coverletter = await CoverLetter.create(req.body);
 
 	return res
 		.status(StatusCodes.OK)
