@@ -31,11 +31,6 @@ const CoverLetter = () => {
 					</p>
 				</div>
 				<div className="mt-3 sm:mt-5 text-[7px] sm:text-xs">
-					<p className="">
-						{/* Dear Mr. Richard, */}
-						Dear {data.recipient_name},
-					</p>{" "}
-					<br />
 					<p
 						dangerouslySetInnerHTML={{
 							__html: dData,
