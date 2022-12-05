@@ -2,20 +2,17 @@ import { Link } from "react-router-dom";
 import ProfileAccount from "../Components/ProfilePage/ProfileAccount";
 import ProfileSide from "../Components/ProfilePage/ProfileSide";
 import Upload from "../Components/ProfilePage/Upload";
-import { useGlobalContext } from "../context/context";
 
 const ProfilePage = () => {
-	const {user} = useGlobalContext()
-
 	const CVGenerated = [
 		{
-			firstName: user?.name,
-			lastName: "",
+			firstName: "Bisola",
+			lastName: "Kanyinsola",
 			extension: ".pdf",
 		},
 		{
-			firstName: user?.name,
-			lastName: "",
+			firstName: "Bisola",
+			lastName: "Kanyinsola",
 			extension: ".pdf",
 		},
 	];
@@ -58,11 +55,11 @@ const ProfilePage = () => {
 							</h1>
 
 							<div>
-								{CVGenerated.map((CV, index) => {
+								{CVGenerated.map((CV) => {
 									return (
-										<Upload resume={CV} key={index} index={index} />
+										<Upload resume={CV} key={CV.index} />
 									);
-								}).reverse()}
+								})}
 							</div>
 						</div>
 					</div>

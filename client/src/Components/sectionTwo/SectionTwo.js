@@ -16,7 +16,7 @@ function SectionTwo() {
 					<h2 className="lg:text-3xl text-textBody text-left text-[24px] font-bold leading-[2.4rem] mb-[4px] xl:text-4xl ">
 						Upload your CV/Resume to make a Cover Letter
 					</h2>
-					<p className="text-gray text-left md:text-center lg:text-left lg:text-[20px] mt-2 text-[20px] text-[#666060] ">
+					<p className="text-gray lg:text-[20px] mt-2 text-[20px] text-[#666060] ">
 						Maximum file size is 5MB, and you can only upload a
 						maximum of 1 file per upload session
 					</p>

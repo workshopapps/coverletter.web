@@ -4,7 +4,7 @@ import image3 from "../../Assets/artimg33.png";
 const BlogPost3 = () => {
 	return (
 		<section className="lw:w-[1250px] lw:mx-auto">
-			<img src={image1} alt="" className="mx-auto w-full" />
+			<img src={image1} alt="" className="mx-auto" />
 			<p className=" my-10 text-lg">
 				A cover letter's purpose is to introduce you to the recruiter to
 				get them interested in you as a candidate. As such, it has to be

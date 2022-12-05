@@ -73,16 +73,12 @@ const useTemplate1 = (props) => {
 			children: [new TextRun("")],
 		});
 
-	const body = (data.cover_letter || "[Test Cover Letter]")
-		.trim()
-		.split("\n")
-		.map(
-			(text, index) =>
-				new Paragraph({
-					style: "body",
-					children: [new TextRun(text)],
-				})
-		);
+	const body = (data.cover_letter || "[Test Cover Letter]").trim().split("\n").map((text, index) => new Paragraph({
+		style: "body",
+		children: [
+			new TextRun(text),
+		]
+	}))
 
 	const doc = new Document({
 		creator: "Coverly",
@@ -111,7 +107,7 @@ const useTemplate1 = (props) => {
 					basedOn: "Normal",
 					next: "Normal",
 					run: {
-						color: "333333",
+						color: "8A8A8A",
 						font: "Manrope",
 						size: "14pt",
 					},
@@ -157,7 +153,7 @@ const useTemplate1 = (props) => {
 						children: [new TextRun(userData.name || "[Test Name]")],
 						alignment: HorizontalPositionAlign.RIGHT,
 					}),
-					lineBreak({ style: "body" }),
+					lineBreak({style:"body"}),
 					decorativeLine({ height: 150 }),
 					lineBreak({ style: "large" }),
 					new Paragraph({
@@ -172,7 +168,7 @@ const useTemplate1 = (props) => {
 						},
 						text: data.company_address || "[Company address]",
 					}),
-					...body,
+					...body
 				],
 			},
 		],

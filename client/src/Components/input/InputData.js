@@ -75,8 +75,8 @@ function InputData() {
 		e.preventDefault();
 
 		if (
-			companyName.length === 0 ||
-			companyAddress.length === 0 ||
+			companyName.length == 0 ||
+			companyAddress.length == 0 ||
 			city.length ||
 			country.length ||
 			date.length ||
@@ -118,17 +118,14 @@ function InputData() {
 			try {
 				const res = await axios.post(
 					`https://api.coverly.hng.tech/api/v1/generate`,
-					formData,
-					option
+					formData,option
 				);
+				console.log(res);
 				setCoverLetter({ ...res.data.data });
 				setUserData({
 					name: fullName,
 					address: location,
 					email: email,
-					...res.data.data,
-					date: date,
-					recipient_department: department,
 				});
 				Navigate("/preview");
 			} catch (ex) {
@@ -204,7 +201,7 @@ function InputData() {
 									error && fullName <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200 `}
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={fullNameHandler}
 								autoFocus
 								type="text"
@@ -232,7 +229,7 @@ function InputData() {
 									error && email <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
+								} rounded-lg focus:outline-primaryMain  `}
 								type="email"
 								onChange={emailHandler}
 								value={email}
@@ -259,7 +256,7 @@ function InputData() {
 									error && location <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
+								} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={locationHandler}
 								value={location}
@@ -286,7 +283,7 @@ function InputData() {
 									error && companyName <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={companyHandler}
 								type="text"
 								value={companyName}
@@ -313,7 +310,7 @@ function InputData() {
 									error && companyAddress <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={companyAddressHandler}
 								type="text"
 								value={companyAddress}
@@ -337,7 +334,7 @@ function InputData() {
 									error && country <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={countryHandler}
 								name="country"
 							>
@@ -679,7 +676,7 @@ function InputData() {
 									error && city <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={cityHandler}
 								type="text"
 								value={city}
@@ -706,7 +703,7 @@ function InputData() {
 									error && role <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
+								} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={roleHandler}
 								value={role}
@@ -734,7 +731,7 @@ function InputData() {
 									error && date <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
+								} rounded-lg focus:outline-primaryMain  `}
 								onChange={dateHandler}
 								type="date"
 								value={date}
@@ -761,8 +758,8 @@ function InputData() {
 									error && years <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
-								type="number"
+								} rounded-lg focus:outline-primaryMain  `}
+								type="text"
 								onChange={yearsHandler}
 								value={years}
 								id="years"
@@ -788,7 +785,7 @@ function InputData() {
 									error && name <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
+								} rounded-lg focus:outline-primaryMain  `}
 								type="text"
 								onChange={nameHandler}
 								value={name}
@@ -811,7 +808,7 @@ function InputData() {
 							</label>
 							<input
 								name="recipient_department"
-								className="px-3 py-[9px] rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200"
+								className="px-3 py-[9px] border-[1.5px] border-gray-300 rounded-lg focus:outline-primaryMain"
 								type="text"
 								onChange={departmentHandler}
 								value={department}
@@ -833,12 +830,12 @@ function InputData() {
 							disabled={isLoading}
 							className=" hover:bg-primaryDark px-5 w-[100%] py-3 mt-[12px] mb-[100px] text-[18px] text-textWhite bg-primaryMain  font-semibold rounded-lg disabled:opacity-80 disabled:cursor-not-allowed"
 						>
-							<div className="flex justify-center items-center">
+							<div class="flex justify-center items-center">
 								<div
-									className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+									class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
 									role="status"
 								>
-									<span className="visually-hidden">l</span>
+									<span class="visually-hidden">l</span>
 								</div>
 							</div>
 						</button>
@@ -846,14 +843,14 @@ function InputData() {
 				</form>
 			</main>
 			{isLoading && (
-				<div className=" bg-textWhite absolute bottom-[90%] top-[80rem] sm:top-[50rem] left-[5%] md:left-[10%] lg:left-[25%] w-[90%] md:w-[80%] lg:w-[50%] rounded-lg h-[369px] md:h-[512px] flex flex-col justify-center items-center gap-[20px]">
+				<div className=" bg-textWhite absolute top-[90%] sm:top-[70%] left-[5%] sm:left-[25%] w-[90%] sm:w-[50%] rounded-lg h-[369px] md:h-[512px] flex flex-col justify-center items-center gap-[20px]">
 					<h3 className="text-textBody text-center text-[16px]">
 						{percentage < 78
 							? "Extracting your details..."
 							: "Almost Finished..."}
 					</h3>
 					<div className="bar w-[80%] ">
-						<div className="w-full bg-grey100 rounded-full dark:bg-grey300">
+						<div className="w-full bg-grey100 rounded-full dark:bg-grey200">
 							<div
 								className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full"
 								style={{ width: `${percentage}%` }}

@@ -20,7 +20,7 @@ function SectionOne() {
 				</div>
 				<div className="shape hidden md:flex">
 					<img
-						className=" w-[1440px] h-[440px] left-[250px] lg:bottom-[-50px] lw:left-[35%] lw:w-[1006px] bottom-[-200px] absolute"
+						className=" w-[1440px] h-[440px] left-[250px] lg:bottom-[-50px] lw:left-[600px] lw:w-[1006px] bottom-[-200px] absolute"
 						src={pic}
 						alt="hero"
 					/>

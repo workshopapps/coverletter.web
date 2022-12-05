@@ -5,7 +5,7 @@ const { StatusCodes } = require("http-status-codes");
 
 const contact = async (req, res) => {
 	const { userEmail, fullName, phone, subject, description } = req.body;
-	const email = "aplicarorg@gmail.com"
+	const email = "aplicarorg@gmail.com";
 	const contactError = ContactUsValidation.ContactValidation(
 		fullName,
 		userEmail,

@@ -18,7 +18,7 @@ const Footer = () => {
 							<Link to="/">
 								<img
 									src={Logo}
-									alt="logo"
+									alt=""
 									className="max-w-[132px] h-[46px] hidden md:block"
 								/>
 							</Link>
@@ -36,7 +36,7 @@ const Footer = () => {
 							</div>
 						</div>
 					</div>
-					<div className="">
+					<div>
 						<h4 className="text-textBody font-normal text-base  leading-6">
 							Company
 						</h4>
@@ -53,7 +53,7 @@ const Footer = () => {
 						</h4>
 						<div className="flex flex-col flex-start space-y-6 text-textHeader md:font-bold font-semibold text-base leading-6 mt-6">
 							<Link to="/event">Events</Link>
-							<Link to="/customerstories">Customer Stories</Link>
+							<Link to="/customerstories">Customers stories</Link>
 							<Link to="/features">Features</Link>
 						</div>
 					</div>

@@ -11,7 +11,7 @@ const router = express.Router();
 // your routes here
 router.post("/createPost", auth, createForumPost);
 router.get("/getAllPost", getAllForumPosts);
-router.get("/getOnePost/:id",auth, getOneForumPost);
+router.get("/getOnePost/:id", getOneForumPost);
 router.post("/:pid/reply", auth, replyForumPost);
 router.get("/:pid/replies", getAllRepliesToAForumPost);
 

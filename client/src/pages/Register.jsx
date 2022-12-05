@@ -11,6 +11,7 @@ import Input from "../Components/Ui/Input";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "../context/context";
 import { addEmailToLocalStorage } from "../Utils/localStorage";
+// import { GoogleLogin } from "react-google-login";
 
 import axios from "axios";
 import GoogleAuth from "../Layouts/GoogleAuth";
@@ -19,7 +20,7 @@ const CreateAcount = () => {
 	const navigate = useNavigate();
 	const [show, setShow] = useState(false);
 	const [passwordShown, setPasswordShown] = useState(false);
-	// const [googleUserData, setGoogleUserData] = useState({});
+	const [googleUserData, setGoogleUserData] = useState({});
 	const togglePassword = () => {
 		// When the handler is invoked
 		// inverse the boolean state of passwordShown
@@ -39,7 +40,7 @@ const CreateAcount = () => {
 			setUserEmail({ email: values.email });
 			addEmailToLocalStorage({ email: values.email });
 		} catch (err) {
-			toast.error("Email already in use");
+			toast.error(err.response.data.msg);
 			return;
 		}
 		await new Promise((resolve) => setTimeout(resolve, 20000));
@@ -83,6 +84,26 @@ const CreateAcount = () => {
 		validationSchema: CreateAccSchema,
 		onSubmit,
 	});
+
+	// Google Auth
+
+	// const handleSignup = async (googleData) => {
+	// 	const res = await fetch(
+	// 		"https://api.coverly.hng.tech/api/v1/auth/google",
+	// 		{
+	// 			method: "POST",
+	// 			body: JSON.stringify({
+	// 				token: googleData.tokenId,
+	// 			}),
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 		}
+	// 	);
+	// 	const data = await res.json();
+	// 	// console.log(data);
+	// 	setGoogleUserData(data);
+	// };
 
 	return (
 		<div className="max-w-screen-2xl m-auto relative bg-background px-[22px] md:px-[60px] py-[76px] lg:pt-[76px] lg:pb-[150px]">
@@ -195,6 +216,44 @@ const CreateAcount = () => {
 							type={"submit"}
 							disabled={isSubmitting}
 						/>
+						{/* <Button
+							className={
+								"btn btnLong w-[100%] btnSecondary disabled:opacity-50 disabled:cursor-not-allowed"
+							}
+							children={"Register with Google"}
+							disabled={isSubmitting}
+							icon={
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 16 16"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M14.4933 7.37968C14.46 7.03968 14.1733 6.78634 13.8333 6.78634H8.79999C8.43333 6.78634 8.13333 7.08634 8.13333 7.453V8.59302C8.13333 8.95968 8.43333 9.25968 8.79999 9.25968H11.8067C11.7333 9.87302 11.3333 10.7997 10.4467 11.4197C9.87999 11.813 9.12666 12.0863 8.13333 12.0863C8.08666 12.0863 8.04666 12.0863 8 12.0797C6.3 12.0263 4.86 10.8863 4.34 9.31968C4.2 8.89968 4.12 8.45967 4.12 7.99967C4.12 7.53967 4.19999 7.093 4.33333 6.67967C4.37333 6.55967 4.41999 6.43968 4.47333 6.31968C5.08666 4.93968 6.42666 3.96634 8 3.91968C8.04 3.91301 8.08666 3.913 8.13333 3.913C9.08666 3.913 9.79999 4.22633 10.3 4.573C10.56 4.753 10.9067 4.713 11.1333 4.493L12.06 3.58634C12.3533 3.29968 12.3267 2.813 11.9933 2.573C10.9333 1.793 9.63999 1.33301 8.13333 1.33301C8.08666 1.33301 8.04666 1.33301 8 1.33968C5.44666 1.38635 3.25333 2.86635 2.17999 5.00635C1.72666 5.91301 1.46666 6.92634 1.46666 7.99967C1.46666 9.07301 1.72666 10.0863 2.17999 10.993H2.18666C3.25999 13.133 5.45333 14.613 8 14.6597C8.04666 14.6663 8.08666 14.6663 8.13333 14.6663C9.93333 14.6663 11.4467 14.073 12.5467 13.053C13.8067 11.8863 14.5333 10.1797 14.5333 8.14634C14.5333 7.85968 14.52 7.61301 14.4933 7.37968Z"
+										fill="#0652DD"
+									/>
+								</svg>
+							}
+							type={"submit"}
+						/> */}
+						{/* <a
+							href="https://api.coverly.hng.tech/api/v1/auth/google"
+							target="_blank"
+							rel="noreferrer"
+							className={"btn btnLong w-[100%] btnSecondary"}
+						>
+							Register with Google
+						</a> */}
+						{/* <GoogleLogin
+							clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+							buttonText="Register with Google"
+							onSuccess={handleSignup}
+							onFailure={handleSignup}
+							cookiePolicy={"single_host_origin"}
+							className={"btn btnLong w-[100%] btnSecondary"}
+						/> */}
 						<GoogleAuth />
 					</div>
 					<p className="text-textBody text-center mt-[16px] text-base">

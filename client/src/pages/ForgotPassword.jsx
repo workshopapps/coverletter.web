@@ -14,7 +14,7 @@ const ForgotPassword = () => {
 	const { register, handleSubmit, formState, setError } = useForm();
 	const onEmailSubmit = (FormData) => {
 		setLoading(true);
-		fetch("http://api.coverly.hng.tech/api/v1/auth/forgotPassword", {
+		fetch(`${process.env.REACT_APP_BASE_URL}api/v1/auth/forgotPassword`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

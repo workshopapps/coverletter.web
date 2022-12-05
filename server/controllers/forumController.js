@@ -44,19 +44,19 @@ const replyForumPost = async (req, res) => {
 	}
 	req.body.postId = pid;
 	req.body.userId = req.user.userId;
-	await updatePostsRepliesCounter(pid);
 	const reply = await Reply.create(req.body);
+	await updatePostsRepliesCounter(pid);
 	return res.status(StatusCodes.CREATED).json({ reply });
 };
 
 const getOneForumPost = async (req, res) => {
 	const { id: postId } = req.params;
-	await createView(postId, req.user.userId);
-	await updatePostsViewsCounter(postId);
 	const post = await Post.findOne({ _id: postId });
 	if (!post) {
 		throw new BadRequestError("Unable to find this post");
 	}
+	await createView(postId, req.user.userId);
+	await updatePostsViewsCounter(postId);
 	return res.status(StatusCodes.OK).json({ post });
 };
 
