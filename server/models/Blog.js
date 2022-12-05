@@ -31,16 +31,28 @@ const BlogSchema = new Schema(
 			required: true,
 			default: Date.now,
 		},
-		replies : [
-		{	text: String,
-			user_id: String,
-			replyId : {
-               type: mongoose.Schema.Types.ObjectId,
-			   ref : 'user'
-			}}
-			
-
-		]
+		imageUrl: {
+			type: String,
+			required: false,
+			maxlength: 255,
+			default: "",
+		},
+		imageCloudinaryId: {
+			type: String,
+			required: false,
+			maxlength: 255,
+			default: "",
+		},
+		replies: [
+			{
+				text: String,
+				user_id: String,
+				replyId: {
+					type: mongoose.Schema.Types.ObjectId,
+					ref: "user",
+				},
+			},
+		],
 	},
 
 	{
