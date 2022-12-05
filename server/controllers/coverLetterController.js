@@ -1,8 +1,9 @@
-const Template = require("../models/coverletter");
+const CoverLetter = require("../models/coverletter");
 
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
 const mongoose = require("mongoose");
+const coverletter = require("../models/coverletter");
 
 /**
  * @desc It gets a cover Letter
@@ -13,29 +14,29 @@ const mongoose = require("mongoose");
  * @returns {object} the result
  */
 
-const getACoverLetter = async (req, res) => {
-	try {
-		const { id } = req.params;
-		const isTemplateIdValid = !!id;
-		if (!isTemplateIdValid) {
-			throw new BadRequestError("Invalid template ID");
-		}
+ const getACoverLetter = async (req, res) => {
+	const { userId } = req.user;
+	const { id: coverLetterId } = req.params;
 
-		const template = await Template.findById(id).exec();
-
-		if (!template) {
-			return res.status(404).json({
-				error: "Template does not exist",
-			});
-		}
-
-		return res.status(StatusCodes.OK).json({
-			message: "Template requested successfully",
-			data: template,
-		});
-	} catch (err) {
-		return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ err });
+	if (!mongoose.Types.ObjectId.isValid(coverLetterId)) {
+		throw new BadRequestError(`Cover Letter Blog ID request.`);
 	}
+
+	const coverLetter = await CoverLetter.findOne({
+		_id: coverLetterId,
+		user_id: userId,
+	});
+
+	if (!coverLetter) {
+		throw new BadRequestError(
+			`Cover Letter with id ${coverLetterId} does not exist.`
+		);
+	}
+
+	return res.status(StatusCodes.OK).json({
+		message: "Cover Letter request was successfully.",
+		data: coverLetter,
+	});
 };
 
 /**
@@ -93,21 +94,19 @@ const editACoverLetter = async (req, res) => {
 };
 
 const deleteCoverLetter = async (req, res) => {
-	const { templateId } = req.params;
-
-	if (!mongoose.Types.ObjectId.isValid(templateId))
+	if (!mongoose.Types.ObjectId.isValid(req.user.userId))
 		return res.status(404).json({ message: "This user id is not valid!" });
 
-	const checkIfTemplateExists = await Template.find({}).count();
+	const coverletter = await CoverLetter.findById(req.params.id);
 
-	if (!checkIfTemplateExists < 1) {
-		const template = await Template.findByIdAndDelete({ id: templateId });
+	if (coverletter) {
+		const template = await CoverLetter.findByIdAndDelete(req.params.id);
 		return res.status(StatusCodes.OK).json({
-			message: `Cover Letter deleted with the id ${templateId} successfully`,
+			message: `Cover Letter deleted with the id ${req.params.id} Deleted successfully`,
 		});
 	} else {
 		return res.status(StatusCodes.NOT_FOUND).json({
-			message: `Cover Letter with the id ${templateId} does not exist`,
+			message: `Cover Letter with the id ${req.params.id} does not exist`,
 		});
 	}
 };

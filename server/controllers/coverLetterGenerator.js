@@ -1,5 +1,6 @@
 const { generator } = require("../utils/gpt3.generate");
 const { StatusCodes } = require("http-status-codes");
+const CoverLetter = require("../models/coverletter");
 
 const sendCoverLetter = async (req, res) => {
 	const {

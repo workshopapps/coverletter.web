@@ -1,13 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { CVUpload, ArrowLeft } from "../Components/ProfilePage/Icons";
-import Uploading from "../Components/uploading/Uploading";
-import { useGlobalContext } from "../context/context";
-import Upload from "../Components/upload/Upload";
 
 function UploadCV() {
 	const navigate = useNavigate();
-	const { fileSize } = useGlobalContext();
 
 	return (
 		<div className="bg-[#03296f11] py-8">
@@ -40,7 +36,7 @@ function UploadCV() {
 						</div>
 					</div>
 
-					{/* <div className="w-full md:w-7/12 border-2 border-dashed py-[5em] rounded-xl">
+					<div className="w-full md:w-7/12 border-2 border-dashed py-[5em] rounded-xl">
 						<label
 							htmlFor="fileUpload"
 							className="items-center flex flex-col gap-4 py-8"
@@ -62,22 +58,6 @@ function UploadCV() {
 								className="hidden"
 							/>
 						</label>
-					</div> */}
-
-					<div
-						className={`right lg:w-[540px] lw:w-[640px] h-[443px] w-[100%] border-2 flex flex-col px-[8px] justify-center items-center lg:ml-[3.5em] ${
-							fileSize > 5000000
-								? "border-[#e42424]"
-								: "border-[gray]"
-						}  border-dashed rounded-lg `}
-					>
-						<div className="uploadContainer relative flex flex-col items-center justify-center lg:px-[2vh] lg:py-[15vh] py-[15vh]">
-							{fileSize < 5000000 && fileSize > 0 ? (
-								<Uploading />
-							) : (
-								<Upload />
-							)}
-						</div>
 					</div>
 				</div>
 			</div>
