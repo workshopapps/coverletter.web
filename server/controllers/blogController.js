@@ -9,6 +9,7 @@ const Comment = require("../models/Comment");
 
 const createPost = async (req, res) => {
 	const { title, content } = req.body;
+	const { public_id, url } = req.upload;
 	if (!title || !content)
 		return res.status(StatusCodes.NO_CONTENT).json({
 			message: "All Fields are required",
@@ -22,7 +23,7 @@ const createPost = async (req, res) => {
 	const post = new Blog({
 		title,
 		content,
-		userId: adminId,
+		adminId,
 	});
 	await post.save();
 

@@ -7,12 +7,13 @@ const { image } = require("../utils/cloudinary");
 const uploadImage = async (req, res, next) => {
 	try {
 		const file = req.files.myFile;
-		const result = await cloudinary.uploader.upload(file.tempFilePath, {
+		const upload = await cloudinary.uploader.upload(file.tempFilePath, {
 			public_id: `${Date.now()}`,
 			resource_type: "auto",
 			folder: "images",
 		});
-		req.result = result;
+		// req.upload = upload;
+	req.upload = upload;
 		next();
 	} catch (err) {
 		throw new Error("Failed to upload the image");
