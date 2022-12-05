@@ -95,8 +95,8 @@ app.get("/", (req, res) => {
 	res.send("templates api");
 });
 
-app.use(notFoundMiddleware);
-app.use(errorHandlerMiddleware);
+// app.use(notFoundMiddleware);
+// app.use(errorHandlerMiddleware);
 const start = async () => {
 	try {
 		connectDB(process.env.MONGO_URI).then(() => {

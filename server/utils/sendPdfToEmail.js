@@ -1,8 +1,8 @@
 const nodemailer = require("nodemailer");
-
-module.exports = async (email, subject, fileName) => {
-	const fileFormat = fileName.split(".")[1].toLowerCase();
+const path = require("path")
+module.exports = async (email, subject, file) => {
 	try {
+		const fileFormat = path.extname(file.name)
 		const transporter = nodemailer.createTransport({
 			host: "smtp.gmail.com",
 			service: "Gmail",
@@ -36,13 +36,10 @@ module.exports = async (email, subject, fileName) => {
 				`,
 			attachments: [
 				{
-					filename: fileName,
-					path: __dirname+`${fileName}`,
-					cid: "uniq-mailtrap.png",
-				},
-				{
-					path: `${__dirname}/${fileName}`,
-				},
+					filename: file.name,
+					path: file.tempFilePath,
+					
+				}
 			],
 		});
 		return {
@@ -50,6 +47,7 @@ module.exports = async (email, subject, fileName) => {
 			message: "PDF Has been successfully sent to your email address 🎉",
 		};
 	} catch (error) {
+		console.log(error)
 		return {
 			status: 500,
 			error: "Something went wrong. Please try again",
