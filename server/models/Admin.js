@@ -55,7 +55,7 @@ AdminSchema.methods.createJWT = function () {
 			userId: this._id,
 			name: this.name,
 			email: this.email,
-			status: this.status,
+			role: this.role,
 		},
 		process.env.JWT_SECRET,
 		{

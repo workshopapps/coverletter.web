@@ -1,6 +1,11 @@
 require("dotenv").config();
-const { Configuration, OpenAIApi } = require("openai");
-const { getpdfTotext } = require("./pdfToString");
+const {
+	Configuration,
+	OpenAIApi
+} = require("openai");
+const {
+	getpdfTotext
+} = require("./pdfToString");
 
 const generator = async (
 	file,
@@ -16,8 +21,7 @@ const generator = async (
 	});
 	const openai = new OpenAIApi(configuration);
 
-	const gpt3Prompt = `Use this resume ${resume}, to generate a cover letter for the role of ${role} at ${company_name}. Address it to ${recipient_name} in the ${recipient_department}of the organization `;
-	// create the prompt with the function parameters
+	const gpt3Prompt = `While not exceeding 350 words, Use this resume ${resume}, to generate a cover letter for the role of ${role} at ${company_name}. Address it to ${recipient_name} in the ${recipient_department}of the organization `;
 	const response = await openai.createCompletion({
 		model: "text-davinci-002",
 		prompt: gpt3Prompt,

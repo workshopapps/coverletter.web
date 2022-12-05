@@ -6,9 +6,9 @@ const ViewsSchema = mongoose.Schema({
 		ref: "User",
 		required: [true, "Please provide user"],
 	},
-    postId: {
-        type: String,
-    }
+	postId: {
+		type: String,
+	},
 });
 
-module.exports = mongoose.model('Views', ViewsSchema)
+module.exports = mongoose.model("Views", ViewsSchema);
