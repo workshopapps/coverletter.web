@@ -8,28 +8,32 @@ const Reply = require("../models/Reply");
 const Comment = require("../models/Comment");
 
 const createPost = async (req, res) => {
-	const { title, content } = req.body;
-	if (!title || !content)
-		return res.status(StatusCodes.NO_CONTENT).json({
-			message: "All Fields are required",
-		});
-	const admin = await Admin.findById(req.user.userId);
-	if (!mongoose.Types.ObjectId.isValid(req.user.userId) || !admin) {
-		throw new BadRequestError(
-			"This adminId is not valid or the admin does not exist in our database."
-		);
-	}
-	const post = new Blog({
-		title,
-		content,
-		userId: adminId,
-	});
-	await post.save();
+	// console.log()
+	// console.log(file)
+	// console.log(req.public_id);
+	// // const { title, content } = req.body;
+	// // if (!title || !content)
+	// // 	return res.status(StatusCodes.NO_CONTENT).json({
+	// // 		message: "All Fields are required",
+	// // 	});
+	// // const admin = await Admin.findById(req.user.userId);
+	// // if (!mongoose.Types.ObjectId.isValid(req.user.userId) || !admin) {
+	// // 	throw new BadRequestError(
+	// // 		"This adminId is not valid or the admin does not exist in our database."
+	// // 	);
+	// // }
+	// // const post = new Blog({
+	// // 	title,
+	// // 	content,
+	// // 	userId: adminId,
+	// // });
+	// // await post.save();
 
 	return res.status(StatusCodes.CREATED).json({
 		message: "Creation of blog post was successful.",
-		data: post,
+		// data: post,
 	});
+	// return res.send(1);
 };
 
 const deleteABlogPost = async (req, res) => {
@@ -213,8 +217,8 @@ const createALikeForABlogPost = async (req, res) => {
 	}
 
 	return;
-}
-		
+};
+
 module.exports = {
 	createPost,
 	getABlogPost,
