@@ -2,6 +2,11 @@ import React from "react";
 import { useGlobalContext } from "../../context/context";
 const CoverLetter = () => {
 	const { coverLetter: data, userData } = useGlobalContext();
+	const formatData = data.cover_letter;
+	console.log(data);
+
+	const dData = formatData.replace(/\n\n/g, "<br/>");
+	console.log(dData);
 
 	return (
 		<div className="w-[255px] h-[362px] sm:w-[452px] coverletter-container sm:h-[640px] bg-textWhite border-grey300 target-2 border-2 pt-7 px-7 rounded-lg">
@@ -33,7 +38,7 @@ const CoverLetter = () => {
 					<br />
 					<p
 						dangerouslySetInnerHTML={{
-							__html: data.cover_letter,
+							__html: dData,
 						}}
 					></p>
 				</div>
