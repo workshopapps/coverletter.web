@@ -10,18 +10,49 @@ const BlogSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		userId: {
+			type: mongoose.Types.ObjectId,
+			ref: "User",
+			required: [true, "Please provide user"],
+		},
+		comments: [
+			{
+				type: mongoose.Types.ObjectId,
+				ref: "Comment",
+			},
+		],
+		likes: [
+			{
+				userId: String,
+			},
+		],
 		createdAt: {
 			type: Date,
 			required: true,
 			default: Date.now,
 		},
-		replies : [
-		{	text: String,
-			user_id: String,
-			replyId : {
-               type: mongoose.Schema.Types.ObjectId
-			}}
-		]
+		imageUrl: {
+			type: String,
+			required: false,
+			maxlength: 255,
+			default: "",
+		},
+		imageCloudinaryId: {
+			type: String,
+			required: false,
+			maxlength: 255,
+			default: "",
+		},
+		replies: [
+			{
+				text: String,
+				user_id: String,
+				replyId: {
+					type: mongoose.Schema.Types.ObjectId,
+					ref: "user",
+				},
+			},
+		],
 	},
 
 	{

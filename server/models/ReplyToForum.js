@@ -13,4 +13,4 @@ const replySchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
-module.exports = mongoose.model("Reply", replySchema);
+module.exports = mongoose.model("ReplyToForum", replySchema);
