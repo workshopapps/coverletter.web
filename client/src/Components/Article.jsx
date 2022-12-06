@@ -4,7 +4,7 @@ const Article = ({ image, id, title, text, time }) => {
 	return (
 		<div className="bg-backgroundWhite rounded-md">
 			<Link
-				to={`/blogArticle/${id}`}
+				// to={`/blogArticle/${id}`}
 				className="bg-primary border-gray-200  relative hover:shadow-lg "
 			>
 				<img
