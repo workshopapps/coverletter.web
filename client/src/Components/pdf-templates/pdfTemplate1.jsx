@@ -3,6 +3,10 @@ import { useGlobalContext } from "../../context/context";
 
 const PDFtemplate1 = () => {
 	const { coverLetter: data, userData } = useGlobalContext();
+	const formatData = data.cover_letter;
+
+	const dData = formatData.replace(/\n\n/g, "<br/>");
+
 	return (
 		<div className="w-[452px] fixed top-0 left-0 -z-30 invisible pdf-coverletter-container h-[640px] bg-textWhite border-grey300 target-2 border-2 pt-7 px-7 rounded-lg">
 			<div id="pdf-coverletter-target">
@@ -26,14 +30,9 @@ const PDFtemplate1 = () => {
 					</p>
 				</div>
 				<div className="mt-5 text-xs shouldBeXs">
-					<p className="">
-						{/* Dear Mr. Richard, */}
-						Dear {data.recipient_name},
-					</p>{" "}
-					<br />
 					<p
 						dangerouslySetInnerHTML={{
-							__html: data.cover_letter,
+							__html: dData,
 						}}
 					></p>
 				</div>

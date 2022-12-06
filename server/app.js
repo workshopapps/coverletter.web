@@ -1,7 +1,7 @@
 require("express-async-errors");
 const express = require("express");
 const swaggerUI = require("swagger-ui-express");
-const swaggerDocument = require("./utils/swaggerOptions.json");
+const swaggerDocument = require("./utils/swagger.json");
 const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
@@ -17,17 +17,12 @@ const port = process.env.PORT || 5001;
 const fileUpload = require("express-fileupload");
 const app = express();
 
-app.use(
-	"/cvg-documentation",
-	swaggerUI.serve,
-	swaggerUI.setup(swaggerDocument)
-);
-
+app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 //Routers
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 // const resetRoutes = require("./routes/resetRoutes");
-const templateRoutes = require("./routes/templateRoutes");
+const coverLetterRoutes = require("./routes/coverLetterRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
 const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
 const contactRoutes = require("./routes/contactRoutes");
@@ -37,6 +32,7 @@ const forumRoutes = require("./routes/forumRoutes");
 const adminDashboard = require("./routes/adminDashboard");
 const customerStoriesRoutes = require("./routes/customerStoriesRoutes");
 const ReplyBlogRoute = require("./routes/replyBlogRoutes");
+const GetHistory = require("./routes/getCoverLetterHistoryRoutes")
 
 //Passport config
 require("./utils/passport")(passport);
@@ -76,13 +72,18 @@ app.use(
 		abortOnLimit: true,
 	})
 );
-
+app.use(
+	cors({
+		origin: ["*", "https://coverly.hng.tech", "http://localhost:3000"],
+		credentials: true,
+	})
+);
 // routes
 app.use("/api/v1", blogRoutes);
 app.use("/api/v1", customerStoriesRoutes);
 app.use("/api/v1", adminRoutes);
 app.use("/api/v1", generateOtpRoutes);
-app.use("/api/v1", templateRoutes);
+app.use("/api/v1", coverLetterRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
 // app.use("/api/v1", resetRoutes);
 app.use("/api/v1", downloadCoverLetter);
@@ -90,6 +91,7 @@ app.use("/api/v1", contactRoutes);
 app.use("/api/v1/forum", forumRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/", ReplyBlogRoute);
+app.use("/api/v1", GetHistory)
 
 app.get("/", (req, res) => {
 	res.send("templates api");

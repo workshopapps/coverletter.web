@@ -195,7 +195,7 @@ const CreateAcount = () => {
 							type={"submit"}
 							disabled={isSubmitting}
 						/>
-						<GoogleAuth />
+						{/* <GoogleAuth /> */}
 					</div>
 					<p className="text-textBody text-center mt-[16px] text-base">
 						Already have an account?
