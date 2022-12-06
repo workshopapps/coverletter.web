@@ -4,7 +4,7 @@ const router = express.Router();
 const CoverLetter = require("../controllers/getCoverLetterHistory");
 
 
-router.get("/:id/history", CoverLetter.GetCoverLetters)
+router.get("/user/:id/history", CoverLetter.GetCoverLetters)
 
 
 module.exports = router;

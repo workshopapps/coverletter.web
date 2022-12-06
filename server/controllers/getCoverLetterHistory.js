@@ -4,18 +4,25 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, NotFoundError } = require("../errors");
 
 const GetCoverLetters = async (req, res) => {
-    
-    const userId = mongoose.Types.ObjectId.isValid(req.params.id)
-    const coverLetters = await CoverLetter.findById({ user_id : userId})
+    try {
+        const id = req.params.id
+        const coverLetters = await CoverLetter.findById(id.trim())
+        if(!coverLetters) 
+        {
+            throw new NotFoundError(
+                res.json({ message: "Cover letter not found for this user" })
+            );
+          
+        } else {
+            return res.status(StatusCodes.OK).json({ coverLetters});
+        } 
+        
 
-    if(coverLetters) 
+    } catch (error) 
     {
-        return res.status(StatusCodes.OK).json({ coverLetters });
-      
-    } else {
-        throw new NotFoundError(
-            res.json({ message: "Cover letter not found for this user" })
-        );
+       return res.status(500).json({msg : error.message})
     }
+ 
 }
+
 module.exports = {GetCoverLetters}
