@@ -158,7 +158,7 @@ const Login = () => {
 								</Link>
 							</p>
 						</div>
-						<GoogleAuth />
+						{/* <GoogleAuth /> */}
 					</div>
 				</form>
 

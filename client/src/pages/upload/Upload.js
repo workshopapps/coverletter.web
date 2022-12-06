@@ -18,37 +18,37 @@ function Upload() {
 	const { setUser } = useGlobalContext();
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		const getUser = async () => {
-			try {
-				const response = await axios.get(
-					`https://api.coverly.hng.tech/api/v1/auth/success`,
-					{
-						withCredentials: true,
-					}
-				);
-				const resp = response.data;
-				const user = {
-					name: resp?.user?.name,
-					email: resp?.user?.email,
-					userId: resp?.user?._id,
-					token: resp?.token,
-				};
+	// useEffect(() => {
+	// 	const getUser = async () => {
+	// 		try {
+	// 			const response = await axios.get(
+	// 				`https://api.coverly.hng.tech/api/v1/auth/success`,
+	// 				{
+	// 					withCredentials: true,
+	// 				}
+	// 			);
+	// 			const resp = response.data;
+	// 			const user = {
+	// 				name: resp?.user?.name,
+	// 				email: resp?.user?.email,
+	// 				userId: resp?.user?._id,
+	// 				token: resp?.token,
+	// 			};
 
-				if (resp.success) {
-					addUserToLocalStorage(user);
-					setUser(user);
-					addEmailToLocalStorage(user.email);
-					toast.success(`Welcome Back ${user.name}`);
-					navigate("/");
-				}
-			} catch (err) {
-				toast.error("Authentication Failed");
-				return;
-			}
-		};
-		getUser();
-	}, []);
+	// 			if (resp.success) {
+	// 				addUserToLocalStorage(user);
+	// 				setUser(user);
+	// 				addEmailToLocalStorage(user.email);
+	// 				toast.success(`Welcome Back ${user.name}`);
+	// 				navigate("/");
+	// 			}
+	// 		} catch (err) {
+	// 			toast.error("Authentication Failed");
+	// 			return;
+	// 		}
+	// 	};
+	// 	getUser();
+	// }, []);
 
 	return (
 		<div>
