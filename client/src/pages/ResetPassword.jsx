@@ -47,30 +47,6 @@ const ResetPassword = () => {
 	const { register, formState, getValues, setError, handleSubmit } =
 		useForm();
 	const onResetPassword = (FormData) => {
-		// setShow(true);
-		// fetch(`https://api.coverly.hng.tech/api/v1/auth/resetPassword`, {
-		// 	method: "POST",
-		// 	headers: {
-		// 		"Content-Type": "application/json",
-		// 	},
-		// 	body: JSON.stringify({
-		// 		password: FormData.password,
-		// 		confirmPassword: FormData.passwordConfirmation,
-		// 	}),
-		// })
-		// 	.then((res) => {
-		// 		if (res.ok) {
-		// 			setShow(true);
-		// 		} else {
-		// 			setError("email", {
-		// 				type: "custom",
-		// 				message: "We can not find your mail",
-		// 			});
-		// 		}
-		// 	})
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	});
 		const ResetPassword = async () => {
 			setLoading(true);
 			try {

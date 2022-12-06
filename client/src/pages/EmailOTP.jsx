@@ -66,30 +66,7 @@ const EmailOTP = () => {
 
 	const validateOTP = () => {
 		const otp = input.one + input.two + input.three + input.four;
-		console.log(otp);
-		// fetch(`https://api.coverly.hng.tech/api/v1/auth/validateOTP`, {
-		// 	method: "POST",
-		// 	headers: {
-		// 		"Content-Type": "application/json",
-		// 	},
-		// 	body: JSON.stringify({
-		// 		otp,
-		// 		email: userEmail.email,
-		// 	}),
-		// })
-		// 	.then((res) => {
-		// 		if (res.ok) {
-		// 			setShow(true);
-		// 			console.log(res);
-		// 		} else {
-		// 			setFailShow(true);
-		// 		}
-		// 		setLoading(false);
-		// 	})
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 		setLoading(false);
-		// 	});
+
 		const verifyOtp = async () => {
 			setLoading(true);
 			try {
@@ -108,10 +85,6 @@ const EmailOTP = () => {
 					email: userEmail.email,
 					...resp.data,
 				});
-
-				// setTimeout(() => {
-				// 	navigate("/signin");
-				// }, 2000);
 			} catch (error) {
 				toast.error("something went wrong");
 				setFailShow(true);
