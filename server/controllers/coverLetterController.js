@@ -136,11 +136,29 @@ const updateCoverLetter = async (req,res)=>{
 	
 
 }
+const GetCoverLetters = async (req, res) => {
+	try {
+		const user_id = req.user.userId;
+		const coverLetters = await CoverLetter.find({user_id});
+		if (!coverLetters) {
+			throw new NotFoundError(
+				res.json({ message: "Cover letter not found for this user" })
+			);
+		} else {
+			return res
+				.status(StatusCodes.OK)
+				.json({ success: true, coverLetters });
+		}
+	} catch (error) {
+		return res.status(500).json({ msg: error.message });
+	}
+};
 
 module.exports = {
 	getAllCoverLettersByAUser,
 	editACoverLetter,
 	deleteCoverLetter,
 	getACoverLetter,
-	updateCoverLetter
+	updateCoverLetter,
+	GetCoverLetters
 };
