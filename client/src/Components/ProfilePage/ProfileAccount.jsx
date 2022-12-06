@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useGlobalContext } from '../../context/context';
 import { ChatIcon, UserProfile, LockIcon, EditIcon } from './Icons';
 import PasswordModal from './PasswordModal';
 import SuccessModal from './SuccessModal';
@@ -12,21 +13,22 @@ function ProfileAccount() {
     const [showPassModal, setShowPassModal] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
 
+    const {user} = useGlobalContext()
 
     const AccountTabs = [
         {
             img: UserProfiles,
-            mainText: '24578635',
+            mainText: user?.userId,
             subText: 'Account ID'
         },
         {
             img: UserProfiles,
-            mainText: 'Kanyinola Bisola',
+            mainText: user?.name,
             subText: 'Full Name'
         },
         {
             img: ChatIcons,
-            mainText: 'bisolakanyinola@gmail.com',
+            mainText: user?.email,
             subText: 'Email Address'
         }
 

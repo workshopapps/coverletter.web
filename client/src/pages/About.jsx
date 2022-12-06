@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import WhoWeAre from "../Assets/who-we-are.png";
 import Erica from "../Assets/erica.png";
 import Ayomide from "../Assets/ayomide.png";
@@ -9,8 +8,6 @@ import Destiny from "../Assets/destiny.png";
 import Jewel from "../Assets/jewel.png";
 import Mission from "../Assets/our-mission.png";
 import History from "../Assets/our-history.png";
-import BannerSm from "../Assets/mobile-banner.png";
-import BannerLg from "../Assets/desktop-banner.png";
 
 import "../Layouts/About/About.css";
 
@@ -23,7 +20,7 @@ const About = () => {
 						<h1 className="text-[white] text-[32px] mb-3 xl:text-[56px] xl:mb-5">
 							About Coverly
 						</h1>
-						<p className="text-base text-[#CDDCF8] xl:text-lg lg:w-[780px] xl:w-[1068px] m-auto">
+						<p className="text-base text-[#CDDCF8] xl:text-[18px] lg:w-[780px] xl:w-[1068px] m-auto">
 							Coverly is an outstanding and efficient website that
 							helps job seekers to generate cover letters for any
 							position. Applying for different jobs with different
@@ -37,13 +34,13 @@ const About = () => {
 
 			<main className="bg-[#F2F2F7] ">
 				<div className="">
-					<div className="who-we-are bg-[white] flex  lg:py-[40px]">
-						<div className="grid grid-cols-1 lg:w-[990px] lw:w-[1350px] xl:w-[1200px] px-6 sm:px-[51px] mx-auto items-center md:grid-cols-2 gap-6 md:gap-16 my-[32px] sm:mt-[48px]">
+					<div className="who-we-are bg-[white] flex lg:py-[40px]">
+						<div className="grid grid-cols-1 lg:w-[990px] lw:w-[1350px] xl:w-[1200px] px-7 sm:px-[51px] mx-auto items-center md:grid-cols-2 gap-6 md:gap-16 my-[32px] sm:mt-[48px]">
 							<div className="flex flex-col justify-center align-center">
-								<h2 className="text-2xl md:text-[24px] sm:text-2xl lg:text-[32px] font-semibold">
+								<h2 className="text-2xl md:text-[24px] sm:text-2xl lg:text-[24px] font-semibold">
 									Who we are
 								</h2>
-								<p className="text-base md:text-[16px] sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
+								<p className="text-base md:text-[16px] sm:text-lg leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 									At Coverly, we create unique Cover letters
 									using our AI. These Cover letters would be
 									as unique as you are. Our AI generates the
@@ -75,10 +72,10 @@ const About = () => {
 								</div>
 							</div>
 							<div className="flex flex-col order-1 md:order-2 justify-center align-center">
-								<h2 className="text-2xl md:text-[24px] sm:text-2xl lg:text-[32px] font-semibold">
+								<h2 className="text-2xl md:text-[24px] sm:text-2xl lg:text-[24px] font-semibold">
 									Our mission
 								</h2>
-								<p className="text-base md:text-[16px] sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
+								<p className="text-base md:text-[16px] sm:text-lg leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 									Coverly helps you ace the job by creating a
 									new cover letter every time you apply. Our
 									mission is to help you create a strong,
@@ -90,12 +87,12 @@ const About = () => {
 						</div>
 					</div>
 					<div className="our-history bg-[white] py-[10px] mt-[80px] lg:mt-0 lg:py-[20px]">
-						<div className="grid grid-cols-1 lg:w-[990px] lw:w-[1350px] xl:w-[1200px] px-6 sm:px-[51px] mx-auto items-center md:grid-cols-2  md:gap-16 gap-6 my-[70px]">
+						<div className="grid grid-cols-1 lg:w-[990px] lw:w-[1350px] xl:w-[1200px] px-6 sm:px-[51px] mx-auto items-center md:grid-cols-2  md:gap-12 gap-6 my-[70px]">
 							<div className="text">
-								<h2 className="text-2xl md:text-[24px] sm:text-2xl lg:text-[32px] font-semibold">
+								<h2 className="text-2xl md:text-[24px] sm:text-2xl lg:text-[24px] font-semibold">
 									Our History
 								</h2>
-								<p className="text-base sm:text-lg md:text-xl md:text-[16px] xl:text-[16px]  leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
+								<p className="text-base sm:text-lg md:text-[16px] xl:text-[16px]  leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 									<span className="block mb-4 lg:mb-3">
 										At Coverly, we reckon that creating a
 										cover letter ought to be a quick and
@@ -117,7 +114,7 @@ const About = () => {
 										application.No other business was
 										offering what we provided at that time.
 									</span>
-									<span className="hidden lg:hidden lg:text-[16px] ">
+									<span className="hidden xl:block lg:text-[16px] ">
 										We decided to focus solely on cover
 										letter development to provide more value
 										to our users.We discovered that a cover
@@ -132,8 +129,8 @@ const About = () => {
 								</p>
 							</div>
 							<div className="our-history-image">
-								<img src={History} alt="" />
-								<p className="block  text-base sm:text-lg md:text-[16px] md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
+								<img src={History} alt="" className="w-full" />
+								<p className="block xl:hidden text-base sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 									We decided to focus solely on cover letter
 									development to provide more value to our
 									users.We discovered that a cover letter must
@@ -147,11 +144,11 @@ const About = () => {
 							</div>
 						</div>
 					</div>
-					<div className="mt-[32px] sm:mt-[48px] lg:mt-[58px] lg:w-[990px] lw:w-[1350px] xl:w-[1200px] px-6 sm:px-[51px] mx-auto">
-						<h2 className="text-[32px] xl:text-[40px] text-[#101010] text-center sm:text-2xl lg:text-[32px] font-semibold">
+					<div className="mt-[32px] sm:mt-[48px] lg:mt-[58px] lg:w-[990px] lw:w-[1350px] xl:w-[1200px] px-6 sm:px-[51px] mx-auto pb-10 lg:pb-[100px]">
+						<h2 className="text-[32px] xl:text-[40px] text-[#101010] text-center sm:text-2xl lg:text-[24px] font-semibold">
 							Our Teams
 						</h2>
-						<p className="text-base text-center md:text-[18px] lg:w-[840px] lg:ml-auto lg:mr-auto xl:w-[1040px] xl:ml-auto xl:mr-auto sm:text-lg md:text-xl leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
+						<p className="text-base text-center md:text-[18px] lg:w-[840px] lg:ml-auto lg:mr-auto xl:w-[1040px] xl:ml-auto xl:mr-auto sm:text-lg  leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-4">
 							People are the foundation of every successful
 							company. We strive to innovate and grow by meeting
 							the people who motivate our team and we are proud of
@@ -172,13 +169,13 @@ const About = () => {
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-bold">
 										Erica Osawaru
 									</p>
-									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
+									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR PRODUCT DESIGN
 									</p>
-									<p className="text-base sm:text-g md:text-xl md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-base sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-3">
 										Erica leads the Product design team by
 										creating timely solutions for Coverly.
-										Erica stays on top of our solutions and
+										She stays on top of our solutions and
 										creates products that satisfy our users.
 									</p>
 								</div>
@@ -199,7 +196,7 @@ const About = () => {
 									<p className="text-xs md:text-[12px] text-[#0652DD] font-semibold sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR MOBILE DEVELOPMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl  md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-3">
 										Ayomide collaborates with other
 										developers on the design and development
 										of Coverly. He evaluates current
@@ -221,10 +218,10 @@ const About = () => {
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-semibold">
 										Adelakun Rotimi
 									</p>
-									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
+									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR SALES AND MARKETING
 									</p>
-									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-3">
 										Rotimi leads our sales and marketing
 										team. He implements our sales and
 										marketing strategies and maintains
@@ -245,10 +242,10 @@ const About = () => {
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-semibold">
 										Harold Obasi
 									</p>
-									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
+									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR FRONTEND DEVELOPMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl  md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-3">
 										Harold supervises and ensures the
 										quality of the features provided to meet
 										the standard. He leads the team to
@@ -270,10 +267,10 @@ const About = () => {
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-semibold">
 										Destiny Aigbe
 									</p>
-									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
+									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR BACKEND DEVELOPMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl  md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-3">
 										Destiny manages the entire software
 										development lifecycle, including
 										architecture, solution design, quality
@@ -294,10 +291,10 @@ const About = () => {
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-semibold">
 										Jewel Uguru
 									</p>
-									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl md:text-2xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
+									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR PROJECT MANAGEMENT
 									</p>
-									<p className="text-md sm:text-lg md:text-xl  md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-4">
+									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-3">
 										Jewel oversees the development process
 										of all products of Coverly. Jewel is
 										credible for creating a list of all
