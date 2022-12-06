@@ -6,7 +6,7 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const GetCoverLetters = async (req, res) => {
     try {
         const id = req.params.id
-        const coverLetters = await CoverLetter.findById(id.trim)
+        const coverLetters = await CoverLetter.findById(id.trim())
         if(!coverLetters) 
         {
             throw new NotFoundError(
