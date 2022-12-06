@@ -106,14 +106,7 @@ const App = () => {
 						path="/forgot-password"
 						element={<ForgotPassword />}
 					/>
-					<Route
-						path="/reset"
-						element={
-							<AuthUserRoute>
-								<ResetPassword />
-							</AuthUserRoute>
-						}
-					/>
+					<Route path="/reset" element={<ResetPassword />} />
 					<Route
 						path="/blogArticle/:id"
 						element={<SingleblogPage />}
