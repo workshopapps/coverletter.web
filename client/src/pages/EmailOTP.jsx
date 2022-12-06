@@ -4,13 +4,23 @@ import EmailFooter from "../Layouts/EmailFooter";
 // import FailModal "../Components/Ui/FailModal.css";
 import Input from "../Components/Ui/Input";
 import SuccessModal from "../Components/Ui/SuccessModal";
+import Timer from "../Components/Timer";
+import { useGlobalContext } from "../context/context";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Button from "../Components/Ui/Button";
+import { addEmailToLocalStorage } from "../Utils/localStorage";
 
 const EmailOTP = () => {
+	const { setUserEmail, userEmail } = useGlobalContext();
 	const [show, setShow] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [failShow, setFailShow] = useState(false);
-	const [minutes, setMinutes] = useState(0);
+	const [minutes, setMinutes] = useState(1);
 	const [seconds, setSeconds] = useState(30);
+	const navigate = useNavigate();
 
 	const [input, setInput] = useState({
 		one: "",
@@ -57,31 +67,82 @@ const EmailOTP = () => {
 	const validateOTP = () => {
 		const otp = input.one + input.two + input.three + input.four;
 		console.log(otp);
-		fetch(`https://api.coverly.hng.tech/api/v1/auth/validateOTP`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				otp,
-			}),
-		})
-			.then((res) => {
-				if (res.ok) {
-					setShow(true);
-				} else {
-					setFailShow(true);
-				}
+		// fetch(`https://api.coverly.hng.tech/api/v1/auth/validateOTP`, {
+		// 	method: "POST",
+		// 	headers: {
+		// 		"Content-Type": "application/json",
+		// 	},
+		// 	body: JSON.stringify({
+		// 		otp,
+		// 		email: userEmail.email,
+		// 	}),
+		// })
+		// 	.then((res) => {
+		// 		if (res.ok) {
+		// 			setShow(true);
+		// 			console.log(res);
+		// 		} else {
+		// 			setFailShow(true);
+		// 		}
+		// 		setLoading(false);
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 		setLoading(false);
+		// 	});
+		const verifyOtp = async () => {
+			setLoading(true);
+			try {
+				const resp = await axios.post(
+					`https://api.coverly.hng.tech/api/v1/auth/validateOTP`,
+					{
+						otp,
+						email: userEmail.email,
+					}
+				);
+
+				setShow(true);
 				setLoading(false);
-			})
-			.catch((err) => {
-				console.log(err);
+				setUserEmail({ email: userEmail.email, ...resp.data });
+				addEmailToLocalStorage({
+					email: userEmail.email,
+					...resp.data,
+				});
+
+				// setTimeout(() => {
+				// 	navigate("/signin");
+				// }, 2000);
+			} catch (error) {
+				toast.error("something went wrong");
+				setFailShow(true);
 				setLoading(false);
-			});
+				return;
+			}
+		};
+		verifyOtp();
 	};
 
 	const resendOTP = () => {
-		setMinutes(0);
+		const NewOtp = async () => {
+			setLoading(true);
+			try {
+				const resp = await axios.post(
+					`https://api.coverly.hng.tech/api/v1/generateOtp`,
+					{
+						type: "verify",
+						email: userEmail.email,
+					}
+				);
+				toast.success("Check your email for a new OTP");
+				setLoading(false);
+			} catch (error) {
+				toast.error(error.response.data);
+				setLoading(false);
+				return;
+			}
+		};
+		NewOtp();
+		setMinutes(1);
 		setSeconds(30);
 		setInput({
 			one: "",
@@ -91,30 +152,7 @@ const EmailOTP = () => {
 		});
 	};
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			if (seconds > 0) {
-				setSeconds(seconds - 1);
-			}
-
-			if (seconds === 0) {
-				if (minutes === 0) {
-					clearInterval(interval);
-				} else {
-					setSeconds(59);
-					setMinutes(minutes - 1);
-				}
-			}
-		}, 1000);
-
-		return () => {
-			clearInterval(interval);
-		};
-	}, [minutes, seconds]);
 	const { handleSubmit } = useForm();
-	const otpValidate = () => {
-		setShow(true);
-	};
 
 	return (
 		<section className="email-otp bg-[#F2F2F7] pt-36 pb-20">
@@ -122,20 +160,20 @@ const EmailOTP = () => {
 				<SuccessModal onClose={() => setShow(false)} show={show}>
 					<div className="modal-body-text">
 						<p className="text-[16px] leading-6 text-gray-700 font-semibold mb-10">
-							Account found! We have sent further instructions on
-							how to reset your password to the email provided
+							OTP verified! You may now proceed to select a new
+							password
 						</p>
 					</div>
 					<div className="home-btn">
-						<a href="https://gmail.com">
-							<Input
-								type={"button"}
-								value={"Open Email"}
+						<Link to="/reset">
+							<Button
 								className={
-									"border rounded-lg text-white py-3 px-10 bg-[#0544B8] cursor-pointer hover:scale-x-[1.03] text-[20px]"
+									"btn btnLong w-[100%] btnPrimary disabled:opacity-50 disabled:cursor-not-allowed"
 								}
+								children={"Reset Password"}
+								type={"button"}
 							/>
-						</a>
+						</Link>
 					</div>
 				</SuccessModal>
 				<h1 className="text-black text-2xl font-semibold leading-8 mb-7 sm:text-3xl mb-5 md:text-[32px] mb-5 lg:text-[40px]">
@@ -150,18 +188,13 @@ const EmailOTP = () => {
 						Please Enter OTP
 					</span>
 					<span className="text-[#FF2635] text-xl leading-8 font-semibold md:text-[24px] lg:text-2xl">
-						{seconds > 0 || minutes > 0 ? (
-							<p>
-								{minutes < 10 ? `0${minutes}` : minutes}:
-								{seconds < 10 ? `0${seconds}` : seconds}
-							</p>
-						) : (
-							<p></p>
-						)}
-						{/* 1:04 */}
+						<Timer
+							initialMinute={minutes}
+							initialSeconds={seconds}
+						/>
 					</span>
 				</h2>
-				<form onSubmit={handleSubmit(otpValidate)}></form>
+				<form onSubmit={handleSubmit(validateOTP)}></form>
 				<div className="otp-input mt-8 mb-10">
 					<input
 						className="otp-field font-bold w-12 h-12 px-2 pl-4 py-4 mr-4 border border-[#6D6D6D] outine-1 outline-[#6D6D6D] rounded-lg text-[#6D6D6D] text-xl leading-8 md:mr-6 lg:mr-8"
@@ -213,28 +246,23 @@ const EmailOTP = () => {
 
 				<div className="otp-btn mb-8 grid grid-cols-2 gap-4 justify-between items-center  sm:w-[370px] mx-auto lg:w-96 mx-auto">
 					<div
-						className={`${
-							seconds > 0 || minutes > 0 ? "" : "border-[#0652DD]"
-						} resend-otp border border-[#ACC5F4] rounded-lg hover:scale-x-[1.02]`}
+						className={`resend-otp border border-[#ACC5F4] rounded-lg hover:scale-x-[1.02]`}
 					>
 						<input
-							disabled={seconds > 0 || minutes > 0}
 							type="button"
 							value="Resend OTP"
-							className={`${
-								seconds > 0 || minutes > 0
-									? "text-[#ACC5F4] cursor-not-allowed"
-									: "text-[#0652DD] cursor-pointer"
-							} py-3 px-10`}
+							className={`text-[#0652DD] cursor-pointer" py-3 px-10 disabled:opacity-50 disabled:cursor-not-allowed`}
 							onClick={resendOTP}
+							disabled={loading}
 						/>
 					</div>
-					<div className="validate-otp rounded-lg bg-[#0652DD] hover:scale-x-[1.02]">
+					<div className="validate-otp rounded-lg bg-[#0652DD] hover:scale-x-[1.02] disabled:opacity-50 disabled:cursor-not-allowed">
 						<input
 							type="submit"
 							value={loading ? "Validating..." : "Validate OTP"}
 							className="text-white py-3 px-10 cursor-pointer"
 							onClick={validateOTP}
+							disabled={loading}
 						/>
 					</div>
 				</div>
