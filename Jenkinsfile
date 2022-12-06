@@ -7,7 +7,7 @@ pipeline {
         // Build the react app
         stage('Build Frontend') {
             steps {
-                echo 'Building...'
+                echo 'Building frontend...'
 
                 dir('client') {
                     sh 'npm install'
