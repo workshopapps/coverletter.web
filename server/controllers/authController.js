@@ -312,7 +312,7 @@ const googleSuccess = (req, res) => {
 	}
 };
 const googleLogout = (req, res) => {
-	req.logout();
+	req.session.destroy();
 	res.redirect(process.env.CLIENT_URL);
 };
 
