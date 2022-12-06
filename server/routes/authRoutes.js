@@ -42,7 +42,7 @@ router.get(
 		successRedirect: process.env.CLIENT_URL,
 	})
 );
-router.get("/logout", googleLogout);
+router.get("/googlelogout", googleLogout);
 
 router.get("/success", googleSuccess);
 
