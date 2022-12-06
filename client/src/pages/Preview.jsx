@@ -2,11 +2,10 @@ import Modal from "../Components/Ui/Modal";
 import React, { useState, useEffect } from "react";
 import Button from "../Components/Ui/Button";
 import { useGlobalContext } from "../context/context";
-import lockedCover_1 from "../Assets/cover_letter_full_2.jpg";
-import lockedCover_2 from "../Assets/cover_letter_full_3.jpg";
+import lockedCover_1 from "../Assets/preview'_1.png";
+import lockedCover_2 from "../Assets/preview_2.png";
 import CoverLetter from "../Components/Ui/CoverLetter";
 import notePad from "../Assets/notepad.svg";
-import pauseIcon from "../Assets/pause.svg";
 import cancelIcon from "../Assets/cancel.svg";
 import leftArrowIcon from "../Assets/leftArrow.svg";
 import BigLeftArrowIcon from "../Assets/bigLeftArrow";
@@ -14,10 +13,10 @@ import BigRightArrowIcon from "../Assets/bigRightArrow";
 import PDFtemplate1 from "../Components/pdf-templates/pdfTemplate1";
 import { downloadPdf, downloadDOCX } from "../Utils/download-util";
 import { convertToTxt } from "../Utils/txtDownload";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
-/// import { useNavigate } from "react-router-dom";
+import Loader from "../Assets/Loader.png";
+import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const Preview = () => {
 	const {
@@ -26,6 +25,7 @@ const Preview = () => {
 		closeModal,
 		coverLetter: data,
 		userData,
+		user,
 	} = useGlobalContext();
 
 	// logic for the modal
@@ -34,9 +34,12 @@ const Preview = () => {
 	const [download, setDownload] = useState(false);
 	const [spin, setSpin] = useState(false);
 	const [windowWidth, setWindowWidth] = useState(0);
+	const [isLoading, setIsloading] = useState(false);
 
 	const [touchPosition, setTouchPosition] = useState(null);
 	const [mouseClickPosiition, setMouseClickPosition] = useState(null);
+
+	const [title, setTitle] = useState("Your Cover Letter is Ready");
 
 	// window.addEventListener("resize", (e) => {
 	// 	if (e.target.screen.width > 900) {
@@ -103,7 +106,8 @@ const Preview = () => {
 	const handleClick = () => {
 		// INITIATE DOWNLOAD STATE ON CLICK
 		setDownload(true);
-		setTimeout(() => {
+		setFirstModal(true);
+		const save = setTimeout(() => {
 			if (dType === "pdf") {
 				downloadPdf("pdf-coverletter-target");
 			} else if (dType === "doc") {
@@ -115,22 +119,16 @@ const Preview = () => {
 				//TELL USER TO PICK ONE OF THE 3 OPTIONS
 			}
 			setDtype(null);
-			closeModal();
+			setTitle("Your Cover letter has been downloaded.");
 		}, 500);
+		const close = setTimeout(() => {
+			setDownload(false);
+			setFirstModal(false);
+			closeModal();
+		}, 4000);
+
 		// setFirstModal(!firstModal);
 	};
-
-	useEffect(() => {
-		setFirstModal(false);
-		const downloadTime = setTimeout(() => setDownload(false), 2000);
-
-		const spinTime = setInterval(() => setSpin(!spin), 2000);
-
-		return () => {
-			clearInterval(spinTime);
-			clearTimeout(downloadTime);
-		};
-	}, [openModal]);
 
 	// redirect on click cv
 	// const navigate = useNavigate();
@@ -201,17 +199,50 @@ const Preview = () => {
 	const reRegister = () => {
 		navigate("/register");
 	};
+	const saveToProfile = async () => {
+		if (user && user?.token && user?.userId) {
+			setIsloading(true);
+			const info = { ...userData, user_id: user.userId };
+			try {
+				const resp = await axios.post(
+					`https://api.coverly.hng.tech/api/v1/saveCoverletter`,
+
+					info,
+					{
+						headers: {
+							Authorization: `Bearer ${user.token}`,
+						},
+					}
+				);
+
+				toast.success(`saved successfully`);
+			} catch (err) {
+				toast.error("something went wrong,try again");
+				setIsloading(false);
+				return;
+			}
+		} else {
+			setIsloading(true);
+			toast.error("You must be signed in");
+			setTimeout(() => {
+				navigate("/signin");
+			}, 2000);
+		}
+	};
 
 	return (
 		<div className={`bg-background pt-6 pb-36 overflow-x-hidden relative`}>
-			<div className={`${download && "opacity-50"}`}>
-				<div className="flex items-center px-7 lg:px-40 lg:mt-6">
+			<div className={`${download && "opacity-0"}`}>
+				<Link
+					to="/upload-data"
+					className="flex items-center px-7 lg:px-40 lg:mt-6"
+				>
 					<img src={leftArrowIcon} alt="left arrow" />
 					<p className="ml-1 text-sm font-bold">Back</p>
-				</div>
+				</Link>
 				<div className="w-full flex justify-center mt-5 px-7 md:mt-11">
 					<p className="font-bold text-2xl w-[65%] text-center md:text-3xl md:w-[40%] lg:text-5xl lg:w-[40%]">
-						Your Cover Letter is Ready!
+						{title}
 					</p>
 				</div>
 				<div className="w-screen md:overflow-x-hidden relative mt-10 md:mt-20">
@@ -262,184 +293,148 @@ const Preview = () => {
 							onClick={openModal}
 						/>
 						<Button
-							className="bg-background border-2 border-primaryMain min-w-[140px] w-[48%] min-h-[48px] rounded-lg text-primaryMain font-bold"
+							className="bg-background border-2 border-primaryMain min-w-[140px] w-[48%] min-h-[48px] rounded-lg text-primaryMain font-bold disabled:opacity-50 disabled:cursor-not-allowed"
 							children="Save to profile"
+							onClick={saveToProfile}
+							disabled={isLoading}
 						/>
 					</div>
 				</div>
 				<PDFtemplate1 />
-
-				{isModalOpen &&
-					(!firstModal ? (
-						<Modal>
-							<div className="w-[350px] md:w-[450px] bg-background flex items-center flex-col min-w-[311px] min-h-[376px] rounded-md py-11 px-9">
-								<div className="w-full flex justify-end mb-4">
-									<div onClick={closeModal} role="button">
-										{<img src={cancelIcon} alt="pause" />}
-									</div>
-								</div>
-								<p className="font-bold">
-									Select Download Option
-								</p>
-								<div className="w-full">
-									<div className="flex justify-between w-full mt-7">
-										<div className=" flex items-center">
-											{
-												<img
-													src={notePad}
-													alt="notepad icon"
-												/>
-											}
-											<p className="ml-3">PDF</p>
-										</div>
-
-										<div
-											className="rounded-xl cursor-pointer flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
-											onClick={() => setDtype("pdf")}
-										>
-											<div
-												className={
-													dType === "pdf"
-														? "w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2"
-														: "w-3 h-3 rounded-lg border-primaryMain border-2"
-												}
-											></div>
-										</div>
-									</div>
-									<hr className="w-full bg-stokeLight mt-2 border-none h-[1px]" />
-								</div>
-								<div className="w-full">
-									<div className="flex justify-between w-full mt-7">
-										<div className=" flex items-center">
-											{
-												<img
-													src={notePad}
-													alt="notepad icon"
-												/>
-											}
-											<p className="ml-3">DOC</p>
-										</div>
-										<div
-											className="rounded-xl cursor-pointer flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
-											onClick={() => setDtype("doc")}
-										>
-											<div
-												className={
-													dType === "doc"
-														? "w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2"
-														: "w-3 h-3 rounded-lg border-primaryMain border-2"
-												}
-											></div>
-										</div>
-									</div>
-									<hr className="w-full bg-stokeLight mt-2 border-none h-[1px]" />
-								</div>
-								<div className="w-full">
-									<div className="flex justify-between w-full mt-7">
-										<div className=" flex items-center">
-											{
-												<img
-													src={notePad}
-													alt="notepad icon"
-												/>
-											}
-											<p className="ml-3">TEXT</p>
-										</div>
-										<div
-											className="rounded-xl cursor-pointer flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
-											onClick={() => setDtype("text")}
-										>
-											<div
-												className={
-													dType === "text"
-														? "w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2"
-														: "w-3 h-3 rounded-lg border-primaryMain border-2"
-												}
-											></div>
-										</div>
-									</div>
-									<hr className="w-full bg-stokeLight mt-2 border-none h-[1px]" />
-									<div className="w-full flex justify-between mt-4 md:justify-center">
-										<input
-											type="checkbox"
-											name="sendToEmail"
-											className="w-5 h-5 outline-none border-none"
-										/>
-										<p className="text-sm md:ml-3">
-											Send downloaded template to email.
-										</p>
-									</div>
-								</div>
-								<Button
-									type="submit"
-									className="w-full min-h-[48px] bg-primaryMain rounded-lg font-bold text-background mt-7"
-									children="Download"
-									disabled={!dType}
-									onClick={handleClick}
-								/>
-							</div>
-						</Modal>
-					) : (
-						<Modal>
-							<div className="bg-textWhite top-[-250px] md:top-[-190px] md:left-[80%] lg:left-[150%] left-0 relative flex items-center flex-col min-w-[311px] rounded-sm py-4 px-4">
-								<div className="flex w-full items-center justify-between">
-									<div className="w-[82%] bg-background h-1">
-										<div className="bg-successDark w-[65%] h-1"></div>
-									</div>
-									<div className="w-[14%] flex text-2xl justify-between">
-										<div>
-											{
-												<img
-													src={pauseIcon}
-													alt="pause"
-												/>
-											}
-										</div>
-										<div>
-											{
-												<img
-													src={cancelIcon}
-													alt="cancel"
-												/>
-											}
-										</div>
-									</div>
-								</div>
-								<div className="flex items-center w-full pl-3 mt-5">
-									<div className="mr-3">
-										{<img src={notePad} alt="pause" />}
-									</div>
-									<p className="text-lg font-bold mr-3">
-										TEXT
-									</p>
-									<p className="text-grey400 text-sm">
-										Download in progress
-									</p>
-								</div>
-							</div>
-						</Modal>
-					))}
 			</div>
 
-			{download && (
-				<div
-					className={`absolute top-0 left-0 w-full h-[250%] bg-overlay z-50 flex justify-center items-center ${
-						download && "opacity-100"
-					}`}
-				>
-					<div className="fixed w-25% h-25% top-[37.5%] left-[50%-30px] flex flex-col gap-5">
-						<FontAwesomeIcon
-							className={`text-textWhite text-[120px] ${
-								spin && "rotate-[360deg] duration-[2000ms]"
-							}`}
-							icon={faSpinner}
-						/>
-						<p className="text-textWhite text-[60px] font-bold">
-							DOWNLOADING
-						</p>
+			{isModalOpen &&
+				(!firstModal && !download ? (
+					<Modal>
+						<div className="w-[350px] md:w-[450px] bg-background flex items-center flex-col min-w-[311px] min-h-[376px] rounded-md py-11 px-9">
+							<div className="w-full flex justify-end mb-4">
+								<div onClick={closeModal} role="button">
+									{<img src={cancelIcon} alt="pause" />}
+								</div>
+							</div>
+							<p className="font-bold">Select Download Option</p>
+							<div className="w-full">
+								<div className="flex justify-between w-full mt-7">
+									<div className=" flex items-center">
+										{
+											<img
+												src={notePad}
+												alt="notepad icon"
+											/>
+										}
+										<p className="ml-3">PDF</p>
+									</div>
+
+									<div
+										className="rounded-xl cursor-pointer flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
+										onClick={() => setDtype("pdf")}
+									>
+										<div
+											className={
+												dType === "pdf"
+													? "w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2"
+													: "w-3 h-3 rounded-lg border-primaryMain border-2"
+											}
+										></div>
+									</div>
+								</div>
+								<hr className="w-full bg-stokeLight mt-2 border-none h-[1px]" />
+							</div>
+							<div className="w-full">
+								<div className="flex justify-between w-full mt-7">
+									<div className=" flex items-center">
+										{
+											<img
+												src={notePad}
+												alt="notepad icon"
+											/>
+										}
+										<p className="ml-3">DOC</p>
+									</div>
+									<div
+										className="rounded-xl cursor-pointer flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
+										onClick={() => setDtype("doc")}
+									>
+										<div
+											className={
+												dType === "doc"
+													? "w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2"
+													: "w-3 h-3 rounded-lg border-primaryMain border-2"
+											}
+										></div>
+									</div>
+								</div>
+								<hr className="w-full bg-stokeLight mt-2 border-none h-[1px]" />
+							</div>
+							<div className="w-full">
+								<div className="flex justify-between w-full mt-7">
+									<div className=" flex items-center">
+										{
+											<img
+												src={notePad}
+												alt="notepad icon"
+											/>
+										}
+										<p className="ml-3">TEXT</p>
+									</div>
+									<div
+										className="rounded-xl cursor-pointer flex justify-center items-center bg-background border-2 border-primaryMain w-6 h-6"
+										onClick={() => setDtype("text")}
+									>
+										<div
+											className={
+												dType === "text"
+													? "w-3 h-3 rounded-lg border-primaryMain bg-primaryMain border-2"
+													: "w-3 h-3 rounded-lg border-primaryMain border-2"
+											}
+										></div>
+									</div>
+								</div>
+								<hr className="w-full bg-stokeLight mt-2 border-none h-[1px]" />
+								<div className="w-full flex justify-between mt-4 md:justify-center">
+									<input
+										type="checkbox"
+										name="sendToEmail"
+										className="w-5 h-5 outline-none border-none"
+									/>
+									<p className="text-sm md:ml-3">
+										Send downloaded template to email.
+									</p>
+								</div>
+							</div>
+							<Button
+								type="submit"
+								className="w-full min-h-[48px] bg-primaryMain rounded-lg font-bold text-background mt-7"
+								children="Download"
+								disabled={!dType}
+								onClick={handleClick}
+							/>
+						</div>
+					</Modal>
+				) : (
+					<div className="bg-textWhite top-1/2 left-0 flex items-start flex-col w-screen h-screen rounded-sm py-12 px-4 absolute">
+						<div className="flex flex-col w-full h-[30rem] items-center justify-start">
+							<div className=" h-2/3 flex flex-col justify-between items-center">
+								<p className="font-bold text-2xl leading-9 text-[#252b42] text-center">
+									Downloading Cover letter...
+								</p>
+								<div>
+									<div className="mb-5">
+										{<img src={Loader} alt="pause" />}
+									</div>
+									<p className="text-[15px] font-normal leading-normal text-[#73747d]">
+										Loading...
+									</p>
+								</div>
+							</div>
+							<div className="h-1/3 w-full flex items-end justify-center">
+								<button className="btn btnPrimary w-full md:w-1/2 lg:w-1/3 xl:w-[28%]">
+									Cancel Download
+								</button>
+							</div>
+						</div>
 					</div>
-				</div>
-			)}
+				))}
 		</div>
 	);
 };

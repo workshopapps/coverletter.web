@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Admin = require("../models/Admin");
 const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
 const hashPassword = require("../utils/hashPassword");
@@ -10,7 +11,9 @@ const jwt = require("jsonwebtoken");
 const register = async (req, res) => {
 	const { email, name, password } = req.body;
 
-	const oldUser = await User.findOne({ email });
+	const oldUser = await User.findOne({
+		email,
+	});
 
 	if (oldUser) {
 		throw new BadRequestError("Email already exists");
@@ -46,7 +49,9 @@ const verify = async (req, res) => {
 			confirmationCode: req.body.otp,
 		},
 		update,
-		{ new: true }
+		{
+			new: true,
+		}
 	);
 
 	if (user) {
@@ -67,7 +72,9 @@ const login = async (req, res, next) => {
 				new BadRequestError("Please provide a valid email and password")
 			);
 		}
-		const user = await User.findOne({ email });
+		const user = await User.findOne({
+			email,
+		});
 		if (!user) {
 			return next(new BadRequestError("Invalid email or password"));
 		}
@@ -85,6 +92,7 @@ const login = async (req, res, next) => {
 
 		return res.status(201).json({
 			status: "success",
+			user: user._id,
 			token,
 		});
 	} catch (error) {
@@ -141,7 +149,7 @@ const protect = async (req, res, next) => {
 const updatePassword = async (req, res, next) => {
 	try {
 		//1) Get User from collection
-		const user = await User.findById(req.user.id).select("+password");
+		const user = await User.findById(req.user.userId).select("+password");
 		// 2) Get the body entry
 		const { oldPassword, password, confirmPassword } = req.body;
 		// 3) check if user old password == the password in DB
@@ -170,7 +178,9 @@ const updatePassword = async (req, res, next) => {
 		user.password = await hashPassword(password);
 		const savedUser = await user.save();
 		const token = savedUser.createJWT();
-		return res.status(StatusCodes.CREATED).json({ user: token });
+		return res.status(StatusCodes.CREATED).json({
+			user: token,
+		});
 	} catch (err) {
 		console.log(err);
 	}
@@ -178,7 +188,9 @@ const updatePassword = async (req, res, next) => {
 
 const forgotPassword = async (req, res, next) => {
 	try {
-		var user = await User.findOne({ email: req.body.email });
+		var user = await User.findOne({
+			email: req.body.email,
+		});
 		if (!user) {
 			return next(
 				new BadRequestError("There is no user with this email address.")
@@ -228,7 +240,9 @@ const resetPassword = async (req, res) => {
 	}
 
 	try {
-		const user = await User.findOne({ email: email });
+		const user = await User.findOne({
+			email: email,
+		});
 
 		if (!user) {
 			throw new BadRequestError("email not found in database");
@@ -252,7 +266,9 @@ const resetPassword = async (req, res) => {
 const validateOTP = async (req, res) => {
 	const { otp, email } = req.body;
 	try {
-		const user = await User.findOne({ email });
+		const user = await User.findOne({
+			email,
+		});
 		if (!user) {
 			throw new BadRequestError("email not found in database");
 		}
@@ -273,19 +289,67 @@ const validateOTP = async (req, res) => {
 };
 
 const getUserDetails = async (req, res) => {
-	const { email } = req.body;
-	const user = await User.findOne({ email });
-	return res.status(StatusCodes.OK).send(user);
+	const { id: userId } = req.params;
+	const user = await User.findOne({ _id: userId });
+	delete user.password;
+	return res
+		.status(StatusCodes.OK)
+		.json({ name: user.name, email: user.email });
 };
-const googleLogin = (req, res) => {
-	const user = req.user;
-	const token = jwt.sign(
-		{ googleID: user._id, name: user.name, email: user.email },
-		process.env.JWT_SECRET,
-		{ expiresIn: "2h" }
-	);
 
-	return res.status(200).json({ user, token });
+const googleSuccess = (req, res) => {
+	const user = req.user;
+	const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+		expiresIn: "2h",
+	});
+	if (req.user) {
+		res.status(200).json({
+			success: true,
+			message: "successfull",
+			user: req.user,
+			token: token,
+		});
+	}
+};
+
+const adminLogin = async (req, res, next) => {
+	try {
+		const { email, password } = req.body;
+
+		if (!email || !password) {
+			return next(
+				new BadRequestError("Please provide a valid email and password")
+			);
+		}
+		const admin = await Admin.findOne({
+			email,
+		});
+
+		if (!admin || !(await admin.comparePassword(password))) {
+			return next(new BadRequestError("Invalid email or password"));
+		}
+		if (admin.status !== "Active") {
+			return next(new BadRequestError("Unverified Account!!!"));
+		}
+		const token = admin.createJWT();
+		const data = {
+			status: admin.status,
+			name: admin.name,
+			isAdmin: admin.isAdmin,
+			role: admin.role,
+			email: admin.email,
+		};
+		return res.status(201).json({
+			status: "success",
+			token,
+			data,
+		});
+	} catch (error) {
+		res.status(StatusCodes.BAD_REQUEST).json({
+			status: "fail",
+			message: error.message,
+		});
+	}
 };
 module.exports = {
 	register,
@@ -298,5 +362,6 @@ module.exports = {
 	resetPassword,
 	validateOTP,
 	getUserDetails,
-	googleLogin,
+	googleSuccess,
+	adminLogin,
 };
