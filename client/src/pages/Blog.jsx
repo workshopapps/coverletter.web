@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Article } from "../Components";
 import { articles } from "../Utils/Articles/data";
 import search from "../Assets/search.svg";
@@ -8,9 +8,42 @@ import next from "../Assets/next.svg";
 
 const Blog = () => {
 	const [srch, setSrch] = useState("");
-	const [diArticle, setDiArticle] = useState(articles);
+	const [diArticle, setDiArticle] = useState([]);
 
-	const handleSearch = async () => {
+	useEffect(() => {
+		axios
+			.get("https://api.coverly.hng.tech/api/v1/blog/")
+			.then((res) => {
+				console.log(res);
+				const values = res.data.posts;
+
+				// console.log(values);
+
+				const dValue = [];
+				values.map((value) => {
+					const { _id, title, content, createdAt, imageUrl } = value;
+					const formatVal = {
+						id: _id,
+						title: title,
+						text: content,
+						time: createdAt,
+						image: imageUrl,
+					};
+					dValue.push(formatVal);
+				});
+				// console.log(dValue);
+
+				setDiArticle(dValue);
+			})
+			.then((err) => {
+				console.log(err);
+			});
+	}, []);
+
+	const handleSearch = async (e) => {
+		e.preventDefault();
+		setSrch(e.target.value);
+
 		try {
 			const res = await axios.get(
 				`https://api.coverly.hng.tech/api/v1/blogs/search?query=${srch}`
@@ -19,12 +52,13 @@ const Blog = () => {
 
 			const dValue = [];
 			values.map((value) => {
-				const { _id, title, content, createdAt } = value;
+				const { _id, title, content, createdAt, imageUrl } = value;
 				const formatVal = {
 					id: _id,
 					title: title,
 					text: content,
 					time: createdAt,
+					image: imageUrl,
 				};
 				dValue.push(formatVal);
 			});
@@ -50,7 +84,7 @@ const Blog = () => {
 							type="text"
 							className="bg-background rounded-lg border-textHeader border-[2px] px-3 py-1 w-[100%]"
 							placeholder="Search"
-							onChange={(e) => setSrch(e.target.value)}
+							onChange={(e) => handleSearch(e)}
 						/>
 						<div
 							className="absolute top-50 right-0 mr-3 cursor-pointer"
@@ -68,6 +102,7 @@ const Blog = () => {
 					not only generate a job-winning cover letter, but also
 					improve your interview skills.
 				</p>
+
 				{diArticle != null ? (
 					<section className=" grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
 						{diArticle.map((item) => {
