@@ -13,29 +13,30 @@ import {
 } from "../../Utils/localStorage";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 function Upload() {
 	const { setUser } = useGlobalContext();
 	const navigate = useNavigate();
 
+	let renderTwice = useRef(true);
 	useEffect(() => {
 		const getUser = async () => {
 			try {
-				console.log("Hello");
 				const response = await axios.get(
-					`https://api.coverly.hng.tech/api/v1/auth/success`,
+					`http://localhost:5001/api/v1/auth/success`,
 					{
 						withCredentials: true,
 					}
 				);
 				const resp = response.data;
-				console.log(resp);
 				const user = {
 					name: resp?.user?.name,
 					email: resp?.user?.email,
 					userId: resp?.user?._id,
 					token: resp?.token,
 				};
+				console.log(user);
 
 				if (resp.success) {
 					addUserToLocalStorage(user);
@@ -43,13 +44,17 @@ function Upload() {
 					addEmailToLocalStorage(user.email);
 					toast.success(`Welcome Back ${user.name}`);
 					navigate("/");
+				} else {
+					toast.error("Authentication Failed");
 				}
 			} catch (err) {
-				toast.error("Authentication Failed");
-				return;
+				console.log(err);
 			}
 		};
-		getUser();
+		if (renderTwice.current) {
+			renderTwice.current = false;
+			getUser();
+		}
 	}, []);
 
 	return (

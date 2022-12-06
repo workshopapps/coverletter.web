@@ -4,7 +4,7 @@ import { ReactComponent as Google } from "../Assets/google.svg";
 
 const GoogleAuth = () => {
 	return (
-		<form action="https://api.coverly.hng.tech/api/v1/auth/google">
+		<form action="http://localhost:5001/api/v1/auth/google">
 			<Button
 				className={
 					"btn btnLong w-[100%] btnSecondary disabled:opacity-50 disabled:cursor-not-allowed"
