@@ -6,8 +6,12 @@ import checkEmailIcon from "../Assets/check-email.svg";
 import checkEmailSuccess from "../Assets/checkEmailSuccess.svg";
 import Input from "../Components/Ui/Input";
 import EmailFooter from "../Layouts/EmailFooter";
+import Button from "../Components/Ui/Button";
+import { useGlobalContext } from "../context/context";
+import { addEmailToLocalStorage } from "../Utils/localStorage";
 
 const ForgotPassword = () => {
+	const { setUserEmail, userEmail } = useGlobalContext();
 	const [show, setShow] = useState(false);
 	const [loading, setLoading] = useState(false);
 
@@ -26,6 +30,8 @@ const ForgotPassword = () => {
 			.then((res) => {
 				if (res.ok) {
 					setShow(true);
+					setUserEmail({ email: FormData.email });
+					addEmailToLocalStorage({ email: FormData.email });
 				} else {
 					setError("email", {
 						type: "custom",
@@ -50,15 +56,15 @@ const ForgotPassword = () => {
 						</p>
 					</div>
 					<div className="home-btn">
-						<a href="https://gmail.com">
-							<Input
-								type={"button"}
-								value={"Open Email"}
+						<Link to="/email-otp">
+							<Button
 								className={
-									"border rounded-lg text-white py-3 px-10 bg-[#0544B8] cursor-pointer hover:scale-x-[1.03] text-[20px]"
+									"btn btnLong w-[100%] btnPrimary disabled:opacity-50 disabled:cursor-not-allowed"
 								}
+								children={"Enter OTP"}
+								type={"button"}
 							/>
-						</a>
+						</Link>
 					</div>
 				</SuccessModal>
 				<h1 className="text-black text-2xl text-center font-semibold leading-8 mb-7 sm:text-3xl mb-5 md:text-[32px] mb-5 lg:text-[40px]">
@@ -116,7 +122,8 @@ const ForgotPassword = () => {
 										? "Loading..."
 										: "Send link to email"
 								}
-								className="text-center w-full bg-[#0652DD] border rounded-lg text-white py-4 cursor-pointer hover:scale-x-[1.01]font-semibold"
+								className="text-center w-full bg-[#0652DD] border rounded-lg text-white py-4 cursor-pointer hover:scale-x-[1.01]font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+								disabled={loading}
 							/>
 						</div>
 					</form>

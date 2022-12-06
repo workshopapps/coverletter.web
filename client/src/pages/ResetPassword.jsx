@@ -6,13 +6,20 @@ import SuccessModal from "../Components/Ui/SuccessModal";
 import Input from "../Components/Ui/Input";
 import Label from "../Components/Ui/Label";
 import EmailFooter from "../Layouts/EmailFooter";
+import axios from "axios";
+import { useGlobalContext } from "../context/context";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
 	const [passwordType, setPasswordType] = useState("password");
 	const [passwordType2, setPasswordType2] = useState("password");
 	const [passwordInput, setPasswordInput] = useState("");
 	const [passwordInput2, setPasswordInput2] = useState("");
-
+	const [show, setShow] = useState(false);
+	const { userEmail } = useGlobalContext();
+	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 	const handlePasswordChange = (evnt) => {
 		setPasswordInput(evnt.target.value);
 	};
@@ -20,8 +27,6 @@ const ResetPassword = () => {
 	const handlePasswordChange2 = (evnt) => {
 		setPasswordInput2(evnt.target.value);
 	};
-
-	const [show, setShow] = useState(false);
 
 	const togglePassword = () => {
 		if (passwordType === "password") {
@@ -42,29 +47,36 @@ const ResetPassword = () => {
 	const { register, formState, getValues, setError, handleSubmit } =
 		useForm();
 	const onResetPassword = (FormData) => {
-		setShow(true);
-		fetch(`https://api.coverly.hng.tech/api/v1/auth/resetPassword`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				password: FormData.password,
-			}),
-		})
-			.then((res) => {
-				if (res.ok) {
-					setShow(true);
-				} else {
-					setError("email", {
-						type: "custom",
-						message: "We can not find your mail",
-					});
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		const ResetPassword = async () => {
+			setLoading(true);
+			try {
+				const resp = await axios.post(
+					`https://api.coverly.hng.tech/api/v1/auth/resetPassword`,
+					{
+						password: FormData.password,
+						confirmPassword: FormData.passwordConfirmation,
+						email: userEmail.email,
+					},
+					{
+						headers: {
+							Authorization: `Bearer ${userEmail.token}`,
+						},
+					}
+				);
+
+				setShow(true);
+				console.log(resp.data);
+				setTimeout(() => {
+					navigate("/signin");
+				}, 4000);
+			} catch (error) {
+				toast.error(error.response.data.msg);
+
+				return;
+			}
+			setLoading(false);
+		};
+		ResetPassword();
 	};
 
 	return (
@@ -78,7 +90,7 @@ const ResetPassword = () => {
 				<SuccessModal onClose={() => setShow(false)} show={show}>
 					<div className="modal-body-text">
 						<p className="text-[16px] leading-6 text-gray-700 font-semibold mb-10">
-							Your new password has been changed successfully
+							Your password has been changed successfully
 						</p>
 					</div>
 					<div className="home-btn">
@@ -216,7 +228,8 @@ const ResetPassword = () => {
 							<input
 								type="submit"
 								value={"Reset Password"}
-								className="reset-btn text-center text-white w-full bg-[#0652DD] rounded-lg py-4 cursor-pointer hover:scale-x-[1.02]"
+								className="reset-btn text-center text-white w-full bg-[#0652DD] rounded-lg py-4 cursor-pointer hover:scale-x-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+								disabled={loading}
 							/>
 						</div>
 					</form>
