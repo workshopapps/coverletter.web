@@ -6,7 +6,8 @@ const {
 	getAllCoverLettersByAUser,
 	getACoverLetter,
 	deleteCoverLetter,
-	updateCoverLetter
+	updateCoverLetter,
+	GetCoverLetters
 } = require("../controllers/coverLetterController");
 
 const auth = require("../middleware/authentication");
@@ -19,5 +20,6 @@ router.get("/template", auth, getAllCoverLettersByAUser);
 router.delete("/coverLetter/:id", auth, deleteCoverLetter);
 router.patch("/template/:id", auth, editACoverLetter);
 router.put("/updatecoverletter/:id",auth,updateCoverLetter)
+router.get("/coverLetters", auth, GetCoverLetters)
 
 module.exports = router;
