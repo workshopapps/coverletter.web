@@ -13,7 +13,6 @@ const {
 	validateOTP,
 	resetPassword,
 	googleSuccess,
-	googleLogout,
 	adminLogin,
 } = require("../controllers/authController");
 
@@ -39,11 +38,9 @@ router.get(
 	"/google/callback",
 	passport.authenticate("google", {
 		failureRedirect: "https://coverly.hng.tech/signup",
-		successRedirect: process.env.CLIENT_URL,
+		successRedirect: "https://coverly.hng.tech/",
 	})
 );
-router.get("/googlelogout", googleLogout);
-
 router.get("/success", googleSuccess);
 
 // All After login routes goes below PROTECT ROUTE

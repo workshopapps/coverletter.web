@@ -311,10 +311,6 @@ const googleSuccess = (req, res) => {
 		});
 	}
 };
-const googleLogout = (req, res) => {
-	req.logout();
-	res.redirect(process.env.CLIENT_URL);
-};
 
 const adminLogin = async (req, res, next) => {
 	try {
@@ -368,5 +364,4 @@ module.exports = {
 	getUserDetails,
 	googleSuccess,
 	adminLogin,
-	googleLogout,
 };
