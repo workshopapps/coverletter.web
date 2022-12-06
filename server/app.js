@@ -1,3 +1,9 @@
+var apm = require("elastic-apm-node").start({
+	serviceName: "Coverly-api",
+	secretToken: "",
+	serverUrl: "http://localhost:8200",
+	environment: "production",
+});
 require("express-async-errors");
 const express = require("express");
 const swaggerUI = require("swagger-ui-express");
@@ -32,7 +38,6 @@ const forumRoutes = require("./routes/forumRoutes");
 const adminDashboard = require("./routes/adminDashboard");
 const customerStoriesRoutes = require("./routes/customerStoriesRoutes");
 const ReplyBlogRoute = require("./routes/replyBlogRoutes");
-
 
 //Passport config
 require("./utils/passport")(passport);
@@ -114,3 +119,4 @@ const start = async () => {
 start();
 
 module.exports = app;
+0
