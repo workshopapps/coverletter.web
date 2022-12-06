@@ -43,7 +43,7 @@ const ResetPassword = () => {
 		useForm();
 	const onResetPassword = (FormData) => {
 		setShow(true);
-		fetch(`${process.env.REACT_APP_BASE_URL}api/v1/auth/reset`, {
+		fetch(`https://api.coverly.hng.tech/api/v1/auth/resetPassword`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

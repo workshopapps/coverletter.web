@@ -57,7 +57,7 @@ const EmailOTP = () => {
 	const validateOTP = () => {
 		const otp = input.one + input.two + input.three + input.four;
 		console.log(otp);
-		fetch(`${process.env.REACT_APP_BASE_URL}/validateOTP`, {
+		fetch(`https://api.coverly.hng.tech/api/v1/auth/validateOTP`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
