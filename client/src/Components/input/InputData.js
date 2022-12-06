@@ -200,9 +200,9 @@ function InputData() {
 								name="full_name"
 								className={`px-3 py-[9px] border-[1.5px] ${
 									error && fullName <= 0
-										? "border-[#FF2635]"
+										? "border-[#240b0c]"
 										: "border-gray-300"
-								} rounded-lg focus:outline-primaryMain  `}
+								} rounded-lg outline-grey300  focus:outline focus:outline-1 focus:outline-grey300  `}
 								onChange={fullNameHandler}
 								autoFocus
 								type="text"
@@ -848,7 +848,7 @@ function InputData() {
 					<h3 className="text-textBody text-center text-[16px]">
 						{percentage < 78
 							? "Extracting your details..."
-							: "Almost Finished..."}
+							: "Almost finished..."}
 					</h3>
 					<div className="bar w-[80%] ">
 						<div className="w-full bg-grey100 rounded-full dark:bg-grey200">
