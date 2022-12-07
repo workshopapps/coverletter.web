@@ -9,7 +9,11 @@ const uploadImage = async (req, res, next) => {
 	try {
 		if (req.files) {
 			const file = req.files.myFile;
-			const upload = await cloudinary.uploader.upload(file.tempFilePath, {
+			const filePath = "./tmp/" + file.name;
+			file.mv(filePath, function (err) {
+				if (err) throw new BadRequestError("Failed to move the image");
+			});
+			const upload = await cloudinary.uploader.upload(filePath, {
 				public_id: `${Date.now()}`,
 				resource_type: "auto",
 				folder: "images",
