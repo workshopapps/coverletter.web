@@ -6,7 +6,9 @@ const { createForumPost } = require("../controllers/forumController");
 const { getAllForumPosts } = require("../controllers/forumController");
 const { getOneForumPost } = require("../controllers/forumController");
 const { getAllRepliesToAForumPost } = require("../controllers/forumController");
+const { likePost} = require("../controllers/forumController");
 const { deleteForumPost } = require("../controllers/forumController");
+
 const router = express.Router();
 
 // your routes here
@@ -16,5 +18,6 @@ router.get("/getOnePost/:id", auth, getOneForumPost);
 router.delete("/post/:id", auth, deleteForumPost);
 router.post("/:pid/reply", auth, replyForumPost);
 router.get("/:pid/replies", getAllRepliesToAForumPost);
+router.post("/:pid/like", auth, likePost);
 
 module.exports = router;
