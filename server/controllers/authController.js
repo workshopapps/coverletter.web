@@ -4,7 +4,7 @@ const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
 const hashPassword = require("../utils/hashPassword");
 const { BadRequestError } = require("../errors");
-const sendEmail = require("../utils/sendEmail");
+const {sendEmail, mailStyle} = require("../utils/sendEmail");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 
@@ -27,14 +27,16 @@ const register = async (req, res) => {
 		confirmationCode,
 	});
 
-	await sendEmail(
-		req.body.email,
-		"Verify email",
-		"<h3>OTP for account verification is </h3>" +
-			`<h1 style='font-weight:bold;'>" + ${confirmationCode} +"</h1>`
-	);
 	user.password = await hashPassword(user.password);
 	await user.save();
+
+	const message = mailStyle('Use the OTP below to verify your account.', confirmationCode)
+
+	await sendEmail(
+		req.body.email,
+		"Verify email", message
+	);
+	
 
 	return res.status(StatusCodes.CREATED).json("Signup was successful.");
 };
@@ -143,7 +145,6 @@ const protect = async (req, res, next) => {
 	// Get Logged In Users Here
 	req.user = freshUser;
 	next();
-	////////////////////////////////////////////////////////////////////////////////////////////////
 };
 
 const updatePassword = async (req, res, next) => {
@@ -204,24 +205,7 @@ const forgotPassword = async (req, res, next) => {
 		});
 	}
 
-	const message = `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
-    <div style="margin:50px auto;width:70%;padding:20px 0">
-      <div style="border-bottom:1px solid #eee">
-        <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Aplicar</a>
-      </div>
-      <p style="font-size:1.1em">Hi,</p>
-      <p>Thank you for choosing Aplicar. Use the following OTP to complete your password reset procedures. OTP is valid for 5 minutes</p>
-      <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">${otpResetToken}</h2>
-      <p style="font-size:0.9em;">Regards,<br />Your Brand</p>
-      <hr style="border:none;border-top:1px solid #eee" />
-      <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
-        <p>Aplicar</p>
-        <p>1600 Amphitheatre Parkway</p>
-        <p>California</p>
-      </div>
-    </div>
-  </div>`;
-
+	const message = mailStyle('Use the following OTP to complete your password reset procedure.', otpResetToken)
 	try {
 		await sendEmail(user.email, "Password Reset", message);
 		res.status(200).json({
@@ -355,6 +339,26 @@ const adminLogin = async (req, res, next) => {
 		});
 	}
 };
+const updateProfileIcon = async (req, res) => {
+	try {
+		const id = req.user.userId;
+		const { public_id, url } = req.upload;
+		const user = await User.findByIdAndUpdate(
+			id,
+			{ profileIconUrl: url, profileIconCloudinaryId: public_id },
+			{ new: true }
+		);
+		return res.status(StatusCodes.CREATED).json({
+			status: "success",
+			data: user,
+		});
+	} catch (error) {
+		return res.status(StatusCodes.BAD_REQUEST).json({
+			status: "fail",
+			message: error.message,
+		});
+	}
+};
 
 const updateUser = async (req,res) =>{
 	try {
@@ -392,5 +396,6 @@ module.exports = {
 	googleSuccess,
 	adminLogin,
 	googleLogout,
+	updateProfileIcon,
 	updateUser
 };

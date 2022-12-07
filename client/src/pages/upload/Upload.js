@@ -54,6 +54,7 @@ function Upload() {
 			renderTwice.current = false;
 			getUser();
 		}
+	// eslint-disable-next-line
 	}, []);
 
 	return (
