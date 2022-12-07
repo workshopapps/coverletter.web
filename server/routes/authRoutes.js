@@ -15,6 +15,7 @@ const {
 	googleSuccess,
 	googleLogout,
 	adminLogin,
+	updateUser,
 } = require("../controllers/authController");
 
 //Add your routes here
