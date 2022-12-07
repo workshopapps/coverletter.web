@@ -213,17 +213,6 @@ const ContactUs = () => {
 		) {
 			errorObject = { ...errorObject, email: "Invalid email address" };
 		}
-		if (
-			!(
-				/^(?:(?:(?:\+?234(?:h1)?|01)h*)?(?:\(\d{3}\)|\d{3})|\d{4})(?:\W*\d{3})?\W*\d{4}$/.test(
-					formData.phone
-				) &&
-				((formData.phone.length !== 11 && formData.phone[0] !== "0") ||
-					(formData.phone.length === 11 && formData.phone[0] === "0"))
-			)
-		) {
-			errorObject = { ...errorObject, phone: "Invalid phone number" };
-		}
 		return errorObject;
 	};
 
@@ -337,7 +326,7 @@ const ContactUs = () => {
 								id="phone"
 								type="phone"
 								labelText="Phone Number"
-								placeholder="+234 819 345 3214"
+								placeholder="0819 345 3214"
 								icon={["fas", "phone"]}
 								value={formData.phone}
 								onChange={(e) =>
