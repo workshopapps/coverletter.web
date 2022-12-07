@@ -1,9 +1,9 @@
-var apm = require("elastic-apm-node").start({
-	serviceName: "Coverly-api",
-	secretToken: "",
-	serverUrl: "http://localhost:8200",
-	environment: "production",
-});
+// var apm = require("elastic-apm-node").start({
+// 	serviceName: "Coverly-api",
+// 	secretToken: "",
+// 	serverUrl: "http://localhost:8200",
+// 	environment: "production",
+// });
 require("express-async-errors");
 const express = require("express");
 const swaggerUI = require("swagger-ui-express");
