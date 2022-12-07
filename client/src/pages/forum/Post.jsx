@@ -17,7 +17,6 @@ const Post = () => {
 			const formData = new FormData();
 			formData.append("title", title);
 			formData.append("content", contents);
-			console.log(user);
 
 			const config = {
 				headers: {
@@ -33,7 +32,6 @@ const Post = () => {
 					config
 				);
 				console.log(res);
-				alert("post created successfully");
 				Navigate("/forum");
 			} catch (error) {
 				console.log(error);
@@ -99,7 +97,7 @@ const Post = () => {
 							type="submit"
 							className="btn btnPrimary w-[170px] text-base font-bold"
 						>
-							Post Now
+							Post
 						</button>
 					</div>
 				</form>
