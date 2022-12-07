@@ -364,8 +364,12 @@ const updateProfileIcon = async (req, res) => {
 			{ profileIconUrl: url, profileIconCloudinaryId: public_id },
 			{ new: true }
 		);
+		return res.status(StatusCodes.CREATED).json({
+			status: "success",
+			data: user,
+		});
 	} catch (error) {
-		res.status(StatusCodes.BAD_REQUEST).json({
+		return res.status(StatusCodes.BAD_REQUEST).json({
 			status: "fail",
 			message: error.message,
 		});
