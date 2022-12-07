@@ -4,6 +4,7 @@ const upload = require("../utils/multer");
 const { cloudinary } = require("../utils/cloudinary");
 const { image } = require("../utils/cloudinary");
 const BadRequestError = require("../errors/bad-request");
+const fs = require("fs");
 
 const uploadImage = async (req, res, next) => {
 	try {
@@ -18,6 +19,7 @@ const uploadImage = async (req, res, next) => {
 				resource_type: "auto",
 				folder: "images",
 			});
+			fs.unlinkSync(filePath);
 			req.upload = {
 				public_id: upload.public_id,
 				url: upload.url,
