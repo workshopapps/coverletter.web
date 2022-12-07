@@ -206,7 +206,6 @@ const forgotPassword = async (req, res, next) => {
 	}
 
 	const message = mailStyle('Use the following OTP to complete your password reset procedure.', otpResetToken)
- 	
 	try {
 		await sendEmail(user.email, "Password Reset", message);
 		res.status(200).json({
