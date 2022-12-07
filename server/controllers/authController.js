@@ -356,6 +356,28 @@ const adminLogin = async (req, res, next) => {
 	}
 };
 
+const updateUser = async (req,res) =>{
+	try {
+		const {name,jobRole} = req.body
+		
+		const userId = req.user.userId	
+
+		const user = await User.findByIdAndUpdate(userId,{name,jobRole},{new:true})
+		if (!user) {
+			throw new BadRequestError(`user with the ${userId} does not exist`)
+		}
+		const data = {
+			name: user.name,
+			jobRole: user.jobRole
+		}
+
+		return res.status(StatusCodes.OK).json({success: true,data})
+
+	} catch (error) {
+		return res.status(400).json({success: false,error:error.message})
+	}
+
+}
 module.exports = {
 	register,
 	login,
@@ -370,4 +392,5 @@ module.exports = {
 	googleSuccess,
 	adminLogin,
 	googleLogout,
+	updateUser
 };

@@ -26,6 +26,7 @@ router.post("/logout", auth, logout);
 router.get("/dashboard/:id", auth, getUserDetails);
 router.post("/forgotPassword", forgotPassword);
 router.post("/admin/login", adminLogin);
+router.put("/",auth,updateUser)
 
 router.post("/validateOTP", validateOTP);
 //GOOGLE auth routes
