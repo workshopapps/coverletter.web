@@ -4,16 +4,22 @@ const upload = require("../utils/multer");
 const { cloudinary } = require("../utils/cloudinary");
 const { image } = require("../utils/cloudinary");
 const BadRequestError = require("../errors/bad-request");
+const fs = require("fs");
 
 const uploadImage = async (req, res, next) => {
 	try {
 		if (req.files) {
 			const file = req.files.myFile;
-			const upload = await cloudinary.uploader.upload(file.tempFilePath, {
+			const filePath = "./tmp/" + file.name;
+			file.mv(filePath, function (err) {
+				if (err) throw new BadRequestError("Failed to move the image");
+			});
+			const upload = await cloudinary.uploader.upload(filePath, {
 				public_id: `${Date.now()}`,
 				resource_type: "auto",
 				folder: "images",
 			});
+			fs.unlinkSync(filePath);
 			req.upload = {
 				public_id: upload.public_id,
 				url: upload.url,
