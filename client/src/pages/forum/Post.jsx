@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { getUserFromLocalStorage } from "../../Utils/localStorage";
+import { useGlobalContext } from "../../context/context";
 
 const Post = () => {
 	const [title, setTitle] = useState("");
 	const [contents, setContents] = useState("");
 
+    const Navigate = useNavigate();
+	const { user } = useGlobalContext();
+	
+
 	const submitHandler = (e) => {
 		e.preventDefault();
-        console.log(getUserFromLocalStorage().token);
 
 		const createPost = async () => {
 			const formData = new FormData();
@@ -19,7 +23,7 @@ const Post = () => {
            const config = {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzhmNmE4MTczMmQwYzBkZTM3N2RjN2UiLCJuYW1lIjoiQWRlYmF5byBveWlua2Fuc29sYSAiLCJlbWFpbCI6ImFkZWJheW9hbGFtZWVuMkBnbWFpbC5jb20iLCJzdGF0dXMiOiJBY3RpdmUiLCJpYXQiOjE2NzAzNTExNTgsImV4cCI6MTY3MDM2OTE1OH0.yI4KfHIzbjkH92zGX3uz_LvDbOmgqgES7JzVWdoiB9c"
+                    "Authorization": `Bearer ` + user.token
                 }
             }
 
@@ -30,7 +34,9 @@ const Post = () => {
                     config
 					
 				);
-				console.log(res);
+				console.log(res)
+				alert("post created successfully")
+                Navigate('/forum');
 			} catch (error) {
 				console.log(error);
 			}

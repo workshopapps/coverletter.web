@@ -51,7 +51,6 @@ const Forum = () => {
 			});
 	}, []);
 
-	console.log(dData);
 
 	return (
 		<>
