@@ -136,7 +136,7 @@ const updateForumPost = async (req, res) => {
 	if(!updatedPost){
 		throw new BadRequestError("You dont have permission to do that!");
 	}
-	return res.status(StatusCodes.CREATED).json({ status: 'success', post:{
+	return res.status(StatusCodes.OK).json({ status: 'success', post:{
 		updatedPost
 	} });
 }

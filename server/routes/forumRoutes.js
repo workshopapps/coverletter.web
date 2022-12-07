@@ -22,6 +22,6 @@ router.post("/:pid/reply", auth, replyForumPost);
 router.get("/:pid/replies", getAllRepliesToAForumPost);
 router.get("/reply/:id", getAReplyFromAForumPost);
 router.post("/:pid/like", auth, likePost);
-router.post("/update/:id", auth, updateForumPost);
+router.patch("/update/:id", auth, updateForumPost);
 
 module.exports = router;
