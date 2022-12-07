@@ -130,6 +130,17 @@ const deleteForumPost = async (req, res) => {
 	}
 };
 
+const updateForumPost = async (req, res) => {
+	const {title, content} = req.body;
+	const updatedPost = await Post.findByIdAndUpdate(req.params.id, {title, content}, {new:true})
+	if(!updatedPost){
+		throw new BadRequestError("You dont have permission to do that!");
+	}
+	return res.status(StatusCodes.CREATED).json({ status: 'success', post:{
+		updatedPost
+	} });
+}
+
 module.exports = {
 	createForumPost,
 	getAllForumPosts,
@@ -139,4 +150,5 @@ module.exports = {
 	getAllRepliesToAForumPost,
 	likePost,
 	deleteForumPost,
+	updateForumPost,
 };

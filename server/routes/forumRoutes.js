@@ -9,6 +9,7 @@ const { getAllRepliesToAForumPost } = require("../controllers/forumController");
 const { getAReplyFromAForumPost } = require("../controllers/forumController");
 const { likePost } = require("../controllers/forumController");
 const { deleteForumPost } = require("../controllers/forumController");
+const { updateForumPost } = require("../controllers/forumController");
 
 const router = express.Router();
 
@@ -21,5 +22,6 @@ router.post("/:pid/reply", auth, replyForumPost);
 router.get("/:pid/replies", getAllRepliesToAForumPost);
 router.get("/reply/:id", getAReplyFromAForumPost);
 router.post("/:pid/like", auth, likePost);
+router.post("/update/:id", auth, updateForumPost);
 
 module.exports = router;
