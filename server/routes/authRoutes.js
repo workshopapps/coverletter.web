@@ -17,6 +17,7 @@ const {
 	googleLogout,
 	adminLogin,
 	updateUser,
+	updateProfileIcon,
 } = require("../controllers/authController");
 
 //Add your routes here
@@ -27,7 +28,7 @@ router.post("/logout", auth, logout);
 router.get("/dashboard/:id", auth, getUserDetails);
 router.post("/forgotPassword", forgotPassword);
 router.post("/admin/login", adminLogin);
-router.put("/",auth,updateUser)
+router.put("/", auth, updateUser);
 
 router.post("/validateOTP", validateOTP);
 //GOOGLE auth routes
