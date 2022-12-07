@@ -30,6 +30,9 @@ const UserSchema = mongoose.Schema({
 		enum: ["Pending", "Active"],
 		default: "Pending",
 	},
+	jobRole: {
+		type: String
+	},
 	confirmationCode: {
 		type: String,
 	},
