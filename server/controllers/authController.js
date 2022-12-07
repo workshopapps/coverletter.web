@@ -355,6 +355,22 @@ const adminLogin = async (req, res, next) => {
 		});
 	}
 };
+const updateProfileIcon = async (req, res) => {
+	try {
+		const id = req.user.userId;
+		const { public_id, url } = req.upload;
+		const user = await User.findByIdAndUpdate(
+			id,
+			{ profileIconUrl: url, profileIconCloudinaryId: public_id },
+			{ new: true }
+		);
+	} catch (error) {
+		res.status(StatusCodes.BAD_REQUEST).json({
+			status: "fail",
+			message: error.message,
+		});
+	}
+};
 module.exports = {
 	register,
 	login,
@@ -369,4 +385,5 @@ module.exports = {
 	googleSuccess,
 	adminLogin,
 	googleLogout,
+	updateProfileIcon,
 };
