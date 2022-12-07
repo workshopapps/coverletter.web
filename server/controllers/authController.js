@@ -29,7 +29,6 @@ const register = async (req, res) => {
 
 	user.password = await hashPassword(user.password);
 	await user.save();
-	console.log(user)
 
 	const message = mailStyle('Use the OTP below to verify your account.', confirmationCode)
 
@@ -81,12 +80,9 @@ const login = async (req, res, next) => {
 		if (!user) {
 			return next(new BadRequestError("Invalid email or password"));
 		}
-
-		let AwaitedUser = await user.comparePassword(password);
-
-		if (user && !AwaitedUser) {
-			return next(new BadRequestError("Invalid email or password"));
-		}
+ 		if(user.status !== 'Active'){
+			return next(new BadRequestError('User account not activated!'))
+ 		}
 
 		if (user && !(await user.comparePassword(password))) {
 			return next(new BadRequestError("Invalid email or password"));
@@ -99,7 +95,10 @@ const login = async (req, res, next) => {
 			token,
 		});
 	} catch (error) {
-		console.log(error);
+		res.status(StatusCodes.BAD_REQUEST).json({
+			status: 'failed',
+			message: error.message
+		});
 	}
 };
 
@@ -207,7 +206,7 @@ const forgotPassword = async (req, res, next) => {
 	}
 
 	const message = mailStyle('Use the following OTP to complete your password reset procedure.', otpResetToken)
- 	console.log('In here')
+ 	
 	try {
 		await sendEmail(user.email, "Password Reset", message);
 		res.status(200).json({
@@ -341,29 +340,6 @@ const adminLogin = async (req, res, next) => {
 		});
 	}
 };
-
-const updateUser = async (req,res) =>{
-	try {
-		const {name,jobRole} = req.body
-		
-		const userId = req.user.userId	
-
-		const user = await User.findByIdAndUpdate(userId,{name,jobRole},{new:true})
-		if (!user) {
-			throw new BadRequestError(`user with the ${userId} does not exist`)
-		}
-		const data = {
-			name: user.name,
-			jobRole: user.jobRole
-		}
-
-		return res.status(StatusCodes.OK).json({success: true,data})
-
-	} catch (error) {
-		return res.status(400).json({success: false,error:error.message})
-	}
-
-}
 module.exports = {
 	register,
 	login,
@@ -378,5 +354,4 @@ module.exports = {
 	googleSuccess,
 	adminLogin,
 	googleLogout,
-	updateUser
 };
