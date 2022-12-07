@@ -85,8 +85,57 @@ const deleteAdmin = async (req, res) => {
 	});
 };
 
+const updateAdmin = async (req,res) =>{
+	try {
+		const {name} = req.body
+		
+		const userId = req.user.userId	
+
+		const admin = await Admin.findByIdAndUpdate(userId,{name},{new:true})
+		if (!admin) {
+			throw new BadRequestError(`Admin with the ${userId} does not exist`)
+		}
+		const data = {
+			name: user.name,
+			admin: admin._id,
+			email: admin.email,
+			role: admin.role
+		}
+
+		return res.status(StatusCodes.OK).json({success: true,data})
+
+	} catch (error) {
+		return res.status(400).json({success: false,error:error.message})
+	}
+
+}
+
+const logout = async (req, res) => {
+	const token = req.headers.authorization.split(" ")[1]
+
+	const userId = req.user.userId
+
+	const user = await Admin.findById(userId);
+	req.user = user
+	req.token = token
+	
+	if (!req.user || !req.token) {
+		return next(new BadRequestError("You are not logged in"));
+	}
+
+	delete req.token;
+	delete req.user;
+
+	return res.status(200).json({
+		message: "You have logged out successfully",
+	});
+};
+
+
 module.exports = {
 	createAdmin,
 	verifyAdmin,
 	deleteAdmin,
+	updateAdmin,
+	logout
 };
