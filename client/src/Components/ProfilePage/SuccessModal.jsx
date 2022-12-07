@@ -18,7 +18,7 @@ function SuccessModal({ setShowSuccess }) {
 
 						<p className="font-bold text-xl">Success</p>
 						<p className="text-[#6D6D6D] font-bold">
-							Your Password has been changed
+							Your details have been updated
 						</p>
 						<p
 							className="bg-primaryMain px-8 text-white rounded-xl font-bold py-2 cursor-pointer"
