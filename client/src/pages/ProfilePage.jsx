@@ -39,7 +39,7 @@ const ProfilePage = () => {
 								</Link>
 							</div>
 
-							<ProfileAccount setShowPassModal={setShowPassModal} />
+							<ProfileAccount setShowPassModal={setShowPassModal} setShowEditProfileModal={setShowEditProfileModal} />
 						</div>
 					</div>
 				</div>

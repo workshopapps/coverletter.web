@@ -111,7 +111,7 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 								id="jobRole"
 								type="text"
 								value={values.jobRole || ""}
-								icon={["fas", "user"]}
+								icon={["fas", "sitemap"]}
 								placeholder="Designer"
 								onChange={(e) => {
 									onChange("jobRole", e.target.value);
