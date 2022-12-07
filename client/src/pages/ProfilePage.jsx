@@ -1,31 +1,22 @@
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import EditProfileModal from "../Components/ProfilePage/EditProfile";
+import PasswordModal from "../Components/ProfilePage/PasswordModal";
 import ProfileAccount from "../Components/ProfilePage/ProfileAccount";
 import ProfileSide from "../Components/ProfilePage/ProfileSide";
-import Upload from "../Components/ProfilePage/Upload";
-import { useGlobalContext } from "../context/context";
+import SuccessModal from "../Components/ProfilePage/SuccessModal";
 
 const ProfilePage = () => {
-	const {user} = useGlobalContext()
-
-	const CVGenerated = [
-		{
-			firstName: user?.name,
-			lastName: "",
-			extension: ".pdf",
-		},
-		{
-			firstName: user?.name,
-			lastName: "",
-			extension: ".pdf",
-		},
-	];
+    const [showSuccess, setShowSuccess] = useState(false);
+    const [showPassModal, setShowPassModal] = useState(false);
+    const [showEditProfileModal, setShowEditProfileModal] = useState(false);
 
 	return (
 		<div className="bg-[#03296f11] py-8">
 			<div className="relative max-w-screen-2xl m-auto py-5  md:px-10 xl:px-15 max-[759px]:px-5">
 				<div className="md:flex gap-8 md:gap-4 pr-8 pl-3 max-[1023px]:pr-0">
 					<div className="bg-white w-4/12 max-[1078px]:w-5/12 rounded-md h-max mt- p-6 max-[938px]:hidden">
-						<ProfileSide />
+						<ProfileSide setShowEditProfileModal={setShowEditProfileModal} />
 					</div>
 
 					<div className="md:flex md:flex-col md:gap-4 w-8/12 max-[938px]:w-full">
@@ -48,26 +39,18 @@ const ProfilePage = () => {
 								</Link>
 							</div>
 
-							<ProfileAccount />
-						</div>
-
-						{/* Cover Letter Generated Section */}
-						<div className="bg-white rounded-md h-max p-6 my-6">
-							<h1 className="font-bold text-[1.5em]">
-								Cover Letter Generated
-							</h1>
-
-							<div>
-								{CVGenerated.map((CV, index) => {
-									return (
-										<Upload resume={CV} key={index} index={index} />
-									);
-								}).reverse()}
-							</div>
+							<ProfileAccount setShowPassModal={setShowPassModal} />
 						</div>
 					</div>
 				</div>
 			</div>
+			{showSuccess && <SuccessModal setShowSuccess={setShowSuccess}/>}
+			{showPassModal &&
+                <PasswordModal setShowSuccess={setShowSuccess} setShowPassModal={setShowPassModal} />
+            }
+			{
+				showEditProfileModal && <EditProfileModal setShowSuccess={setShowSuccess} setShowEditProfileModal={setShowEditProfileModal} />
+			}
 		</div>
 	);
 };
