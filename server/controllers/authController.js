@@ -27,14 +27,17 @@ const register = async (req, res) => {
 		confirmationCode,
 	});
 
+	user.password = await hashPassword(user.password);
+	await user.save();
+	console.log(user)
+
 	const message = mailStyle('Use the OTP below to verify your account.', confirmationCode)
 
 	await sendEmail(
 		req.body.email,
 		"Verify email", message
 	);
-	user.password = await hashPassword(user.password);
-	await user.save();
+	
 
 	return res.status(StatusCodes.CREATED).json("Signup was successful.");
 };
@@ -143,7 +146,6 @@ const protect = async (req, res, next) => {
 	// Get Logged In Users Here
 	req.user = freshUser;
 	next();
-	////////////////////////////////////////////////////////////////////////////////////////////////
 };
 
 const updatePassword = async (req, res, next) => {
@@ -205,7 +207,7 @@ const forgotPassword = async (req, res, next) => {
 	}
 
 	const message = mailStyle('Use the following OTP to complete your password reset procedure.', otpResetToken)
-console.log('In here')
+ 	console.log('In here')
 	try {
 		await sendEmail(user.email, "Password Reset", message);
 		res.status(200).json({
