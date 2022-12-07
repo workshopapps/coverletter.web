@@ -35,6 +35,10 @@ const Header = () => {
 
 	const logout = async () => {
 		try {
+			window.open(
+				"https://api.coverly.hng.tech/api/v1/auth/googlelogout",
+				"_self"
+			);
 			localStorage.removeItem("user");
 			toast.success("You have been logged out");
 			setTimeout(() => {
