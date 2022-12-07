@@ -159,9 +159,7 @@ function InputData() {
 		<div className="bg-background lg:px-[204px] lg:py-[120px] font-manrope">
 			<ToastContainer />
 			<main
-				className={` ${
-					isLoading && "filter blur-[0.7px] opacity-30"
-				}  lg:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite `}
+				className={`lg:px-[80px] px-[30px] rounded-lg h-sreen pt-12 bg-textWhite `}
 			>
 				<button
 					onClick={clickHandler}
@@ -846,18 +844,20 @@ function InputData() {
 				</form>
 			</main>
 			{isLoading && (
-				<div className=" bg-textWhite absolute bottom-[90%] top-[80rem] sm:top-[50rem] left-[5%] md:left-[10%] lg:left-[25%] w-[90%] md:w-[80%] lg:w-[50%] rounded-lg h-[369px] md:h-[512px] flex flex-col justify-center items-center gap-[20px]">
-					<h3 className="text-textBody text-center text-[16px]">
-						{percentage < 78
-							? "Extracting your details..."
-							: "Almost finished..."}
-					</h3>
-					<div className="bar w-[80%] ">
-						<div className="w-full bg-grey100 rounded-full dark:bg-grey300">
-							<div
-								className="bg-primaryMain text-xs font-medium text-textWhite p-[7px] leading-none rounded-full"
-								style={{ width: `${percentage}%` }}
-							></div>
+				<div className="bg-overlay fixed top-0 left-0 bottom-0 z-50 w-full flex justify-center items-center ">
+					<div className=" bg-textWhite w-[80%] md:w-[80%] lg:w-[50%] rounded-lg h-[369px] md:h-[512px] flex flex-col justify-center items-center gap-[20px]">
+						<h3 className="text-textBody text-center text-[16px]">
+							{percentage < 78
+								? "Extracting your details..."
+								: "Almost finished..."}
+						</h3>
+						<div className="bar w-[80%] ">
+							<div className="w-full bg-grey100 rounded-full h-1.5 mb-4 dark:bg-grey300">
+								<div
+									className="bg-primaryMain h-1.5 rounded-full dark:bg-primaryLight "
+									style={{ width: `${percentage}%` }}
+								></div>
+							</div>
 						</div>
 					</div>
 				</div>
