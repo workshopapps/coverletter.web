@@ -117,4 +117,3 @@ const start = async () => {
 start();
 
 module.exports = app;
-0

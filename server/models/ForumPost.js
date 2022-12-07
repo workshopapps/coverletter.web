@@ -21,6 +21,10 @@ const PostSchema = mongoose.Schema(
 			ref: "User",
 			required: [true, "Please provide user"],
 		},
+		likesCounter: {
+			type: Number,
+			default: 0,
+		},
 	},
 	{ timestamps: true }
 );
