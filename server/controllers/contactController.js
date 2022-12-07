@@ -1,5 +1,5 @@
 const ContactUsValidation = require("../utils/contactUs.validation");
-const sendEmail = require("../utils/sendEmail");
+const {sendEmail} = require("../utils/sendEmail");
 const { BadRequestError } = require("../errors");
 const { StatusCodes } = require("http-status-codes");
 

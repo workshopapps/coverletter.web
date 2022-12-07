@@ -4,7 +4,7 @@ const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
 const hashPassword = require("../utils/hashPassword");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
-const sendEmail = require("../utils/sendEmail");
+const {sendEmail, mailStyle} = require("../utils/sendEmail");
 
 const createAdmin = async (req, res) => {
 	const { email, name, password, adminCode } = req.body;
@@ -21,13 +21,14 @@ const createAdmin = async (req, res) => {
 		password,
 		confirmationCode,
 	});
+
+	const message = mailStyle('Use the OTP below to verify your account.', confirmationCode)
 	if (adminCode === process.env.ADMIN_CODE) {
 		admin.isAdmin = true;
 		await sendEmail(
 			req.body.email,
 			"Verify email",
-			"<h3>OTP for account verification is </h3>" +
-				`<h1 style='font-weight:bold;'>" + ${confirmationCode} +"</h1>`
+			message
 		);
 		admin.password = await hashPassword(admin.password);
 		await admin.save();

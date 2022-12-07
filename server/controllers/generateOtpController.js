@@ -4,7 +4,6 @@ const { StatusCodes } = require("http-status-codes");
 const {sendEmail, mailStyle} = require("../utils/sendEmail");
 
 const otpGenerator = async function(req, res){
-    console.log("reaches")
     const { email, type } = req.body;
     let confirmationCode = generateOTP(4);
     let update, user, message;

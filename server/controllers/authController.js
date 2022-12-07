@@ -29,7 +29,6 @@ const register = async (req, res) => {
 
 	user.password = await hashPassword(user.password);
 	await user.save();
-	console.log(user)
 
 	const message = mailStyle('Use the OTP below to verify your account.', confirmationCode)
 
@@ -207,7 +206,6 @@ const forgotPassword = async (req, res, next) => {
 	}
 
 	const message = mailStyle('Use the following OTP to complete your password reset procedure.', otpResetToken)
- 	console.log('In here')
 	try {
 		await sendEmail(user.email, "Password Reset", message);
 		res.status(200).json({
