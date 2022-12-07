@@ -96,7 +96,7 @@ const updateAdmin = async (req,res) =>{
 			throw new BadRequestError(`Admin with the ${userId} does not exist`)
 		}
 		const data = {
-			name: user.name,
+			name: admin.name,
 			admin: admin._id,
 			email: admin.email,
 			role: admin.role
