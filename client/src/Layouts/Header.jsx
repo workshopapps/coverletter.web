@@ -32,11 +32,11 @@ const Header = () => {
 	/*
 	 * Logout user
 	 */
-	// http://localhost:5001/api/v1/auth/googlelogout
+
 	const logout = async () => {
 		try {
 			window.open(
-				"http://localhost:5001/api/v1/auth/googlelogout",
+				"https://api.coverly.hng.tech/api/v1/auth/googlelogout",
 				"_self"
 			);
 			localStorage.removeItem("user");

@@ -24,7 +24,7 @@ function Upload() {
 		const getUser = async () => {
 			try {
 				const response = await axios.get(
-					`http://localhost:5001/api/v1/auth/success`,
+					`https://api.coverly.hng.tech/api/v1/auth/success`,
 					{
 						withCredentials: true,
 					}
