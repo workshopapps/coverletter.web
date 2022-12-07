@@ -7,9 +7,8 @@ const Post = () => {
 	const [title, setTitle] = useState("");
 	const [contents, setContents] = useState("");
 
-    const Navigate = useNavigate();
+	const Navigate = useNavigate();
 	const { user } = useGlobalContext();
-	
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -18,31 +17,36 @@ const Post = () => {
 			const formData = new FormData();
 			formData.append("title", title);
 			formData.append("content", contents);
+			console.log(user);
 
-
-           const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ` + user.token
-                }
-            }
+			const config = {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${user.token}`,
+				},
+			};
 
 			try {
 				const res = await axios.post(
 					`https://api.coverly.hng.tech/api/v1/forum/createPost`,
-                    formData,
-                    config
-					
+					formData,
+					config
 				);
-				console.log(res)
-				alert("post created successfully")
-                Navigate('/forum');
+				console.log(res);
+				alert("post created successfully");
+				Navigate("/forum");
 			} catch (error) {
 				console.log(error);
 			}
 		};
 		createPost();
 	};
+	const date = new Date();
+	let day = date.getDate();
+	// let month = date.getMonth();
+	let year = date.getFullYear();
+	let currentDate = `December ${day}, ${year}`;
+
 	return (
 		<>
 			<main className="bg-[#f2f2f7] mx-0 my-0 py-5 px-5 md:px-16">
@@ -59,10 +63,10 @@ const Post = () => {
 					</div>
 					<div>
 						<div className="capitalize text-base md:text-2xl font-semibold">
-							<p>Kreativ Mind</p>
+							<p>{user.name}</p>
 						</div>
 						<div className="flex gap-5 text-five text-sm md:text-base">
-							<p className="text-[#bababa]">November 2, 2022</p>
+							<p className="text-[#bababa]">{currentDate}</p>
 						</div>
 					</div>
 				</div>
