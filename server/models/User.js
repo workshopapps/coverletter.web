@@ -30,13 +30,27 @@ const UserSchema = mongoose.Schema({
 		enum: ["Pending", "Active"],
 		default: "Pending",
 	},
-	confirmationCode: {
+	jobRole: {
 		type: String
 	},
-	otp: {type:String,default:null},
-	passwordResetExpires: {type:Date,default:null},
+	confirmationCode: {
+		type: String,
+	},
+	otp: { type: String, default: null },
+	passwordResetExpires: { type: Date, default: null },
+	profileIconUrl: {
+		type: String,
+		required: false,
+		maxlength: 255,
+		default: null,
+	},
+	profileIconCloudinaryId: {
+		type: String,
+		required: false,
+		maxlength: 255,
+		default: null,
+	},
 });
-
 
 UserSchema.methods.createJWT = function () {
 	return jwt.sign(

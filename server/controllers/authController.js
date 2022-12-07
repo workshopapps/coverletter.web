@@ -355,6 +355,49 @@ const adminLogin = async (req, res, next) => {
 		});
 	}
 };
+const updateProfileIcon = async (req, res) => {
+	try {
+		const id = req.user.userId;
+		const { public_id, url } = req.upload;
+		const user = await User.findByIdAndUpdate(
+			id,
+			{ profileIconUrl: url, profileIconCloudinaryId: public_id },
+			{ new: true }
+		);
+		return res.status(StatusCodes.CREATED).json({
+			status: "success",
+			data: user,
+		});
+	} catch (error) {
+		return res.status(StatusCodes.BAD_REQUEST).json({
+			status: "fail",
+			message: error.message,
+		});
+	}
+};
+
+const updateUser = async (req,res) =>{
+	try {
+		const {name,jobRole} = req.body
+		
+		const userId = req.user.userId	
+
+		const user = await User.findByIdAndUpdate(userId,{name,jobRole},{new:true})
+		if (!user) {
+			throw new BadRequestError(`user with the ${userId} does not exist`)
+		}
+		const data = {
+			name: user.name,
+			jobRole: user.jobRole
+		}
+
+		return res.status(StatusCodes.OK).json({success: true,data})
+
+	} catch (error) {
+		return res.status(400).json({success: false,error:error.message})
+	}
+
+}
 module.exports = {
 	register,
 	login,
@@ -369,4 +412,6 @@ module.exports = {
 	googleSuccess,
 	adminLogin,
 	googleLogout,
+	updateProfileIcon,
+	updateUser
 };

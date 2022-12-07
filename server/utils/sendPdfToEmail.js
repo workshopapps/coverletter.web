@@ -3,6 +3,7 @@ const path = require("path")
 module.exports = async (email, subject, file) => {
 	try {
 		const fileFormat = path.extname(file.name)
+		console.log(file)
 		const transporter = nodemailer.createTransport({
 			host: "smtp.gmail.com",
 			service: "Gmail",
@@ -37,7 +38,7 @@ module.exports = async (email, subject, file) => {
 			attachments: [
 				{
 					filename: file.name,
-					path: file.tempFilePath,
+					content: file.data,
 					
 				}
 			],
