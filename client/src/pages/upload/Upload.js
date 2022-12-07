@@ -36,7 +36,6 @@ function Upload() {
 					userId: resp?.user?._id,
 					token: resp?.token,
 				};
-				console.log(user);
 
 				if (resp.success) {
 					addUserToLocalStorage(user);
