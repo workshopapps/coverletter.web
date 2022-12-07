@@ -66,10 +66,26 @@ const getAllRepliesToAForumPost = async (req, res) => {
 	return res.status(StatusCodes.CREATED).json({ replies });
 };
 
+const deleteForumPost = async (req, res) => {
+	const forum = await Post.findById(req.params.id);
+
+	if (forum) {
+		await Post.findByIdAndDelete(req.params.id);
+		return res.status(StatusCodes.OK).json({
+			message: `Forum Post with the id ${req.params.id} Deleted successfully`,
+		});
+	} else {
+		return res.status(StatusCodes.NOT_FOUND).json({
+			message: `Forum Post with the id ${req.params.id} does not exist`,
+		});
+	}
+};
+
 module.exports = {
 	createForumPost,
 	getAllForumPosts,
 	replyForumPost,
 	getOneForumPost,
 	getAllRepliesToAForumPost,
+	deleteForumPost,
 };
