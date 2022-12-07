@@ -71,10 +71,17 @@ const getAllRepliesToAForumPost = async (req, res) => {
 	return res.status(StatusCodes.CREATED).json({ replies });
 };
 
+const getAReplyFromAForumPost = async (req, res) => {
+	const { id } = req.params;
+
+	const reply = await Reply.findOne({ _id: id });
+	return res.status(StatusCodes.OK).json({ reply });
+};
+
 const likePost = async (req, res) => {
 	req.body.userId = req.user.userId;
 	const pid = req.params.pid;
-	req.body.postId = pid
+	req.body.postId = pid;
 	const forumPost = await Post.findOne({ _id: pid });
 	if (!forumPost) {
 		throw new BadRequestError("Unable To Find Post");
@@ -97,7 +104,7 @@ const likePost = async (req, res) => {
 			);
 			await updatePostsLikesCounter(pid);
 			return res.status(StatusCodes.CREATED).json({ like });
-		} else{
+		} else {
 			const like = await Like.findOneAndUpdate(
 				{ userId: req.body.userId, postId: req.body.postId },
 				{ $set: { likes: true } },
@@ -107,7 +114,7 @@ const likePost = async (req, res) => {
 			return res.status(StatusCodes.CREATED).json({ like });
 		}
 	}
-}	
+};
 const deleteForumPost = async (req, res) => {
 	const forum = await Post.findById(req.params.id);
 
@@ -128,6 +135,7 @@ module.exports = {
 	getAllForumPosts,
 	replyForumPost,
 	getOneForumPost,
+	getAReplyFromAForumPost,
 	getAllRepliesToAForumPost,
 	likePost,
 	deleteForumPost,
