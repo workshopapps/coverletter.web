@@ -4,7 +4,7 @@ import ModalLight from "../Components/Ui/ModalLight";
 import { useGlobalContext } from "../context/context";
 import Close from "../Assets/close-event.svg";
 
-export default function EventsList(props) {
+export default function EventsList({ event }) {
 	const { openModal, isModalOpen, closeModal } = useGlobalContext();
 
 	return (
@@ -14,19 +14,19 @@ export default function EventsList(props) {
 		>
 			<img
 				className="rounded-t-lg md:rounded-tr-none md:rounded-l-lg"
-				src={props.event.img}
+				src={event.img}
 				alt=""
 			/>
 			<div className="truncate p-5 lg:p-0 flex justify-between items-center">
 				<div className="truncate pr-2 md:py-2 lg:py-5 lg:px-6">
 					<p className="truncate text-grey800 font-semibold lg:text-2xl">
-						{props.event.headline}
+						{event.headline}
 					</p>
 					<span className="md:block md:truncate text-grey400 text-sm md:text-xs lg:text-base font-bold md:font-normal">
-						{props.event.place}
+						{event.place}
 					</span>
 					<span className="md:block hidden truncate text-grey400 text-sm md:text-xs lg:text-base font-bold md:font-normal">
-						{props.event.time}
+						{event.time}
 					</span>
 				</div>
 				<div
@@ -52,13 +52,13 @@ export default function EventsList(props) {
 							{/* image */}
 							<img
 								className="rounded-lg max-[834px]:mr-[24px] max-[790px]:mr-[0] max-[834px]:w-full"
-								src={props.event.img}
-								alt={props.event.headline}
+								src={event.img}
+								alt={event.headline}
 							/>
 							<div className="modal-header-details flex flex-col gap-6 ">
 								{/* title */}
 								<h2 className="text-2xl font-bold text-grey800">
-									{props.event.headline}
+									{event.headline}
 								</h2>
 								{/* place */}
 								<div className="flex gap-10">
@@ -66,7 +66,7 @@ export default function EventsList(props) {
 										Venue:
 									</p>
 									<p className="text-grey400 text-sm font-bold">
-										{props.event.place}
+										{event.place}
 									</p>
 								</div>
 
@@ -76,7 +76,7 @@ export default function EventsList(props) {
 										Date:
 									</p>
 									<p className="text-grey400 text-sm font-bold">
-										{/* {props.event.date} */}
+										{/* {event.date} */}
 										Tuesday, Nov 22, 2022.
 									</p>
 								</div>
@@ -87,7 +87,7 @@ export default function EventsList(props) {
 									</p>
 									<div className="text-grey400 text-sm font-bold ">
 										<div className="flex items-start  justify-between gap-10 max-[508px]:flex-col">
-											<p>{props.event.time}</p>
+											<p>{event.time}</p>
 											<div
 												className="flex px-[20px]
 													mt-[-30px] py-[12px] justify-center items-center bg-btnbg rounded-lg cursor-pointer self-start"
@@ -112,7 +112,7 @@ export default function EventsList(props) {
 											leading-[30px]
 											text-justify"
 								>
-									{props.event.description}
+									{event.description}
 								</p>
 							</div>
 						</div>

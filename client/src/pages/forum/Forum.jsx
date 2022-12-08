@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Forum = () => {
+	const [dData, setdData] = useState([]);
+	const [page, setPage] = useState(1);
+
 	const imgg = [
 		"./forum-images/forum/f1.png",
 		"./forum-images/forum/f2.png",
@@ -14,11 +17,13 @@ const Forum = () => {
 		"./forum-images/forum/f7.png",
 	];
 
-	const [dData, setdData] = useState([]);
 	useEffect(() => {
 		axios
-			.get("https://api.coverly.hng.tech/api/v1/forum/getAllPost")
+			.get(
+				`https://api.coverly.hng.tech/api/v1/forum/getAllPost?page=${page}&limit=10`
+			)
 			.then((res) => {
+				console.log(res);
 				const dValues = res.data.posts;
 				const getValues = [];
 
@@ -49,9 +54,7 @@ const Forum = () => {
 			.then((err) => {
 				console.log(err);
 			});
-	}, []);
-
-	console.log(dData);
+	}, [page]);
 
 	return (
 		<>
@@ -131,22 +134,68 @@ const Forum = () => {
 						<p>1 - 8 of 45 Discussions</p>
 					</div>
 					<div className="flex gap-5">
-						<button className="border-r border-[#bababa] px-5 btn text-disabledDisabled">
+						<button
+							onClick={() => setPage((prev) => prev - 1)}
+							className="border-r border-[#bababa] px-5 btn text-disabledDisabled"
+						>
 							<span className="align-middle">&lt;Previous</span>
 						</button>
 
 						<div className="hidden md:flex md:gap-2 lg:gap-8">
-							<button className="btn btnSecondary">1</button>
-							<button className="btn text-primaryMain">2</button>
-							<button className="btn text-primaryMain">3</button>
-							<button className="btn text-primaryMain">4</button>
-							<button className="btn text-primaryMain">5</button>
-							<button className="btn text-primaryMain">6</button>
-							<button className="btn text-primaryMain">7</button>
-							<button className="btn text-primaryMain">8</button>
+							<button
+								onClick={() => setPage(1)}
+								className="btn btnSecondary"
+							>
+								1
+							</button>
+							<button
+								onClick={() => setPage(2)}
+								className="btn focus:btnSecondary text-primaryMain"
+							>
+								2
+							</button>
+							<button
+								onClick={() => setPage(3)}
+								className="btn focus:btnSecondary text-primaryMain"
+							>
+								3
+							</button>
+							<button
+								onClick={() => setPage(4)}
+								className="btn focus:btnSecondary text-primaryMain"
+							>
+								4
+							</button>
+							<button
+								onClick={() => setPage(5)}
+								className="btn focus:btnSecondary text-primaryMain"
+							>
+								5
+							</button>
+							<button
+								onClick={() => setPage(6)}
+								className="btn focus:btnSecondary text-primaryMain"
+							>
+								6
+							</button>
+							<button
+								onClick={() => setPage(7)}
+								className="btn focus:btnSecondary text-primaryMain"
+							>
+								7
+							</button>
+							<button
+								onClick={() => setPage(8)}
+								className="btn focus:btnSecondary text-primaryMain"
+							>
+								8
+							</button>
 						</div>
 
-						<button className="px-5 border-l border-[#bababa] text-primaryMain btn">
+						<button
+							onClick={() => setPage((prev) => prev + 1)}
+							className="px-5 border-l border-[#bababa] text-primaryMain btn"
+						>
 							<span className="align-middle">Next &gt;</span>
 						</button>
 					</div>
