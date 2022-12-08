@@ -15,7 +15,7 @@ import { useGlobalContext } from "../context/context";
 // import EighthCV from "../Assets/Images/cv8.png";
 
 // // Cover Letter Images
-// import FirstCl from "../Assets/Images/cl1.png";
+// import FirstCl from "../Assets/Images/cl1.png"; 
 // import SecondCl from "../Assets/Images/cl2.png";
 // import ThirdCl from "../Assets/Images/cl3.png";
 // import ForthCl from "../Assets/Images/cl4.png";
