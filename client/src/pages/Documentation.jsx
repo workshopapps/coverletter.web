@@ -261,14 +261,6 @@ export default function Documentation() {
 										After successful verification, you will be redirected to the login page. Log into your account with your email address and generated password. Click on the log-in button.
 									</p>
 								</div>
-								<div className="pt-5">
-									<h2 className="text-[#0652DD] text-[24px] md:text-[40px] font-semibold">
-										Step 4: Home Page
-									</h2>
-									<p className="">
-										After successful Sign-in your dashboard is opened.
-									</p>
-								</div>
 							</div>
 							<div className="flex-none">
 								<img
