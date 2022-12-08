@@ -7,6 +7,7 @@ import Button from "../Components/Ui/Button";
 import navLinkElements from "../Constants/navLinkElements";
 import historyElements from "../Constants/historyElements";
 import { useGlobalContext } from "../context/context";
+import logOutIcon from "../Assets/logout.svg";
 // import { ReactComponent as Avatar } from "../Assets/Avatar.svg";
 import { toast } from "react-toastify";
 
@@ -169,9 +170,10 @@ const Header = () => {
 					<div>
 						<Link
 							to="/"
-							className="text-center cursor-pointer p-5"
+							className="text-center cursor-pointer p-5 flex items-center gap-3 justify-center"
 							onClick={logout}
 						>
+							<img src={logOutIcon} alt="" />
 							<p className="font-bold text-base">Log Out</p>
 						</Link>
 					</div>
