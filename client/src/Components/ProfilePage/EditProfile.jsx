@@ -27,14 +27,14 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 		if (!values.jobRole.trim()) {
 			errors = { ...errors, jobRole: "This field is required" };
 		}
-		setErrorObj({...errorObj, ...errors})
+		setErrorObj({ ...errorObj, ...errors });
 		return errors;
 	};
 
 	const onChange = (field, value) => {
 		setErrorObj({
-			[field]:""
-		})
+			[field]: "",
+		});
 		setValues({
 			...values,
 			[field]: value,
@@ -55,6 +55,7 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 				console.log("About to call");
 				const res = await axios.put(
 					"https://api.coverly.hng.tech/api/v1/auth",
+					values,
 					{
 						headers: {
 							Authorization: `Bearer ${user?.token}`,
@@ -68,7 +69,7 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 				setShowSuccess(true);
 				setShowEditProfileModal(false);
 			} catch (error) {
-				console.log(error)
+				console.log(error);
 				setErrorObj({
 					...errorObj,
 					name: "Server error, please try again later.",
@@ -104,7 +105,7 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 								onChange={(e) => {
 									onChange("name", e.target.value);
 								}}
-								alertType={errorObj.name ? "error":""}
+								alertType={errorObj.name ? "error" : ""}
 								helperText={errorObj.name}
 							/>
 							<Input
@@ -116,7 +117,7 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 								onChange={(e) => {
 									onChange("jobRole", e.target.value);
 								}}
-								alertType={errorObj.jobRole ? "error":""}
+								alertType={errorObj.jobRole ? "error" : ""}
 								helperText={errorObj.jobRole}
 							/>
 
