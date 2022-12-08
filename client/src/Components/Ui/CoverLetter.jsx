@@ -4,7 +4,7 @@ const CoverLetter = () => {
 	const { coverLetter: data, userData } = useGlobalContext();
 	const formatData = data.cover_letter;
 
-	const dData = formatData.replace(/\n\n/g, "<br/>");
+	const dData = formatData.replace(/\n\n/g, " <br/><br/>");
 
 	return (
 		<div className="w-[280px] h-[400px] sm:w-[480px] coverletter-container sm:h-[640px] bg-textWhite border-grey300 target-2 border-2 pt-7 px-7 rounded-lg">
