@@ -8,12 +8,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "../context/context";
-import { addUserToLocalStorage } from "../Utils/localStorage";
+import { addUserToLocalStorage, addEmailToLocalStorage } from "../Utils/localStorage";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import GoogleAuth from "../Layouts/GoogleAuth";
+
 const Login = () => {
-	const { setUser } = useGlobalContext();
+	const { setUser, setUserEmail } = useGlobalContext();
 	const [passwordShown, setPasswordShown] = useState(false);
 	const navigate = useNavigate();
 	const LoginSchema = Yup.object().shape({
@@ -46,11 +47,14 @@ const Login = () => {
 			const user = {
 				name: UserDetails.data.name,
 				email: UserDetails.data.email,
+				jobRole: UserDetails.data.jobRole,
 				userId: resp.data.user,
 				token: resp.data.token,
 			};
 			addUserToLocalStorage(user);
 			setUser(user);
+			addEmailToLocalStorage(UserDetails.data.email);
+			setUserEmail(UserDetails.data.email)
 			toast.success(`Welcome Back ${UserDetails.data.name}`);
 			navigate("/");
 		} catch (err) {
