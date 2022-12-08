@@ -32,6 +32,9 @@ import About from "./About";
 import Event from "./Event";
 import AuthUserRoute from "./AuthUserRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
+import FreePlan from "./FreePlan";
+import ProfessionalPlan from "./ProfessionalPlan";
+import ModernPlan from "./ModernPlan";
 export {
 	Register,
 	History,
@@ -67,4 +70,7 @@ export {
 	Event,
 	AuthUserRoute,
 	ProtectedRoutes,
+	FreePlan,
+	ProfessionalPlan,
+	ModernPlan,
 };

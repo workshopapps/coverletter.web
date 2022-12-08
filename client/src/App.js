@@ -38,6 +38,9 @@ import {
 	SingleProduct,
 	AuthUserRoute,
 	ProtectedRoutes,
+	FreePlan,
+	ProfessionalPlan,
+	ModernPlan,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
@@ -99,6 +102,12 @@ const App = () => {
 					/>
 					<Route path="/generate" element={<UploadCV />} />
 					<Route path="/pricing" element={<Pricing />} />
+					<Route path="/free-plan" element={<FreePlan />} />
+					<Route
+						path="/professional-plan"
+						element={<ProfessionalPlan />}
+					/>
+					<Route path="/modern-plan" element={<ModernPlan />} />
 					<Route path="/career" element={<Career />} />
 					<Route path="blog" element={<Blog />} />
 					<Route path="/email-otp" element={<EmailOTP />} />
