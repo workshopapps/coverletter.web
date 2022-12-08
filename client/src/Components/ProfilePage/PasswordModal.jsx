@@ -58,7 +58,6 @@ function PasswordModal({ setShowPassModal, setShowSuccess }) {
 		setErrorObj(errors);
 		const isError = errors.oldPass || errors.newPass || errors.confirmPass;
 		if (!isError) {
-			// TODO: Handle the change in password submit event here
 			try {
 				const baseUrl = "https://api.coverly.hng.tech";
 				await axios.put(
@@ -68,14 +67,12 @@ function PasswordModal({ setShowPassModal, setShowSuccess }) {
 						password: newPassword,
 						confirmPassword: confirmNewPassword,
 					},
-					{ headers: { authorization: `Bearer ${user?.token}` } }
+					{ headers: { Authorization: `Bearer ${user?.token}` } }
 				);
 				setLoading(false);
 				setShowSuccess(true);
 				setShowPassModal(false);
 			} catch (error) {
-				console.error(error);
-				console.error(Object.keys(error), error.code);
 				if (error.code === "ERR_NETWORK") {
 					setErrorObj({
 						...errorObj,
