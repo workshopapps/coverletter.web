@@ -5,7 +5,7 @@ const PDFtemplate1 = () => {
 	const { coverLetter: data, userData } = useGlobalContext();
 	const formatData = data.cover_letter;
 
-	const dData = formatData.replace(/\n\n/g, "<br/>");
+	const dData = formatData.replace(/\n\n/g, "<br/><br/>");
 
 	return (
 		<div className="w-[452px] fixed top-0 left-0 -z-30 invisible pdf-coverletter-container h-[640px] bg-textWhite border-grey300 target-2 border-2 pt-7 px-7 rounded-lg">
