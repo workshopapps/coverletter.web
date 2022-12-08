@@ -2,7 +2,7 @@ import jsPdf from "jspdf";
 import { Manrope } from "../../jsPdf-fonts";
 import sendMail from "../SendCoverToEmail";
 
-const downloadPdf = (domId, sendToMail, email) => {
+const downloadPdf = async (domId, sendToMail, email) => {
 	const doc = new jsPdf({ unit: "px", format: "a4" }); // create jsPDF object
 	doc.addFileToVFS("Manrope.ttf", Manrope);
 	doc.addFont("Manrope.ttf", "Manrope", "normal");
@@ -12,6 +12,7 @@ const downloadPdf = (domId, sendToMail, email) => {
 	doc.html(domToSave, {
 		callback: (pdf) => {
 			const file = pdf.save("MyPdfFile.pdf");
+			console.log(file);
 			if (sendToMail) {
 				sendMail(email, file);
 			}
@@ -19,6 +20,7 @@ const downloadPdf = (domId, sendToMail, email) => {
 		width: 50,
 		margin: [10, 0, 10, 25],
 	});
+	console.log(domToSave, sendToMail, email);
 };
 
 export default downloadPdf;
