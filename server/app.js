@@ -27,7 +27,6 @@ app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 //Routers
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
-// const resetRoutes = require("./routes/resetRoutes");
 const coverLetterRoutes = require("./routes/coverLetterRoutes");
 const cvToCoverLetterRoutes = require("./routes/cvToCoverLetterRoutes");
 const downloadCoverLetter = require("./routes/downloadCoverLetterRoutes");
@@ -61,7 +60,6 @@ app.use(passport.session());
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
-const textToPdf = require("./utils/textToPdf");
 
 app.use(bodyParser.json());
 app.use(helmet());
@@ -88,7 +86,6 @@ app.use("/api/v1", adminRoutes);
 app.use("/api/v1", generateOtpRoutes);
 app.use("/api/v1", coverLetterRoutes);
 app.use("/api/v1", cvToCoverLetterRoutes);
-// app.use("/api/v1", resetRoutes);
 app.use("/api/v1", downloadCoverLetter);
 app.use("/api/v1", contactRoutes);
 app.use("/api/v1/forum", forumRoutes);
@@ -117,4 +114,3 @@ const start = async () => {
 start();
 
 module.exports = app;
-0

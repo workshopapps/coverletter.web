@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const auth = require("../middleware/authentication");
+const { uploadImage } = require("../middleware/image");
 const {
 	register,
 	updatePassword,
@@ -15,6 +16,8 @@ const {
 	googleSuccess,
 	googleLogout,
 	adminLogin,
+	updateUser,
+	updateProfileIcon,
 } = require("../controllers/authController");
 
 //Add your routes here
@@ -25,6 +28,7 @@ router.post("/logout", auth, logout);
 router.get("/dashboard/:id", auth, getUserDetails);
 router.post("/forgotPassword", forgotPassword);
 router.post("/admin/login", adminLogin);
+router.put("/", auth, updateUser);
 
 router.post("/validateOTP", validateOTP);
 //GOOGLE auth routes
@@ -51,5 +55,6 @@ router.get("/success", googleSuccess);
 router.post("/resetPassword", auth, resetPassword);
 router.put("/updatePassword", auth, updatePassword);
 // router.post('/resetPassword', resetPassword)
+router.patch("/update-icon", auth, uploadImage, updateProfileIcon);
 
 module.exports = router;

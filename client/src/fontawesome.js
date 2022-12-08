@@ -9,7 +9,8 @@ import {
 	faCheck,
 	faCircleInfo,
 	faQuoteLeft,
-	faQuoteRight
+	faQuoteRight,
+	faSitemap
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -32,5 +33,6 @@ library.add(
 	faCheck,
 	faCircleInfo,
 	faQuoteLeft,
-	faQuoteRight
+	faQuoteRight,
+	faSitemap
 );
