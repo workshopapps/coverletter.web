@@ -59,7 +59,7 @@ const HistoryItem = (props) => {
 		setUserData({ ...user });
 		setTimeout(() => {
 			navigate("/preview");
-		}, 1000);
+		}, 200);
 	};
 
 	return (
