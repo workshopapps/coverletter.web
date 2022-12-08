@@ -17,6 +17,7 @@ const Post = () => {
 			const formData = new FormData();
 			formData.append("title", title);
 			formData.append("content", contents);
+			console.log([...formData])
 
 			const config = {
 				headers: {
