@@ -9,8 +9,8 @@ const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
-	const { email, name, password } = req.body;
-
+	let { email, name, password } = req.body;
+	email = email.toLowerCase()
 	const oldUser = await User.findOne({
 		email,
 	});
@@ -67,8 +67,8 @@ const verify = async (req, res) => {
 
 const login = async (req, res, next) => {
 	try {
-		const { email, password } = req.body;
-
+		let { email, password } = req.body;
+		email = email.toLowerCase();
 		if (!email || !password) {
 			return next(
 				new BadRequestError("Please provide a valid email and password")
@@ -190,7 +190,7 @@ const updatePassword = async (req, res, next) => {
 const forgotPassword = async (req, res, next) => {
 	try {
 		var user = await User.findOne({
-			email: req.body.email,
+			email: req.body.email.toLowerCase(),
 		});
 		if (!user) {
 			return next(
@@ -217,7 +217,8 @@ const forgotPassword = async (req, res, next) => {
 	}
 };
 const resetPassword = async (req, res) => {
-	const { password, email, confirmPassword } = req.body;
+	let { password, email, confirmPassword } = req.body;
+	email = email.toLowerCase();
 
 	if (password !== confirmPassword) {
 		throw new BadRequestError("confirm with a similar password");
@@ -248,7 +249,8 @@ const resetPassword = async (req, res) => {
 };
 
 const validateOTP = async (req, res) => {
-	const { otp, email } = req.body;
+	let { otp, email } = req.body;
+	email = email.toLowerCase()
 	try {
 		const user = await User.findOne({
 			email,
@@ -302,7 +304,8 @@ const googleLogout = (req, res) => {
 
 const adminLogin = async (req, res, next) => {
 	try {
-		const { email, password } = req.body;
+		let { email, password } = req.body;
+		email = email.toLowerCase()
 
 		if (!email || !password) {
 			return next(
