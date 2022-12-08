@@ -1,22 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EventsList from "../Layouts/EventsList.jsx";
 import Calendar from "react-calendar";
 import arrow_down from "../Assets/arrow_down.svg";
 import searchico from "../Assets/searchico.svg";
-import event_img1 from "../Assets/event_img1.png";
-import event_img2 from "../Assets/event_img2.png";
-import event_img3 from "../Assets/event_img3.png";
-import event_img4 from "../Assets/event_img4.png";
-import event_img5 from "../Assets/event_img5.png";
-import event_img6 from "../Assets/event_img6.png";
+import { eventCategories, eventData } from "../Constants/eventData.js";
 
 const Event = () => {
 	const [dateState, setDateState] = useState(true);
 	const [cateState, setCateState] = useState(false);
 	const [value, onChange] = useState(new Date());
+	const [search, setSearch] = useState("");
+	const [activeCategory, setActiveCategory] = useState("All");
+	const [filteredEvents, setFilteredEvents] = useState([]);
 
 	const handleDate = () => setDateState(!dateState);
 	const handleCate = () => setCateState(!cateState);
+	const handleSearch = (e) => {
+		setSearch(e.target.value);
+	};
+
+	const handleActiveCategory = (e) => {
+		setActiveCategory(e);
+		filterByCategory(e);
+	};
+
+	const filterBySearch = () => {
+		return eventData.filter((event) =>
+			event.headline.toLowerCase().includes(search)
+		);
+	};
+
+	const filterByCategory = (e) => {
+		if (e === "All") {
+			setFilteredEvents(eventData);
+		} else {
+			setFilteredEvents(
+				eventData.filter((event) => event.category === e)
+			);
+		}
+	};
+
+	useEffect(() => {
+		let result = filteredEvents;
+		result = filterBySearch();
+		setFilteredEvents(result);
+	}, [search]);
 
 	return (
 		<section className="bg-eventshome pt-12 pb-20">
@@ -46,6 +74,8 @@ const Event = () => {
 										name="search"
 										placeholder="Search"
 										className="form-input w-full h-12 py-3 px-10 bg-eventshome border border-searchbd rounded-lg placeholder:text-black"
+										onChange={handleSearch}
+										value={search}
 									/>
 								</label>
 							</div>
@@ -116,20 +146,36 @@ const Event = () => {
 									<p className="text-selectdesc ">
 										Select any Category
 									</p>
-									<div className="day  text-grey400 bg-white py-3 pl-3 rounded-r-lg relative">
-										<div className="w-[6px] rounded-full h-full bg-primaryMain absolute left-0 top-0">
-											&nbsp;
+									{eventCategories.map((event) => (
+										<div
+											key={event.id}
+											onClick={() => {
+												handleActiveCategory(
+													event.category
+												);
+											}}
+											className={
+												activeCategory ===
+												event.category
+													? "text-grey400 cursor-pointer bg-white py-3 pl-3 rounded-r-lg relative"
+													: "text-grey400 cursor-pointer"
+											}
+										>
+											<div
+												className={
+													activeCategory ===
+													event.category
+														? "w-[6px] rounded-full h-full bg-primaryMain absolute left-0 top-0"
+														: "hidden"
+												}
+											>
+												&nbsp;
+											</div>
+											<span className="ml-2">
+												{event.category}
+											</span>
 										</div>
-										<span className="ml-2">Convention</span>
-									</div>
-									<div className="cate-item  text-grey400">
-										<span className="block mb-3">
-											Seminar
-										</span>
-									</div>
-									<div className="cate-item  text-grey400">
-										<span>Workshop</span>
-									</div>
+									))}
 								</div>
 							</div>
 
@@ -157,66 +203,9 @@ const Event = () => {
 						<h1 className="text-grey800 font-bold text-2xl mb-6">
 							Upcoming Events
 						</h1>
-						<EventsList
-							event={{
-								img: event_img1,
-								headline: "Coverly Career Con...",
-								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
-								time: "Tuesday, Nov 22, 10:00am",
-								description:
-									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nunc auctor.",
-							}}
-						/>
-						<EventsList
-							event={{
-								img: event_img2,
-								headline: "Applicar Luanch Par...",
-								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
-								time: "Tuesday, Nov 29, 09:00am",
-								description:
-									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nunc auctor.",
-							}}
-						/>
-						<EventsList
-							event={{
-								img: event_img3,
-								headline: "Beta Watch Party...",
-								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
-								time: "Friday, Dec 02, 10:00am",
-								description:
-									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nunc auctor.",
-							}}
-						/>
-						<EventsList
-							event={{
-								img: event_img4,
-								headline: "Lesson for Your Now...",
-								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
-								time: "Tuesday, Dec 06, 10:00am",
-								description:
-									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nunc auctor.",
-							}}
-						/>
-						<EventsList
-							event={{
-								img: event_img5,
-								headline: "The importance of ...",
-								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
-								time: "Thursday, Dec 08, 10:00am",
-								description:
-									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor, nunc auctor.",
-							}}
-						/>
-						<EventsList
-							event={{
-								img: event_img6,
-								headline: "Networking for Intro...",
-								place: "Event Hall 1, Shelton Hotel Abuja FCT.",
-								time: "Wednesday, Dec 14, 10:00am",
-								description:
-									"Join Coverly’s first ever yearly online Career Conference aimed at helping people newly introduced into the job market, find their way around important processes like job applications, cover letter writing, resume creation, passing in person and online interviews etc.Career Con is a global community event bridging job seekers with industry recruiters and employment coaches. Career con aims at reducing the large unemployment pool globally. We invite speakers from across all industries around the world to speak to attendees on the ever-changing employment requirements and how to not just keep up but also to stay ahead.At Coverly, our goal is to make it easier for our users to get their dream jobs. In keeping to that aim, we are introducing the first ever Career Con, themed “Breaking In”. The idea behind our theme is to give attendees the tools and resources needed to break into any industry they wish to.",
-							}}
-						/>
+						{filteredEvents.map((event) => (
+							<EventsList key={event.id} event={event} />
+						))}
 					</div>
 				</div>
 			</div>
