@@ -47,7 +47,7 @@ const replyForumPost = async (req, res) => {
 	if (!forumPost) {
 		throw new BadRequestError("Unable To Find Post");
 	}
-	req.body.postId = pid;
+	pid = pid;
 	req.body.userId = req.user.userId;
 	await updatePostsRepliesCounter(pid);
 	const reply = await Reply.create(req.body);
@@ -79,26 +79,27 @@ const getAReplyFromAForumPost = async (req, res) => {
 };
 
 const likePost = async (req, res) => {
-	req.body.userId = req.user.userId;
 	const pid = req.params.pid;
-	req.body.postId = pid;
 	const forumPost = await Post.findOne({ _id: pid });
 	if (!forumPost) {
 		throw new BadRequestError("Unable To Find Post");
 	}
 	const getLike = await Like.findOne({
-		userId: req.body.userId,
-		postId: req.body.postId,
+		userId:  req.user.userId,
+		postId: pid,
 	});
 
 	if (!getLike) {
 		await updatePostsLikesCounter(pid);
-		const like = await Like.create(req.body);
+		const like = await Like.create({
+			userId:  req.user.userId,
+			postId: pid,
+		});
 		return res.status(StatusCodes.CREATED).json({ like });
 	} else {
 		if (getLike.likes !== false) {
 			const like = await Like.findOneAndUpdate(
-				{ userId: req.body.userId, postId: req.body.postId },
+				{ userId:  req.user.userId, postId: pid },
 				{ $set: { likes: false } },
 				{ new: true, runValidators: true }
 			);
@@ -106,7 +107,7 @@ const likePost = async (req, res) => {
 			return res.status(StatusCodes.CREATED).json({ like });
 		} else {
 			const like = await Like.findOneAndUpdate(
-				{ userId: req.body.userId, postId: req.body.postId },
+				{ userId:  req.user.userId, postId: pid },
 				{ $set: { likes: true } },
 				{ new: true, runValidators: true }
 			);
