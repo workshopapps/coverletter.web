@@ -8,7 +8,7 @@ const Post = () => {
 	const [contents, setContents] = useState("");
 
 	const Navigate = useNavigate();
-	const { user } = useGlobalContext();
+	const { user, setPostId } = useGlobalContext();
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -17,7 +17,7 @@ const Post = () => {
 			const formData = new FormData();
 			formData.append("title", title);
 			formData.append("content", contents);
-			console.log([...formData])
+			console.log([...formData]);
 
 			const config = {
 				headers: {
