@@ -1,10 +1,11 @@
 const customErr = require('../errors/customErr');
 const { devErr, prodErr} = require('../errors/envErrors');
+const { StatusCodes } = require("http-status-codes");
 
 const castErrDB = err => {
     //Handling invalid mongoDB id issues
   const message = `Invalid ${err.path}: ${err.value}.`;
-  return new customErr(message, 400);
+  return new customErr(message, StatusCodes.BAD_REQUEST);
 };
 
 const duplicateErrDB = err => {
@@ -13,7 +14,7 @@ const duplicateErrDB = err => {
     //console.log(value);
 
   const message = `Duplicate field value: ${value}. Please use another value!`;
-  return new customErr(message, 400);
+  return new customErr(message, StatusCodes.BAD_REQUEST);
 };
 
 const validationErrDB = err => {
@@ -21,20 +22,20 @@ const validationErrDB = err => {
   const errors = Object.values(err.errors).map(el => el.message);
 
   const message = `Invalid input data. ${errors.join('. ')}`;
-  return new customErr(message, 400);
+  return new customErr(message, StatusCodes.BAD_REQUEST);
 };
 
 const JWTError = () =>
-  new customErr('Invalid token. Please log in again!', 401);
+  new customErr('Invalid token. Please log in again!', StatusCodes.UNAUTHORIZED);
 
 const JWTExpiredError = () =>
-  new customErr('Your token has expired! Please log in again.', 401);
+  new customErr('Your token has expired! Please log in again.', StatusCodes.UNAUTHORIZED);
 
 
 module.exports = (err, req, res, next) => {
   // console.log(err.stack);
 
-  err.statusCode = err.statusCode || 500;
+  err.statusCode = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
   err.status = err.status || 'error';
 
   if (process.env.APP_ENV === 'dev') {

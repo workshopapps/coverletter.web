@@ -4,7 +4,7 @@ class customErr extends Error {
   
       this.statusCode = statusCode;
       this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
-      this.isPredictable = true;
+      this.isPredictable = true; //Errors that arise from anticipated user actions
   
       Error.captureStackTrace(this, this.constructor);
     }
