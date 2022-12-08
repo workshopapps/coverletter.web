@@ -34,12 +34,23 @@ const UserSchema = mongoose.Schema({
 		type: String
 	},
 	confirmationCode: {
-		type: String
+		type: String,
 	},
-	otp: {type:String,default:null},
-	passwordResetExpires: {type:Date,default:null},
+	otp: { type: String, default: null },
+	passwordResetExpires: { type: Date, default: null },
+	profileIconUrl: {
+		type: String,
+		required: false,
+		maxlength: 255,
+		default: null,
+	},
+	profileIconCloudinaryId: {
+		type: String,
+		required: false,
+		maxlength: 255,
+		default: null,
+	},
 });
-
 
 UserSchema.methods.createJWT = function () {
 	return jwt.sign(
@@ -51,7 +62,7 @@ UserSchema.methods.createJWT = function () {
 		},
 		process.env.JWT_SECRET,
 		{
-			expiresIn: "5h",
+			expiresIn: "30d",
 		}
 	);
 };

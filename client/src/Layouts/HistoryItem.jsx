@@ -3,6 +3,8 @@ import { ReactComponent as Options } from "../Assets/options.svg";
 import { ReactComponent as Download } from "../Assets/download.svg";
 import { ReactComponent as Delete } from "../Assets/delete.svg";
 import { useGlobalContext } from "../context/context";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Modal from "../Components/Ui/Modal";
 import Button from "../Components/Ui/Button";
 import { ReactComponent as Question } from "../Assets/question.svg";
@@ -12,7 +14,8 @@ const HistoryItem = (props) => {
 	const [deleteModal, setDeleteModal] = useState(false);
 	const [downloadModal, setDownloadModal] = useState(false);
 	const [options, setOptions] = useState(false);
-	const { openModal, isModalOpen } = useGlobalContext();
+	const { user, setCoverLetter, openModal, isModalOpen, setUserData } =
+		useGlobalContext();
 
 	const toggleOptions = () => {
 		setOptions((prevoptions) => !prevoptions);
@@ -48,9 +51,23 @@ const HistoryItem = (props) => {
 		};
 	}, []);
 
+	const navigate = useNavigate();
+
+	const handleHItemClick = (e) => {
+		console.log(props.item);
+		setCoverLetter(props.item);
+		setUserData({ ...user });
+		setTimeout(() => {
+			navigate("/preview");
+		}, 200);
+	};
+
 	return (
-		<div className="bg-[#f1f6ff] w-[297px] h-[433px] px-[45px] pt-[53px] pb-[26px] hover:outline hover:outline-primaryMain relative m-auto">
-			{props.item.option && (
+		<div
+			id={props.hid}
+			className="bg-[#f1f6ff] w-[297px] h-[450px] px-[45px] pt-[53px] pb-[26px] hover:outline hover:outline-primaryMain relative m-auto"
+		>
+			{/* {props.item.option && (
 				<div ref={ref}>
 					<Options
 						className="absolute top-5 right-[26px] cursor-pointer"
@@ -88,17 +105,29 @@ const HistoryItem = (props) => {
 						</div>
 					)}
 				</div>
-			)}
+			)} */}
 
 			<div className="flex flex-col">
-				<img src={props.item.src} alt="Recent-CV" className="mb-3" />
-				<p className="font-bold text-base text-black underline cursor-pointer">
+				<img src={props.image} alt="Recent-CV" className="mb-3" />
+				{/* <p className="font-bold text-base text-black underline cursor-pointer">
 					{props.item.message}
+				</p> */}
+				<p className="text-base font-bold mb-2">
+					{props.item.company_name}
 				</p>
-				<p className="text-base font-bold mb-2">{props.item.title}</p>
-				<p className="text-xs">{props.item.dateCreated}</p>
+				<p className="text-xs">{props.item.date}</p>
+				<Button
+					className={
+						"btn btnLong w-[30%] btnPrimary p-0 mt-3 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+					}
+					children={"view"}
+					type={"button"}
+					disabled={false}
+					onClick={handleHItemClick}
+				></Button>
 			</div>
-			{isModalOpen && deleteModal && (
+
+			{/* {isModalOpen && deleteModal && (
 				<Modal>
 					<div className="flex flex-col items-center bg-white w-[757px] h-[398px] max-[768px]:w-[458px] max-[768px]:h-[366px] max-[768px]:text-center max-[460px]:w-[243px] max-[460px]:h-[334px]  rounded-lg py-12 px-4">
 						<Question className="w-[150px] h-[150px]" />
@@ -129,7 +158,7 @@ const HistoryItem = (props) => {
 						</Button>
 					</div>
 				</Modal>
-			)}
+			)} */}
 		</div>
 	);
 };

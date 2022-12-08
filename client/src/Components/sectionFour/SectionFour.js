@@ -57,7 +57,7 @@ function SectionFour() {
 						<p className="text-[16px] md:text-[18px]  text-textBody">
 							Really helpful with the format template that is
 							provided and when you pair your resume with it makes
-							it easier
+							it easier and faster
 						</p>
 						<img
 							className="w-12 text-textBody my-[20px] mb-3 md:mt-[3rem] h-12 rounded-full"

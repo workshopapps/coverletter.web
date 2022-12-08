@@ -35,6 +35,7 @@ const Preview = () => {
 	const [spin, setSpin] = useState(false);
 	const [windowWidth, setWindowWidth] = useState(0);
 	const [isLoading, setIsloading] = useState(false);
+	const [sendToMail, setSendToMail] = useState(false);
 
 	const [touchPosition, setTouchPosition] = useState(null);
 	const [mouseClickPosiition, setMouseClickPosition] = useState(null);
@@ -49,6 +50,7 @@ const Preview = () => {
 	// 		});
 	// 	}
 	// });
+	console.log(sendToMail);
 
 	//handles click start event
 	const handleMouseDown = (e) => {
@@ -109,12 +111,16 @@ const Preview = () => {
 		setFirstModal(true);
 		const save = setTimeout(() => {
 			if (dType === "pdf") {
-				downloadPdf("pdf-coverletter-target");
+				downloadPdf(
+					"pdf-coverletter-target",
+					sendToMail,
+					userData?.email
+				);
 			} else if (dType === "doc") {
 				//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
-				downloadDOCX(data, userData);
+				downloadDOCX(data, userData, sendToMail, userData?.email);
 			} else if (dType === "text") {
-				convertToTxt();
+				convertToTxt(sendToMail, userData?.email);
 			} else {
 				//TELL USER TO PICK ONE OF THE 3 OPTIONS
 			}
@@ -391,16 +397,20 @@ const Preview = () => {
 									</div>
 								</div>
 								<hr className="w-full bg-stokeLight mt-2 border-none h-[1px]" />
-								<div className="w-full flex justify-between mt-4 md:justify-center">
+								{/* <div className="w-full flex justify-between mt-4 md:justify-center">
 									<input
 										type="checkbox"
-										name="sendToEmail"
+										name="sendToMail"
 										className="w-5 h-5 outline-none border-none"
+										checked={sendToMail}
+										onClick={() => {
+											setSendToMail(!sendToMail);
+										}}
 									/>
 									<p className="text-sm md:ml-3">
 										Send downloaded template to email.
 									</p>
-								</div>
+								</div> */}
 							</div>
 							<Button
 								type="submit"

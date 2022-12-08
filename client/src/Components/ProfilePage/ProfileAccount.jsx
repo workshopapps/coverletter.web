@@ -1,17 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useGlobalContext } from '../../context/context';
 import { ChatIcon, UserProfile, LockIcon, EditIcon } from './Icons';
-import PasswordModal from './PasswordModal';
-import SuccessModal from './SuccessModal';
-
 const ChatIcons = <ChatIcon />;
 const UserProfiles = <UserProfile />
 
 
 
-function ProfileAccount() {
-    const [showPassModal, setShowPassModal] = useState(false);
-    const [showSuccess, setShowSuccess] = useState(false);
+function ProfileAccount({setShowPassModal, setShowEditProfileModal}) {
 
     const {user} = useGlobalContext()
 
@@ -37,7 +32,7 @@ function ProfileAccount() {
 
     return (
         <div className='p-4 bg-white rounded-lg'>
-            <h1 className='font-bold text-[1.5em] pb-4'>My Account</h1>
+            <h1 className='flex justify-between items-center font-bold text-[1.5em] pb-4'> <span>My Account</span> <span className='cursor-pointer xs:block lg:hidden' onClick={()=> setShowEditProfileModal(true)}><EditIcon /></span></h1>
 
             <div>
                 {AccountTabs.map((tab) => {
@@ -82,13 +77,6 @@ function ProfileAccount() {
 
 
             </div>
-
-            {showPassModal &&
-
-                <PasswordModal setShowSuccess={setShowSuccess} showPassModal={showPassModal} setShowPassModal={setShowPassModal} />
-            }
-
-            {showSuccess && <SuccessModal setShowSuccess={setShowSuccess}/>}
         </div>
     )
 }
