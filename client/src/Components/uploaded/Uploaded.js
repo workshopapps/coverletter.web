@@ -5,17 +5,22 @@ import first from "../sectionTwo/assets/first.svg";
 import { useGlobalContext } from "../../context/context";
 
 function Uploaded() {
-	const { file, setFile, setFileName } = useGlobalContext();
+	const { file, setFile, setFileName, setFileSize } = useGlobalContext();
 	const Navigate = useNavigate();
 
-	const uploadFile =() =>{
-		Navigate('/upload-data')
-	}
-	
+	const uploadFile = () => {
+		Navigate("/upload-data");
+	};
+
 	const changeHandler = (e) => {
 		setFile(e.target.files[0]);
 		setFileName(e.target.files[0].name);
 		console.log(file);
+	};
+
+	const changeUploadFile = () => {
+		setFile("");
+		setFileSize();
 	};
 
 	return (
@@ -44,7 +49,10 @@ function Uploaded() {
 					>
 						Generate Cover Letter
 					</button>
-					<button className="text-[16px] text-primaryMain font-semibold rounded-md border-[1.5px] border-primaryMain bg-textWhite px-[15px] md:px-[12px] py-[8px]">
+					<button
+						className="text-[16px] text-primaryMain font-semibold rounded-md border-[1.5px] border-primaryMain bg-textWhite px-[15px] md:px-[12px] py-[8px]"
+						onClick={changeUploadFile}
+					>
 						Change Uploaded File
 					</button>
 				</div>
