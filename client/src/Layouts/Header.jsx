@@ -132,7 +132,12 @@ const Header = () => {
 							// 	setToggleMenu(false);
 							// }}
 							className="btn btnShort btnSecondary block md:hidden w-full my-4"
-							onClick={reHistory}
+							onClick={() => {
+								setToggleMenu(() =>
+									setToggleMenu((prev) => (prev = false))
+								);
+								reHistory();
+							}}
 						>
 							History
 						</Button>

@@ -397,7 +397,7 @@ const Preview = () => {
 									</div>
 								</div>
 								<hr className="w-full bg-stokeLight mt-2 border-none h-[1px]" />
-								<div className="w-full flex justify-between mt-4 md:justify-center">
+								{/* <div className="w-full flex justify-between mt-4 md:justify-center">
 									<input
 										type="checkbox"
 										name="sendToMail"
@@ -410,7 +410,7 @@ const Preview = () => {
 									<p className="text-sm md:ml-3">
 										Send downloaded template to email.
 									</p>
-								</div>
+								</div> */}
 							</div>
 							<Button
 								type="submit"

@@ -52,13 +52,15 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 		// TODO: Handle API call
 		if (!isError) {
 			try {
-				console.log("About to call");
 				const res = await axios.put(
 					"https://api.coverly.hng.tech/api/v1/auth",
-					values,
+					{
+						name: values.name,
+						jobRole: values.jobRole
+					},
 					{
 						headers: {
-							Authorization: `Bearer ${user?.token}`,
+							Authorization: `Bearer ${user.token}`,
 						},
 					}
 				);
@@ -69,7 +71,6 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 				setShowSuccess(true);
 				setShowEditProfileModal(false);
 			} catch (error) {
-				console.log(error);
 				setErrorObj({
 					...errorObj,
 					name: "Server error, please try again later.",
@@ -102,6 +103,7 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 								value={values.name || ""}
 								icon={["fas", "user"]}
 								placeholder="John Doe"
+								labelText="Full name"
 								onChange={(e) => {
 									onChange("name", e.target.value);
 								}}
@@ -114,6 +116,7 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 								value={values.jobRole || ""}
 								icon={["fas", "sitemap"]}
 								placeholder="Designer"
+								labelText="Job role"
 								onChange={(e) => {
 									onChange("jobRole", e.target.value);
 								}}
