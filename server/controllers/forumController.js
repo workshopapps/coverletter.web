@@ -131,6 +131,7 @@ const deleteForumPost = async (req, res) => {
 };
 
 const updateForumPost = async (req, res) => {
+
 	const {title, content} = req.body;
 	const updatedPost = await Post.findByIdAndUpdate(req.params.id, {title, content}, {new:true})
 	if(!updatedPost){
@@ -150,5 +151,5 @@ module.exports = {
 	getAllRepliesToAForumPost,
 	likePost,
 	deleteForumPost,
-	updateForumPost,
+	updateForumPost
 };
