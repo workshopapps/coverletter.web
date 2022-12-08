@@ -14,7 +14,8 @@ function Upload() {
 	const fileValidation = () => {
 		return (
 			<h2 className="text-errorMain font-semibold text-[13px]">
-				The file too large. Please Upload a file with maximum of 5mb
+				This file is too large. Kindly upload a file with a maximum size
+				of 5mb
 			</h2>
 		);
 	};
