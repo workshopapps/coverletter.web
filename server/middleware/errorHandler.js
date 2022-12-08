@@ -19,6 +19,7 @@ const duplicateErrDB = err => {
 
 const validationErrDB = err => {
     //Handle DB validation errors
+    console.log('In here')
   const errors = Object.values(err.errors).map(el => el.message);
 
   const message = `Invalid input data. ${errors.join('. ')}`;
@@ -34,21 +35,20 @@ const JWTExpiredError = () =>
 
 module.exports = (err, req, res, next) => {
   // console.log(err.stack);
-
   err.statusCode = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
   err.status = err.status || 'error';
 
   if (process.env.APP_ENV === 'dev') {
     devErr(err, req, res);
-  } else if (process.env.APP_ENV === 'prod') {
+    } else if (process.env.APP_ENV === 'prod'){
     let error = { ...err };
     error.message = err.message;
 
-    if (error.name === 'CastError') error = castErrDB(error);
-    if (error.code === 11000) error = duplicateErrDB(error);
-    if (error.name === 'ValidationError') error = validationErrDB(error);
-    if (error.name === 'JsonWebTokenError') error = JWTError();
-    if (error.name === 'TokenExpiredError') error = JWTExpiredError();
+    if (err.name === 'CastError') error = castErrDB(error);
+    if (err.code === 11000) error = duplicateErrDB(error);
+    if (err.name === 'ValidationError') error = validationErrDB(error);
+    if (err.name === 'JsonWebTokenError') error = JWTError();
+    if (err.name === 'TokenExpiredError') error = JWTExpiredError();
 
     prodErr(error, req, res);
   }
