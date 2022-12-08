@@ -62,7 +62,7 @@ const Footer = () => {
 			<div className="bg-[#F2F2F7] px-24 py-[18px] max-[767px]:px-14 max-[425px]:px-8 max-[425px]:wrap max-[366px]:gap-28">
 				<div className="flex justify-between text-[12px] text-grey400 flex-wrap max-[425px]:gap-4">
 					<p className="max-[425px]:mr-20 max-[340px]:mr-0">
-						© 2022 Cover. All rights reserved.
+						© 2022 Coverly. All rights reserved.
 					</p>
 					<Link to="/terms-and-conditions" className="block  ">
 						Terms and Conditions
