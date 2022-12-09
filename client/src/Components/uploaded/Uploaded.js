@@ -50,14 +50,14 @@ function Uploaded() {
 						Generate Cover Letter
 					</button>
 					<button
-						className="text-[16px] text-primaryMain font-semibold rounded-md border-[1.5px] border-primaryMain bg-textWhite px-[15px] md:px-[12px] py-[8px]"
 						onClick={changeUploadFile}
+						className="text-[16px] text-primaryMain font-semibold rounded-md border-[1.5px] border-primaryMain bg-textWhite px-[15px] md:px-[12px] py-[8px]"
 					>
-						Change Uploaded File
+						Change Uploaded file
 					</button>
 				</div>
 			</main>
-			<form
+			{/* <form
 				method="post"
 				name="myFile"
 				action="/upload"
@@ -72,7 +72,7 @@ function Uploaded() {
 					className="upload_file absolute cursor-pointer  md:left-[55%] left-[48%] bottom-[14%] md:bottom-[25%] w-[60%] md:w-[40%] h-[8%] md-[10%] "
 					id="upload_button"
 				/>
-			</form>
+			</form> */}
 		</div>
 	);
 }
