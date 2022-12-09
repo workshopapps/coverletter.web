@@ -32,6 +32,7 @@ const Post = () => {
 					formData,
 					config
 				);
+				console.log(res);
 				Navigate("/forum");
 			} catch (error) {
 				console.log(error);
