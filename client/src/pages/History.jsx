@@ -4,6 +4,7 @@ import HistoryList from "../Layouts/HistoryList";
 import axios from "axios";
 import { useGlobalContext } from "../context/context";
 import { Audio } from "react-loader-spinner";
+import { toast } from "react-toastify";
 
 const History = () => {
 	const [clList, setClList] = useState({});
@@ -33,6 +34,37 @@ const History = () => {
 		};
 		fetchCoverLetters();
 	}, []);
+
+	const deleteCoverLetter = async (itemId) => {
+		setLoading(true);
+		try {
+			const delteItem = await axios.delete(
+				`https://api.coverly.hng.tech/api/v1/coverLetter/${itemId}`,
+				{
+					headers: {
+						Authorization: `Bearer ${user.token}`,
+					},
+				}
+			);
+			const response = await axios.get(
+				"https://api.coverly.hng.tech/api/v1/template",
+				{
+					headers: {
+						Authorization: `Bearer ${user.token}`,
+					},
+				}
+			);
+
+			const resp = response.data;
+			toast.success("cover letter deleted!");
+			setClList(resp.data);
+			setLoading(false);
+		} catch (err) {
+			console.log(err);
+			toast.error("could not delete item");
+			setLoading(false);
+		}
+	};
 
 	if (loading) {
 		return (
@@ -66,7 +98,10 @@ const History = () => {
 						All Cover Letters
 					</p>
 
-					<HistoryList Items={clList} />
+					<HistoryList
+						Items={clList}
+						deleteCoverLetter={deleteCoverLetter}
+					/>
 				</div>
 			</div>
 		</main>
