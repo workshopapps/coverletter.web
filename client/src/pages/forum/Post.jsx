@@ -6,9 +6,8 @@ import { useGlobalContext } from "../../context/context";
 const Post = () => {
 	const [title, setTitle] = useState("");
 	const [contents, setContents] = useState("");
-
 	const Navigate = useNavigate();
-	const { user, setPostId } = useGlobalContext();
+	const { user } = useGlobalContext();
 
 	const submitHandler = (e) => {
 		e.preventDefault();

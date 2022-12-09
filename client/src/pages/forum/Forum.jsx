@@ -6,7 +6,6 @@ import axios from "axios";
 const Forum = () => {
 	const [dData, setdData] = useState([]);
 	const [page, setPage] = useState(1);
-	const { postId, setPostId } = useGlobalContext();
 	const { setPostId } = useGlobalContext();
 
 	const imgg = [
@@ -26,6 +25,7 @@ const Forum = () => {
 				`https://api.coverly.hng.tech/api/v1/forum/getAllPost?page=${page}&limit=10`
 			)
 			.then((res) => {
+				// console.log(res);
 				const dValues = res.data.posts;
 				const getValues = [];
 
@@ -55,9 +55,9 @@ const Forum = () => {
 				});
 				setdData(getValues);
 			})
-			.then((err) => {
-			});
+			.then((err) => {});
 	}, [page]);
+
 	return (
 		<>
 			<main className="bg-[#f2f2f7] mx-0 my-0 py-5 px-10 md:px-16">
@@ -90,7 +90,6 @@ const Forum = () => {
 									to="/forum/thread"
 									onClick={() => setPostId(detail.id)}
 								>
-									{console.log(detail.id)}
 									<div className="border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5">
 										<div className="flex gap-3 items-center relative">
 											<div>
