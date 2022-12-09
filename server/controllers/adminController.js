@@ -4,7 +4,7 @@ const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
 const hashPassword = require("../utils/hashPassword");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
-const sendEmail = require("../utils/sendEmail");
+const {sendEmail, mailStyle} = require("../utils/sendEmail");
 
 const createAdmin = async (req, res) => {
 	const { email, name, password, adminCode } = req.body;
@@ -21,13 +21,14 @@ const createAdmin = async (req, res) => {
 		password,
 		confirmationCode,
 	});
+
+	const message = mailStyle('Use the OTP below to verify your account.', confirmationCode)
 	if (adminCode === process.env.ADMIN_CODE) {
 		admin.isAdmin = true;
 		await sendEmail(
 			req.body.email,
 			"Verify email",
-			"<h3>OTP for account verification is </h3>" +
-				`<h1 style='font-weight:bold;'>" + ${confirmationCode} +"</h1>`
+			message
 		);
 		admin.password = await hashPassword(admin.password);
 		await admin.save();
@@ -85,8 +86,57 @@ const deleteAdmin = async (req, res) => {
 	});
 };
 
+const updateAdmin = async (req,res) =>{
+	try {
+		const {name} = req.body
+		
+		const userId = req.user.userId	
+
+		const admin = await Admin.findByIdAndUpdate(userId,{name},{new:true})
+		if (!admin) {
+			throw new BadRequestError(`Admin with the ${userId} does not exist`)
+		}
+		const data = {
+			name: admin.name,
+			admin: admin._id,
+			email: admin.email,
+			role: admin.role
+		}
+
+		return res.status(StatusCodes.OK).json({success: true,data})
+
+	} catch (error) {
+		return res.status(400).json({success: false,error:error.message})
+	}
+
+}
+
+const logout = async (req, res) => {
+	const token = req.headers.authorization.split(" ")[1]
+
+	const userId = req.user.userId
+
+	const user = await Admin.findById(userId);
+	req.user = user
+	req.token = token
+	
+	if (!req.user || !req.token) {
+		return next(new BadRequestError("You are not logged in"));
+	}
+
+	delete req.token;
+	delete req.user;
+
+	return res.status(200).json({
+		message: "You have logged out successfully",
+	});
+};
+
+
 module.exports = {
 	createAdmin,
 	verifyAdmin,
 	deleteAdmin,
+	updateAdmin,
+	logout
 };

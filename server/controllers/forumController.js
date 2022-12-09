@@ -2,10 +2,15 @@ const Post = require("../models/ForumPost");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError } = require("../errors");
 const Reply = require("../models/ReplyToForum");
+const Like = require("../models/Likes");
+
 const {
 	updatePostsRepliesCounter,
 	getAllReplies,
 } = require("../utils/updateRepliesCounter");
+
+const { updatePostsLikesCounter } = require("../utils/updateLikesCounter");
+
 const {
 	createView,
 	updatePostsViewsCounter,
@@ -42,7 +47,7 @@ const replyForumPost = async (req, res) => {
 	if (!forumPost) {
 		throw new BadRequestError("Unable To Find Post");
 	}
-	req.body.postId = pid;
+	pid = pid;
 	req.body.userId = req.user.userId;
 	await updatePostsRepliesCounter(pid);
 	const reply = await Reply.create(req.body);
@@ -66,10 +71,86 @@ const getAllRepliesToAForumPost = async (req, res) => {
 	return res.status(StatusCodes.CREATED).json({ replies });
 };
 
+const getAReplyFromAForumPost = async (req, res) => {
+	const { id } = req.params;
+
+	const reply = await Reply.findOne({ _id: id });
+	return res.status(StatusCodes.OK).json({ reply });
+};
+
+const likePost = async (req, res) => {
+	const pid = req.params.pid;
+	const forumPost = await Post.findOne({ _id: pid });
+	if (!forumPost) {
+		throw new BadRequestError("Unable To Find Post");
+	}
+	const getLike = await Like.findOne({
+		userId:  req.user.userId,
+		postId: pid,
+	});
+
+	if (!getLike) {
+		await updatePostsLikesCounter(pid);
+		const like = await Like.create({
+			userId:  req.user.userId,
+			postId: pid,
+		});
+		return res.status(StatusCodes.CREATED).json({ like });
+	} else {
+		if (getLike.likes !== false) {
+			const like = await Like.findOneAndUpdate(
+				{ userId:  req.user.userId, postId: pid },
+				{ $set: { likes: false } },
+				{ new: true, runValidators: true }
+			);
+			await updatePostsLikesCounter(pid);
+			return res.status(StatusCodes.CREATED).json({ like });
+		} else {
+			const like = await Like.findOneAndUpdate(
+				{ userId:  req.user.userId, postId: pid },
+				{ $set: { likes: true } },
+				{ new: true, runValidators: true }
+			);
+			await updatePostsLikesCounter(pid);
+			return res.status(StatusCodes.CREATED).json({ like });
+		}
+	}
+};
+const deleteForumPost = async (req, res) => {
+	const forum = await Post.findById(req.params.id);
+
+	if (forum) {
+		await Post.findByIdAndDelete(req.params.id);
+		return res.status(StatusCodes.OK).json({
+			message: `Forum Post with the id ${req.params.id} Deleted successfully`,
+		});
+	} else {
+		return res.status(StatusCodes.NOT_FOUND).json({
+			message: `Forum Post with the id ${req.params.id} does not exist`,
+		});
+	}
+};
+
+const updateForumPost = async (req, res) => {
+
+	const {title, content} = req.body;
+	const updatedPost = await Post.findByIdAndUpdate(req.params.id, {title, content}, {new:true})
+	if(!updatedPost){
+		throw new BadRequestError("You dont have permission to do that!");
+	}
+	return res.status(StatusCodes.OK).json({ status: 'success', post:{
+		updatedPost
+	} });
+}
+
 module.exports = {
 	createForumPost,
 	getAllForumPosts,
 	replyForumPost,
 	getOneForumPost,
+	getAReplyFromAForumPost,
 	getAllRepliesToAForumPost,
+	likePost,
+	deleteForumPost,
+	updateForumPost
 };

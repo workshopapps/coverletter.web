@@ -2,7 +2,7 @@ import React from "react";
 import { useGlobalContext } from "../../context/context";
 import { EditIcon } from "./Icons";
 
-function ProfileSide() {
+function ProfileSide({setShowEditProfileModal}) {
 	const { user } = useGlobalContext();
 
 	return (
@@ -17,12 +17,12 @@ function ProfileSide() {
 						<p className="font-bold mb-3">
 							{user?.name.split(" ").slice(0, 2).join(" ")}
 						</p>
-						<p>UI/UX Designer</p>
+						{user?.jobRole ? <p>{user.jobRole}</p>:<React.Fragment />}
 					</div>
 				</div>
 
 				<div>
-					<p className="flex gap-4 items-center">
+					<p className="flex gap-4 items-center cursor:pointer" onClick={()=> setShowEditProfileModal(true)}>
 						<span>
 							<EditIcon />
 						</span>

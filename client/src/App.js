@@ -38,13 +38,68 @@ import {
 	SingleProduct,
 	AuthUserRoute,
 	ProtectedRoutes,
+	FreePlan,
+	ProfessionalPlan,
+	ModernPlan,
 } from "./pages";
 import { ScrollToTop } from "./Components";
 import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { useGlobalContext } from "./context/context";
+import { addUserToLocalStorage, addEmailToLocalStorage } from "./Utils/localStorage";
+import axios from "axios"
+import { toast } from "react-toastify";
 
 const App = () => {
+	const {user, setUser, setUserEmail} = useGlobalContext()
+
+	React.useEffect(() => {
+		let loading = true
+		const getUser = async () =>  {
+			if (!user?.token || !user?.userId) return
+			try {
+				const res = await axios.get(
+					`https://api.coverly.hng.tech/api/v1/auth/dashboard/${user.userId}`,
+					{
+						headers: {
+							Authorization: `Bearer ${user.token}`,
+						},
+					}
+				);
+				if (loading) {
+					const userObj = {
+						name: res.data.name,
+						email: res.data.email,
+						jobRole: res.data.jobRole,
+						userId: user.userId,
+						token: user.token,
+					};
+					addUserToLocalStorage(userObj);
+					setUser(userObj);
+					addEmailToLocalStorage(res.data.email);
+					setUserEmail(res.data.email)
+				}
+			} catch (error) {
+				console.error("ERROR RETRIEVING USER DATA FROM SERVER", error)
+				if (error.code === "ERR_NETWORK") {
+					toast.error("Error retrieving user data from Server")
+				} else {
+				addUserToLocalStorage(null);
+				setUser({});
+				addEmailToLocalStorage("");
+				setUserEmail("")
+				}
+			}
+			loading = false
+		}
+		getUser()
+	  return () => {
+		loading = false
+	  }
+	  // eslint-disable-next-line
+	}, [])
+	
 	return (
 		<Router>
 			<ScrollToTop>
@@ -99,6 +154,12 @@ const App = () => {
 					/>
 					<Route path="/generate" element={<UploadCV />} />
 					<Route path="/pricing" element={<Pricing />} />
+					<Route path="/free-plan" element={<FreePlan />} />
+					<Route
+						path="/professional-plan"
+						element={<ProfessionalPlan />}
+					/>
+					<Route path="/modern-plan" element={<ModernPlan />} />
 					<Route path="/career" element={<Career />} />
 					<Route path="blog" element={<Blog />} />
 					<Route path="/email-otp" element={<EmailOTP />} />

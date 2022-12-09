@@ -1,9 +1,7 @@
-const CoverLetter = require("../models/coverletter");
-
-const { StatusCodes } = require("http-status-codes");
-const { BadRequestError,UnauthenticatedError } = require("../errors");
 const mongoose = require("mongoose");
-const coverletter = require("../models/coverletter");
+const CoverLetter = require("../models/coverletter");
+const { StatusCodes } = require("http-status-codes");
+const { BadRequestError, NotFoundError } = require("../errors");
 
 /**
  * @desc It gets a cover Letter
@@ -14,23 +12,20 @@ const coverletter = require("../models/coverletter");
  * @returns {object} the result
  */
 
- const getACoverLetter = async (req, res) => {
-	const { userId } = req.user;
-	const { id: coverLetterId } = req.params;
+const getACoverLetter = async (req, res) => {
+	const { id } = req.params;
 
-	if (!mongoose.Types.ObjectId.isValid(coverLetterId)) {
-		throw new BadRequestError(`Cover Letter Blog ID request.`);
+	if (!mongoose.Types.ObjectId.isValid(id)) {
+		throw new BadRequestError(`Cover Letter with id ${id} does not exist.`);
 	}
 
 	const coverLetter = await CoverLetter.findOne({
-		_id: coverLetterId,
-		user_id: userId,
+		_id: id,
+		user_id: req.user.userId,
 	});
 
 	if (!coverLetter) {
-		throw new BadRequestError(
-			`Cover Letter with id ${coverLetterId} does not exist.`
-		);
+		throw new BadRequestError(`Cover Letter with id ${id} does not exist.`);
 	}
 
 	return res.status(StatusCodes.OK).json({
@@ -40,7 +35,7 @@ const coverletter = require("../models/coverletter");
 };
 
 /**
- * @desc It gets all the convert Letters created by a user
+ * @desc It gets all the cover Letters created by a user
  *
  * @param {object} req
  * @param {object} res
@@ -49,98 +44,79 @@ const coverletter = require("../models/coverletter");
  */
 
 const getAllCoverLettersByAUser = async (req, res) => {
-	const { id } = req.user;
-	const template = await Template.find({ user_id: id }).exec();
+	const coverLetters = await CoverLetter.find({ user_id: req.user.userId });
 
-	if (!template) {
-		return res.status(404).json({
-			error: "Template does not exist",
-		});
+	if (!coverLetters) {
+		throw new NotFoundError(
+			"This user doesn't have any saved cover letter"
+		);
 	}
 
 	return res.status(StatusCodes.OK).json({
-		message: "Template requested successfully",
-		data: template,
-	});
-};
-
-/**
- * @desc It edits a cover Letter
- *
- * @param {object} req
- * @param {object} res
- *
- * @returns {object} the result
- */
-
-const editACoverLetter = async (req, res) => {
-	const { id } = req.params;
-	const { template } = req.body;
-	const isTemplateIdValid = !!id || template;
-
-	if (!isTemplateIdValid) {
-		throw new BadRequestError("Invalid template request");
-	}
-
-	const editedTemplate = await Template.update(
-		{ _id: id },
-		{ $set: { template: template } }
-	).exec();
-
-	return res.status(StatusCodes.OK).json({
-		message: "Template edited successfully",
-		data: editedTemplate,
+		message: "Cover Letters requested successfully",
+		data: coverLetters,
 	});
 };
 
 const deleteCoverLetter = async (req, res) => {
-	if (!mongoose.Types.ObjectId.isValid(req.user.userId))
-		return res.status(404).json({ message: "This user id is not valid!" });
+	const coverletter = await CoverLetter.findOne({
+		_id: req.params.id,
+		user_id: req.user.userId,
+	});
 
-	const coverletter = await CoverLetter.findById(req.params.id);
+	if (!coverletter) {
+		throw new NotFoundError(
+			`You can't delete cover Letter with the id ${req.params.id}`
+		);
+	}
+	await CoverLetter.findByIdAndDelete(req.params.id);
+	return res.status(StatusCodes.OK).json({
+		message: `Cover Letter deleted with the id ${req.params.id} Deleted successfully`,
+	});
+};
 
-	if (coverletter) {
-		const template = await CoverLetter.findByIdAndDelete(req.params.id);
-		return res.status(StatusCodes.OK).json({
-			message: `Cover Letter deleted with the id ${req.params.id} Deleted successfully`,
+const updateCoverLetter = async (req, res) => {
+	try {
+		const user_id = req.user.userId;
+
+		let coverletter = await CoverLetter.findOne({
+			_id: req.params.id,
+			user_id,
 		});
-	} else {
-		return res.status(StatusCodes.NOT_FOUND).json({
-			message: `Cover Letter with the id ${req.params.id} does not exist`,
-		});
+
+		if (!coverletter) {
+			throw new BadRequestError(
+				"Cover letter with that id can't be edited"
+			);
+		}
+
+		coverletter = await CoverLetter.findByIdAndUpdate(
+			req.params.id,
+			req.body,
+			{ new: true }
+		);
+
+		return res.status(StatusCodes.OK).json({ success: true, coverletter });
+	} catch (error) {
+		return res.status(400).json({ success: false, error: error.message });
 	}
 };
 
-const updateCoverLetter = async (req,res)=>{
-	try {
-	const user_id = req.user.userId
-	
+const saveCoverletter = async (req, res) => {
+	const coverletter = await CoverLetter.create({
+		...req.body,
+		user_id: req.user.userId,
+	});
 
-	let coverletter = await CoverLetter.findById(req.params.id)
-	
-
-	if(!coverletter){
-		throw new BadRequestError("No cover letter found")
-	}
-	
-	if(coverletter.user_id !=user_id){
-		throw new UnauthenticatedError("you cannot carry out this operation")
-	}
-	
-	coverletter = await CoverLetter.findByIdAndUpdate(req.params.id,req.body,{new:true})
-
-	return res.status(StatusCodes.OK).json({success:true,coverletter})
-	} catch (error) {
-		return res.status(400).json({success:false,error:error.message})
-	}
-	
-
-}
+	return res
+		.status(StatusCodes.OK)
+		.json({ message: "Cover Letter Saved successfully", coverletter });
+};
 
 module.exports = {
 	getAllCoverLettersByAUser,
-	editACoverLetter,
 	deleteCoverLetter,
 	getACoverLetter,
-	updateCoverLetter
+	updateCoverLetter,
+	saveCoverletter,
 };

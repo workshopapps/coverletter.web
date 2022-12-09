@@ -7,6 +7,7 @@ import Button from "../Components/Ui/Button";
 import navLinkElements from "../Constants/navLinkElements";
 import historyElements from "../Constants/historyElements";
 import { useGlobalContext } from "../context/context";
+import logOutIcon from "../Assets/logout.svg";
 // import { ReactComponent as Avatar } from "../Assets/Avatar.svg";
 import { toast } from "react-toastify";
 
@@ -35,6 +36,10 @@ const Header = () => {
 
 	const logout = async () => {
 		try {
+			window.open(
+				"https://api.coverly.hng.tech/api/v1/auth/googlelogout",
+				"_self"
+			);
 			localStorage.removeItem("user");
 			toast.success("You have been logged out");
 			setTimeout(() => {
@@ -127,7 +132,12 @@ const Header = () => {
 							// 	setToggleMenu(false);
 							// }}
 							className="btn btnShort btnSecondary block md:hidden w-full my-4"
-							onClick={reHistory}
+							onClick={() => {
+								setToggleMenu(() =>
+									setToggleMenu((prev) => (prev = false))
+								);
+								reHistory();
+							}}
 						>
 							History
 						</Button>
@@ -165,9 +175,10 @@ const Header = () => {
 					<div>
 						<Link
 							to="/"
-							className="text-center cursor-pointer p-5"
+							className="text-center cursor-pointer p-5 flex items-center gap-3 justify-center"
 							onClick={logout}
 						>
+							<img src={logOutIcon} alt="" />
 							<p className="font-bold text-base">Log Out</p>
 						</Link>
 					</div>

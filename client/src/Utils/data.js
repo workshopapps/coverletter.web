@@ -66,7 +66,7 @@ export const items = [
 		id: 1,
 		img: require("../Assets/Rectangle 21.png"),
 		story: "Customer Story",
-		text: "How i used the cover letter generated to get the job",
+		text: "How he used the cover letter generated to get the job",
 		read: "Read customer story",
 		arrow: require("../Assets/arrow-right.png"),
 	},
@@ -74,7 +74,7 @@ export const items = [
 		id: 2,
 		img: require("../Assets/Rectangle 22.png"),
 		story: "Customer Story",
-		text: "With no job experience, I landed a job interview",
+		text: "With no job experience, she landed a job interview",
 		read: "Read customer story",
 		arrow: require("../Assets/arrow-right.png"),
 	},
@@ -90,7 +90,7 @@ export const items = [
 		id: 4,
 		img: require("../Assets/Rectangle 24.png"),
 		story: "Customer Story",
-		text: "How I applied for multiple internship jobs",
+		text: "How he applied for multiple internship jobs",
 		read: "Read customer story",
 		arrow: require("../Assets/arrow-right.png"),
 	},
@@ -135,7 +135,7 @@ export const contents = [
 		img: require("../Assets/Rectangle21.png"),
 		name: "Faruq Abdulsalam",
 		occupation: "Product Designer",
-		introTalk: `Faruq Abdulsalam is a Product designer wwith 2 years experience and he has helped 
+		introTalk: `Faruq Abdulsalam is a Product designer with 2 years experience and he has helped 
 		companies and individuals design their products, excellently . He believes the surroundings you 
 		work in should be a reflection of who you are. His goal is to provide the most creative, user 
 		friendly  and responsive designs to the company or individuals he works for.`,
@@ -157,7 +157,7 @@ export const contents = [
 			{
 				id: 2,
 				title: "Solution",
-				challengeTalk: `The Coverly  cover letter generator allows Faruq Abdulsalam to merge his CV with with the cover letter process. 
+				challengeTalk: `The Coverly  cover letter generator allows Faruq Abdulsalam to merge his CV with the cover letter process. 
 				Thanks to Coverly cover letter generator, the website and mobile app can create deeper and more personal cover letter 
 				interacting with company standard through automated recommendations. Now Coverly use the CV to generate cover letter content.`,
 				reject: `Coverly cover letter made my cover letter easy by uploading my CV and interpreting the information from my CV 
