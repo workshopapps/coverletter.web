@@ -6,8 +6,11 @@ import sendMail from "../SendCoverToEmail";
 const downloadDOCX = async (data, userData, sendToMail, email) => {
 	const docxTemplate1 = myTemplate1({ data, userData });
 	const blob = await Packer.toBlob(docxTemplate1);
+	const myFile = new File([blob], "file.docx", {
+		type: blob.type,
+	});
 	if (sendToMail) {
-		sendMail(email, blob);
+		sendMail(email, myFile);
 	}
 	saveAs(blob, "My cover letter.docx");
 };
