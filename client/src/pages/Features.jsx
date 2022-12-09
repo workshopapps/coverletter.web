@@ -23,7 +23,7 @@ const H1 = (props) => {
 };
 
 const featureCards = (props) => {
-	const { title, body, img, textColor, btn } = props;
+	const { title, body, img, textColor, btn, url } = props;
 	return (
 		<div className="flex flex-col gap-4 md:flex-row md:gap-16 items-center w-full max-sm:gap-8">
 			<div className="flex-none">
@@ -36,13 +36,15 @@ const featureCards = (props) => {
 			<div className="flex-auto">
 				{/* add button if it passed as props */}
 				{btn && (
-					<button
-						className="btn 
+					<Link to={url}>
+						<button
+							className="btn 
 					bg-background
 					text-primaryMain  px-4 py-2 rounded-md border-2 border-primaryMain mb-4"
-					>
-						{btn}
-					</button>
+						>
+							{btn}
+						</button>
+					</Link>
 				)}
 				<h2
 					className={` text-2xl font-bold xl:text-4xl ${
@@ -225,6 +227,7 @@ const Features = () => {
 							img: feature5,
 							textColor: "grey800",
 							btn: "Coming soon",
+							url: "/pricing",
 						})}
 					</div>
 					<div className="featureOne-cards flex flex-col gap-6 md:flex-row "></div>
