@@ -21,7 +21,7 @@ const CoverLetter = () => {
 				<div className="mt-5 sm:mt-10 w-full">
 					<p className="w-[40%] text-[7px] sm:text-xs flex">
 						{/* {data.company_address} */}
-						10/11/2022
+						{userData.date}
 					</p>
 					<p className="w-[40%] text-[7px] sm:text-xs flex">
 						{data.company_address}

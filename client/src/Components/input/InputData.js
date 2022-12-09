@@ -27,7 +27,7 @@ function InputData() {
 	const [percentage, setPercentage] = useState("0");
 
 	const clickHandler = () => {
-		Navigate("/");
+		Navigate(-1);
 	};
 
 	const uploadToast = () => {
