@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
 import EventsList from "../Layouts/EventsList.jsx";
 import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import arrow_down from "../Assets/arrow_down.svg";
 import searchico from "../Assets/searchico.svg";
 import { eventCategories, eventData } from "../Constants/eventData.js";
 
 const Event = () => {
 	const [dateState, setDateState] = useState(true);
-	const [cateState, setCateState] = useState(false);
-	const [value, onChange] = useState(new Date());
+	const [cateState, setCateState] = useState(true);
+	const [date, setDate] = useState(new Date());
 	const [search, setSearch] = useState("");
 	const [activeCategory, setActiveCategory] = useState("All");
 	const [filteredEvents, setFilteredEvents] = useState([]);
 
 	const handleDate = () => setDateState(!dateState);
 	const handleCate = () => setCateState(!cateState);
+
 	const handleSearch = (e) => {
 		setSearch(e.target.value);
 	};
@@ -27,6 +29,12 @@ const Event = () => {
 	const filterBySearch = () => {
 		return eventData.filter((event) =>
 			event.headline.toLowerCase().includes(search)
+		);
+	};
+
+	const filterByDate = () => {
+		setFilteredEvents(
+			eventData.filter((event) => new Date(event.date) - date > 0)
 		);
 	};
 
@@ -86,44 +94,6 @@ const Event = () => {
 								</p>
 							</div>
 
-							{/* Date */}
-							<div id="date" className="flex flex-col gap-2">
-								<div
-									onClick={handleDate}
-									className="flex cursor-pointer gap-4"
-								>
-									<span className="font-bold md:font-semibold text-xl md:text-2xl text-grey800">
-										Date
-									</span>
-									<img src={arrow_down} alt="" />
-								</div>
-								<div
-									className={`${
-										dateState
-											? "flex flex-col gap-2"
-											: "hidden"
-									}`}
-								>
-									<p className="text-selectdesc">
-										Select any date
-									</p>
-									<div className="day  text-grey400 bg-white py-3 pl-3 rounded-r-lg relative">
-										<div className="w-[6px] rounded-full h-full bg-primaryMain absolute left-0 top-0">
-											&nbsp;
-										</div>
-										<span className="ml-2">Today</span>
-									</div>
-									<div className="day  text-grey400">
-										<span className="mb-3 block">
-											Tomorrow
-										</span>
-									</div>
-									<div className="day  text-grey400">
-										<span>This weekend</span>
-									</div>
-								</div>
-							</div>
-
 							{/* Category */}
 
 							<div id="category" className="flex flex-col gap-2">
@@ -178,21 +148,62 @@ const Event = () => {
 									))}
 								</div>
 							</div>
-
-							{/* calendar */}
-
-							<div id="calender" className="flex flex-col gap-4">
-								<div id="the-calender" className="">
-									<Calendar
-										className="text-center bg-white p-4 rounded-lg"
-										onChange={onChange}
-										value={value}
-									/>
+							{/* Date */}
+							<div id="date" className="flex flex-col gap-2">
+								<div
+									onClick={handleDate}
+									className="flex cursor-pointer gap-4"
+								>
+									<span className="font-bold md:font-semibold text-xl md:text-2xl text-grey800">
+										Date
+									</span>
+									<img src={arrow_down} alt="" />
 								</div>
-								<p className="text-grey400 font-bold md:font-normal">
-									Click on date to see scheduled event for
-									that day.
-								</p>
+								<div
+									className={`${
+										dateState
+											? "flex flex-col gap-2"
+											: "hidden"
+									}`}
+								>
+									{/* calendar */}
+
+									<div className="flex flex-col gap-4">
+										<Calendar
+											className="text-center bg-white p-4 rounded-lg !border-none"
+											onChange={() => {
+												setDate();
+												filterByDate();
+											}}
+											value={date}
+											selectRange={true}
+										/>
+										{date.length > 0 ? (
+											<p className="text-center">
+												<span className="bold">
+													Start:
+												</span>{" "}
+												{date[0].toDateString()}
+												&nbsp;|&nbsp;
+												<span className="bold">
+													End:
+												</span>{" "}
+												{date[1].toDateString()}
+											</p>
+										) : (
+											<p className="text-center">
+												<span className="bold">
+													Default selected date:
+												</span>{" "}
+												{date.toDateString()}
+											</p>
+										)}
+										<p className="text-grey400 font-bold md:font-normal">
+											Click on date to see scheduled event
+											for that day.
+										</p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
