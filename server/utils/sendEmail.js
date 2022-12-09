@@ -33,23 +33,28 @@ const sendEmail = async (email, subject, url) => {
 	}
 };
 const mailStyle = (message, otpResetToken) => {
-	return `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
-    <div style="margin:50px auto;width:70%;padding:20px 0">
-      <div style="border-bottom:1px solid #eee">
-        <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Coverly</a>
-      </div>
-      <p style="font-size:1.1em">Hi,</p>
-      <p>Thank you for choosing Coverly. ${message}</p>
-      <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">${otpResetToken}</h2>
-      <p style="font-size:0.9em;">Regards,<br />Your Brand</p>
-      <hr style="border:none;border-top:1px solid #eee" />
-      <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
-        <p>Coverly</p>
-        <p>1600 Amphitheatre Parkway</p>
-        <p>California</p>
-      </div>
-    </div>
-  </div>`
+	return `<html>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap');
+		* {
+			font-family: "Manrope";
+		}
+	</style>
+	
+	<body style="background-color:#cddcf8;padding:40px 5px">
+		<div style="max-width:350px;margin:auto;padding:30px;background-color:#fff;border-radius:10px">
+		<img src="https://drive.google.com/uc?export=view&id=1boA_lEheNpOoIYRnblv1c2-osYh4oXsQ" alt="logo" height="50px" style="margin-top:10px;margin-bottom:30px" />
+			<p>Hi,</p>
+			<p>Thank you for choosing Coverly, ${message}</p>
+			<div style="display:flex;justify-content:center;align-items:center"><span style="padding:10px 30px;background-color:#0652DD;color:#fff;border-radius:5px;font-size:24px;font-weight:bold">${otpResetToken}</span></div>
+			<p>Regards,</p>
+			<p>Coverly</p>
+			<hr style="border:none;border-top:1px solid #efefef;margin-top:30px" />
+			<p style="color:#999;font-size:12px;margin-top:15px">© 2022 Coverly. All rights reserved.</p>
+		</div>
+	</body>
+	
+	</html>`
 }
 
 module.exports = {

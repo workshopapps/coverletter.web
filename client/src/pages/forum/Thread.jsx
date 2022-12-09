@@ -60,6 +60,8 @@ const Thread = () => {
 	const [view, setView] = useState("");
 	const [date, setDate] = useState("");
 	const [replies, setReplies] = useState("");
+	const [replies, setReplies] = useState("");
+	const [likes, setLikes] = useState("");
 	const [newData, setNewData] = useState(data);
 	const [message, setMessage] = useState("");
 
@@ -75,6 +77,9 @@ const Thread = () => {
 		setMessage("");
 	};
 	const { user, postId } = useGlobalContext();
+	useEffect(() => {
+		const getPost = async () => {
+	const { user } = useGlobalContext();
 	useEffect(() => {
 		const getPost = async () => {
 			const config = {
@@ -95,7 +100,6 @@ const Thread = () => {
 				setReplies(res.data.post.repliesCounter);
 				setDate(res.data.post.createdAt);
 			} catch (error) {
-				console.log(error);
 			}
 		};
 		getPost();
@@ -112,6 +116,18 @@ const Thread = () => {
 									src="../forum-images/forum/f1.png"
 									alt=""
 								/>
+				<div className="border-[#0544B8] border bg-[#fcfcfc] rounded-lg h-auto py-3 px-5 md:px-12 flex flex-col gap-5 mb-5 relative">
+					<div className="flex gap-3 items-center">
+						<div>
+							<img
+								className="rounded-full w-12 object-cover md:w-16"
+								src="../forum-images/forum/f1.png"
+								alt=""
+							/>
+						</div>
+						<div>
+							<div className="capitalize text-base md:text-2xl font-semibold">
+								<p>{respo}</p>
 							</div>
 							<div>
 								<div className="capitalize text-base md:text-2xl font-semibold">
@@ -126,6 +142,23 @@ const Thread = () => {
 							<div className="basis-4/5">
 								<p className="text-sm md:text-base flex flex-col gap-3">
 									{content}
+					</div>
+					<div className="flex flex-col gap-5 mt-10 md:mt-0 mb-5">
+						<div className="basis-4/5">
+							<p className="text-sm md:text-base flex flex-col gap-3">
+								{content}
+							</p>
+						</div>
+						<div className="flex gap-8 justify-between md:justify-start items-center basis-1/5">
+							<div className="text-center">
+								<p className="md:text-base text-sm font-bold">
+									{replies}
+								</p>
+								<p className="text-sm md:text-base">Replies</p>
+							</div>
+							<div className="text-center">
+								<p className="text-sm md:text-base font-bold">
+									{view}
 								</p>
 							</div>
 							<div className="flex gap-8 justify-between md:justify-start items-center basis-1/5">
