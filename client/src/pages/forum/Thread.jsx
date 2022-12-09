@@ -15,18 +15,46 @@ const Thread = () => {
 	const [newData, setNewData] = useState(data);
 	const [message, setMessage] = useState("");
 
+    const { user, postId } = useGlobalContext();
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		let value = {
-			id: newData.length,
-			img: "../forum-images/reply/r7.png",
-			date: `${new Date().getDay()} ${new Date().getMonth()}, ${new Date().getFullYear()}`,
-			content: message,
+		// let value = {
+		// 	id: newData.length,
+		// 	img: "../forum-images/reply/r7.png",
+		// 	date: `${new Date().getDay()} ${new Date().getMonth()}, ${new Date().getFullYear()}`,
+		// 	content: message,
+		// };
+		// setNewData([...newData, value]);
+		// setMessage("");
+
+        const replyPost = async () => {
+            const bodyData = new FormData();
+            bodyData.append("content", message);
+
+			const config = {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${user.token}`
+				}
+			};
+            console.log(postId);
+
+			try {
+				const res = await axios.post(
+					`https://api.coverly.hng.tech/api/v1/forum/${postId}/reply`,
+                    bodyData,
+                    config
+                  
+				);
+                console.log(res)
+			} catch (error) {
+                console.log(error);
+			}
 		};
-		setNewData([...newData, value]);
-		setMessage("");
+		replyPost();
+
 	};
-	const { user, postId } = useGlobalContext();
 	useEffect(() => {
 		const getPost = async () => {
 			const config = {
@@ -47,6 +75,7 @@ const Thread = () => {
 				setReplies(res.data.post.repliesCounter);
 				setDate(res.data.post.createdAt);
 			} catch (error) {
+                console.log(error);
 			}
 		};
 		getPost();
