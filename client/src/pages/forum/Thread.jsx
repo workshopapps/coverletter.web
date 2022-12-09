@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useGlobalContext } from "../../context/context";
 
 const response = [
 	{
@@ -53,6 +55,11 @@ const response = [
 
 const Thread = () => {
 	const [data, setData] = useState(response);
+	const [respo, setRespo] = useState("");
+	const [content, setContent] = useState("");
+	const [view, setView] = useState("");
+	const [replies, setReplies] = useState("");
+	const [likes, setLikes] = useState("");
 	const [newData, setNewData] = useState(data);
 	const [message, setMessage] = useState("");
 
@@ -67,6 +74,38 @@ const Thread = () => {
 		setNewData([...newData, value]);
 		setMessage("");
 	};
+	const { user } = useGlobalContext();
+	useEffect(() => {
+		const getPost = async () => {
+			// const formData = new FormData();
+			// formData.append("title", title);
+			// formData.append("content", contents);
+			// console.log([...formData])
+
+			const config = {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${user.token}`,
+				},
+			};
+
+			try {
+				const res = await axios.get(
+					`https://api.coverly.hng.tech/api/v1/forum/getOnePost/638d84d832761821053b17ef`,
+					config
+				);
+				setRespo(res.data.post.title);
+				setContent(res.data.post.content);
+				setView(res.data.post.viewCounter);
+				setReplies(res.data.post.repliesCounter);
+				setLikes(res.data.post.likesCounter);
+				// console.log(res.data)
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		getPost();
+	});
 	return (
 		<>
 			<main className="bg-[#f2f2f7] mx-0 my-0 py-5 px-5 md:px-16">
@@ -81,7 +120,7 @@ const Thread = () => {
 						</div>
 						<div>
 							<div className="capitalize text-base md:text-2xl font-semibold">
-								<p>Quick Career Upgrade Tip for 2022</p>
+								<p>{respo}</p>
 							</div>
 							<div className="flex flex-col md:flex-row md:gap-5 text-[#bababa] md:text-base text-sm absolute left-5 top-20 md:static">
 								<p>By Lite16nl</p>
@@ -92,7 +131,8 @@ const Thread = () => {
 					<div className="flex flex-col gap-5 mt-10 md:mt-0 mb-5">
 						<div className="basis-4/5">
 							<p className="text-sm md:text-base flex flex-col gap-3">
-								<span>
+								{content}
+								{/* <span>
 									1. Identify your career strengths and
 									weaknesses.
 								</span>
@@ -124,19 +164,19 @@ const Thread = () => {
 								<span>
 									9. Proceed to Job Hunt (offline and online)
 									such as using Indeed or Joobie
-								</span>
+								</span> */}
 							</p>
 						</div>
 						<div className="flex gap-8 justify-between md:justify-start items-center basis-1/5">
 							<div className="text-center">
 								<p className="md:text-base text-sm font-bold">
-									20
+									{replies}
 								</p>
 								<p className="text-sm md:text-base">Replies</p>
 							</div>
 							<div className="text-center">
 								<p className="text-sm md:text-base font-bold">
-									20
+									{view}
 								</p>
 								<p className="text-sm md:text-base">Views</p>
 							</div>

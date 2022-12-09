@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useGlobalContext } from "../../context/context";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Forum = () => {
 	const [dData, setdData] = useState([]);
 	const [page, setPage] = useState(1);
+	const { setPostId } = useGlobalContext();
 
 	const imgg = [
 		"./forum-images/forum/f1.png",
@@ -23,7 +25,7 @@ const Forum = () => {
 				`https://api.coverly.hng.tech/api/v1/forum/getAllPost?page=${page}&limit=10`
 			)
 			.then((res) => {
-				console.log(res);
+				// console.log(res);
 				const dValues = res.data.posts;
 				const getValues = [];
 
@@ -45,11 +47,13 @@ const Forum = () => {
 						date: createdAt,
 						replies: repliesCounter,
 						views: viewCounter,
+						userId: userId,
 					};
 					getValues.push(formatVal);
 				});
-
+				// setPostId(dData)
 				setdData(getValues);
+				console.log(dData[0].userId);
 			})
 			.then((err) => {
 				console.log(err);
