@@ -19,14 +19,14 @@ const Thread = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// let value = {
-		// 	id: newData.length,
-		// 	img: "../forum-images/reply/r7.png",
-		// 	date: `${new Date().getDay()} ${new Date().getMonth()}, ${new Date().getFullYear()}`,
-		// 	content: message,
-		// };
-		// setNewData([...newData, value]);
-		// setMessage("");
+		let value = {
+			id: newData.length,
+			img: "../forum-images/reply/r7.png",
+			date: `${new Date().getDay()} ${new Date().getMonth()}, ${new Date().getFullYear()}`,
+			content: message,
+		};
+		setNewData([...newData, value]);
+		setMessage("");
 
         const replyPost = async () => {
             const bodyData = new FormData();
