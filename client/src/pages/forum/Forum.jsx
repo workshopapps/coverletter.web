@@ -6,7 +6,7 @@ import axios from "axios";
 const Forum = () => {
 	const [dData, setdData] = useState([]);
 	const [page, setPage] = useState(1);
-	const { setPostId } = useGlobalContext();
+	const { postId, setPostId } = useGlobalContext();
 
 	const imgg = [
 		"./forum-images/forum/f1.png",
