@@ -60,7 +60,6 @@ const Thread = () => {
 	const [view, setView] = useState("");
 	const [date, setDate] = useState("");
 	const [replies, setReplies] = useState("");
-	const [replies, setReplies] = useState("");
 	const [likes, setLikes] = useState("");
 	const [newData, setNewData] = useState(data);
 	const [message, setMessage] = useState("");
@@ -77,6 +76,7 @@ const Thread = () => {
 		setMessage("");
 	};
 	const { user, postId } = useGlobalContext();
+
 	useEffect(() => {
 		const getPost = async () => {
 	const { user } = useGlobalContext();
@@ -100,10 +100,13 @@ const Thread = () => {
 				setReplies(res.data.post.repliesCounter);
 				setDate(res.data.post.createdAt);
 			} catch (error) {
+				console.log(error);
 			}
 		};
 		getPost();
 	});
+
+
 	return (
 		<>
 			<main className="bg-[#f2f2f7] mx-0 my-0 py-5 px-5 md:px-16">

@@ -7,7 +7,6 @@ const Forum = () => {
 	const [dData, setdData] = useState([]);
 	const [page, setPage] = useState(1);
 	const { postId, setPostId } = useGlobalContext();
-	const { setPostId } = useGlobalContext();
 
 	const imgg = [
 		"./forum-images/forum/f1.png",
