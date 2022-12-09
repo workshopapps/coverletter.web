@@ -7,7 +7,7 @@ const CoverLetter = () => {
 	const dData = formatData.replace(/\n\n/g, " <br/><br/>");
 
 	return (
-		<div className="w-[280px] h-[400px] sm:w-[480px] coverletter-container sm:h-[640px] bg-textWhite border-grey300 target-2 border-2 pt-7 px-7 rounded-lg">
+		<div className="w-[300px] h-[426px] sm:w-[480px] coverletter-container sm:h-[690px] bg-textWhite border-grey300 target-2 border-2 pt-7 px-7 rounded-lg">
 			<div id="coverletter-target">
 				<div className="flex w-full justify-between items-end">
 					<p className="w-[50%] text-[7px] sm:text-xs flex text-grey300">

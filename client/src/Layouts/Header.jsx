@@ -199,7 +199,7 @@ const Header = () => {
 					/>
 				</Link>
 				<Large />
-				<div ref={ref} className="space-x-4 xl:space-x-6 flex">
+				<div className="space-x-4 xl:space-x-6 flex">
 					{!user ? (
 						<>
 							<Link to="/signin">

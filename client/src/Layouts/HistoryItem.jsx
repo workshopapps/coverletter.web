@@ -9,6 +9,7 @@ import Modal from "../Components/Ui/Modal";
 import Button from "../Components/Ui/Button";
 import { ReactComponent as Question } from "../Assets/question.svg";
 import { ReactComponent as Check } from "../Assets/Check.svg";
+import { MdDelete } from "react-icons/md";
 
 const HistoryItem = (props) => {
 	const [deleteModal, setDeleteModal] = useState(false);
@@ -16,7 +17,7 @@ const HistoryItem = (props) => {
 	const [options, setOptions] = useState(false);
 	const { user, setCoverLetter, openModal, isModalOpen, setUserData } =
 		useGlobalContext();
-
+	const { deleteCoverLetter } = props;
 	const toggleOptions = () => {
 		setOptions((prevoptions) => !prevoptions);
 	};
@@ -116,15 +117,28 @@ const HistoryItem = (props) => {
 					{props.item.company_name}
 				</p>
 				<p className="text-xs">{props.item.date}</p>
-				<Button
-					className={
-						"btn btnLong w-[30%] btnPrimary p-0 mt-3 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-					}
-					children={"view"}
-					type={"button"}
-					disabled={false}
-					onClick={handleHItemClick}
-				></Button>
+				<div className="flex  items-center gap-3">
+					<Button
+						className={
+							"btn btnLong w-[30%] btnPrimary p-0 mt-3 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+						}
+						children={"view"}
+						type={"button"}
+						disabled={false}
+						onClick={handleHItemClick}
+					></Button>
+					<Button
+						className={
+							"btn btnLong w-[30%] btnPrimary bg-errorMain p-0 mt-3 text-xl disabled:opacity-50 disabled:cursor-not-allowed"
+						}
+						children={<MdDelete></MdDelete>}
+						type={"button"}
+						disabled={false}
+						onClick={() => {
+							deleteCoverLetter(props.hid);
+						}}
+					></Button>
+				</div>
 			</div>
 
 			{/* {isModalOpen && deleteModal && (
