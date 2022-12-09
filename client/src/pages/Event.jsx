@@ -9,7 +9,7 @@ import { eventCategories, eventData } from "../Constants/eventData.js";
 const Event = () => {
 	const [dateState, setDateState] = useState(true);
 	const [cateState, setCateState] = useState(true);
-	const [date, setDate] = useState(new Date());
+	const [date, setDate] = useState(null);
 	const [search, setSearch] = useState("");
 	const [activeCategory, setActiveCategory] = useState("All");
 	const [filteredEvents, setFilteredEvents] = useState([]);
@@ -32,11 +32,21 @@ const Event = () => {
 		);
 	};
 
-	// const filterByDate = () => {
-	// 	setFilteredEvents(
-	// 		eventData.filter((event) => new Date(event.date) - date > 0)
-	// 	);
-	// };
+	const filterByDate = () => {
+		if (date) {
+			const firstDate = new Date(date[0]);
+			const secondDate = new Date(date[1]);
+			const minDate = Math.min(firstDate, secondDate);
+			const maxDate = Math.max(firstDate, secondDate);
+			setFilteredEvents(
+				eventData.filter(
+					(event) =>
+						new Date(event.date) >= minDate &&
+						new Date(event.date) <= maxDate
+				)
+			);
+		} else setFilteredEvents(eventData);
+	};
 
 	const filterByCategory = (e) => {
 		if (e === "All") {
@@ -171,33 +181,13 @@ const Event = () => {
 									<div className="flex flex-col gap-4">
 										<Calendar
 											className="text-center bg-white p-4 rounded-lg !border-none"
-											onChange={() => {
-												setDate();
-												// filterByDate();
+											onChange={(e) => {
+												setDate(e);
+												filterByDate();
 											}}
 											value={date}
 											selectRange={true}
 										/>
-										{/* {date.length > 0 ? (
-											<p className="text-center">
-												<span className="bold">
-													Start:
-												</span>{" "}
-												{date[0].toDateString()}
-												&nbsp;|&nbsp;
-												<span className="bold">
-													End:
-												</span>{" "}
-												{date[1].toDateString()}
-											</p>
-										) : (
-											<p className="text-center">
-												<span className="bold">
-													Default selected date:
-												</span>{" "}
-												{date.toDateString()}
-											</p>
-										)} */}
 										<p className="text-grey400 font-bold md:font-normal">
 											Click on date to see scheduled event
 											for that day.
