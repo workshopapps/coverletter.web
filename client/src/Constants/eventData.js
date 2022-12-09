@@ -9,7 +9,7 @@ const eventData = [
 	{
 		id: "ed1",
 		img: event_img1,
-		headline: "Applicar Luanch Par...",
+		headline: "Coverly Luanch Par...",
 		category: "Convention",
 		place: "Event Hall 1, Shelton Hotel Abuja FCT.",
 		date: "November 29 2022, 09:00:00",
@@ -19,7 +19,7 @@ const eventData = [
 	{
 		id: "ed2",
 		img: event_img2,
-		headline: "Applicar Luanch Par...",
+		headline: "Coverly Luanch Par...",
 		category: "Convention",
 		place: "Event Hall 1, Shelton Hotel Abuja FCT.",
 		date: "November 29 2022, 09:00:00",

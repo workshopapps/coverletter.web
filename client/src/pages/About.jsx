@@ -292,7 +292,7 @@ const About = () => {
 										Jewel Uguru
 									</p>
 									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
-										TEAM LEAD FOR PROJECT MANAGEMENT
+										TEAM LEAD FOR PRODUCT MANAGEMENT
 									</p>
 									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-3">
 										Jewel oversees the development process

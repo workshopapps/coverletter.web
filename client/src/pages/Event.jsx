@@ -32,11 +32,11 @@ const Event = () => {
 		);
 	};
 
-	const filterByDate = () => {
-		setFilteredEvents(
-			eventData.filter((event) => new Date(event.date) - date > 0)
-		);
-	};
+	// const filterByDate = () => {
+	// 	setFilteredEvents(
+	// 		eventData.filter((event) => new Date(event.date) - date > 0)
+	// 	);
+	// };
 
 	const filterByCategory = (e) => {
 		if (e === "All") {
@@ -173,12 +173,12 @@ const Event = () => {
 											className="text-center bg-white p-4 rounded-lg !border-none"
 											onChange={() => {
 												setDate();
-												filterByDate();
+												// filterByDate();
 											}}
 											value={date}
 											selectRange={true}
 										/>
-										{date.length > 0 ? (
+										{/* {date.length > 0 ? (
 											<p className="text-center">
 												<span className="bold">
 													Start:
@@ -197,7 +197,7 @@ const Event = () => {
 												</span>{" "}
 												{date.toDateString()}
 											</p>
-										)}
+										)} */}
 										<p className="text-grey400 font-bold md:font-normal">
 											Click on date to see scheduled event
 											for that day.
