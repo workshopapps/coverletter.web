@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Logo from "../Assets/coverly.svg";
 import Hamburger from "../Assets/menu.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -156,22 +156,24 @@ const Header = () => {
 	const UserMenu = () => {
 		return (
 			<aside className="w-[234px] h-[max-content] border border-searchbd bg-textWhite absolute top-[98px] right-6 max-[768px]:right-4 z-20 rounded-sm">
-				<div className=" h-full flex flex-col gap-3">
-					<ul className="flex items-center justify-center">
+				<div ref={ref} className=" h-full flex flex-col gap-3">
+					<ul className="flex flex-col">
 						{historyElements.map((item) => (
-							<Link
-								key={item.name}
-								to={item.url}
-								className=" text-base flex p-5 items-center gap-2 justify-center"
-							>
-								{item.icon}
-								<p className="font-bold text-base">
-									{item.name}
-								</p>
-							</Link>
+							<div key={item.name}>
+								<Link
+									to={item.url}
+									className=" text-base flex py-5 items-center gap-2 justify-center"
+									onClick={() => setToggleUserMenu(false)}
+								>
+									{item.icon}
+									<p className="font-bold text-base">
+										{item.name}
+									</p>
+								</Link>
+								<hr className="border-[0.3px] border-searchbd w-full" />
+							</div>
 						))}
 					</ul>
-					<hr className="border-[0.3px] border-searchbd" />
 					<div>
 						<Link
 							to="/"
@@ -199,7 +201,7 @@ const Header = () => {
 					/>
 				</Link>
 				<Large />
-				<div ref={ref} className="space-x-4 xl:space-x-6 flex">
+				<div className="space-x-4 xl:space-x-6 flex">
 					{!user ? (
 						<>
 							<Link to="/signin">

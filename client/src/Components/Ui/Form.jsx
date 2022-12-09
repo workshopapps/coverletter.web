@@ -116,13 +116,13 @@ const Select = (props) => {
 
 	const handleClick = () => {
 		setOpen(!open);
-		setHeight(open ? "0px" : `${getHeight(options.length*2+1)}px`);
+		setHeight(open ? "0px" : `${getHeight(options.length * 2 + 1)}px`);
 	};
 
 	const handleBlur = () => {
 		setTimeout(() => {
 			setOpen(false);
-		setHeight("0px");
+			setHeight("0px");
 		}, 100);
 	};
 
@@ -160,6 +160,7 @@ const Select = (props) => {
 					icon={["fas", "chevron-down"]}
 					className="absolute top-0 right-0 p-4 text-grey400"
 					flip={open && "vertical"}
+					onClick={handleClick}
 				/>
 			</div>
 			<div
@@ -170,7 +171,10 @@ const Select = (props) => {
 					{options.map((item, index) => (
 						<li
 							key={index}
-							onClick={() =>onChange && onChange({ target: { value: item } })}
+							onClick={() =>
+								onChange &&
+								onChange({ target: { value: item } })
+							}
 							className="w-full text-grey400 px-5 py-2 hover:bg-[#DCDCDC] cursor-pointer"
 						>
 							{item}

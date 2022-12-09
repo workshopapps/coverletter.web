@@ -8,7 +8,7 @@ const Post = () => {
 	const [contents, setContents] = useState("");
 
 	const Navigate = useNavigate();
-	const { user } = useGlobalContext();
+	const { user, setPostId } = useGlobalContext();
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -17,7 +17,7 @@ const Post = () => {
 			const formData = new FormData();
 			formData.append("title", title);
 			formData.append("content", contents);
-			console.log([...formData])
+			console.log([...formData]);
 
 			const config = {
 				headers: {
@@ -32,7 +32,6 @@ const Post = () => {
 					formData,
 					config
 				);
-				console.log(res);
 				Navigate("/forum");
 			} catch (error) {
 				console.log(error);

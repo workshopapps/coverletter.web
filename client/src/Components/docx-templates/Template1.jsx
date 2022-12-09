@@ -162,9 +162,7 @@ const useTemplate1 = (props) => {
 					lineBreak({ style: "large" }),
 					new Paragraph({
 						style: "body",
-						children: [
-							new TextRun(new Date().toLocaleDateString()),
-						],
+						children: [new TextRun(userData.date)],
 					}),
 					addressBox({
 						props: {

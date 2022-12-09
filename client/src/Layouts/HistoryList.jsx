@@ -7,7 +7,9 @@ const HistoryList = (props) => {
 	if (props.Items.length < 1) {
 		return (
 			<div className="w-full h-full pb-[150px] pt-[50px] flex flex-col justify-center items-center text-center">
-				<p className="sm:text-[1.5rem]">You have no cover letter.</p>
+				<p className="sm:text-[1.5rem]">
+					You have no cover letter saved
+				</p>
 				<Link to="/">
 					<Button
 						className={
@@ -17,9 +19,8 @@ const HistoryList = (props) => {
 						disabled={false}
 					></Button>
 				</Link>
-				
 			</div>
-		)
+		);
 	}
 	return (
 		<div>
@@ -30,6 +31,7 @@ const HistoryList = (props) => {
 							hid={clList._id}
 							item={clList}
 							image={cvHistory}
+							deleteCoverLetter={props.deleteCoverLetter}
 						/>
 					);
 				})}
