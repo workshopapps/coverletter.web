@@ -2,6 +2,7 @@ import HistoryItem from "./HistoryItem";
 import cvHistory from "../Assets/cvHistory.png";
 import Button from "../Components/Ui/Button";
 import { Link } from "react-router-dom";
+import { ReactComponent as NoLetter } from "../Assets/NoCover.svg";
 
 const HistoryList = (props) => {
 	if (props.Items.length < 1) {
@@ -10,12 +11,13 @@ const HistoryList = (props) => {
 				<p className="sm:text-[1.5rem]">
 					You have no cover letter saved
 				</p>
+				<NoLetter></NoLetter>
 				<Link to="/">
 					<Button
 						className={
 							"btn px-4 md:px-7 btnPrimary mt-6 text-sm sm:text-md"
 						}
-						children={"Create a Cover Letter"}
+						children={"Generate a Cover Letter"}
 						disabled={false}
 					></Button>
 				</Link>
@@ -24,7 +26,7 @@ const HistoryList = (props) => {
 	}
 	return (
 		<div>
-			<div className="grid grid-cols-grid gap-5 justify-center">
+			<div className="grid gap-3">
 				{props.Items.map((clList) => {
 					return (
 						<HistoryItem
