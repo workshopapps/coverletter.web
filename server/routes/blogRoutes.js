@@ -22,7 +22,7 @@ router.get("/blogs/search", searchPost);
 router.get("/blogs/:blogId", getABlogPost);
 router.get("/blog/", getAllPosts);
 
-router.post("/admin/blog", admin, uploadImage, createPostImage);
+router.post("/admin/blog/image", admin, uploadImage, createPostImage);
 router.post("/admin/blog", admin, createPost);
 router.post("/blog/comment", auth, createABlogPostComment);
 router.post("/blog/like", auth, createALikeForABlogPost);
