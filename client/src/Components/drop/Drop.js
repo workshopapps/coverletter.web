@@ -27,7 +27,7 @@ function Drop() {
 						src={second}
 						alt=""
 					/>
-					<span className="text-sm text-left md:text-center lg:text-left  lg:text-[24px] w-[85%%]  leading-8 md:leading-9 text-gray-900">
+					<span className="text-sm text-left md:text-center lg:text-left  lg:text-[24px] w-[85%]  leading-8 md:leading-9 text-gray-900">
 						Input Additional Information
 					</span>
 				</div>
