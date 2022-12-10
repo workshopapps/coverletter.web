@@ -852,9 +852,9 @@ function InputData() {
 								: "Almost finished..."}
 						</h3>
 						<div className="bar w-[80%] ">
-							<div className="w-full bg-grey100 rounded-full h-1.5 mb-4 dark:bg-grey300">
+							<div className="w-full rounded-full h-1.5 mb-4 bg-primaryLight">
 								<div
-									className="bg-primaryMain h-1.5 rounded-full dark:bg-primaryLight "
+									className="bg-primaryDark h-1.5 rounded-full "
 									style={{ width: `${percentage}%` }}
 								></div>
 							</div>
