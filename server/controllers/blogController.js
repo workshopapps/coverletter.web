@@ -7,9 +7,23 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const Reply = require("../models/Reply");
 const Comment = require("../models/Comment");
 
+const createPostImage = async (req, res) => {
+	try {
+		const { public_id, url } = req.upload;
+		return res.status(StatusCodes.CREATED).json({
+			status: "success",
+			data: { imageCloudinaryId: public_id, imageUrl: url },
+		});
+	} catch (error) {
+		return res.status(StatusCodes.BAD_REQUEST).json({
+			status: "fail",
+			message: error.message,
+		});
+	}
+};
+
 const createPost = async (req, res) => {
-	const { title, content } = req.body;
-	const { public_id, url } = req.upload;
+	const { title, content, imageCloudinaryId, imageUrl } = req.body;
 	if (!title || !content)
 		return res.status(StatusCodes.NO_CONTENT).json({
 			message: "All Fields are required",
@@ -24,8 +38,8 @@ const createPost = async (req, res) => {
 		title,
 		content,
 		adminId: req.user.userId,
-		imageUrl: url,
-		imageCloudinaryId: public_id,
+		imageUrl,
+		imageCloudinaryId,
 	});
 	await post.save();
 
@@ -195,7 +209,7 @@ const createALikeForABlogPost = async (req, res) => {
 	}
 
 	if (!blogId) {
-		return res.status(StatusCodes.NO_CONTENT).json({
+		return res.status(StatusCodes.NO_CONTENT).jsPon({
 			message: "userId is required",
 		});
 	}
@@ -219,6 +233,7 @@ const createALikeForABlogPost = async (req, res) => {
 };
 
 module.exports = {
+	createPostImage,
 	createPost,
 	getABlogPost,
 	deleteABlogPost,
