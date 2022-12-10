@@ -732,7 +732,7 @@ function InputData() {
 									error && date <= 0
 										? "border-[#FF2635]"
 										: "border-gray-300"
-								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200  `}
+								} rounded-lg focus:outline focus:outline-[1px] focus:outline-grey400 border-[1.5px] border-grey200 w-full`}
 								onChange={dateHandler}
 								type="date"
 								value={date}

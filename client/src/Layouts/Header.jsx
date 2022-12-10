@@ -246,10 +246,10 @@ const Header = () => {
 									<img
 										src={user.profileIconUrl}
 										alt={user.name}
-										className="rounded-full w-12 h-12 bg-[#CDDCF8] object-fill"
+										className="rounded-full w-12 h-12 bg-[#CDDCF8] object-cover"
 									/>
 								) : (
-									<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-fill">
+									<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-cover">
 										{user?.name[0].toUpperCase()}
 									</div>
 								)}
