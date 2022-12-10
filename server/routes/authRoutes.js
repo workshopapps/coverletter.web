@@ -55,6 +55,6 @@ router.get("/success", googleSuccess);
 router.post("/resetPassword", auth, resetPassword);
 router.put("/updatePassword", auth, updatePassword);
 // router.post('/resetPassword', resetPassword)
-router.patch("/update-icon", auth, uploadImage, updateProfileIcon);
+router.patch("/dashboard/update-icon", auth, uploadImage, updateProfileIcon);
 
 module.exports = router;
