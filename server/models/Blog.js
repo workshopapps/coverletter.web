@@ -10,9 +10,9 @@ const BlogSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		userId: {
+		adminId: {
 			type: mongoose.Types.ObjectId,
-			ref: "User",
+			ref: "Admin",
 			required: [true, "Please provide user"],
 		},
 		comments: [
