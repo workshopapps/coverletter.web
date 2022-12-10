@@ -241,7 +241,7 @@ const Preview = () => {
 					className="flex items-center px-7 lg:px-40 lg:mt-6 cursor-pointer"
 				>
 					<img src={leftArrowIcon} alt="left arrow" />
-					<p className="ml-1 text-sm font-bold">Back</p>
+					<p className="ml-1 text-sm font-bold md:text-xl">Back</p>
 				</span>
 				<div className="w-full flex justify-center mt-5 px-7 md:mt-11">
 					<p className="font-bold text-2xl w-[65%] text-center md:text-3xl md:w-[40%] lg:text-5xl lg:w-[40%]">
