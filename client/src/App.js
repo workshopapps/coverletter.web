@@ -47,17 +47,22 @@ import { Header, Footer } from "./Layouts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useGlobalContext } from "./context/context";
-import { addUserToLocalStorage, addEmailToLocalStorage } from "./Utils/localStorage";
-import axios from "axios"
+import {
+	addUserToLocalStorage,
+	addEmailToLocalStorage,
+	removeUserFromLocalStorage,
+	removeEmailFromLocalStorage,
+} from "./Utils/localStorage";
+import axios from "axios";
 import { toast } from "react-toastify";
 
 const App = () => {
-	const {user, setUser, setUserEmail} = useGlobalContext()
+	const { user, setUser, setUserEmail } = useGlobalContext();
 
 	React.useEffect(() => {
-		let loading = true
-		const getUser = async () =>  {
-			if (!user?.token || !user?.userId) return
+		let loading = true;
+		const getUser = async () => {
+			if (!user?.token || !user?.userId) return;
 			try {
 				const res = await axios.get(
 					`https://api.coverly.hng.tech/api/v1/auth/dashboard/${user.userId}`,
@@ -78,28 +83,28 @@ const App = () => {
 					addUserToLocalStorage(userObj);
 					setUser(userObj);
 					addEmailToLocalStorage(res.data.email);
-					setUserEmail(res.data.email)
+					setUserEmail(res.data.email);
 				}
 			} catch (error) {
-				console.error("ERROR RETRIEVING USER DATA FROM SERVER", error)
+				console.error("ERROR RETRIEVING USER DATA FROM SERVER", error);
 				if (error.code === "ERR_NETWORK") {
-					toast.error("Error retrieving user data from Server")
+					toast.error("Error retrieving user data from Server");
 				} else {
-				addUserToLocalStorage(null);
-				setUser({});
-				addEmailToLocalStorage("");
-				setUserEmail("")
+					removeUserFromLocalStorage();
+					setUser(null);
+					removeEmailFromLocalStorage();
+					setUserEmail("");
 				}
 			}
-			loading = false
-		}
-		getUser()
-	  return () => {
-		loading = false
-	  }
-	  // eslint-disable-next-line
-	}, [])
-	
+			loading = false;
+		};
+		getUser();
+		return () => {
+			loading = false;
+		};
+		// eslint-disable-next-line
+	}, []);
+
 	return (
 		<Router>
 			<ScrollToTop>
@@ -177,17 +182,17 @@ const App = () => {
 						path="/terms-and-conditions"
 						element={<TermsAndCondition />}
 					></Route>
-					<Route path="/forum" element={<Forum />} />
-					<Route path="/forum/thread" element={<Thread />} />
+					{/* <Route path="/forum" element={<Forum />} /> */}
+					{/* <Route path="/forum/thread" element={<Thread />} /> */}
 
-					<Route
+					{/* <Route
 						path="/forum/post"
 						element={
 							<AuthUserRoute>
 								<Post />
 							</AuthUserRoute>
 						}
-					/>
+					/> */}
 					<Route
 						path="/customerstories"
 						element={<CustomerStories />}

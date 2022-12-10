@@ -4,7 +4,7 @@ import Erica from "../Assets/erica.png";
 import Ayomide from "../Assets/ayomide.png";
 import Rotimi from "../Assets/rotimi.png";
 import Harold from "../Assets/harold.png";
-import Destiny from "../Assets/destiny.png";
+import Delight from "../Assets/Delight.png";
 import Jewel from "../Assets/jewel.png";
 import Mission from "../Assets/our-mission.png";
 import History from "../Assets/our-history.png";
@@ -258,20 +258,20 @@ const About = () => {
 								<div className="">
 									<img
 										className="w-full object-cover rounded-lg"
-										src={Destiny}
+										src={Delight}
 										alt=""
 									/>
 								</div>
 
 								<div className="">
 									<p className="lg:text-[24px] text-xl sm:text-2xl mt-6 font-semibold">
-										Destiny Aigbe
+										Delight Fela Steve
 									</p>
 									<p className="text-xs md:text-[12px] font-semibold text-[#0652DD] sm:text-xl leading-[22px] sm:leading-[27px] lg:leading-[33px]">
 										TEAM LEAD FOR BACKEND DEVELOPMENT
 									</p>
 									<p className="text-md sm:text-lg md:text-[16px] leading-[22px] sm:leading-[25px] md:leading-[27px] text-[#6D6D6D] mt-2 sm:mt-3">
-										Destiny manages the entire software
+										Delight manages the entire software
 										development lifecycle, including
 										architecture, solution design, quality
 										assurance and maintenance

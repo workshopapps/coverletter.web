@@ -30,7 +30,7 @@ const Preview = () => {
 
 	// logic for the modal
 	const [firstModal, setFirstModal] = useState(false);
-	const [dType, setDtype] = useState("");
+	const [dType, setDtype] = useState("doc");
 	const [download, setDownload] = useState(false);
 	const [spin, setSpin] = useState(false);
 	const [windowWidth, setWindowWidth] = useState(0);
@@ -114,13 +114,18 @@ const Preview = () => {
 				downloadPdf(
 					"pdf-coverletter-target",
 					sendToMail,
-					userData?.email
+					userData?.email || user.email
 				);
 			} else if (dType === "doc") {
 				//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
-				downloadDOCX(data, userData, sendToMail, userData?.email);
+				downloadDOCX(
+					data,
+					userData,
+					sendToMail,
+					userData?.email || user.email
+				);
 			} else if (dType === "text") {
-				convertToTxt(sendToMail, userData?.email);
+				convertToTxt(sendToMail, userData?.email || user.email);
 			} else {
 				//TELL USER TO PICK ONE OF THE 3 OPTIONS
 			}
@@ -390,20 +395,22 @@ const Preview = () => {
 									</div>
 								</div>
 								<hr className="w-full bg-stokeLight mt-2 border-none h-[1px]" />
-								{/* <div className="w-full flex justify-between mt-4 md:justify-center">
-									<input
-										type="checkbox"
-										name="sendToMail"
-										className="w-5 h-5 outline-none border-none"
-										checked={sendToMail}
-										onClick={() => {
-											setSendToMail(!sendToMail);
-										}}
-									/>
-									<p className="text-sm md:ml-3">
-										Send downloaded template to email.
-									</p>
-								</div> */}
+								{dType !== "pdf" && (
+									<div className="w-full flex justify-between mt-4 md:justify-center">
+										<input
+											type="checkbox"
+											name="sendToMail"
+											className="w-5 h-5 outline-none border-none"
+											checked={sendToMail}
+											onClick={() => {
+												setSendToMail(!sendToMail);
+											}}
+										/>
+										<p className="text-sm md:ml-3">
+											Send downloaded template to email.
+										</p>
+									</div>
+								)}
 							</div>
 							<Button
 								type="submit"

@@ -1,15 +1,15 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import Logo from "../Assets/coverly.svg";
 import Hamburger from "../Assets/menu.svg";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Close from "../Assets/close-circle.svg";
 import Button from "../Components/Ui/Button";
 import navLinkElements from "../Constants/navLinkElements";
 import historyElements from "../Constants/historyElements";
 import { useGlobalContext } from "../context/context";
 import logOutIcon from "../Assets/logout.svg";
-// import { ReactComponent as Avatar } from "../Assets/Avatar.svg";
 import { toast } from "react-toastify";
+import { removeEmailFromLocalStorage, removeUserFromLocalStorage } from "../Utils/localStorage";
 
 const Header = () => {
 	const { user } = useGlobalContext();
@@ -40,7 +40,8 @@ const Header = () => {
 				"https://api.coverly.hng.tech/api/v1/auth/googlelogout",
 				"_self"
 			);
-			localStorage.removeItem("user");
+			removeUserFromLocalStorage();
+			removeEmailFromLocalStorage();
 			toast.success("You have been logged out");
 			setTimeout(() => {
 				window.location.reload();
@@ -125,32 +126,21 @@ const Header = () => {
 						</Link>
 					</>
 				) : (
-					<>
+					<Link to="/history">
 						<Button
-							// onClick={() => {
-							// 	setToggleUserMenu((prev) => !prev);
-							// 	setToggleMenu(false);
-							// }}
 							className="btn btnShort btnSecondary block md:hidden w-full my-4"
 							onClick={() => {
 								setToggleMenu(() =>
 									setToggleMenu((prev) => (prev = false))
 								);
-								reHistory();
 							}}
 						>
 							History
 						</Button>
-						{/* {toggleUserMenu && <UserMenu />} */}
-					</>
+					</Link>
 				)}
 			</aside>
 		);
-	};
-
-	const navigate = useNavigate();
-	const reHistory = () => {
-		navigate("/history");
 	};
 
 	const UserMenu = () => {
@@ -189,6 +179,8 @@ const Header = () => {
 		);
 	};
 
+	console.log(user.profileIconUrl, "URL!!!")
+
 	return (
 		<header className="relative max-w-screen-2xl m-auto py-1 md:w-[87%] w-[89%] lw:w-[1250px] ">
 			<Small />
@@ -203,7 +195,7 @@ const Header = () => {
 				<Large />
 				<div className="space-x-4 xl:space-x-6 flex">
 					{!user ? (
-						<>
+						<Fragment>
 							<Link to="/signin">
 								<Button className="btn btnShort btnSecondary hidden md:block">
 									Sign in
@@ -214,32 +206,29 @@ const Header = () => {
 									Register
 								</Button>
 							</Link>
-						</>
+						</Fragment>
 					) : (
-						<>
+						<Fragment>
+							<Link to="/history">
 							<Button
-								// onClick={() =>
-								// 	setToggleUserMenu((prev) => !prev)
-								// }
 								className="btn btnShort btnSecondary hidden md:block"
-								onClick={reHistory}
 							>
 								History
 							</Button>
-							<Link
-								// to=""
+							</Link>
+							<span
+							 	className="cursor-pointer"
 								onClick={() =>
 									setToggleUserMenu((prev) => !prev)
 								}
 							>
-								{/* <Avatar className="w-12 h-12 hidden lg:block" /> */}
-
+								{user.profileIconUrl ? <img src={user.profileIconUrl} alt={user.name} className="rounded-full w-12 h-12 bg-[#CDDCF8] object-fill" /> :
 								<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-fill">
 									{user?.name[0].toUpperCase()}
-								</div>
-							</Link>
+								</div>}
+							</span>
 							{toggleUserMenu && <UserMenu />}
-						</>
+						</Fragment>
 					)}
 					<button>
 						<img
@@ -247,7 +236,7 @@ const Header = () => {
 							alt="Hamburger"
 							className="block w-6 sm:w-8 tb:w-10 lg:hidden cursor-pointer"
 							onClick={() =>
-								setToggleMenu((prev) => (prev = true))
+								setToggleMenu(true)
 							}
 						/>
 					</button>
