@@ -5,6 +5,7 @@ import "react-calendar/dist/Calendar.css";
 import arrow_down from "../Assets/arrow_down.svg";
 import searchico from "../Assets/searchico.svg";
 import { eventCategories, eventData } from "../Constants/eventData.js";
+import Button from "../Components/Ui/Button.jsx";
 
 const Event = () => {
 	const [dateState, setDateState] = useState(true);
@@ -193,6 +194,19 @@ const Event = () => {
 											Click on date to see scheduled event
 											for that day.
 										</p>
+									</div>
+									<div>
+										{date && (
+											<p
+												className="hover:text-primaryDark text-primaryMain text-base cursor-pointer"
+												onClick={() => {
+													setDate(null);
+													filterByDate();
+												}}
+											>
+												Clear Date
+											</p>
+										)}
 									</div>
 								</div>
 							</div>
