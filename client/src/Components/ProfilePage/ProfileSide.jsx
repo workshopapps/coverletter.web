@@ -6,7 +6,6 @@ function ProfileSide({setShowEditProfileModal}) {
 	const { user } = useGlobalContext();
 
 	return (
-		<>
 			<div className="flex justify-between items-center max-[1024px]:wrap">
 				<div className="flex items-center justify-center gap-4">
 					<div className="rounded-full w-16 h-16 max-[1188px]:h-14 max-[1188px]:w-14 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-fill">
@@ -22,7 +21,7 @@ function ProfileSide({setShowEditProfileModal}) {
 				</div>
 
 				<div>
-					<p className="flex gap-4 items-center cursor:pointer" onClick={()=> setShowEditProfileModal(true)}>
+					<p className="flex gap-4 items-center cursor-pointer" onClick={()=> setShowEditProfileModal(true)}>
 						<span>
 							<EditIcon />
 						</span>
@@ -30,7 +29,6 @@ function ProfileSide({setShowEditProfileModal}) {
 					</p>
 				</div>
 			</div>
-		</>
 	);
 }
 
