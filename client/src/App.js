@@ -78,7 +78,7 @@ const App = () => {
 				if (loading) {
 					const userObj = {
 						...user,
-						...res.data
+						...(res.data || {})
 					};
 					addUserToLocalStorage(userObj);
 					setUser(userObj);
