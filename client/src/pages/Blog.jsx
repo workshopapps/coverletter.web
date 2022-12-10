@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Article } from "../Components";
-import { articles } from "../Utils/Articles/data";
 import search from "../Assets/search.svg";
 import axios from "axios";
 import previous from "../Assets/previous.svg";
@@ -9,6 +8,10 @@ import next from "../Assets/next.svg";
 const Blog = () => {
 	const [srch, setSrch] = useState("");
 	const [diArticle, setDiArticle] = useState([]);
+
+	String.prototype.trimEllip = function (length) {
+		return this.length > length ? this.substring(0, length) + "..." : this;
+	};
 
 	useEffect(() => {
 		axios
@@ -21,12 +24,19 @@ const Blog = () => {
 
 				const dValue = [];
 				values.map((value) => {
-					const { _id, title, content, createdAt, imageUrl } = value;
+					const { _id, title, content, imageUrl } = value;
+
+					const dContent = content.trimEllip(250);
+					const mainContent = dContent.replace(
+						"#### Introduction",
+						""
+					);
+
 					const formatVal = {
 						id: _id,
 						title: title,
-						text: content,
-						time: createdAt,
+						text: mainContent,
+						time: "5 mins READ",
 						image: imageUrl,
 					};
 					dValue.push(formatVal);
@@ -52,26 +62,30 @@ const Blog = () => {
 
 			const dValue = [];
 			values.map((value) => {
-				const { _id, title, content, createdAt, imageUrl } = value;
+				const { _id, title, content, imageUrl } = value;
+
+				const dContent = content.trimEllip(250);
+				const mainContent = dContent.replace("#### Introduction", "");
+
 				const formatVal = {
 					id: _id,
 					title: title,
-					text: content,
-					time: createdAt,
+					text: mainContent,
+					time: "5 mins READ",
 					image: imageUrl,
 				};
 				dValue.push(formatVal);
 			});
 
-			console.log(dValue);
-
 			setDiArticle(dValue);
+			console.log(dValue);
 		} catch (error) {
 			console.log(error);
 			setDiArticle(null);
 		}
 	};
 
+	console.log(diArticle);
 	return (
 		<main className="flex flex-col py-14 sm:py-24 bg-[#F2F2F7] mx-auto">
 			<section className="w-4/5 mx-auto lw:w-[1250px]">
