@@ -9,7 +9,10 @@ import historyElements from "../Constants/historyElements";
 import { useGlobalContext } from "../context/context";
 import logOutIcon from "../Assets/logout.svg";
 import { toast } from "react-toastify";
-import { removeEmailFromLocalStorage, removeUserFromLocalStorage } from "../Utils/localStorage";
+import {
+	removeEmailFromLocalStorage,
+	removeUserFromLocalStorage,
+} from "../Utils/localStorage";
 
 const Header = () => {
 	const { user } = useGlobalContext();
@@ -17,6 +20,7 @@ const Header = () => {
 	const [toggleUserMenu, setToggleUserMenu] = useState(false);
 	const location = useLocation();
 	const ref = useRef(null);
+	const drawerRef = useRef(null);
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
@@ -27,6 +31,25 @@ const Header = () => {
 		document.addEventListener("click", handleClickOutside, true);
 		return () => {
 			document.removeEventListener("click", handleClickOutside, true);
+		};
+	}, []);
+
+	useEffect(() => {
+		const handleDrawerClickOutside = (event) => {
+			if (
+				drawerRef.current &&
+				!drawerRef.current.contains(event.target)
+			) {
+				setToggleMenu(false);
+			}
+		};
+		document.addEventListener("click", handleDrawerClickOutside, true);
+		return () => {
+			document.removeEventListener(
+				"click",
+				handleDrawerClickOutside,
+				true
+			);
 		};
 	}, []);
 
@@ -75,6 +98,7 @@ const Header = () => {
 	const Small = () => {
 		return (
 			<aside
+				ref={drawerRef}
 				className={`border-r border-primaryMain fixed bg-white bottom-0 top-0 w-3/4 sm:w-1/2 lg:hidden py-4 px-6 z-50 ${
 					toggleMenu ? "left-0" : "-left-full"
 				}`}
@@ -179,8 +203,6 @@ const Header = () => {
 		);
 	};
 
-	console.log(user.profileIconUrl, "URL!!!")
-
 	return (
 		<header className="relative max-w-screen-2xl m-auto py-1 md:w-[87%] w-[89%] lw:w-[1250px] ">
 			<Small />
@@ -210,22 +232,27 @@ const Header = () => {
 					) : (
 						<Fragment>
 							<Link to="/history">
-							<Button
-								className="btn btnShort btnSecondary hidden md:block"
-							>
-								History
-							</Button>
+								<Button className="btn btnShort btnSecondary hidden md:block">
+									History
+								</Button>
 							</Link>
 							<span
-							 	className="cursor-pointer"
+								className="cursor-pointer"
 								onClick={() =>
 									setToggleUserMenu((prev) => !prev)
 								}
 							>
-								{user.profileIconUrl ? <img src={user.profileIconUrl} alt={user.name} className="rounded-full w-12 h-12 bg-[#CDDCF8] object-fill" /> :
-								<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-fill">
-									{user?.name[0].toUpperCase()}
-								</div>}
+								{user.profileIconUrl ? (
+									<img
+										src={user.profileIconUrl}
+										alt={user.name}
+										className="rounded-full w-12 h-12 bg-[#CDDCF8] object-fill"
+									/>
+								) : (
+									<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-fill">
+										{user?.name[0].toUpperCase()}
+									</div>
+								)}
 							</span>
 							{toggleUserMenu && <UserMenu />}
 						</Fragment>
@@ -235,9 +262,7 @@ const Header = () => {
 							src={Hamburger}
 							alt="Hamburger"
 							className="block w-6 sm:w-8 tb:w-10 lg:hidden cursor-pointer"
-							onClick={() =>
-								setToggleMenu(true)
-							}
+							onClick={() => setToggleMenu(true)}
 						/>
 					</button>
 				</div>

@@ -23,7 +23,8 @@ const BlogSchema = new Schema(
 		],
 		likes: [
 			{
-				userId: String,
+				type: mongoose.Types.ObjectId,
+				ref: "User",
 			},
 		],
 		createdAt: {
