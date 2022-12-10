@@ -14,6 +14,7 @@ module.exports = {
 			background: "#F2F2F7",
 			overlay: "rgba(3, 41, 111, 0.48)",
 			overlay2: "rgba(3, 41, 111, 0.15)",
+			overlay3: "rgba(240, 240, 248, 0.6)",
 			textHeader: "#1C1C1E",
 			textBody: "#48484A",
 			textPlacecholder: "#A7A7A7",
