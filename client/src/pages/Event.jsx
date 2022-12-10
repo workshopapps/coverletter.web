@@ -32,12 +32,13 @@ const Event = () => {
 		);
 	};
 
-	const filterByDate = () => {
+	const filterByDate = (date) => {
 		if (date) {
 			const firstDate = new Date(date[0]);
 			const secondDate = new Date(date[1]);
 			const minDate = Math.min(firstDate, secondDate);
 			const maxDate = Math.max(firstDate, secondDate);
+			console.log(firstDate, secondDate);
 			setFilteredEvents(
 				eventData.filter(
 					(event) =>
@@ -183,7 +184,7 @@ const Event = () => {
 											className="text-center bg-white p-4 rounded-lg !border-none"
 											onChange={(e) => {
 												setDate(e);
-												filterByDate();
+												filterByDate(e);
 											}}
 											value={date}
 											selectRange={true}
