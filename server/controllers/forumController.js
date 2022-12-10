@@ -47,7 +47,7 @@ const replyForumPost = async (req, res) => {
 	if (!forumPost) {
 		throw new BadRequestError("Unable To Find Post");
 	}
-	pid = pid;
+	req.body.postId = pid;
 	req.body.userId = req.user.userId;
 	await updatePostsRepliesCounter(pid);
 	const reply = await Reply.create(req.body);
