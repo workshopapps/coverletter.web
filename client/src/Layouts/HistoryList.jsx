@@ -2,7 +2,6 @@ import HistoryItem from "./HistoryItem";
 import cvHistory from "../Assets/cvHistory.png";
 import Button from "../Components/Ui/Button";
 import { Link } from "react-router-dom";
-import { ReactComponent as NoLetter } from "../Assets/NoCover.svg";
 
 const HistoryList = (props) => {
 	if (props.Items.length < 1) {
@@ -11,7 +10,7 @@ const HistoryList = (props) => {
 				<p className="sm:text-[1.5rem]">
 					You have no cover letter saved
 				</p>
-				<NoLetter></NoLetter>
+
 				<Link to="/">
 					<Button
 						className={
