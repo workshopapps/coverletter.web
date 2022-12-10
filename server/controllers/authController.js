@@ -4,13 +4,13 @@ const { StatusCodes } = require("http-status-codes");
 const { generateOTP } = require("../utils/generateOTP");
 const hashPassword = require("../utils/hashPassword");
 const { BadRequestError } = require("../errors");
-const {sendEmail, mailStyle} = require("../utils/sendEmail");
+const { sendEmail, mailStyle } = require("../utils/sendEmail");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
 	let { email, name, password } = req.body;
-	email = email.toLowerCase()
+	email = email.toLowerCase();
 	const oldUser = await User.findOne({
 		email,
 	});
@@ -30,13 +30,12 @@ const register = async (req, res) => {
 	user.password = await hashPassword(user.password);
 	await user.save();
 
-	const message = mailStyle('Use the OTP below to verify your account.', confirmationCode)
-
-	await sendEmail(
-		req.body.email,
-		"Verify email", message
+	const message = mailStyle(
+		"Use the OTP below to verify your account.",
+		confirmationCode
 	);
-	
+
+	await sendEmail(req.body.email, "Verify email", message);
 
 	return res.status(StatusCodes.CREATED).json("Signup was successful.");
 };
@@ -205,7 +204,10 @@ const forgotPassword = async (req, res, next) => {
 		});
 	}
 
-	const message = mailStyle('Use the following OTP to complete your password reset procedure.', otpResetToken)
+	const message = mailStyle(
+		"Use the following OTP to complete your password reset procedure.",
+		otpResetToken
+	);
 	try {
 		await sendEmail(user.email, "Password Reset", message);
 		res.status(200).json({
@@ -250,7 +252,7 @@ const resetPassword = async (req, res) => {
 
 const validateOTP = async (req, res) => {
 	let { otp, email } = req.body;
-	email = email.toLowerCase()
+	email = email.toLowerCase();
 	try {
 		const user = await User.findOne({
 			email,
@@ -278,9 +280,8 @@ const getUserDetails = async (req, res) => {
 	const { id: userId } = req.params;
 	const user = await User.findOne({ _id: userId });
 	delete user.password;
-	return res
-		.status(StatusCodes.OK)
-		.json({ name: user.name, email: user.email });
+	delete user.otp;
+	return res.status(StatusCodes.OK).json(user);
 };
 
 const googleSuccess = (req, res) => {
@@ -305,7 +306,7 @@ const googleLogout = (req, res) => {
 const adminLogin = async (req, res, next) => {
 	try {
 		let { email, password } = req.body;
-		email = email.toLowerCase()
+		email = email.toLowerCase();
 
 		if (!email || !password) {
 			return next(
@@ -351,9 +352,10 @@ const updateProfileIcon = async (req, res) => {
 			{ profileIconUrl: url, profileIconCloudinaryId: public_id },
 			{ new: true }
 		);
+		const { profileIconUrl, profileIconCloudinaryId } = user;
 		return res.status(StatusCodes.CREATED).json({
 			status: "success",
-			data: user,
+			data: { profileIconUrl, profileIconCloudinaryId },
 		});
 	} catch (error) {
 		return res.status(StatusCodes.BAD_REQUEST).json({
@@ -363,28 +365,30 @@ const updateProfileIcon = async (req, res) => {
 	}
 };
 
-const updateUser = async (req,res) =>{
+const updateUser = async (req, res) => {
 	try {
-		const {name,jobRole} = req.body
-		
-		const userId = req.user.userId	
+		const { name, jobRole } = req.body;
 
-		const user = await User.findByIdAndUpdate(userId,{name,jobRole},{new:true})
+		const userId = req.user.userId;
+
+		const user = await User.findByIdAndUpdate(
+			userId,
+			{ name, jobRole },
+			{ new: true }
+		);
 		if (!user) {
-			throw new BadRequestError(`user with the ${userId} does not exist`)
+			throw new BadRequestError(`user with the ${userId} does not exist`);
 		}
 		const data = {
 			name: user.name,
-			jobRole: user.jobRole
-		}
+			jobRole: user.jobRole,
+		};
 
-		return res.status(StatusCodes.OK).json({success: true,data})
-
+		return res.status(StatusCodes.OK).json({ success: true, data });
 	} catch (error) {
-		return res.status(400).json({success: false,error:error.message})
+		return res.status(400).json({ success: false, error: error.message });
 	}
-
-}
+};
 module.exports = {
 	register,
 	login,
@@ -400,5 +404,5 @@ module.exports = {
 	adminLogin,
 	googleLogout,
 	updateProfileIcon,
-	updateUser
+	updateUser,
 };

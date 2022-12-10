@@ -8,6 +8,7 @@ import Delight from "../Assets/Delight.png";
 import Jewel from "../Assets/jewel.png";
 import Mission from "../Assets/our-mission.png";
 import History from "../Assets/our-history.png";
+import doc_banner_md from "../Assets/doc-banner-md.svg";
 
 import "../Layouts/About/About.css";
 

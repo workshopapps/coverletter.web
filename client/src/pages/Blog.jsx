@@ -96,8 +96,8 @@ const Blog = () => {
 					<div className="w-[450px] relative flex items-center">
 						<input
 							type="text"
-							className="bg-background rounded-lg border-textHeader border-[2px] px-3 py-1 w-[100%]"
-							placeholder="Search"
+							className="bg-background rounded-lg border-stokeDark border px-3 py-1 w-[100%] h-12"
+							placeholder="Search for article"
 							onChange={(e) => handleSearch(e)}
 						/>
 						<div
@@ -131,16 +131,6 @@ const Blog = () => {
 					</section>
 				)}
 			</section>
-			<div className="w-full justify-center flex mt-7">
-				<div className="cursor-pointer flex justify-center items-center mr-4 border-[2px] px-3 rounded-lg">
-					<img src={previous} alt="" />
-					<p>PREVIOUS ARTICLE</p>
-				</div>
-				<div className="cursor-pointer flex justify-center items-center border-[2px] py-2 px-3 rounded-lg">
-					<p>NEXT ARTICLE</p>
-					<img src={next} alt="" />
-				</div>
-			</div>
 		</main>
 	);
 };

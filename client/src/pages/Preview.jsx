@@ -118,12 +118,22 @@ const Preview = () => {
 				);
 			} else if (dType === "doc") {
 				//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
-				downloadDOCX(
-					data,
-					userData,
-					sendToMail,
-					userData?.email || user.email
-				);
+				try {
+					downloadDOCX(
+						data,
+						userData,
+						sendToMail,
+						userData?.email || user.email
+					);
+				} catch (error) {
+					console.log(error);
+				}
+				// downloadDOCX(
+				// 	data,
+				// 	userData,
+				// 	sendToMail,
+				// 	userData?.email || user.email
+				// );
 			} else if (dType === "text") {
 				convertToTxt(sendToMail, userData?.email || user.email);
 			} else {
@@ -240,8 +250,12 @@ const Preview = () => {
 					onClick={() => navigate(-1)}
 					className="flex items-center px-7 lg:px-40 lg:mt-6 cursor-pointer"
 				>
-					<img src={leftArrowIcon} alt="left arrow" />
-					<p className="ml-1 text-sm font-bold">Back</p>
+					<img
+						src={leftArrowIcon}
+						alt="left arrow"
+						className="md:w-[50px]"
+					/>
+					<p className="ml-1 text-sm font-bold md:text-xl">Back</p>
 				</span>
 				<div className="w-full flex justify-center mt-5 px-7 md:mt-11">
 					<p className="font-bold text-2xl w-[65%] text-center md:text-3xl md:w-[40%] lg:text-5xl lg:w-[40%]">

@@ -28,7 +28,7 @@ const CoverLetter = () => {
 						{/* Famfresh & Co. 321 ilupeju Ave, Lagos, Nigeria */}
 					</p>
 				</div>
-				<div className="mt-3 sm:mt-5 text-[7px] sm:text-xs">
+				<div className="mt-3 sm:mt-5 text-[7px] sm:text-xs overflow-hidden h-full">
 					<p
 						dangerouslySetInnerHTML={{
 							__html: dData,

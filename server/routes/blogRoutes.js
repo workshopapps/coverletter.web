@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require("../middleware/authentication");
 
 const {
+	createPostImage,
 	createPost,
 	deleteABlogPost,
 	createABlogPostComment,
@@ -21,13 +22,14 @@ router.get("/blogs/search", searchPost);
 router.get("/blogs/:blogId", getABlogPost);
 router.get("/blog/", getAllPosts);
 
-router.post("/admin/blog", admin, uploadImage, createPost);
-router.post("/blog/comment", auth, createABlogPostComment);
-router.post("/blog/like", auth, createALikeForABlogPost);
-router.post("/blog/reply", auth, createAReplyToABlogComment);
+router.post("/admin/blog/image", admin, uploadImage, createPostImage);
+router.post("/admin/blog", admin, createPost);
+router.post("/blog/:id/comment", auth, createABlogPostComment);
+router.post("/blog/:id/like", auth, createALikeForABlogPost);
+router.post("/blog/comment/:id/reply", auth, createAReplyToABlogComment);
 
 router.patch("/blog/:id", admin, updatePost);
 
-router.delete("/admin/blog/:blogId", admin, deleteABlogPost);
+router.delete("/admin/blog/:id", admin, deleteABlogPost);
 
 module.exports = router;
