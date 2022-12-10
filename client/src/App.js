@@ -58,11 +58,14 @@ import { toast } from "react-toastify";
 
 const App = () => {
 	const { user, setUser, setUserEmail } = useGlobalContext();
+	const [fetched, setFetched] = React.useState(false)
 
 	React.useEffect(() => {
-		let loading = true;
+		let loading;
 		const getUser = async () => {
-			if (!user?.token || !user?.userId) return;
+			loading = true
+			if (!user?.token || !user?.userId || fetched) return;
+			console.log(user, fetched, "DATA ABOUT TO BE FETCHED!!!")
 			try {
 				const res = await axios.get(
 					`https://api.coverly.hng.tech/api/v1/auth/dashboard/${user.userId}`,
@@ -74,16 +77,14 @@ const App = () => {
 				);
 				if (loading) {
 					const userObj = {
-						name: res.data.name,
-						email: res.data.email,
-						jobRole: res.data.jobRole,
-						userId: user.userId,
-						token: user.token,
+						...user,
+						...res.data
 					};
 					addUserToLocalStorage(userObj);
 					setUser(userObj);
 					addEmailToLocalStorage(res.data.email);
 					setUserEmail(res.data.email);
+					setFetched(true)
 				}
 			} catch (error) {
 				console.error("ERROR RETRIEVING USER DATA FROM SERVER", error);
@@ -103,7 +104,7 @@ const App = () => {
 			loading = false;
 		};
 		// eslint-disable-next-line
-	}, []);
+	}, [user, setUser, fetched, setFetched]);
 
 	return (
 		<Router>

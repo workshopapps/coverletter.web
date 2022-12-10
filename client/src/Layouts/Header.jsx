@@ -179,8 +179,6 @@ const Header = () => {
 		);
 	};
 
-	console.log(user.profileIconUrl, "URL!!!")
-
 	return (
 		<header className="relative max-w-screen-2xl m-auto py-1 md:w-[87%] w-[89%] lw:w-[1250px] ">
 			<Small />
@@ -222,8 +220,8 @@ const Header = () => {
 									setToggleUserMenu((prev) => !prev)
 								}
 							>
-								{user.profileIconUrl ? <img src={user.profileIconUrl} alt={user.name} className="rounded-full w-12 h-12 bg-[#CDDCF8] object-fill" /> :
-								<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-fill">
+								{user.profileIconUrl ? <img src={user.profileIconUrl} alt={user.name} className="rounded-full w-12 h-12 bg-[#CDDCF8] object-cover" /> :
+								<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-cover">
 									{user?.name[0].toUpperCase()}
 								</div>}
 							</span>
