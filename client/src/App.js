@@ -50,6 +50,8 @@ import { useGlobalContext } from "./context/context";
 import {
 	addUserToLocalStorage,
 	addEmailToLocalStorage,
+	removeUserFromLocalStorage,
+	removeEmailFromLocalStorage,
 } from "./Utils/localStorage";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -88,9 +90,9 @@ const App = () => {
 				if (error.code === "ERR_NETWORK") {
 					toast.error("Error retrieving user data from Server");
 				} else {
-					addUserToLocalStorage(null);
-					setUser({});
-					addEmailToLocalStorage("");
+					removeUserFromLocalStorage();
+					setUser(null);
+					removeEmailFromLocalStorage();
 					setUserEmail("");
 				}
 			}
