@@ -97,7 +97,7 @@ function EditProfileModal({ setShowEditProfileModal, setShowSuccess }) {
 			const res = await axios.patch(
 				"https://api.coverly.hng.tech/api/v1/auth/dashboard/update-icon",
 				formData,
-				{ headers:{ Authorization: `Bearer ${user.token}`} }
+				{ headers: { Authorization: `Bearer ${user.token}` } }
 			);
 			const userObj = {
 				...user,

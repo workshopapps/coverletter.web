@@ -280,9 +280,8 @@ const getUserDetails = async (req, res) => {
 	const { id: userId } = req.params;
 	const user = await User.findOne({ _id: userId });
 	delete user.password;
-	return res
-		.status(StatusCodes.OK)
-		.json({ name: user.name, email: user.email });
+	delete user.otp;
+	return res.status(StatusCodes.OK).json(user);
 };
 
 const googleSuccess = (req, res) => {
