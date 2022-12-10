@@ -23,7 +23,7 @@ const createPost = async (req, res) => {
 	const post = new Blog({
 		title,
 		content,
-		userId: req.user.userId,
+		adminId: req.user.userId,
 		imageUrl: url,
 		imageCloudinaryId: public_id,
 	});
