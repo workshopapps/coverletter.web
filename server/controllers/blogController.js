@@ -175,6 +175,7 @@ const createABlogPostComment = async (req, res) => {
 
 	return res.status(StatusCodes.CREATED).json({
 		message: "Comment was created successfully ",
+		data: createdComment,
 	});
 };
 
@@ -209,6 +210,7 @@ const createAReplyToABlogComment = async (req, res) => {
 
 	return res.status(StatusCodes.CREATED).json({
 		message: "Reply was created successfully ",
+		data: reply,
 	});
 };
 
