@@ -74,7 +74,11 @@ const SingleblogPage = () => {
 						alt={dValue.title}
 						className="w-full h-full"
 					/>
-					<ReactMarkdown>{dValue.content}</ReactMarkdown>
+
+					<ReactMarkdown className="flex flex-col text-center gap-8 items-center">
+						{dValue.content}
+					</ReactMarkdown>
+
 					{/* {item.Content} */}
 				</div>
 				<hr />
@@ -96,37 +100,7 @@ const SingleblogPage = () => {
 						</div>
 					</div>
 
-					<div className="grid grid-cols-2 mt-10 gap-4  bo">
-						<Link
-							// to={`/blogArticle/${prevItemId}`}
-							className="border py-3 px-1 sm:py-9 sm:px-3 flex items-center gap-2 sm:gap-6 rounded-lg"
-						>
-							<Arrow2 className=" w-2 " />
-							<div>
-								<p className=" text-sm font-bold ">
-									Previous article
-								</p>
-								<p className="  hidden sm:block w-4/5  text-primaryMain font-bold">
-									{/* {prevItemTitle} */}
-								</p>
-							</div>
-						</Link>
-
-						<Link
-							// to={`/blogArticle/${nextItemId}`}
-							className="border sm:py-9 sm:px-3 flex items-center justify-around rounded-lg"
-						>
-							<div>
-								<p className="text-base font-bold">
-									Next article
-								</p>
-								<p className="  hidden sm:block w-4/5 text-primaryMain font-bold">
-									{/* {nextItemTitle} */}
-								</p>
-							</div>
-							<Arrow1 className=" w-2" />
-						</Link>
-					</div>
+					<div className="grid grid-cols-2 mt-10 gap-4  bo"></div>
 				</div>
 			</section>
 		</main>
