@@ -32,7 +32,18 @@ const HistoryList = (props) => {
 	}
 	return (
 		<div>
-			<div className="grid grid-cols-grid gap-5 justify-center">
+			<div className="mb-8 max-[576px]:mb-1">
+				<h1 className="text-grey800 text-[56px] leading-[4.5rem] max-[768px]:text-2xl">
+					History
+				</h1>
+				<p className="text-grey400 text-2xl mt-1 max-[576px]:text-base">
+					Cover Letters
+				</p>
+			</div>
+			<p className="mt-9 text-grey800 font-semibold text-[24px] leading-[3rem] mb-8 max-[768px]:text-xl capitalize">
+				saved cover letters
+			</p>
+			<div className="grid gap-3">
 				{props.Items.map((clList) => {
 					return (
 						<HistoryItem

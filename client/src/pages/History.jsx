@@ -101,9 +101,9 @@ const History = () => {
 		);
 	}
 	return (
-		<main className="bg-background py-10">
+		<main className="bg-background md:p-10 py-8">
 			<div className="max-w-screen-2xl m-auto px-5">
-				<div className="px-12 py-9">
+				<div className="py-9">
 					<HistoryList
 						Items={clList}
 						deleteCoverLetter={deleteCoverLetter}
