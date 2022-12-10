@@ -32,7 +32,7 @@ const SingleblogPage = () => {
 	const [dValue, setdValue] = useState([]);
 	useEffect(() => {
 		axios
-			.get(`http://localhost:5001/api/v1/blogs/${id}`)
+			.get(`https://api.coverly.hng.tech/api/v1/blogs/${id}`)
 			.then((res) => {
 				console.log(res);
 				const values = res.data.data;
