@@ -44,13 +44,14 @@ const HistoryList = (props) => {
 				saved cover letters
 			</p>
 			<div className="grid gap-3">
-				{props.Items.map((clList) => {
+				{props.Items.map((clList, index) => {
 					return (
 						<HistoryItem
 							hid={clList._id}
 							item={clList}
 							image={cvHistory}
 							deleteCoverLetter={props.deleteCoverLetter}
+							key={index}
 						/>
 					);
 				})}

@@ -23,11 +23,10 @@ const History = () => {
 				}
 			);
 			const resp = response.data;
-			console.log(resp);
 			setClList(resp.data);
 			setLoading(false);
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 			setLoading(false);
 		}
 		setLoading(false);
@@ -61,7 +60,7 @@ const History = () => {
 			setClList(resp.data);
 			setLoading(false);
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 			toast.error("could not delete item");
 			setLoading(false);
 		}
@@ -77,8 +76,8 @@ const History = () => {
 					radius="9"
 					color="blue"
 					ariaLabel="loading"
-					wrapperStyle
-					wrapperClass
+					// wrapperStyle
+					// wrapperClass
 				/>
 			</div>
 		);
