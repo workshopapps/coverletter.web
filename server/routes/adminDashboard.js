@@ -16,20 +16,28 @@ const adminBro = new AdminBro({
 
 const adminDashboard = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
 	authenticate: async (email, password) => {
-		email = email.toLowerCase();
-		const admin = await Admin.findOne({
-			email,
-		});
-		const adminDetails = {
-			email: admin.email,
-		};
-		const checkPassword = await admin.comparePassword(password);
-		if (admin && !checkPassword) {
+		try {
+			email = email.toLowerCase();
+			const admin = await Admin.findOne({
+				email,
+			});
+			const adminDetails = {
+				email: admin.email,
+			};
+			const checkPassword = await admin.comparePassword(password);
+			if (!checkPassword) {
+				return null;
+			}
+			if (admin && checkPassword) {
+				return adminDetails;
+			}
+		} catch (error) {
 			return null;
 		}
-		if (admin && checkPassword) {
-			return adminDetails;
-		}
+		// if (!admin) {
+		// 	return null;
+		// }
+
 		return null;
 	},
 });
