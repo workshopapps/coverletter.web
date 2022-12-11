@@ -2,65 +2,65 @@
 // This pipeline is for a react app that uses a node server and a database
 
 pipeline {
-    agent any
-    stages {
-        // Build the react app
-        stage('Build Frontend') {
-            steps {
-                echo 'Building frontend...'
 
-                dir('client') {
-                    sh 'npm install'
-                    sh 'npm run build'
-                }
-            }
+	agent any
+
+	stages {
+
+        stage("Get repo"){
+
+			steps {
+				sh "rm -rf ${WORKSPACE}/coverletter.web"
+				sh "git clone https://github.com/workshopapps/coverletter.web.git"
+				sh "sudo cp -r ${WORKSPACE}/coverletter.web /home/jerryg/coverletter/coverletter.web"
+			}
+
+		}
+
+		stage("build frontend"){
+
+			steps {
+				sh "cd coverletter.web"
+				sh "cd client && npm i && CI=npm run build"
+			}
         }
-        // Build the node app
-        // stage('Test') {
-        //     steps {
-        //         echo 'Testing...'
-        //         sh 'npm test'
-        //     }
-        // }
 
-        //
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                dir('client') {
-                    //sh "sudo pm2 serve -s build --port 2030 --name coverlyfronent --spa"
-                }
+		stage("deploy") {
+		
+			steps {
+                sh "sudo cp -rf ${WORKSPACE}/coverletter.web/client/build/* /home/jerryg/coverletter/coverletter.web/client"
+                sh "pm2 restart coverly"
+
+	
             }
+			
+	    }
+        stage("build backend"){
+
+			steps {
+                sh "cd coverletter.web"
+				sh "cd server && npm i "
+				sh "ls -la"
+			}
+        }
+
+		stage("deploy") {
+		
+			steps {
+                sh "sudo cp -rf ${WORKSPACE}/coverletter.web/server /home/jerryg/coverletter/coverletter.web/server"
+				sh "sudo cp -r /home/jerryg/coverletter_env/app.env /home/jerryg/coverletter/coverletter.web/server/.env"
+				sh "pm2 restart coverlyapi"
+            }
+	    }
+
+	}
+
+	post{
+        failure{
+            emailext attachLog: true, 
+            to: 'jjgathu17@gmail.com',
+            subject: '${BUILD_TAG} Build failed',
+            body: '${BUILD_TAG} Build Failed \nMore Info can be found here: ${BUILD_URL} or in the log file below'
         }
     }
 }
-
-
-// pipeline {
-    
-//     agent any
-//     stages {
-//             stage('Build Frontend') {
-//             steps {
-//                 script {
-              
-//                         sh 'cd client && npm install'
-//                         //sh cd ..
-//                         sh 'cd server/ && npm install pm2@latest -g'
-//                 }
-//             }
-//             }
-//     }
-//             stage('Building') {
-//                 steps {
-//                     script {
-                       
-//                         always {
-//                             sh 'pm2 start --name server app.js'
-//                             sh 'npm run build'
-                         
-//                         }
-//                     }
-//                 }
-//         }
-// }
