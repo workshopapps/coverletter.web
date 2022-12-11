@@ -21,7 +21,7 @@ pipeline {
 
 			steps {
 				sh "cd coverletter.web"
-				sh "cd client && npm i && CI=false npm run build"
+				sh "cd client && npm i && CI=npm run build"
 			}
         }
 
