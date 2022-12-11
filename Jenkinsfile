@@ -25,7 +25,7 @@ pipeline {
 			}
         }
 
-		stage("deploy") {
+		stage("deploy frontend") {
 		
 			steps {
                 sh "sudo cp -rf ${WORKSPACE}/coverletter.web/client/build/* /home/jerryg/coverletter/coverletter.web/client"
@@ -44,7 +44,7 @@ pipeline {
 			}
         }
 
-		stage("deploy") {
+		stage("deploy backend") {
 		
 			steps {
                 sh "sudo cp -rf ${WORKSPACE}/coverletter.web/server /home/jerryg/coverletter/coverletter.web/server"
