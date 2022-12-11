@@ -39,7 +39,7 @@ export default function MbScrollToTopBtn() {
   return (
     <div>
         {displayArrow && (
-            <div className="flex gap-4 items-center p-4 fixed bottom-[40px] right-[5px] bg-primaryDeep border-primaryDeep rounded-lg cursor-pointer" onClick={scrollUp} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+            <div className="flex gap-4 items-center p-4 fixed bottom-[40px] right-[5px] bg-primaryDeep border-primaryDeep rounded-lg cursor-pointer z-40" onClick={scrollUp} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
                 <div className="text-white">
                     <ArrowWhite className=""/>
                 </div>

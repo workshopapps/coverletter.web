@@ -15,19 +15,19 @@ function UploadCV() {
 				<div className="bg-white md:w-10/12 mx-auto h-max rounded-xl py-[5em] px-3 md:px-8 flex flex-col md:flex-row">
 					<div className="w-full md:w-5/12">
 						<div>
-							<div className="">
-								<p
-									onClick={() => {
-										navigate(-1);
-									}}
-									className="flex gap-4 items-center cursor-pointer "
-								>
+							<span
+								onClick={() => {
+									navigate(-1);
+								}}
+								className=""
+							>
+								<p className="flex gap-4 items-center cursor-pointer ">
 									<span>
 										<ArrowLeft />
 									</span>
 									<span className="font-semibold ">Back</span>
 								</p>
-							</div>
+							</span>
 
 							<h1 className="my-4 md:mt-[2em] text-xl md:text-[2em] font-semibold leading-[130%]">
 								Upload your CV/Resume to make a Cover Letter

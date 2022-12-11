@@ -5,10 +5,10 @@ const CoverLetter = () => {
 	const formatData = data.cover_letter;
 
 	const dData = formatData.replace(/\n\n/g, " <br/><br/>");
-
+	
 	return (
-		<div className="w-[280px] h-[400px] sm:w-[480px] coverletter-container sm:h-[640px] bg-textWhite border-grey300 target-2 border-2 pt-7 px-7 rounded-lg">
-			<div id="coverletter-target">
+		<div className="w-[300px] h-[426px] sm:w-[480px] coverletter-container sm:h-[690px] bg-textWhite border-grey300 target-2 border-2 pt-7 px-7 pb-7 rounded-lg">
+			<div id="coverletter-target" className="h-full overflow-hidden">
 				<div className="flex w-full justify-between items-end">
 					<p className="w-[50%] text-[7px] sm:text-xs flex text-grey300">
 						{userData.address} {userData.email}
@@ -20,15 +20,13 @@ const CoverLetter = () => {
 				<hr className="w-full md:h-[12px] outline-none h-2 mt-2 bg-primaryDeep border-none" />
 				<div className="mt-5 sm:mt-10 w-full">
 					<p className="w-[40%] text-[7px] sm:text-xs flex">
-						{/* {data.company_address} */}
-						10/11/2022
+						{userData.date}
 					</p>
 					<p className="w-[40%] text-[7px] sm:text-xs flex">
 						{data.company_address}
-						{/* Famfresh & Co. 321 ilupeju Ave, Lagos, Nigeria */}
 					</p>
 				</div>
-				<div className="mt-3 sm:mt-5 text-[7px] sm:text-xs">
+				<div className="mt-3 sm:mt-5 text-[7px] sm:text-xs h-full overflowY-hidden">
 					<p
 						dangerouslySetInnerHTML={{
 							__html: dData,

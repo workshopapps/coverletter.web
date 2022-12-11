@@ -7,9 +7,23 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const Reply = require("../models/Reply");
 const Comment = require("../models/Comment");
 
+const createPostImage = async (req, res) => {
+	try {
+		const { public_id, url } = req.upload;
+		return res.status(StatusCodes.CREATED).json({
+			status: "success",
+			data: { imageCloudinaryId: public_id, imageUrl: url },
+		});
+	} catch (error) {
+		return res.status(StatusCodes.BAD_REQUEST).json({
+			status: "fail",
+			message: error.message,
+		});
+	}
+};
+
 const createPost = async (req, res) => {
-	const { title, content } = req.body;
-	const { public_id, url } = req.upload;
+	const { title, content, imageCloudinaryId, imageUrl } = req.body;
 	if (!title || !content)
 		return res.status(StatusCodes.NO_CONTENT).json({
 			message: "All Fields are required",
@@ -23,9 +37,9 @@ const createPost = async (req, res) => {
 	const post = new Blog({
 		title,
 		content,
-		userId: req.user.userId,
-		imageUrl: url,
-		imageCloudinaryId: public_id,
+		adminId: req.user.userId,
+		imageUrl,
+		imageCloudinaryId,
 	});
 	await post.save();
 
@@ -36,7 +50,7 @@ const createPost = async (req, res) => {
 };
 
 const deleteABlogPost = async (req, res) => {
-	const { blogId } = req.params;
+	const { id: blogId } = req.params;
 
 	const admin = await Admin.findById(req.user.userId);
 	if (!mongoose.Types.ObjectId.isValid(req.user.userId) || !admin) {
@@ -128,7 +142,8 @@ const getAllPosts = async (req, res) => {
 
 const createABlogPostComment = async (req, res) => {
 	const { userId } = req.user;
-	const { content, blogId } = req.body;
+	const { content } = req.body;
+	const { id: blogId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(blogId)) {
 		throw new BadRequestError("Invalid blog request Id ");
@@ -146,17 +161,29 @@ const createABlogPostComment = async (req, res) => {
 		content,
 	});
 
-	await comment.save();
+	const createdComment = await comment.save();
+
+	// update the replies for the comment schema
+
+	await Blog.findByIdAndUpdate(
+		blogId,
+		{
+			$push: { comments: createdComment.id },
+		},
+		{ new: true, useFindAndModify: false }
+	);
 
 	return res.status(StatusCodes.CREATED).json({
 		message: "Comment was created successfully ",
+		data: createdComment,
 	});
 };
 
 const createAReplyToABlogComment = async (req, res) => {
 	// this req.user comes from the token through the auth middleware in request header
 	const { userId } = req.user;
-	const { content, commentId } = req.body;
+	const { content } = req.body;
+	const { id: commentId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(commentId)) {
 		throw new BadRequestError("Invalid comment request Id ");
@@ -183,42 +210,62 @@ const createAReplyToABlogComment = async (req, res) => {
 
 	return res.status(StatusCodes.CREATED).json({
 		message: "Reply was created successfully ",
+		data: reply,
 	});
 };
 
 const createALikeForABlogPost = async (req, res) => {
 	const { userId } = req.user;
-	const { blogId } = req.body;
+	const { id: blogId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(blogId)) {
 		throw new BadRequestError("Invalid blog request Id ");
 	}
 
 	if (!blogId) {
-		return res.status(StatusCodes.NO_CONTENT).json({
+		return res.status(StatusCodes.NO_CONTENT).jsPon({
 			message: "userId is required",
 		});
 	}
 
-	const isUserLikedABlogPost = await Blog.find({
-		likes: { $elemMatch: { userId } },
+	const getBlog = await Blog.findById(blogId);
+
+	if (!getBlog) {
+		return res.status(StatusCodes.NOT_FOUND).json({
+			message: `Blog  ${blogId} does not exist`,
+		});
+	}
+
+	const hasUserLikedBlogPost = await Blog.find({
+		_id: { $in: [blogId] },
+		likes: { $in: [userId] },
 	});
 
-	if (!isUserLikedABlogPost) {
+	//check if user already liked the blog post
+	if (hasUserLikedBlogPost.length < 1) {
 		// update the like for the blog
-		await Blog.findByIdAndUpdate(
+		const blog = await Blog.findByIdAndUpdate(
 			blogId,
 			{
-				$push: { likes: userId },
+				$push: {
+					likes: userId,
+				},
 			},
 			{ new: true, useFindAndModify: false }
 		);
+		return res.status(StatusCodes.CREATED).json({
+			message: `Blog liked by user ${userId} successfully `,
+			data: blog,
+		});
 	}
 
-	return;
+	return res.status(StatusCodes.BAD_REQUEST).json({
+		message: `Blog already liked by user ${userId}`,
+	});
 };
 
 module.exports = {
+	createPostImage,
 	createPost,
 	getABlogPost,
 	deleteABlogPost,

@@ -10,7 +10,6 @@ import {
 
 const useTemplate1 = (props) => {
 	const { data, userData } = props;
-
 	const addressBox = ({ text, height, alignment, frameProps, props }) =>
 		new Paragraph({
 			frame: {
@@ -145,7 +144,7 @@ const useTemplate1 = (props) => {
 				properties: {},
 				children: [
 					addressBox({
-						text: `${userData.address || "[Your address]"}  ${
+						text: `${data.address || "[Your address]"}  ${
 							userData.email || "[testemail@coverly.com]"
 						}`,
 						frameProps: {
@@ -162,9 +161,8 @@ const useTemplate1 = (props) => {
 					lineBreak({ style: "large" }),
 					new Paragraph({
 						style: "body",
-						children: [
-							new TextRun(new Date().toLocaleDateString()),
-						],
+						children: [new TextRun(data.date)],
+						alignment: HorizontalPositionAlign.LEFT,
 					}),
 					addressBox({
 						props: {

@@ -1,15 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Logo from "../Assets/coverly.svg";
 import Hamburger from "../Assets/menu.svg";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Close from "../Assets/close-circle.svg";
 import Button from "../Components/Ui/Button";
 import navLinkElements from "../Constants/navLinkElements";
 import historyElements from "../Constants/historyElements";
 import { useGlobalContext } from "../context/context";
 import logOutIcon from "../Assets/logout.svg";
-// import { ReactComponent as Avatar } from "../Assets/Avatar.svg";
 import { toast } from "react-toastify";
+import {
+	removeEmailFromLocalStorage,
+	removeUserFromLocalStorage,
+} from "../Utils/localStorage";
 
 const Header = () => {
 	const { user } = useGlobalContext();
@@ -17,6 +20,7 @@ const Header = () => {
 	const [toggleUserMenu, setToggleUserMenu] = useState(false);
 	const location = useLocation();
 	const ref = useRef(null);
+	const drawerRef = useRef(null);
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
@@ -30,6 +34,25 @@ const Header = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		const handleDrawerClickOutside = (event) => {
+			if (
+				drawerRef.current &&
+				!drawerRef.current.contains(event.target)
+			) {
+				setToggleMenu(false);
+			}
+		};
+		document.addEventListener("click", handleDrawerClickOutside, true);
+		return () => {
+			document.removeEventListener(
+				"click",
+				handleDrawerClickOutside,
+				true
+			);
+		};
+	}, []);
+
 	/*
 	 * Logout user
 	 */
@@ -40,7 +63,8 @@ const Header = () => {
 				"https://api.coverly.hng.tech/api/v1/auth/googlelogout",
 				"_self"
 			);
-			localStorage.removeItem("user");
+			removeUserFromLocalStorage();
+			removeEmailFromLocalStorage();
 			toast.success("You have been logged out");
 			setTimeout(() => {
 				window.location.reload();
@@ -74,6 +98,7 @@ const Header = () => {
 	const Small = () => {
 		return (
 			<aside
+				ref={drawerRef}
 				className={`border-r border-primaryMain fixed bg-white bottom-0 top-0 w-3/4 sm:w-1/2 lg:hidden py-4 px-6 z-50 ${
 					toggleMenu ? "left-0" : "-left-full"
 				}`}
@@ -125,53 +150,44 @@ const Header = () => {
 						</Link>
 					</>
 				) : (
-					<>
+					<Link to="/history">
 						<Button
-							// onClick={() => {
-							// 	setToggleUserMenu((prev) => !prev);
-							// 	setToggleMenu(false);
-							// }}
 							className="btn btnShort btnSecondary block md:hidden w-full my-4"
 							onClick={() => {
 								setToggleMenu(() =>
 									setToggleMenu((prev) => (prev = false))
 								);
-								reHistory();
 							}}
 						>
 							History
 						</Button>
-						{/* {toggleUserMenu && <UserMenu />} */}
-					</>
+					</Link>
 				)}
 			</aside>
 		);
 	};
 
-	const navigate = useNavigate();
-	const reHistory = () => {
-		navigate("/history");
-	};
-
 	const UserMenu = () => {
 		return (
 			<aside className="w-[234px] h-[max-content] border border-searchbd bg-textWhite absolute top-[98px] right-6 max-[768px]:right-4 z-20 rounded-sm">
-				<div className=" h-full flex flex-col gap-3">
-					<ul className="flex items-center justify-center">
+				<div ref={ref} className=" h-full flex flex-col gap-3">
+					<ul className="flex flex-col">
 						{historyElements.map((item) => (
-							<Link
-								key={item.name}
-								to={item.url}
-								className=" text-base flex p-5 items-center gap-2 justify-center"
-							>
-								{item.icon}
-								<p className="font-bold text-base">
-									{item.name}
-								</p>
-							</Link>
+							<div key={item.name}>
+								<Link
+									to={item.url}
+									className=" text-base flex py-5 items-center gap-2 justify-center"
+									onClick={() => setToggleUserMenu(false)}
+								>
+									{item.icon}
+									<p className="font-bold text-base">
+										{item.name}
+									</p>
+								</Link>
+								<hr className="border-[0.3px] border-searchbd w-full" />
+							</div>
 						))}
 					</ul>
-					<hr className="border-[0.3px] border-searchbd" />
 					<div>
 						<Link
 							to="/"
@@ -199,9 +215,9 @@ const Header = () => {
 					/>
 				</Link>
 				<Large />
-				<div ref={ref} className="space-x-4 xl:space-x-6 flex">
+				<div className="space-x-4 xl:space-x-6 flex">
 					{!user ? (
-						<>
+						<Fragment>
 							<Link to="/signin">
 								<Button className="btn btnShort btnSecondary hidden md:block">
 									Sign in
@@ -212,41 +228,41 @@ const Header = () => {
 									Register
 								</Button>
 							</Link>
-						</>
+						</Fragment>
 					) : (
-						<>
-							<Button
-								// onClick={() =>
-								// 	setToggleUserMenu((prev) => !prev)
-								// }
-								className="btn btnShort btnSecondary hidden md:block"
-								onClick={reHistory}
-							>
-								History
-							</Button>
-							<Link
-								// to=""
+						<Fragment>
+							<Link to="/history">
+								<Button className="btn btnShort btnSecondary hidden md:block">
+									History
+								</Button>
+							</Link>
+							<span
+								className="cursor-pointer"
 								onClick={() =>
 									setToggleUserMenu((prev) => !prev)
 								}
 							>
-								{/* <Avatar className="w-12 h-12 hidden lg:block" /> */}
-
-								<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-fill">
-									{user?.name[0].toUpperCase()}
-								</div>
-							</Link>
+								{user.profileIconUrl ? (
+									<img
+										src={user.profileIconUrl}
+										alt={user.name}
+										className="rounded-full w-12 h-12 bg-[#CDDCF8] object-cover"
+									/>
+								) : (
+									<div className="rounded-full w-12 h-12 bg-[#CDDCF8] font-bold  text-[#0652DD] flex items-center justify-center object-cover">
+										{user?.name[0].toUpperCase()}
+									</div>
+								)}
+							</span>
 							{toggleUserMenu && <UserMenu />}
-						</>
+						</Fragment>
 					)}
 					<button>
 						<img
 							src={Hamburger}
 							alt="Hamburger"
 							className="block w-6 sm:w-8 tb:w-10 lg:hidden cursor-pointer"
-							onClick={() =>
-								setToggleMenu((prev) => (prev = true))
-							}
+							onClick={() => setToggleMenu(true)}
 						/>
 					</button>
 				</div>

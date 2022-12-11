@@ -153,7 +153,7 @@ const Career = () => {
 					<div className=" md:rounded-2xl lg:pt-[140px] pt-[110px] lg:pb-[180px] pb-[100px]">
 						<div className="relative">
 							<div className="flex justify-between items-center h-[68px] border-[1.5px] text-textWhite py-6 px-4 rounded-lg mb-2">
-								<h3 className=" text-textWhite font-bold xl:text-[24px] text-xl leading-[48px]">
+								<h3 className=" text-textWhite font-bold xl:text-base text-sm">
 									Our Current Openings
 								</h3>
 								<CareerArrowDown
@@ -164,8 +164,8 @@ const Career = () => {
 								/>
 							</div>
 							{showOpenings ? (
-								<div className="text-left bg-[#CAD0DD] px-4 border border-[#CAD0DD] rounded-b-lg absolute w-full overflow-x-hidden">
-									<p className="text-base leading-6 text-[#101010] py-4">
+								<div className="text-left bg-overlay3 px-4 border border-[#CAD0DD] rounded-b-lg absolute w-full overflow-x-hidden">
+									<p className="text-base text-[#101010] py-4">
 										No Job Openings At This Time
 									</p>
 								</div>

@@ -4,12 +4,22 @@ import { Link } from "react-router-dom";
 
 const CustomerStories = () => {
 	const handleMouseOver = (e) => {
-		e.target.classList.add('border-4', 'border-[#ACC5F4]', 'rounded-[24px]', 'bg-[#ACC5F4]');
-	}
+		e.target.classList.add(
+			"border-4",
+			"border-[#ACC5F4]",
+			"rounded-[24px]",
+			"bg-[#ACC5F4]"
+		);
+	};
 
 	const handleMouseOut = (e) => {
-		e.target.classList.remove('border-4', 'border-[#ACC5F4]', 'rounded-[24px]', 'bg-[#ACC5F4]');
-	}
+		e.target.classList.remove(
+			"border-4",
+			"border-[#ACC5F4]",
+			"rounded-[24px]",
+			"bg-[#ACC5F4]"
+		);
+	};
 
 	return (
 		<main className="bg-background max-w-screen-2xl m-auto">
@@ -54,12 +64,10 @@ const CustomerStories = () => {
 											{text}
 										</h3>
 
-										<p
-											className="font-semibold leading-4 text-primaryMain text-[12px] flex justify-start items-center gap-1 md:gap-2 md:text-base md:leading-6 relative"
-										>
+										<p className="font-semibold leading-4 text-primaryMain text-[12px] flex justify-start items-center gap-1 md:gap-2 md:text-base md:leading-6 relative">
 											{read}{" "}
 											<img
-												className="w-[10px] md:w-6 absolute top-1 left-[126px]"
+												className="w-[10px] md:w-6 absolute top-0 left-[170px]"
 												src={arrow}
 												alt=""
 											/>
@@ -102,12 +110,10 @@ const CustomerStories = () => {
 												{text}
 											</h3>
 
-											<p
-												className="font-semibold leading-4 text-primaryMain text-[12px] flex justify-start items-center gap-1 md:gap-2 md:text-base md:leading-6 relative"
-											>
+											<p className="font-semibold leading-4 text-primaryMain text-[12px] flex justify-start items-center gap-1 md:gap-2 md:text-base md:leading-6 relative">
 												{read}{" "}
 												<img
-													className="w-[10px] md:w-6 absolute top-1 left-[126px]"
+													className="w-[10px] md:w-6 absolute top-1 left-[170px]"
 													src={arrow}
 													alt=""
 												/>

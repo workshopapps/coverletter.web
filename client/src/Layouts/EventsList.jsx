@@ -40,7 +40,7 @@ export default function EventsList({ event }) {
 			</div>
 			{isModalOpen && (
 				<ModalLight>
-					<div className="bg-textWhite px-[60px] pt-[100px] pb-[50px] rounded-[40px] max-w-[840px] relative flex flex-col flex-start max-[790px]:mt-20 max-[790px]:rounded-[20px] max-[790px]:px-6 max-[790px]:overflow-y-scroll max-[790px]:h-screen">
+					<div className="bg-textWhite px-[60px] pt-[100px] pb-[50px] rounded-lg max-w-[840px] relative flex flex-col flex-start max-[790px]:mt-20 max-[790px]:rounded-[20px] max-[790px]:px-6 max-[790px]:overflow-y-scroll max-[790px]:h-screen">
 						{/* // create a close button */}
 						<Button
 							className="absolute top-[32px] right-[60px]"
@@ -87,7 +87,7 @@ export default function EventsList({ event }) {
 									</p>
 									<div className="text-grey400 text-sm font-bold ">
 										<div className="flex items-start  justify-between gap-10 max-[508px]:flex-col">
-											<p>{event.time}</p>
+											<p>{event.date}</p>
 											<div
 												className="flex px-[20px]
 													mt-[-30px] py-[12px] justify-center items-center bg-btnbg rounded-lg cursor-pointer self-start"

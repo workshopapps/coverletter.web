@@ -292,9 +292,8 @@ const getUserDetails = async (req, res) => {
 	const { id: userId } = req.params;
 	const user = await User.findOne({ _id: userId });
 	delete user.password;
-	return res
-		.status(StatusCodes.OK)
-		.json({ name: user.name, email: user.email });
+	delete user.otp;
+	return res.status(StatusCodes.OK).json(user);
 };
 
 const googleSuccess = (req, res) => {
@@ -365,9 +364,10 @@ const updateProfileIcon = async (req, res) => {
 			{ profileIconUrl: url, profileIconCloudinaryId: public_id },
 			{ new: true }
 		);
+		const { profileIconUrl, profileIconCloudinaryId } = user;
 		return res.status(StatusCodes.CREATED).json({
 			status: "success",
-			data: user,
+			data: { profileIconUrl, profileIconCloudinaryId },
 		});
 	} catch (error) {
 		return res.status(StatusCodes.BAD_REQUEST).json({

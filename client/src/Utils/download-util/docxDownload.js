@@ -7,7 +7,10 @@ const downloadDOCX = async (data, userData, sendToMail, email) => {
 	const docxTemplate1 = myTemplate1({ data, userData });
 	const blob = await Packer.toBlob(docxTemplate1);
 	if (sendToMail) {
-		sendMail(email, blob);
+		const myFile = new File([blob], "file.docx", {
+			type: blob.type,
+		});
+		sendMail(email, myFile);
 	}
 	saveAs(blob, "My cover letter.docx");
 };

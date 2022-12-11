@@ -2,7 +2,7 @@ import Modal from "../Components/Ui/Modal";
 import React, { useState, useEffect } from "react";
 import Button from "../Components/Ui/Button";
 import { useGlobalContext } from "../context/context";
-import lockedCover_1 from "../Assets/preview'_1.png";
+import lockedCover_1 from "../Assets/preview_1.png";
 import lockedCover_2 from "../Assets/preview_2.png";
 import CoverLetter from "../Components/Ui/CoverLetter";
 import notePad from "../Assets/notepad.svg";
@@ -30,7 +30,7 @@ const Preview = () => {
 
 	// logic for the modal
 	const [firstModal, setFirstModal] = useState(false);
-	const [dType, setDtype] = useState("");
+	const [dType, setDtype] = useState("doc");
 	const [download, setDownload] = useState(false);
 	const [spin, setSpin] = useState(false);
 	const [windowWidth, setWindowWidth] = useState(0);
@@ -114,13 +114,28 @@ const Preview = () => {
 				downloadPdf(
 					"pdf-coverletter-target",
 					sendToMail,
-					userData?.email
+					userData?.email || user.email
 				);
 			} else if (dType === "doc") {
 				//ADD YOUR FUNCTION TO DOWNLOAD DOC HERE
-				downloadDOCX(data, userData, sendToMail, userData?.email);
+				try {
+					downloadDOCX(
+						data,
+						userData,
+						sendToMail,
+						userData?.email || user.email
+					);
+				} catch (error) {
+					console.log(error);
+				}
+				// downloadDOCX(
+				// 	data,
+				// 	userData,
+				// 	sendToMail,
+				// 	userData?.email || user.email
+				// );
 			} else if (dType === "text") {
-				convertToTxt(sendToMail, userData?.email);
+				convertToTxt(sendToMail, userData?.email || user.email);
 			} else {
 				//TELL USER TO PICK ONE OF THE 3 OPTIONS
 			}
@@ -134,12 +149,6 @@ const Preview = () => {
 		}, 4000);
 
 		// setFirstModal(!firstModal);
-	};
-
-	// redirect on click cv
-	// const navigate = useNavigate();
-	const coverRedirect = () => {
-		// navigate(`/cover letter`);
 	};
 
 	// get the width of the page and work on the mobile nav
@@ -182,8 +191,8 @@ const Preview = () => {
 		setIterate(iterate - 1);
 	};
 
-	var displayLeft = true;
-	var displayRight = true;
+	let displayLeft = true;
+	let displayRight = true;
 
 	useEffect(() => {
 		setStyle({ transform: `translateX(${iterate * 280}px)` });
@@ -202,9 +211,7 @@ const Preview = () => {
 	}
 
 	const navigate = useNavigate();
-	const reRegister = () => {
-		navigate("/register");
-	};
+
 	const saveToProfile = async () => {
 		if (user && user?.token && user?.userId) {
 			setIsloading(true);
@@ -239,13 +246,17 @@ const Preview = () => {
 	return (
 		<div className={`bg-background pt-6 pb-36 overflow-x-hidden relative`}>
 			<div className={`${download && "opacity-0"}`}>
-				<Link
-					to="/upload-data"
-					className="flex items-center px-7 lg:px-40 lg:mt-6"
+				<span
+					onClick={() => navigate(-1)}
+					className="flex items-center px-7 lg:px-40 lg:mt-6 cursor-pointer"
 				>
-					<img src={leftArrowIcon} alt="left arrow" />
-					<p className="ml-1 text-sm font-bold">Back</p>
-				</Link>
+					<img
+						src={leftArrowIcon}
+						alt="left arrow"
+						className="md:w-[50px]"
+					/>
+					<p className="ml-1 text-sm font-bold md:text-xl">Back</p>
+				</span>
 				<div className="w-full flex justify-center mt-5 px-7 md:mt-11">
 					<p className="font-bold text-2xl w-[65%] text-center md:text-3xl md:w-[40%] lg:text-5xl lg:w-[40%]">
 						{title}
@@ -263,31 +274,32 @@ const Preview = () => {
 						onTouchMove={handleTouchMove}
 						// onTouchMove={(e)}
 					>
-						<img
-							src={lockedCover_1}
-							alt="cover"
-							className=" cursor-pointer mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] sm:min-h-[485px] sm:min-w-[400px]"
-							onClick={reRegister}
-						/>
+						<Link to="/pricing">
+							<img
+								src={lockedCover_1}
+								alt="cover"
+								className=" cursor-pointer mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] sm:min-h-[485px] sm:min-w-[400px]"
+							/>
+						</Link>
 						<div className="md:mr-[-25px] flex ">
 							<BigLeftArrowIcon className="w-[15] h-[15px]md:w-[32px] md:h-[30px]" />
 						</div>
 						<div
 							className="flex justify-center items-center w-[80%] bg-primaryLightest drop-shadow-lg  min-w-[268px] min-h-[372px] sm:min-h-[660px] rounded-lg md:w-auto sm:min-w-[476px] md:scale-[90%]"
 							role="button"
-							onClick={coverRedirect}
 						>
 							<CoverLetter />
 						</div>
 						<div className="md:ml-[-25px]">
 							<BigRightArrowIcon className="w-[15] h-[15px]md:w-[32px] md:h-[30px]" />
 						</div>
-						<img
-							src={lockedCover_2}
-							alt="cover"
-							className="cursor-pointer mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] sm:min-h-[485px] sm:min-w-[400px]"
-							onClick={reRegister}
-						/>
+						<Link to="/pricing">
+							<img
+								src={lockedCover_2}
+								alt="cover"
+								className="cursor-pointer mt-10 flex rounded-lg justify-center items-center bg-primaryLightest drop-shadow-lg min-w-[295px] h-[300px] min-h-[300px] sm:min-h-[485px] sm:min-w-[400px]"
+							/>
+						</Link>
 					</div>
 				</div>
 
@@ -397,20 +409,22 @@ const Preview = () => {
 									</div>
 								</div>
 								<hr className="w-full bg-stokeLight mt-2 border-none h-[1px]" />
-								{/* <div className="w-full flex justify-between mt-4 md:justify-center">
-									<input
-										type="checkbox"
-										name="sendToMail"
-										className="w-5 h-5 outline-none border-none"
-										checked={sendToMail}
-										onClick={() => {
-											setSendToMail(!sendToMail);
-										}}
-									/>
-									<p className="text-sm md:ml-3">
-										Send downloaded template to email.
-									</p>
-								</div> */}
+								{dType !== "pdf" && (
+									<div className="w-full flex justify-between mt-4 md:justify-center">
+										<input
+											type="checkbox"
+											name="sendToMail"
+											className="w-5 h-5 outline-none border-none"
+											checked={sendToMail}
+											onClick={() => {
+												setSendToMail(!sendToMail);
+											}}
+										/>
+										<p className="text-sm md:ml-3">
+											Send downloaded template to email.
+										</p>
+									</div>
+								)}
 							</div>
 							<Button
 								type="submit"

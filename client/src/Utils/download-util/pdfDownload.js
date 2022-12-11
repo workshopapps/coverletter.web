@@ -12,10 +12,9 @@ const downloadPdf = async (domId, sendToMail, email) => {
 	doc.html(domToSave, {
 		callback: (pdf) => {
 			const file = pdf.save("MyPdfFile.pdf");
-			console.log(file);
-			if (sendToMail) {
-				sendMail(email, file);
-			}
+			// if (sendToMail) {
+			// 	sendMail(email, file);
+			// }
 		},
 		width: 50,
 		margin: [10, 0, 10, 25],
