@@ -34,10 +34,6 @@ const adminDashboard = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
 		} catch (error) {
 			return null;
 		}
-		// if (!admin) {
-		// 	return null;
-		// }
-
 		return null;
 	},
 });
