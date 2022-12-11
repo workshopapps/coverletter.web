@@ -3,7 +3,6 @@ const AdminBroExpress = require("admin-bro-expressjs");
 const AdminBroMongoose = require("admin-bro-mongoose");
 const mongoose = require("mongoose");
 const Admin = require("../models/Admin");
-const { BadRequestError } = require("../errors");
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
