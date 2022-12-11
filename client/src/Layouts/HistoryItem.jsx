@@ -34,7 +34,6 @@ const HistoryItem = (props) => {
 	const navigate = useNavigate();
 
 	const handleHItemClick = (e) => {
-		console.log(props.item);
 		setCoverLetter(props.item);
 		setUserData({ ...user });
 		setTimeout(() => {
