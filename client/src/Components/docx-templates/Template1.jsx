@@ -161,7 +161,7 @@ const useTemplate1 = (props) => {
 					lineBreak({ style: "large" }),
 					new Paragraph({
 						style: "body",
-						children: [new TextRun(data.date)],
+						children: [new TextRun(data.date || new Date().toLocaleDateString())],
 						alignment: HorizontalPositionAlign.LEFT,
 					}),
 					addressBox({

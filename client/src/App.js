@@ -65,7 +65,6 @@ const App = () => {
 		const getUser = async () => {
 			loading = true
 			if (!user?.token || !user?.userId || fetched) return;
-			console.log(user, fetched, "DATA ABOUT TO BE FETCHED!!!")
 			try {
 				const res = await axios.get(
 					`https://api.coverly.hng.tech/api/v1/auth/dashboard/${user.userId}`,

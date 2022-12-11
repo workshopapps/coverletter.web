@@ -42,15 +42,6 @@ const Preview = () => {
 
 	const [title, setTitle] = useState("Your Cover Letter is Ready");
 
-	// window.addEventListener("resize", (e) => {
-	// 	if (e.target.screen.width > 900) {
-	// 		setIterate(0);
-	// 		setStyle({
-	// 			transform: `translateX(${iterate}px)`,
-	// 		});
-	// 	}
-	// });
-	console.log(sendToMail);
 
 	//handles click start event
 	const handleMouseDown = (e) => {
@@ -126,14 +117,8 @@ const Preview = () => {
 						userData?.email || user.email
 					);
 				} catch (error) {
-					console.log(error);
+					console.error(error);
 				}
-				// downloadDOCX(
-				// 	data,
-				// 	userData,
-				// 	sendToMail,
-				// 	userData?.email || user.email
-				// );
 			} else if (dType === "text") {
 				convertToTxt(sendToMail, userData?.email || user.email);
 			} else {
@@ -419,6 +404,7 @@ const Preview = () => {
 											onClick={() => {
 												setSendToMail(!sendToMail);
 											}}
+											readOnly
 										/>
 										<p className="text-sm md:ml-3">
 											Send downloaded template to email.
