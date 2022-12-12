@@ -30,7 +30,7 @@ pipeline {
 		
 			steps {
                 sh "sudo cp -rf ${WORKSPACE}/coverletter.web/client/build/* /home/jerryg/coverletter/coverletter.web/client"
-                sh "cd /home/jerryg/ && pm2 restart coverly"
+                sh "sudo -i && cd /home/jerryg/ && pm2 restart coverly"
 
 	
             }
