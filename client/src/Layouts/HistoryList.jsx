@@ -9,7 +9,7 @@ const HistoryList = (props) => {
 		return (
 			<div className="flex flex-col justify-center items-center text-center">
 				<NotFound />
-				<p className="sm:text-[1.5rem] text-grey800 text-2xl font-bold">
+				<p className="sm:text-[1.5rem] text-grey800 text-2xl font-bold mt-[26px]">
 					No Letter History Found
 					<br />
 					<span className="font-normal text-base text-grey400 w-[256px]">
