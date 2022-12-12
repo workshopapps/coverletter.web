@@ -20,8 +20,8 @@ pipeline {
 		stage("build frontend"){
 
 			steps {
-				sh "cd coverletter.web"
-				sh "cd client && npm i && CI=false npm run build"
+				
+				sh "cd coverletter.web/client && npm i && CI=false npm run build"
 			}
         }
 
