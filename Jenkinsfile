@@ -1,17 +1,6 @@
 // Build a pipeline that builds a react and node app with connection to a database and deploys to a server 
 // This pipeline is for a react app that uses a node server and a database
 
-// pipeline {
-//     agent any
-//     stages {
-//         stage('Build Frontend') {
-//             steps {
-//                 sh 'echo "Building..."'
-//                 sh 'cd client && npm i && npm run build'
-//                 sh 'sudo cp -rf ${WORKSPACE}/client/* /home/jerry/coverletter/coverletter.web/'
-//             }
-//         }
-
 pipeline {
 
 	agent any
