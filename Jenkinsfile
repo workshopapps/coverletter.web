@@ -11,7 +11,7 @@ pipeline {
 
 			steps {
 				sh "rm -rf ${WORKSPACE}/coverletter.web"
-				sh "rm -rf /home/jerryg/coverletter/coverletter.web"
+				sh "sudo rm -rf /home/jerryg/coverletter/coverletter.web"
 				sh "git clone https://github.com/workshopapps/coverletter.web.git"
 				sh "sudo cp -r ${WORKSPACE}/coverletter.web /home/jerryg/coverletter/coverletter.web"
 			}
