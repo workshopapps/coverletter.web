@@ -39,8 +39,7 @@ pipeline {
         stage("build backend"){
 
 			steps {
-                sh "cd coverletter.web"
-				sh "cd server && npm i "
+				sh "cd coverletter.web/server && npm i "
 				sh "ls -la"
 			}
         }
@@ -50,7 +49,7 @@ pipeline {
 			steps {
                 sh "sudo cp -rf ${WORKSPACE}/coverletter.web/server /home/jerryg/coverletter/coverletter.web/server"
 				sh "sudo cp -r /home/jerryg/coverletter_env/app.env /home/jerryg/coverletter/coverletter.web/server/.env"
-				sh "pm2 restart coverlyapi"
+				sh "pm2 start app.js"
             }
 	    }
 
