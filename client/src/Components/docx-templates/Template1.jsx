@@ -144,9 +144,9 @@ const useTemplate1 = (props) => {
 				properties: {},
 				children: [
 					addressBox({
-						text: `${data.address || "[Your address]"}  ${
-							userData.email || "[testemail@coverly.com]"
-						}`,
+						text: `${
+							data.address || userData.address || "[Your address]"
+						}  ${userData.email || "[testemail@coverly.com]"}`,
 						frameProps: {
 							wrap: FrameWrap.THROUGH,
 						},
@@ -161,7 +161,13 @@ const useTemplate1 = (props) => {
 					lineBreak({ style: "large" }),
 					new Paragraph({
 						style: "body",
-						children: [new TextRun(data.date || new Date().toLocaleDateString())],
+						children: [
+							new TextRun(
+								data.date ||
+									userData.date ||
+									new Date().toLocaleDateString()
+							),
+						],
 						alignment: HorizontalPositionAlign.LEFT,
 					}),
 					addressBox({
