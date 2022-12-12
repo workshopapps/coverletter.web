@@ -16,12 +16,13 @@ import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
 function Upload() {
-	const { setUser } = useGlobalContext();
+	const { user, setUser } = useGlobalContext();
 	const navigate = useNavigate();
 
 	let renderTwice = useRef(true);
 	useEffect(() => {
 		const getUser = async () => {
+			if (user) return;
 			try {
 				const response = await axios.get(
 					`https://api.coverly.hng.tech/api/v1/auth/success`,
@@ -54,7 +55,7 @@ function Upload() {
 			renderTwice.current = false;
 			getUser();
 		}
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, []);
 
 	return (

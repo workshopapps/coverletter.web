@@ -11,6 +11,7 @@ pipeline {
 
 			steps {
 				sh "rm -rf ${WORKSPACE}/coverletter.web"
+				sh "rm -rf /home/jerryg/coverletter/coverletter.web"
 				sh "git clone https://github.com/workshopapps/coverletter.web.git"
 				sh "sudo cp -r ${WORKSPACE}/coverletter.web /home/jerryg/coverletter/coverletter.web"
 			}
@@ -20,6 +21,7 @@ pipeline {
 		stage("build frontend"){
 
 			steps {
+				
 				sh "cd coverletter.web/client && npm i && CI=false npm run build"
 			}
         }
@@ -28,7 +30,7 @@ pipeline {
 		
 			steps {
                 sh "sudo cp -rf ${WORKSPACE}/coverletter.web/client/build/* /home/jerryg/coverletter/coverletter.web/client"
-                sh "pm2 restart coverly"
+                sh "cd /home/jerryg/coverletter/coverletter.web/client && pm2 restart coverly"
 
 	
             }
