@@ -30,7 +30,7 @@ pipeline {
 		
 			steps {
                 sh "sudo cp -rf ${WORKSPACE}/coverletter.web/client/build/* /home/jerryg/coverletter/coverletter.web/client"
-                sh "pm2 serve build 2035 --spa"
+                sh "cd && pm2 restart coverly"
 
 	
             }
