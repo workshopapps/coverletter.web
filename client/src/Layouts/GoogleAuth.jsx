@@ -9,7 +9,7 @@ const GoogleAuth = () => {
 				className={
 					"btn btnLong w-[100%] btnSecondary disabled:opacity-50 disabled:cursor-not-allowed"
 				}
-				children={"Register with Google"}
+				children={"Continue with Google"}
 				icon={<Google />}
 				type="submit"
 			/>

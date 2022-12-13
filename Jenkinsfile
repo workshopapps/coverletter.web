@@ -11,6 +11,7 @@ pipeline {
 
 			steps {
 				sh "rm -rf ${WORKSPACE}/coverletter.web"
+				sh "sudo rm -rf /home/jerryg/coverletter/coverletter.web"
 				sh "git clone https://github.com/workshopapps/coverletter.web.git"
 				sh "sudo cp -r ${WORKSPACE}/coverletter.web /home/jerryg/coverletter/coverletter.web"
 			}
@@ -20,8 +21,8 @@ pipeline {
 		stage("build frontend"){
 
 			steps {
-				sh "cd coverletter.web"
-				sh "cd client && npm i && CI=npm run build"
+				
+				sh "cd coverletter.web/client && npm i && CI=false npm run build"
 			}
         }
 
@@ -29,7 +30,9 @@ pipeline {
 		
 			steps {
                 sh "sudo cp -rf ${WORKSPACE}/coverletter.web/client/build/* /home/jerryg/coverletter/coverletter.web/client"
-                sh "pm2 restart coverly"
+		sh "sudo rm -rf /var/lib/jenkins/.pm2"
+		sh "sudo ln -s /root/.pm2/ /var/lib/jenkins/"
+                sh "sudo pm2 restart coverly"
 
 	
             }
@@ -38,8 +41,7 @@ pipeline {
         stage("build backend"){
 
 			steps {
-                sh "cd coverletter.web"
-				sh "cd server && npm i "
+				sh "cd coverletter.web/server && npm i "
 				sh "ls -la"
 			}
         }
@@ -47,9 +49,9 @@ pipeline {
 		stage("deploy backend") {
 		
 			steps {
-                sh "sudo cp -rf ${WORKSPACE}/coverletter.web/server /home/jerryg/coverletter/coverletter.web/server"
+                                sh "sudo cp -rf ${WORKSPACE}/coverletter.web/server /home/jerryg/coverletter/coverletter.web/server"
 				sh "sudo cp -r /home/jerryg/coverletter_env/app.env /home/jerryg/coverletter/coverletter.web/server/.env"
-				sh "pm2 restart coverlyapi"
+				sh "sudo pm2 restart coverlyapi"
             }
 	    }
 
@@ -62,5 +64,11 @@ pipeline {
             subject: '${BUILD_TAG} Build failed',
             body: '${BUILD_TAG} Build Failed \nMore Info can be found here: ${BUILD_URL} or in the log file below'
         }
+	success{
+	    emailext attachLog: true, 
+            to: 'jjgathu17@gmail.com',
+            subject: '${BUILD_TAG} Build successful',
+            body: '${BUILD_TAG} Build was successful'
+	}
     }
 }

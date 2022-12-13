@@ -42,7 +42,6 @@ const Preview = () => {
 
 	const [title, setTitle] = useState("Your Cover Letter is Ready");
 
-
 	//handles click start event
 	const handleMouseDown = (e) => {
 		const mouseDown = e.clientX;
@@ -200,7 +199,7 @@ const Preview = () => {
 	const saveToProfile = async () => {
 		if (user && user?.token && user?.userId) {
 			setIsloading(true);
-			const info = { ...userData, user_id: user.userId };
+			const info = { ...userData, user_id: user.userId, ...data };
 			try {
 				const resp = await axios.post(
 					`https://api.coverly.hng.tech/api/v1/saveCoverletter`,

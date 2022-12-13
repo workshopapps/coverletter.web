@@ -50,20 +50,18 @@ import { useGlobalContext } from "./context/context";
 import {
 	addUserToLocalStorage,
 	addEmailToLocalStorage,
-	removeUserFromLocalStorage,
-	removeEmailFromLocalStorage,
 } from "./Utils/localStorage";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const App = () => {
 	const { user, setUser, setUserEmail } = useGlobalContext();
-	const [fetched, setFetched] = React.useState(false)
+	const [fetched, setFetched] = React.useState(false);
 
 	React.useEffect(() => {
 		let loading;
 		const getUser = async () => {
-			loading = true
+			loading = true;
 			if (!user?.token || !user?.userId || fetched) return;
 			try {
 				const res = await axios.get(
@@ -77,23 +75,18 @@ const App = () => {
 				if (loading) {
 					const userObj = {
 						...user,
-						...(res.data || {})
+						...(res.data || {}),
 					};
 					addUserToLocalStorage(userObj);
 					setUser(userObj);
 					addEmailToLocalStorage(res.data.email);
 					setUserEmail(res.data.email);
-					setFetched(true)
+					setFetched(true);
 				}
 			} catch (error) {
 				console.error("ERROR RETRIEVING USER DATA FROM SERVER", error);
 				if (error.code === "ERR_NETWORK") {
 					toast.error("Error retrieving user data from Server");
-				} else {
-					removeUserFromLocalStorage();
-					setUser(null);
-					removeEmailFromLocalStorage();
-					setUserEmail("");
 				}
 			}
 			loading = false;
