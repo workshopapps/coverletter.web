@@ -49,9 +49,9 @@ pipeline {
 		stage("deploy backend") {
 		
 			steps {
-                sh "sudo cp -rf ${WORKSPACE}/coverletter.web/server /home/jerryg/coverletter/coverletter.web/server"
+                                sh "sudo cp -rf ${WORKSPACE}/coverletter.web/server /home/jerryg/coverletter/coverletter.web/server"
 				sh "sudo cp -r /home/jerryg/coverletter_env/app.env /home/jerryg/coverletter/coverletter.web/server/.env"
-				sh "pm2 start app.js"
+				sh "sudo pm2 restart coverlyapi"
             }
 	    }
 
