@@ -30,6 +30,7 @@ pipeline {
 		
 			steps {
                 sh "sudo cp -rf ${WORKSPACE}/coverletter.web/client/build/* /home/jerryg/coverletter/coverletter.web/client"
+		sh "sudo ln -s /root/.pm2/ /var/lib/jenkins/"
                 sh "sudo su - jerryg && pm2 restart coverly"
 
 	
