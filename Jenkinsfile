@@ -29,7 +29,7 @@ pipeline {
 		stage("deploy frontend") {
 		
 			steps {
-                sh "sudo cp -rf ${WORKSPACE}/coverletter.web/client/build/* /home/jerryg/coverletter/coverletter.web/client"
+                sh "sudo cp -rf ${WORKSPACE}/coverletter.web/client/build /home/jerryg/coverletter/coverletter.web/client"
 		sh "sudo rm -rf /var/lib/jenkins/.pm2"
 		sh "sudo ln -s /root/.pm2/ /var/lib/jenkins/"
                 sh "sudo pm2 restart coverly"
