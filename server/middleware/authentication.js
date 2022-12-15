@@ -17,6 +17,7 @@ const auth = async (req, res, next) => {
 			userId: payload.userId || payload.user._id,
 			name: payload.name || payload.user.name,
 			email: payload.email || payload.user.email,
+			login: payload.user ? "Google" : "Signin",
 		};
 		next();
 	} catch (error) {
