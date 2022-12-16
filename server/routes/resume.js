@@ -9,9 +9,9 @@ const auth = require("../middleware/authentication");
 
 const router = express.Router();
 
-// router.use(auth);
+router.use(auth);
 
-router.route("/").delete(delResume).get(getAllresumes).post(saveResume);
-router.route("/:id").get(getResume);
+router.route("/").get(getAllresumes).post(saveResume);
+router.route("/:id").get(getResume).delete(delResume);
 
 module.exports = router;
