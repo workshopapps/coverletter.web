@@ -19,9 +19,9 @@ const errorRes = (res, error) => {
 const saveResume = async (req, res, next) => {
 	try {
 		//Research better alternates to enforce storage restrictions
-		const savedResumes = await resumeDB.find({ user_id: req.user.userId });
+		const resumes = await resumeDB.find({ user_id: req.user.userId });
 		//This check below has to be modified to meet app requirements, maybe based on payment plans later on
-		if (savedResumes.length === 3 /*Condition to be reviewed*/) {
+		if (resumes.length === 3 /*Condition to be reviewed*/) {
 			return res.status(StatusCodes.FORBIDDEN).json({
 				status: "fail",
 				message:
@@ -47,6 +47,12 @@ const getResume = async (req, res, next) => {
 		const resume = await resumeDB.findById(req.params.id);
 		if (!resume) {
 			throw new NotFoundError("Requested resume does not exist");
+		}
+		if (resume.userid !== req.user.userId) {
+			return res.status(StatusCodes.FORBIDDEN).json({
+				status: "fail",
+				message: "Resume does not belong to this user",
+			});
 		}
 		res.status(StatusCodes.OK).json({
 			status: "success",
@@ -81,6 +87,8 @@ const getAllresumes = async (req, res, next) => {
 
 const delResume = async (req, res, next) => {
 	try {
+		//There is a privacy issue here - based on this current implementation, a user can delete a resume that does not belong to him
+		// Potential restriction I have in mind would require two queries, is there a way to check that the user attempting to delete is the owner and if condition passess, delete in one query?
 		const resume = await resumeDB.findByIdAndDelete(req.params.id);
 
 		if (!resume) {
@@ -88,7 +96,7 @@ const delResume = async (req, res, next) => {
 		}
 
 		res.status(204).json({
-			status: "fail",
+			status: "success",
 			message: "Deleted",
 		});
 	} catch (error) {

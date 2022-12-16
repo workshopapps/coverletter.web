@@ -6,8 +6,8 @@ const resumeSchema = new mongoose.Schema({
 		ref: "User",
 		required: [true, "Please provide user"],
 	},
-	content: String,
-    label: String
+	content: String, //Make Unique? I do not know how efficient our pdf parser is.
+	label: String, //Was thinking of making this unique - Label here refers to the filename (Will not make unique because it is entirely possible for twi different resumes to be named the same way)
 });
 
 module.exports = mongoose.model("resume", resumeSchema);
