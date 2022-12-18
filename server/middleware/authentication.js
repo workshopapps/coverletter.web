@@ -14,9 +14,10 @@ const auth = async (req, res, next) => {
 		const payload = jwt.verify(token, process.env.JWT_SECRET);
 		// attach the user to the job routes
 		req.user = {
-			userId: payload.userId,
-			name: payload.name,
-			email: payload.email,
+			userId: payload.userId || payload.user._id,
+			name: payload.name || payload.user.name,
+			email: payload.email || payload.user.email,
+			login: payload.user ? "Google" : "Signin",
 		};
 		next();
 	} catch (error) {
