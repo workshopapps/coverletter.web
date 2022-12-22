@@ -10,10 +10,10 @@ const {
 } = require("../controllers/coverLetterController");
 
 const auth = require("../middleware/authentication");
-
+const verify = require("../middleware/verify");
 // Add your template routes below this
 
-router.post("/saveCoverletter", auth, saveCoverletter);
+router.post("/saveCoverletter", auth, verify, saveCoverletter);
 router.get("/coverLetter/:id", auth, getACoverLetter);
 router.get("/template", auth, getAllCoverLettersByAUser);
 router.delete("/coverLetter/:id", auth, deleteCoverLetter);
