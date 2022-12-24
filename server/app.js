@@ -76,7 +76,7 @@ app.use(
 );
 app.use(
 	cors({
-		origin: ["*", "https://coverly.hng.tech", "http://localhost:3000"],
+		origin: ["*", "https://coverly.hng.tech", "http://localhost:3000","https://coverly.app"],
 		credentials: true,
 	})
 );
