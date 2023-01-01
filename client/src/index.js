@@ -5,6 +5,13 @@ import App from "./App";
 import "./fontawesome";
 
 import { AppProvider } from "./context/context";
+import TagManager from 'react-gtm-module'
+
+const tagManagerArgs = {
+    gtmId: 'GTM-T8SFMJJ'
+}
+
+TagManager.initialize(tagManagerArgs)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
